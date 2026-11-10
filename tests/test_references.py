@@ -101,3 +101,25 @@ def test_internal_rejections_are_not_read_to_the_user(searched):
     shop.llm.extend([call(tools.ADD, product_id=ids[0], cantidad=2)] * 2)  # insiste: el turno acaba con el respaldo
     turn = session.send("Añade dos del séptimo.")
     assert "pedir_aclaracion" not in turn.response and cart_of(session) == {}
+
+
+# --- Búsqueda repetida ------------------------------------------------------------------
+
+
+def test_a_search_that_returns_the_same_candidates_is_sent_back(searched):
+    shop, session, ids = searched
+    shop.llm.extend([call(tools.SEARCH, consulta="auriculares bluetooth"), say("El catálogo no indica ese dato.")])
+    turn = session.send("¿Qué valoración le dan los clientes al segundo?")
+    assert codes(turn.operations[0]) == [tools.REPEATED_SEARCH] and "detalle_producto" in turn.operations[0]["summary"]
+    assert turn.response == "El catálogo no indica ese dato."
+    assert [candidate["product_id"] for candidate in session.state["candidates"]] == ids
+
+
+def test_a_search_with_other_results_goes_through(searched):
+    shop, session, ids = searched
+    shop.llm.extend([call(tools.SEARCH, consulta="cafetera italiana"), say("Tengo una Bialetti.")])
+    turn = session.send("Mejor busca una cafetera italiana")
+    assert turn.operations[0]["ok"] and session.state["candidates"][0]["product_id"] == "P5"
+    shop.sql("UPDATE inventory SET stock = 0 WHERE product_id = 'P5'")
+    shop.llm.extend([call(tools.SEARCH, consulta="auriculares bluetooth"), say("Estos son.")])
+    assert session.send("Vuelve a los auriculares").operations[0]["ok"]

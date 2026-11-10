@@ -17,6 +17,13 @@ from shopping_agent.store.ops import Issue
 SEARCH_DEPTH = 50  # resultados de la búsqueda híbrida que se consideran
 SHOWN_CANDIDATES = 5
 RERANK_WINDOW = 20  # entre los primeros se priorizan los que se pueden comprar
+# Una búsqueda que devuelve lo que el LLM ya tiene delante no aporta nada: sin esto, a
+# veces contesta a una pregunta sobre un producto repitiendo la búsqueda y la lista.
+REPEATED_SEARCH_MESSAGE = (
+    "Esa búsqueda devuelve los mismos CANDIDATOS que ya tienes, con sus precios y existencias al día. No la "
+    "repitas. Si el usuario pregunta por un dato de un producto, míralo con detalle_producto; si tampoco "
+    "aparece ahí, usa responder para decir que el catálogo no lo indica."
+)
 
 
 def recuperar(state: AgentState, *, deps: Deps) -> Update:
@@ -31,6 +38,8 @@ def recuperar(state: AgentState, *, deps: Deps) -> Update:
     budget = state.budget_cents
     remaining = None if budget is None else budget - cart_total(state.cart)
     shown = buyable_first(ranked, remaining)[:SHOWN_CANDIDATES]
+    if shown and [candidate["product_id"] for candidate in shown] == [candidate["product_id"] for candidate in state.candidates]:
+        return rejected(state, [Issue(tools.REPEATED_SEARCH, REPEATED_SEARCH_MESSAGE)])
     entry = step(state, True, prompt.candidates_found(shown), result=[candidate["product_id"] for candidate in shown])
     return record(state, entry, candidates=shown, last_query=query.strip())
 

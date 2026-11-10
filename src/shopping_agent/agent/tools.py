@@ -27,6 +27,7 @@ from shopping_agent.store.ops import Issue, OpResult, format_eur
 UNKNOWN_TOOL = "herramienta_desconocida"
 INVALID_ARGS = "argumentos_invalidos"
 UNIDENTIFIED_PRODUCT = "producto_no_identificado"
+REPEATED_SEARCH = "busqueda_repetida"
 
 SEARCH = "buscar_productos"
 DETAIL = "detalle_producto"

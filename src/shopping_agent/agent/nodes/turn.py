@@ -18,7 +18,7 @@ from shopping_agent.store.ops import Issue
 
 MAX_STEPS = 6  # decisiones del LLM por turno
 # Rechazos pensados para el LLM: no se le dicen al usuario en la respuesta de respaldo.
-NOT_FOR_USER = guards.INTERNAL_CODES | references.CODES
+NOT_FOR_USER = guards.INTERNAL_CODES | references.CODES | {tools.REPEATED_SEARCH}
 
 
 def iniciar_turno(
