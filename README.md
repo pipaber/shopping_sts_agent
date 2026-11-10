@@ -36,7 +36,7 @@ Salidas en `datasets/processed/`: `catalog.parquet`, `queries_{train,test}.parqu
 
 ## Recuperación
 
-Compara BM25, denso e híbrido con nDCG@10 sobre los candidatos anotados. `test` se reserva para la evaluación final.
+Compara BM25, denso e híbrido con nDCG@10 sobre los candidatos anotados, con las consultas de `train`. La evaluación final con `test` es otro comando y se hizo una sola vez (ver "Recuperación en test").
 
 ```bash
 uv run python -m shopping_agent.eval.retrieval --split train
@@ -83,7 +83,7 @@ Mide el coste en la búsqueda. Con el [control](results/reranker_cost_control.js
 SHOPPING_AGENT_RERANKER=sage uv run python -m shopping_agent.agent.chat --script scenarios/demo_compra.txt --restore --out results/chat_compra_gnn
 ```
 
-Las transcripciones que ya estaban en `results/` (`chat_*` y `voz_*`) se hicieron antes de que existiera el reranker, con la búsqueda híbrida sola; para repetirlas igual hay que poner `SHOPPING_AGENT_RERANKER=off`.
+Las transcripciones de demostración de `results/` (`chat_*` y `voz_demo_*`) se regeneraron con el reranker por defecto (`control`); cada una anota la búsqueda que usó. Las anteriores, hechas con la búsqueda híbrida sola, quedan en el historial de git.
 
 ## Memoria del agente (Postgres)
 
@@ -165,12 +165,14 @@ audio/
 - Sitio silencioso, sin música ni eco, a un palmo del micrófono y sin saturar.
 - WAV, mono o estéreo, a cualquier frecuencia de muestreo (mejor 44,1 o 48 kHz y 16 bits); el código lo convierte a lo que necesita cada modelo.
 
-**Audios de un escenario** (`audio/escenarios/<escenario>/`). Un archivo por turno del usuario, numerado con dos cifras en el orden de la conversación. El texto de cada turno es la línea correspondiente de `scenarios/<escenario>.txt`: la línea 1 se graba en `01.wav`, la 2 en `02.wav`, y así. Hay que decir el texto tal cual, porque ese archivo es la transcripción correcta con la que se compara el ASR.
+**Audios de un escenario** (`audio/escenarios/<escenario>/`). Un archivo por turno del usuario, numerado con dos cifras en el orden de la conversación: el turno 1 se graba en `01.wav`, el 2 en `02.wav`, y así. Hay que decir el texto tal cual, porque es la transcripción correcta con la que se compara el ASR.
 
 - Un turno por archivo, de 1 a 15 segundos, sin silencios largos al principio ni al final.
 - WAV (también se leen FLAC, MP3, OGG y M4A), mono o estéreo, a 16 kHz o más.
 
-Por ahora hay dos guiones para grabar: [scenarios/demo_compra.txt](scenarios/demo_compra.txt) (8 turnos) y [scenarios/demo_incidencias.txt](scenarios/demo_incidencias.txt) (10 turnos). Los seis escenarios de la evaluación final seguirán la misma convención. Por ejemplo, para `demo_compra`:
+**Qué hay que grabar para la evaluación.** Los seis escenarios de voz: 31 turnos en total. El guion, con el archivo y el texto exacto de cada turno, está en [scenarios/evaluacion/GUION_GRABACION.md](scenarios/evaluacion/GUION_GRABACION.md); se genera a partir de los escenarios y no se edita a mano. Cada escenario va en su carpeta (`audio/escenarios/01_compra_confirmada/01.wav`, `02.wav`…). Mientras falte algún archivo de un escenario, la evaluación usa para ese escenario los audios sintéticos de prueba y lo deja anotado en los resultados.
+
+Los dos guiones de demostración siguen la misma convención, con el texto en un archivo de líneas: [scenarios/demo_compra.txt](scenarios/demo_compra.txt) (8 turnos) y [scenarios/demo_incidencias.txt](scenarios/demo_incidencias.txt) (10 turnos). Por ejemplo, para `demo_compra`:
 
 | Archivo | Texto que hay que decir |
 |---|---|
@@ -209,6 +211,79 @@ uv run python -m shopping_agent.eval.voice results/voz_demo_compra
 
 Calcula, sobre una corrida guardada: la inteligibilidad (WER de Whisper sobre el audio sintetizado frente al texto enviado al TTS), la semejanza con la referencia (coseno entre embeddings de hablante) y los errores del ASR en importes, cantidades y nombres de producto frente al texto correcto. Los nombres de producto esperados en cada turno se indican en `scenarios/<escenario>.terminos.json`.
 
+## Evaluación
+
+Qué se midió, con qué decisiones y qué quedó sin verificar está en [documentation/PLAN.md](documentation/PLAN.md) ("Diseño y resultados de la evaluación"). Aquí, cómo se reproduce cada tabla.
+
+### Escenarios
+
+Hay veinte escenarios en [scenarios/evaluacion/](scenarios/evaluacion/), uno por archivo JSON. Seis son además de voz, uno por cada situación obligatoria del enunciado. Cada escenario declara los turnos del usuario, los sucesos externos entre turnos y lo que se espera:
+
+```json
+{"say": "Añade dos de la primera al carrito.", "terms": ["primera"],
+ "expect": [{"check": "cart", "lines": [{"product": "@elegida", "quantity": 2}]}, {"check": "orders", "count": 0}]},
+{"remember": {"elegida": "candidate:1"}},
+{"event": "set_offer", "product": "@elegida", "price_cents": 1450, "stock": 20}
+```
+
+- **Productos por posición, no por identificador.** `candidate:N` y `cart:N` son el candidato o la línea de carrito N en ese momento; `remember` les pone nombre para usarlo después. El escenario no depende de qué producto devuelva la búsqueda.
+- **Condiciones fijadas por regla.** El precio y las existencias de los que depende el resultado los fija un suceso de la tienda (`set_offer`), no la suerte de la semilla. El mismo suceso sirve para cambiar el stock entre la cotización y la confirmación.
+- **Estado inicial reproducible.** Cada escenario empieza con la tienda restaurada desde `store_seed.sqlite` (en una copia propia de la corrida), un hilo nuevo y un usuario nuevo, es decir, sin memoria previa. `new_conversation` abre otro hilo del mismo usuario.
+- **Veredicto por código.** Un escenario es correcto si se cumplen todas sus comprobaciones (pedidos y sus líneas, carrito, inventario, presupuesto, si pidió aclaración, si propuso una alternativa…), no hay ninguna violación de restricciones y la corrida no dio error. Ningún LLM juzga nada. Las comprobaciones están en `eval/scenario_checks.py`.
+- **Violaciones de restricciones.** Aparte de lo que espere cada escenario, se compara la tienda antes y después de cada turno para contar cinco clases: cantidad, presupuesto, existencias, pedido duplicado y cambio parcial (`eval/scenario_violations.py`).
+
+```bash
+uv run python -m shopping_agent.eval.scenarios --mode text
+SHOPPING_AGENT_RERANKER=sage uv run python -m shopping_agent.eval.scenarios --mode text
+SHOPPING_AGENT_RERANKER=off uv run python -m shopping_agent.eval.scenarios --mode text
+uv run python -m shopping_agent.eval.scenarios --synthesize --speaker "Luis Moray"
+uv run python -m shopping_agent.eval.scenarios --mode voice
+uv run python -m shopping_agent.eval.scenario_report
+```
+
+Los tres primeros corren los 20 escenarios por texto con el reranker por defecto, con GraphSAGE y sin reranker (unos 8 minutos cada uno). El cuarto genera los audios de entrada de prueba en `audio/sinteticos/<escenario>/` con un hablante incluido en XTTS-v2. El quinto corre los seis escenarios de voz con audio (ASR → agente → TTS con la voz clonada) y después los repite con la transcripción correcta; usa las grabaciones de `audio/escenarios/<escenario>/` si están todos los turnos y, si no, los audios sintéticos, y lo deja anotado. El último escribe el resumen. `--only` limita la corrida a unos escenarios.
+
+Qué queda de cada corrida:
+
+| Dónde | Qué |
+|---|---|
+| `results/escenarios/<corrida>/<escenario>.json` | Turnos (texto, transcripción del ASR, respuesta, texto enviado al TTS), operaciones, tiempos por etapa e instantáneas del agente y de la tienda antes y después de cada turno |
+| `results/escenarios/<corrida>/<escenario>.md` | Ficha del escenario: la conversación con sus operaciones, cada comprobación con su resultado, las violaciones y el estado final de la tienda |
+| `results/escenarios/<corrida>/corrida.json` | Fecha, commit, modelos, carga inicial y veredictos |
+| `results/escenarios/voz/metricas_voz.json` | Errores del ASR (WER, importes, cantidades y nombres de producto), inteligibilidad y semejanza de la voz, turno a turno |
+| `results/escenarios/resumen.md` y `.json` | Tablas de todas las corridas |
+| `audio/corridas/voz/<escenario>/` | Audios de entrada y de respuesta (fuera de git) |
+
+Resultados ([results/escenarios/resumen.md](results/escenarios/resumen.md)):
+
+| Corrida | Entrada | Reranker | Escenarios correctos |
+|---|---|---|---|
+| `texto` | texto | control (por defecto) | 14 de 20 (70 %) |
+| `texto_sage` | texto | GraphSAGE | 16 de 20 (80 %) |
+| `texto_sin_reranker` | texto | ninguno | 16 de 20 (80 %) |
+| `voz` | audio sintético de prueba | control | 3 de 6 (50 %) |
+| `voz_texto_correcto` | transcripción correcta | control | 3 de 6 (50 %) |
+
+No hubo ninguna violación de restricciones en ninguna corrida: todos los fallos son decisiones del LLM en el diálogo (no cotiza, añade o cambia un producto que no se le pidió, no contesta una pregunta). Con audio fallan los mismos tres escenarios que con la transcripción correcta, así que no son errores del ASR. Los audios de entrada de la corrida por voz son **sintéticos**: sirven para comprobar el circuito, no para medir el ASR con una voz real. Falta repetirla con las grabaciones del usuario.
+
+### Recuperación en test
+
+```bash
+uv run python -m shopping_agent.eval.retrieval_test
+```
+
+Evaluación única con las 300 consultas de test: entrena los rerankers como en la validación (las mismas consultas de ajuste y las mismas cinco semillas) y escribe [results/retrieval_test.md](results/retrieval_test.md) y su `.json`, con la fecha y el commit. El comando se niega a repetirse si el resultado ya existe; nada se ajustó después de ver los números.
+
+| Sistema | nDCG@10 en test [IC 95 %] | recall@50 | Dif. con el híbrido |
+|---|---|---|---|
+| BM25 (base léxica) | 0,6797 [0,6515; 0,7066] | 0,6455 | −0,0316 |
+| Denso | 0,7278 [0,7016; 0,7524] | 0,6501 | +0,0165 |
+| Híbrido RRF | 0,7113 [0,6844; 0,7368] | 0,7194 | |
+| Híbrido + control sin grafo | 0,7292 [0,7031; 0,7536] | 0,7194 | +0,0179 [+0,0086; +0,0275] |
+| Híbrido + GraphSAGE | 0,7363 [0,7104; 0,7605] | 0,7194 | +0,0249 [+0,0152; +0,0351] |
+
+GraphSAGE supera al control sin grafo en +0,0071 (IC 95 % [+0,0028; +0,0117]). Los rerankers reordenan los 50 primeros del híbrido, así que comparten su recall@50.
+
 ## Organización del código
 
 ```
@@ -233,13 +308,18 @@ src/shopping_agent/
     memory.py, llm.py, search.py   Postgres, LLM local y búsqueda híbrida con reranker opcional
   voice/       audio, asr, speech_text, tts, pipeline (un turno por voz), chat (comando), report
   eval/        evaluación de la recuperación, del reranker (comparación y coste) y métricas de voz
+    scenario_format.py, scenario_checks.py   formato de los escenarios; comprobaciones por código
+    scenario_violations.py                   violaciones de restricciones, turno a turno
+    scenario_runner.py, scenarios.py         un escenario de principio a fin; comando que los corre
+    scenario_report.py                       ficha por escenario y resumen de las corridas
+    retrieval_test.py                        evaluación final de la recuperación en test
 ```
 
 Criterio de idioma: los identificadores del código (módulos, funciones, clases, variables, campos, claves de los JSON de resultados y opciones de los comandos) van en inglés. Va en español todo lo que es lenguaje: los textos para el usuario y para el LLM, los comentarios y la documentación, y los nombres que el LLM o las transcripciones muestran (nodos del grafo, herramientas y sus argumentos, códigos de rechazo). La función que implementa un nodo se llama como el nodo. Los archivos de resultados y de escenarios, que son contenido, también van en español.
 
 ## Pruebas
 
-Las pruebas no necesitan GPU, modelos ni grabaciones: el grafo del agente se prueba con un LLM guionizado, el canal de voz con un ASR y un TTS simulados, y el reranker con un grafo sintético de doce productos. Las que no tratan de Postgres usan memoria volátil pedida de forma explícita; las de Postgres se omiten si `SHOPPING_AGENT_PG_URL` no está definida o el servidor no responde.
+Las pruebas no necesitan GPU, modelos ni grabaciones: el grafo del agente se prueba con un LLM guionizado, el canal de voz con un ASR y un TTS simulados, y el reranker con un grafo sintético de doce productos. El formato de los escenarios, sus comprobaciones, las violaciones y el ejecutor se prueban igual, con el LLM guionizado; una prueba comprueba además que el guion de grabación corresponde a los escenarios. Las que no tratan de Postgres usan memoria volátil pedida de forma explícita; las de Postgres se omiten si `SHOPPING_AGENT_PG_URL` no está definida o el servidor no responde.
 
 ```bash
 uv run pytest
