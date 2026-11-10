@@ -1,0 +1,55 @@
+{
+  "id": "14_pregunta_sin_cambios",
+  "title": "Una pregunta no cambia el carrito",
+  "kind": "pregunta_sin_cambios",
+  "voice": false,
+  "description": "El usuario pregunta por disponibilidad y por precio sin pedir nada. El carrito debe seguir vacío y la respuesta sobre el precio debe dar el de la tienda.",
+  "steps": [
+    {
+      "say": "Busco una funda para móvil.",
+      "expect": [
+        {
+          "check": "cart",
+          "empty": true
+        }
+      ]
+    },
+    {
+      "remember": {
+        "primera": "candidate:1"
+      }
+    },
+    {
+      "say": "¿La segunda está disponible?",
+      "expect": [
+        {
+          "check": "cart",
+          "empty": true
+        }
+      ]
+    },
+    {
+      "say": "¿Cuánto cuesta la primera?",
+      "expect": [
+        {
+          "check": "cart",
+          "empty": true
+        },
+        {
+          "check": "mentions_price",
+          "product": "@primera"
+        }
+      ]
+    }
+  ],
+  "expect": [
+    {
+      "check": "orders",
+      "count": 0
+    },
+    {
+      "check": "cart",
+      "empty": true
+    }
+  ]
+}

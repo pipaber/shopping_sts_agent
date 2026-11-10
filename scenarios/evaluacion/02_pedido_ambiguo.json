@@ -1,0 +1,93 @@
+{
+  "id": "02_pedido_ambiguo",
+  "title": "Pedido ambiguo que requiere aclaración",
+  "kind": "pedido_ambiguo",
+  "voice": true,
+  "description": "El primer mensaje no dice qué producto se busca: el agente debe preguntar en lugar de suponer. Después el usuario concreta el producto y el presupuesto, y añade una unidad.",
+  "steps": [
+    {
+      "say": "Quiero comprar un regalo para mi hermana.",
+      "expect": [
+        {
+          "check": "asked_clarification"
+        },
+        {
+          "check": "cart",
+          "empty": true
+        },
+        {
+          "check": "orders",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "say": "Unos auriculares bluetooth, y no quiero gastar más de 50 euros.",
+      "terms": [
+        "auriculares bluetooth"
+      ],
+      "expect": [
+        {
+          "check": "budget",
+          "cents": 5000
+        },
+        {
+          "check": "cart",
+          "empty": true
+        }
+      ]
+    },
+    {
+      "remember": {
+        "elegido": "candidate:1"
+      }
+    },
+    {
+      "event": "set_offer",
+      "product": "@elegido",
+      "price_cents": 1990,
+      "stock": 20
+    },
+    {
+      "say": "Ponme uno del primero.",
+      "terms": [
+        "primero"
+      ],
+      "expect": [
+        {
+          "check": "cart",
+          "lines": [
+            {
+              "product": "@elegido",
+              "quantity": 1
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "expect": [
+    {
+      "check": "orders",
+      "count": 0
+    },
+    {
+      "check": "cart",
+      "lines": [
+        {
+          "product": "@elegido",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "check": "budget",
+      "cents": 5000
+    },
+    {
+      "check": "stock",
+      "product": "@elegido",
+      "equals": 20
+    }
+  ]
+}

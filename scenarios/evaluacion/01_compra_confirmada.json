@@ -1,0 +1,108 @@
+{
+  "id": "01_compra_confirmada",
+  "title": "Compra confirmada",
+  "kind": "compra_confirmada",
+  "voice": true,
+  "description": "El usuario busca con presupuesto, añade dos unidades, pide cerrar y confirma. Tras la búsqueda la tienda fija el primer candidato en 14,50 € y 20 unidades, para que el resultado no dependa de qué producto salga primero.",
+  "steps": [
+    {
+      "say": "Hola, busco una cafetera italiana. Tengo un presupuesto de 60 euros.",
+      "terms": [
+        "cafetera italiana"
+      ],
+      "expect": [
+        {
+          "check": "budget",
+          "cents": 6000
+        },
+        {
+          "check": "cart",
+          "empty": true
+        }
+      ]
+    },
+    {
+      "remember": {
+        "elegida": "candidate:1"
+      }
+    },
+    {
+      "event": "set_offer",
+      "product": "@elegida",
+      "price_cents": 1450,
+      "stock": 20
+    },
+    {
+      "say": "Añade dos de la primera al carrito.",
+      "terms": [
+        "primera"
+      ],
+      "expect": [
+        {
+          "check": "cart",
+          "lines": [
+            {
+              "product": "@elegida",
+              "quantity": 2
+            }
+          ]
+        },
+        {
+          "check": "orders",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "say": "Quiero cerrar el pedido.",
+      "expect": [
+        {
+          "check": "awaiting_confirmation",
+          "value": true
+        },
+        {
+          "check": "orders",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "say": "Sí, confirmo.",
+      "expect": [
+        {
+          "check": "orders",
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "expect": [
+    {
+      "check": "orders",
+      "count": 1
+    },
+    {
+      "check": "order",
+      "lines": [
+        {
+          "product": "@elegida",
+          "quantity": 2
+        }
+      ],
+      "total_cents": 2900
+    },
+    {
+      "check": "stock",
+      "product": "@elegida",
+      "equals": 18
+    },
+    {
+      "check": "cart",
+      "empty": true
+    },
+    {
+      "check": "budget",
+      "cents": 6000
+    }
+  ]
+}

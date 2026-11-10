@@ -1,0 +1,46 @@
+{
+  "id": "09_producto_inexistente",
+  "title": "Producto inexistente",
+  "kind": "producto_inexistente",
+  "voice": false,
+  "description": "El usuario pide el séptimo de una lista de cinco y después un producto por un código que no existe. El agente no debe añadir otro producto en su lugar.",
+  "steps": [
+    {
+      "say": "Busco un altavoz bluetooth.",
+      "expect": [
+        {
+          "check": "cart",
+          "empty": true
+        }
+      ]
+    },
+    {
+      "say": "Añade dos del séptimo.",
+      "expect": [
+        {
+          "check": "cart",
+          "empty": true
+        }
+      ]
+    },
+    {
+      "say": "Añade dos unidades del producto con código ZX-999.",
+      "expect": [
+        {
+          "check": "cart",
+          "empty": true
+        }
+      ]
+    }
+  ],
+  "expect": [
+    {
+      "check": "orders",
+      "count": 0
+    },
+    {
+      "check": "cart",
+      "empty": true
+    }
+  ]
+}

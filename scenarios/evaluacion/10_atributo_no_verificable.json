@@ -1,0 +1,53 @@
+{
+  "id": "10_atributo_no_verificable",
+  "title": "Atributo no verificable",
+  "kind": "atributo_no_verificable",
+  "voice": false,
+  "description": "El usuario pregunta por la valoración de los clientes, un dato que el catálogo no trae. El agente debe decir que no consta, sin inventarlo y sin tocar el carrito. La comprobación mira el texto completo del producto en el catálogo: si no menciona valoraciones, la respuesta tiene que decir que no consta.",
+  "steps": [
+    {
+      "say": "Busco una sartén antiadherente.",
+      "expect": [
+        {
+          "check": "cart",
+          "empty": true
+        }
+      ]
+    },
+    {
+      "remember": {
+        "elegida": "candidate:1"
+      }
+    },
+    {
+      "say": "¿Qué valoración le dan los clientes a la primera?",
+      "expect": [
+        {
+          "check": "declares_unknown",
+          "product": "@elegida",
+          "keywords": [
+            "valoraci",
+            "estrellas",
+            "reseñ",
+            "opiniones",
+            "puntuaci"
+          ]
+        },
+        {
+          "check": "cart",
+          "empty": true
+        }
+      ]
+    }
+  ],
+  "expect": [
+    {
+      "check": "orders",
+      "count": 0
+    },
+    {
+      "check": "cart",
+      "empty": true
+    }
+  ]
+}

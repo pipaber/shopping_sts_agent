@@ -1,0 +1,76 @@
+{
+  "id": "15_stock_insuficiente",
+  "title": "Stock insuficiente al añadir",
+  "kind": "stock_insuficiente",
+  "voice": false,
+  "description": "Del primer candidato quedan tres unidades y el usuario pide cinco: el carrito no debe cambiar. Después pide las tres que quedan.",
+  "steps": [
+    {
+      "say": "Busco una linterna LED.",
+      "expect": [
+        {
+          "check": "cart",
+          "empty": true
+        }
+      ]
+    },
+    {
+      "remember": {
+        "elegida": "candidate:1"
+      }
+    },
+    {
+      "event": "set_offer",
+      "product": "@elegida",
+      "price_cents": 700,
+      "stock": 3
+    },
+    {
+      "say": "Añade cinco de la primera.",
+      "expect": [
+        {
+          "check": "cart",
+          "empty": true
+        },
+        {
+          "check": "orders",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "say": "Pues ponme las tres que quedan.",
+      "expect": [
+        {
+          "check": "cart",
+          "lines": [
+            {
+              "product": "@elegida",
+              "quantity": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "expect": [
+    {
+      "check": "orders",
+      "count": 0
+    },
+    {
+      "check": "cart",
+      "lines": [
+        {
+          "product": "@elegida",
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "check": "stock",
+      "product": "@elegida",
+      "equals": 3
+    }
+  ]
+}

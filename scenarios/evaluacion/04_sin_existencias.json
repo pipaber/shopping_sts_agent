@@ -1,0 +1,126 @@
+{
+  "id": "04_sin_existencias",
+  "title": "Producto sin existencias que requiere alternativa",
+  "kind": "sin_existencias",
+  "voice": true,
+  "description": "Tras la búsqueda, el primer candidato se agota (la tienda lo deja en 0) y el segundo queda con 10 unidades. El usuario pide el primero: el agente no puede añadirlo y debe ofrecer otro con existencias. El usuario compra entonces el segundo de la lista que tenga delante.",
+  "steps": [
+    {
+      "say": "Necesito una esterilla de yoga.",
+      "terms": [
+        "esterilla de yoga"
+      ],
+      "expect": [
+        {
+          "check": "cart",
+          "empty": true
+        }
+      ]
+    },
+    {
+      "remember": {
+        "agotada": "candidate:1",
+        "alternativa": "candidate:2"
+      }
+    },
+    {
+      "event": "set_offer",
+      "product": "@agotada",
+      "stock": 0
+    },
+    {
+      "event": "set_offer",
+      "product": "@alternativa",
+      "price_cents": 1800,
+      "stock": 10
+    },
+    {
+      "say": "Ponme una de la primera.",
+      "terms": [
+        "primera"
+      ],
+      "expect": [
+        {
+          "check": "cart",
+          "empty": true
+        },
+        {
+          "check": "offered_alternative",
+          "instead_of": "@agotada"
+        },
+        {
+          "check": "orders",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "remember": {
+        "segunda": "candidate:2"
+      }
+    },
+    {
+      "say": "Entonces ponme una de la segunda.",
+      "terms": [
+        "segunda"
+      ],
+      "expect": [
+        {
+          "check": "cart",
+          "lines": [
+            {
+              "product": "@segunda",
+              "quantity": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "say": "Cierra el pedido.",
+      "expect": [
+        {
+          "check": "awaiting_confirmation",
+          "value": true
+        },
+        {
+          "check": "orders",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "say": "Sí, confirmo.",
+      "expect": [
+        {
+          "check": "orders",
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "expect": [
+    {
+      "check": "orders",
+      "count": 1
+    },
+    {
+      "check": "order",
+      "lines": [
+        {
+          "not": "@agotada",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "check": "stock",
+      "product": "@agotada",
+      "equals": 0
+    },
+    {
+      "check": "cart",
+      "empty": true
+    }
+  ]
+}

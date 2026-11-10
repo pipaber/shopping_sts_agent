@@ -1,0 +1,152 @@
+{
+  "id": "20_agotado_al_confirmar",
+  "title": "Producto agotado entre la cotización y la confirmación",
+  "kind": "agotado_al_confirmar",
+  "voice": false,
+  "description": "Con la cotización pendiente, el producto se agota. La confirmación debe rechazarse sin cambios y el agente debe proponer alternativas con existencias. El usuario cambia el producto por la primera alternativa y compra.",
+  "steps": [
+    {
+      "say": "Busco un cuaderno de tapa dura.",
+      "expect": [
+        {
+          "check": "cart",
+          "empty": true
+        }
+      ]
+    },
+    {
+      "remember": {
+        "elegido": "candidate:1"
+      }
+    },
+    {
+      "event": "set_offer",
+      "product": "@elegido",
+      "price_cents": 600,
+      "stock": 5
+    },
+    {
+      "say": "Añade dos del primero.",
+      "expect": [
+        {
+          "check": "cart",
+          "lines": [
+            {
+              "product": "@elegido",
+              "quantity": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "say": "Cierra el pedido.",
+      "expect": [
+        {
+          "check": "awaiting_confirmation",
+          "value": true
+        },
+        {
+          "check": "orders",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "event": "set_offer",
+      "product": "@elegido",
+      "stock": 0
+    },
+    {
+      "say": "Sí.",
+      "expect": [
+        {
+          "check": "orders",
+          "count": 0
+        },
+        {
+          "check": "rejected",
+          "code": "agotado"
+        },
+        {
+          "check": "offered_alternative",
+          "instead_of": "@elegido"
+        },
+        {
+          "check": "cart",
+          "lines": [
+            {
+              "product": "@elegido",
+              "quantity": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "remember": {
+        "alternativa": "candidate:1"
+      }
+    },
+    {
+      "say": "Quita ese cuaderno y ponme dos de la primera alternativa.",
+      "expect": [
+        {
+          "check": "cart",
+          "lines": [
+            {
+              "product": "@alternativa",
+              "quantity": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "say": "Cierra el pedido.",
+      "expect": [
+        {
+          "check": "awaiting_confirmation",
+          "value": true
+        },
+        {
+          "check": "orders",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "say": "Sí.",
+      "expect": [
+        {
+          "check": "orders",
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "expect": [
+    {
+      "check": "orders",
+      "count": 1
+    },
+    {
+      "check": "order",
+      "lines": [
+        {
+          "not": "@elegido",
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "check": "stock",
+      "product": "@elegido",
+      "equals": 0
+    },
+    {
+      "check": "cart",
+      "empty": true
+    }
+  ]
+}

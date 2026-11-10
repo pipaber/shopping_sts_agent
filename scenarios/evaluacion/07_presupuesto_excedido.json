@@ -1,0 +1,84 @@
+{
+  "id": "07_presupuesto_excedido",
+  "title": "Presupuesto excedido al añadir",
+  "kind": "presupuesto_excedido",
+  "voice": false,
+  "description": "Con 30 € de presupuesto y el producto a 12,00 €, tres unidades (36,00 €) no caben: el carrito no debe cambiar. Dos unidades sí caben.",
+  "steps": [
+    {
+      "say": "Busco una mochila para portátil. Como mucho quiero gastar 30 euros.",
+      "expect": [
+        {
+          "check": "budget",
+          "cents": 3000
+        },
+        {
+          "check": "cart",
+          "empty": true
+        }
+      ]
+    },
+    {
+      "remember": {
+        "elegida": "candidate:1"
+      }
+    },
+    {
+      "event": "set_offer",
+      "product": "@elegida",
+      "price_cents": 1200,
+      "stock": 20
+    },
+    {
+      "say": "Añade tres de la primera.",
+      "expect": [
+        {
+          "check": "cart",
+          "empty": true
+        },
+        {
+          "check": "orders",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "say": "Vale, pues ponme dos.",
+      "expect": [
+        {
+          "check": "cart",
+          "lines": [
+            {
+              "product": "@elegida",
+              "quantity": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "expect": [
+    {
+      "check": "orders",
+      "count": 0
+    },
+    {
+      "check": "cart",
+      "lines": [
+        {
+          "product": "@elegida",
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "check": "budget",
+      "cents": 3000
+    },
+    {
+      "check": "stock",
+      "product": "@elegida",
+      "equals": 20
+    }
+  ]
+}

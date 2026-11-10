@@ -1,0 +1,136 @@
+{
+  "id": "19_presupuesto_compartido",
+  "title": "Presupuesto compartido entre dos productos",
+  "kind": "presupuesto_compartido",
+  "voice": false,
+  "description": "Con 50 € de presupuesto, dos unidades del primero (28,00 €) caben, pero otras dos del segundo (32,00 €) ya no: solo cabe una (16,00 €). El pedido final suma 44,00 €.",
+  "steps": [
+    {
+      "say": "Busco unas toallas de baño. Mi presupuesto es de 50 euros.",
+      "expect": [
+        {
+          "check": "budget",
+          "cents": 5000
+        },
+        {
+          "check": "cart",
+          "empty": true
+        }
+      ]
+    },
+    {
+      "remember": {
+        "primeras": "candidate:1",
+        "segundas": "candidate:2"
+      }
+    },
+    {
+      "event": "set_offer",
+      "product": "@primeras",
+      "price_cents": 1400,
+      "stock": 20
+    },
+    {
+      "event": "set_offer",
+      "product": "@segundas",
+      "price_cents": 1600,
+      "stock": 20
+    },
+    {
+      "say": "Añade dos de la primera opción.",
+      "expect": [
+        {
+          "check": "cart",
+          "lines": [
+            {
+              "product": "@primeras",
+              "quantity": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "say": "Añade también dos de la segunda opción.",
+      "expect": [
+        {
+          "check": "cart",
+          "lines": [
+            {
+              "product": "@primeras",
+              "quantity": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "say": "Pues solo una de la segunda.",
+      "expect": [
+        {
+          "check": "cart",
+          "lines": [
+            {
+              "product": "@primeras",
+              "quantity": 2
+            },
+            {
+              "product": "@segundas",
+              "quantity": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "say": "Cierra el pedido.",
+      "expect": [
+        {
+          "check": "awaiting_confirmation",
+          "value": true
+        },
+        {
+          "check": "orders",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "say": "Sí.",
+      "expect": [
+        {
+          "check": "orders",
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "expect": [
+    {
+      "check": "orders",
+      "count": 1
+    },
+    {
+      "check": "order",
+      "lines": [
+        {
+          "product": "@primeras",
+          "quantity": 2
+        },
+        {
+          "product": "@segundas",
+          "quantity": 1
+        }
+      ],
+      "total_cents": 4400
+    },
+    {
+      "check": "budget",
+      "cents": 5000
+    },
+    {
+      "check": "cart",
+      "empty": true
+    }
+  ]
+}

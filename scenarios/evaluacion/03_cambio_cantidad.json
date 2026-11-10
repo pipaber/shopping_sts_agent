@@ -1,0 +1,118 @@
+{
+  "id": "03_cambio_cantidad",
+  "title": "Cambio de cantidad manteniendo las demás restricciones",
+  "kind": "cambio_cantidad",
+  "voice": true,
+  "description": "El usuario añade dos unidades y después corrige a cuatro. El producto y el presupuesto deben seguir siendo los mismos y el pedido final debe llevar cuatro unidades (38,00 € de un presupuesto de 45 €).",
+  "steps": [
+    {
+      "say": "Busco una botella de agua de acero inoxidable. Mi presupuesto es de 45 euros.",
+      "terms": [
+        "botella de agua de acero inoxidable"
+      ],
+      "expect": [
+        {
+          "check": "budget",
+          "cents": 4500
+        }
+      ]
+    },
+    {
+      "remember": {
+        "elegida": "candidate:1"
+      }
+    },
+    {
+      "event": "set_offer",
+      "product": "@elegida",
+      "price_cents": 950,
+      "stock": 20
+    },
+    {
+      "say": "Añade dos de la primera.",
+      "terms": [
+        "primera"
+      ],
+      "expect": [
+        {
+          "check": "cart",
+          "lines": [
+            {
+              "product": "@elegida",
+              "quantity": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "say": "Mejor que sean cuatro.",
+      "expect": [
+        {
+          "check": "cart",
+          "lines": [
+            {
+              "product": "@elegida",
+              "quantity": 4
+            }
+          ]
+        },
+        {
+          "check": "budget",
+          "cents": 4500
+        }
+      ]
+    },
+    {
+      "say": "Ciérralo.",
+      "expect": [
+        {
+          "check": "awaiting_confirmation",
+          "value": true
+        },
+        {
+          "check": "orders",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "say": "Sí.",
+      "expect": [
+        {
+          "check": "orders",
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "expect": [
+    {
+      "check": "orders",
+      "count": 1
+    },
+    {
+      "check": "order",
+      "lines": [
+        {
+          "product": "@elegida",
+          "quantity": 4
+        }
+      ],
+      "total_cents": 3800
+    },
+    {
+      "check": "stock",
+      "product": "@elegida",
+      "equals": 16
+    },
+    {
+      "check": "cart",
+      "empty": true
+    },
+    {
+      "check": "budget",
+      "cents": 4500
+    }
+  ]
+}

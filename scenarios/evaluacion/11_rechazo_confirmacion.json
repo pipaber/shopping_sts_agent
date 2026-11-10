@@ -1,0 +1,98 @@
+{
+  "id": "11_rechazo_confirmacion",
+  "title": "Rechazo en la confirmación",
+  "kind": "rechazo_confirmacion",
+  "voice": false,
+  "description": "El usuario llega a la cotización y contesta que no. No debe registrarse ningún pedido y el carrito debe quedar como estaba.",
+  "steps": [
+    {
+      "say": "Busco unas bombillas LED.",
+      "expect": [
+        {
+          "check": "cart",
+          "empty": true
+        }
+      ]
+    },
+    {
+      "remember": {
+        "elegidas": "candidate:1"
+      }
+    },
+    {
+      "event": "set_offer",
+      "product": "@elegidas",
+      "price_cents": 600,
+      "stock": 20
+    },
+    {
+      "say": "Añade dos de la primera opción.",
+      "expect": [
+        {
+          "check": "cart",
+          "lines": [
+            {
+              "product": "@elegidas",
+              "quantity": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "say": "Cierra el pedido.",
+      "expect": [
+        {
+          "check": "awaiting_confirmation",
+          "value": true
+        },
+        {
+          "check": "orders",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "say": "No, cancélalo.",
+      "expect": [
+        {
+          "check": "orders",
+          "count": 0
+        },
+        {
+          "check": "awaiting_confirmation",
+          "value": false
+        },
+        {
+          "check": "cart",
+          "lines": [
+            {
+              "product": "@elegidas",
+              "quantity": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "expect": [
+    {
+      "check": "orders",
+      "count": 0
+    },
+    {
+      "check": "cart",
+      "lines": [
+        {
+          "product": "@elegidas",
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "check": "stock",
+      "product": "@elegidas",
+      "equals": 20
+    }
+  ]
+}

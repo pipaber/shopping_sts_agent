@@ -1,0 +1,168 @@
+{
+  "id": "06_cambio_stock_confirmacion_repetida",
+  "title": "Cambio de stock entre cotización y confirmación, y confirmación repetida",
+  "kind": "cambio_stock_confirmacion_repetida",
+  "voice": true,
+  "description": "Con la cotización de tres unidades pendiente, la tienda se queda con una sola. La confirmación debe rechazarse sin tocar nada y ofrecer una salida. El usuario lo deja en una unidad, confirma y repite el sí: debe haber un único pedido.",
+  "steps": [
+    {
+      "say": "Busco una lámpara de escritorio LED.",
+      "terms": [
+        "lámpara de escritorio LED"
+      ],
+      "expect": [
+        {
+          "check": "cart",
+          "empty": true
+        }
+      ]
+    },
+    {
+      "remember": {
+        "elegida": "candidate:1"
+      }
+    },
+    {
+      "event": "set_offer",
+      "product": "@elegida",
+      "price_cents": 1500,
+      "stock": 10
+    },
+    {
+      "say": "Añade tres de la primera.",
+      "terms": [
+        "primera"
+      ],
+      "expect": [
+        {
+          "check": "cart",
+          "lines": [
+            {
+              "product": "@elegida",
+              "quantity": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "say": "Quiero cerrar el pedido.",
+      "expect": [
+        {
+          "check": "awaiting_confirmation",
+          "value": true
+        },
+        {
+          "check": "orders",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "event": "set_offer",
+      "product": "@elegida",
+      "stock": 1
+    },
+    {
+      "say": "Sí.",
+      "expect": [
+        {
+          "check": "orders",
+          "count": 0
+        },
+        {
+          "check": "rejected",
+          "code": "stock_insuficiente"
+        },
+        {
+          "check": "cart",
+          "lines": [
+            {
+              "product": "@elegida",
+              "quantity": 3
+            }
+          ]
+        },
+        {
+          "check": "stock",
+          "product": "@elegida",
+          "equals": 1
+        }
+      ]
+    },
+    {
+      "say": "Vale, déjalo en una.",
+      "expect": [
+        {
+          "check": "cart",
+          "lines": [
+            {
+              "product": "@elegida",
+              "quantity": 1
+            }
+          ]
+        },
+        {
+          "check": "orders",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "say": "Cierra el pedido.",
+      "expect": [
+        {
+          "check": "awaiting_confirmation",
+          "value": true
+        },
+        {
+          "check": "orders",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "say": "Sí.",
+      "expect": [
+        {
+          "check": "orders",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "say": "Sí.",
+      "expect": [
+        {
+          "check": "orders",
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "expect": [
+    {
+      "check": "orders",
+      "count": 1
+    },
+    {
+      "check": "order",
+      "lines": [
+        {
+          "product": "@elegida",
+          "quantity": 1
+        }
+      ],
+      "total_cents": 1500
+    },
+    {
+      "check": "stock",
+      "product": "@elegida",
+      "equals": 0
+    },
+    {
+      "check": "cart",
+      "empty": true
+    }
+  ]
+}

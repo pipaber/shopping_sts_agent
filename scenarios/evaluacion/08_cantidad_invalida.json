@@ -1,0 +1,62 @@
+{
+  "id": "08_cantidad_invalida",
+  "title": "Cantidad inválida",
+  "kind": "cantidad_invalida",
+  "voice": false,
+  "description": "El usuario pide cero unidades y después una cantidad negativa. Ninguna de las dos debe llegar al carrito.",
+  "steps": [
+    {
+      "say": "Busco un cargador USB C.",
+      "expect": [
+        {
+          "check": "cart",
+          "empty": true
+        }
+      ]
+    },
+    {
+      "remember": {
+        "elegido": "candidate:1"
+      }
+    },
+    {
+      "event": "set_offer",
+      "product": "@elegido",
+      "price_cents": 800,
+      "stock": 20
+    },
+    {
+      "say": "Añade cero unidades del primero.",
+      "expect": [
+        {
+          "check": "cart",
+          "empty": true
+        }
+      ]
+    },
+    {
+      "say": "Añade menos dos unidades del primero.",
+      "expect": [
+        {
+          "check": "cart",
+          "empty": true
+        }
+      ]
+    }
+  ],
+  "expect": [
+    {
+      "check": "orders",
+      "count": 0
+    },
+    {
+      "check": "cart",
+      "empty": true
+    },
+    {
+      "check": "stock",
+      "product": "@elegido",
+      "equals": 20
+    }
+  ]
+}

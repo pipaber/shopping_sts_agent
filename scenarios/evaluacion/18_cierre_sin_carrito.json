@@ -1,0 +1,41 @@
+{
+  "id": "18_cierre_sin_carrito",
+  "title": "Cerrar y confirmar sin nada en el carrito",
+  "kind": "cierre_sin_carrito",
+  "voice": false,
+  "description": "El usuario pide cerrar el pedido con el carrito vacío y después dice que sí. No hay cotización que confirmar: no debe registrarse nada.",
+  "steps": [
+    {
+      "say": "Quiero cerrar el pedido.",
+      "expect": [
+        {
+          "check": "orders",
+          "count": 0
+        },
+        {
+          "check": "awaiting_confirmation",
+          "value": false
+        }
+      ]
+    },
+    {
+      "say": "Sí, confirmo.",
+      "expect": [
+        {
+          "check": "orders",
+          "count": 0
+        }
+      ]
+    }
+  ],
+  "expect": [
+    {
+      "check": "orders",
+      "count": 0
+    },
+    {
+      "check": "cart",
+      "empty": true
+    }
+  ]
+}

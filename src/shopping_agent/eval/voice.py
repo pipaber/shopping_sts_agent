@@ -324,25 +324,59 @@ def evaluate_run(
     reference_audio: Path | None,
     read: Callable[[Path], tuple[np.ndarray, int]],
 ) -> dict[str, Any]:
-    """Calcula las tres métricas sobre los turnos guardados en ``run_dir/turnos.json``.
+    """Calcula las tres métricas sobre los turnos guardados en ``run_dir/turnos.json``."""
+    turns = json.loads((run_dir / "turnos.json").read_text(encoding="utf-8"))["turns"]
+    return evaluate_turns(turns, run_dir, transcribe, embedder, reference_audio, read)
+
+
+def _tts_cases(
+    turns: Sequence[dict[str, Any]],
+    audio_dir: Path,
+    transcribe: Callable[[Path], str],
+    similarity: Callable[[Path], float] | None,
+) -> list[dict[str, Any]]:
+    """Por cada respuesta sintetizada: lo que Whisper entiende de ella y su semejanza con la referencia."""
+    cases = []
+    for turn in turns:
+        if not (turn.get("output_audio") and turn.get("spoken_text")):
+            continue
+        path = audio_dir / turn["output_audio"]
+        heard = transcribe(path)
+        case = {"turn": turn["turn"], "spoken_text": turn["spoken_text"], "heard": heard, "wer": wer(turn["spoken_text"], heard)}
+        if similarity is not None:
+            case["similarity"] = similarity(path)
+        cases.append(case)
+    return cases
+
+
+def _similarity_to(
+    embedder: SpeakerEmbedder | None, reference_audio: Path | None, read: Callable[[Path], tuple[np.ndarray, int]]
+) -> Callable[[Path], float] | None:
+    """Función que mide la semejanza de un audio con la referencia; ``None`` si no hay con qué."""
+    if embedder is None or not reference_audio:
+        return None
+    reference = read(reference_audio)
+
+    def similarity(path: Path) -> float:
+        return speaker_similarity(embedder, reference, read(path))
+
+    return similarity
+
+
+def evaluate_turns(
+    turns: Sequence[dict[str, Any]],
+    audio_dir: Path,
+    transcribe: Callable[[Path], str],
+    embedder: SpeakerEmbedder | None,
+    reference_audio: Path | None,
+    read: Callable[[Path], tuple[np.ndarray, int]],
+) -> dict[str, Any]:
+    """Las tres métricas sobre unos turnos ya guardados, con sus audios en ``audio_dir``.
 
     ``transcribe`` y ``embedder`` llegan desde fuera para poder probar esta función
     sin modelos.
     """
-    turns = json.loads((run_dir / "turnos.json").read_text(encoding="utf-8"))["turns"]
-    reference = read(reference_audio) if embedder is not None and reference_audio else None
-
-    tts_cases = []
-    for turn in turns:
-        if not (turn.get("output_audio") and turn.get("spoken_text")):
-            continue
-        path = run_dir / turn["output_audio"]
-        heard = transcribe(path)
-        case = {"turn": turn["turn"], "spoken_text": turn["spoken_text"], "heard": heard, "wer": wer(turn["spoken_text"], heard)}
-        if reference is not None and embedder is not None:
-            case["similarity"] = speaker_similarity(embedder, reference, read(path))
-        tts_cases.append(case)
-
+    tts_cases = _tts_cases(turns, audio_dir, transcribe, _similarity_to(embedder, reference_audio, read))
     asr_cases = [case for case in map(_asr_case, turns) if case is not None]
     return {
         "asr": {"summary": summarize_asr(asr_cases), "cases": asr_cases},

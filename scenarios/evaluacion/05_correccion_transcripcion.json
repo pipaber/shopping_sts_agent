@@ -1,0 +1,127 @@
+{
+  "id": "05_correccion_transcripcion",
+  "title": "Corrección de una transcripción antes de comprar",
+  "kind": "correccion_transcripcion",
+  "voice": true,
+  "description": "El agente repite el pedido con dos unidades y el usuario corrige antes de confirmar: había dicho doce (dos y doce se confunden con facilidad al transcribir). No debe registrarse nada con dos unidades; el pedido final lleva doce.",
+  "steps": [
+    {
+      "say": "Busco un ratón inalámbrico.",
+      "terms": [
+        "ratón inalámbrico"
+      ],
+      "expect": [
+        {
+          "check": "cart",
+          "empty": true
+        }
+      ]
+    },
+    {
+      "remember": {
+        "elegido": "candidate:1"
+      }
+    },
+    {
+      "event": "set_offer",
+      "product": "@elegido",
+      "price_cents": 1100,
+      "stock": 20
+    },
+    {
+      "say": "Añade dos del primero.",
+      "terms": [
+        "primero"
+      ],
+      "expect": [
+        {
+          "check": "cart",
+          "lines": [
+            {
+              "product": "@elegido",
+              "quantity": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "say": "Cierra el pedido.",
+      "expect": [
+        {
+          "check": "awaiting_confirmation",
+          "value": true
+        },
+        {
+          "check": "orders",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "say": "No, espera, he dicho doce, no dos.",
+      "expect": [
+        {
+          "check": "orders",
+          "count": 0
+        },
+        {
+          "check": "cart",
+          "lines": [
+            {
+              "product": "@elegido",
+              "quantity": 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "say": "Ahora sí, cierra el pedido.",
+      "expect": [
+        {
+          "check": "awaiting_confirmation",
+          "value": true
+        },
+        {
+          "check": "orders",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "say": "Sí, confirmo.",
+      "expect": [
+        {
+          "check": "orders",
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "expect": [
+    {
+      "check": "orders",
+      "count": 1
+    },
+    {
+      "check": "order",
+      "lines": [
+        {
+          "product": "@elegido",
+          "quantity": 12
+        }
+      ],
+      "total_cents": 13200
+    },
+    {
+      "check": "stock",
+      "product": "@elegido",
+      "equals": 8
+    },
+    {
+      "check": "cart",
+      "empty": true
+    }
+  ]
+}

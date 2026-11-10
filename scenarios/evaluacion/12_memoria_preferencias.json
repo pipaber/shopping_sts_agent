@@ -1,0 +1,44 @@
+{
+  "id": "12_memoria_preferencias",
+  "title": "Memoria de preferencias entre conversaciones",
+  "kind": "memoria_preferencias",
+  "voice": false,
+  "description": "El usuario deja dicha una preferencia en una conversación y pregunta por ella en otra nueva (otro hilo, mismo usuario). La preferencia debe estar en el estado de la segunda conversación y en la respuesta.",
+  "steps": [
+    {
+      "say": "Recuerda para otras veces que prefiero el color azul.",
+      "expect": [
+        {
+          "check": "preference",
+          "contains": "azul"
+        }
+      ]
+    },
+    {
+      "new_conversation": true
+    },
+    {
+      "say": "Hola, ¿recuerdas qué color prefiero?",
+      "expect": [
+        {
+          "check": "preference",
+          "contains": "azul"
+        },
+        {
+          "check": "response_contains",
+          "text": "azul"
+        }
+      ]
+    }
+  ],
+  "expect": [
+    {
+      "check": "orders",
+      "count": 0
+    },
+    {
+      "check": "cart",
+      "empty": true
+    }
+  ]
+}

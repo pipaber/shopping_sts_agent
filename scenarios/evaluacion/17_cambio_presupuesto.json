@@ -1,0 +1,152 @@
+{
+  "id": "17_cambio_presupuesto",
+  "title": "Bajar el presupuesto con el carrito lleno",
+  "kind": "cambio_presupuesto",
+  "voice": false,
+  "description": "Con tres unidades en el carrito (30,00 €) el usuario baja el presupuesto a 25 €. Cerrar el pedido debe rechazarse sin que el agente cambie el carrito por su cuenta. Con dos unidades (20,00 €) sí se puede comprar.",
+  "steps": [
+    {
+      "say": "Busco una taza de desayuno. Tengo 40 euros.",
+      "expect": [
+        {
+          "check": "budget",
+          "cents": 4000
+        },
+        {
+          "check": "cart",
+          "empty": true
+        }
+      ]
+    },
+    {
+      "remember": {
+        "elegida": "candidate:1"
+      }
+    },
+    {
+      "event": "set_offer",
+      "product": "@elegida",
+      "price_cents": 1000,
+      "stock": 20
+    },
+    {
+      "say": "Añade tres de la primera.",
+      "expect": [
+        {
+          "check": "cart",
+          "lines": [
+            {
+              "product": "@elegida",
+              "quantity": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "say": "Mejor baja mi presupuesto a 25 euros.",
+      "expect": [
+        {
+          "check": "budget",
+          "cents": 2500
+        },
+        {
+          "check": "cart",
+          "lines": [
+            {
+              "product": "@elegida",
+              "quantity": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "say": "Cierra el pedido.",
+      "expect": [
+        {
+          "check": "orders",
+          "count": 0
+        },
+        {
+          "check": "awaiting_confirmation",
+          "value": false
+        },
+        {
+          "check": "cart",
+          "lines": [
+            {
+              "product": "@elegida",
+              "quantity": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "say": "Entonces deja solo dos.",
+      "expect": [
+        {
+          "check": "cart",
+          "lines": [
+            {
+              "product": "@elegida",
+              "quantity": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "say": "Cierra el pedido.",
+      "expect": [
+        {
+          "check": "awaiting_confirmation",
+          "value": true
+        },
+        {
+          "check": "orders",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "say": "Sí.",
+      "expect": [
+        {
+          "check": "orders",
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "expect": [
+    {
+      "check": "orders",
+      "count": 1
+    },
+    {
+      "check": "order",
+      "lines": [
+        {
+          "product": "@elegida",
+          "quantity": 2
+        }
+      ],
+      "total_cents": 2000
+    },
+    {
+      "check": "budget",
+      "cents": 2500
+    },
+    {
+      "check": "stock",
+      "product": "@elegida",
+      "equals": 18
+    },
+    {
+      "check": "cart",
+      "empty": true
+    }
+  ]
+}

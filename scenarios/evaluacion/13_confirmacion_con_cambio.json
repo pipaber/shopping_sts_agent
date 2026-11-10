@@ -1,0 +1,121 @@
+{
+  "id": "13_confirmacion_con_cambio",
+  "title": "Un sí con cambios no compra",
+  "kind": "confirmacion_con_cambio",
+  "voice": false,
+  "description": "A la cotización de una unidad el usuario contesta «sí, pero que sean tres». No es una confirmación limpia: no debe registrarse el pedido de una unidad. El pedido final lleva tres.",
+  "steps": [
+    {
+      "say": "Busco un paraguas plegable.",
+      "expect": [
+        {
+          "check": "cart",
+          "empty": true
+        }
+      ]
+    },
+    {
+      "remember": {
+        "elegido": "candidate:1"
+      }
+    },
+    {
+      "event": "set_offer",
+      "product": "@elegido",
+      "price_cents": 900,
+      "stock": 20
+    },
+    {
+      "say": "Añade uno del primero.",
+      "expect": [
+        {
+          "check": "cart",
+          "lines": [
+            {
+              "product": "@elegido",
+              "quantity": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "say": "Cierra el pedido.",
+      "expect": [
+        {
+          "check": "awaiting_confirmation",
+          "value": true
+        },
+        {
+          "check": "orders",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "say": "Sí, pero que sean tres.",
+      "expect": [
+        {
+          "check": "orders",
+          "count": 0
+        },
+        {
+          "check": "cart",
+          "lines": [
+            {
+              "product": "@elegido",
+              "quantity": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "say": "Cierra el pedido.",
+      "expect": [
+        {
+          "check": "awaiting_confirmation",
+          "value": true
+        },
+        {
+          "check": "orders",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "say": "Sí.",
+      "expect": [
+        {
+          "check": "orders",
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "expect": [
+    {
+      "check": "orders",
+      "count": 1
+    },
+    {
+      "check": "order",
+      "lines": [
+        {
+          "product": "@elegido",
+          "quantity": 3
+        }
+      ],
+      "total_cents": 2700
+    },
+    {
+      "check": "stock",
+      "product": "@elegido",
+      "equals": 17
+    },
+    {
+      "check": "cart",
+      "empty": true
+    }
+  ]
+}
