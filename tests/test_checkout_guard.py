@@ -103,3 +103,32 @@ def test_after_a_rejected_confirmation_the_llm_sees_what_was_offered(with_cart):
 
 def test_sold_out_offer_says_the_product_is_still_in_the_cart():
     assert prompt.pending_offer([("P1", 0)], alternatives=False) == "id=P1 está agotado y sigue en el carrito."
+
+
+def test_after_a_rejected_quantity_the_llm_sees_how_many_fit(with_cart):
+    shop, session = with_cart  # dos Sony (P1) en el carrito; quedan 10 y cuestan 20 €
+    shop.llm.extend([call(tools.ADD, product_id="P1", cantidad=20), say("No hay tantas.")])
+    session.send("Añade veinte más de los Sony")
+    shop.llm.extend([call(tools.ADD, product_id="P1", cantidad=8), say()])
+    session.send("Pues ponme las que queden")
+    offer = context_seen(shop)
+    assert "OFERTA PENDIENTE" in offer and "agregar_al_carrito de id=P1 por falta de existencias; caben 8 unidades" in offer
+    assert cart_of(session) == {"P1": 10}
+
+    shop.llm.extend([call(tools.SET_BUDGET, importe_eur=250), call(tools.SET_QUANTITY, product_id="P2", cantidad=1), say("No está en el carrito.")])
+    session.send("Tengo 250 euros; deja uno de los JBL")
+    shop.llm.extend([say("Dime.")])
+    session.send("Vale")
+    assert "OFERTA PENDIENTE" not in context_seen(shop)  # ese rechazo no dice cuántas caben
+
+
+def test_budget_rejection_offers_the_quantity_that_fits(tmp_path):
+    shop = Shop(tmp_path)
+    session = shop.session()
+    shop.llm.extend([call(tools.SET_BUDGET, importe_eur=50), call(tools.SEARCH, consulta="auriculares bluetooth"), say("Tengo varios.")])
+    session.send("Busco auriculares bluetooth y tengo 50 euros")
+    shop.llm.extend([call(tools.ADD, product_id="P1", cantidad=3), say("No cabe en tu presupuesto.")])
+    session.send("Añade tres de los Sony")
+    shop.llm.extend([call(tools.ADD, product_id="P1", cantidad=2), say()])
+    session.send("Pues los que quepan")
+    assert "porque no cabe en el presupuesto; caben 2 unidades" in context_seen(shop) and cart_of(session) == {"P1": 2}

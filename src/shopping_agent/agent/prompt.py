@@ -128,6 +128,14 @@ def pending_offer(short: Sequence[tuple[str, int]], alternatives: bool) -> str:
     return "; ".join(parts) + "."
 
 
+def quantity_offer(tool: str, product_id: str, fits: int, reason: str) -> str:
+    """La cantidad que sí cabe tras un rechazo de la tienda al añadir o cambiar, dicha en herramientas."""
+    return (
+        f"la tienda rechazó {tool} de id={product_id} {reason}; caben {units(fits)}. Si el usuario acepta esa "
+        f"cantidad, usa {tool} con ese product_id y cantidad {fits}."
+    )
+
+
 def render_cart(cart: Sequence[CartLine]) -> str:
     if not cart:
         return "CARRITO: vacío"

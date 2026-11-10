@@ -150,6 +150,28 @@ def pedir_aclaracion(state: AgentState) -> Update:
     }
 
 
+# Rechazos de la tienda que dicen cuántas unidades caben: dónde viene ese dato y cómo se le dice al LLM.
+_LIMITS = {
+    ops.INSUFFICIENT_STOCK: ("available", "por falta de existencias"),
+    ops.BUDGET_EXCEEDED: ("max_quantity", "porque no cabe en el presupuesto"),
+}
+
+
+def _fitting(step: Step, state: AgentState) -> tuple[str, str, int, str] | None:
+    """Si el paso es una cantidad que la tienda rechazó diciendo cuánta cabe: herramienta,
+    producto, unidades que caben con esa herramienta y motivo."""
+    if step["ok"] or step["tool"] not in (tools.ADD, tools.SET_QUANTITY):
+        return None
+    product_id = step["args"]["product_id"]
+    in_cart = next((line["quantity"] for line in state.cart if line["product_id"] == product_id), 0)
+    for issue in step["issues"]:
+        key, reason = _LIMITS.get(issue["code"], ("", ""))
+        fits = issue["details"].get(key, 0) - (in_cart if step["tool"] == tools.ADD else 0)
+        if fits > 0:
+            return step["tool"], product_id, fits, reason
+    return None
+
+
 def _in_stock_instead(state: AgentState) -> list[Candidate]:
     """Si la tienda rechazó un producto por agotado y la respuesta del LLM no cita ningún
     otro, los candidatos con existencias que el código propone en su lugar."""
@@ -167,7 +189,8 @@ def _cites(text: str, candidate: Candidate) -> bool:
 
 def responder(state: AgentState) -> Update:
     """Cierra el turno. Si el carrito cambió, el código añade su contenido exacto; si un
-    producto estaba agotado y el LLM no propone otro, añade los que sí tienen existencias."""
+    producto estaba agotado y el LLM no propone otro, añade los que sí tienen existencias.
+    Si la tienda rechazó una cantidad y dijo cuánta cabe, lo deja anotado para el turno siguiente."""
     text = state.response or texts.FALLBACK
     if state.cart_changed or (state.budget_changed and state.cart):
         text = f"{text} {texts.cart_summary(state.cart, state.budget_cents)}"
@@ -175,8 +198,8 @@ def responder(state: AgentState) -> Update:
         text = f"{text} {texts.budget_noted(state.budget_cents)}"
     elif options := _in_stock_instead(state):
         text = f"{text} {texts.alternatives(options)}"
-    return {
-        "response": text,
-        "messages": [Message(role="assistant", content=text)],
-        "pending_clarification": None,
-    }
+    update: Update = {"response": text, "messages": [Message(role="assistant", content=text)], "pending_clarification": None}
+    fitting = None if state.cart_changed else next(filter(None, (_fitting(step, state) for step in reversed(state.steps))), None)
+    if fitting:
+        update["pending_offer"] = prompt.quantity_offer(*fitting)
+    return update
