@@ -33,7 +33,7 @@ from langgraph.graph import END, START, StateGraph
 from langgraph.store.base import BaseStore
 from langgraph.types import interrupt
 
-from shopping_agent.agent import render, tools
+from shopping_agent.agent import prompt, texts, tools
 from shopping_agent.agent.llm import DecisionLLM, LLMError
 from shopping_agent.agent.search import CatalogSearch
 from shopping_agent.agent.state import (
@@ -62,11 +62,6 @@ ALTERNATIVES = 3
 PROFILE_NAMESPACE = "usuarios"
 DETAIL_CHARS = (1600, 800)  # viñetas y descripción de un producto
 COMPARE_CHARS = (600, 300)  # por producto al comparar varios
-
-FALLBACK = "Perdona, no he podido completar tu petición. ¿Puedes decírmelo de otra forma?"
-EMPTY_INPUT = "No te he entendido. ¿Puedes repetirlo?"
-CANCELLED = "De acuerdo, no registro el pedido. Tu carrito sigue como estaba; dime si quieres cambiar algo."
-
 
 def _by_route(state: AgentState) -> str:
     return state.route
@@ -137,18 +132,6 @@ def build_graph(
         """Añade el paso a los del turno y al registro de operaciones."""
         return {"steps": [*state.steps, entry], "ops_log": [entry], **update}
 
-    def rejection(issues: Iterable[Issue]) -> str:
-        parts = []
-        for issue in issues:
-            extra = ""
-            if "max_quantity" in issue.details:
-                extra = (
-                    f" Dentro del presupuesto caben como máximo {issue.details['max_quantity']} "
-                    "unidades de este producto."
-                )
-            parts.append(f"[{issue.code}] {issue.message}{extra}")
-        return " ".join(parts)
-
     # --- Nodos ---------------------------------------------------------------------
 
     def iniciar_turno(state: AgentState, config: RunnableConfig) -> Update:
@@ -168,12 +151,12 @@ def build_graph(
         update.update(cart=cart, candidates=candidates, preferences=preferences)
 
         if not text:
-            update.update(response=EMPTY_INPUT, route="responder")
+            update.update(response=texts.EMPTY_INPUT, route="responder")
             return update
         # El LLM ve el estado tal como está al empezar el turno; lo que cambie después
         # le llega en el resultado de cada herramienta.
-        context = render.render_state(replace(state, cart=cart, candidates=candidates, preferences=preferences))
-        hint = render.amount_hint(text)
+        context = prompt.render_state(replace(state, cart=cart, candidates=candidates, preferences=preferences))
+        hint = prompt.amount_hint(text)
         update["turn_context"] = f"{context}\n{hint}" if hint else context
 
         # Repetir la confirmación justo después de registrar el pedido no pasa por el
@@ -195,7 +178,7 @@ def build_graph(
         if len(steps) < MAX_STEPS:
             schema = tools.decision_schema(tools.known_product_ids(state))
             try:
-                decision = llm.decide(render.build_messages(state), schema)
+                decision = llm.decide(prompt.build_messages(state), schema)
             except LLMError:
                 decision = None
             if decision is not None and steps:
@@ -205,11 +188,11 @@ def build_graph(
 
         if decision is None:
             # Respuesta de respaldo: el último rechazo de la tienda, que sí es para el usuario.
-            text = FALLBACK
+            text = texts.FALLBACK
             for previous in reversed(steps):
                 reasons = [i["message"] for i in previous["issues"] if i["code"] not in tools.INTERNAL_CODES]
                 if reasons:
-                    text = "No he podido completar la operación. " + " ".join(reasons)
+                    text = texts.could_not_complete(reasons)
                     break
             decision = {"motivo": "respuesta de respaldo del sistema", "herramienta": tools.RESPOND, "texto": text}
             return {"decision": decision, "response": text, "route": "responder"}
@@ -220,7 +203,7 @@ def build_graph(
             text = decision.get("texto")
             # Una sola línea: la respuesta se leerá en voz alta.
             text = " ".join(text.split()) if isinstance(text, str) else ""
-            update.update(response=text or FALLBACK, route="validar_respuesta" if text else "responder")
+            update.update(response=text or texts.FALLBACK, route="validar_respuesta" if text else "responder")
         elif tool == tools.CLARIFY:
             update["route"] = "pedir_aclaracion"
         elif tool == tools.SEARCH:
@@ -237,19 +220,19 @@ def build_graph(
         evidence = "\n".join(
             [
                 state.turn_context,
-                *(message["content"] for message in history[-render.HISTORY_MESSAGES - 1 :]),
+                *(message["content"] for message in history[-prompt.HISTORY_MESSAGES - 1 :]),
                 *(previous["summary"] for previous in state.steps),
             ]
         )
         issues = tools.check_response(state.response, evidence, has_order=state.order is not None)
         if issues:
-            return record(state, step(state, False, rejection(issues), issues=issues), route="interpretar")
+            return record(state, step(state, False, prompt.rejection(issues), issues=issues), route="interpretar")
         return {"route": "responder"}
 
     def pedir_aclaracion(state: AgentState) -> Update:
         question = state.decision.get("pregunta")
         question = " ".join(question.split()) if isinstance(question, str) else ""
-        question = question or EMPTY_INPUT
+        question = question or texts.EMPTY_INPUT
         entry = step(state, True, "pregunta enviada al usuario")
         return {
             "pending_clarification": question,
@@ -263,7 +246,7 @@ def build_graph(
         query = state.decision.get("consulta")
         if not isinstance(query, str) or not query.strip():
             issue = Issue(tools.INVALID_ARGS, "La consulta de búsqueda está vacía.")
-            return record(state, step(state, False, rejection([issue]), issues=[issue]))
+            return record(state, step(state, False, prompt.rejection([issue]), issues=[issue]))
 
         budget = state.budget_cents
         remaining = None if budget is None else budget - cart_total(state.cart)
@@ -279,11 +262,7 @@ def build_graph(
 
         ordered = [c for c in window if buyable(c)] + [c for c in window if not buyable(c)] + rest
         shown = ordered[:SHOWN_CANDIDATES]
-        summary = "la búsqueda no devolvió ningún producto."
-        if shown:
-            rows = "\n".join(render.candidate_line(i, c) for i, c in enumerate(shown, 1))
-            summary = f"estos son ahora los CANDIDATOS, del más al menos relevante:\n{rows}"
-        entry = step(state, True, summary, result=[c["product_id"] for c in shown])
+        entry = step(state, True, prompt.candidates_found(shown), result=[c["product_id"] for c in shown])
         return record(state, entry, candidates=shown, last_query=query.strip())
 
     def validar(state: AgentState) -> Update:
@@ -291,7 +270,7 @@ def build_graph(
         decision = state.decision
         issues = tools.validate_call(decision.get("herramienta"), decision_args(decision), state)
         if issues:
-            return record(state, step(state, False, rejection(issues), issues=issues), route="interpretar")
+            return record(state, step(state, False, prompt.rejection(issues), issues=issues), route="interpretar")
         return {"route": "ejecutar_herramienta"}
 
     def ejecutar_herramienta(state: AgentState, config: RunnableConfig) -> Update:
@@ -322,13 +301,13 @@ def build_graph(
                 ids = [args["product_id"]] if tool == tools.DETAIL else list(dict.fromkeys(args["product_ids"]))
                 chars = DETAIL_CHARS if tool == tools.DETAIL else COMPARE_CHARS
                 rows = [priced(conn, product_id, *chars) for product_id in ids]
-                summary = "\n" + "\n".join(render.candidate_line(i, row) for i, row in enumerate(rows, 1))
+                summary = "\n" + "\n".join(prompt.candidate_line(i, row) for i, row in enumerate(rows, 1))
                 return record(state, step(state, True, summary, result=[row["product_id"] for row in rows]))
 
             if tool == tools.PRICE_STOCK:
                 offer = ops.price_and_stock(conn, args["product_id"])
                 if not offer.ok:
-                    return record(state, step(state, False, rejection(offer.issues), issues=offer.issues))
+                    return record(state, step(state, False, prompt.rejection(offer.issues), issues=offer.issues))
                 stock = offer.data["stock"]
                 summary = (
                     f"precio {format_eur(offer.data['price_cents'])}; "
@@ -347,8 +326,8 @@ def build_graph(
             cart = read_cart(conn, config)
 
         if not result.ok:
-            return record(state, step(state, False, rejection(result.issues), issues=result.issues), cart=cart)
-        summary = f"hecho. Así queda el carrito.\n{render.render_cart(cart)}"
+            return record(state, step(state, False, prompt.rejection(result.issues), issues=result.issues), cart=cart)
+        summary = f"hecho. Así queda el carrito.\n{prompt.render_cart(cart)}"
         entry = step(state, True, summary, result={"total_cents": cart_total(cart)})
         # Cualquier cambio en el carrito invalida la cotización anterior.
         return record(state, entry, cart=cart, quote=None, cart_changed=True)
@@ -359,11 +338,11 @@ def build_graph(
             result = ops.create_quote(conn, cart_id(config), state.budget_cents)
             cart = read_cart(conn, config)
         if not result.ok:
-            entry = step(state, False, rejection(result.issues), issues=result.issues)
+            entry = step(state, False, prompt.rejection(result.issues), issues=result.issues)
             return record(state, entry, cart=cart, route="interpretar")
         data = result.data
         items = [cart_line(item) for item in data["items"]]
-        message = render.quote_message(items, data["total_cents"], data["budget_cents"])
+        message = texts.quote_message(items, data["total_cents"], data["budget_cents"])
         quote = Quote(
             quote_id=data["quote_id"],
             items=items,
@@ -403,7 +382,7 @@ def build_graph(
         update = new_turn(state, text)
         if verdict == "si":
             return {**update, "route": "registrar_pedido"}
-        return {**update, "quote": None, "response": CANCELLED, "route": "responder"}
+        return {**update, "quote": None, "response": texts.CANCELLED, "route": "responder"}
 
     def registrar_pedido(state: AgentState, config: RunnableConfig) -> Update:
         """Confirma la cotización en una transacción que vuelve a comprobarlo todo."""
@@ -419,7 +398,7 @@ def build_graph(
             args={"quote_id": quote_id},
             reason="el usuario confirmó la cotización",
             ok=result.ok,
-            summary="pedido registrado" if result.ok else rejection(result.issues),
+            summary="pedido registrado" if result.ok else prompt.rejection(result.issues),
             result=result.data or None,
             issues=[issue_record(issue) for issue in result.issues],
         )
@@ -435,12 +414,9 @@ def build_graph(
         items = [priced_line(item) for item in data["items"]]
         if data["already_confirmed"]:
             entry["summary"] = "el pedido ya estaba registrado; no se duplicó"
-            message = (
-                f"Ese pedido ya estaba registrado con el número {data['order_id']}, así que no lo he "
-                f"duplicado. Total: {format_eur(data['total_cents'])}."
-            )
+            message = texts.order_already_registered(data["order_id"], data["total_cents"])
         else:
-            message = render.order_message(data["order_id"], items, data["total_cents"])
+            message = texts.order_message(data["order_id"], items, data["total_cents"])
         order = Order(
             order_id=data["order_id"],
             quote_id=data["quote_id"],
@@ -456,7 +432,7 @@ def build_graph(
         cart = state.cart
         budget = state.budget_cents
         total = cart_total(cart)
-        parts = ["No he registrado el pedido porque la tienda cambió después de la cotización."]
+        parts = [texts.NOT_REGISTERED]
         alternatives: list[Candidate] = []
 
         with shop() as conn:
@@ -466,16 +442,9 @@ def build_graph(
                     parts.append(issue["message"])
                     continue
                 line = next((item for item in cart if item["product_id"] == product_id), None)
-                title = render.short_title(search.title(product_id))
+                title = search.title(product_id)
                 wanted, available = issue["details"]["requested"], issue["details"]["available"]
-                if available:
-                    parts.append(
-                        f"De «{title}» solo {'queda' if available == 1 else 'quedan'} "
-                        f"{render.units(available)} y habías pedido {wanted}. "
-                        f"Puedo dejarlo en {available}."
-                    )
-                else:
-                    parts.append(f"«{title}» se ha agotado.")
+                parts.append(texts.less_stock(title, available, wanted) if available else texts.sold_out(title))
                 # Productos parecidos que sí se pueden comprar en la misma cantidad.
                 others = total - (line["subtotal_cents"] if line else 0)
                 in_cart = {item["product_id"] for item in cart}
@@ -490,14 +459,10 @@ def build_graph(
                         alternatives.append(option)
 
         if alternatives:
-            listed = "; ".join(
-                f"«{render.short_title(a['title'])}» a {format_eur(a['price_cents'])}, con {a['stock']} en existencias"
-                for a in alternatives
-            )
-            parts.append(f"Como alternativa tengo: {listed}.")
+            parts.append(texts.alternatives(alternatives))
         if any(issue["code"] in (ops.PRICE_CHANGED, ops.STALE_QUOTE, ops.BUDGET_EXCEEDED) for issue in issues):
-            parts.append("Puedo preparar una cotización nueva con los datos actuales.")
-        parts.append("¿Qué prefieres?")
+            parts.append(texts.NEW_QUOTE_OFFER)
+        parts.append(texts.WHAT_NEXT)
         update: Update = {"response": " ".join(parts), "route": "responder"}
         if alternatives:
             update.update(candidates=alternatives, last_query=None)
@@ -505,11 +470,11 @@ def build_graph(
 
     def responder(state: AgentState) -> Update:
         """Cierra el turno. Si el carrito cambió, el código añade su contenido exacto."""
-        text = state.response or FALLBACK
+        text = state.response or texts.FALLBACK
         if state.cart_changed or (state.budget_changed and state.cart):
-            text = f"{text} {render.cart_summary(state)}"
+            text = f"{text} {texts.cart_summary(state.cart, state.budget_cents)}"
         elif state.budget_changed and state.budget_cents is not None:
-            text = f"{text} He anotado un presupuesto de {format_eur(state.budget_cents)}."
+            text = f"{text} {texts.budget_noted(state.budget_cents)}"
         return {
             "response": text,
             "messages": [{"role": "assistant", "content": text}],

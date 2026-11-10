@@ -1,19 +1,19 @@
-"""Textos del agente: el contexto que ve el LLM y los mensajes que escribe el código.
+"""Lo que ve el LLM: las reglas, el estado de la compra y el resultado de cada paso.
 
-Los importes, cantidades y productos que se repiten al usuario antes de comprar
-salen de aquí, no del LLM. Un campo del catálogo ausente se muestra siempre como
-"desconocido".
+Un campo del catálogo ausente se muestra siempre como "desconocido". Lo que se le
+dice al usuario cuando el texto lo escribe el código está en ``texts.py``.
 """
 
 from __future__ import annotations
 
 import json
 import re
-from collections.abc import Sequence
+from collections.abc import Iterable, Sequence
 
-from shopping_agent.agent.state import AgentState, Candidate, CartLine, PricedLine, Step, cart_total
+from shopping_agent.agent.state import AgentState, Candidate, CartLine, Step, cart_total
+from shopping_agent.agent.texts import short_title, units
 from shopping_agent.agent.tools import TOOL_DOCS
-from shopping_agent.store.ops import format_eur
+from shopping_agent.store.ops import Issue, format_eur
 
 UNKNOWN = "desconocido"
 HISTORY_MESSAGES = 8
@@ -63,17 +63,6 @@ Usuario: "¿De qué color es el primero?" (en CANDIDATOS pone color: desconocido
 )
 
 
-def short_title(title: str, limit: int = 70) -> str:
-    """Título recortado para decirlo en voz alta."""
-    if len(title) <= limit:
-        return title
-    return title[:limit].rsplit(" ", 1)[0].rstrip(" ,.;:-") + "…"
-
-
-def units(quantity: int) -> str:
-    return "1 unidad" if quantity == 1 else f"{quantity} unidades"
-
-
 def _field(value: object) -> str:
     return str(value) if value not in (None, "") else UNKNOWN
 
@@ -89,52 +78,29 @@ def candidate_line(index: int, candidate: Candidate) -> str:
     )
 
 
-def cart_lines_text(lines: Sequence[PricedLine]) -> str:
-    return "; ".join(
-        f"{units(line['quantity'])} de «{short_title(line['title'])}» a {format_eur(line['unit_price_cents'])}"
-        f" cada una, {format_eur(line['subtotal_cents'])}"
-        for line in lines
-    )
+def candidates_found(shown: Sequence[Candidate]) -> str:
+    """Resultado de una búsqueda, tal como vuelve al LLM."""
+    if not shown:
+        return "la búsqueda no devolvió ningún producto."
+    rows = "\n".join(candidate_line(index, candidate) for index, candidate in enumerate(shown, 1))
+    return f"estos son ahora los CANDIDATOS, del más al menos relevante:\n{rows}"
 
 
-def budget_text(total_cents: int, budget_cents: int | None) -> str:
-    if budget_cents is None:
-        return ""
-    if total_cents > budget_cents:
-        return f" Tu presupuesto es de {format_eur(budget_cents)} y lo superas en {format_eur(total_cents - budget_cents)}."
-    return f" Tu presupuesto es de {format_eur(budget_cents)} y te quedan {format_eur(budget_cents - total_cents)}."
+def rejection(issues: Iterable[Issue]) -> str:
+    """Motivos de un rechazo, con su código, para que el LLM los explique o corrija."""
+    parts = []
+    for issue in issues:
+        extra = ""
+        if "max_quantity" in issue.details:
+            extra = (
+                f" Dentro del presupuesto caben como máximo {issue.details['max_quantity']} "
+                "unidades de este producto."
+            )
+        parts.append(f"[{issue.code}] {issue.message}{extra}")
+    return " ".join(parts)
 
 
-def cart_summary(state: AgentState) -> str:
-    """Resumen del carrito que el código añade a la respuesta cuando cambia."""
-    lines = state.cart
-    budget = state.budget_cents
-    if not lines:
-        return "El carrito está vacío."
-    total = cart_total(lines)
-    return f"En el carrito hay {cart_lines_text(lines)}. Total: {format_eur(total)}.{budget_text(total, budget)}"
-
-
-def quote_message(lines: Sequence[PricedLine], total_cents: int, budget_cents: int | None) -> str:
-    """Lo que se repite al usuario antes de registrar nada."""
-    return (
-        f"Te repito el pedido antes de registrarlo: {cart_lines_text(lines)}. "
-        f"Total: {format_eur(total_cents)}.{budget_text(total_cents, budget_cents)} "
-        "¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
-    )
-
-
-def order_message(order_id: int, items: Sequence[PricedLine], total_cents: int) -> str:
-    return (
-        f"Pedido número {order_id} registrado: {cart_lines_text(items)}. "
-        f"Total: {format_eur(total_cents)}. Gracias por tu compra."
-    )
-
-
-# --- Contexto para el LLM ------------------------------------------------------------
-
-
-def render_cart(cart: list[CartLine]) -> str:
+def render_cart(cart: Sequence[CartLine]) -> str:
     if not cart:
         return "CARRITO: vacío"
     rows = [

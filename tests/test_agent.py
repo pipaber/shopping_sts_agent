@@ -9,7 +9,7 @@ from langgraph.checkpoint.memory import InMemorySaver
 from langgraph.store.memory import InMemoryStore
 
 from shopping_agent.agent import graph as agent_graph
-from shopping_agent.agent import tools
+from shopping_agent.agent import texts, tools
 from shopping_agent.agent.graph import build_graph
 from shopping_agent.agent.llm import LLMError, ScriptedLLM
 from shopping_agent.agent.memory import open_memory
@@ -379,7 +379,7 @@ def test_response_with_invented_number_is_rejected_by_code(shop):
 
     # Si insiste, el turno acaba con la respuesta de respaldo, nunca con la cifra inventada.
     shop.llm.extend([say("Pesan 250 gramos."), say("Pesan 250 gramos.")])
-    assert session.send("¿Cuánto pesan?").response == agent_graph.FALLBACK
+    assert session.send("¿Cuánto pesan?").response == texts.FALLBACK
 
 
 def test_llm_cannot_claim_an_order_that_does_not_exist(shop):
@@ -422,15 +422,15 @@ def test_turn_ends_after_step_limit_or_llm_failure(shop):
     session = shop.session()
     shop.llm.extend([call(tools.SEARCH, consulta=f"auriculares {n}") for n in range(agent_graph.MAX_STEPS + 3)])
     turn = session.send("Busca sin parar")
-    assert turn.response == agent_graph.FALLBACK
+    assert turn.response == texts.FALLBACK
     assert len(shop.llm.calls) == agent_graph.MAX_STEPS
 
     def broken(messages, schema):
         raise LLMError("JSON incompleto")
 
     shop.llm.script = [broken]
-    assert session.send("hola").response == agent_graph.FALLBACK
-    assert session.send("   ").response == agent_graph.EMPTY_INPUT
+    assert session.send("hola").response == texts.FALLBACK
+    assert session.send("   ").response == texts.EMPTY_INPUT
 
 
 def test_preferences_follow_the_user_across_conversations(shop):
