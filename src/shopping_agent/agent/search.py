@@ -79,7 +79,14 @@ class CatalogSearch:
         return product_id in self._row
 
     def rank(self, query: str, top: int = 50) -> list[str]:
-        """Identificadores de los ``top`` productos por fusión RRF de BM25 y denso."""
+        """Identificadores de los ``top`` productos por fusión RRF de BM25 y denso.
+
+        La consulta se pasa a minúsculas, como vienen todas las de ESCI con las que se
+        midió el recuperador. BM25 ya las ignora, pero el modelo denso no: sin esto,
+        "Bluetooth" y "bluetooth" ordenan distinto los candidatos, y "el segundo" pasa a
+        ser otro producto según cómo escriba la palabra el LLM o el ASR.
+        """
+        query = query.lower()
         if not query.strip():
             return []
         lexical = self.bm25.score([query])

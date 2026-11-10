@@ -2,6 +2,7 @@
 
 from typing import Literal, get_args, get_type_hints
 
+import numpy as np
 import pytest
 from langgraph.checkpoint.memory import InMemorySaver
 from langgraph.store.memory import InMemoryStore
@@ -12,9 +13,10 @@ from shopping_agent.agent import guards, texts, tools
 from shopping_agent.agent.deps import Deps
 from shopping_agent.agent.llm import LLMError, ScriptedLLM
 from shopping_agent.agent.nodes import actions, checkout, turn
+from shopping_agent.agent.search import CatalogSearch
 from shopping_agent.agent.state import AgentState, IssueRecord, Message, Order, new_turn
 from shopping_agent.store import ops
-from test_agent import Shop, call, say
+from test_agent import CATALOG, Shop, call, say
 
 CONFIG = {"configurable": {"thread_id": "hilo-nodos", "user_id": "ana"}}
 
@@ -136,6 +138,30 @@ def test_detail_shows_more_text_than_compare(deps):
     compare = run_tool(deps, searched(deps), tools.COMPARE, product_ids=["P1", "P2", "P1"])
     assert detail.result == ["P1"] and compare.result == ["P1", "P2"]  # sin repetir
     assert "Hasta 50 horas de batería" in detail.summary and "color: desconocido" in compare.summary
+
+
+# --- Búsqueda -----------------------------------------------------------------------
+
+
+class CaseSensitiveScorer:
+    """Como el modelo denso: da otra puntuación si cambia una mayúscula."""
+
+    def __init__(self, products):
+        self.products = products
+        self.queries = []
+
+    def score(self, queries):
+        self.queries += queries
+        return np.array([[hash((query, product)) % 1000 for product in range(self.products)] for query in queries], dtype=float)
+
+
+def test_search_does_not_depend_on_the_case_of_the_query():
+    dense = CaseSensitiveScorer(len(CATALOG))
+    search = CatalogSearch.from_catalog(CATALOG, dense)
+    lower = search.rank("auriculares bluetooth deporte")
+    assert search.rank("Auriculares Bluetooth deporte") == search.rank("AURICULARES BLUETOOTH DEPORTE") == lower
+    assert lower and set(dense.queries) == {"auriculares bluetooth deporte"}  # al denso le llega en minúsculas
+    assert search.rank("   ") == []
 
 
 # --- Nodos de la conversación -------------------------------------------------------
