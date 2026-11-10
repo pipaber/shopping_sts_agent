@@ -19,9 +19,9 @@ Plan para una persona, unas 2 semanas (inicio 9 de noviembre de 2026). Elaborado
 | Componente | Elección | Motivo |
 |---|---|---|
 | GPU | Colab T4 gratis (16 GB) | Caso base; el tamaño del LLM queda configurable |
-| ASR | Whisper large-v3-turbo con `faster-whisper` (float16/int8) | Buen español, ~1,5–2 GB de VRAM, rápido |
+| ASR | Whisper large-v3-turbo con `faster-whisper` 1.2 (float16 en GPU, int8 en CPU), español fijo y filtro de voz | Buen español y rápido; 2,2 GB de VRAM medidos. Sin el filtro de voz transcribe el silencio como frases inventadas |
 | LLM | Qwen2.5-7B-Instruct en GGUF Q4_K_M (`Qwen/Qwen2.5-7B-Instruct-GGUF`, 4,68 GB) con `llama-cpp-python` | 5,2 GB de VRAM medidos con contexto de 8 192 tokens; el esquema JSON de la decisión se convierte en gramática y fuerza llamadas a herramientas válidas. Configurable con `SHOPPING_AGENT_LLM_*` |
-| TTS | XTTS-v2 con grabación de referencia propia | Español nativo, clona con ~10 s, ~2–3 GB. Licencia no comercial (uso académico) |
+| TTS | XTTS-v2 (`coqui-tts` 0.28) con grabación de referencia propia | Español nativo, clona con ~10 s, ~2–3 GB. Se usa bajo la licencia CPML de Coqui, que solo permite uso no comercial (este trabajo es académico); cada persona que lo ejecuta la acepta de forma explícita en su `.env` |
 | Recuperación | BM25 + embeddings densos multilingües (fusión RRF) → reranker GraphSAGE | El GNN es el componente de la ablación |
 | Memoria del agente | Postgres: `PostgresSaver` (checkpoints) y `PostgresStore` (memoria entre conversaciones, con pgvector si hace falta búsqueda semántica) | Decisión del autor; un solo motor para la memoria de corto y largo plazo |
 | Tienda simulada | SQLite (precios, stock, carritos, pedidos) | Restaurar el estado inicial es copiar un archivo |
@@ -44,7 +44,7 @@ pgvector no hace falta por ahora: el Store solo guarda las preferencias del usua
 
 `llama-cpp-python` en Colab: hay que instalarlo con CUDA (`CMAKE_ARGS="-DGGML_CUDA=on" pip install llama-cpp-python`). En la workstation la compilación tardó unos 20 minutos; en Colab conviene medirlo el día 7 y, si es demasiado, usar una rueda precompilada para la versión de CUDA de la sesión.
 
-Presupuesto de VRAM con todo cargado: LLM 5,2 GB (medido) + embeddings 0,6 GB (medido) + Whisper ~2 GB + XTTS ~3 GB (estimados) ≈ 11 GB de 15 GB utilizables. Si no cabe, los embeddings de consulta pasan a CPU.
+Presupuesto de VRAM con todo cargado: LLM 5,2 GB (medido) + embeddings 0,6 GB (medido) + Whisper 2,2 GB (medido por separado) + XTTS ~3 GB (estimado, pendiente de medir) ≈ 11 GB de 15 GB utilizables. Las medidas por separado incluyen cada una el contexto de CUDA, que en un solo proceso se comparte, así que el total real debería ser algo menor. Si no cabe, los embeddings de consulta pasan a CPU.
 
 ## 3. Arquitectura
 
@@ -87,6 +87,18 @@ Comportamientos que el plan no fijaba; en cada caso se eligió la opción más s
 Mediciones en la workstation (RTX A2000 12 GB) con las transcripciones de `results/chat_*.json`: 2,5–9,5 s por turno (media 5–6 s; cada turno son de 1 a 3 decisiones de unos 2,7 s), 1 185 tokens/s al evaluar el prompt y 50 tokens/s al generar. La confirmación y el registro del pedido no usan el LLM (0,04 s). Carga inicial: 20 s para el catálogo, el índice BM25 y el modelo de embeddings.
 
 Limitaciones observadas con el modelo de 7B: es sensible a la redacción del prompt (se ajustó solo con diálogos propios, nunca con consultas de `test`); a veces redacta mal un cambio ("añadidas dos más" cuando pasó de dos a tres) aunque la operación y el resumen del código sean correctos, y puede necesitar un paso de más para leer el detalle de un producto.
+
+### Decisiones de diseño de la voz (día 7)
+
+- **El agente no cambia.** La voz se monta alrededor de la conversación por texto: ASR antes y TTS después (`voice/pipeline.py`). El grafo no se tocó; la sesión solo mide además cuánto tarda cada nodo.
+- **Latencia.** Va desde que el audio del usuario está disponible hasta que la respuesta puede reproducirse, y se reparte en ASR, recuperación (nodos `recuperar` y `proponer_alternativa`), LLM (nodo `interpretar`), herramientas (el resto de nodos, con sus checkpoints) y TTS. La carga de los modelos se mide aparte. También se anota cuándo estaría listo el primer fragmento de audio, por si más adelante se reproduce mientras se sintetiza el resto.
+- **Silencio.** Whisper large-v3-turbo transcribe el silencio o el ruido como "Gracias por ver el vídeo" y su probabilidad de no-voz no lo detecta. Se activa el filtro de voz de `faster-whisper` (Silero VAD, en CPU): sin voz, la transcripción queda vacía y el agente pide que se repita.
+- **Texto para el TTS.** Antes de sintetizar, los importes y cantidades pasan a palabras con su concordancia ("7,74 €" → "siete euros con setenta y cuatro céntimos", "1 unidad" → "una unidad"), se quitan identificadores y símbolos y los títulos de catálogo se acortan a su primera parte. La transcripción guarda el texto original del agente y, aparte, lo que se envió al TTS.
+- **Fragmentos.** XTTS-v2 recorta las frases de más de 239 caracteres en español: el texto se parte por frases (y por comas si hace falta) en trozos de hasta 200 caracteres, que se sintetizan uno a uno y se unen con una pausa corta. La semilla del muestreo se fija para que la misma entrada dé la misma salida.
+- **Voz.** Sale de `audio/referencia/referencia.wav` (o de `SHOPPING_AGENT_VOICE_REF`). Mientras no exista, el desarrollo usa un hablante incluido en XTTS-v2, elegido de forma explícita; nunca la voz de otra persona. La carpeta `audio/` y cualquier archivo de audio están fuera de git.
+- **Repetición con el texto correcto.** Como cada turno cambia el carrito y la tienda, no se repite un turno suelto: se repite la conversación entera desde la misma tienda inicial, en otro hilo, dando al agente el texto correcto en lugar del audio. Se compara turno a turno si el ASR cambió el texto, si el agente hizo operaciones distintas y si el estado final de la tienda coincide.
+- **Métricas.** WER con `jiwer` tras normalizar los dos textos (cifras en palabras, minúsculas, sin tildes ni puntuación), para que "60 €" y "sesenta euros" cuenten como lo mismo. Importes y cantidades se extraen de ambos textos y se comparan como conjuntos con repetición; "un" y "una" sueltos son artículos y no cuentan. Los nombres de producto esperados en cada turno (incluidos "el primero", "el segundo"…) se dan en `scenarios/<escenario>.terminos.json`. La semejanza de hablante se mide con ECAPA-TDNN de SpeechBrain, un modelo distinto del codificador de XTTS-v2, en CPU.
+- **Dependencias.** `coqui-tts` 0.28 funciona con PyTorch 2.14 sin cambiarlo. `torchaudio` y `torchcodec` se toman del índice de PyTorch para CUDA 12.6 (las ruedas de PyPI están compiladas para CUDA 13 y no cargan) y `torchcodec` necesita FFmpeg en el sistema; en Colab habrá que usar el índice que corresponda a su versión de CUDA.
 
 ## 4. Datos
 
@@ -140,8 +152,8 @@ src/shopping_agent/
   retrieval/   bm25, denso, fusión, gnn, métricas
   store/       esquema SQLite, transacciones, restauración
   agent/       estado, nodos, herramientas, validaciones, grafo
-  voice/       asr, tts
-  eval/        escenarios, runner, métricas, latencia
+  voice/       audio, asr, texto para voz, tts, turno completo
+  eval/        recuperación, métricas de voz; escenarios y runner (pendiente)
 notebooks/     lab4_colab.ipynb (ejecución principal)
 scenarios/     20 JSON + audios
 tests/
@@ -152,6 +164,7 @@ Dependencias a añadir: `langgraph-checkpoint-postgres`, `psycopg[binary,pool]`,
 ## 9. Pendientes por decidir
 
 - Modelo exacto de embeddings (por ahora `intfloat/multilingual-e5-small`). El LLM ya está elegido: Qwen2.5-7B-Instruct Q4_K_M.
-- Comprobar en Colab la instalación de Postgres y de `llama-cpp-python` con CUDA (día 7).
-- Quién graba la voz de referencia; debe ser propia o autorizada, y los textos sintetizados distintos de los de la grabación.
+- Comprobar en Colab la instalación de Postgres, de `llama-cpp-python` con CUDA y de las dependencias de voz (`torchaudio`, `torchcodec`, FFmpeg).
+- Ejecutar XTTS-v2 con el modelo real: corrida por voz de extremo a extremo, VRAM con los cuatro modelos cargados, WER y semejanza.
+- Grabar la voz de referencia (`audio/referencia/referencia.wav`) y los audios de los escenarios (`audio/escenarios/<escenario>/NN.wav`); el README dice cómo. La voz debe ser propia o autorizada, y los textos sintetizados distintos de los de la grabación.
 - Fecha oficial de entrega.
