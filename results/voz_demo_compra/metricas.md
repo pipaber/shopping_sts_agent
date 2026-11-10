@@ -12,12 +12,12 @@
 
 - Respuestas evaluadas: 8
 - Inteligibilidad (WER de Whisper sobre la síntesis): 3.6 %
-- Semejanza con la referencia (coseno ECAPA): media 0.861, mínima 0.847
-- Turno 1: WER 4.0 %, semejanza 0.868
-- Turno 2: WER 0.0 %, semejanza 0.847
-- Turno 3: WER 2.5 %, semejanza 0.865
+- Semejanza con la referencia (coseno ECAPA): media 0.866, mínima 0.852
+- Turno 1: WER 3.9 %, semejanza 0.857
+- Turno 2: WER 0.0 %, semejanza 0.872
+- Turno 3: WER 3.2 %, semejanza 0.877
 - Turno 4: WER 1.7 %, semejanza 0.867
-- Turno 5: WER 5.6 %, semejanza 0.848
+- Turno 5: WER 6.1 %, semejanza 0.866
 - Turno 6: WER 5.9 %, semejanza 0.870
 - Turno 7: WER 2.5 %, semejanza 0.869
 - Turno 8: WER 0.0 %, semejanza 0.852

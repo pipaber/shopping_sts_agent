@@ -294,52 +294,52 @@
   "tts": {
     "summary": {
       "cases": 8,
-      "wer": 0.04846938775510204,
-      "similarity_mean": 0.7550716396980934,
-      "similarity_min": 0.692747154455928
+      "wer": 0.05687203791469194,
+      "similarity_mean": 0.7617768130388677,
+      "similarity_min": 0.7443022974099427
     },
     "cases": [
       {
         "turn": 1,
-        "spoken_text": "Tengo varios modelos para ti. El primero son los de LYCHL por cuatro euros con ochenta y cinco céntimos, el segundo de Andfive por cuarenta y cinco euros con setenta céntimos, el tercero de bakibo por veintiséis euros con setenta y nueve céntimos, el cuarto de Bowost por trece euros con ochenta céntimos y el quinto también de bakibo por trece euros con dieciséis céntimos. ¿Te interesa alguno? He anotado un presupuesto de sesenta euros.",
-        "heard": "Tengo varios modelos para ti. El primero son los de Lightshell por 4 euros con 85 céntimos. El segundo de Anfai por 45 euros con 70 céntimos. El tercero de Bakibo por 26 euros con 79 céntimos. El cuarto de Bogost por 13 euros con 80 céntimos. y el quinto también de Bakibo por 13 euros con 16 céntimos. ¿Te interesa alguno? He anotado un presupuesto de 60 euros.",
+        "spoken_text": "Tengo varios modelos para ti. El primero son los de LYCHL por cuatro euros con ochenta y cinco céntimos, el segundo de Bowost por trece euros con ochenta céntimos, el tercero de andfive por cuarenta y cinco euros con setenta céntimos, el cuarto de bakibo por veintiséis euros con setenta y nueve céntimos y el quinto de Tronsmart por ocho euros con treinta y dos céntimos. ¿Te interesa alguno? He anotado un presupuesto de sesenta euros.",
+        "heard": "Tengo varios modelos para ti. El primero son los de LightShield por 4,85€. El segundo de Bob Boss por 13,80€. El tercero de Anfai por 45,70€. El cuarto de Bakibo por 26,79€. Y el quinto de Transmart por 8,32€. ¿Te interesa alguno? he anotado un presupuesto de 60 euros.",
         "wer": {
-          "wer": 0.04,
-          "reference_words": 75,
+          "wer": 0.06578947368421052,
+          "reference_words": 76,
           "hits": 72,
-          "substitutions": 3,
+          "substitutions": 4,
           "deletions": 0,
-          "insertions": 0
+          "insertions": 1
         },
-        "similarity": 0.7486705642242353
+        "similarity": 0.7640338190266999
       },
       {
         "turn": 2,
-        "spoken_text": "El segundo auricular es de color Negro y tiene cuarenta y dos horas de reproducción.",
-        "heard": "El segundo auricular es de color negro y tiene 42 horas de reproducción.",
+        "spoken_text": "El segundo auricular es de la marca Bowost, en color negro. Su batería dura hasta cuarenta y ocho horas con una sola carga. ¿Necesitas más información?",
+        "heard": "El segundo auricular es de la marca Bobboss en color negro. Su batería dura hasta 48 horas con una sola carga. ¿Necesitas más información?",
         "wer": {
-          "wer": 0.0,
-          "reference_words": 15,
-          "hits": 15,
-          "substitutions": 0,
+          "wer": 0.038461538461538464,
+          "reference_words": 26,
+          "hits": 25,
+          "substitutions": 1,
           "deletions": 0,
           "insertions": 0
         },
-        "similarity": 0.692747154455928
+        "similarity": 0.7443022974099427
       },
       {
         "turn": 3,
-        "spoken_text": "El primero, los auriculares de LYCHL, cuestan cuatro euros con ochenta y cinco céntimos y tienen cien horas de reproducción. El tercero, de bakibo, son veintiséis euros con setenta y nueve céntimos y duran treinta horas. ¿Te interesa alguna opción?",
-        "heard": "El primero, los auriculares de Lichel, cuestan 4 euros con 85 céntimos y tienen 100 horas de reproducción. El tercero, de Baquivo, son 26 euros con 79 céntimos y duran 30 horas. ¿Te interesa alguna opción?",
+        "spoken_text": "El primero, de LYCHL, cuesta cuatro euros con ochenta y cinco céntimos y el tercero, de Andfive, cuarenta y cinco euros con setenta céntimos. El primero tiene una conexión más rápida y un chip Bluetooth cinco punto cero, mientras que el tercero ofrece una tecnología Bluetooth cinco punto uno más avanzada y una carga rápida USB-C. ¿Te interesa alguna de estas opciones?",
+        "heard": "El primero del Live cuesta 4 euros con 85 céntimos y el tercero de AN5 45 euros con 70 céntimos. El primero tiene una conexión más rápida y un chip Bluetooth 5.0, mientras que el tercero ofrece una tecnología Bluetooth 5.1 más avanzada y una carga rápida USB. te interesa alguna de estas opciones",
         "wer": {
-          "wer": 0.05,
-          "reference_words": 40,
-          "hits": 38,
-          "substitutions": 2,
-          "deletions": 0,
+          "wer": 0.06349206349206349,
+          "reference_words": 63,
+          "hits": 59,
+          "substitutions": 3,
+          "deletions": 1,
           "insertions": 0
         },
-        "similarity": 0.7708483912869921
+        "similarity": 0.7498841990089025
       },
       {
         "turn": 4,
@@ -357,17 +357,17 @@
       },
       {
         "turn": 5,
-        "spoken_text": "Hecho, añadidas dos unidades más. El total del carrito es catorce euros con cincuenta y cinco céntimos. En el carrito hay tres unidades de LYCHL Auriculares Inalambricos Deportivos a cuatro euros con ochenta y cinco céntimos cada una, catorce euros con cincuenta y cinco céntimos. Total: catorce euros con cincuenta y cinco céntimos. Tu presupuesto es de sesenta euros y te quedan cuarenta y cinco euros con cuarenta y cinco céntimos.",
-        "heard": "Hecho, añadidas dos unidades más. El total del carrito es 14 euros con 55 céntimos. En el carrito hay tres unidades de Lichel auriculares inalambricos deportivos a 4 euros con 85 céntimos cada una. 14 euros con 55 céntimos. Total, 14 euros con 55 céntimos. Tu presupuesto es de 60 euros y te quedan 45 euros con 45 céntimos.",
+        "spoken_text": "Hecho, añadidas dos unidades más. Ahora tienes tres unidades en el carrito. En el carrito hay tres unidades de LYCHL Auriculares Inalambricos Deportivos a cuatro euros con ochenta y cinco céntimos cada una, catorce euros con cincuenta y cinco céntimos. Total: catorce euros con cincuenta y cinco céntimos. Tu presupuesto es de sesenta euros y te quedan cuarenta y cinco euros con cuarenta y cinco céntimos.",
+        "heard": "Hecho, añadidas dos unidades más. Ahora tienes tres unidades en el carrito. En el carrito hay tres unidades de Lichel auriculares inalambricos deportivos a 4 euros con 85 céntimos cada una, 14 euros con 55 céntimos. Total, 14 euros con 55 céntimos. Tu presupuesto es de 60 euros y te quedan 45 euros con 45 céntimos.",
         "wer": {
-          "wer": 0.014084507042253521,
-          "reference_words": 71,
-          "hits": 70,
+          "wer": 0.015151515151515152,
+          "reference_words": 66,
+          "hits": 65,
           "substitutions": 1,
           "deletions": 0,
           "insertions": 0
         },
-        "similarity": 0.7691935275301118
+        "similarity": 0.7769096051690519
       },
       {
         "turn": 6,
@@ -395,7 +395,7 @@
           "deletions": 0,
           "insertions": 1
         },
-        "similarity": 0.7873114170978194
+        "similarity": 0.7872825207066841
       },
       {
         "turn": 8,
