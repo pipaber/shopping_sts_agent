@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-10T10:16:09",
+  "date": "2026-11-10T10:57:36",
   "note": "La voz del agente se clona de la grabación de referencia del usuario. Los audios de entrada siguen siendo sintéticos (hablante «Luis Moray» incluido en XTTS-v2): todavía no hay grabaciones de los turnos.",
   "mode": "audio",
   "models": {
@@ -9,16 +9,15 @@
     "embeddings": "intfloat/multilingual-e5-small"
   },
   "voice": {
-    "mode": "referencia",
     "reference": "audio/referencia/referencia.wav",
     "speaker": null
   },
   "load": {
-    "search_seconds": 19.7,
-    "llm_seconds": 0.7,
-    "asr_seconds": 1.0,
-    "tts_seconds": 10.2,
-    "total_seconds": 32.3,
+    "search_seconds": 20.0,
+    "llm_seconds": 0.8,
+    "asr_seconds": 1.1,
+    "tts_seconds": 9.2,
+    "total_seconds": 31.5,
     "vram_mib": {
       "search": 604,
       "llm": 5718,
@@ -27,8 +26,7 @@
       "after_run": 9738
     }
   },
-  "memory_backend": "postgres",
-  "thread_id": "voz-f4138647",
+  "thread_id": "voz-cd63ec05",
   "turns": [
     {
       "turn": 1,
@@ -65,15 +63,16 @@
         }
       ],
       "timings": {
-        "asr": 0.87,
-        "recuperacion": 0.037,
-        "llm": 11.022,
-        "herramientas": 0.038,
-        "tts": 10.631,
-        "tts_primer_fragmento": 5.903,
-        "tts_reintentos": 0.0,
-        "total": 22.599
+        "asr": 0.89,
+        "retrieval": 0.058,
+        "llm": 11.309,
+        "tools": 0.043,
+        "tts": 10.33,
+        "total": 22.631
       },
+      "llm_steps": 3,
+      "tts_first_chunk_seconds": 5.841,
+      "tts_retries": 0,
       "product_terms": [
         "auriculares bluetooth"
       ]
@@ -113,15 +112,16 @@
         }
       ],
       "timings": {
-        "asr": 0.401,
-        "recuperacion": 0.0,
-        "llm": 8.195,
-        "herramientas": 0.036,
-        "tts": 1.717,
-        "tts_primer_fragmento": 1.704,
-        "tts_reintentos": 0.0,
-        "total": 10.349
+        "asr": 0.358,
+        "retrieval": 0.0,
+        "llm": 8.341,
+        "tools": 0.034,
+        "tts": 1.757,
+        "total": 10.49
       },
+      "llm_steps": 3,
+      "tts_first_chunk_seconds": 1.745,
+      "tts_retries": 0,
       "product_terms": [
         "segundo"
       ]
@@ -175,15 +175,16 @@
         }
       ],
       "timings": {
-        "asr": 0.37,
-        "recuperacion": 0.0,
-        "llm": 12.183,
-        "herramientas": 0.034,
-        "tts": 5.978,
-        "tts_primer_fragmento": 1.662,
-        "tts_reintentos": 0.0,
-        "total": 18.565
+        "asr": 0.353,
+        "retrieval": 0.0,
+        "llm": 12.06,
+        "tools": 0.024,
+        "tts": 6.219,
+        "total": 18.656
       },
+      "llm_steps": 3,
+      "tts_first_chunk_seconds": 1.704,
+      "tts_retries": 0,
       "product_terms": [
         "primero",
         "tercero"
@@ -215,15 +216,16 @@
         }
       ],
       "timings": {
-        "asr": 0.372,
-        "recuperacion": 0.0,
-        "llm": 5.522,
-        "herramientas": 0.043,
-        "tts": 10.509,
-        "tts_primer_fragmento": 2.362,
-        "tts_reintentos": 0.0,
-        "total": 16.446
+        "asr": 0.35,
+        "retrieval": 0.0,
+        "llm": 5.537,
+        "tools": 0.041,
+        "tts": 10.818,
+        "total": 16.745
       },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": 2.374,
+      "tts_retries": 0,
       "product_terms": [
         "primero"
       ]
@@ -254,15 +256,16 @@
         }
       ],
       "timings": {
-        "asr": 0.344,
-        "recuperacion": 0.0,
-        "llm": 5.799,
-        "herramientas": 0.044,
-        "tts": 8.657,
-        "tts_primer_fragmento": 1.83,
-        "tts_reintentos": 0.0,
-        "total": 14.844
+        "asr": 0.333,
+        "retrieval": 0.0,
+        "llm": 5.684,
+        "tools": 0.036,
+        "tts": 8.787,
+        "total": 14.839
       },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": 1.936,
+      "tts_retries": 0,
       "product_terms": []
     },
     {
@@ -288,15 +291,16 @@
         }
       ],
       "timings": {
-        "asr": 0.349,
-        "recuperacion": 0.0,
-        "llm": 2.533,
-        "herramientas": 0.028,
-        "tts": 11.824,
-        "tts_primer_fragmento": 4.767,
-        "tts_reintentos": 0.0,
-        "total": 14.734
+        "asr": 0.387,
+        "retrieval": 0.0,
+        "llm": 2.658,
+        "tools": 0.031,
+        "tts": 11.806,
+        "total": 14.882
       },
+      "llm_steps": 1,
+      "tts_first_chunk_seconds": 4.863,
+      "tts_retries": 0,
       "product_terms": []
     },
     {
@@ -315,7 +319,7 @@
         {
           "tool": "confirmar_pedido",
           "args": {
-            "quote_id": "47c491714ac14fd6bf070a79c10ce4f6"
+            "quote_id": "3a2ebb37785d42cd92d44ce3a9967b50"
           },
           "reason": "el usuario confirmó la cotización",
           "ok": true,
@@ -324,15 +328,16 @@
         }
       ],
       "timings": {
-        "asr": 0.338,
-        "recuperacion": 0.0,
+        "asr": 0.344,
+        "retrieval": 0.0,
         "llm": 0.0,
-        "herramientas": 0.031,
-        "tts": 6.055,
-        "tts_primer_fragmento": 4.332,
-        "tts_reintentos": 0.0,
-        "total": 6.424
+        "tools": 0.033,
+        "tts": 5.703,
+        "total": 6.08
       },
+      "llm_steps": 0,
+      "tts_first_chunk_seconds": 4.03,
+      "tts_retries": 0,
       "product_terms": []
     },
     {
@@ -351,7 +356,7 @@
         {
           "tool": "confirmar_pedido",
           "args": {
-            "quote_id": "47c491714ac14fd6bf070a79c10ce4f6"
+            "quote_id": "3a2ebb37785d42cd92d44ce3a9967b50"
           },
           "reason": "el usuario confirmó la cotización",
           "ok": true,
@@ -360,15 +365,16 @@
         }
       ],
       "timings": {
-        "asr": 0.33,
-        "recuperacion": 0.0,
+        "asr": 0.369,
+        "retrieval": 0.0,
         "llm": 0.0,
-        "herramientas": 0.039,
-        "tts": 2.946,
-        "tts_primer_fragmento": 2.925,
-        "tts_reintentos": 0.0,
-        "total": 3.315
+        "tools": 0.039,
+        "tts": 3.131,
+        "total": 3.538
       },
+      "llm_steps": 0,
+      "tts_first_chunk_seconds": 3.11,
+      "tts_retries": 0,
       "product_terms": []
     }
   ],
@@ -377,63 +383,63 @@
       "turns": 8,
       "asr": {
         "mean": 0.42,
-        "max": 0.87
+        "max": 0.89
       },
-      "recuperacion": {
-        "mean": 0.0,
-        "max": 0.04
+      "retrieval": {
+        "mean": 0.01,
+        "max": 0.06
       },
       "llm": {
-        "mean": 5.66,
-        "max": 12.18
+        "mean": 5.7,
+        "max": 12.06
       },
-      "herramientas": {
+      "tools": {
         "mean": 0.04,
         "max": 0.04
       },
       "tts": {
-        "mean": 7.29,
-        "max": 11.82
+        "mean": 7.32,
+        "max": 11.81
       },
       "total": {
-        "mean": 13.41,
-        "max": 22.6
+        "mean": 13.48,
+        "max": 22.63
       }
     },
     "with_llm": {
       "turns": 6,
       "asr": {
         "mean": 0.45,
-        "max": 0.87
+        "max": 0.89
       },
-      "recuperacion": {
+      "retrieval": {
         "mean": 0.01,
-        "max": 0.04
+        "max": 0.06
       },
       "llm": {
-        "mean": 7.54,
-        "max": 12.18
+        "mean": 7.6,
+        "max": 12.06
       },
-      "herramientas": {
-        "mean": 0.04,
+      "tools": {
+        "mean": 0.03,
         "max": 0.04
       },
       "tts": {
-        "mean": 8.22,
-        "max": 11.82
+        "mean": 8.29,
+        "max": 11.81
       },
       "total": {
-        "mean": 16.26,
-        "max": 22.6
+        "mean": 16.37,
+        "max": 22.63
       }
     },
     "without_llm": {
       "turns": 2,
       "asr": {
-        "mean": 0.33,
-        "max": 0.34
+        "mean": 0.36,
+        "max": 0.37
       },
-      "recuperacion": {
+      "retrieval": {
         "mean": 0.0,
         "max": 0.0
       },
@@ -441,46 +447,47 @@
         "mean": 0.0,
         "max": 0.0
       },
-      "herramientas": {
+      "tools": {
         "mean": 0.04,
         "max": 0.04
       },
       "tts": {
-        "mean": 4.5,
-        "max": 6.05
+        "mean": 4.42,
+        "max": 5.7
       },
       "total": {
-        "mean": 4.87,
-        "max": 6.42
+        "mean": 4.81,
+        "max": 6.08
       }
     }
   },
   "final_state": {
     "budget_cents": 6000,
-    "preferences": null,
+    "preferences": [],
     "cart": [],
     "quote": null,
     "order": {
       "order_id": 1,
-      "quote_id": "47c491714ac14fd6bf070a79c10ce4f6",
+      "quote_id": "3a2ebb37785d42cd92d44ce3a9967b50",
       "items": [
         {
           "product_id": "B08K91F1M4",
+          "title": "LYCHL Auriculares Inalambricos Deportivos, Auriculares Bluetooth 5.0 Sport IP7 Impermeable Cascos Bluetooth In-Ear Auriculares Wireless Running con Mic, 100 Horas y Pantalla LED, Viajes, Deporte",
           "quantity": 3,
           "unit_price_cents": 485,
-          "subtotal_cents": 1455,
-          "title": "LYCHL Auriculares Inalambricos Deportivos, Auriculares Bluetooth 5.0 Sport IP7 Impermeable Cascos Bluetooth In-Ear Auriculares Wireless Running con Mic, 100 Horas y Pantalla LED, Viajes, Deporte"
+          "subtotal_cents": 1455
         }
       ],
       "total_cents": 1455,
       "message": "Ese pedido ya estaba registrado con el número 1, así que no lo he duplicado. Total: 14,55 €."
     }
   },
+  "memory_backend": "postgres",
   "store": {
     "orders": [
       {
         "order_id": 1,
-        "quote_id": "47c491714ac14fd6bf070a79c10ce4f6",
+        "quote_id": "3a2ebb37785d42cd92d44ce3a9967b50",
         "total_cents": 1455
       }
     ],

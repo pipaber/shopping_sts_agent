@@ -110,11 +110,11 @@ Mediciones de voz en la workstation (RTX A2000 12 GB) con el guion `demo_compra`
 | Corrida | [results/voz_demo_compra](../results/voz_demo_compra/transcripcion.md) | [results/voz_demo_compra_voz_usuario](../results/voz_demo_compra_voz_usuario/transcripcion.md) |
 | Inteligibilidad (WER de Whisper sobre la síntesis) | 4,1 % | 4,9 % |
 | Semejanza con la referencia (coseno ECAPA), media / mínima | 0,856 / 0,794 | 0,755 / 0,701 |
-| TTS por turno, media en turnos con LLM | 6,0 s | 8,2 s |
-| Latencia total, media en turnos con LLM / sin LLM | 14,0 s / 3,8 s | 16,3 s / 4,9 s |
+| TTS por turno, media en turnos con LLM | 5,6 s | 8,3 s |
+| Latencia total, media en turnos con LLM / sin LLM | 13,6 s / 3,4 s | 16,4 s / 4,8 s |
 | Duración del audio de respuesta | 5–32 s | 7–47 s |
 
-- Carga inicial: 31–32 s en total con los archivos ya en la caché del disco (catálogo y recuperadores 20 s, LLM 1 s, Whisper 1 s, XTTS-v2 8–10 s). En frío, una carga llegó a tardar más de dos minutos.
+- Carga inicial: unos 32 s en total con los archivos ya en la caché del disco (catálogo y recuperadores 20 s, LLM 1 s, Whisper 1 s, XTTS-v2 8–10 s). En frío, leer el catálogo y los embeddings desde el disco de datos llegó a tardar 153 s (así salió en la corrida guardada del hablante de prueba).
 - VRAM del proceso: 9,5 GB con los cuatro modelos cargados y 9,7 GB al terminar la conversación, igual con las dos voces.
 - Latencia por etapa en los turnos con LLM (media): ASR 0,4 s, recuperación 0,01 s, LLM 7,5 s, herramientas 0,04 s y TTS 6–8 s. El TTS sintetiza a unas cuatro veces el tiempo real; el primer fragmento está listo en 1–6 s, así que reproducir mientras se sintetiza el resto ahorraría varios segundos por turno.
 - La voz del usuario habla más despacio que el hablante de prueba (0,08–0,10 s por carácter frente a 0,06–0,07), y por eso sus audios y su tiempo de TTS son más largos.

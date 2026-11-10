@@ -1,27 +1,27 @@
 # Transcripción de una compra por voz
 
-- Fecha: 2026-11-10T10:16:09
+- Fecha: 2026-11-10T10:57:36
 - Nota: La voz del agente se clona de la grabación de referencia del usuario. Los audios de entrada siguen siendo sintéticos (hablante «Luis Moray» incluido en XTTS-v2): todavía no hay grabaciones de los turnos.
 - LLM: `qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf`; ASR: `large-v3-turbo`; TTS: `XTTS-v2`; embeddings: `intfloat/multilingual-e5-small`
-- Voz: referencia (audio/referencia/referencia.wav)
-- Carga inicial: catálogo y recuperadores 19.7 s, LLM 0.7 s, ASR 1.0 s, TTS 10.2 s; total 32.3 s
+- Voz del agente: clonada de la grabación de referencia `audio/referencia/referencia.wav`
+- Carga inicial: catálogo y recuperadores 20.0 s, LLM 0.8 s, ASR 1.1 s, TTS 9.2 s; total 31.5 s
 - VRAM del proceso: 9460 MiB con todo cargado, 9738 MiB al terminar la conversación
-- Memoria del agente: postgres; hilo `voz-f4138647`
+- Memoria del agente: postgres; hilo `voz-cd63ec05`
 
 ## Latencia por turno (segundos)
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.87 | 0.04 | 11.02 | 0.04 | 10.63 | 22.60 | 41.4 s |
-| 2 | 0.40 | 0.00 | 8.20 | 0.04 | 1.72 | 10.35 | 7.4 s |
-| 3 | 0.37 | 0.00 | 12.18 | 0.03 | 5.98 | 18.57 | 23.9 s |
-| 4 | 0.37 | 0.00 | 5.52 | 0.04 | 10.51 | 16.45 | 42.2 s |
-| 5 | 0.34 | 0.00 | 5.80 | 0.04 | 8.66 | 14.84 | 35.0 s |
-| 6 | 0.35 | 0.00 | 2.53 | 0.03 | 11.82 | 14.73 | 47.2 s |
-| 7 | 0.34 | 0.00 | 0.00 | 0.03 | 6.05 | 6.42 | 22.7 s |
-| 8 | 0.33 | 0.00 | 0.00 | 0.04 | 2.95 | 3.31 | 12.4 s |
-| **Media de los turnos con LLM (6)** | 0.45 | 0.01 | 7.54 | 0.04 | 8.22 | 16.26 | |
-| **Media de los turnos sin LLM (2)** | 0.33 | 0.00 | 0.00 | 0.04 | 4.50 | 4.87 | |
+| 1 | 0.89 | 0.06 | 11.31 | 0.04 | 10.33 | 22.63 | 41.4 s |
+| 2 | 0.36 | 0.00 | 8.34 | 0.03 | 1.76 | 10.49 | 7.4 s |
+| 3 | 0.35 | 0.00 | 12.06 | 0.02 | 6.22 | 18.66 | 23.9 s |
+| 4 | 0.35 | 0.00 | 5.54 | 0.04 | 10.82 | 16.75 | 42.2 s |
+| 5 | 0.33 | 0.00 | 5.68 | 0.04 | 8.79 | 14.84 | 35.0 s |
+| 6 | 0.39 | 0.00 | 2.66 | 0.03 | 11.81 | 14.88 | 47.2 s |
+| 7 | 0.34 | 0.00 | 0.00 | 0.03 | 5.70 | 6.08 | 22.7 s |
+| 8 | 0.37 | 0.00 | 0.00 | 0.04 | 3.13 | 3.54 | 12.4 s |
+| **Media de los turnos con LLM (6)** | 0.45 | 0.01 | 7.60 | 0.03 | 8.29 | 16.37 | |
+| **Media de los turnos sin LLM (2)** | 0.36 | 0.00 | 0.00 | 0.04 | 4.42 | 4.81 | |
 
 ## Turno 1 (22.6 s)
 
@@ -36,7 +36,7 @@
 
 **Enviado al TTS:** Tengo varios modelos para ti. El primero, de la marca LYCHL, cuesta cuatro euros con ochenta y cinco céntimos. El segundo, de bakibo, es de veintiséis euros con setenta y nueve céntimos. El tercero, de andfive, sale a cuarenta y cinco euros con setenta céntimos. Y el cuarto, de Bowost, es el más económico, con trece euros con ochenta céntimos. ¿Te interesa alguno? He anotado un presupuesto de sesenta euros.
 
-## Turno 2 (10.3 s)
+## Turno 2 (10.5 s)
 
 **Usuario (transcripción del ASR):** ¿De qué color es el segundo y cuánto le dura la batería?
 
@@ -47,7 +47,7 @@
 
 **Enviado al TTS:** El segundo auricular es de color Negro y tiene una duración de batería de treinta horas.
 
-## Turno 3 (18.6 s)
+## Turno 3 (18.7 s)
 
 **Usuario (transcripción del ASR):** Compárame el primero con el tercero.
 
@@ -58,7 +58,7 @@
 
 **Enviado al TTS:** El primero, de LYCHL, cuesta cuatro euros con ochenta y cinco céntimos. El tercero, de Andfive, es cuarenta euros con ochenta y cinco céntimos más caro pero tiene tecnología Bluetooth cinco punto uno y carga rápida. ¿Te interesa alguna opción?
 
-## Turno 4 (16.4 s)
+## Turno 4 (16.7 s)
 
 **Usuario (transcripción del ASR):** Añade dos del primero al carrito.
 
@@ -78,7 +78,7 @@
 
 **Enviado al TTS:** Hecho, añadidas dos unidades más. El total del carrito es catorce euros con cincuenta y cinco céntimos. En el carrito hay tres unidades de LYCHL Auriculares Inalambricos Deportivos a cuatro euros con ochenta y cinco céntimos cada una, catorce euros con cincuenta y cinco céntimos. Total: catorce euros con cincuenta y cinco céntimos. Tu presupuesto es de sesenta euros y te quedan cuarenta y cinco euros con cuarenta y cinco céntimos.
 
-## Turno 6 (14.7 s)
+## Turno 6 (14.9 s)
 
 **Usuario (transcripción del ASR):** Vale, pues quiero cerrar el pedido.
 
@@ -88,21 +88,21 @@
 
 **Enviado al TTS:** Te repito el pedido antes de registrarlo: tres unidades de LYCHL Auriculares Inalambricos Deportivos a cuatro euros con ochenta y cinco céntimos cada una, catorce euros con cincuenta y cinco céntimos. Total: catorce euros con cincuenta y cinco céntimos. Tu presupuesto es de sesenta euros y te quedan cuarenta y cinco euros con cuarenta y cinco céntimos. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.
 
-## Turno 7 (6.4 s)
+## Turno 7 (6.1 s)
 
 **Usuario (transcripción del ASR):** Sí, confirmo.
 
-- `confirmar_pedido(quote_id="47c491714ac14fd6bf070a79c10ce4f6")` → OK: pedido registrado
+- `confirmar_pedido(quote_id="3a2ebb37785d42cd92d44ce3a9967b50")` → OK: pedido registrado
 
 **Agente:** Pedido número 1 registrado: 3 unidades de «LYCHL Auriculares Inalambricos Deportivos, Auriculares Bluetooth 5.0…» a 4,85 € cada una, 14,55 €. Total: 14,55 €. Gracias por tu compra.
 
 **Enviado al TTS:** Pedido número uno registrado: tres unidades de LYCHL Auriculares Inalambricos Deportivos a cuatro euros con ochenta y cinco céntimos cada una, catorce euros con cincuenta y cinco céntimos. Total: catorce euros con cincuenta y cinco céntimos. Gracias por tu compra.
 
-## Turno 8 (3.3 s)
+## Turno 8 (3.5 s)
 
 **Usuario (transcripción del ASR):** Sí.
 
-- `confirmar_pedido(quote_id="47c491714ac14fd6bf070a79c10ce4f6")` → OK: el pedido ya estaba registrado; no se duplicó
+- `confirmar_pedido(quote_id="3a2ebb37785d42cd92d44ce3a9967b50")` → OK: el pedido ya estaba registrado; no se duplicó
 
 **Agente:** Ese pedido ya estaba registrado con el número 1, así que no lo he duplicado. Total: 14,55 €.
 
