@@ -14,6 +14,7 @@ from shopping_agent.agent.deps import Deps, cart_id, user_id
 from shopping_agent.agent.llm import DecisionLLM, LLMError
 from shopping_agent.agent.nodes.steps import rejected, step
 from shopping_agent.agent.state import AgentState, Decision, Message, Step, Update, decision_args, new_turn
+from shopping_agent.store.ops import Issue
 
 MAX_STEPS = 6  # decisiones del LLM por turno
 # Rechazos pensados para el LLM: no se le dicen al usuario en la respuesta de respaldo.
@@ -113,9 +114,27 @@ def validar_respuesta(state: AgentState) -> Command[Literal["responder", "interp
         ]
     )
     issues = guards.check_response(state.response, evidence, has_order=state.order is not None)
+    issues = issues or _unquoted_checkout(state)
     if issues:
         return Command(update=rejected(state, issues), goto="interpretar")
     return Command(goto="responder")
+
+
+def _unquoted_checkout(state: AgentState) -> list[Issue]:
+    """El usuario pidió cerrar la compra y el LLM quiere acabar el turno sin cotizar.
+
+    Se le devuelve una vez. No aplica si el carrito está vacío, si ya lo intentó o si
+    la tienda rechazó algo en este turno (entonces lo que toca es explicarlo)."""
+    attempted = any(step["tool"] == tools.QUOTE for step in state.steps)
+    refused = any(not step["ok"] and step["tool"] != tools.RESPOND for step in state.steps)
+    reminded = any(issue["code"] == guards.MUST_QUOTE for step in state.steps for issue in step["issues"])
+    if attempted or refused or reminded or not state.cart or not guards.wants_checkout(state.user_input):
+        return []
+    message = (
+        "El usuario pide cerrar la compra y el carrito tiene productos: usa cotizar. El sistema repetirá el "
+        "pedido y esperará su confirmación."
+    )
+    return [Issue(guards.MUST_QUOTE, message)]
 
 
 def pedir_aclaracion(state: AgentState) -> Update:

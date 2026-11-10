@@ -10,7 +10,8 @@ from shopping_agent.store.ops import Issue
 
 UNGROUNDED_NUMBER = "cifra_sin_sustento"
 FALSE_ORDER_CLAIM = "pedido_no_registrado"
-INTERNAL_CODES = frozenset({UNGROUNDED_NUMBER, FALSE_ORDER_CLAIM})  # no se le dicen al usuario
+MUST_QUOTE = "cierre_sin_cotizar"
+INTERNAL_CODES = frozenset({UNGROUNDED_NUMBER, FALSE_ORDER_CLAIM, MUST_QUOTE})  # no se le dicen al usuario
 
 # --- Confirmación del usuario -------------------------------------------------------
 
@@ -48,6 +49,32 @@ def classify_confirmation(text: str) -> str:
     if has_no:
         return "otro" if has_yes else "no"
     return "si" if has_yes else "otro"
+
+
+# --- Petición de cerrar la compra ----------------------------------------------------
+
+# Formas de pedir que se cierre la compra. El verbo tiene que ir con el pedido
+# ("cierra el pedido", "ciérralo", "tramitarlo"): "una bolsa que cierre bien" no lo
+# es, y "quiero comprar un regalo" es el principio de una búsqueda.
+_THE_ORDER = r"(?:el|la|mi|este|esta|ese|esa) (?:pedido|compra|carrito|orden)"
+_CHECKOUT = re.compile(
+    r"\b(?:cierr[ae]|cerrar|cerramos|finaliz[ae]|finalizar|tramit[ae]|tramitar|confirm[ae]|confirmar"
+    rf"|haz|hazme|hacer|realiza|realizar) {_THE_ORDER}\b"
+    r"|\b(?:cierra|finaliza|tramita)(?:lo|la|melo|mela)\b"
+    r"|\b(?:cerrar|finalizar|tramitar|pagar|comprar)l[oa]s?\b"
+    r"|\bpagar\b|\beso es todo\b"
+)
+_NOT_YET = frozenset("no todavia aun antes espera esperate nunca tampoco".split())
+
+
+def wants_checkout(text: str) -> bool:
+    """¿Pide el mensaje cerrar la compra? Sin negación y sin ser una pregunta: "ciérralo",
+    "eso es todo, ya puedes tramitarlo", "quiero pagar". Es prudente a propósito; lo
+    que no reconoce lo sigue decidiendo el LLM."""
+    folded = fold(text)
+    if "?" in folded or _NOT_YET & set(_WORD.findall(folded)):
+        return False
+    return _CHECKOUT.search(folded) is not None
 
 
 # --- Validación de la respuesta del LLM ----------------------------------------------

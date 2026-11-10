@@ -10,7 +10,7 @@ import json
 import re
 from collections.abc import Iterable, Mapping, Sequence
 
-from shopping_agent.agent import references
+from shopping_agent.agent import guards, references
 from shopping_agent.agent.state import AgentState, Candidate, CartLine, Step, cart_total
 from shopping_agent.agent.texts import short_title, units
 from shopping_agent.store.ops import Issue, format_eur
@@ -129,10 +129,17 @@ def amount_hint(text: str) -> str:
     )
 
 
+def checkout_hint(text: str, cart: Sequence[CartLine]) -> str:
+    """Aviso determinista si el mensaje pide cerrar la compra y hay algo que cerrar."""
+    if not cart or not guards.wants_checkout(text):
+        return ""
+    return "AVISO DEL SISTEMA: el mensaje pide cerrar la compra y el carrito tiene productos: el paso es cotizar."
+
+
 def turn_context(state: AgentState, text: str) -> str:
     """Lo que el LLM ve del estado durante todo el turno, con los avisos que procedan:
-    que el mensaje trae un importe y a qué candidato corresponde cada posición que nombra."""
-    hints = (amount_hint(text), references.reference_hint(text, state.candidates))
+    que el mensaje trae un importe, a qué candidato corresponde cada posición que nombra y que pide cerrar la compra."""
+    hints = (amount_hint(text), references.reference_hint(text, state.candidates), checkout_hint(text, state.cart))
     return "\n".join([render_state(state), *filter(None, hints)])
 
 
