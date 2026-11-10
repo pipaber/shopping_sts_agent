@@ -1,0 +1,24 @@
+# Diagnóstico de los escenarios que fallan
+
+Seis de los 20 escenarios fallaban en la línea base ([results/escenarios_base/](../results/escenarios_base/resumen.md), 10 de noviembre de 2026). Este documento recoge, para cada uno, qué decidió el LLM, qué debía pasar y por qué no pasó, a partir de las fichas de las corridas. Elaborado con asistencia de IA generativa; conviene revisarlo con las fichas delante.
+
+Lo que tienen en común: en ninguno falló la búsqueda, ni el formato de una llamada, ni una validación de la tienda. No hubo ninguna violación de restricciones. Falla la **decisión** del LLM: qué herramienta elige, sobre qué producto, o que actúa sin que se lo pidan. Las reglas que habrían evitado cada fallo estaban solo en el prompt, y el modelo de 7B no las aplica siempre.
+
+| Escenario | Qué decidió el LLM | Qué debía pasar | Por qué no pasó |
+|---|---|---|---|
+| **03** cambio de cantidad (las cinco corridas) | Ante «Ciérralo.» eligió `responder` y repitió el carrito. El «Sí» siguiente no tenía cotización que confirmar. | `cotizar`, y esperar el sí. | Nada obliga a cotizar: que «ciérralo» significa cerrar el pedido solo lo dice la descripción de `cotizar`. La frase no nombra el pedido y viene justo después de un cambio de cantidad, y el modelo la toma como un acuse. Con «Cierra el pedido» sí cotiza. |
+| **04** sin existencias (las cinco corridas) | `agregar_al_carrito` del primero → rechazado por agotado. Después consultó su stock y añadió el **segundo** candidato sin que nadie lo pidiera. | Explicar que está agotado y proponer otro, sin tocar el carrito. | La regla 9 del prompt dice que tras un rechazo proponga una salida, «otro producto» entre ellas. El modelo no propone: ejecuta. Ningún código comprobaba que el producto añadido fuera el que señaló el usuario («la primera»). |
+| **06** cambio de stock (control, GraphSAGE y voz) | Tras el rechazo de la confirmación, ante «Vale, déjalo en una» eligió `quitar_del_carrito` y, con el control, añadió una alternativa. | `cambiar_cantidad` del mismo producto a 1. | El mensaje del agente (escrito por código) ofrece dos salidas a la vez: dejarlo en una unidad o una de tres alternativas, que además pasan a ser los CANDIDATOS. El LLM no ve en su contexto cuál era la oferta ni cómo se ejecuta, y lee «una» como una de las alternativas. Sin reranker salen otros candidatos y acierta. |
+| **09** producto inexistente (las tres de texto) | Ante «Añade dos del séptimo», con cinco candidatos, añadió dos unidades de otro candidato. | Decir que no hay séptimo o preguntar. | La gramática solo deja escribir identificadores de candidatos, así que «no existe» no se puede expresar en una llamada; y la regla 5 dice que por «el primero, el segundo…» no se pida aclaración. Ningún código comprobaba que la posición nombrada existiera. |
+| **10** atributo no verificable (control y sin reranker) | Con el control repitió `buscar_productos` con la misma consulta y volvió a presentar la lista. Sin reranker miró el detalle y dijo «los clientes no han valorado esta sartén». | Decir que el catálogo no indica ese dato. | Control: nada impide repetir una búsqueda que no aporta nada, y tras ella el modelo contesta a la búsqueda y no a la pregunta. Sin reranker: el modelo convierte «no consta» en una afirmación sobre el producto. La regla 1 pide decir que no consta, pero no cómo. Con GraphSAGE contesta bien. |
+| **20** agotado al confirmar (control) | Ante «ponme dos de la primera alternativa» añadió la **segunda**. | Añadir la primera de las alternativas, que es el candidato 1. | Error del modelo al pasar de la posición al identificador. Una hipótesis, sin confirmar: cuenta el producto agotado, que aparece primero en el mensaje y sigue en el carrito, como el primero. Ningún código comprobaba que el producto añadido fuera el de la posición nombrada. |
+
+De aquí salen los arreglos, por orden de preferencia: primero lo que se puede comprobar sin LLM y después lo que depende de interpretar la intención.
+
+1. **Referencias por posición** (09, 20 y 04). Si el usuario señala un producto por su posición en la lista, el código puede comprobar que esa posición existe y que el producto que el LLM quiere añadir es ese.
+2. **Cierre del pedido** (03). Si el mensaje pide cerrar la compra, el turno no puede acabar sin haber intentado cotizar.
+3. **Búsqueda repetida** (10). Repetir la misma consulta con los candidatos ya delante no aporta nada: se rechaza y el LLM tiene que elegir otra cosa.
+4. **Oferta pendiente** (06). El contexto del LLM debe decir qué se le ofreció al usuario tras un rechazo y con qué herramienta se ejecuta cada salida.
+5. **Prompt** (04 y 10). Tras un rechazo, proponer no es ejecutar; y un dato que no aparece se dice como «el catálogo no lo indica», no como un hecho sobre el producto.
+
+Los resultados de cada arreglo, las regresiones y lo que siga fallando se añaden al final, cuando se repitan las corridas.
