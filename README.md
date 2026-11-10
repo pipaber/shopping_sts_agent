@@ -156,7 +156,7 @@ Mientras no haya grabación de referencia se puede probar con un hablante inclui
 uv run python -m shopping_agent.voice.tts --speaker "NOMBRE" --script scenarios/demo_compra.txt --out-dir audio/sinteticos/demo_compra
 ```
 
-Los audios sintéticos sirven para comprobar que el flujo funciona, no para evaluar el ASR. En [results/voz_demo_compra](results/voz_demo_compra/transcripcion.md) está una corrida hecha así, con sus [métricas](results/voz_demo_compra/metricas.md); los audios no se suben.
+Los audios sintéticos sirven para comprobar que el flujo funciona, no para evaluar el ASR. En `results/` hay dos corridas hechas con esos audios de entrada: [voz_demo_compra](results/voz_demo_compra/transcripcion.md), en la que el agente clona un hablante de prueba ([métricas](results/voz_demo_compra/metricas.md)), y [voz_demo_compra_voz_usuario](results/voz_demo_compra_voz_usuario/transcripcion.md), en la que clona la grabación de referencia del autor ([métricas](results/voz_demo_compra_voz_usuario/metricas.md)). Los audios de entrada y de respuesta no se suben.
 
 ### Métricas de voz
 

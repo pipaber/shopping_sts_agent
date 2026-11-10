@@ -71,14 +71,14 @@ class SpeechSynthesizer(Protocol):
 
 
 def too_long(audio_seconds: float, characters: int) -> bool:
-    """¿Dura el audio más de lo razonable para su texto?
+    """¿Dura el audio mucho más de lo razonable para su texto?
 
     XTTS-v2 a veces sigue "hablando" después del texto, sobre todo con frases muy
     cortas ("Sí." puede salir con cinco segundos de balbuceo). El habla normal medida
-    con este modelo va de 0,05 a 0,10 s por carácter; por encima de 0,09 s por
-    carácter más un margen fijo, se considera que sobra audio.
+    con este modelo va de 0,05 a 0,10 s por carácter según la voz; el umbral deja
+    margen de sobra para una voz pausada y solo salta cuando claramente sobra audio.
     """
-    return audio_seconds > 1.5 + 0.09 * characters
+    return audio_seconds > 2.0 + 0.15 * characters
 
 
 def join_chunks(pieces: list[np.ndarray], sample_rate: int, pause_seconds: float = PAUSE_SECONDS) -> np.ndarray:
@@ -198,6 +198,7 @@ class XttsTTS:
             self.gpt_cond_latent, self.speaker_embedding = latent.to(device), embedding.to(device)
 
         self._generate("Hola.")  # deja fuera del primer turno la inicialización perezosa
+        self._release_gpu_cache()
         self.load_seconds = time.perf_counter() - start
         vram_after = process_vram_mib()
         self.vram_mib = None if vram_after is None else vram_after - vram_before
@@ -247,6 +248,18 @@ class XttsTTS:
         assert best is not None
         return best, MAX_ATTEMPTS - 1
 
+    def _release_gpu_cache(self) -> None:
+        """Devuelve a la GPU la memoria que PyTorch se queda en reserva tras sintetizar.
+
+        El LLM (llama.cpp) y Whisper (CTranslate2) reservan memoria fuera de PyTorch:
+        si este acapara la que ya no usa (cerca de 1 GB tras una respuesta larga), a
+        los otros puede faltarles.
+        """
+        if self.device != "cpu":
+            import torch
+
+            torch.cuda.empty_cache()
+
     def synthesize(self, text: str) -> Synthesis:
         """Sintetiza un texto ya preparado para voz (véase ``speech_text.to_speech``)."""
         chunks = split_for_tts(text, self.max_chars)
@@ -259,6 +272,7 @@ class XttsTTS:
             if index == 0:
                 first = time.perf_counter() - start
         audio = join_chunks(pieces, self.sample_rate)
+        self._release_gpu_cache()
         return Synthesis(
             audio=audio,
             sample_rate=self.sample_rate,

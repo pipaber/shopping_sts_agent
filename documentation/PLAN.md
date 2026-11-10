@@ -95,19 +95,32 @@ Limitaciones observadas con el modelo de 7B: es sensible a la redacción del pro
 - **Silencio.** Whisper large-v3-turbo transcribe el silencio o el ruido como "Gracias por ver el vídeo" y su probabilidad de no-voz no lo detecta. Se activa el filtro de voz de `faster-whisper` (Silero VAD, en CPU): sin voz, la transcripción queda vacía y el agente pide que se repita.
 - **Texto para el TTS.** Antes de sintetizar, los importes y cantidades pasan a palabras con su concordancia ("7,74 €" → "siete euros con setenta y cuatro céntimos", "1 unidad" → "una unidad"), se quitan identificadores y símbolos y los títulos de catálogo se acortan a su primera parte. La transcripción guarda el texto original del agente y, aparte, lo que se envió al TTS.
 - **Fragmentos.** XTTS-v2 recorta las frases de más de 239 caracteres en español: el texto se parte por frases (y por comas si hace falta) en trozos de hasta 200 caracteres, que se sintetizan uno a uno y se unen con una pausa corta. La semilla del muestreo se fija para que la misma entrada dé la misma salida.
-- **Audio que sobra.** Con textos muy cortos XTTS-v2 a veces sigue "hablando" (un "Sí." salió con cinco segundos de balbuceo). Si un fragmento dura más de 1,5 s + 0,09 s por carácter, se vuelve a sintetizar con otra semilla, hasta tres veces, y se usa el intento más corto.
+- **Audio que sobra.** Con textos muy cortos XTTS-v2 a veces sigue "hablando" (un "Sí." salió con cinco segundos de balbuceo). Si un fragmento dura más de 2 s + 0,15 s por carácter, se vuelve a sintetizar con otra semilla, hasta tres veces, y se usa el intento más corto. El umbral es holgado a propósito: una voz pausada llega a 0,10 s por carácter, y un primer umbral ajustado al hablante de prueba (0,09) hacía reintentar sin motivo con la voz real.
+- **Memoria de GPU compartida.** Tras cada síntesis se libera la memoria que PyTorch deja en reserva (cerca de 1 GB después de una respuesta larga). El LLM y Whisper reservan la suya fuera de PyTorch, y en la GPU de 12 GB de la workstation esa reserva bastó para que Whisper se quedara sin memoria en el turno siguiente.
 - **Voz.** Sale de `audio/referencia/referencia.wav` (o de `SHOPPING_AGENT_VOICE_REF`). Mientras no exista, el desarrollo usa un hablante incluido en XTTS-v2, elegido de forma explícita; nunca la voz de otra persona. La carpeta `audio/` y cualquier archivo de audio están fuera de git.
 - **Repetición con el texto correcto.** Como cada turno cambia el carrito y la tienda, no se repite un turno suelto: se repite la conversación entera desde la misma tienda inicial, en otro hilo, dando al agente el texto correcto en lugar del audio. Se compara turno a turno si el ASR cambió el texto, si el agente hizo operaciones distintas y si el estado final de la tienda coincide.
 - **Métricas.** WER con `jiwer` tras normalizar los dos textos (cifras en palabras, minúsculas, sin tildes ni puntuación), para que "60 €" y "sesenta euros" cuenten como lo mismo. Importes y cantidades se extraen de ambos textos y se comparan como conjuntos con repetición; "un" y "una" sueltos son artículos y no cuentan. Los nombres de producto esperados en cada turno (incluidos "el primero", "el segundo"…) se dan en `scenarios/<escenario>.terminos.json`. La semejanza de hablante se mide con ECAPA-TDNN de SpeechBrain, un modelo distinto del codificador de XTTS-v2, en CPU.
 - **Dependencias.** `coqui-tts` 0.28 funciona con PyTorch 2.14 sin cambiarlo. `torchaudio` y `torchcodec` se toman del índice de PyTorch para CUDA 12.6 (las ruedas de PyPI están compiladas para CUDA 13 y no cargan) y `torchcodec` necesita FFmpeg en el sistema; en Colab habrá que usar el índice que corresponda a su versión de CUDA.
 
-Mediciones de voz en la workstation (RTX A2000 12 GB), en [results/voz_demo_compra](../results/voz_demo_compra/transcripcion.md). Son una **prueba de flujo, no una evaluación**: como aún no hay grabaciones, los audios de entrada y la voz de referencia se generaron con hablantes incluidos en XTTS-v2.
+Mediciones de voz en la workstation (RTX A2000 12 GB) con el guion `demo_compra` (8 turnos). En las dos corridas los audios de entrada son sintéticos (un hablante incluido en XTTS-v2), porque aún no hay grabaciones de los turnos: sirven como **prueba de flujo, no como evaluación del ASR**. Cambia la voz que clona el agente:
 
-- Carga inicial: 30 s en total con los archivos ya en la caché del disco (catálogo y recuperadores 20 s, LLM 1 s, Whisper 1 s, XTTS-v2 8 s). En frío, leer un modelo desde el disco de datos llegó a tardar más de dos minutos.
-- Latencia por turno, de fin de grabación a respuesta reproducible: 12,8 s de media en los turnos con LLM (ASR 0,4 s, recuperación 0,01 s, LLM 7,1 s, herramientas 0,04 s, TTS 5,3 s; entre 8,9 y 17,9 s) y 3,2 s en los turnos sin LLM (confirmar). El TTS sintetiza a unas cuatro veces el tiempo real; el primer fragmento está listo en 1–3,6 s, así que reproducir mientras se sintetiza el resto ahorraría de 2 a 5 s por turno.
+| | Hablante de prueba | Voz del usuario |
+|---|---|---|
+| Referencia | 21 s sintetizados con un hablante incluido en XTTS-v2 | grabación propia de 30 s (`audio/referencia/referencia.wav`, sin versionar) |
+| Corrida | [results/voz_demo_compra](../results/voz_demo_compra/transcripcion.md) | [results/voz_demo_compra_voz_usuario](../results/voz_demo_compra_voz_usuario/transcripcion.md) |
+| Inteligibilidad (WER de Whisper sobre la síntesis) | 4,1 % | 4,9 % |
+| Semejanza con la referencia (coseno ECAPA), media / mínima | 0,856 / 0,794 | 0,755 / 0,701 |
+| TTS por turno, media en turnos con LLM | 6,0 s | 8,2 s |
+| Latencia total, media en turnos con LLM / sin LLM | 14,0 s / 3,8 s | 16,3 s / 4,9 s |
+| Duración del audio de respuesta | 5–32 s | 7–47 s |
+
+- Carga inicial: 31–32 s en total con los archivos ya en la caché del disco (catálogo y recuperadores 20 s, LLM 1 s, Whisper 1 s, XTTS-v2 8–10 s). En frío, una carga llegó a tardar más de dos minutos.
+- VRAM del proceso: 9,5 GB con los cuatro modelos cargados y 9,7 GB al terminar la conversación, igual con las dos voces.
+- Latencia por etapa en los turnos con LLM (media): ASR 0,4 s, recuperación 0,01 s, LLM 7,5 s, herramientas 0,04 s y TTS 6–8 s. El TTS sintetiza a unas cuatro veces el tiempo real; el primer fragmento está listo en 1–6 s, así que reproducir mientras se sintetiza el resto ahorraría varios segundos por turno.
+- La voz del usuario habla más despacio que el hablante de prueba (0,08–0,10 s por carácter frente a 0,06–0,07), y por eso sus audios y su tiempo de TTS son más largos.
+- Inteligibilidad: con las dos voces los importes y las cantidades se entienden todos. Los errores son marcas que no son palabras ("LYCHL" → "Lichel", "Andfive" → "Ant5"), "inalambricos" (el catálogo lo trae sin tilde) y, con el hablante de prueba, dos interjecciones sueltas que XTTS-v2 añadió al final de un fragmento.
+- Semejanza: el coseno mide parecido de timbre con un modelo de verificación de hablante; 0,70–0,79 con la voz real queda por debajo del hablante de prueba, que parte de una referencia generada por el propio XTTS-v2. Falta el juicio de oído.
 - ASR sobre los audios sintéticos: WER 0 %, sin errores en importes, cantidades ni nombres de producto. No dice nada del ASR con una voz real.
-- Inteligibilidad de la síntesis: WER 4,1 % de Whisper frente al texto enviado al TTS. Los importes y las cantidades se entienden todos; los errores son marcas que no son palabras ("LYCHL" → "Lichel", "Andfive" → "Ant5"), "inalambricos" y dos interjecciones sueltas al final de un fragmento ("No.", "¡Ole!") que XTTS-v2 añade por su cuenta.
-- Semejanza con la referencia (coseno ECAPA): media 0,856, mínima 0,794, con una referencia sintética de 21 s.
 - El ASR escribió "Bluetooth" con mayúscula donde el guion dice "bluetooth". Solo con eso el LLM buscó "auriculares Bluetooth deporte", los candidatos salieron en otro orden y "el segundo" pasó a ser otro producto en los turnos 2 y 3. La compra acabó igual (mismo pedido y mismo inventario), pero muestra que el orden de los candidatos depende de detalles de escritura de la consulta. No se tocó el recuperador; queda anotado como pendiente.
 
 ## 4. Datos
@@ -175,8 +188,8 @@ Dependencias a añadir: `langgraph-checkpoint-postgres`, `psycopg[binary,pool]`,
 
 - Modelo exacto de embeddings (por ahora `intfloat/multilingual-e5-small`). El LLM ya está elegido: Qwen2.5-7B-Instruct Q4_K_M.
 - Comprobar en Colab la instalación de Postgres, de `llama-cpp-python` con CUDA y de las dependencias de voz (`torchaudio`, `torchcodec`, FFmpeg).
-- Repetir la corrida por voz y las métricas con grabaciones reales (voz de referencia y audios de los escenarios); lo medido hasta ahora usa audios sintéticos.
+- Repetir la corrida por voz con los turnos del usuario grabados (`audio/escenarios/`); la voz de referencia ya es real, pero los audios de entrada medidos hasta ahora son sintéticos.
 - Decidir si la consulta de búsqueda se pasa a minúsculas antes de recuperar: una mayúscula del ASR cambia el orden de los candidatos.
-- Las respuestas con el carrito completo dan audios de 25 a 32 s; valorar una versión hablada más breve.
-- Grabar la voz de referencia (`audio/referencia/referencia.wav`) y los audios de los escenarios (`audio/escenarios/<escenario>/NN.wav`); el README dice cómo. La voz debe ser propia o autorizada, y los textos sintetizados distintos de los de la grabación.
+- Las respuestas con el carrito completo dan audios de 25 a 47 s; valorar una versión hablada más breve.
+- Grabar los audios de los escenarios (`audio/escenarios/<escenario>/NN.wav`); el README dice cómo. La voz de referencia (`audio/referencia/referencia.wav`) ya está grabada. La voz debe ser propia o autorizada, y los textos sintetizados distintos de los de la grabación.
 - Fecha oficial de entrega.

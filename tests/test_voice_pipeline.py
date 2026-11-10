@@ -227,7 +227,8 @@ def test_summary_and_report(shop, tmp_path):
 def test_too_long_flags_audio_that_outlasts_its_text():
     assert too_long(5.5, len("Sí."))  # el balbuceo observado con XTTS-v2
     assert not too_long(0.9, len("Sí."))
-    assert not too_long(8.5, 84) and not too_long(12.9, 153)  # habla normal, aunque lenta
+    assert not too_long(8.5, 84) and not too_long(12.9, 153)  # habla normal
+    assert not too_long(11.4, 110) and not too_long(38.2, 377)  # una voz pausada (0,10 s por carácter)
     assert too_long(20.0, 84)
 
 

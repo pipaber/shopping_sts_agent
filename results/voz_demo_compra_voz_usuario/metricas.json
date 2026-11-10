@@ -1,0 +1,421 @@
+{
+  "asr": {
+    "summary": {
+      "cases": 8,
+      "wer": 0.0,
+      "exact": 8,
+      "amounts": {
+        "total": 1,
+        "errors": 0,
+        "error_rate": 0.0
+      },
+      "quantities": {
+        "total": 2,
+        "errors": 0,
+        "error_rate": 0.0
+      },
+      "products": {
+        "total": 5,
+        "errors": 0,
+        "error_rate": 0.0
+      }
+    },
+    "cases": [
+      {
+        "turn": 1,
+        "reference": "Hola, busco unos auriculares bluetooth para hacer deporte. Tengo un presupuesto de 60 euros.",
+        "hypothesis": "Hola, busco unos auriculares Bluetooth para hacer deporte. Tengo un presupuesto de 60 euros.",
+        "wer": {
+          "wer": 0.0,
+          "reference_words": 14,
+          "hits": 14,
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0
+        },
+        "amounts": {
+          "reference": [
+            6000
+          ],
+          "hypothesis": [
+            6000
+          ],
+          "missing": [],
+          "extra": [],
+          "errors": 0
+        },
+        "quantities": {
+          "reference": [],
+          "hypothesis": [],
+          "missing": [],
+          "extra": [],
+          "errors": 0
+        },
+        "products": {
+          "total": 1,
+          "missing": [],
+          "errors": 0
+        }
+      },
+      {
+        "turn": 2,
+        "reference": "¿De qué color es el segundo y cuánto le dura la batería?",
+        "hypothesis": "¿De qué color es el segundo y cuánto le dura la batería?",
+        "wer": {
+          "wer": 0.0,
+          "reference_words": 12,
+          "hits": 12,
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0
+        },
+        "amounts": {
+          "reference": [],
+          "hypothesis": [],
+          "missing": [],
+          "extra": [],
+          "errors": 0
+        },
+        "quantities": {
+          "reference": [],
+          "hypothesis": [],
+          "missing": [],
+          "extra": [],
+          "errors": 0
+        },
+        "products": {
+          "total": 1,
+          "missing": [],
+          "errors": 0
+        }
+      },
+      {
+        "turn": 3,
+        "reference": "Compárame el primero con el tercero.",
+        "hypothesis": "Compárame el primero con el tercero.",
+        "wer": {
+          "wer": 0.0,
+          "reference_words": 6,
+          "hits": 6,
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0
+        },
+        "amounts": {
+          "reference": [],
+          "hypothesis": [],
+          "missing": [],
+          "extra": [],
+          "errors": 0
+        },
+        "quantities": {
+          "reference": [],
+          "hypothesis": [],
+          "missing": [],
+          "extra": [],
+          "errors": 0
+        },
+        "products": {
+          "total": 2,
+          "missing": [],
+          "errors": 0
+        }
+      },
+      {
+        "turn": 4,
+        "reference": "Añade dos del primero al carrito.",
+        "hypothesis": "Añade dos del primero al carrito.",
+        "wer": {
+          "wer": 0.0,
+          "reference_words": 6,
+          "hits": 6,
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0
+        },
+        "amounts": {
+          "reference": [],
+          "hypothesis": [],
+          "missing": [],
+          "extra": [],
+          "errors": 0
+        },
+        "quantities": {
+          "reference": [
+            2
+          ],
+          "hypothesis": [
+            2
+          ],
+          "missing": [],
+          "extra": [],
+          "errors": 0
+        },
+        "products": {
+          "total": 1,
+          "missing": [],
+          "errors": 0
+        }
+      },
+      {
+        "turn": 5,
+        "reference": "Mejor que sean tres.",
+        "hypothesis": "Mejor que sean tres.",
+        "wer": {
+          "wer": 0.0,
+          "reference_words": 4,
+          "hits": 4,
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0
+        },
+        "amounts": {
+          "reference": [],
+          "hypothesis": [],
+          "missing": [],
+          "extra": [],
+          "errors": 0
+        },
+        "quantities": {
+          "reference": [
+            3
+          ],
+          "hypothesis": [
+            3
+          ],
+          "missing": [],
+          "extra": [],
+          "errors": 0
+        },
+        "products": {
+          "total": 0,
+          "missing": [],
+          "errors": 0
+        }
+      },
+      {
+        "turn": 6,
+        "reference": "Vale, pues quiero cerrar el pedido.",
+        "hypothesis": "Vale, pues quiero cerrar el pedido.",
+        "wer": {
+          "wer": 0.0,
+          "reference_words": 6,
+          "hits": 6,
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0
+        },
+        "amounts": {
+          "reference": [],
+          "hypothesis": [],
+          "missing": [],
+          "extra": [],
+          "errors": 0
+        },
+        "quantities": {
+          "reference": [],
+          "hypothesis": [],
+          "missing": [],
+          "extra": [],
+          "errors": 0
+        },
+        "products": {
+          "total": 0,
+          "missing": [],
+          "errors": 0
+        }
+      },
+      {
+        "turn": 7,
+        "reference": "Sí, confirmo.",
+        "hypothesis": "Sí, confirmo.",
+        "wer": {
+          "wer": 0.0,
+          "reference_words": 2,
+          "hits": 2,
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0
+        },
+        "amounts": {
+          "reference": [],
+          "hypothesis": [],
+          "missing": [],
+          "extra": [],
+          "errors": 0
+        },
+        "quantities": {
+          "reference": [],
+          "hypothesis": [],
+          "missing": [],
+          "extra": [],
+          "errors": 0
+        },
+        "products": {
+          "total": 0,
+          "missing": [],
+          "errors": 0
+        }
+      },
+      {
+        "turn": 8,
+        "reference": "Sí.",
+        "hypothesis": "Sí.",
+        "wer": {
+          "wer": 0.0,
+          "reference_words": 1,
+          "hits": 1,
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0
+        },
+        "amounts": {
+          "reference": [],
+          "hypothesis": [],
+          "missing": [],
+          "extra": [],
+          "errors": 0
+        },
+        "quantities": {
+          "reference": [],
+          "hypothesis": [],
+          "missing": [],
+          "extra": [],
+          "errors": 0
+        },
+        "products": {
+          "total": 0,
+          "missing": [],
+          "errors": 0
+        }
+      }
+    ]
+  },
+  "tts": {
+    "summary": {
+      "cases": 8,
+      "wer": 0.04896907216494845,
+      "similarity_mean": 0.7548624935464923,
+      "similarity_min": 0.7013607635263567
+    },
+    "cases": [
+      {
+        "turn": 1,
+        "spoken_text": "Tengo varios modelos para ti. El primero, de la marca LYCHL, cuesta cuatro euros con ochenta y cinco céntimos. El segundo, de bakibo, es de veintiséis euros con setenta y nueve céntimos. El tercero, de andfive, sale a cuarenta y cinco euros con setenta céntimos. Y el cuarto, de Bowost, es el más económico, con trece euros con ochenta céntimos. ¿Te interesa alguno? He anotado un presupuesto de sesenta euros.",
+        "heard": "Tengo varios modelos para ti. El primero de la marca Lichel cuesta 4 euros con 85 céntimos. El segundo de Bakibo es de 26 euros con 79 céntimos. El tercero de Am5 sale a 45 euros con 70 céntimos. Y el cuarto, de Bobost, es el más económico con 13 euros con 80 céntimos. ¿Te interesa alguno? He anotado un presupuesto de 60 euros.",
+        "wer": {
+          "wer": 0.04285714285714286,
+          "reference_words": 70,
+          "hits": 67,
+          "substitutions": 3,
+          "deletions": 0,
+          "insertions": 0
+        },
+        "similarity": 0.7665830370747939
+      },
+      {
+        "turn": 2,
+        "spoken_text": "El segundo auricular es de color Negro y tiene una duración de batería de treinta horas.",
+        "heard": "El segundo auricular es de color negro y tiene una duración de batería de 30 horas.",
+        "wer": {
+          "wer": 0.0,
+          "reference_words": 16,
+          "hits": 16,
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0
+        },
+        "similarity": 0.7013607635263567
+      },
+      {
+        "turn": 3,
+        "spoken_text": "El primero, de LYCHL, cuesta cuatro euros con ochenta y cinco céntimos. El tercero, de Andfive, es cuarenta euros con ochenta y cinco céntimos más caro pero tiene tecnología Bluetooth cinco punto uno y carga rápida. ¿Te interesa alguna opción?",
+        "heard": "El primero de Lightshell, cuesta 4 euros con 85 céntimos. El tercero de ANG5, es 40 euros con 85 céntimos más caro, pero tiene tecnología Bluetooth 5.1 y carga rápida. ¿Te interesa alguna opción?",
+        "wer": {
+          "wer": 0.05,
+          "reference_words": 40,
+          "hits": 38,
+          "substitutions": 2,
+          "deletions": 0,
+          "insertions": 0
+        },
+        "similarity": 0.7426491401531956
+      },
+      {
+        "turn": 4,
+        "spoken_text": "Hecho, añadidas dos unidades. El total del carrito es nueve euros con setenta céntimos. En el carrito hay dos unidades de LYCHL Auriculares Inalambricos Deportivos a cuatro euros con ochenta y cinco céntimos cada una, nueve euros con setenta céntimos. Total: nueve euros con setenta céntimos. Tu presupuesto es de sesenta euros y te quedan cincuenta euros con treinta céntimos.",
+        "heard": "Hecho, añadidas dos unidades. El total del carrito es 9 euros con 70 céntimos. En el carrito hay dos unidades de Laikel, auriculares y nalambricos deportivos a 4 euros con 85 céntimos cada una. 9 euros con 70 céntimos. Total, 9 euros con 70 céntimos. Tu presupuesto es de 60 euros y te quedan 50 euros con 30 céntimos.",
+        "wer": {
+          "wer": 0.05,
+          "reference_words": 60,
+          "hits": 58,
+          "substitutions": 2,
+          "deletions": 0,
+          "insertions": 1
+        },
+        "similarity": 0.7706158196113213
+      },
+      {
+        "turn": 5,
+        "spoken_text": "Hecho, añadidas dos unidades más. El total del carrito es catorce euros con cincuenta y cinco céntimos. En el carrito hay tres unidades de LYCHL Auriculares Inalambricos Deportivos a cuatro euros con ochenta y cinco céntimos cada una, catorce euros con cincuenta y cinco céntimos. Total: catorce euros con cincuenta y cinco céntimos. Tu presupuesto es de sesenta euros y te quedan cuarenta y cinco euros con cuarenta y cinco céntimos.",
+        "heard": "Hecho, añadidas dos unidades más. El total del carrito es 14 euros con 55 céntimos. En el carrito hay tres unidades de Lichel auriculares inalambricos deportivos a 4 euros con 85 céntimos cada una. 14 euros con 55 céntimos. Total, 14 euros con 55 céntimos. Tu presupuesto es de 60 euros y te quedan 45 euros con 45 céntimos.",
+        "wer": {
+          "wer": 0.014084507042253521,
+          "reference_words": 71,
+          "hits": 70,
+          "substitutions": 1,
+          "deletions": 0,
+          "insertions": 0
+        },
+        "similarity": 0.7691935275301118
+      },
+      {
+        "turn": 6,
+        "spoken_text": "Te repito el pedido antes de registrarlo: tres unidades de LYCHL Auriculares Inalambricos Deportivos a cuatro euros con ochenta y cinco céntimos cada una, catorce euros con cincuenta y cinco céntimos. Total: catorce euros con cincuenta y cinco céntimos. Tu presupuesto es de sesenta euros y te quedan cuarenta y cinco euros con cuarenta y cinco céntimos. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+        "heard": "Te repito el pedido antes de registrarlo. Tres unidades de lical auriculares sin alambricos deportivos a 4 euros con 85 céntimos cada una. 14 euros con 55 céntimos. Total, 14 euros con 55 céntimos. Tu presupuesto es de 60 euros y te quedan 45 euros con 45 céntimos. ¿Lo confirmo? Y la. y aún confirmo, di sí para registrarlo o dime qué quieres cambiar.",
+        "wer": {
+          "wer": 0.11764705882352941,
+          "reference_words": 68,
+          "hits": 66,
+          "substitutions": 2,
+          "deletions": 0,
+          "insertions": 6
+        },
+        "similarity": 0.7453456064496614
+      },
+      {
+        "turn": 7,
+        "spoken_text": "Pedido número uno registrado: tres unidades de LYCHL Auriculares Inalambricos Deportivos a cuatro euros con ochenta y cinco céntimos cada una, catorce euros con cincuenta y cinco céntimos. Total: catorce euros con cincuenta y cinco céntimos. Gracias por tu compra.",
+        "heard": "Pedido número 1 registrado, 3 unidades de lail con auriculares inalambricos deportivos a 4 euros con 85 céntimos cada una, 14 euros con 55 céntimos. Total, 14 euros con 55 céntimos. Gracias por tu compra.",
+        "wer": {
+          "wer": 0.05,
+          "reference_words": 40,
+          "hits": 39,
+          "substitutions": 1,
+          "deletions": 0,
+          "insertions": 1
+        },
+        "similarity": 0.7873114170978194
+      },
+      {
+        "turn": 8,
+        "spoken_text": "Ese pedido ya estaba registrado con el número uno, así que no lo he duplicado. Total: catorce euros con cincuenta y cinco céntimos.",
+        "heard": "Ese pedido ya estaba registrado con el número 1, así que no lo he duplicado. Total, 14 euros con 55 céntimos.",
+        "wer": {
+          "wer": 0.0,
+          "reference_words": 23,
+          "hits": 23,
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0
+        },
+        "similarity": 0.7558406369286779
+      }
+    ]
+  },
+  "models": {
+    "asr": "large-v3-turbo",
+    "speaker": "speechbrain/spkrec-ecapa-voxceleb"
+  },
+  "reference": "audio/referencia/referencia.wav"
+}
