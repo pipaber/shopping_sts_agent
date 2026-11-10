@@ -108,20 +108,20 @@ Mediciones de voz en la workstation (RTX A2000 12 GB) con el guion `demo_compra`
 |---|---|---|
 | Referencia | 21 s sintetizados con un hablante incluido en XTTS-v2 | grabación propia de 30 s (`audio/referencia/referencia.wav`, sin versionar) |
 | Corrida | [results/voz_demo_compra](../results/voz_demo_compra/transcripcion.md) | [results/voz_demo_compra_voz_usuario](../results/voz_demo_compra_voz_usuario/transcripcion.md) |
-| Inteligibilidad (WER de Whisper sobre la síntesis) | 4,1 % | 4,9 % |
-| Semejanza con la referencia (coseno ECAPA), media / mínima | 0,856 / 0,794 | 0,755 / 0,701 |
-| TTS por turno, media en turnos con LLM | 5,6 s | 8,3 s |
-| Latencia total, media en turnos con LLM / sin LLM | 13,6 s / 3,4 s | 16,4 s / 4,8 s |
+| Inteligibilidad (WER de Whisper sobre la síntesis) | 3,6 % | 4,8 % |
+| Semejanza con la referencia (coseno ECAPA), media / mínima | 0,861 / 0,847 | 0,755 / 0,693 |
+| TTS por turno, media en turnos con LLM | 5,3 s | 7,9 s |
+| Latencia total, media en turnos con LLM / sin LLM | 12,5 s / 3,4 s | 15,1 s / 4,8 s |
 | Duración del audio de respuesta | 5–32 s | 7–47 s |
 
-- Carga inicial: unos 32 s en total con los archivos ya en la caché del disco (catálogo y recuperadores 20 s, LLM 1 s, Whisper 1 s, XTTS-v2 8–10 s). En frío, leer el catálogo y los embeddings desde el disco de datos llegó a tardar 153 s (así salió en la corrida guardada del hablante de prueba).
+- Carga inicial: de 30 a 42 s en total con los archivos ya en la caché del disco (catálogo y recuperadores 20 s, LLM 1 s, Whisper 1 s, XTTS-v2 8–10 s). En frío, leer el catálogo y los embeddings desde el disco de datos llegó a tardar 153 s.
 - VRAM del proceso: 9,5 GB con los cuatro modelos cargados y 9,7 GB al terminar la conversación, igual con las dos voces.
-- Latencia por etapa en los turnos con LLM (media): ASR 0,4 s, recuperación 0,01 s, LLM 7,5 s, herramientas 0,04 s y TTS 6–8 s. El TTS sintetiza a unas cuatro veces el tiempo real; el primer fragmento está listo en 1–6 s, así que reproducir mientras se sintetiza el resto ahorraría varios segundos por turno.
+- Latencia por etapa en los turnos con LLM (media): ASR 0,4 s, recuperación 0,01 s, LLM 6,7 s, herramientas 0,04 s y TTS 5–8 s. El TTS sintetiza a unas cuatro veces el tiempo real; el primer fragmento está listo en 1–6 s, así que reproducir mientras se sintetiza el resto ahorraría varios segundos por turno.
 - La voz del usuario habla más despacio que el hablante de prueba (0,08–0,10 s por carácter frente a 0,06–0,07), y por eso sus audios y su tiempo de TTS son más largos.
 - Inteligibilidad: con las dos voces los importes y las cantidades se entienden todos. Los errores son marcas que no son palabras ("LYCHL" → "Lichel", "Andfive" → "Ant5"), "inalambricos" (el catálogo lo trae sin tilde) y alguna palabra suelta que XTTS-v2 añade al final de un fragmento: dos interjecciones con el hablante de prueba ("No.", "¡Ole!") y unas sílabas de más tras "¿Lo confirmo?" con la voz del usuario, justo en la frase que pide la confirmación (turno 6, WER del 11,8 %).
 - Semejanza: el coseno mide parecido de timbre con un modelo de verificación de hablante; 0,70–0,79 con la voz real queda por debajo del hablante de prueba, que parte de una referencia generada por el propio XTTS-v2. Falta el juicio de oído.
 - ASR sobre los audios sintéticos: WER 0 %, sin errores en importes, cantidades ni nombres de producto. No dice nada del ASR con una voz real.
-- El ASR escribió "Bluetooth" con mayúscula donde el guion dice "bluetooth". Solo con eso el LLM buscó "auriculares Bluetooth deporte", los candidatos salieron en otro orden y "el segundo" pasó a ser otro producto en los turnos 2 y 3. La compra acabó igual (mismo pedido y mismo inventario), pero muestra que el orden de los candidatos depende de detalles de escritura de la consulta. No se tocó el recuperador; queda anotado como pendiente.
+- El ASR escribió "Bluetooth" con mayúscula donde el guion dice "bluetooth", y el LLM buscó "auriculares Bluetooth deporte". En la primera corrida eso bastó para que los candidatos salieran en otro orden y "el segundo" fuera otro producto en los turnos 2 y 3, porque el modelo denso distingue mayúsculas (BM25 no). Desde entonces la búsqueda del agente pasa la consulta a minúsculas, como vienen todas las consultas de ESCI con las que se midió el recuperador (en `train` ninguna lleva mayúsculas, así que el nDCG@10 no cambia: 0,7236). En las corridas guardadas, hechas ya con ese cambio, el agente ejecuta las mismas operaciones con el audio que con el texto correcto a partir del turno 2; en el turno 1 solo difiere la forma en que el LLM escribe la consulta.
 
 ## 4. Datos
 
@@ -191,7 +191,6 @@ Dependencias a añadir: `langgraph-checkpoint-postgres`, `psycopg[binary,pool]`,
 - Modelo exacto de embeddings (por ahora `intfloat/multilingual-e5-small`). El LLM ya está elegido: Qwen2.5-7B-Instruct Q4_K_M.
 - Comprobar en Colab la instalación de Postgres, de `llama-cpp-python` con CUDA y de las dependencias de voz (`torchaudio`, `torchcodec`, FFmpeg).
 - Repetir la corrida por voz con los turnos del usuario grabados (`audio/escenarios/`); la voz de referencia ya es real, pero los audios de entrada medidos hasta ahora son sintéticos.
-- Decidir si la consulta de búsqueda se pasa a minúsculas antes de recuperar: una mayúscula del ASR cambia el orden de los candidatos.
 - Las respuestas con el carrito completo dan audios de 25 a 47 s; valorar una versión hablada más breve.
 - Grabar los audios de los escenarios (`audio/escenarios/<escenario>/NN.wav`); el README dice cómo. La voz de referencia (`audio/referencia/referencia.wav`) ya está grabada. La voz debe ser propia o autorizada, y los textos sintetizados distintos de los de la grabación.
 - Fecha oficial de entrega.

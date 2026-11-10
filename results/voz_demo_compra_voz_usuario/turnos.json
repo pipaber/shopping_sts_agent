@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-10T10:57:36",
+  "date": "2026-11-10T11:21:54",
   "note": "La voz del agente se clona de la grabación de referencia del usuario. Los audios de entrada siguen siendo sintéticos (hablante «Luis Moray» incluido en XTTS-v2): todavía no hay grabaciones de los turnos.",
   "mode": "audio",
   "models": {
@@ -13,11 +13,11 @@
     "speaker": null
   },
   "load": {
-    "search_seconds": 20.0,
+    "search_seconds": 19.9,
     "llm_seconds": 0.8,
     "asr_seconds": 1.1,
-    "tts_seconds": 9.2,
-    "total_seconds": 31.5,
+    "tts_seconds": 9.3,
+    "total_seconds": 41.6,
     "vram_mib": {
       "search": 604,
       "llm": 5718,
@@ -26,7 +26,7 @@
       "after_run": 9738
     }
   },
-  "thread_id": "voz-cd63ec05",
+  "thread_id": "voz-4ebd6f16",
   "turns": [
     {
       "turn": 1,
@@ -35,10 +35,10 @@
       "transcript": "Hola, busco unos auriculares Bluetooth para hacer deporte. Tengo un presupuesto de 60 euros.",
       "expected_text": "Hola, busco unos auriculares bluetooth para hacer deporte. Tengo un presupuesto de 60 euros.",
       "agent_input": "Hola, busco unos auriculares Bluetooth para hacer deporte. Tengo un presupuesto de 60 euros.",
-      "response": "Tengo varios modelos para ti. El primero, de la marca LYCHL, cuesta 4,85 euros. El segundo, de bakibo, es de 26,79 euros. El tercero, de andfive, sale a 45,70 euros. Y el cuarto, de Bowost, es el más económico, con 13,80 euros. ¿Te interesa alguno? He anotado un presupuesto de 60,00 €.",
-      "spoken_text": "Tengo varios modelos para ti. El primero, de la marca LYCHL, cuesta cuatro euros con ochenta y cinco céntimos. El segundo, de bakibo, es de veintiséis euros con setenta y nueve céntimos. El tercero, de andfive, sale a cuarenta y cinco euros con setenta céntimos. Y el cuarto, de Bowost, es el más económico, con trece euros con ochenta céntimos. ¿Te interesa alguno? He anotado un presupuesto de sesenta euros.",
+      "response": "Tengo varios modelos para ti. El primero son los de LYCHL por 4,85 euros, el segundo de Andfive por 45,70 euros, el tercero de bakibo por 26,79 euros, el cuarto de Bowost por 13,80 euros y el quinto también de bakibo por 13,16 euros. ¿Te interesa alguno? He anotado un presupuesto de 60,00 €.",
+      "spoken_text": "Tengo varios modelos para ti. El primero son los de LYCHL por cuatro euros con ochenta y cinco céntimos, el segundo de Andfive por cuarenta y cinco euros con setenta céntimos, el tercero de bakibo por veintiséis euros con setenta y nueve céntimos, el cuarto de Bowost por trece euros con ochenta céntimos y el quinto también de bakibo por trece euros con dieciséis céntimos. ¿Te interesa alguno? He anotado un presupuesto de sesenta euros.",
       "output_audio": "respuesta_01.wav",
-      "output_seconds": 41.35333333333333,
+      "output_seconds": 35.42733333333333,
       "awaiting_confirmation": false,
       "operations": [
         {
@@ -58,20 +58,20 @@
           },
           "reason": "buscar auriculares Bluetooth para deporte",
           "ok": true,
-          "summary": "estos son ahora los CANDIDATOS, del más al menos relevante:\n[1] id=B08K91F1M4 | LYCHL Auriculares Inalambricos Deportivos, Auriculares Bluetooth 5.0 Sport IP7 Impermeable Cascos Bluetooth In-Ear Auriculares Wireless Running con Mic, 100 Horas y Pantalla LED, Viajes, Deporte | marca: LYCHL | color: Negro | precio: 4,85 € | existencias: 36 | características (extracto): diseño de doble ganchos de oídos para deporte : lychl auriculares inalambricos bluetooth deportivos vienen con tres pares tapas de silicona para oídos. el diseño ergonómico y las suaves almohadillas de silicona aseguran que sus auriculares… | descripción: Conexión rápida 1.Saque los auriculares de la caja de carga y se conectarán de forma rápida y automática. 2.Abra el Bluetooth del teléfono móvil, busque Q22, luego haga clic en Conectar para usarlo…\n[2] id=B08HLX41W1 | bakibo Auriculares Inalámbricos Bluetooth 5.1, Deportivos In-Ear Auriculares con Micrófono IPX7 Verdadero Sonido Estéreo Auriculares LCD Estuche de Carga , 30 Horas de Duración, Control Táctil | marca: bakibo | color: Negro | precio: 26,79 € | existencias: 31 | características (extracto): 【Auriculares inalámbricos Ture y Bluetooth 5.1】Suministro de tecnología Los graves potentes de alta fidelidad estéreo 3D le brindan un sonido envolvente. Bluetooth 5.1 proporciona una velocidad de transmisión más rápida y una conectividad… | descripción: Auriculares inalámbricos bakibo con Bluetooth 5.1 Emparejamiento automático de auriculares No distinga entre auriculares primarios y secundarios Auriculares deportivos con cierre Estuche de carga de…\n[3] id=B08VD6781Z | Auriculares Inalambricos Deporte, Andfive Auriculares Bluetooth 5.1 con Microfono Cascos Inalambricos IP7 Impermeable, Carga Rápida USB-C, CVC8.0 Cancelación de Ruido Auriculares Running [Actualizado] | marca: andfive | color: Negro | precio: 45,70 € | existencias: 18 | características (extracto): Tecnología Bluetooth 5.1 Avanzada: Andfive auriculares Bluetooth deportivos adoptan la tecnología Bluetooth 5.1 más avanzada para garantizar una conexión más estable, menor latancia y menor consumo de energía durante la transmisión de… | descripción: auriculares inalambricos deporte ganchos especiales para orejas, que se ajustan completamente a sus oídos\n[4] id=B09CD97CVT | Auriculares Inalámbricos Deportivos, Auriculares Bluetooth 5.1 Deporte IPX7 Impermeable Cascos Inalámbricos con Mic 48H Estéreo Cancelación de Ruido In-Ear Auriculares Running/Sport-2021 Actualizado | marca: Bowost | color: Negro | precio: 13,80 € | existencias: 21 | características (extracto): Tecnología Bluetooth 5.1 Avanzada y Acoplamiento Automático Rápido: Estos auriculares inalambricos adoptan la tecnología Bluetooth 5.1 más avanzada para garantizar una conexión más estable, menor latancia y menor consumo de energía durante… | descripción: ★ Graves Potentes y Estéreo HiFi Los auriculares inalambricos utilizan altavoces de gran tamaño de 10 mm y tecnología de mejora de graves + graves para aumentar los graves en un 43%. Proporciona una…\n[5] id=B089NMSQ3T | bakibo Auriculares Inalámbricos Bluetooth 5.1, Deportivos Auriculares con Micrófono IPX7 Verdadero Sonido Estéreo Auriculares LCD Estuche de Carga 800mah, 40 Horas de Duración, Control Táctil | marca: bakibo | color: Negro | precio: 13,16 € | existencias: 22 | características (extracto): 【Emparejamiento Automático】 Los verdaderos auriculares estéreo inalámbricos 3D BAKIBO no necesitan distinguir entre auriculares primarios y secundarios, los auriculares se emparejarán automáticamente cuando los saque de la caja de carga… | descripción: Auriculares inalámbricos bakibo con Bluetooth 5.1 Emparejamiento automático de auriculares No distinga entre auriculares primarios y secundarios Auriculares deportivos con cierre Estuche de carga de…",
+          "summary": "estos son ahora los CANDIDATOS, del más al menos relevante:\n[1] id=B08K91F1M4 | LYCHL Auriculares Inalambricos Deportivos, Auriculares Bluetooth 5.0 Sport IP7 Impermeable Cascos Bluetooth In-Ear Auriculares Wireless Running con Mic, 100 Horas y Pantalla LED, Viajes, Deporte | marca: LYCHL | color: Negro | precio: 4,85 € | existencias: 36 | características (extracto): diseño de doble ganchos de oídos para deporte : lychl auriculares inalambricos bluetooth deportivos vienen con tres pares tapas de silicona para oídos. el diseño ergonómico y las suaves almohadillas de silicona aseguran que sus auriculares… | descripción: Conexión rápida 1.Saque los auriculares de la caja de carga y se conectarán de forma rápida y automática. 2.Abra el Bluetooth del teléfono móvil, busque Q22, luego haga clic en Conectar para usarlo…\n[2] id=B08VD6781Z | Auriculares Inalambricos Deporte, Andfive Auriculares Bluetooth 5.1 con Microfono Cascos Inalambricos IP7 Impermeable, Carga Rápida USB-C, CVC8.0 Cancelación de Ruido Auriculares Running [Actualizado] | marca: andfive | color: Negro | precio: 45,70 € | existencias: 18 | características (extracto): Tecnología Bluetooth 5.1 Avanzada: Andfive auriculares Bluetooth deportivos adoptan la tecnología Bluetooth 5.1 más avanzada para garantizar una conexión más estable, menor latancia y menor consumo de energía durante la transmisión de… | descripción: auriculares inalambricos deporte ganchos especiales para orejas, que se ajustan completamente a sus oídos\n[3] id=B08HLX41W1 | bakibo Auriculares Inalámbricos Bluetooth 5.1, Deportivos In-Ear Auriculares con Micrófono IPX7 Verdadero Sonido Estéreo Auriculares LCD Estuche de Carga , 30 Horas de Duración, Control Táctil | marca: bakibo | color: Negro | precio: 26,79 € | existencias: 31 | características (extracto): 【Auriculares inalámbricos Ture y Bluetooth 5.1】Suministro de tecnología Los graves potentes de alta fidelidad estéreo 3D le brindan un sonido envolvente. Bluetooth 5.1 proporciona una velocidad de transmisión más rápida y una conectividad… | descripción: Auriculares inalámbricos bakibo con Bluetooth 5.1 Emparejamiento automático de auriculares No distinga entre auriculares primarios y secundarios Auriculares deportivos con cierre Estuche de carga de…\n[4] id=B09CD97CVT | Auriculares Inalámbricos Deportivos, Auriculares Bluetooth 5.1 Deporte IPX7 Impermeable Cascos Inalámbricos con Mic 48H Estéreo Cancelación de Ruido In-Ear Auriculares Running/Sport-2021 Actualizado | marca: Bowost | color: Negro | precio: 13,80 € | existencias: 21 | características (extracto): Tecnología Bluetooth 5.1 Avanzada y Acoplamiento Automático Rápido: Estos auriculares inalambricos adoptan la tecnología Bluetooth 5.1 más avanzada para garantizar una conexión más estable, menor latancia y menor consumo de energía durante… | descripción: ★ Graves Potentes y Estéreo HiFi Los auriculares inalambricos utilizan altavoces de gran tamaño de 10 mm y tecnología de mejora de graves + graves para aumentar los graves en un 43%. Proporciona una…\n[5] id=B089NMSQ3T | bakibo Auriculares Inalámbricos Bluetooth 5.1, Deportivos Auriculares con Micrófono IPX7 Verdadero Sonido Estéreo Auriculares LCD Estuche de Carga 800mah, 40 Horas de Duración, Control Táctil | marca: bakibo | color: Negro | precio: 13,16 € | existencias: 22 | características (extracto): 【Emparejamiento Automático】 Los verdaderos auriculares estéreo inalámbricos 3D BAKIBO no necesitan distinguir entre auriculares primarios y secundarios, los auriculares se emparejarán automáticamente cuando los saque de la caja de carga… | descripción: Auriculares inalámbricos bakibo con Bluetooth 5.1 Emparejamiento automático de auriculares No distinga entre auriculares primarios y secundarios Auriculares deportivos con cierre Estuche de carga de…",
           "issues": []
         }
       ],
       "timings": {
-        "asr": 0.89,
-        "retrieval": 0.058,
-        "llm": 11.309,
+        "asr": 0.843,
+        "retrieval": 0.045,
+        "llm": 10.464,
         "tools": 0.043,
-        "tts": 10.33,
-        "total": 22.631
+        "tts": 8.439,
+        "total": 19.835
       },
       "llm_steps": 3,
-      "tts_first_chunk_seconds": 5.841,
+      "tts_first_chunk_seconds": 0.419,
       "tts_retries": 0,
       "product_terms": [
         "auriculares bluetooth"
@@ -84,43 +84,43 @@
       "transcript": "¿De qué color es el segundo y cuánto le dura la batería?",
       "expected_text": "¿De qué color es el segundo y cuánto le dura la batería?",
       "agent_input": "¿De qué color es el segundo y cuánto le dura la batería?",
-      "response": "El segundo auricular es de color Negro y tiene una duración de batería de 30 horas.",
-      "spoken_text": "El segundo auricular es de color Negro y tiene una duración de batería de treinta horas.",
+      "response": "El segundo auricular es de color Negro y tiene 42 horas de reproducción.",
+      "spoken_text": "El segundo auricular es de color Negro y tiene cuarenta y dos horas de reproducción.",
       "output_audio": "respuesta_02.wav",
-      "output_seconds": 7.381333333333333,
+      "output_seconds": 7.050666666666666,
       "awaiting_confirmation": false,
       "operations": [
         {
           "tool": "consultar_precio_stock",
           "args": {
-            "product_id": "B08HLX41W1"
+            "product_id": "B08VD6781Z"
           },
           "reason": "consultar el color y la batería del segundo candidato",
           "ok": true,
-          "summary": "precio 26,79 €; quedan 31 unidades. Esta herramienta no da características: para color, batería, medidas u otros datos del producto usa detalle_producto.",
+          "summary": "precio 45,70 €; quedan 18 unidades. Esta herramienta no da características: para color, batería, medidas u otros datos del producto usa detalle_producto.",
           "issues": []
         },
         {
           "tool": "detalle_producto",
           "args": {
-            "product_id": "B08HLX41W1"
+            "product_id": "B08VD6781Z"
           },
           "reason": "obtener detalles del segundo candidato",
           "ok": true,
-          "summary": "\n[1] id=B08HLX41W1 | bakibo Auriculares Inalámbricos Bluetooth 5.1, Deportivos In-Ear Auriculares con Micrófono IPX7 Verdadero Sonido Estéreo Auriculares LCD Estuche de Carga , 30 Horas de Duración, Control Táctil | marca: bakibo | color: Negro | precio: 26,79 € | existencias: 31 | características (extracto): 【Auriculares inalámbricos Ture y Bluetooth 5.1】Suministro de tecnología Los graves potentes de alta fidelidad estéreo 3D le brindan un sonido envolvente. Bluetooth 5.1 proporciona una velocidad de transmisión más rápida y una conectividad más estable sin pérdida de señal ni cortes de música. 【Auriculares ergonómicos innovadores】Con un diseño ergonómico único, los auriculares inalámbricos se ajustan cómodamente a la oreja, lo que los hace muy cómodos incluso durante largos períodos de uso. Cuando practica deportes intensos al aire libre, los auriculares pueden ajustarse bien a sus oídos sin caerse. los auriculares bluetooth ideales para correr, saltar, trotar, hacer yoga, hacer deporte, hacer ejercicio, etc. 【Emparejamiento automático y modo individual/doble】Los auriculares bluetooth se emparejarán entre sí automáticamente cuando abra la caja de carga y se conectarán automáticamente al último dispositivo emparejado. Modo individual/doble disponible, cualquiera de los auriculares se puede usar solos. 【Carga rápida USB-C y 30 horas de reproducción】Le brinda 5 horas completas de escucha con una sola carga de USB-C, mientras que el estuche de carga compacto puede extenderlo a 30 horas. Carga rápida durante 10 minutos y obtén hasta 45 minutos de tiempo de reproducción, no tienes que preocuparte por olvidarte de cargar los auriculares inalámbricos 【Controles táctiles y resistente al agua】Manos libres para controlar su teléfono inteligente, simplemente toque los auriculares para ajustar el volumen, contestar/colgar llamadas telefónicas reproducir/pausar música, activar asistente… | descripción: Auriculares inalámbricos bakibo con Bluetooth 5.1 Emparejamiento automático de auriculares No distinga entre auriculares primarios y secundarios Auriculares deportivos con cierre Estuche de carga de 500 mah 30 horas de reproducción Control táctil Reducción de ruido Ipx7 a prueba de agua Bueno para el gimnasio, correr, montar deporte al aire libre",
+          "summary": "\n[1] id=B08VD6781Z | Auriculares Inalambricos Deporte, Andfive Auriculares Bluetooth 5.1 con Microfono Cascos Inalambricos IP7 Impermeable, Carga Rápida USB-C, CVC8.0 Cancelación de Ruido Auriculares Running [Actualizado] | marca: andfive | color: Negro | precio: 45,70 € | existencias: 18 | características (extracto): Tecnología Bluetooth 5.1 Avanzada: Andfive auriculares Bluetooth deportivos adoptan la tecnología Bluetooth 5.1 más avanzada para garantizar una conexión más estable, menor latancia y menor consumo de energía durante la transmisión de datos. Incluso el móvil se guarda en su bolsillo, no preocuparse por el problema de desconexión. Los auriculares Bluetooth son compatibles con casi todos los dispositivos Bluetooth en el mercado. Disfrute de Sonido Profesional: Los auriculares inalámbricos logran un rango dinámico bien equilibrado con bajos intensos y agudos claros después de innumerables depuraciones. El nivel de salida de nuestros auriculares está especialmente pensado para cumplir el canon de salud auditiva. Este auricular in-ear equipado con la última tecnología CVC 8.0 que mejora la calidad del sonido y la calidad de la llamada (solo para el eco generado durante la llamada). IP7 Impermeable: La tecnología impermeable IP7 protege bien los auriculares deportivos del sudor y la lluvia durante los entrenamientos intensos o el uso diario. ★Para la mejor protección de sus auriculares, por favor, limpie los pines de carga con un pañuelo de papel o un paño seco después de su uso para evitar la corrosión por el sudor. 42 Horas de Reproducción: 5 horas de reproducción simplemente con una sola carga, que se extienden a 42 horas de reproducción incluyendo el estuche de carga. En solo 1 horas, puedes recargar completamente el estuche debido a que dispone de carga rápida USB-C. Los auriculares se apagan y se ponen a cargar solos al meterlos en la caja. Encendido/Emparejamiento… | descripción: auriculares inalambricos deporte ganchos especiales para orejas, que se ajustan completamente a sus oídos",
           "issues": []
         }
       ],
       "timings": {
-        "asr": 0.358,
+        "asr": 0.364,
         "retrieval": 0.0,
-        "llm": 8.341,
-        "tools": 0.034,
-        "tts": 1.757,
-        "total": 10.49
+        "llm": 7.949,
+        "tools": 0.037,
+        "tts": 1.732,
+        "total": 10.083
       },
       "llm_steps": 3,
-      "tts_first_chunk_seconds": 1.745,
+      "tts_first_chunk_seconds": 1.721,
       "tts_retries": 0,
       "product_terms": [
         "segundo"
@@ -133,10 +133,10 @@
       "transcript": "Compárame el primero con el tercero.",
       "expected_text": "Compárame el primero con el tercero.",
       "agent_input": "Compárame el primero con el tercero.",
-      "response": "El primero, de LYCHL, cuesta 4,85 euros. El tercero, de Andfive, es 40,85 euros más caro pero tiene tecnología Bluetooth 5.1 y carga rápida. ¿Te interesa alguna opción?",
-      "spoken_text": "El primero, de LYCHL, cuesta cuatro euros con ochenta y cinco céntimos. El tercero, de Andfive, es cuarenta euros con ochenta y cinco céntimos más caro pero tiene tecnología Bluetooth cinco punto uno y carga rápida. ¿Te interesa alguna opción?",
+      "response": "El primero, los auriculares de LYCHL, cuestan 4,85 euros y tienen 100 horas de reproducción. El tercero, de bakibo, son 26,79 euros y duran 30 horas. ¿Te interesa alguna opción?",
+      "spoken_text": "El primero, los auriculares de LYCHL, cuestan cuatro euros con ochenta y cinco céntimos y tienen cien horas de reproducción. El tercero, de bakibo, son veintiséis euros con setenta y nueve céntimos y duran treinta horas. ¿Te interesa alguna opción?",
       "output_audio": "respuesta_03.wav",
-      "output_seconds": 23.876666666666665,
+      "output_seconds": 26.106,
       "awaiting_confirmation": false,
       "operations": [
         {
@@ -144,46 +144,25 @@
           "args": {
             "product_ids": [
               "B08K91F1M4",
-              "B08VD6781Z"
+              "B08HLX41W1"
             ]
           },
           "reason": "comparar los candidatos 1 y 3",
           "ok": true,
-          "summary": "\n[1] id=B08K91F1M4 | LYCHL Auriculares Inalambricos Deportivos, Auriculares Bluetooth 5.0 Sport IP7 Impermeable Cascos Bluetooth In-Ear Auriculares Wireless Running con Mic, 100 Horas y Pantalla LED, Viajes, Deporte | marca: LYCHL | color: Negro | precio: 4,85 € | existencias: 36 | características (extracto): diseño de doble ganchos de oídos para deporte : lychl auriculares inalambricos bluetooth deportivos vienen con tres pares tapas de silicona para oídos. el diseño ergonómico y las suaves almohadillas de silicona aseguran que sus auriculares permanezcan seguros y cómodos para un disfrute prolongado. no necesita preocuparse por la caída de los auriculares cuando corre o hace deporte. potente bluetooth 5.0 :lychl auriculares inalámbricos sport están equipado con un chip bluetooth 5.0 para garantizar una conexión más estable, menor latancia y menor consumo de energía durante la transmisión de… | descripción: Conexión rápida 1.Saque los auriculares de la caja de carga y se conectarán de forma rápida y automática. 2.Abra el Bluetooth del teléfono móvil, busque Q22, luego haga clic en Conectar para usarlo. 3.Si usa un solo auricular, puede sacar otros auriculares de la caja de carga, se puede conectar…\n[2] id=B08VD6781Z | Auriculares Inalambricos Deporte, Andfive Auriculares Bluetooth 5.1 con Microfono Cascos Inalambricos IP7 Impermeable, Carga Rápida USB-C, CVC8.0 Cancelación de Ruido Auriculares Running [Actualizado] | marca: andfive | color: Negro | precio: 45,70 € | existencias: 18 | características (extracto): Tecnología Bluetooth 5.1 Avanzada: Andfive auriculares Bluetooth deportivos adoptan la tecnología Bluetooth 5.1 más avanzada para garantizar una conexión más estable, menor latancia y menor consumo de energía durante la transmisión de datos. Incluso el móvil se guarda en su bolsillo, no preocuparse por el problema de desconexión. Los auriculares Bluetooth son compatibles con casi todos los dispositivos Bluetooth en el mercado. Disfrute de Sonido Profesional: Los auriculares inalámbricos logran un rango dinámico bien equilibrado con bajos intensos y agudos claros después de innumerables… | descripción: auriculares inalambricos deporte ganchos especiales para orejas, que se ajustan completamente a sus oídos",
+          "summary": "\n[1] id=B08K91F1M4 | LYCHL Auriculares Inalambricos Deportivos, Auriculares Bluetooth 5.0 Sport IP7 Impermeable Cascos Bluetooth In-Ear Auriculares Wireless Running con Mic, 100 Horas y Pantalla LED, Viajes, Deporte | marca: LYCHL | color: Negro | precio: 4,85 € | existencias: 36 | características (extracto): diseño de doble ganchos de oídos para deporte : lychl auriculares inalambricos bluetooth deportivos vienen con tres pares tapas de silicona para oídos. el diseño ergonómico y las suaves almohadillas de silicona aseguran que sus auriculares permanezcan seguros y cómodos para un disfrute prolongado. no necesita preocuparse por la caída de los auriculares cuando corre o hace deporte. potente bluetooth 5.0 :lychl auriculares inalámbricos sport están equipado con un chip bluetooth 5.0 para garantizar una conexión más estable, menor latancia y menor consumo de energía durante la transmisión de… | descripción: Conexión rápida 1.Saque los auriculares de la caja de carga y se conectarán de forma rápida y automática. 2.Abra el Bluetooth del teléfono móvil, busque Q22, luego haga clic en Conectar para usarlo. 3.Si usa un solo auricular, puede sacar otros auriculares de la caja de carga, se puede conectar…\n[2] id=B08HLX41W1 | bakibo Auriculares Inalámbricos Bluetooth 5.1, Deportivos In-Ear Auriculares con Micrófono IPX7 Verdadero Sonido Estéreo Auriculares LCD Estuche de Carga , 30 Horas de Duración, Control Táctil | marca: bakibo | color: Negro | precio: 26,79 € | existencias: 31 | características (extracto): 【Auriculares inalámbricos Ture y Bluetooth 5.1】Suministro de tecnología Los graves potentes de alta fidelidad estéreo 3D le brindan un sonido envolvente. Bluetooth 5.1 proporciona una velocidad de transmisión más rápida y una conectividad más estable sin pérdida de señal ni cortes de música. 【Auriculares ergonómicos innovadores】Con un diseño ergonómico único, los auriculares inalámbricos se ajustan cómodamente a la oreja, lo que los hace muy cómodos incluso durante largos períodos de uso. Cuando practica deportes intensos al aire libre, los auriculares pueden ajustarse bien a sus oídos sin… | descripción: Auriculares inalámbricos bakibo con Bluetooth 5.1 Emparejamiento automático de auriculares No distinga entre auriculares primarios y secundarios Auriculares deportivos con cierre Estuche de carga de 500 mah 30 horas de reproducción Control táctil Reducción de ruido Ipx7 a prueba de agua Bueno para…",
           "issues": []
-        },
-        {
-          "tool": "responder",
-          "args": {
-            "texto": "El primero, de LYCHL, cuesta 4,85 euros y tiene 100 horas de batería. El tercero, de Andfive, es 40,85 euros más caro pero tiene tecnología Bluetooth 5.1 y carga rápida. ¿Te interesa alguna opción?"
-          },
-          "reason": "presentar la comparación",
-          "ok": false,
-          "summary": "[cifra_sin_sustento] En tu respuesta hay cifras que no aparecen en los datos (40.85). Usa solo cifras de CANDIDATOS, CARRITO o de un RESULTADO, sin hacer cuentas; si te falta un dato de un producto, consúltalo con detalle_producto o di que no consta.",
-          "issues": [
-            {
-              "code": "cifra_sin_sustento",
-              "message": "En tu respuesta hay cifras que no aparecen en los datos (40.85). Usa solo cifras de CANDIDATOS, CARRITO o de un RESULTADO, sin hacer cuentas; si te falta un dato de un producto, consúltalo con detalle_producto o di que no consta.",
-              "product_id": null,
-              "details": {
-                "numbers": [
-                  "40.85"
-                ]
-              }
-            }
-          ]
         }
       ],
       "timings": {
-        "asr": 0.353,
+        "asr": 0.369,
         "retrieval": 0.0,
-        "llm": 12.06,
-        "tools": 0.024,
-        "tts": 6.219,
-        "total": 18.656
+        "llm": 8.288,
+        "tools": 0.025,
+        "tts": 6.52,
+        "total": 15.202
       },
-      "llm_steps": 3,
-      "tts_first_chunk_seconds": 1.704,
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": 3.105,
       "tts_retries": 0,
       "product_terms": [
         "primero",
@@ -216,15 +195,15 @@
         }
       ],
       "timings": {
-        "asr": 0.35,
+        "asr": 0.381,
         "retrieval": 0.0,
-        "llm": 5.537,
-        "tools": 0.041,
-        "tts": 10.818,
-        "total": 16.745
+        "llm": 5.536,
+        "tools": 0.046,
+        "tts": 10.456,
+        "total": 16.419
       },
       "llm_steps": 2,
-      "tts_first_chunk_seconds": 2.374,
+      "tts_first_chunk_seconds": 2.234,
       "tts_retries": 0,
       "product_terms": [
         "primero"
@@ -249,22 +228,22 @@
             "product_id": "B08K91F1M4",
             "cantidad": 3
           },
-          "reason": "cambiar la cantidad a tres",
+          "reason": "cambiar la cantidad del producto 1",
           "ok": true,
           "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B08K91F1M4 | LYCHL Auriculares Inalambricos Deportivos, Auriculares Bluetooth 5.0… | 3 unidades × 4,85 € = 14,55 € | existencias: 36\nTotal del carrito: 14,55 €",
           "issues": []
         }
       ],
       "timings": {
-        "asr": 0.333,
+        "asr": 0.364,
         "retrieval": 0.0,
-        "llm": 5.684,
-        "tools": 0.036,
-        "tts": 8.787,
-        "total": 14.839
+        "llm": 5.685,
+        "tools": 0.035,
+        "tts": 8.393,
+        "total": 14.477
       },
       "llm_steps": 2,
-      "tts_first_chunk_seconds": 1.936,
+      "tts_first_chunk_seconds": 1.856,
       "tts_retries": 0,
       "product_terms": []
     },
@@ -291,15 +270,15 @@
         }
       ],
       "timings": {
-        "asr": 0.387,
+        "asr": 0.347,
         "retrieval": 0.0,
-        "llm": 2.658,
-        "tools": 0.031,
-        "tts": 11.806,
-        "total": 14.882
+        "llm": 2.577,
+        "tools": 0.029,
+        "tts": 11.609,
+        "total": 14.562
       },
       "llm_steps": 1,
-      "tts_first_chunk_seconds": 4.863,
+      "tts_first_chunk_seconds": 4.725,
       "tts_retries": 0,
       "product_terms": []
     },
@@ -319,7 +298,7 @@
         {
           "tool": "confirmar_pedido",
           "args": {
-            "quote_id": "3a2ebb37785d42cd92d44ce3a9967b50"
+            "quote_id": "01ce0d650a014b3c963d44f8e7cf02eb"
           },
           "reason": "el usuario confirmó la cotización",
           "ok": true,
@@ -328,15 +307,15 @@
         }
       ],
       "timings": {
-        "asr": 0.344,
+        "asr": 0.334,
         "retrieval": 0.0,
         "llm": 0.0,
-        "tools": 0.033,
-        "tts": 5.703,
-        "total": 6.08
+        "tools": 0.026,
+        "tts": 5.791,
+        "total": 6.151
       },
       "llm_steps": 0,
-      "tts_first_chunk_seconds": 4.03,
+      "tts_first_chunk_seconds": 4.304,
       "tts_retries": 0,
       "product_terms": []
     },
@@ -356,7 +335,7 @@
         {
           "tool": "confirmar_pedido",
           "args": {
-            "quote_id": "3a2ebb37785d42cd92d44ce3a9967b50"
+            "quote_id": "01ce0d650a014b3c963d44f8e7cf02eb"
           },
           "reason": "el usuario confirmó la cotización",
           "ok": true,
@@ -365,15 +344,15 @@
         }
       ],
       "timings": {
-        "asr": 0.369,
+        "asr": 0.324,
         "retrieval": 0.0,
         "llm": 0.0,
-        "tools": 0.039,
-        "tts": 3.131,
-        "total": 3.538
+        "tools": 0.042,
+        "tts": 3.102,
+        "total": 3.468
       },
       "llm_steps": 0,
-      "tts_first_chunk_seconds": 3.11,
+      "tts_first_chunk_seconds": 3.08,
       "tts_retries": 0,
       "product_terms": []
     }
@@ -383,81 +362,81 @@
       "turns": 8,
       "asr": {
         "mean": 0.42,
-        "max": 0.89
+        "max": 0.84
       },
       "retrieval": {
         "mean": 0.01,
-        "max": 0.06
+        "max": 0.04
       },
       "llm": {
-        "mean": 5.7,
-        "max": 12.06
+        "mean": 5.06,
+        "max": 10.46
       },
       "tools": {
         "mean": 0.04,
-        "max": 0.04
+        "max": 0.05
       },
       "tts": {
-        "mean": 7.32,
-        "max": 11.81
+        "mean": 7.01,
+        "max": 11.61
       },
       "total": {
-        "mean": 13.48,
-        "max": 22.63
+        "mean": 12.52,
+        "max": 19.84
       }
     },
     "with_llm": {
       "turns": 6,
       "asr": {
-        "mean": 0.45,
-        "max": 0.89
+        "mean": 0.44,
+        "max": 0.84
       },
       "retrieval": {
         "mean": 0.01,
-        "max": 0.06
+        "max": 0.04
       },
       "llm": {
-        "mean": 7.6,
-        "max": 12.06
+        "mean": 6.75,
+        "max": 10.46
+      },
+      "tools": {
+        "mean": 0.04,
+        "max": 0.05
+      },
+      "tts": {
+        "mean": 7.86,
+        "max": 11.61
+      },
+      "total": {
+        "mean": 15.1,
+        "max": 19.84
+      }
+    },
+    "without_llm": {
+      "turns": 2,
+      "asr": {
+        "mean": 0.33,
+        "max": 0.33
+      },
+      "retrieval": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "llm": {
+        "mean": 0.0,
+        "max": 0.0
       },
       "tools": {
         "mean": 0.03,
         "max": 0.04
       },
       "tts": {
-        "mean": 8.29,
-        "max": 11.81
-      },
-      "total": {
-        "mean": 16.37,
-        "max": 22.63
-      }
-    },
-    "without_llm": {
-      "turns": 2,
-      "asr": {
-        "mean": 0.36,
-        "max": 0.37
-      },
-      "retrieval": {
-        "mean": 0.0,
-        "max": 0.0
-      },
-      "llm": {
-        "mean": 0.0,
-        "max": 0.0
-      },
-      "tools": {
-        "mean": 0.04,
-        "max": 0.04
-      },
-      "tts": {
-        "mean": 4.42,
-        "max": 5.7
+        "mean": 4.45,
+        "max": 5.79
       },
       "total": {
         "mean": 4.81,
-        "max": 6.08
+        "max": 6.15
       }
     }
   },
@@ -468,7 +447,7 @@
     "quote": null,
     "order": {
       "order_id": 1,
-      "quote_id": "3a2ebb37785d42cd92d44ce3a9967b50",
+      "quote_id": "01ce0d650a014b3c963d44f8e7cf02eb",
       "items": [
         {
           "product_id": "B08K91F1M4",
@@ -487,7 +466,7 @@
     "orders": [
       {
         "order_id": 1,
-        "quote_id": "3a2ebb37785d42cd92d44ce3a9967b50",
+        "quote_id": "01ce0d650a014b3c963d44f8e7cf02eb",
         "total_cents": 1455
       }
     ],

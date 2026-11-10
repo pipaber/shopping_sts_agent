@@ -294,52 +294,52 @@
   "tts": {
     "summary": {
       "cases": 8,
-      "wer": 0.041237113402061855,
-      "similarity_mean": 0.8564916506676054,
-      "similarity_min": 0.7938128531323415
+      "wer": 0.03571428571428571,
+      "similarity_mean": 0.8607918254300613,
+      "similarity_min": 0.8465611799433878
     },
     "cases": [
       {
         "turn": 1,
-        "spoken_text": "Tengo varios modelos para ti. El primero, de la marca LYCHL, cuesta cuatro euros con ochenta y cinco céntimos. El segundo, de bakibo, es de veintiséis euros con setenta y nueve céntimos. El tercero, de andfive, sale a cuarenta y cinco euros con setenta céntimos. Y el cuarto, de Bowost, es el más económico, con trece euros con ochenta céntimos. ¿Te interesa alguno? He anotado un presupuesto de sesenta euros.",
-        "heard": "Tengo varios modelos para ti. El primero, de la marca Lichel, cuesta 4,85 euros. El segundo, de Bakibo, es de 26,79 euros. El tercero, de Ant5, sale a 45,70 euros. Y el cuarto, de Bogost, es el más económico, con 13,80 euros. ¿Te interesa alguno? He anotado un presupuesto de 60 euros.",
+        "spoken_text": "Tengo varios modelos para ti. El primero son los de LYCHL por cuatro euros con ochenta y cinco céntimos, el segundo de Andfive por cuarenta y cinco euros con setenta céntimos, el tercero de bakibo por veintiséis euros con setenta y nueve céntimos, el cuarto de Bowost por trece euros con ochenta céntimos y el quinto también de bakibo por trece euros con dieciséis céntimos. ¿Te interesa alguno? He anotado un presupuesto de sesenta euros.",
+        "heard": "Tengo varios modelos para ti. El primero son los de Leitchell por 4,85 euros. El segundo de Anfai por 45,70 euros. El tercero de Bakibo por 26,79 euros. El cuarto de Bogost por 13,80 euros. Y el quinto también de Bakibo por 13,16 euros. ¿Te interesa alguno? He anotado un presupuesto de 60 euros.",
         "wer": {
-          "wer": 0.04285714285714286,
-          "reference_words": 70,
-          "hits": 67,
+          "wer": 0.04,
+          "reference_words": 75,
+          "hits": 72,
           "substitutions": 3,
           "deletions": 0,
           "insertions": 0
         },
-        "similarity": 0.8830377547385425
+        "similarity": 0.8679879124682919
       },
       {
         "turn": 2,
-        "spoken_text": "El segundo auricular es de color Negro y tiene una duración de batería de treinta horas.",
-        "heard": "El segundo auricular es de color negro y tiene una duración de batería de 30 horas.",
+        "spoken_text": "El segundo auricular es de color Negro y tiene cuarenta y dos horas de reproducción.",
+        "heard": "El segundo auricular es de color negro y tiene 42 horas de reproducción.",
         "wer": {
           "wer": 0.0,
-          "reference_words": 16,
-          "hits": 16,
+          "reference_words": 15,
+          "hits": 15,
           "substitutions": 0,
           "deletions": 0,
           "insertions": 0
         },
-        "similarity": 0.7938128531323415
+        "similarity": 0.8465611799433878
       },
       {
         "turn": 3,
-        "spoken_text": "El primero, de LYCHL, cuesta cuatro euros con ochenta y cinco céntimos. El tercero, de Andfive, es cuarenta euros con ochenta y cinco céntimos más caro pero tiene tecnología Bluetooth cinco punto uno y carga rápida. ¿Te interesa alguna opción?",
-        "heard": "El primero de la iChel cuesta 4,85 euros. El tercero, de Ant5, es 40,85 euros más caro, pero tiene tecnología Bluetooth 5.1 y carga rápida. ¿Te interesa alguna opción?",
+        "spoken_text": "El primero, los auriculares de LYCHL, cuestan cuatro euros con ochenta y cinco céntimos y tienen cien horas de reproducción. El tercero, de bakibo, son veintiséis euros con setenta y nueve céntimos y duran treinta horas. ¿Te interesa alguna opción?",
+        "heard": "El primero, los auriculares de Leitchell. Cuestan 4,85 euros y tienen 100 horas de reproducción. El tercero de Bakibo son 26,79 euros y duran 30 horas. ¿Te interesa alguna opción?",
         "wer": {
-          "wer": 0.075,
+          "wer": 0.025,
           "reference_words": 40,
-          "hits": 38,
-          "substitutions": 2,
+          "hits": 39,
+          "substitutions": 1,
           "deletions": 0,
-          "insertions": 1
+          "insertions": 0
         },
-        "similarity": 0.8687340325316392
+        "similarity": 0.8654369460904913
       },
       {
         "turn": 4,
