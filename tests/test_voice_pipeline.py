@@ -108,7 +108,7 @@ def test_session_reports_stage_times_that_add_up(shop):
 
 def test_purchase_by_voice_registers_the_order_after_a_spoken_yes(shop, tmp_path):
     shop.llm.extend(purchase_script())
-    asr = FakeASR(["Busco auriculares bluetooth y tengo 50 euros", "Añade dos del primero", "Quiero cerrar el pedido", "Sí, confirmo."])
+    asr = FakeASR(["Busco auriculares bluetooth y tengo 50 euros", "Añade dos de los Sony", "Quiero cerrar el pedido", "Sí, confirmo."])
     pipeline = VoicePipeline(shop.session(), asr, FakeTTS(), tmp_path / "corrida")
     silence = np.zeros(16000, dtype=np.float32)
 
@@ -130,8 +130,8 @@ def test_same_turn_can_be_repeated_with_the_correct_text(shop, tmp_path):
     spoken_shop.llm.extend([call(tools.ADD, product_id="P1", cantidad=12), say("No hay tantas unidades.")])
     written_shop.llm.extend([call(tools.ADD, product_id="P1", cantidad=2), say("Añadidas.")])
 
-    correct = ["Busco auriculares bluetooth", "Añade dos del primero"]
-    by_voice = VoicePipeline(spoken_shop.session(), FakeASR(["Busco auriculares bluetooth", "Añade doce del primero"]), None)
+    correct = ["Busco auriculares bluetooth", "Añade dos de los Sony"]
+    by_voice = VoicePipeline(spoken_shop.session(), FakeASR(["Busco auriculares bluetooth", "Añade doce de los Sony"]), None)
     by_text = VoicePipeline(written_shop.session(), None, None)
     for text in correct:
         by_voice.run_turn(np.zeros(8000, dtype=np.float32), expected_text=text)
@@ -153,8 +153,8 @@ def test_comparison_ignores_spelling_and_random_identifiers(shop, tmp_path):
     other = new_shop(tmp_path / "otra")
     for target in (shop, other):
         target.llm.extend(purchase_script())
-    heard = ["Busco auriculares Bluetooth y tengo 50 €.", "Añade 2 del primero", "Quiero cerrar el pedido", "Sí, confirmo."]
-    correct = ["Busco auriculares bluetooth y tengo cincuenta euros", "Añade dos del primero", "Quiero cerrar el pedido", "Sí, confirmo."]
+    heard = ["Busco auriculares Bluetooth y tengo 50 €.", "Añade 2 de los Sony", "Quiero cerrar el pedido", "Sí, confirmo."]
+    correct = ["Busco auriculares bluetooth y tengo cincuenta euros", "Añade dos de los Sony", "Quiero cerrar el pedido", "Sí, confirmo."]
     by_voice = VoicePipeline(shop.session(), FakeASR(heard), None)
     by_text = VoicePipeline(other.session(), None, None)
     for text in correct:
@@ -187,7 +187,7 @@ def test_turn_needs_exactly_one_input(shop):
 
 def test_summary_and_report(shop, tmp_path):
     shop.llm.extend(purchase_script())
-    asr = FakeASR(["Busco auriculares bluetooth y tengo 50 euros", "Añade dos del primero", "Quiero cerrar el pedido", "Sí"])
+    asr = FakeASR(["Busco auriculares bluetooth y tengo 50 euros", "Añade dos de los Sony", "Quiero cerrar el pedido", "Sí"])
     pipeline = VoicePipeline(shop.session(), asr, FakeTTS(), tmp_path / "corrida")
     for _ in range(4):
         pipeline.run_turn(np.zeros(16000, dtype=np.float32), expected_text="lo que se dijo")

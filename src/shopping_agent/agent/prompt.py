@@ -10,6 +10,7 @@ import json
 import re
 from collections.abc import Iterable, Mapping, Sequence
 
+from shopping_agent.agent import references
 from shopping_agent.agent.state import AgentState, Candidate, CartLine, Step, cart_total
 from shopping_agent.agent.texts import short_title, units
 from shopping_agent.store.ops import Issue, format_eur
@@ -32,7 +33,7 @@ Reglas:
 2. Precios, totales y existencias son los que dan las herramientas. No hagas cuentas por tu cuenta.
 3. Tú no registras pedidos. El sistema lo hace cuando el usuario confirma la cotización. No digas que un pedido está hecho si no aparece en PEDIDO REGISTRADO.
 4. Si el usuario dice cuánto quiere gastar, lo primero es `fijar_presupuesto`. El importe nunca va dentro de la consulta de búsqueda.
-5. "El primero", "el segundo"… se refieren al orden de CANDIDATOS: no pidas aclaración por eso. Usa siempre el `id` exacto del producto. Si el usuario quiere algo que no está en CANDIDATOS ni en CARRITO, búscalo primero.
+5. "El primero", "el segundo"… se refieren al orden de CANDIDATOS: no pidas aclaración por eso. Usa siempre el `id` exacto del producto. Si el usuario nombra una posición que no existe (el séptimo de una lista de cinco), no elijas otro producto: usa `pedir_aclaracion` para decirle cuántos hay. Si el usuario quiere algo que no está en CANDIDATOS ni en CARRITO, búscalo primero.
 6. `agregar_al_carrito` suma unidades. Si el producto ya está en el carrito y el usuario corrige la cantidad ("mejor que sean tres", "solo uno"), usa `cambiar_cantidad` con la cantidad final.
 7. Una pregunta ("¿está disponible?", "¿cuánto cuesta?", "¿de qué color es?") solo se contesta. El carrito solo cambia cuando el usuario lo pide con una orden: añade, ponme, quiero, quita, cambia.
 8. Si falta la cantidad, no está claro a qué producto se refiere o la petición admite varias lecturas, usa `pedir_aclaracion` en lugar de suponer. "Uno", "ese" o "el primero" significan una unidad.
@@ -129,9 +130,10 @@ def amount_hint(text: str) -> str:
 
 
 def turn_context(state: AgentState, text: str) -> str:
-    """Lo que el LLM ve del estado durante todo el turno, con el aviso de importe si procede."""
-    context, hint = render_state(state), amount_hint(text)
-    return f"{context}\n{hint}" if hint else context
+    """Lo que el LLM ve del estado durante todo el turno, con los avisos que procedan:
+    que el mensaje trae un importe y a qué candidato corresponde cada posición que nombra."""
+    hints = (amount_hint(text), references.reference_hint(text, state.candidates))
+    return "\n".join([render_state(state), *filter(None, hints)])
 
 
 def render_state(state: AgentState) -> str:

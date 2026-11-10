@@ -63,7 +63,8 @@ _ORDER_CLAIM = re.compile(
 )
 
 
-def _fold(text: str) -> str:
+def fold(text: str) -> str:
+    """Minúsculas y sin tildes, para comparar texto libre."""
     folded = unicodedata.normalize("NFKD", text.lower())
     return "".join(char for char in folded if not unicodedata.combining(char))
 
@@ -92,7 +93,7 @@ def check_response(text: str, evidence: str, has_order: bool) -> list[Issue]:
                 details={"numbers": missing},
             )
         )
-    if not has_order and _ORDER_CLAIM.search(_fold(text)):
+    if not has_order and _ORDER_CLAIM.search(fold(text)):
         issues.append(
             Issue(
                 FALSE_ORDER_CLAIM,

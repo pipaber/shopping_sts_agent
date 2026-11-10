@@ -41,6 +41,9 @@ QUOTE = "cotizar"
 CLARIFY = "pedir_aclaracion"
 RESPOND = "responder"
 
+# Herramientas que toman productos de la lista de candidatos; ``ADD`` además cambia el carrito.
+CANDIDATE_TOOLS = (DETAIL, COMPARE, PRICE_STOCK, ADD)
+
 DETAIL_CHARS = (1600, 800)  # viñetas y descripción de un producto
 COMPARE_CHARS = (600, 300)  # por producto al comparar varios
 

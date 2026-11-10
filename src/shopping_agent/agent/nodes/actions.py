@@ -8,7 +8,7 @@ from typing import Literal
 from langchain_core.runnables import RunnableConfig
 from langgraph.types import Command
 
-from shopping_agent.agent import prompt, tools
+from shopping_agent.agent import prompt, references, tools
 from shopping_agent.agent.deps import Deps, cart_id, user_id
 from shopping_agent.agent.nodes.steps import record, rejected, step
 from shopping_agent.agent.state import AgentState, Candidate, Update, cart_total, decision_args
@@ -49,10 +49,20 @@ def buyable_first(ranked: list[Candidate], remaining_cents: int | None) -> list[
 def validar(state: AgentState) -> Command[Literal["ejecutar_herramienta", "interpretar"]]:
     """Comprueba la llamada antes de tocar la tienda; si no vale, vuelve al LLM con el motivo."""
     decision = state.decision
-    issues = tools.validate_call(decision.get("herramienta"), decision_args(decision), state)
+    issues = tools.validate_call(decision.get("herramienta"), decision_args(decision), state) or _reference_issues(state)
     if issues:
         return Command(update=rejected(state, issues), goto="interpretar")
     return Command(goto="ejecutar_herramienta")
+
+
+def _reference_issues(state: AgentState) -> list[Issue]:
+    """Si el usuario señaló un candidato por su posición, la llamada tiene que respetarlo."""
+    decision = state.decision
+    tool = decision.get("herramienta")
+    if tool not in tools.CANDIDATE_TOOLS:
+        return []
+    product_ids = decision.get("product_ids") or [decision.get("product_id")]
+    return references.check_products(state.user_input, state.candidates, product_ids, adding=tool == tools.ADD)
 
 
 def ejecutar_herramienta(state: AgentState, config: RunnableConfig, *, deps: Deps) -> Update:

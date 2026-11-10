@@ -9,13 +9,15 @@ from typing import Literal
 from langchain_core.runnables import RunnableConfig
 from langgraph.types import Command
 
-from shopping_agent.agent import guards, prompt, texts, tools
+from shopping_agent.agent import guards, prompt, references, texts, tools
 from shopping_agent.agent.deps import Deps, cart_id, user_id
 from shopping_agent.agent.llm import DecisionLLM, LLMError
 from shopping_agent.agent.nodes.steps import rejected, step
 from shopping_agent.agent.state import AgentState, Decision, Message, Step, Update, decision_args, new_turn
 
 MAX_STEPS = 6  # decisiones del LLM por turno
+# Rechazos pensados para el LLM: no se le dicen al usuario en la respuesta de respaldo.
+NOT_FOR_USER = guards.INTERNAL_CODES | references.CODES
 
 
 def iniciar_turno(
@@ -94,7 +96,7 @@ def _next_decision(state: AgentState, llm: DecisionLLM) -> Decision | None:
 def _fallback_text(steps: list[Step]) -> str:
     """Respuesta de respaldo: el último rechazo de la tienda, que sí es para el usuario."""
     for previous in reversed(steps):
-        reasons = [issue["message"] for issue in previous["issues"] if issue["code"] not in guards.INTERNAL_CODES]
+        reasons = [issue["message"] for issue in previous["issues"] if issue["code"] not in NOT_FOR_USER]
         if reasons:
             return texts.could_not_complete(reasons)
     return texts.FALLBACK
