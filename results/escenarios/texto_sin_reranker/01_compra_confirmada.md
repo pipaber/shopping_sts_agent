@@ -5,16 +5,16 @@
 - Tipo: `compra_confirmada`
 - Qué se prueba: El usuario busca con presupuesto, añade dos unidades, pide cerrar y confirma. Tras la búsqueda la tienda fija el primer candidato en 14,50 € y 20 unidades, para que el resultado no dependa de qué producto salga primero.
 
-## Turno 1 (9.6 s)
+## Turno 1 (9.5 s)
 
 **Usuario (texto):** Hola, busco una cafetera italiana. Tengo un presupuesto de 60 euros.
 
 - `fijar_presupuesto(importe_eur=60)` → OK: presupuesto fijado en 60,00 €.
 - `buscar_productos(consulta="cafetera italiana")` → OK: estos son ahora los CANDIDATOS, del más al menos relevante: [1] id=B07V47R2Z2 | Gastroback 42619 Design Espresso Advanced Barista - Cafetera espresso (programable, con mecanismo cónico y bomba de espresso italiana, 15 bares, acero inoxidable) | marca: GASTROBACK | color: Acero Inoxidable. | precio: …
 
-**Agente:** Tengo una cafetera Gastroback por 46,24 euros, una De'Longhi por 5,03 euros, una Solis por 20,53 euros, una Princess por 7,74 euros y una Cecotec por 15,19 euros. ¿Te interesa alguna? He anotado un presupuesto de 60,00 €.
+**Agente:** Tengo la cafetera Gastroback por 46,24 euros, la De'Longhi por 5,03 euros, la Solis por 20,53 euros, la Princess por 7,74 euros y la Cecotec por 15,19 euros. ¿Te interesa alguna? He anotado un presupuesto de 60,00 €.
 
-**Enviado al TTS:** Tengo una cafetera Gastroback por cuarenta y seis euros con veinticuatro céntimos, una De'Longhi por cinco euros con tres céntimos, una Solis por veinte euros con cincuenta y tres céntimos, una Princess por siete euros con setenta y cuatro céntimos y una Cecotec por quince euros con diecinueve céntimos. ¿Te interesa alguna? He anotado un presupuesto de sesenta euros.
+**Enviado al TTS:** Tengo la cafetera Gastroback por cuarenta y seis euros con veinticuatro céntimos, la De'Longhi por cinco euros con tres céntimos, la Solis por veinte euros con cincuenta y tres céntimos, la Princess por siete euros con setenta y cuatro céntimos y la Cecotec por quince euros con diecinueve céntimos. ¿Te interesa alguna? He anotado un presupuesto de sesenta euros.
 
 - ✔ `budget(cents=6000)` — presupuesto en el estado: 6000
 - ✔ `cart(empty=true)` — carrito: vacío
@@ -23,7 +23,7 @@
 
 > **Suceso externo:** la tienda deja `B07V47R2Z2` (@elegida) con precio 14,50 € y existencias 20.
 
-## Turno 2 (5.0 s)
+## Turno 2 (5.1 s)
 
 **Usuario (texto):** Añade dos de la primera al carrito.
 
@@ -36,7 +36,7 @@
 - ✔ `cart(lines=[{"product": "@elegida", "quantity": 2}])` — carrito: 2 × B07V47R2Z2
 - ✔ `orders(count=0)` — pedidos registrados: 0
 
-## Turno 3 (2.1 s)
+## Turno 3 (2.2 s)
 
 **Usuario (texto):** Quiero cerrar el pedido.
 
@@ -53,7 +53,7 @@
 
 **Usuario (texto):** Sí, confirmo.
 
-- `confirmar_pedido(quote_id="aad74610e2e24621b03c27eb43a6e475")` → OK: pedido registrado
+- `confirmar_pedido(quote_id="1ff45734cc9a47bba3b08cf9ded665aa")` → OK: pedido registrado
 
 **Agente:** Pedido número 1 registrado: 2 unidades de «Gastroback 42619 Design Espresso Advanced Barista - Cafetera espresso…» a 14,50 € cada una, 29,00 €. Total: 29,00 €. Gracias por tu compra.
 
@@ -84,10 +84,10 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.03 | 9.57 | 0.04 | 0.00 | 9.63 | 0.0 s |
-| 2 | 0.00 | 0.00 | 4.96 | 0.05 | 0.00 | 5.02 | 0.0 s |
-| 3 | 0.00 | 0.00 | 2.05 | 0.04 | 0.00 | 2.09 | 0.0 s |
+| 1 | 0.00 | 0.03 | 9.42 | 0.05 | 0.00 | 9.50 | 0.0 s |
+| 2 | 0.00 | 0.00 | 5.04 | 0.05 | 0.00 | 5.09 | 0.0 s |
+| 3 | 0.00 | 0.00 | 2.13 | 0.04 | 0.00 | 2.17 | 0.0 s |
 | 4 | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | 0.0 s |
-| **Media de los turnos con LLM (3)** | 0.00 | 0.01 | 5.53 | 0.04 | 0.00 | 5.58 | |
+| **Media de los turnos con LLM (3)** | 0.00 | 0.01 | 5.53 | 0.05 | 0.00 | 5.59 | |
 | **Media de los turnos sin LLM (1)** | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | |
 

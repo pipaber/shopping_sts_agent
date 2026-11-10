@@ -6,9 +6,9 @@
   "voice": false,
   "input": "texto",
   "audio_source": null,
-  "user_id": "eval-a557491f-13_confirmacion_con_cambio",
+  "user_id": "eval-49d0281c-13_confirmacion_con_cambio",
   "threads": [
-    "eval-a557491f-13_confirmacion_con_cambio-c1"
+    "eval-49d0281c-13_confirmacion_con_cambio-c1"
   ],
   "names": {
     "elegido": "B08ZC4844X"
@@ -22,8 +22,8 @@
       "transcript": null,
       "expected_text": "Busco un paraguas plegable.",
       "agent_input": "Busco un paraguas plegable.",
-      "response": "Tengo un paraguas plegable Gonex Negro por 6,52 euros, uno xj Camuflaje por 16,30 euros, uno Mr. Wonderful Multicolor por 150,31 euros, uno LJGYX Blue por 49,59 euros y uno Yosoo Health Gear plata por 16,34 euros. ¿Te interesa alguno?",
-      "spoken_text": "Tengo un paraguas plegable Gonex Negro por seis euros con cincuenta y dos céntimos, uno xj Camuflaje por dieciséis euros con treinta céntimos, uno Mr. Wonderful Multicolor por ciento cincuenta euros con treinta y un céntimos, uno LJGYX Blue por cuarenta y nueve euros con cincuenta y nueve céntimos y uno Yosoo Health Gear plata por dieciséis euros con treinta y cuatro céntimos. ¿Te interesa alguno?",
+      "response": "Tengo el paraguas Gonex Negro por 6,52 euros, el paraguas xj Camuflaje por 16,30 euros, el paraguas Mr. Wonderful Multicolor por 150,31 euros, el paraguas LJGYX Blue por 49,59 euros y el paraguas Jooayou Night Sky por 30,33 euros. ¿Te interesa alguno?",
+      "spoken_text": "Tengo el paraguas Gonex Negro por seis euros con cincuenta y dos céntimos, el paraguas xj Camuflaje por dieciséis euros con treinta céntimos, el paraguas Mr. Wonderful Multicolor por ciento cincuenta euros con treinta y un céntimos, el paraguas LJGYX Blue por cuarenta y nueve euros con cincuenta y nueve céntimos y el paraguas Jooayou Night Sky por treinta euros con treinta y tres céntimos. ¿Te interesa alguno?",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -35,24 +35,24 @@
           },
           "reason": "buscar el paraguas plegable",
           "ok": true,
-          "summary": "estos son ahora los CANDIDATOS, del más al menos relevante:\n[1] id=B08ZC4844X | Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a Prueba de Viento de Toldo Doble, Paraguas Compacto de 54 Pulgadas, Ventilado y a Prueba de Lluvia para Deportes, Negocios y Viajes | marca: Gonex | color: Negro con capa de tierra plateada | precio: 6,52 € | existencias: 7 | características (extracto): 10 Varillas y Toldo Doble Mejorados: con las 10 varillas de fibra de vidrio, nuestro paraguas tiene un mejor efecto a prueba de viento que otros paraguas con 8 o 9 varillas. Gracias a la estructura del techo ventilado, el viento puede… | descripción: desconocido\n[2] id=B07C1R3G3Y | Sombrero Plegable Paraguas de Sol al Aire Libre Golf Pesca Camping Sombreros Cap Cabeza Hat (1pcs). | marca: xj | color: Camuflaje | precio: 16,30 € | existencias: 42 | características (extracto): Manténgase seco y haga una declaración de moda audaz con este elegante y colorido sombrero para paraguas. Perfecto para mantener la cabeza seca en días lluviosos o para mantenerla a la sombra en días soleados Elegante y funcional. El… | descripción: Patrón de camuflaje Sun Rain Paraguas Sombrero Gorra para la Pesca Senderismo Acampar en la Playa Actividades al aire libre Diadema Elástico Patrón de camuflaje Sun Rain Paraguas Gorra para la pesca…\n[3] id=B07HGGTNKG | Mr. Wonderful WOA09198ES 2019 Paraguas clásico 19 cm, Multicolor | marca: Mr. Wonderful | color: Multicolor | precio: 150,31 € | existencias: 36 | características (extracto): Peso: 300 gr Medidas: 19 x 7 cm Materiales: Poliéster Cuidados: Dejar secar el paraguas antes de doblar; doblar siempre siguiendo los pliegues del paraguas; información complementaria: Incluye funda de neopreno, con 7 varillas reforzadas… | descripción: desconocido\n[4] id=B096K7N7ST | LJGYX Impermeable Mujeres Plegables Paraguas Lluvia Mujeres Sol sombrilla Anti UV pequeño Bolsillo Paraguas niños Guarda- ombrello Impermeable y Resistente al Desgaste, fácil de LIM (Color : Blue) | marca: LJGYX | color: Blue | precio: 49,59 € | existencias: 26 | características (extracto): Mujeres plegables paraguas lluvia parasol anti pequeño bolsillo paraguas niños Guarda Ombrello ¡A estrenar, alta calidad! | descripción: Mujeres plegables paraguas lluvia parasol anti pequeño bolsillo paraguas niños Guarda Ombrello ¡A estrenar, alta calidad! \"** Notas de compra ** * Debido a que es una medición manual, permita un…\n[5] id=B08CRRQ1VP | Yosoo Health Gear Sombrero de Paraguas de Manos Libres, Sombrero de Pesca de protección UV a Prueba de Agua, Paraguas Plegable Ajustable para la Pesca, jardinería de Playa, Campamento de Playa | marca: Yosoo Health Gear | color: plata | precio: 16,34 € | existencias: 29 | características (extracto): [Función]: Nuestro sombrero de sombrilla como una gran cabeza para el sol y la lluvia usa un paraguas manos libres, es una buena sombrilla para refrescarse y protegerse de los rayos UV cuando pesca o trabaja en el jardín, lleva cosas… | descripción: Características : - Construido con material de calidad confiable, resistente, antioxidante y duradero. - Diseño manos libres, se puede usar en la cabeza con una diadema ajustable. - Portátil para…",
+          "summary": "estos son ahora los CANDIDATOS, del más al menos relevante:\n[1] id=B08ZC4844X | Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a Prueba de Viento de Toldo Doble, Paraguas Compacto de 54 Pulgadas, Ventilado y a Prueba de Lluvia para Deportes, Negocios y Viajes | marca: Gonex | color: Negro con capa de tierra plateada | precio: 6,52 € | existencias: 7 | características (extracto): 10 Varillas y Toldo Doble Mejorados: con las 10 varillas de fibra de vidrio, nuestro paraguas tiene un mejor efecto a prueba de viento que otros paraguas con 8 o 9 varillas. Gracias a la estructura del techo ventilado, el viento puede… | descripción: desconocido\n[2] id=B07C1R3G3Y | Sombrero Plegable Paraguas de Sol al Aire Libre Golf Pesca Camping Sombreros Cap Cabeza Hat (1pcs). | marca: xj | color: Camuflaje | precio: 16,30 € | existencias: 42 | características (extracto): Manténgase seco y haga una declaración de moda audaz con este elegante y colorido sombrero para paraguas. Perfecto para mantener la cabeza seca en días lluviosos o para mantenerla a la sombra en días soleados Elegante y funcional. El… | descripción: Patrón de camuflaje Sun Rain Paraguas Sombrero Gorra para la Pesca Senderismo Acampar en la Playa Actividades al aire libre Diadema Elástico Patrón de camuflaje Sun Rain Paraguas Gorra para la pesca…\n[3] id=B07HGGTNKG | Mr. Wonderful WOA09198ES 2019 Paraguas clásico 19 cm, Multicolor | marca: Mr. Wonderful | color: Multicolor | precio: 150,31 € | existencias: 36 | características (extracto): Peso: 300 gr Medidas: 19 x 7 cm Materiales: Poliéster Cuidados: Dejar secar el paraguas antes de doblar; doblar siempre siguiendo los pliegues del paraguas; información complementaria: Incluye funda de neopreno, con 7 varillas reforzadas… | descripción: desconocido\n[4] id=B096K7N7ST | LJGYX Impermeable Mujeres Plegables Paraguas Lluvia Mujeres Sol sombrilla Anti UV pequeño Bolsillo Paraguas niños Guarda- ombrello Impermeable y Resistente al Desgaste, fácil de LIM (Color : Blue) | marca: LJGYX | color: Blue | precio: 49,59 € | existencias: 26 | características (extracto): Mujeres plegables paraguas lluvia parasol anti pequeño bolsillo paraguas niños Guarda Ombrello ¡A estrenar, alta calidad! | descripción: Mujeres plegables paraguas lluvia parasol anti pequeño bolsillo paraguas niños Guarda Ombrello ¡A estrenar, alta calidad! \"** Notas de compra ** * Debido a que es una medición manual, permita un…\n[5] id=B0791CNJX6 | Jooayou Paraguas Invertido de Doble Capa,Paraguas Plegable de Manos Libres Autoportante,Paraguas a Prueba de Viento Anti-UV para la Lluvia del Coche al Aire Iibre (Night Sky) | marca: Jooayou | color: Night Sky | precio: 30,33 € | existencias: 40 | características (extracto): Mango con forma de C: te da la libertad de usar el teléfono, leer un libro o incluso agarrar a tu hijo mientras usas este paraguas. El mango con forma de C te permite sujetar sin hacer fuerza, te felicitarán mucho por este mango y funciona… | descripción: - - - - - Características: Tamaño abierto: 80 cm de alto. 110 cm de ancho. Peso: 0,5 kg. Material de la tela: Tejido repelente al agua de alta densidad y doble capa. Material del esqueleto: Esqueleto…",
           "issues": []
         }
       ],
       "timings": {
         "asr": 0.0,
-        "retrieval": 0.039,
-        "llm": 7.366,
+        "retrieval": 0.038,
+        "llm": 7.806,
         "tools": 0.027,
         "tts": 0.0,
-        "total": 7.432
+        "total": 7.872
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-a557491f-13_confirmacion_con_cambio-c1",
+        "cart_id": "eval-49d0281c-13_confirmacion_con_cambio-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -71,7 +71,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-a557491f-13_confirmacion_con_cambio-c1",
+        "cart_id": "eval-49d0281c-13_confirmacion_con_cambio-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -108,11 +108,11 @@
               "stock": 26
             },
             {
-              "product_id": "B08CRRQ1VP",
-              "title": "Yosoo Health Gear Sombrero de Paraguas de Manos Libres, Sombrero de Pesca de protección UV a Prueba de Agua, Paraguas Plegable Ajustable para la Pesca, jardinería de Playa, Campamento de Playa",
-              "brand": "Yosoo Health Gear",
-              "price_cents": 1634,
-              "stock": 29
+              "product_id": "B0791CNJX6",
+              "title": "Jooayou Paraguas Invertido de Doble Capa,Paraguas Plegable de Manos Libres Autoportante,Paraguas a Prueba de Viento Anti-UV para la Lluvia del Coche al Aire Iibre (Night Sky)",
+              "brand": "Jooayou",
+              "price_cents": 3033,
+              "stock": 40
             }
           ],
           "awaiting_confirmation": false
@@ -124,6 +124,10 @@
           "inventory_changes": []
         },
         "offers": {
+          "B0791CNJX6": {
+            "price_cents": 3033,
+            "stock": 40
+          },
           "B07C1R3G3Y": {
             "price_cents": 1630,
             "stock": 42
@@ -131,10 +135,6 @@
           "B07HGGTNKG": {
             "price_cents": 15031,
             "stock": 36
-          },
-          "B08CRRQ1VP": {
-            "price_cents": 1634,
-            "stock": 29
           },
           "B08ZC4844X": {
             "price_cents": 652,
@@ -180,8 +180,8 @@
       "transcript": null,
       "expected_text": "Añade uno del primero.",
       "agent_input": "Añade uno del primero.",
-      "response": "Hecho, añadido un paraguas Gonex Negro al carrito. En el carrito hay 1 unidad de «Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a…» a 9,00 € cada una, 9,00 €. Total: 9,00 €.",
-      "spoken_text": "Hecho, añadido un paraguas Gonex Negro al carrito. En el carrito hay una unidad de Gonex Paraguas de Golf Plegable de diez a nueve euros cada una, nueve euros. Total: nueve euros.",
+      "response": "Hecho, añadida una unidad al carrito. En el carrito hay 1 unidad de «Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a…» a 9,00 € cada una, 9,00 €. Total: 9,00 €.",
+      "spoken_text": "Hecho, añadida una unidad al carrito. En el carrito hay una unidad de Gonex Paraguas de Golf Plegable de diez a nueve euros cada una, nueve euros. Total: nueve euros.",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -192,7 +192,7 @@
             "product_id": "B08ZC4844X",
             "cantidad": 1
           },
-          "reason": "añadir un paraguas Gonex Negro al carrito",
+          "reason": "añadir uno del candidato 1",
           "ok": true,
           "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B08ZC4844X | Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a… | 1 unidad × 9,00 € = 9,00 € | existencias: 20\nTotal del carrito: 9,00 €",
           "issues": []
@@ -201,17 +201,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 5.237,
-        "tools": 0.032,
+        "llm": 4.751,
+        "tools": 0.052,
         "tts": 0.0,
-        "total": 5.268
+        "total": 4.803
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-a557491f-13_confirmacion_con_cambio-c1",
+        "cart_id": "eval-49d0281c-13_confirmacion_con_cambio-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -248,11 +248,11 @@
               "stock": 26
             },
             {
-              "product_id": "B08CRRQ1VP",
-              "title": "Yosoo Health Gear Sombrero de Paraguas de Manos Libres, Sombrero de Pesca de protección UV a Prueba de Agua, Paraguas Plegable Ajustable para la Pesca, jardinería de Playa, Campamento de Playa",
-              "brand": "Yosoo Health Gear",
-              "price_cents": 1634,
-              "stock": 29
+              "product_id": "B0791CNJX6",
+              "title": "Jooayou Paraguas Invertido de Doble Capa,Paraguas Plegable de Manos Libres Autoportante,Paraguas a Prueba de Viento Anti-UV para la Lluvia del Coche al Aire Iibre (Night Sky)",
+              "brand": "Jooayou",
+              "price_cents": 3033,
+              "stock": 40
             }
           ],
           "awaiting_confirmation": false
@@ -270,6 +270,10 @@
           ]
         },
         "offers": {
+          "B0791CNJX6": {
+            "price_cents": 3033,
+            "stock": 40
+          },
           "B07C1R3G3Y": {
             "price_cents": 1630,
             "stock": 42
@@ -277,10 +281,6 @@
           "B07HGGTNKG": {
             "price_cents": 15031,
             "stock": 36
-          },
-          "B08CRRQ1VP": {
-            "price_cents": 1634,
-            "stock": 29
           },
           "B08ZC4844X": {
             "price_cents": 900,
@@ -293,7 +293,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-a557491f-13_confirmacion_con_cambio-c1",
+        "cart_id": "eval-49d0281c-13_confirmacion_con_cambio-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -330,11 +330,11 @@
               "stock": 26
             },
             {
-              "product_id": "B08CRRQ1VP",
-              "title": "Yosoo Health Gear Sombrero de Paraguas de Manos Libres, Sombrero de Pesca de protección UV a Prueba de Agua, Paraguas Plegable Ajustable para la Pesca, jardinería de Playa, Campamento de Playa",
-              "brand": "Yosoo Health Gear",
-              "price_cents": 1634,
-              "stock": 29
+              "product_id": "B0791CNJX6",
+              "title": "Jooayou Paraguas Invertido de Doble Capa,Paraguas Plegable de Manos Libres Autoportante,Paraguas a Prueba de Viento Anti-UV para la Lluvia del Coche al Aire Iibre (Night Sky)",
+              "brand": "Jooayou",
+              "price_cents": 3033,
+              "stock": 40
             }
           ],
           "awaiting_confirmation": false
@@ -344,7 +344,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-a557491f-13_confirmacion_con_cambio-c1",
+              "cart_id": "eval-49d0281c-13_confirmacion_con_cambio-c1",
               "product_id": "B08ZC4844X",
               "quantity": 1
             }
@@ -358,6 +358,10 @@
           ]
         },
         "offers": {
+          "B0791CNJX6": {
+            "price_cents": 3033,
+            "stock": 40
+          },
           "B07C1R3G3Y": {
             "price_cents": 1630,
             "stock": 42
@@ -365,10 +369,6 @@
           "B07HGGTNKG": {
             "price_cents": 15031,
             "stock": 36
-          },
-          "B08CRRQ1VP": {
-            "price_cents": 1634,
-            "stock": 29
           },
           "B08ZC4844X": {
             "price_cents": 900,
@@ -422,17 +422,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 2.103,
-        "tools": 0.039,
+        "llm": 2.195,
+        "tools": 0.041,
         "tts": 0.0,
-        "total": 2.142
+        "total": 2.235
       },
       "llm_steps": 1,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-a557491f-13_confirmacion_con_cambio-c1",
+        "cart_id": "eval-49d0281c-13_confirmacion_con_cambio-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -469,11 +469,11 @@
               "stock": 26
             },
             {
-              "product_id": "B08CRRQ1VP",
-              "title": "Yosoo Health Gear Sombrero de Paraguas de Manos Libres, Sombrero de Pesca de protección UV a Prueba de Agua, Paraguas Plegable Ajustable para la Pesca, jardinería de Playa, Campamento de Playa",
-              "brand": "Yosoo Health Gear",
-              "price_cents": 1634,
-              "stock": 29
+              "product_id": "B0791CNJX6",
+              "title": "Jooayou Paraguas Invertido de Doble Capa,Paraguas Plegable de Manos Libres Autoportante,Paraguas a Prueba de Viento Anti-UV para la Lluvia del Coche al Aire Iibre (Night Sky)",
+              "brand": "Jooayou",
+              "price_cents": 3033,
+              "stock": 40
             }
           ],
           "awaiting_confirmation": false
@@ -483,7 +483,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-a557491f-13_confirmacion_con_cambio-c1",
+              "cart_id": "eval-49d0281c-13_confirmacion_con_cambio-c1",
               "product_id": "B08ZC4844X",
               "quantity": 1
             }
@@ -497,6 +497,10 @@
           ]
         },
         "offers": {
+          "B0791CNJX6": {
+            "price_cents": 3033,
+            "stock": 40
+          },
           "B07C1R3G3Y": {
             "price_cents": 1630,
             "stock": 42
@@ -504,10 +508,6 @@
           "B07HGGTNKG": {
             "price_cents": 15031,
             "stock": 36
-          },
-          "B08CRRQ1VP": {
-            "price_cents": 1634,
-            "stock": 29
           },
           "B08ZC4844X": {
             "price_cents": 900,
@@ -520,13 +520,13 @@
         }
       },
       "after": {
-        "cart_id": "eval-a557491f-13_confirmacion_con_cambio-c1",
+        "cart_id": "eval-49d0281c-13_confirmacion_con_cambio-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "58b2101c1480400b91cdf757391e89db",
+            "quote_id": "d9712268faa9439db4400b83c9d0d299",
             "items": [
               {
                 "product_id": "B08ZC4844X",
@@ -572,11 +572,11 @@
               "stock": 26
             },
             {
-              "product_id": "B08CRRQ1VP",
-              "title": "Yosoo Health Gear Sombrero de Paraguas de Manos Libres, Sombrero de Pesca de protección UV a Prueba de Agua, Paraguas Plegable Ajustable para la Pesca, jardinería de Playa, Campamento de Playa",
-              "brand": "Yosoo Health Gear",
-              "price_cents": 1634,
-              "stock": 29
+              "product_id": "B0791CNJX6",
+              "title": "Jooayou Paraguas Invertido de Doble Capa,Paraguas Plegable de Manos Libres Autoportante,Paraguas a Prueba de Viento Anti-UV para la Lluvia del Coche al Aire Iibre (Night Sky)",
+              "brand": "Jooayou",
+              "price_cents": 3033,
+              "stock": 40
             }
           ],
           "awaiting_confirmation": true
@@ -586,7 +586,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-a557491f-13_confirmacion_con_cambio-c1",
+              "cart_id": "eval-49d0281c-13_confirmacion_con_cambio-c1",
               "product_id": "B08ZC4844X",
               "quantity": 1
             }
@@ -600,6 +600,10 @@
           ]
         },
         "offers": {
+          "B0791CNJX6": {
+            "price_cents": 3033,
+            "stock": 40
+          },
           "B07C1R3G3Y": {
             "price_cents": 1630,
             "stock": 42
@@ -607,10 +611,6 @@
           "B07HGGTNKG": {
             "price_cents": 15031,
             "stock": 36
-          },
-          "B08CRRQ1VP": {
-            "price_cents": 1634,
-            "stock": 29
           },
           "B08ZC4844X": {
             "price_cents": 900,
@@ -649,8 +649,8 @@
       "transcript": null,
       "expected_text": "Sí, pero que sean tres.",
       "agent_input": "Sí, pero que sean tres.",
-      "response": "Hecho, el carrito ahora tiene 3 unidades de paraguas Gonex Negro por 9,00 € cada uno, total 27,00 €. En el carrito hay 3 unidades de «Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a…» a 9,00 € cada una, 27,00 €. Total: 27,00 €.",
-      "spoken_text": "Hecho, el carrito ahora tiene tres unidades de paraguas Gonex Negro por nueve euros cada uno, total veintisiete euros. En el carrito hay tres unidades de Gonex Paraguas de Golf Plegable de diez a nueve euros cada una, veintisiete euros. Total: veintisiete euros.",
+      "response": "Hecho, añadidas dos unidades más. Ahora tienes 3 unidades de «Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a…» a 9,00 € cada una, 27,00 €. Total: 27,00 €. En el carrito hay 3 unidades de «Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a…» a 9,00 € cada una, 27,00 €. Total: 27,00 €.",
+      "spoken_text": "Hecho, añadidas dos unidades más. Ahora tienes tres unidades de Gonex Paraguas de Golf Plegable de diez a nueve euros cada una, veintisiete euros. Total: veintisiete euros. En el carrito hay tres unidades de Gonex Paraguas de Golf Plegable de diez a nueve euros cada una, veintisiete euros. Total: veintisiete euros.",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -670,23 +670,23 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 5.808,
-        "tools": 0.044,
+        "llm": 7.354,
+        "tools": 0.053,
         "tts": 0.0,
-        "total": 5.852
+        "total": 7.407
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-a557491f-13_confirmacion_con_cambio-c1",
+        "cart_id": "eval-49d0281c-13_confirmacion_con_cambio-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "58b2101c1480400b91cdf757391e89db",
+            "quote_id": "d9712268faa9439db4400b83c9d0d299",
             "items": [
               {
                 "product_id": "B08ZC4844X",
@@ -732,11 +732,11 @@
               "stock": 26
             },
             {
-              "product_id": "B08CRRQ1VP",
-              "title": "Yosoo Health Gear Sombrero de Paraguas de Manos Libres, Sombrero de Pesca de protección UV a Prueba de Agua, Paraguas Plegable Ajustable para la Pesca, jardinería de Playa, Campamento de Playa",
-              "brand": "Yosoo Health Gear",
-              "price_cents": 1634,
-              "stock": 29
+              "product_id": "B0791CNJX6",
+              "title": "Jooayou Paraguas Invertido de Doble Capa,Paraguas Plegable de Manos Libres Autoportante,Paraguas a Prueba de Viento Anti-UV para la Lluvia del Coche al Aire Iibre (Night Sky)",
+              "brand": "Jooayou",
+              "price_cents": 3033,
+              "stock": 40
             }
           ],
           "awaiting_confirmation": true
@@ -746,7 +746,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-a557491f-13_confirmacion_con_cambio-c1",
+              "cart_id": "eval-49d0281c-13_confirmacion_con_cambio-c1",
               "product_id": "B08ZC4844X",
               "quantity": 1
             }
@@ -760,6 +760,10 @@
           ]
         },
         "offers": {
+          "B0791CNJX6": {
+            "price_cents": 3033,
+            "stock": 40
+          },
           "B07C1R3G3Y": {
             "price_cents": 1630,
             "stock": 42
@@ -767,10 +771,6 @@
           "B07HGGTNKG": {
             "price_cents": 15031,
             "stock": 36
-          },
-          "B08CRRQ1VP": {
-            "price_cents": 1634,
-            "stock": 29
           },
           "B08ZC4844X": {
             "price_cents": 900,
@@ -783,7 +783,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-a557491f-13_confirmacion_con_cambio-c1",
+        "cart_id": "eval-49d0281c-13_confirmacion_con_cambio-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -820,11 +820,11 @@
               "stock": 26
             },
             {
-              "product_id": "B08CRRQ1VP",
-              "title": "Yosoo Health Gear Sombrero de Paraguas de Manos Libres, Sombrero de Pesca de protección UV a Prueba de Agua, Paraguas Plegable Ajustable para la Pesca, jardinería de Playa, Campamento de Playa",
-              "brand": "Yosoo Health Gear",
-              "price_cents": 1634,
-              "stock": 29
+              "product_id": "B0791CNJX6",
+              "title": "Jooayou Paraguas Invertido de Doble Capa,Paraguas Plegable de Manos Libres Autoportante,Paraguas a Prueba de Viento Anti-UV para la Lluvia del Coche al Aire Iibre (Night Sky)",
+              "brand": "Jooayou",
+              "price_cents": 3033,
+              "stock": 40
             }
           ],
           "awaiting_confirmation": false
@@ -834,7 +834,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-a557491f-13_confirmacion_con_cambio-c1",
+              "cart_id": "eval-49d0281c-13_confirmacion_con_cambio-c1",
               "product_id": "B08ZC4844X",
               "quantity": 3
             }
@@ -848,6 +848,10 @@
           ]
         },
         "offers": {
+          "B0791CNJX6": {
+            "price_cents": 3033,
+            "stock": 40
+          },
           "B07C1R3G3Y": {
             "price_cents": 1630,
             "stock": 42
@@ -855,10 +859,6 @@
           "B07HGGTNKG": {
             "price_cents": 15031,
             "stock": 36
-          },
-          "B08CRRQ1VP": {
-            "price_cents": 1634,
-            "stock": 29
           },
           "B08ZC4844X": {
             "price_cents": 900,
@@ -911,7 +911,7 @@
         {
           "tool": "cotizar",
           "args": {},
-          "reason": "confirmar el pedido",
+          "reason": "cotizar el pedido",
           "ok": true,
           "summary": "cotización creada; falta la confirmación del usuario.",
           "issues": []
@@ -920,17 +920,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 2.12,
-        "tools": 0.041,
+        "llm": 2.232,
+        "tools": 0.04,
         "tts": 0.0,
-        "total": 2.161
+        "total": 2.272
       },
       "llm_steps": 1,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-a557491f-13_confirmacion_con_cambio-c1",
+        "cart_id": "eval-49d0281c-13_confirmacion_con_cambio-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -967,11 +967,11 @@
               "stock": 26
             },
             {
-              "product_id": "B08CRRQ1VP",
-              "title": "Yosoo Health Gear Sombrero de Paraguas de Manos Libres, Sombrero de Pesca de protección UV a Prueba de Agua, Paraguas Plegable Ajustable para la Pesca, jardinería de Playa, Campamento de Playa",
-              "brand": "Yosoo Health Gear",
-              "price_cents": 1634,
-              "stock": 29
+              "product_id": "B0791CNJX6",
+              "title": "Jooayou Paraguas Invertido de Doble Capa,Paraguas Plegable de Manos Libres Autoportante,Paraguas a Prueba de Viento Anti-UV para la Lluvia del Coche al Aire Iibre (Night Sky)",
+              "brand": "Jooayou",
+              "price_cents": 3033,
+              "stock": 40
             }
           ],
           "awaiting_confirmation": false
@@ -981,7 +981,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-a557491f-13_confirmacion_con_cambio-c1",
+              "cart_id": "eval-49d0281c-13_confirmacion_con_cambio-c1",
               "product_id": "B08ZC4844X",
               "quantity": 3
             }
@@ -995,6 +995,10 @@
           ]
         },
         "offers": {
+          "B0791CNJX6": {
+            "price_cents": 3033,
+            "stock": 40
+          },
           "B07C1R3G3Y": {
             "price_cents": 1630,
             "stock": 42
@@ -1002,10 +1006,6 @@
           "B07HGGTNKG": {
             "price_cents": 15031,
             "stock": 36
-          },
-          "B08CRRQ1VP": {
-            "price_cents": 1634,
-            "stock": 29
           },
           "B08ZC4844X": {
             "price_cents": 900,
@@ -1018,13 +1018,13 @@
         }
       },
       "after": {
-        "cart_id": "eval-a557491f-13_confirmacion_con_cambio-c1",
+        "cart_id": "eval-49d0281c-13_confirmacion_con_cambio-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "867b173e889d40fd9111e47913f3d281",
+            "quote_id": "86a5333706a24aedab0415b19c332950",
             "items": [
               {
                 "product_id": "B08ZC4844X",
@@ -1070,11 +1070,11 @@
               "stock": 26
             },
             {
-              "product_id": "B08CRRQ1VP",
-              "title": "Yosoo Health Gear Sombrero de Paraguas de Manos Libres, Sombrero de Pesca de protección UV a Prueba de Agua, Paraguas Plegable Ajustable para la Pesca, jardinería de Playa, Campamento de Playa",
-              "brand": "Yosoo Health Gear",
-              "price_cents": 1634,
-              "stock": 29
+              "product_id": "B0791CNJX6",
+              "title": "Jooayou Paraguas Invertido de Doble Capa,Paraguas Plegable de Manos Libres Autoportante,Paraguas a Prueba de Viento Anti-UV para la Lluvia del Coche al Aire Iibre (Night Sky)",
+              "brand": "Jooayou",
+              "price_cents": 3033,
+              "stock": 40
             }
           ],
           "awaiting_confirmation": true
@@ -1084,7 +1084,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-a557491f-13_confirmacion_con_cambio-c1",
+              "cart_id": "eval-49d0281c-13_confirmacion_con_cambio-c1",
               "product_id": "B08ZC4844X",
               "quantity": 3
             }
@@ -1098,6 +1098,10 @@
           ]
         },
         "offers": {
+          "B0791CNJX6": {
+            "price_cents": 3033,
+            "stock": 40
+          },
           "B07C1R3G3Y": {
             "price_cents": 1630,
             "stock": 42
@@ -1105,10 +1109,6 @@
           "B07HGGTNKG": {
             "price_cents": 15031,
             "stock": 36
-          },
-          "B08CRRQ1VP": {
-            "price_cents": 1634,
-            "stock": 29
           },
           "B08ZC4844X": {
             "price_cents": 900,
@@ -1156,7 +1156,7 @@
         {
           "tool": "confirmar_pedido",
           "args": {
-            "quote_id": "867b173e889d40fd9111e47913f3d281"
+            "quote_id": "86a5333706a24aedab0415b19c332950"
           },
           "reason": "el usuario confirmó la cotización",
           "ok": true,
@@ -1168,22 +1168,22 @@
         "asr": 0.0,
         "retrieval": 0.0,
         "llm": 0.0,
-        "tools": 0.029,
+        "tools": 0.034,
         "tts": 0.0,
-        "total": 0.029
+        "total": 0.034
       },
       "llm_steps": 0,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-a557491f-13_confirmacion_con_cambio-c1",
+        "cart_id": "eval-49d0281c-13_confirmacion_con_cambio-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "867b173e889d40fd9111e47913f3d281",
+            "quote_id": "86a5333706a24aedab0415b19c332950",
             "items": [
               {
                 "product_id": "B08ZC4844X",
@@ -1229,11 +1229,11 @@
               "stock": 26
             },
             {
-              "product_id": "B08CRRQ1VP",
-              "title": "Yosoo Health Gear Sombrero de Paraguas de Manos Libres, Sombrero de Pesca de protección UV a Prueba de Agua, Paraguas Plegable Ajustable para la Pesca, jardinería de Playa, Campamento de Playa",
-              "brand": "Yosoo Health Gear",
-              "price_cents": 1634,
-              "stock": 29
+              "product_id": "B0791CNJX6",
+              "title": "Jooayou Paraguas Invertido de Doble Capa,Paraguas Plegable de Manos Libres Autoportante,Paraguas a Prueba de Viento Anti-UV para la Lluvia del Coche al Aire Iibre (Night Sky)",
+              "brand": "Jooayou",
+              "price_cents": 3033,
+              "stock": 40
             }
           ],
           "awaiting_confirmation": true
@@ -1243,7 +1243,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-a557491f-13_confirmacion_con_cambio-c1",
+              "cart_id": "eval-49d0281c-13_confirmacion_con_cambio-c1",
               "product_id": "B08ZC4844X",
               "quantity": 3
             }
@@ -1257,6 +1257,10 @@
           ]
         },
         "offers": {
+          "B0791CNJX6": {
+            "price_cents": 3033,
+            "stock": 40
+          },
           "B07C1R3G3Y": {
             "price_cents": 1630,
             "stock": 42
@@ -1264,10 +1268,6 @@
           "B07HGGTNKG": {
             "price_cents": 15031,
             "stock": 36
-          },
-          "B08CRRQ1VP": {
-            "price_cents": 1634,
-            "stock": 29
           },
           "B08ZC4844X": {
             "price_cents": 900,
@@ -1280,7 +1280,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-a557491f-13_confirmacion_con_cambio-c1",
+        "cart_id": "eval-49d0281c-13_confirmacion_con_cambio-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -1288,7 +1288,7 @@
           "quote": null,
           "order": {
             "order_id": 1,
-            "quote_id": "867b173e889d40fd9111e47913f3d281",
+            "quote_id": "86a5333706a24aedab0415b19c332950",
             "items": [
               {
                 "product_id": "B08ZC4844X",
@@ -1331,11 +1331,11 @@
               "stock": 26
             },
             {
-              "product_id": "B08CRRQ1VP",
-              "title": "Yosoo Health Gear Sombrero de Paraguas de Manos Libres, Sombrero de Pesca de protección UV a Prueba de Agua, Paraguas Plegable Ajustable para la Pesca, jardinería de Playa, Campamento de Playa",
-              "brand": "Yosoo Health Gear",
-              "price_cents": 1634,
-              "stock": 29
+              "product_id": "B0791CNJX6",
+              "title": "Jooayou Paraguas Invertido de Doble Capa,Paraguas Plegable de Manos Libres Autoportante,Paraguas a Prueba de Viento Anti-UV para la Lluvia del Coche al Aire Iibre (Night Sky)",
+              "brand": "Jooayou",
+              "price_cents": 3033,
+              "stock": 40
             }
           ],
           "awaiting_confirmation": false
@@ -1344,7 +1344,7 @@
           "orders": [
             {
               "order_id": 1,
-              "quote_id": "867b173e889d40fd9111e47913f3d281",
+              "quote_id": "86a5333706a24aedab0415b19c332950",
               "total_cents": 2700
             }
           ],
@@ -1366,6 +1366,10 @@
           ]
         },
         "offers": {
+          "B0791CNJX6": {
+            "price_cents": 3033,
+            "stock": 40
+          },
           "B07C1R3G3Y": {
             "price_cents": 1630,
             "stock": 42
@@ -1373,10 +1377,6 @@
           "B07HGGTNKG": {
             "price_cents": 15031,
             "stock": 36
-          },
-          "B08CRRQ1VP": {
-            "price_cents": 1634,
-            "stock": 29
           },
           "B08ZC4844X": {
             "price_cents": 900,
@@ -1402,7 +1402,7 @@
   ],
   "final": {
     "snapshot": {
-      "cart_id": "eval-a557491f-13_confirmacion_con_cambio-c1",
+      "cart_id": "eval-49d0281c-13_confirmacion_con_cambio-c1",
       "state": {
         "budget_cents": null,
         "preferences": [],
@@ -1410,7 +1410,7 @@
         "quote": null,
         "order": {
           "order_id": 1,
-          "quote_id": "867b173e889d40fd9111e47913f3d281",
+          "quote_id": "86a5333706a24aedab0415b19c332950",
           "items": [
             {
               "product_id": "B08ZC4844X",
@@ -1453,11 +1453,11 @@
             "stock": 26
           },
           {
-            "product_id": "B08CRRQ1VP",
-            "title": "Yosoo Health Gear Sombrero de Paraguas de Manos Libres, Sombrero de Pesca de protección UV a Prueba de Agua, Paraguas Plegable Ajustable para la Pesca, jardinería de Playa, Campamento de Playa",
-            "brand": "Yosoo Health Gear",
-            "price_cents": 1634,
-            "stock": 29
+            "product_id": "B0791CNJX6",
+            "title": "Jooayou Paraguas Invertido de Doble Capa,Paraguas Plegable de Manos Libres Autoportante,Paraguas a Prueba de Viento Anti-UV para la Lluvia del Coche al Aire Iibre (Night Sky)",
+            "brand": "Jooayou",
+            "price_cents": 3033,
+            "stock": 40
           }
         ],
         "awaiting_confirmation": false
@@ -1466,7 +1466,7 @@
         "orders": [
           {
             "order_id": 1,
-            "quote_id": "867b173e889d40fd9111e47913f3d281",
+            "quote_id": "86a5333706a24aedab0415b19c332950",
             "total_cents": 2700
           }
         ],
@@ -1488,6 +1488,10 @@
         ]
       },
       "offers": {
+        "B0791CNJX6": {
+          "price_cents": 3033,
+          "stock": 40
+        },
         "B07C1R3G3Y": {
           "price_cents": 1630,
           "stock": 42
@@ -1495,10 +1499,6 @@
         "B07HGGTNKG": {
           "price_cents": 15031,
           "stock": 36
-        },
-        "B08CRRQ1VP": {
-          "price_cents": 1634,
-          "stock": 29
         },
         "B08ZC4844X": {
           "price_cents": 900,
@@ -1567,20 +1567,20 @@
         "max": 0.04
       },
       "llm": {
-        "mean": 3.77,
-        "max": 7.37
+        "mean": 4.06,
+        "max": 7.81
       },
       "tools": {
         "mean": 0.04,
-        "max": 0.04
+        "max": 0.05
       },
       "tts": {
         "mean": 0.0,
         "max": 0.0
       },
       "total": {
-        "mean": 3.81,
-        "max": 7.43
+        "mean": 4.1,
+        "max": 7.87
       }
     },
     "with_llm": {
@@ -1594,20 +1594,20 @@
         "max": 0.04
       },
       "llm": {
-        "mean": 4.53,
-        "max": 7.37
+        "mean": 4.87,
+        "max": 7.81
       },
       "tools": {
         "mean": 0.04,
-        "max": 0.04
+        "max": 0.05
       },
       "tts": {
         "mean": 0.0,
         "max": 0.0
       },
       "total": {
-        "mean": 4.57,
-        "max": 7.43
+        "mean": 4.92,
+        "max": 7.87
       }
     },
     "without_llm": {

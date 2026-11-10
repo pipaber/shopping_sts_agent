@@ -1,6 +1,6 @@
 {
-  "date": "2026-11-10T14:15:30",
-  "commit": "8711c79+cambios",
+  "date": "2026-11-10T16:45:58",
+  "commit": "5d31abf+cambios",
   "memory_backend": "postgres",
   "models": {
     "llm": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
@@ -11,16 +11,16 @@
   },
   "voice": {},
   "load": {
-    "search_seconds": 16.0,
-    "llm_seconds": 0.7,
+    "search_seconds": 149.8,
+    "llm_seconds": 0.8,
     "asr_seconds": null,
     "tts_seconds": null,
-    "total_seconds": 17.1,
+    "total_seconds": 150.9,
     "vram_mib": {
-      "search": 834,
-      "llm": 5948,
-      "asr": 5948,
-      "loaded": 5948
+      "search": 930,
+      "llm": 6044,
+      "asr": 6044,
+      "loaded": 6044
     }
   },
   "input": "texto",
@@ -42,13 +42,13 @@
       "id": "03_cambio_cantidad",
       "title": "Cambio de cantidad manteniendo las demás restricciones",
       "kind": "cambio_cantidad",
-      "passed": false
+      "passed": true
     },
     {
       "id": "04_sin_existencias",
       "title": "Producto sin existencias que requiere alternativa",
       "kind": "sin_existencias",
-      "passed": false
+      "passed": true
     },
     {
       "id": "05_correccion_transcripcion",
@@ -60,7 +60,7 @@
       "id": "06_cambio_stock_confirmacion_repetida",
       "title": "Cambio de stock entre cotización y confirmación, y confirmación repetida",
       "kind": "cambio_stock_confirmacion_repetida",
-      "passed": false
+      "passed": true
     },
     {
       "id": "07_presupuesto_excedido",
@@ -78,7 +78,7 @@
       "id": "09_producto_inexistente",
       "title": "Producto inexistente",
       "kind": "producto_inexistente",
-      "passed": false
+      "passed": true
     },
     {
       "id": "10_atributo_no_verificable",
@@ -149,14 +149,9 @@
   ],
   "summary": {
     "scenarios": 20,
-    "passed": 16,
-    "pass_rate": 0.8,
-    "failed": [
-      "03_cambio_cantidad",
-      "04_sin_existencias",
-      "06_cambio_stock_confirmacion_repetida",
-      "09_producto_inexistente"
-    ],
+    "passed": 20,
+    "pass_rate": 1.0,
+    "failed": [],
     "turns": 87,
     "violations": {
       "cantidad": 0,
@@ -174,11 +169,11 @@
         },
         "retrieval": {
           "mean": 0.01,
-          "max": 0.06
+          "max": 0.04
         },
         "llm": {
-          "mean": 4.58,
-          "max": 12.22
+          "mean": 4.19,
+          "max": 10.75
         },
         "tools": {
           "mean": 0.04,
@@ -189,23 +184,23 @@
           "max": 0.0
         },
         "total": {
-          "mean": 4.63,
-          "max": 12.24
+          "mean": 4.23,
+          "max": 10.83
         }
       },
       "with_llm": {
-        "turns": 76,
+        "turns": 73,
         "asr": {
           "mean": 0.0,
           "max": 0.0
         },
         "retrieval": {
           "mean": 0.01,
-          "max": 0.06
+          "max": 0.04
         },
         "llm": {
-          "mean": 5.24,
-          "max": 12.22
+          "mean": 4.99,
+          "max": 10.75
         },
         "tools": {
           "mean": 0.04,
@@ -216,26 +211,26 @@
           "max": 0.0
         },
         "total": {
-          "mean": 5.29,
-          "max": 12.24
+          "mean": 5.03,
+          "max": 10.83
         }
       },
       "without_llm": {
-        "turns": 11,
+        "turns": 14,
         "asr": {
           "mean": 0.0,
           "max": 0.0
         },
         "retrieval": {
           "mean": 0.01,
-          "max": 0.03
+          "max": 0.04
         },
         "llm": {
           "mean": 0.0,
           "max": 0.0
         },
         "tools": {
-          "mean": 0.02,
+          "mean": 0.03,
           "max": 0.03
         },
         "tts": {
@@ -244,7 +239,7 @@
         },
         "total": {
           "mean": 0.03,
-          "max": 0.04
+          "max": 0.06
         }
       }
     }

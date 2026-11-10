@@ -6,9 +6,9 @@
   "voice": true,
   "input": "texto",
   "audio_source": null,
-  "user_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida",
+  "user_id": "eval-9da5336e-texto-06_cambio_stock_confirmacion_repetida",
   "threads": [
-    "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1"
+    "eval-9da5336e-texto-06_cambio_stock_confirmacion_repetida-c1"
   ],
   "names": {
     "elegida": "B085CHJ9BD"
@@ -22,8 +22,8 @@
       "transcript": null,
       "expected_text": "Busco una lámpara de escritorio LED.",
       "agent_input": "Busco una lámpara de escritorio LED.",
-      "response": "Tengo la lámpara de escritorio LED SLATOR por 44,20 €, la SENXINGYAN por 36,61 €, la SOFIL por 38,74 €, la Prtukyt por 23,86 € y la HyAdierTech por 11,87 €. ¿Te interesa alguna?",
-      "spoken_text": "Tengo la lámpara de escritorio LED SLATOR por cuarenta y cuatro euros con veinte céntimos, la SENXINGYAN por treinta y seis euros con sesenta y un céntimos, la SOFIL por treinta y ocho euros con setenta y cuatro céntimos, la Prtukyt por veintitrés euros con ochenta y seis céntimos y la HyAdierTech por once euros con ochenta y siete céntimos. ¿Te interesa alguna?",
+      "response": "Tengo la lámpara de escritorio LED de SLATOR por 44,20 €, la de SENXINGYAN por 36,61 €, la de SOFIL por 38,74 €, la de Prtukyt por 23,86 € y la de HyAdierTech por 11,87 €. ¿Te interesa alguna?",
+      "spoken_text": "Tengo la lámpara de escritorio LED de SLATOR por cuarenta y cuatro euros con veinte céntimos, la de SENXINGYAN por treinta y seis euros con sesenta y un céntimos, la de SOFIL por treinta y ocho euros con setenta y cuatro céntimos, la de Prtukyt por veintitrés euros con ochenta y seis céntimos y la de HyAdierTech por once euros con ochenta y siete céntimos. ¿Te interesa alguna?",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -41,11 +41,11 @@
       ],
       "timings": {
         "asr": 0.0,
-        "retrieval": 0.032,
-        "llm": 8.137,
-        "tools": 0.026,
+        "retrieval": 0.031,
+        "llm": 7.685,
+        "tools": 0.027,
         "tts": 0.0,
-        "total": 8.195
+        "total": 7.744
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
@@ -54,7 +54,7 @@
         "lámpara de escritorio LED"
       ],
       "before": {
-        "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+        "cart_id": "eval-9da5336e-texto-06_cambio_stock_confirmacion_repetida-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -73,7 +73,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+        "cart_id": "eval-9da5336e-texto-06_cambio_stock_confirmacion_repetida-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -203,10 +203,10 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 5.679,
-        "tools": 0.046,
+        "llm": 5.44,
+        "tools": 0.053,
         "tts": 0.0,
-        "total": 5.725
+        "total": 5.493
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
@@ -215,7 +215,7 @@
         "primera"
       ],
       "before": {
-        "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+        "cart_id": "eval-9da5336e-texto-06_cambio_stock_confirmacion_repetida-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -297,7 +297,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+        "cart_id": "eval-9da5336e-texto-06_cambio_stock_confirmacion_repetida-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -348,7 +348,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+              "cart_id": "eval-9da5336e-texto-06_cambio_stock_confirmacion_repetida-c1",
               "product_id": "B085CHJ9BD",
               "quantity": 3
             }
@@ -426,17 +426,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 2.357,
-        "tools": 0.026,
+        "llm": 2.35,
+        "tools": 0.042,
         "tts": 0.0,
-        "total": 2.383
+        "total": 2.392
       },
       "llm_steps": 1,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+        "cart_id": "eval-9da5336e-texto-06_cambio_stock_confirmacion_repetida-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -487,7 +487,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+              "cart_id": "eval-9da5336e-texto-06_cambio_stock_confirmacion_repetida-c1",
               "product_id": "B085CHJ9BD",
               "quantity": 3
             }
@@ -524,13 +524,13 @@
         }
       },
       "after": {
-        "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+        "cart_id": "eval-9da5336e-texto-06_cambio_stock_confirmacion_repetida-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "148d50cd9348408bbe76d53c46e2fdc8",
+            "quote_id": "43881db3653346a5a31f4fb48fe8c746",
             "items": [
               {
                 "product_id": "B085CHJ9BD",
@@ -590,7 +590,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+              "cart_id": "eval-9da5336e-texto-06_cambio_stock_confirmacion_repetida-c1",
               "product_id": "B085CHJ9BD",
               "quantity": 3
             }
@@ -670,7 +670,7 @@
         {
           "tool": "confirmar_pedido",
           "args": {
-            "quote_id": "148d50cd9348408bbe76d53c46e2fdc8"
+            "quote_id": "43881db3653346a5a31f4fb48fe8c746"
           },
           "reason": "el usuario confirmó la cotización",
           "ok": false,
@@ -690,24 +690,24 @@
       ],
       "timings": {
         "asr": 0.0,
-        "retrieval": 0.025,
+        "retrieval": 0.022,
         "llm": 0.0,
-        "tools": 0.012,
+        "tools": 0.013,
         "tts": 0.0,
-        "total": 0.037
+        "total": 0.036
       },
       "llm_steps": 0,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+        "cart_id": "eval-9da5336e-texto-06_cambio_stock_confirmacion_repetida-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "148d50cd9348408bbe76d53c46e2fdc8",
+            "quote_id": "43881db3653346a5a31f4fb48fe8c746",
             "items": [
               {
                 "product_id": "B085CHJ9BD",
@@ -767,7 +767,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+              "cart_id": "eval-9da5336e-texto-06_cambio_stock_confirmacion_repetida-c1",
               "product_id": "B085CHJ9BD",
               "quantity": 3
             }
@@ -804,7 +804,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+        "cart_id": "eval-9da5336e-texto-06_cambio_stock_confirmacion_repetida-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -841,7 +841,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+              "cart_id": "eval-9da5336e-texto-06_cambio_stock_confirmacion_repetida-c1",
               "product_id": "B085CHJ9BD",
               "quantity": 3
             }
@@ -934,48 +934,38 @@
       "transcript": null,
       "expected_text": "Vale, déjalo en una.",
       "agent_input": "Vale, déjalo en una.",
-      "response": "Hecho, añadida una unidad. En el carrito hay 1 unidad de «Lámpara Escritorio LED, Flexo de Escritorio (Cuidado Ocular, Puerto…» a 23,23 € cada una, 23,23 €. Total: 23,23 €.",
-      "spoken_text": "Hecho, añadida una unidad. En el carrito hay una unidad de Lámpara Escritorio LED a veintitrés euros con veintitrés céntimos cada una, veintitrés euros con veintitrés céntimos. Total: veintitrés euros con veintitrés céntimos.",
+      "response": "Hecho, ahora el carrito tiene 1 unidad de «Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege…» a 15,00 €, total 15,00 €. En el carrito hay 1 unidad de «Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege…» a 15,00 € cada una, 15,00 €. Total: 15,00 €.",
+      "spoken_text": "Hecho, ahora el carrito tiene una unidad de Lámpara Escritorio LED a quince euros, total quince euros. En el carrito hay una unidad de Lámpara Escritorio LED a quince euros cada una, quince euros. Total: quince euros.",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
       "operations": [
         {
-          "tool": "quitar_del_carrito",
+          "tool": "cambiar_cantidad",
           "args": {
-            "product_id": "B085CHJ9BD"
-          },
-          "reason": "quitar la lámpara que no cumple",
-          "ok": true,
-          "summary": "hecho. Así queda el carrito.\nCARRITO: vacío",
-          "issues": []
-        },
-        {
-          "tool": "agregar_al_carrito",
-          "args": {
-            "product_id": "B07ZCY9XZ9",
+            "product_id": "B085CHJ9BD",
             "cantidad": 1
           },
-          "reason": "añadir una lámpara del primer candidato",
+          "reason": "cambiar la cantidad del producto en el carrito",
           "ok": true,
-          "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B07ZCY9XZ9 | Lámpara Escritorio LED, Flexo de Escritorio (Cuidado Ocular, Puerto… | 1 unidad × 23,23 € = 23,23 € | existencias: 16\nTotal del carrito: 23,23 €",
+          "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B085CHJ9BD | Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege… | 1 unidad × 15,00 € = 15,00 € | existencias: 1\nTotal del carrito: 15,00 €",
           "issues": []
         }
       ],
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 6.4,
-        "tools": 0.065,
+        "llm": 6.794,
+        "tools": 0.056,
         "tts": 0.0,
-        "total": 6.465
+        "total": 6.849
       },
-      "llm_steps": 3,
+      "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+        "cart_id": "eval-9da5336e-texto-06_cambio_stock_confirmacion_repetida-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -1012,7 +1002,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+              "cart_id": "eval-9da5336e-texto-06_cambio_stock_confirmacion_repetida-c1",
               "product_id": "B085CHJ9BD",
               "quantity": 3
             }
@@ -1057,7 +1047,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+        "cart_id": "eval-9da5336e-texto-06_cambio_stock_confirmacion_repetida-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -1094,8 +1084,8 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
-              "product_id": "B07ZCY9XZ9",
+              "cart_id": "eval-9da5336e-texto-06_cambio_stock_confirmacion_repetida-c1",
+              "product_id": "B085CHJ9BD",
               "quantity": 1
             }
           ],
@@ -1149,8 +1139,8 @@
               }
             ]
           },
-          "ok": false,
-          "detail": "carrito: 1 × B07ZCY9XZ9"
+          "ok": true,
+          "detail": "carrito: 1 × B085CHJ9BD"
         },
         {
           "check": "orders",
@@ -1170,8 +1160,8 @@
       "transcript": null,
       "expected_text": "Cierra el pedido.",
       "agent_input": "Cierra el pedido.",
-      "response": "Te repito el pedido antes de registrarlo: 1 unidad de «Lámpara Escritorio LED, Flexo de Escritorio (Cuidado Ocular, Puerto…» a 23,23 € cada una, 23,23 €. Total: 23,23 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
-      "spoken_text": "Te repito el pedido antes de registrarlo: una unidad de Lámpara Escritorio LED a veintitrés euros con veintitrés céntimos cada una, veintitrés euros con veintitrés céntimos. Total: veintitrés euros con veintitrés céntimos. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "response": "Te repito el pedido antes de registrarlo: 1 unidad de «Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege…» a 15,00 € cada una, 15,00 €. Total: 15,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "spoken_text": "Te repito el pedido antes de registrarlo: una unidad de Lámpara Escritorio LED a quince euros cada una, quince euros. Total: quince euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": true,
@@ -1179,7 +1169,7 @@
         {
           "tool": "cotizar",
           "args": {},
-          "reason": "cerrar el pedido",
+          "reason": "cotizar el carrito",
           "ok": true,
           "summary": "cotización creada; falta la confirmación del usuario.",
           "issues": []
@@ -1188,17 +1178,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 2.064,
-        "tools": 0.04,
+        "llm": 2.136,
+        "tools": 0.039,
         "tts": 0.0,
-        "total": 2.104
+        "total": 2.175
       },
       "llm_steps": 1,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+        "cart_id": "eval-9da5336e-texto-06_cambio_stock_confirmacion_repetida-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -1235,8 +1225,8 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
-              "product_id": "B07ZCY9XZ9",
+              "cart_id": "eval-9da5336e-texto-06_cambio_stock_confirmacion_repetida-c1",
+              "product_id": "B085CHJ9BD",
               "quantity": 1
             }
           ],
@@ -1280,26 +1270,26 @@
         }
       },
       "after": {
-        "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+        "cart_id": "eval-9da5336e-texto-06_cambio_stock_confirmacion_repetida-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "f9df5d52f5674745b5ffdb88f91fa785",
+            "quote_id": "f732377f9e7c4f45a646430561cd1bba",
             "items": [
               {
-                "product_id": "B07ZCY9XZ9",
-                "title": "Lámpara Escritorio LED, Flexo de Escritorio (Cuidado Ocular, Puerto USB, 5 Modos,10 Niveles de Brillo,Temporizador de 30/60min, Función de Memoria)",
+                "product_id": "B085CHJ9BD",
+                "title": "Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege los ojos, Lampara led Escritorio regulable con puerto de carga USB, 5 Modos, 10 Niveles de Brillo,Temporizador de 30/60min",
                 "quantity": 1,
-                "unit_price_cents": 2323,
-                "subtotal_cents": 2323,
-                "stock": 16
+                "unit_price_cents": 1500,
+                "subtotal_cents": 1500,
+                "stock": 1
               }
             ],
-            "total_cents": 2323,
+            "total_cents": 1500,
             "budget_cents": null,
-            "message": "Te repito el pedido antes de registrarlo: 1 unidad de «Lámpara Escritorio LED, Flexo de Escritorio (Cuidado Ocular, Puerto…» a 23,23 € cada una, 23,23 €. Total: 23,23 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+            "message": "Te repito el pedido antes de registrarlo: 1 unidad de «Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege…» a 15,00 € cada una, 15,00 €. Total: 15,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
           },
           "order": null,
           "candidates": [
@@ -1332,8 +1322,8 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
-              "product_id": "B07ZCY9XZ9",
+              "cart_id": "eval-9da5336e-texto-06_cambio_stock_confirmacion_repetida-c1",
+              "product_id": "B085CHJ9BD",
               "quantity": 1
             }
           ],
@@ -1403,8 +1393,8 @@
       "transcript": null,
       "expected_text": "Sí.",
       "agent_input": "Sí.",
-      "response": "Pedido número 1 registrado: 1 unidad de «Lámpara Escritorio LED, Flexo de Escritorio (Cuidado Ocular, Puerto…» a 23,23 € cada una, 23,23 €. Total: 23,23 €. Gracias por tu compra.",
-      "spoken_text": "Pedido número uno registrado: una unidad de Lámpara Escritorio LED a veintitrés euros con veintitrés céntimos cada una, veintitrés euros con veintitrés céntimos. Total: veintitrés euros con veintitrés céntimos. Gracias por tu compra.",
+      "response": "Pedido número 1 registrado: 1 unidad de «Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege…» a 15,00 € cada una, 15,00 €. Total: 15,00 €. Gracias por tu compra.",
+      "spoken_text": "Pedido número uno registrado: una unidad de Lámpara Escritorio LED a quince euros cada una, quince euros. Total: quince euros. Gracias por tu compra.",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -1412,7 +1402,7 @@
         {
           "tool": "confirmar_pedido",
           "args": {
-            "quote_id": "f9df5d52f5674745b5ffdb88f91fa785"
+            "quote_id": "f732377f9e7c4f45a646430561cd1bba"
           },
           "reason": "el usuario confirmó la cotización",
           "ok": true,
@@ -1424,35 +1414,35 @@
         "asr": 0.0,
         "retrieval": 0.0,
         "llm": 0.0,
-        "tools": 0.028,
+        "tools": 0.033,
         "tts": 0.0,
-        "total": 0.028
+        "total": 0.033
       },
       "llm_steps": 0,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+        "cart_id": "eval-9da5336e-texto-06_cambio_stock_confirmacion_repetida-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "f9df5d52f5674745b5ffdb88f91fa785",
+            "quote_id": "f732377f9e7c4f45a646430561cd1bba",
             "items": [
               {
-                "product_id": "B07ZCY9XZ9",
-                "title": "Lámpara Escritorio LED, Flexo de Escritorio (Cuidado Ocular, Puerto USB, 5 Modos,10 Niveles de Brillo,Temporizador de 30/60min, Función de Memoria)",
+                "product_id": "B085CHJ9BD",
+                "title": "Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege los ojos, Lampara led Escritorio regulable con puerto de carga USB, 5 Modos, 10 Niveles de Brillo,Temporizador de 30/60min",
                 "quantity": 1,
-                "unit_price_cents": 2323,
-                "subtotal_cents": 2323,
-                "stock": 16
+                "unit_price_cents": 1500,
+                "subtotal_cents": 1500,
+                "stock": 1
               }
             ],
-            "total_cents": 2323,
+            "total_cents": 1500,
             "budget_cents": null,
-            "message": "Te repito el pedido antes de registrarlo: 1 unidad de «Lámpara Escritorio LED, Flexo de Escritorio (Cuidado Ocular, Puerto…» a 23,23 € cada una, 23,23 €. Total: 23,23 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+            "message": "Te repito el pedido antes de registrarlo: 1 unidad de «Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege…» a 15,00 € cada una, 15,00 €. Total: 15,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
           },
           "order": null,
           "candidates": [
@@ -1485,8 +1475,8 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
-              "product_id": "B07ZCY9XZ9",
+              "cart_id": "eval-9da5336e-texto-06_cambio_stock_confirmacion_repetida-c1",
+              "product_id": "B085CHJ9BD",
               "quantity": 1
             }
           ],
@@ -1530,7 +1520,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+        "cart_id": "eval-9da5336e-texto-06_cambio_stock_confirmacion_repetida-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -1538,18 +1528,18 @@
           "quote": null,
           "order": {
             "order_id": 1,
-            "quote_id": "f9df5d52f5674745b5ffdb88f91fa785",
+            "quote_id": "f732377f9e7c4f45a646430561cd1bba",
             "items": [
               {
-                "product_id": "B07ZCY9XZ9",
-                "title": "Lámpara Escritorio LED, Flexo de Escritorio (Cuidado Ocular, Puerto USB, 5 Modos,10 Niveles de Brillo,Temporizador de 30/60min, Función de Memoria)",
+                "product_id": "B085CHJ9BD",
+                "title": "Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege los ojos, Lampara led Escritorio regulable con puerto de carga USB, 5 Modos, 10 Niveles de Brillo,Temporizador de 30/60min",
                 "quantity": 1,
-                "unit_price_cents": 2323,
-                "subtotal_cents": 2323
+                "unit_price_cents": 1500,
+                "subtotal_cents": 1500
               }
             ],
-            "total_cents": 2323,
-            "message": "Pedido número 1 registrado: 1 unidad de «Lámpara Escritorio LED, Flexo de Escritorio (Cuidado Ocular, Puerto…» a 23,23 € cada una, 23,23 €. Total: 23,23 €. Gracias por tu compra."
+            "total_cents": 1500,
+            "message": "Pedido número 1 registrado: 1 unidad de «Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege…» a 15,00 € cada una, 15,00 €. Total: 15,00 €. Gracias por tu compra."
           },
           "candidates": [
             {
@@ -1580,29 +1570,24 @@
           "orders": [
             {
               "order_id": 1,
-              "quote_id": "f9df5d52f5674745b5ffdb88f91fa785",
-              "total_cents": 2323
+              "quote_id": "f732377f9e7c4f45a646430561cd1bba",
+              "total_cents": 1500
             }
           ],
           "order_items": [
             {
               "order_id": 1,
-              "product_id": "B07ZCY9XZ9",
+              "product_id": "B085CHJ9BD",
               "quantity": 1,
-              "unit_price_cents": 2323
+              "unit_price_cents": 1500
             }
           ],
           "cart_items": [],
           "inventory_changes": [
             {
-              "product_id": "B07ZCY9XZ9",
-              "initial_stock": 16,
-              "stock": 15
-            },
-            {
               "product_id": "B085CHJ9BD",
               "initial_stock": 34,
-              "stock": 1
+              "stock": 0
             }
           ]
         },
@@ -1613,7 +1598,7 @@
           },
           "B07ZCY9XZ9": {
             "price_cents": 2323,
-            "stock": 15
+            "stock": 16
           },
           "B083QFQM98": {
             "price_cents": 3486,
@@ -1621,7 +1606,7 @@
           },
           "B085CHJ9BD": {
             "price_cents": 1500,
-            "stock": 1
+            "stock": 0
           },
           "B08GWGJR9S": {
             "price_cents": 3661,
@@ -1656,8 +1641,8 @@
       "transcript": null,
       "expected_text": "Sí.",
       "agent_input": "Sí.",
-      "response": "Ese pedido ya estaba registrado con el número 1, así que no lo he duplicado. Total: 23,23 €.",
-      "spoken_text": "Ese pedido ya estaba registrado con el número uno, así que no lo he duplicado. Total: veintitrés euros con veintitrés céntimos.",
+      "response": "Ese pedido ya estaba registrado con el número 1, así que no lo he duplicado. Total: 15,00 €.",
+      "spoken_text": "Ese pedido ya estaba registrado con el número uno, así que no lo he duplicado. Total: quince euros.",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -1665,7 +1650,7 @@
         {
           "tool": "confirmar_pedido",
           "args": {
-            "quote_id": "f9df5d52f5674745b5ffdb88f91fa785"
+            "quote_id": "f732377f9e7c4f45a646430561cd1bba"
           },
           "reason": "el usuario confirmó la cotización",
           "ok": true,
@@ -1677,16 +1662,16 @@
         "asr": 0.0,
         "retrieval": 0.0,
         "llm": 0.0,
-        "tools": 0.02,
+        "tools": 0.027,
         "tts": 0.0,
-        "total": 0.02
+        "total": 0.027
       },
       "llm_steps": 0,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+        "cart_id": "eval-9da5336e-texto-06_cambio_stock_confirmacion_repetida-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -1694,18 +1679,18 @@
           "quote": null,
           "order": {
             "order_id": 1,
-            "quote_id": "f9df5d52f5674745b5ffdb88f91fa785",
+            "quote_id": "f732377f9e7c4f45a646430561cd1bba",
             "items": [
               {
-                "product_id": "B07ZCY9XZ9",
-                "title": "Lámpara Escritorio LED, Flexo de Escritorio (Cuidado Ocular, Puerto USB, 5 Modos,10 Niveles de Brillo,Temporizador de 30/60min, Función de Memoria)",
+                "product_id": "B085CHJ9BD",
+                "title": "Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege los ojos, Lampara led Escritorio regulable con puerto de carga USB, 5 Modos, 10 Niveles de Brillo,Temporizador de 30/60min",
                 "quantity": 1,
-                "unit_price_cents": 2323,
-                "subtotal_cents": 2323
+                "unit_price_cents": 1500,
+                "subtotal_cents": 1500
               }
             ],
-            "total_cents": 2323,
-            "message": "Pedido número 1 registrado: 1 unidad de «Lámpara Escritorio LED, Flexo de Escritorio (Cuidado Ocular, Puerto…» a 23,23 € cada una, 23,23 €. Total: 23,23 €. Gracias por tu compra."
+            "total_cents": 1500,
+            "message": "Pedido número 1 registrado: 1 unidad de «Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege…» a 15,00 € cada una, 15,00 €. Total: 15,00 €. Gracias por tu compra."
           },
           "candidates": [
             {
@@ -1736,29 +1721,24 @@
           "orders": [
             {
               "order_id": 1,
-              "quote_id": "f9df5d52f5674745b5ffdb88f91fa785",
-              "total_cents": 2323
+              "quote_id": "f732377f9e7c4f45a646430561cd1bba",
+              "total_cents": 1500
             }
           ],
           "order_items": [
             {
               "order_id": 1,
-              "product_id": "B07ZCY9XZ9",
+              "product_id": "B085CHJ9BD",
               "quantity": 1,
-              "unit_price_cents": 2323
+              "unit_price_cents": 1500
             }
           ],
           "cart_items": [],
           "inventory_changes": [
             {
-              "product_id": "B07ZCY9XZ9",
-              "initial_stock": 16,
-              "stock": 15
-            },
-            {
               "product_id": "B085CHJ9BD",
               "initial_stock": 34,
-              "stock": 1
+              "stock": 0
             }
           ]
         },
@@ -1769,7 +1749,7 @@
           },
           "B07ZCY9XZ9": {
             "price_cents": 2323,
-            "stock": 15
+            "stock": 16
           },
           "B083QFQM98": {
             "price_cents": 3486,
@@ -1777,7 +1757,7 @@
           },
           "B085CHJ9BD": {
             "price_cents": 1500,
-            "stock": 1
+            "stock": 0
           },
           "B08GWGJR9S": {
             "price_cents": 3661,
@@ -1794,7 +1774,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+        "cart_id": "eval-9da5336e-texto-06_cambio_stock_confirmacion_repetida-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -1802,18 +1782,18 @@
           "quote": null,
           "order": {
             "order_id": 1,
-            "quote_id": "f9df5d52f5674745b5ffdb88f91fa785",
+            "quote_id": "f732377f9e7c4f45a646430561cd1bba",
             "items": [
               {
-                "product_id": "B07ZCY9XZ9",
-                "title": "Lámpara Escritorio LED, Flexo de Escritorio (Cuidado Ocular, Puerto USB, 5 Modos,10 Niveles de Brillo,Temporizador de 30/60min, Función de Memoria)",
+                "product_id": "B085CHJ9BD",
+                "title": "Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege los ojos, Lampara led Escritorio regulable con puerto de carga USB, 5 Modos, 10 Niveles de Brillo,Temporizador de 30/60min",
                 "quantity": 1,
-                "unit_price_cents": 2323,
-                "subtotal_cents": 2323
+                "unit_price_cents": 1500,
+                "subtotal_cents": 1500
               }
             ],
-            "total_cents": 2323,
-            "message": "Ese pedido ya estaba registrado con el número 1, así que no lo he duplicado. Total: 23,23 €."
+            "total_cents": 1500,
+            "message": "Ese pedido ya estaba registrado con el número 1, así que no lo he duplicado. Total: 15,00 €."
           },
           "candidates": [
             {
@@ -1821,7 +1801,7 @@
               "title": "Lámpara Escritorio LED, Flexo de Escritorio (Cuidado Ocular, Puerto USB, 5 Modos,10 Niveles de Brillo,Temporizador de 30/60min, Función de Memoria)",
               "brand": "SLATOR",
               "price_cents": 2323,
-              "stock": 15
+              "stock": 16
             },
             {
               "product_id": "B083QFQM98",
@@ -1844,29 +1824,24 @@
           "orders": [
             {
               "order_id": 1,
-              "quote_id": "f9df5d52f5674745b5ffdb88f91fa785",
-              "total_cents": 2323
+              "quote_id": "f732377f9e7c4f45a646430561cd1bba",
+              "total_cents": 1500
             }
           ],
           "order_items": [
             {
               "order_id": 1,
-              "product_id": "B07ZCY9XZ9",
+              "product_id": "B085CHJ9BD",
               "quantity": 1,
-              "unit_price_cents": 2323
+              "unit_price_cents": 1500
             }
           ],
           "cart_items": [],
           "inventory_changes": [
             {
-              "product_id": "B07ZCY9XZ9",
-              "initial_stock": 16,
-              "stock": 15
-            },
-            {
               "product_id": "B085CHJ9BD",
               "initial_stock": 34,
-              "stock": 1
+              "stock": 0
             }
           ]
         },
@@ -1877,7 +1852,7 @@
           },
           "B07ZCY9XZ9": {
             "price_cents": 2323,
-            "stock": 15
+            "stock": 16
           },
           "B083QFQM98": {
             "price_cents": 3486,
@@ -1885,7 +1860,7 @@
           },
           "B085CHJ9BD": {
             "price_cents": 1500,
-            "stock": 1
+            "stock": 0
           },
           "B08GWGJR9S": {
             "price_cents": 3661,
@@ -1915,7 +1890,7 @@
   ],
   "final": {
     "snapshot": {
-      "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+      "cart_id": "eval-9da5336e-texto-06_cambio_stock_confirmacion_repetida-c1",
       "state": {
         "budget_cents": null,
         "preferences": [],
@@ -1923,18 +1898,18 @@
         "quote": null,
         "order": {
           "order_id": 1,
-          "quote_id": "f9df5d52f5674745b5ffdb88f91fa785",
+          "quote_id": "f732377f9e7c4f45a646430561cd1bba",
           "items": [
             {
-              "product_id": "B07ZCY9XZ9",
-              "title": "Lámpara Escritorio LED, Flexo de Escritorio (Cuidado Ocular, Puerto USB, 5 Modos,10 Niveles de Brillo,Temporizador de 30/60min, Función de Memoria)",
+              "product_id": "B085CHJ9BD",
+              "title": "Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege los ojos, Lampara led Escritorio regulable con puerto de carga USB, 5 Modos, 10 Niveles de Brillo,Temporizador de 30/60min",
               "quantity": 1,
-              "unit_price_cents": 2323,
-              "subtotal_cents": 2323
+              "unit_price_cents": 1500,
+              "subtotal_cents": 1500
             }
           ],
-          "total_cents": 2323,
-          "message": "Ese pedido ya estaba registrado con el número 1, así que no lo he duplicado. Total: 23,23 €."
+          "total_cents": 1500,
+          "message": "Ese pedido ya estaba registrado con el número 1, así que no lo he duplicado. Total: 15,00 €."
         },
         "candidates": [
           {
@@ -1942,7 +1917,7 @@
             "title": "Lámpara Escritorio LED, Flexo de Escritorio (Cuidado Ocular, Puerto USB, 5 Modos,10 Niveles de Brillo,Temporizador de 30/60min, Función de Memoria)",
             "brand": "SLATOR",
             "price_cents": 2323,
-            "stock": 15
+            "stock": 16
           },
           {
             "product_id": "B083QFQM98",
@@ -1965,29 +1940,24 @@
         "orders": [
           {
             "order_id": 1,
-            "quote_id": "f9df5d52f5674745b5ffdb88f91fa785",
-            "total_cents": 2323
+            "quote_id": "f732377f9e7c4f45a646430561cd1bba",
+            "total_cents": 1500
           }
         ],
         "order_items": [
           {
             "order_id": 1,
-            "product_id": "B07ZCY9XZ9",
+            "product_id": "B085CHJ9BD",
             "quantity": 1,
-            "unit_price_cents": 2323
+            "unit_price_cents": 1500
           }
         ],
         "cart_items": [],
         "inventory_changes": [
           {
-            "product_id": "B07ZCY9XZ9",
-            "initial_stock": 16,
-            "stock": 15
-          },
-          {
             "product_id": "B085CHJ9BD",
             "initial_stock": 34,
-            "stock": 1
+            "stock": 0
           }
         ]
       },
@@ -1998,7 +1968,7 @@
         },
         "B07ZCY9XZ9": {
           "price_cents": 2323,
-          "stock": 15
+          "stock": 16
         },
         "B083QFQM98": {
           "price_cents": 3486,
@@ -2006,7 +1976,7 @@
         },
         "B085CHJ9BD": {
           "price_cents": 1500,
-          "stock": 1
+          "stock": 0
         },
         "B08GWGJR9S": {
           "price_cents": 3661,
@@ -2042,8 +2012,8 @@
           ],
           "total_cents": 1500
         },
-        "ok": false,
-        "detail": "pedido 1: 1 × B07ZCY9XZ9; total 2323 céntimos"
+        "ok": true,
+        "detail": "pedido 1: 1 × B085CHJ9BD; total 1500 céntimos"
       },
       {
         "check": "stock",
@@ -2051,8 +2021,8 @@
           "product": "@elegida",
           "equals": 0
         },
-        "ok": false,
-        "detail": "existencias de B085CHJ9BD: 1"
+        "ok": true,
+        "detail": "existencias de B085CHJ9BD: 0"
       },
       {
         "check": "cart",
@@ -2066,7 +2036,7 @@
   },
   "violations": [],
   "problems": [],
-  "passed": false,
+  "passed": true,
   "timings": {
     "all": {
       "turns": 8,
@@ -2079,20 +2049,20 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 3.08,
-        "max": 8.14
+        "mean": 3.05,
+        "max": 7.68
       },
       "tools": {
-        "mean": 0.03,
-        "max": 0.07
+        "mean": 0.04,
+        "max": 0.06
       },
       "tts": {
         "mean": 0.0,
         "max": 0.0
       },
       "total": {
-        "mean": 3.12,
-        "max": 8.2
+        "mean": 3.09,
+        "max": 7.74
       }
     },
     "with_llm": {
@@ -2106,20 +2076,20 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 4.93,
-        "max": 8.14
+        "mean": 4.88,
+        "max": 7.68
       },
       "tools": {
         "mean": 0.04,
-        "max": 0.07
+        "max": 0.06
       },
       "tts": {
         "mean": 0.0,
         "max": 0.0
       },
       "total": {
-        "mean": 4.97,
-        "max": 8.2
+        "mean": 4.93,
+        "max": 7.74
       }
     },
     "without_llm": {
@@ -2130,7 +2100,7 @@
       },
       "retrieval": {
         "mean": 0.01,
-        "max": 0.03
+        "max": 0.02
       },
       "llm": {
         "mean": 0.0,

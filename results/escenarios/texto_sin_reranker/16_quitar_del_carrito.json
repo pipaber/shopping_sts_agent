@@ -6,9 +6,9 @@
   "voice": false,
   "input": "texto",
   "audio_source": null,
-  "user_id": "eval-c2e8c796-16_quitar_del_carrito",
+  "user_id": "eval-3e6f9559-16_quitar_del_carrito",
   "threads": [
-    "eval-c2e8c796-16_quitar_del_carrito-c1"
+    "eval-3e6f9559-16_quitar_del_carrito-c1"
   ],
   "names": {
     "primero": "B07XD94VGX",
@@ -42,18 +42,18 @@
       ],
       "timings": {
         "asr": 0.0,
-        "retrieval": 0.03,
-        "llm": 6.954,
+        "retrieval": 0.028,
+        "llm": 6.97,
         "tools": 0.016,
         "tts": 0.0,
-        "total": 7.0
+        "total": 7.014
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-c2e8c796-16_quitar_del_carrito-c1",
+        "cart_id": "eval-3e6f9559-16_quitar_del_carrito-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -72,7 +72,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-c2e8c796-16_quitar_del_carrito-c1",
+        "cart_id": "eval-3e6f9559-16_quitar_del_carrito-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -208,7 +208,7 @@
             "product_id": "B07XD94VGX",
             "cantidad": 1
           },
-          "reason": "añadir uno del candidato 1",
+          "reason": "añadir uno del primero",
           "ok": true,
           "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B07XD94VGX | Teclado y Raton Inalambrico Español, TedGem 2.4G Teclado Inalambrico… | 1 unidad × 15,00 € = 15,00 € | existencias: 20\nTotal del carrito: 15,00 €",
           "issues": []
@@ -219,7 +219,7 @@
             "product_id": "B09DBFG8W3",
             "cantidad": 1
           },
-          "reason": "añadir uno del candidato 2",
+          "reason": "añadir uno del segundo",
           "ok": true,
           "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B07XD94VGX | Teclado y Raton Inalambrico Español, TedGem 2.4G Teclado Inalambrico… | 1 unidad × 15,00 € = 15,00 € | existencias: 20\n- id=B09DBFG8W3 | Mimei Teclado silencioso inalámbrico, Teclado de conexión Estable y… | 1 unidad × 18,00 € = 18,00 € | existencias: 20\nTotal del carrito: 33,00 €",
           "issues": []
@@ -228,17 +228,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 6.808,
-        "tools": 0.062,
+        "llm": 6.632,
+        "tools": 0.065,
         "tts": 0.0,
-        "total": 6.871
+        "total": 6.697
       },
       "llm_steps": 3,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-c2e8c796-16_quitar_del_carrito-c1",
+        "cart_id": "eval-3e6f9559-16_quitar_del_carrito-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -325,7 +325,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-c2e8c796-16_quitar_del_carrito-c1",
+        "cart_id": "eval-3e6f9559-16_quitar_del_carrito-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -376,12 +376,12 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-c2e8c796-16_quitar_del_carrito-c1",
+              "cart_id": "eval-3e6f9559-16_quitar_del_carrito-c1",
               "product_id": "B07XD94VGX",
               "quantity": 1
             },
             {
-              "cart_id": "eval-c2e8c796-16_quitar_del_carrito-c1",
+              "cart_id": "eval-3e6f9559-16_quitar_del_carrito-c1",
               "product_id": "B09DBFG8W3",
               "quantity": 1
             }
@@ -450,8 +450,8 @@
       "transcript": null,
       "expected_text": "Quita el primero.",
       "agent_input": "Quita el primero.",
-      "response": "Hecho, el carrito ahora contiene solo el teclado inalámbrico Mimei por 18,00 €. En el carrito hay 1 unidad de «Mimei Teclado silencioso inalámbrico, Teclado de conexión Estable y…» a 18,00 € cada una, 18,00 €. Total: 18,00 €.",
-      "spoken_text": "Hecho, el carrito ahora contiene solo el teclado inalámbrico Mimei por dieciocho euros. En el carrito hay una unidad de Mimei Teclado silencioso inalámbrico a dieciocho euros cada una, dieciocho euros. Total: dieciocho euros.",
+      "response": "Hecho, quitado el primero. Ahora el carrito tiene solo el teclado inalámbrico Mimei por 18,00 €. En el carrito hay 1 unidad de «Mimei Teclado silencioso inalámbrico, Teclado de conexión Estable y…» a 18,00 € cada una, 18,00 €. Total: 18,00 €.",
+      "spoken_text": "Hecho, quitado el primero. Ahora el carrito tiene solo el teclado inalámbrico Mimei por dieciocho euros. En el carrito hay una unidad de Mimei Teclado silencioso inalámbrico a dieciocho euros cada una, dieciocho euros. Total: dieciocho euros.",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -461,7 +461,7 @@
           "args": {
             "product_id": "B07XD94VGX"
           },
-          "reason": "quitar el primer producto del carrito",
+          "reason": "quitar el primero del carrito",
           "ok": true,
           "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B09DBFG8W3 | Mimei Teclado silencioso inalámbrico, Teclado de conexión Estable y… | 1 unidad × 18,00 € = 18,00 € | existencias: 20\nTotal del carrito: 18,00 €",
           "issues": []
@@ -470,17 +470,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 5.624,
-        "tools": 0.05,
+        "llm": 5.84,
+        "tools": 0.054,
         "tts": 0.0,
-        "total": 5.675
+        "total": 5.893
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-c2e8c796-16_quitar_del_carrito-c1",
+        "cart_id": "eval-3e6f9559-16_quitar_del_carrito-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -531,12 +531,12 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-c2e8c796-16_quitar_del_carrito-c1",
+              "cart_id": "eval-3e6f9559-16_quitar_del_carrito-c1",
               "product_id": "B07XD94VGX",
               "quantity": 1
             },
             {
-              "cart_id": "eval-c2e8c796-16_quitar_del_carrito-c1",
+              "cart_id": "eval-3e6f9559-16_quitar_del_carrito-c1",
               "product_id": "B09DBFG8W3",
               "quantity": 1
             }
@@ -578,7 +578,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-c2e8c796-16_quitar_del_carrito-c1",
+        "cart_id": "eval-3e6f9559-16_quitar_del_carrito-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -629,7 +629,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-c2e8c796-16_quitar_del_carrito-c1",
+              "cart_id": "eval-3e6f9559-16_quitar_del_carrito-c1",
               "product_id": "B09DBFG8W3",
               "quantity": 1
             }
@@ -712,17 +712,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 2.221,
-        "tools": 0.036,
+        "llm": 2.263,
+        "tools": 0.027,
         "tts": 0.0,
-        "total": 2.257
+        "total": 2.289
       },
       "llm_steps": 1,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-c2e8c796-16_quitar_del_carrito-c1",
+        "cart_id": "eval-3e6f9559-16_quitar_del_carrito-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -773,7 +773,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-c2e8c796-16_quitar_del_carrito-c1",
+              "cart_id": "eval-3e6f9559-16_quitar_del_carrito-c1",
               "product_id": "B09DBFG8W3",
               "quantity": 1
             }
@@ -815,13 +815,13 @@
         }
       },
       "after": {
-        "cart_id": "eval-c2e8c796-16_quitar_del_carrito-c1",
+        "cart_id": "eval-3e6f9559-16_quitar_del_carrito-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "f9b66aa2dea64082b0d3fbec7d1725ba",
+            "quote_id": "615a7dfc59564b6cac02ff22e4746d32",
             "items": [
               {
                 "product_id": "B09DBFG8W3",
@@ -881,7 +881,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-c2e8c796-16_quitar_del_carrito-c1",
+              "cart_id": "eval-3e6f9559-16_quitar_del_carrito-c1",
               "product_id": "B09DBFG8W3",
               "quantity": 1
             }
@@ -958,7 +958,7 @@
         {
           "tool": "confirmar_pedido",
           "args": {
-            "quote_id": "f9b66aa2dea64082b0d3fbec7d1725ba"
+            "quote_id": "615a7dfc59564b6cac02ff22e4746d32"
           },
           "reason": "el usuario confirmó la cotización",
           "ok": true,
@@ -970,22 +970,22 @@
         "asr": 0.0,
         "retrieval": 0.0,
         "llm": 0.0,
-        "tools": 0.025,
+        "tools": 0.028,
         "tts": 0.0,
-        "total": 0.025
+        "total": 0.028
       },
       "llm_steps": 0,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-c2e8c796-16_quitar_del_carrito-c1",
+        "cart_id": "eval-3e6f9559-16_quitar_del_carrito-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "f9b66aa2dea64082b0d3fbec7d1725ba",
+            "quote_id": "615a7dfc59564b6cac02ff22e4746d32",
             "items": [
               {
                 "product_id": "B09DBFG8W3",
@@ -1045,7 +1045,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-c2e8c796-16_quitar_del_carrito-c1",
+              "cart_id": "eval-3e6f9559-16_quitar_del_carrito-c1",
               "product_id": "B09DBFG8W3",
               "quantity": 1
             }
@@ -1087,7 +1087,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-c2e8c796-16_quitar_del_carrito-c1",
+        "cart_id": "eval-3e6f9559-16_quitar_del_carrito-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -1095,7 +1095,7 @@
           "quote": null,
           "order": {
             "order_id": 1,
-            "quote_id": "f9b66aa2dea64082b0d3fbec7d1725ba",
+            "quote_id": "615a7dfc59564b6cac02ff22e4746d32",
             "items": [
               {
                 "product_id": "B09DBFG8W3",
@@ -1151,7 +1151,7 @@
           "orders": [
             {
               "order_id": 1,
-              "quote_id": "f9b66aa2dea64082b0d3fbec7d1725ba",
+              "quote_id": "615a7dfc59564b6cac02ff22e4746d32",
               "total_cents": 1800
             }
           ],
@@ -1214,7 +1214,7 @@
   ],
   "final": {
     "snapshot": {
-      "cart_id": "eval-c2e8c796-16_quitar_del_carrito-c1",
+      "cart_id": "eval-3e6f9559-16_quitar_del_carrito-c1",
       "state": {
         "budget_cents": null,
         "preferences": [],
@@ -1222,7 +1222,7 @@
         "quote": null,
         "order": {
           "order_id": 1,
-          "quote_id": "f9b66aa2dea64082b0d3fbec7d1725ba",
+          "quote_id": "615a7dfc59564b6cac02ff22e4746d32",
           "items": [
             {
               "product_id": "B09DBFG8W3",
@@ -1278,7 +1278,7 @@
         "orders": [
           {
             "order_id": 1,
-            "quote_id": "f9b66aa2dea64082b0d3fbec7d1725ba",
+            "quote_id": "615a7dfc59564b6cac02ff22e4746d32",
             "total_cents": 1800
           }
         ],
@@ -1393,20 +1393,20 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 4.32,
-        "max": 6.95
+        "mean": 4.34,
+        "max": 6.97
       },
       "tools": {
         "mean": 0.04,
-        "max": 0.06
+        "max": 0.07
       },
       "tts": {
         "mean": 0.0,
         "max": 0.0
       },
       "total": {
-        "mean": 4.37,
-        "max": 7.0
+        "mean": 4.38,
+        "max": 7.01
       }
     },
     "with_llm": {
@@ -1420,20 +1420,20 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 5.4,
-        "max": 6.95
+        "mean": 5.43,
+        "max": 6.97
       },
       "tools": {
         "mean": 0.04,
-        "max": 0.06
+        "max": 0.07
       },
       "tts": {
         "mean": 0.0,
         "max": 0.0
       },
       "total": {
-        "mean": 5.45,
-        "max": 7.0
+        "mean": 5.47,
+        "max": 7.01
       }
     },
     "without_llm": {

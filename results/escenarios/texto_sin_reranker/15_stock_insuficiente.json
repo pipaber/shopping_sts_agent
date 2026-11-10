@@ -6,9 +6,9 @@
   "voice": false,
   "input": "texto",
   "audio_source": null,
-  "user_id": "eval-c2e8c796-15_stock_insuficiente",
+  "user_id": "eval-3e6f9559-15_stock_insuficiente",
   "threads": [
-    "eval-c2e8c796-15_stock_insuficiente-c1"
+    "eval-3e6f9559-15_stock_insuficiente-c1"
   ],
   "names": {
     "elegida": "B096M7FCYF"
@@ -22,8 +22,8 @@
       "transcript": null,
       "expected_text": "Busco una linterna LED.",
       "agent_input": "Busco una linterna LED.",
-      "response": "Tengo la linterna LED de HCTAW por 22,83 euros, la de LUMPY por 34,33 euros, la de EVERSEE por 18,59 euros, la de GS1 por 9,84 euros y la de MORPILOT por 23,58 euros. ¿Te interesa alguna?",
-      "spoken_text": "Tengo la linterna LED de HCTAW por veintidós euros con ochenta y tres céntimos, la de LUMPY por treinta y cuatro euros con treinta y tres céntimos, la de EVERSEE por dieciocho euros con cincuenta y nueve céntimos, la de GS1 por nueve euros con ochenta y cuatro céntimos y la de MORPILOT por veintitrés euros con cincuenta y ocho céntimos. ¿Te interesa alguna?",
+      "response": "Tengo la linterna LED recargable de HCTAW por 22,83 €, la de Lumphury en rojo por 34,33 €, la de Eversee en negro por 18,59 €, la de GS1 por 9,84 € y la de Morpilot 2 en 1 por 23,58 €. ¿Te interesa alguna?",
+      "spoken_text": "Tengo la linterna LED recargable de HCTAW por veintidós euros con ochenta y tres céntimos, la de Lumphury en rojo por treinta y cuatro euros con treinta y tres céntimos, la de Eversee en negro por dieciocho euros con cincuenta y nueve céntimos, la de GS1 por nueve euros con ochenta y cuatro céntimos y la de Morpilot dos en uno por veintitrés euros con cincuenta y ocho céntimos. ¿Te interesa alguna?",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -41,18 +41,18 @@
       ],
       "timings": {
         "asr": 0.0,
-        "retrieval": 0.03,
-        "llm": 6.776,
-        "tools": 0.028,
+        "retrieval": 0.029,
+        "llm": 7.267,
+        "tools": 0.027,
         "tts": 0.0,
-        "total": 6.834
+        "total": 7.323
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-c2e8c796-15_stock_insuficiente-c1",
+        "cart_id": "eval-3e6f9559-15_stock_insuficiente-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -71,7 +71,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-c2e8c796-15_stock_insuficiente-c1",
+        "cart_id": "eval-3e6f9559-15_stock_insuficiente-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -180,8 +180,8 @@
       "transcript": null,
       "expected_text": "Añade cinco de la primera.",
       "agent_input": "Añade cinco de la primera.",
-      "response": "Lo siento, solo quedan 3 unidades de esa linterna. ¿Te interesa alguna otra?",
-      "spoken_text": "Lo siento, solo quedan tres unidades de esa linterna. ¿Te interesa alguna otra?",
+      "response": "Lo siento, solo quedan 3 unidades de esa linterna. ¿Te interesa 3 unidades o prefieres otro producto?",
+      "spoken_text": "Lo siento, solo quedan tres unidades de esa linterna. ¿Te interesa tres unidades o prefieres otro producto?",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -192,7 +192,7 @@
             "product_id": "B096M7FCYF",
             "cantidad": 5
           },
-          "reason": "añadir cinco unidades del candidato 1",
+          "reason": "añadir unidades del candidato 1",
           "ok": false,
           "summary": "[stock_insuficiente] Solo quedan 3 unidades del producto B096M7FCYF y se pidieron 5.",
           "issues": [
@@ -211,17 +211,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 5.244,
+        "llm": 5.679,
         "tools": 0.031,
         "tts": 0.0,
-        "total": 5.275
+        "total": 5.709
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-c2e8c796-15_stock_insuficiente-c1",
+        "cart_id": "eval-3e6f9559-15_stock_insuficiente-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -303,7 +303,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-c2e8c796-15_stock_insuficiente-c1",
+        "cart_id": "eval-3e6f9559-15_stock_insuficiente-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -411,7 +411,7 @@
       "transcript": null,
       "expected_text": "Pues ponme las tres que quedan.",
       "agent_input": "Pues ponme las tres que quedan.",
-      "response": "Hecho, añadidas tres unidades. El total es 21,00 euros. En el carrito hay 3 unidades de «Linterna led recargable, 4 modos de luz, carga solar, IPX4 resistente…» a 7,00 € cada una, 21,00 €. Total: 21,00 €.",
+      "response": "Hecho, añadidas tres unidades. El total es 21,00 €. En el carrito hay 3 unidades de «Linterna led recargable, 4 modos de luz, carga solar, IPX4 resistente…» a 7,00 € cada una, 21,00 €. Total: 21,00 €.",
       "spoken_text": "Hecho, añadidas tres unidades. El total es veintiún euros. En el carrito hay tres unidades de Linterna led recargable a siete euros cada una, veintiún euros. Total: veintiún euros.",
       "output_audio": null,
       "output_seconds": null,
@@ -423,7 +423,7 @@
             "product_id": "B096M7FCYF",
             "cantidad": 3
           },
-          "reason": "añadir las tres unidades restantes del candidato 1",
+          "reason": "añadir las tres unidades disponibles",
           "ok": true,
           "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B096M7FCYF | Linterna led recargable, 4 modos de luz, carga solar, IPX4 resistente… | 3 unidades × 7,00 € = 21,00 € | existencias: 3\nTotal del carrito: 21,00 €",
           "issues": []
@@ -432,17 +432,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 5.3,
-        "tools": 0.049,
+        "llm": 5.159,
+        "tools": 0.042,
         "tts": 0.0,
-        "total": 5.349
+        "total": 5.201
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-c2e8c796-15_stock_insuficiente-c1",
+        "cart_id": "eval-3e6f9559-15_stock_insuficiente-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -524,7 +524,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-c2e8c796-15_stock_insuficiente-c1",
+        "cart_id": "eval-3e6f9559-15_stock_insuficiente-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -575,7 +575,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-c2e8c796-15_stock_insuficiente-c1",
+              "cart_id": "eval-3e6f9559-15_stock_insuficiente-c1",
               "product_id": "B096M7FCYF",
               "quantity": 3
             }
@@ -630,7 +630,7 @@
   ],
   "final": {
     "snapshot": {
-      "cart_id": "eval-c2e8c796-15_stock_insuficiente-c1",
+      "cart_id": "eval-3e6f9559-15_stock_insuficiente-c1",
       "state": {
         "budget_cents": null,
         "preferences": [],
@@ -681,7 +681,7 @@
         "order_items": [],
         "cart_items": [
           {
-            "cart_id": "eval-c2e8c796-15_stock_insuficiente-c1",
+            "cart_id": "eval-3e6f9559-15_stock_insuficiente-c1",
             "product_id": "B096M7FCYF",
             "quantity": 3
           }
@@ -765,20 +765,20 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 5.77,
-        "max": 6.78
+        "mean": 6.04,
+        "max": 7.27
       },
       "tools": {
-        "mean": 0.04,
-        "max": 0.05
+        "mean": 0.03,
+        "max": 0.04
       },
       "tts": {
         "mean": 0.0,
         "max": 0.0
       },
       "total": {
-        "mean": 5.82,
-        "max": 6.83
+        "mean": 6.08,
+        "max": 7.32
       }
     },
     "with_llm": {
@@ -792,20 +792,20 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 5.77,
-        "max": 6.78
+        "mean": 6.04,
+        "max": 7.27
       },
       "tools": {
-        "mean": 0.04,
-        "max": 0.05
+        "mean": 0.03,
+        "max": 0.04
       },
       "tts": {
         "mean": 0.0,
         "max": 0.0
       },
       "total": {
-        "mean": 5.82,
-        "max": 6.83
+        "mean": 6.08,
+        "max": 7.32
       }
     },
     "without_llm": {

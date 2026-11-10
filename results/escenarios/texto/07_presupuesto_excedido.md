@@ -5,7 +5,7 @@
 - Tipo: `presupuesto_excedido`
 - Qué se prueba: Con 30 € de presupuesto y el producto a 12,00 €, tres unidades (36,00 €) no caben: el carrito no debe cambiar. Dos unidades sí caben.
 
-## Turno 1 (8.5 s)
+## Turno 1 (8.2 s)
 
 **Usuario (texto):** Busco una mochila para portátil. Como mucho quiero gastar 30 euros.
 
@@ -23,15 +23,15 @@
 
 > **Suceso externo:** la tienda deja `B091TXCPQQ` (@elegida) con precio 12,00 € y existencias 20.
 
-## Turno 2 (5.7 s)
+## Turno 2 (5.5 s)
 
 **Usuario (texto):** Añade tres de la primera.
 
 - `agregar_al_carrito(product_id="B091TXCPQQ", cantidad=3)` → RECHAZADO: [presupuesto_excedido] El total sería 36,00 € y supera el presupuesto de 30,00 € por 6,00 €. Dentro del presupuesto caben como máximo 2 unidades de este producto.
 
-**Agente:** Lo siento, con tres unidades el total supera tu presupuesto. ¿Te interesa añadir dos en su lugar?
+**Agente:** Ese producto supera tu presupuesto. ¿Te interesa una unidad o quieres buscar otro?
 
-**Enviado al TTS:** Lo siento, con tres unidades el total supera tu presupuesto. ¿Te interesa añadir dos en su lugar?
+**Enviado al TTS:** Ese producto supera tu presupuesto. ¿Te interesa una unidad o quieres buscar otro?
 
 - ✔ `cart(empty=true)` — carrito: vacío
 - ✔ `orders(count=0)` — pedidos registrados: 0
@@ -42,9 +42,9 @@
 
 - `agregar_al_carrito(product_id="B091TXCPQQ", cantidad=2)` → OK: hecho. Así queda el carrito. CARRITO: - id=B091TXCPQQ | SONAMBULO Mochila para Portátil, Mochila Unisex Impermeable de hasta… | 2 unidades × 12,00 € = 24,00 € | existencias: 20 Total del carrito: 24,00 €
 
-**Agente:** Hecho, añadidas dos unidades. El total es 24,00 €. En el carrito hay 2 unidades de «SONAMBULO Mochila para Portátil, Mochila Unisex Impermeable de hasta…» a 12,00 € cada una, 24,00 €. Total: 24,00 €. Tu presupuesto es de 30,00 € y te quedan 6,00 €.
+**Agente:** Hecho, añadidas dos unidades. Ahora el carrito incluye 24,00 €. En el carrito hay 2 unidades de «SONAMBULO Mochila para Portátil, Mochila Unisex Impermeable de hasta…» a 12,00 € cada una, 24,00 €. Total: 24,00 €. Tu presupuesto es de 30,00 € y te quedan 6,00 €.
 
-**Enviado al TTS:** Hecho, añadidas dos unidades. El total es veinticuatro euros. En el carrito hay dos unidades de SONAMBULO Mochila para Portátil a doce euros cada una, veinticuatro euros. Total: veinticuatro euros. Tu presupuesto es de treinta euros y te quedan seis euros.
+**Enviado al TTS:** Hecho, añadidas dos unidades. Ahora el carrito incluye veinticuatro euros. En el carrito hay dos unidades de SONAMBULO Mochila para Portátil a doce euros cada una, veinticuatro euros. Total: veinticuatro euros. Tu presupuesto es de treinta euros y te quedan seis euros.
 
 - ✔ `cart(lines=[{"product": "@elegida", "quantity": 2}])` — carrito: 2 × B091TXCPQQ
 
@@ -68,8 +68,8 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.03 | 8.47 | 0.03 | 0.00 | 8.53 | 0.0 s |
-| 2 | 0.00 | 0.00 | 5.69 | 0.03 | 0.00 | 5.72 | 0.0 s |
-| 3 | 0.00 | 0.00 | 5.48 | 0.05 | 0.00 | 5.53 | 0.0 s |
-| **Media de los turnos con LLM (3)** | 0.00 | 0.01 | 6.55 | 0.04 | 0.00 | 6.59 | |
+| 1 | 0.00 | 0.03 | 8.13 | 0.03 | 0.00 | 8.19 | 0.0 s |
+| 2 | 0.00 | 0.00 | 5.46 | 0.03 | 0.00 | 5.50 | 0.0 s |
+| 3 | 0.00 | 0.00 | 5.49 | 0.05 | 0.00 | 5.54 | 0.0 s |
+| **Media de los turnos con LLM (3)** | 0.00 | 0.01 | 6.36 | 0.04 | 0.00 | 6.41 | |
 

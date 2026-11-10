@@ -6,9 +6,9 @@
   "voice": true,
   "input": "texto",
   "audio_source": null,
-  "user_id": "eval-a557491f-01_compra_confirmada",
+  "user_id": "eval-49d0281c-01_compra_confirmada",
   "threads": [
-    "eval-a557491f-01_compra_confirmada-c1"
+    "eval-49d0281c-01_compra_confirmada-c1"
   ],
   "names": {
     "elegida": "B06WGTZ874"
@@ -43,7 +43,7 @@
           "args": {
             "consulta": "cafetera italiana"
           },
-          "reason": "buscar una cafetera italiana dentro del presupuesto",
+          "reason": "buscar lo que pide",
           "ok": true,
           "summary": "estos son ahora los CANDIDATOS, del más al menos relevante:\n[1] id=B06WGTZ874 | De'longhi Dedica - Cafetera de Bomba de Acero Inoxidable para Café Molido o Monodosis, Cafetera para Espresso y Cappuccino, Depósito de 1.3 Litros, Sistema Anti-goteo, EC685.M, Metal 30x33x15cm | marca: De'Longhi | color: Metal | precio: 5,03 € | existencias: 27 | características (extracto): La presión de 15 bares crea un espresso con un rico aroma y una espuma de color nuez en la parte superior La tecnología Thermoblock calienta el agua en 35 segundos a la temperatura exacta para preparar un espresso óptimo Capuccinatore con… | descripción: desconocido\n[2] id=B00S4U4W4I | De'Longhi ECOV 311.BG Cafetera Automática, 1100 W, 1.4 L, 15 Bares, 2 Tazas, Acero Inoxidable, Beige | marca: De'Longhi | color: Beige | precio: 44,50 € | existencias: 44 | características (extracto): Cafetera ECOV311 BG Delonghi Siguiendo la tendencia más actual de los conceptos clásicos y retro la Vintage Icona es una máquina de café espresso de bomba tradicional con estilo y con una tecnología avanzada que garantiza un espresso… | descripción: desconocido\n[3] id=B07V47R2Z2 | Gastroback 42619 Design Espresso Advanced Barista - Cafetera espresso (programable, con mecanismo cónico y bomba de espresso italiana, 15 bares, acero inoxidable) | marca: GASTROBACK | color: Acero Inoxidable. | precio: 46,24 € | existencias: 26 | características (extracto): Para granos de café recién molido, café en polvo o E. S E Pads Sistema de calefacción de bloque térmico: tiempo de calentamiento rápido (aprox. 1, 5 minutos) ULKA - Bomba de espresso profesional (15 bares) 11 niveles de molido y cantidad… | descripción: desconocido\n[4] id=B00C2353FU | De'Longhi 132103100 Cafetera Independiente, Goteo, Molido, Vaina, Capuchino, Café Expreso, 1.4 L, 1 Cups, Beige/Bronce | marca: De'Longhi | color: Beige/ Bronce | precio: 14,57 € | existencias: 34 | características (extracto): Bandeja de goteo extraíble Capacidad de reservorio de agua de 1.4 l Calentador de bebidas Indicador de nivel de agua | descripción: desconocido\n[5] id=B0819Y9TPK | CREATE Cafetera THERA Classic - Cafetera Espress Semiautomática para Espresso y Cappuccinos, Presión 20 Bares, Capacidad 1,25 L, 1100W, Vaporizador Orientable, Acero Inoxidable | marca: CREATE | color: Plateado | precio: 5,05 € | existencias: 28 | características (extracto): Para poder disfrutar con todos los sentidos de la experiencia de un buen café espresso, necesitas una máquina perfecta. Así es la nueva KAFFETA Espress de CREATE : 1100W de potencia para poder desarrollar 20 bares reales de presión que… | descripción: Descubre hasta dónde pueden llegar tus sentidos con la nueva cafetera espress eléctrica de CREATE . Cualquier momento del día será ideal para disfrutar de un buen café espresso o un cappuccino con el…",
           "issues": []
@@ -51,11 +51,11 @@
       ],
       "timings": {
         "asr": 0.0,
-        "retrieval": 0.037,
-        "llm": 10.845,
+        "retrieval": 0.039,
+        "llm": 10.751,
         "tools": 0.039,
         "tts": 0.0,
-        "total": 10.92
+        "total": 10.828
       },
       "llm_steps": 3,
       "tts_first_chunk_seconds": null,
@@ -64,7 +64,7 @@
         "cafetera italiana"
       ],
       "before": {
-        "cart_id": "eval-a557491f-01_compra_confirmada-c1",
+        "cart_id": "eval-49d0281c-01_compra_confirmada-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -83,7 +83,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-a557491f-01_compra_confirmada-c1",
+        "cart_id": "eval-49d0281c-01_compra_confirmada-c1",
         "state": {
           "budget_cents": 6000,
           "preferences": [],
@@ -200,8 +200,8 @@
       "transcript": null,
       "expected_text": "Añade dos de la primera al carrito.",
       "agent_input": "Añade dos de la primera al carrito.",
-      "response": "Hecho, añadidas dos unidades. El total ahora es 29,00 €. En el carrito hay 2 unidades de «De'longhi Dedica - Cafetera de Bomba de Acero Inoxidable para Café…» a 14,50 € cada una, 29,00 €. Total: 29,00 €. Tu presupuesto es de 60,00 € y te quedan 31,00 €.",
-      "spoken_text": "Hecho, añadidas dos unidades. El total ahora es veintinueve euros. En el carrito hay dos unidades de De'longhi Dedica a catorce euros con cincuenta céntimos cada una, veintinueve euros. Total: veintinueve euros. Tu presupuesto es de sesenta euros y te quedan treinta y un euros.",
+      "response": "Hecho, añadidas dos unidades. El total es 29,00 €. En el carrito hay 2 unidades de «De'longhi Dedica - Cafetera de Bomba de Acero Inoxidable para Café…» a 14,50 € cada una, 29,00 €. Total: 29,00 €. Tu presupuesto es de 60,00 € y te quedan 31,00 €.",
+      "spoken_text": "Hecho, añadidas dos unidades. El total es veintinueve euros. En el carrito hay dos unidades de De'longhi Dedica a catorce euros con cincuenta céntimos cada una, veintinueve euros. Total: veintinueve euros. Tu presupuesto es de sesenta euros y te quedan treinta y un euros.",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -221,10 +221,10 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 4.937,
-        "tools": 0.053,
+        "llm": 4.914,
+        "tools": 0.054,
         "tts": 0.0,
-        "total": 4.989
+        "total": 4.968
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
@@ -233,7 +233,7 @@
         "primera"
       ],
       "before": {
-        "cart_id": "eval-a557491f-01_compra_confirmada-c1",
+        "cart_id": "eval-49d0281c-01_compra_confirmada-c1",
         "state": {
           "budget_cents": 6000,
           "preferences": [],
@@ -315,7 +315,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-a557491f-01_compra_confirmada-c1",
+        "cart_id": "eval-49d0281c-01_compra_confirmada-c1",
         "state": {
           "budget_cents": 6000,
           "preferences": [],
@@ -366,7 +366,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-a557491f-01_compra_confirmada-c1",
+              "cart_id": "eval-49d0281c-01_compra_confirmada-c1",
               "product_id": "B06WGTZ874",
               "quantity": 2
             }
@@ -452,17 +452,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 2.041,
-        "tools": 0.04,
+        "llm": 2.04,
+        "tools": 0.039,
         "tts": 0.0,
-        "total": 2.081
+        "total": 2.079
       },
       "llm_steps": 1,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-a557491f-01_compra_confirmada-c1",
+        "cart_id": "eval-49d0281c-01_compra_confirmada-c1",
         "state": {
           "budget_cents": 6000,
           "preferences": [],
@@ -513,7 +513,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-a557491f-01_compra_confirmada-c1",
+              "cart_id": "eval-49d0281c-01_compra_confirmada-c1",
               "product_id": "B06WGTZ874",
               "quantity": 2
             }
@@ -550,13 +550,13 @@
         }
       },
       "after": {
-        "cart_id": "eval-a557491f-01_compra_confirmada-c1",
+        "cart_id": "eval-49d0281c-01_compra_confirmada-c1",
         "state": {
           "budget_cents": 6000,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "ff17b279d7ba4080b680f9b8a2c2ddf4",
+            "quote_id": "817899f14f064994bf0933ebeb269569",
             "items": [
               {
                 "product_id": "B06WGTZ874",
@@ -616,7 +616,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-a557491f-01_compra_confirmada-c1",
+              "cart_id": "eval-49d0281c-01_compra_confirmada-c1",
               "product_id": "B06WGTZ874",
               "quantity": 2
             }
@@ -688,7 +688,7 @@
         {
           "tool": "confirmar_pedido",
           "args": {
-            "quote_id": "ff17b279d7ba4080b680f9b8a2c2ddf4"
+            "quote_id": "817899f14f064994bf0933ebeb269569"
           },
           "reason": "el usuario confirmó la cotización",
           "ok": true,
@@ -700,22 +700,22 @@
         "asr": 0.0,
         "retrieval": 0.0,
         "llm": 0.0,
-        "tools": 0.026,
+        "tools": 0.027,
         "tts": 0.0,
-        "total": 0.026
+        "total": 0.027
       },
       "llm_steps": 0,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-a557491f-01_compra_confirmada-c1",
+        "cart_id": "eval-49d0281c-01_compra_confirmada-c1",
         "state": {
           "budget_cents": 6000,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "ff17b279d7ba4080b680f9b8a2c2ddf4",
+            "quote_id": "817899f14f064994bf0933ebeb269569",
             "items": [
               {
                 "product_id": "B06WGTZ874",
@@ -775,7 +775,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-a557491f-01_compra_confirmada-c1",
+              "cart_id": "eval-49d0281c-01_compra_confirmada-c1",
               "product_id": "B06WGTZ874",
               "quantity": 2
             }
@@ -812,7 +812,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-a557491f-01_compra_confirmada-c1",
+        "cart_id": "eval-49d0281c-01_compra_confirmada-c1",
         "state": {
           "budget_cents": 6000,
           "preferences": [],
@@ -820,7 +820,7 @@
           "quote": null,
           "order": {
             "order_id": 1,
-            "quote_id": "ff17b279d7ba4080b680f9b8a2c2ddf4",
+            "quote_id": "817899f14f064994bf0933ebeb269569",
             "items": [
               {
                 "product_id": "B06WGTZ874",
@@ -876,7 +876,7 @@
           "orders": [
             {
               "order_id": 1,
-              "quote_id": "ff17b279d7ba4080b680f9b8a2c2ddf4",
+              "quote_id": "817899f14f064994bf0933ebeb269569",
               "total_cents": 2900
             }
           ],
@@ -934,7 +934,7 @@
   ],
   "final": {
     "snapshot": {
-      "cart_id": "eval-a557491f-01_compra_confirmada-c1",
+      "cart_id": "eval-49d0281c-01_compra_confirmada-c1",
       "state": {
         "budget_cents": 6000,
         "preferences": [],
@@ -942,7 +942,7 @@
         "quote": null,
         "order": {
           "order_id": 1,
-          "quote_id": "ff17b279d7ba4080b680f9b8a2c2ddf4",
+          "quote_id": "817899f14f064994bf0933ebeb269569",
           "items": [
             {
               "product_id": "B06WGTZ874",
@@ -998,7 +998,7 @@
         "orders": [
           {
             "order_id": 1,
-            "quote_id": "ff17b279d7ba4080b680f9b8a2c2ddf4",
+            "quote_id": "817899f14f064994bf0933ebeb269569",
             "total_cents": 2900
           }
         ],
@@ -1107,8 +1107,8 @@
         "max": 0.04
       },
       "llm": {
-        "mean": 4.46,
-        "max": 10.85
+        "mean": 4.43,
+        "max": 10.75
       },
       "tools": {
         "mean": 0.04,
@@ -1119,8 +1119,8 @@
         "max": 0.0
       },
       "total": {
-        "mean": 4.5,
-        "max": 10.92
+        "mean": 4.48,
+        "max": 10.83
       }
     },
     "with_llm": {
@@ -1134,8 +1134,8 @@
         "max": 0.04
       },
       "llm": {
-        "mean": 5.94,
-        "max": 10.85
+        "mean": 5.9,
+        "max": 10.75
       },
       "tools": {
         "mean": 0.04,
@@ -1146,8 +1146,8 @@
         "max": 0.0
       },
       "total": {
-        "mean": 6.0,
-        "max": 10.92
+        "mean": 5.96,
+        "max": 10.83
       }
     },
     "without_llm": {

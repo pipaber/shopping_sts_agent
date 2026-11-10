@@ -1,6 +1,6 @@
 # 09_producto_inexistente — Producto inexistente
 
-- Veredicto: **fallo**
+- Veredicto: **correcto**
 - Entrada: texto
 - Tipo: `producto_inexistente`
 - Qué se prueba: El usuario pide el séptimo de una lista de cinco y después un producto por un código que no existe. El agente no debe añadir otro producto en su lugar. Tras la búsqueda la tienda deja los cinco candidatos con 20 unidades, para que nada se rechace por falta de existencias: si el agente añade un producto que no se le pidió, el carrito lo muestra.
@@ -37,35 +37,34 @@
 
 > **Suceso externo:** la tienda deja `B015HIJSN4` (@candidato5) con existencias 20.
 
-## Turno 2 (5.8 s)
+## Turno 2 (3.2 s)
 
 **Usuario (texto):** Añade dos del séptimo.
 
-- `agregar_al_carrito(product_id="B07QG82RGM", cantidad=2)` → OK: hecho. Así queda el carrito. CARRITO: - id=B07QG82RGM | Tracer Rave Blue Altavoz Bluetooth Portátil/Speaker Inalámbrico, 20… | 2 unidades × 44,10 € = 88,20 € | existencias: 20 Total del carrito: 88,20 €
+- `pedir_aclaracion(pregunta="¿Podrías indicarme cuál es el séptimo altavoz de la lista?")` → OK: pregunta enviada al usuario
 
-**Agente:** Hecho, añadidas dos unidades. Ahora el carrito incluye 2 altavoces Tracer Rave Blue por 88,20 euros. En el carrito hay 2 unidades de «Tracer Rave Blue Altavoz Bluetooth Portátil/Speaker Inalámbrico, 20…» a 44,10 € cada una, 88,20 €. Total: 88,20 €.
+**Agente:** ¿Podrías indicarme cuál es el séptimo altavoz de la lista?
 
-**Enviado al TTS:** Hecho, añadidas dos unidades. Ahora el carrito incluye dos altavoces Tracer Rave Blue por ochenta y ocho euros con veinte céntimos. En el carrito hay dos unidades de Tracer Rave Blue Altavoz Bluetooth Portátil/Speaker Inalámbrico a cuarenta y cuatro euros con diez céntimos cada una, ochenta y ocho euros con veinte céntimos. Total: ochenta y ocho euros con veinte céntimos.
+**Enviado al TTS:** ¿Podrías indicarme cuál es el séptimo altavoz de la lista?
 
-- ✘ `cart(empty=true)` — carrito: 2 × B07QG82RGM
+- ✔ `cart(empty=true)` — carrito: vacío
 
-## Turno 3 (6.7 s)
+## Turno 3 (3.3 s)
 
 **Usuario (texto):** Añade dos unidades del producto con código ZX-999.
 
-- `buscar_productos(consulta="altavoz bluetooth ZX-999")` → OK: estos son ahora los CANDIDATOS, del más al menos relevante: [1] id=B097TBPYFG | Sony LSPX-S3 Altavoz Bluetooth inalámbrico de Cristal con luz (Sonido de 360 Grados, 8 Horas de autonomía, Manos Libres, diseño Elegante), Plata | marca: Sony | color: plata | precio: 17,99 € | existencias: 50 | caracter…
-- `pedir_aclaracion(pregunta="¿Podrías aclarar el código ZX-999? No coincidirá con ninguno de los productos mostrados.")` → OK: pregunta enviada al usuario
+- `pedir_aclaracion(pregunta="¿Podrías indicarme cuál es el producto con código ZX-999?")` → OK: pregunta enviada al usuario
 
-**Agente:** ¿Podrías aclarar el código ZX-999? No coincidirá con ninguno de los productos mostrados.
+**Agente:** ¿Podrías indicarme cuál es el producto con código ZX-999?
 
-**Enviado al TTS:** ¿Podrías aclarar el código? No coincidirá con ninguno de los productos mostrados.
+**Enviado al TTS:** ¿Podrías indicarme cuál es el producto con código?
 
-- ✘ `cart(empty=true)` — carrito: 2 × B07QG82RGM
+- ✔ `cart(empty=true)` — carrito: vacío
 
 ## Comprobaciones finales
 
 - ✔ `orders(count=0)` — pedidos registrados: 0
-- ✘ `cart(empty=true)` — carrito: 2 × B07QG82RGM
+- ✔ `cart(empty=true)` — carrito: vacío
 
 ## Violaciones de restricciones
 
@@ -78,14 +77,14 @@
 - Inventario `B08MV67XX7`: 19 → 20
 - Inventario `B08SWDQDV2`: 13 → 20
 - Inventario `B099MQKFGG`: 16 → 20
-- Líneas de carrito pendientes: 1
+- Líneas de carrito pendientes: 0
 
 ## Latencia por turno (segundos)
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.03 | 6.54 | 0.03 | 0.00 | 6.60 | 0.0 s |
-| 2 | 0.00 | 0.00 | 5.75 | 0.04 | 0.00 | 5.79 | 0.0 s |
-| 3 | 0.00 | 0.03 | 6.66 | 0.02 | 0.00 | 6.71 | 0.0 s |
-| **Media de los turnos con LLM (3)** | 0.00 | 0.02 | 6.32 | 0.03 | 0.00 | 6.37 | |
+| 1 | 0.00 | 0.03 | 6.56 | 0.03 | 0.00 | 6.62 | 0.0 s |
+| 2 | 0.00 | 0.00 | 3.22 | 0.03 | 0.00 | 3.24 | 0.0 s |
+| 3 | 0.00 | 0.00 | 3.29 | 0.02 | 0.00 | 3.32 | 0.0 s |
+| **Media de los turnos con LLM (3)** | 0.00 | 0.01 | 4.36 | 0.03 | 0.00 | 4.39 | |
 

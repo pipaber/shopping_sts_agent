@@ -6,9 +6,9 @@
   "voice": false,
   "input": "texto",
   "audio_source": null,
-  "user_id": "eval-c2e8c796-10_atributo_no_verificable",
+  "user_id": "eval-3e6f9559-10_atributo_no_verificable",
   "threads": [
-    "eval-c2e8c796-10_atributo_no_verificable-c1"
+    "eval-3e6f9559-10_atributo_no_verificable-c1"
   ],
   "names": {
     "elegida": "B08C73K4CV"
@@ -22,8 +22,8 @@
       "transcript": null,
       "expected_text": "Busco una sartén antiadherente.",
       "agent_input": "Busco una sartén antiadherente.",
-      "response": "Tengo la sartén ilimiti de 20 cm por 83,75 euros, la ilimiti de 24 cm con tapa por 3,82 euros, la ilimiti de 24 cm con tapa hondita por 20,45 euros, la Pensofal de 32 cm por 7,48 euros y la Fesha de 24 cm por 10,40 euros. ¿Te interesa alguna?",
-      "spoken_text": "Tengo la sartén ilimiti de veinte centímetros por ochenta y tres euros con setenta y cinco céntimos, la ilimiti de veinticuatro centímetros con tapa por tres euros con ochenta y dos céntimos, la ilimiti de veinticuatro centímetros con tapa hondita por veinte euros con cuarenta y cinco céntimos, la Pensofal de treinta y dos centímetros por siete euros con cuarenta y ocho céntimos y la Fesha de veinticuatro centímetros por diez euros con cuarenta céntimos. ¿Te interesa alguna?",
+      "response": "Tengo la sartén ilimiti de 20 cm por 83,75 euros, la ilimiti de 24 cm con tapa por 20,45 euros, la ilimiti de 24 cm sin tapa por 3,82 euros, la Pensofal de 32 cm por 7,48 euros y la Fesha de 24 cm por 10,40 euros. ¿Te interesa alguna?",
+      "spoken_text": "Tengo la sartén ilimiti de veinte centímetros por ochenta y tres euros con setenta y cinco céntimos, la ilimiti de veinticuatro centímetros con tapa por veinte euros con cuarenta y cinco céntimos, la ilimiti de veinticuatro centímetros sin tapa por tres euros con ochenta y dos céntimos, la Pensofal de treinta y dos centímetros por siete euros con cuarenta y ocho céntimos y la Fesha de veinticuatro centímetros por diez euros con cuarenta céntimos. ¿Te interesa alguna?",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -41,18 +41,18 @@
       ],
       "timings": {
         "asr": 0.0,
-        "retrieval": 0.026,
-        "llm": 8.303,
+        "retrieval": 0.029,
+        "llm": 8.249,
         "tools": 0.016,
         "tts": 0.0,
-        "total": 8.346
+        "total": 8.294
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-c2e8c796-10_atributo_no_verificable-c1",
+        "cart_id": "eval-3e6f9559-10_atributo_no_verificable-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -71,7 +71,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-c2e8c796-10_atributo_no_verificable-c1",
+        "cart_id": "eval-3e6f9559-10_atributo_no_verificable-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -172,37 +172,26 @@
       "transcript": null,
       "expected_text": "¿Qué valoración le dan los clientes a la primera?",
       "agent_input": "¿Qué valoración le dan los clientes a la primera?",
-      "response": "Los clientes no han valorado esta sartén en el catálogo.",
-      "spoken_text": "Los clientes no han valorado esta sartén en el catálogo.",
+      "response": "El catálogo no indica valoraciones de clientes para este producto.",
+      "spoken_text": "El catálogo no indica valoraciones de clientes para este producto.",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
-      "operations": [
-        {
-          "tool": "detalle_producto",
-          "args": {
-            "product_id": "B08C73K4CV"
-          },
-          "reason": "el usuario quiere información sobre un candidato",
-          "ok": true,
-          "summary": "\n[1] id=B08C73K4CV | ilimiti Sartenes Induccion Antiadherentes 20 cm, Sarten Piedra Aluminio Fundido, Libre de PFOA, Apta para Todo Tipo de Cocina | marca: ilimiti | color: desconocido | precio: 83,75 € | existencias: 46 | características (extracto): APTO PARA TODOS TIPOS DE COCINAS: La sartén antiadherente se puede utilizar para cocinar en todo tipo de cocinas. Compatible con la cocina de gas, eléctrica, vidroceramica y placas halógenas o de inducción. RECUBRIMIENTO NO TÓXICO DE 4 CAPAS: sartenes antiadherentes hecha de metal de aluminio de grado premium 99.5% y recubierta con 4 capas antiadherentes. VERSÁTIL Y FÁCIL DE LIMPIAR: Nuestra sartén de inducción es 100% sin PFOA. Use la sartén antiadherente como sartén para hacer crepes, freír beicon, saltear verduras, guisados de carne y mucho más. CALENTAMIENTO RÁPIDO Y EFICIENTE：ilimiti sartén antiadherente de piedra que conduce el calor de forma rápida y uniforme con un control preciso de la temperatura para un rendimiento consistente y profesional. MANGO RESISTENTE AL CALOR: Nuestras asas de la sartén son resistentes al calor y se mantienen frías al tacto todo el tiempo para evitar quemaduras. | descripción: desconocido",
-          "issues": []
-        }
-      ],
+      "operations": [],
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 5.022,
-        "tools": 0.03,
+        "llm": 3.045,
+        "tools": 0.028,
         "tts": 0.0,
-        "total": 5.052
+        "total": 3.073
       },
-      "llm_steps": 2,
+      "llm_steps": 1,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-c2e8c796-10_atributo_no_verificable-c1",
+        "cart_id": "eval-3e6f9559-10_atributo_no_verificable-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -278,7 +267,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-c2e8c796-10_atributo_no_verificable-c1",
+        "cart_id": "eval-3e6f9559-10_atributo_no_verificable-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -366,8 +355,8 @@
               "puntuaci"
             ]
           },
-          "ok": false,
-          "detail": "dato en el catálogo: no; la respuesta dice que no consta: no"
+          "ok": true,
+          "detail": "dato en el catálogo: no; la respuesta dice que no consta: sí"
         },
         {
           "check": "cart",
@@ -382,7 +371,7 @@
   ],
   "final": {
     "snapshot": {
-      "cart_id": "eval-c2e8c796-10_atributo_no_verificable-c1",
+      "cart_id": "eval-3e6f9559-10_atributo_no_verificable-c1",
       "state": {
         "budget_cents": null,
         "preferences": [],
@@ -478,7 +467,7 @@
   },
   "violations": [],
   "problems": [],
-  "passed": false,
+  "passed": true,
   "timings": {
     "all": {
       "turns": 2,
@@ -491,8 +480,8 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 6.66,
-        "max": 8.3
+        "mean": 5.65,
+        "max": 8.25
       },
       "tools": {
         "mean": 0.02,
@@ -503,8 +492,8 @@
         "max": 0.0
       },
       "total": {
-        "mean": 6.7,
-        "max": 8.35
+        "mean": 5.68,
+        "max": 8.29
       }
     },
     "with_llm": {
@@ -518,8 +507,8 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 6.66,
-        "max": 8.3
+        "mean": 5.65,
+        "max": 8.25
       },
       "tools": {
         "mean": 0.02,
@@ -530,8 +519,8 @@
         "max": 0.0
       },
       "total": {
-        "mean": 6.7,
-        "max": 8.35
+        "mean": 5.68,
+        "max": 8.29
       }
     },
     "without_llm": {

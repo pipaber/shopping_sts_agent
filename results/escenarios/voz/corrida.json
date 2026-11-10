@@ -1,6 +1,6 @@
 {
-  "date": "2026-11-10T14:34:29",
-  "commit": "8711c79+cambios",
+  "date": "2026-11-10T16:59:11",
+  "commit": "5d31abf+cambios",
   "memory_backend": "postgres",
   "models": {
     "llm": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
@@ -14,11 +14,11 @@
     "speaker": null
   },
   "load": {
-    "search_seconds": 16.2,
-    "llm_seconds": 0.8,
-    "asr_seconds": 1.0,
-    "tts_seconds": 8.8,
-    "total_seconds": 27.4,
+    "search_seconds": 16.3,
+    "llm_seconds": 0.7,
+    "asr_seconds": 1.1,
+    "tts_seconds": 10.1,
+    "total_seconds": 28.8,
     "vram_mib": {
       "search": 706,
       "llm": 5820,
@@ -53,13 +53,13 @@
       "id": "03_cambio_cantidad",
       "title": "Cambio de cantidad manteniendo las demás restricciones",
       "kind": "cambio_cantidad",
-      "passed": false
+      "passed": true
     },
     {
       "id": "04_sin_existencias",
       "title": "Producto sin existencias que requiere alternativa",
       "kind": "sin_existencias",
-      "passed": false
+      "passed": true
     },
     {
       "id": "05_correccion_transcripcion",
@@ -71,18 +71,14 @@
       "id": "06_cambio_stock_confirmacion_repetida",
       "title": "Cambio de stock entre cotización y confirmación, y confirmación repetida",
       "kind": "cambio_stock_confirmacion_repetida",
-      "passed": false
+      "passed": true
     }
   ],
   "summary": {
     "scenarios": 6,
-    "passed": 3,
-    "pass_rate": 0.5,
-    "failed": [
-      "03_cambio_cantidad",
-      "04_sin_existencias",
-      "06_cambio_stock_confirmacion_repetida"
-    ],
+    "passed": 6,
+    "pass_rate": 1.0,
+    "failed": [],
     "turns": 31,
     "violations": {
       "cantidad": 0,
@@ -96,61 +92,61 @@
         "turns": 31,
         "asr": {
           "mean": 0.34,
-          "max": 0.54
+          "max": 0.56
         },
         "retrieval": {
           "mean": 0.01,
-          "max": 0.03
+          "max": 0.05
         },
         "llm": {
-          "mean": 4.15,
-          "max": 9.76
+          "mean": 3.91,
+          "max": 9.84
         },
         "tools": {
           "mean": 0.04,
-          "max": 0.09
+          "max": 0.06
         },
         "tts": {
-          "mean": 6.19,
-          "max": 17.33
+          "mean": 5.88,
+          "max": 11.85
         },
         "total": {
-          "mean": 10.73,
-          "max": 25.57
+          "mean": 10.19,
+          "max": 20.62
         }
       },
       "with_llm": {
-        "turns": 25,
+        "turns": 24,
         "asr": {
           "mean": 0.35,
-          "max": 0.54
+          "max": 0.56
         },
         "retrieval": {
           "mean": 0.01,
-          "max": 0.03
+          "max": 0.05
         },
         "llm": {
-          "mean": 5.14,
-          "max": 9.76
+          "mean": 5.05,
+          "max": 9.84
         },
         "tools": {
           "mean": 0.04,
-          "max": 0.09
+          "max": 0.06
         },
         "tts": {
-          "mean": 6.42,
-          "max": 17.33
+          "mean": 6.3,
+          "max": 11.85
         },
         "total": {
-          "mean": 11.96,
-          "max": 25.57
+          "mean": 11.75,
+          "max": 20.62
         }
       },
       "without_llm": {
-        "turns": 6,
+        "turns": 7,
         "asr": {
-          "mean": 0.33,
-          "max": 0.36
+          "mean": 0.32,
+          "max": 0.33
         },
         "retrieval": {
           "mean": 0.0,
@@ -161,16 +157,16 @@
           "max": 0.0
         },
         "tools": {
-          "mean": 0.03,
+          "mean": 0.04,
           "max": 0.04
         },
         "tts": {
-          "mean": 5.22,
-          "max": 10.69
+          "mean": 4.46,
+          "max": 10.64
         },
         "total": {
-          "mean": 5.59,
-          "max": 11.05
+          "mean": 4.82,
+          "max": 11.01
         }
       }
     }

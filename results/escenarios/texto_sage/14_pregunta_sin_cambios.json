@@ -6,9 +6,9 @@
   "voice": false,
   "input": "texto",
   "audio_source": null,
-  "user_id": "eval-a557491f-14_pregunta_sin_cambios",
+  "user_id": "eval-49d0281c-14_pregunta_sin_cambios",
   "threads": [
-    "eval-a557491f-14_pregunta_sin_cambios-c1"
+    "eval-49d0281c-14_pregunta_sin_cambios-c1"
   ],
   "names": {
     "primera": "B091HXTM73"
@@ -41,18 +41,18 @@
       ],
       "timings": {
         "asr": 0.0,
-        "retrieval": 0.059,
-        "llm": 5.987,
-        "tools": 0.028,
+        "retrieval": 0.039,
+        "llm": 5.927,
+        "tools": 0.027,
         "tts": 0.0,
-        "total": 6.074
+        "total": 5.993
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-a557491f-14_pregunta_sin_cambios-c1",
+        "cart_id": "eval-49d0281c-14_pregunta_sin_cambios-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -71,7 +71,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-a557491f-14_pregunta_sin_cambios-c1",
+        "cart_id": "eval-49d0281c-14_pregunta_sin_cambios-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -172,8 +172,8 @@
       "transcript": null,
       "expected_text": "¿La segunda está disponible?",
       "agent_input": "¿La segunda está disponible?",
-      "response": "Sí, la funda Cocoda está disponible, quedan 10 unidades.",
-      "spoken_text": "Sí, la funda Cocoda está disponible, quedan diez unidades.",
+      "response": "Sí, la funda Cocoda está disponible. Quedan 10 unidades.",
+      "spoken_text": "Sí, la funda Cocoda está disponible. Quedan diez unidades.",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -183,7 +183,7 @@
           "args": {
             "product_id": "B098NQLJKX"
           },
-          "reason": "consultar existencias de la segunda opción",
+          "reason": "consultar existencias",
           "ok": true,
           "summary": "precio 21,73 €; quedan 10 unidades. Esta herramienta no da características: para color, batería, medidas u otros datos del producto usa detalle_producto.",
           "issues": []
@@ -192,17 +192,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 4.746,
-        "tools": 0.032,
+        "llm": 4.696,
+        "tools": 0.034,
         "tts": 0.0,
-        "total": 4.778
+        "total": 4.73
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-a557491f-14_pregunta_sin_cambios-c1",
+        "cart_id": "eval-49d0281c-14_pregunta_sin_cambios-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -278,7 +278,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-a557491f-14_pregunta_sin_cambios-c1",
+        "cart_id": "eval-49d0281c-14_pregunta_sin_cambios-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -381,17 +381,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 3.502,
-        "tools": 0.022,
+        "llm": 3.211,
+        "tools": 0.028,
         "tts": 0.0,
-        "total": 3.524
+        "total": 3.24
       },
       "llm_steps": 1,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-a557491f-14_pregunta_sin_cambios-c1",
+        "cart_id": "eval-49d0281c-14_pregunta_sin_cambios-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -467,7 +467,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-a557491f-14_pregunta_sin_cambios-c1",
+        "cart_id": "eval-49d0281c-14_pregunta_sin_cambios-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -564,7 +564,7 @@
   ],
   "final": {
     "snapshot": {
-      "cart_id": "eval-a557491f-14_pregunta_sin_cambios-c1",
+      "cart_id": "eval-49d0281c-14_pregunta_sin_cambios-c1",
       "state": {
         "budget_cents": null,
         "preferences": [],
@@ -669,12 +669,12 @@
         "max": 0.0
       },
       "retrieval": {
-        "mean": 0.02,
-        "max": 0.06
+        "mean": 0.01,
+        "max": 0.04
       },
       "llm": {
-        "mean": 4.75,
-        "max": 5.99
+        "mean": 4.61,
+        "max": 5.93
       },
       "tools": {
         "mean": 0.03,
@@ -685,8 +685,8 @@
         "max": 0.0
       },
       "total": {
-        "mean": 4.79,
-        "max": 6.07
+        "mean": 4.65,
+        "max": 5.99
       }
     },
     "with_llm": {
@@ -696,12 +696,12 @@
         "max": 0.0
       },
       "retrieval": {
-        "mean": 0.02,
-        "max": 0.06
+        "mean": 0.01,
+        "max": 0.04
       },
       "llm": {
-        "mean": 4.75,
-        "max": 5.99
+        "mean": 4.61,
+        "max": 5.93
       },
       "tools": {
         "mean": 0.03,
@@ -712,8 +712,8 @@
         "max": 0.0
       },
       "total": {
-        "mean": 4.79,
-        "max": 6.07
+        "mean": 4.65,
+        "max": 5.99
       }
     },
     "without_llm": {

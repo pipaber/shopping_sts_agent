@@ -6,9 +6,9 @@
   "voice": true,
   "input": "texto",
   "audio_source": null,
-  "user_id": "eval-c2e8c796-04_sin_existencias",
+  "user_id": "eval-3e6f9559-04_sin_existencias",
   "threads": [
-    "eval-c2e8c796-04_sin_existencias-c1"
+    "eval-3e6f9559-04_sin_existencias-c1"
   ],
   "names": {
     "agotada": "B083DM54G6",
@@ -43,11 +43,11 @@
       ],
       "timings": {
         "asr": 0.0,
-        "retrieval": 0.029,
-        "llm": 6.989,
-        "tools": 0.029,
+        "retrieval": 0.028,
+        "llm": 7.067,
+        "tools": 0.019,
         "tts": 0.0,
-        "total": 7.047
+        "total": 7.113
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
@@ -56,7 +56,7 @@
         "esterilla de yoga"
       ],
       "before": {
-        "cart_id": "eval-c2e8c796-04_sin_existencias-c1",
+        "cart_id": "eval-3e6f9559-04_sin_existencias-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -75,7 +75,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-c2e8c796-04_sin_existencias-c1",
+        "cart_id": "eval-3e6f9559-04_sin_existencias-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -199,8 +199,8 @@
       "transcript": null,
       "expected_text": "Ponme una de la primera.",
       "agent_input": "Ponme una de la primera.",
-      "response": "Hecho, añadida una unidad de la esterilla de yoga TENQUAN. En el carrito hay 1 unidad de «TENQUAN Esterilla Yoga Antideslizante – 8mm Esterilla Yoga con Correa…» a 18,00 € cada una, 18,00 €. Total: 18,00 €.",
-      "spoken_text": "Hecho, añadida una unidad de la esterilla de yoga TENQUAN. En el carrito hay una unidad de TENQUAN Esterilla Yoga Antideslizante a dieciocho euros cada una, dieciocho euros. Total: dieciocho euros.",
+      "response": "Lo siento, el producto que has elegido está agotado. ¿Te interesa la esterilla de yoga de TENQUAN por 18,00 €?",
+      "spoken_text": "Lo siento, el producto que has elegido está agotado. ¿Te interesa la esterilla de yoga de TENQUAN por dieciocho euros?",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -211,7 +211,7 @@
             "product_id": "B083DM54G6",
             "cantidad": 1
           },
-          "reason": "añadir una unidad del primer candidato",
+          "reason": "añadir una unidad del candidato 1",
           "ok": false,
           "summary": "[agotado] El producto B083DM54G6 está agotado.",
           "issues": [
@@ -225,45 +225,24 @@
               }
             }
           ]
-        },
-        {
-          "tool": "consultar_precio_stock",
-          "args": {
-            "product_id": "B083DM54G6"
-          },
-          "reason": "revisar el stock y ofrecer otra opción",
-          "ok": true,
-          "summary": "precio 19,74 €; agotado. Esta herramienta no da características: para color, batería, medidas u otros datos del producto usa detalle_producto.",
-          "issues": []
-        },
-        {
-          "tool": "agregar_al_carrito",
-          "args": {
-            "product_id": "B08GPGJY8M",
-            "cantidad": 1
-          },
-          "reason": "ofrecer la segunda opción",
-          "ok": true,
-          "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B08GPGJY8M | TENQUAN Esterilla Yoga Antideslizante – 8mm Esterilla Yoga con Correa… | 1 unidad × 18,00 € = 18,00 € | existencias: 10\nTotal del carrito: 18,00 €",
-          "issues": []
         }
       ],
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 8.69,
-        "tools": 0.065,
+        "llm": 6.348,
+        "tools": 0.034,
         "tts": 0.0,
-        "total": 8.755
+        "total": 6.382
       },
-      "llm_steps": 4,
+      "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [
         "primera"
       ],
       "before": {
-        "cart_id": "eval-c2e8c796-04_sin_existencias-c1",
+        "cart_id": "eval-3e6f9559-04_sin_existencias-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -350,7 +329,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-c2e8c796-04_sin_existencias-c1",
+        "cart_id": "eval-3e6f9559-04_sin_existencias-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -399,13 +378,7 @@
         "store": {
           "orders": [],
           "order_items": [],
-          "cart_items": [
-            {
-              "cart_id": "eval-c2e8c796-04_sin_existencias-c1",
-              "product_id": "B08GPGJY8M",
-              "quantity": 1
-            }
-          ],
+          "cart_items": [],
           "inventory_changes": [
             {
               "product_id": "B083DM54G6",
@@ -448,8 +421,8 @@
           "params": {
             "empty": true
           },
-          "ok": false,
-          "detail": "carrito: 1 × B08GPGJY8M"
+          "ok": true,
+          "detail": "carrito: vacío"
         },
         {
           "check": "offered_alternative",
@@ -484,8 +457,8 @@
       "transcript": null,
       "expected_text": "Entonces ponme una de la segunda.",
       "agent_input": "Entonces ponme una de la segunda.",
-      "response": "Hecho, añadidas dos unidades. Ahora el total es 36,00 €. En el carrito hay 2 unidades de «TENQUAN Esterilla Yoga Antideslizante – 8mm Esterilla Yoga con Correa…» a 18,00 € cada una, 36,00 €. Total: 36,00 €.",
-      "spoken_text": "Hecho, añadidas dos unidades. Ahora el total es treinta y seis euros. En el carrito hay dos unidades de TENQUAN Esterilla Yoga Antideslizante a dieciocho euros cada una, treinta y seis euros. Total: treinta y seis euros.",
+      "response": "Hecho, añadida una esterilla de yoga de TENQUAN al carrito. En el carrito hay 1 unidad de «TENQUAN Esterilla Yoga Antideslizante – 8mm Esterilla Yoga con Correa…» a 18,00 € cada una, 18,00 €. Total: 18,00 €.",
+      "spoken_text": "Hecho, añadida una esterilla de yoga de TENQUAN al carrito. En el carrito hay una unidad de TENQUAN Esterilla Yoga Antideslizante a dieciocho euros cada una, dieciocho euros. Total: dieciocho euros.",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -496,19 +469,19 @@
             "product_id": "B08GPGJY8M",
             "cantidad": 1
           },
-          "reason": "añadir una unidad del candidato 2",
+          "reason": "añadir la esterilla de yoga de TENQUAN al carrito",
           "ok": true,
-          "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B08GPGJY8M | TENQUAN Esterilla Yoga Antideslizante – 8mm Esterilla Yoga con Correa… | 2 unidades × 18,00 € = 36,00 € | existencias: 10\nTotal del carrito: 36,00 €",
+          "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B08GPGJY8M | TENQUAN Esterilla Yoga Antideslizante – 8mm Esterilla Yoga con Correa… | 1 unidad × 18,00 € = 18,00 € | existencias: 10\nTotal del carrito: 18,00 €",
           "issues": []
         }
       ],
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 5.314,
+        "llm": 5.64,
         "tools": 0.053,
         "tts": 0.0,
-        "total": 5.367
+        "total": 5.692
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
@@ -517,7 +490,7 @@
         "segunda"
       ],
       "before": {
-        "cart_id": "eval-c2e8c796-04_sin_existencias-c1",
+        "cart_id": "eval-3e6f9559-04_sin_existencias-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -566,13 +539,7 @@
         "store": {
           "orders": [],
           "order_items": [],
-          "cart_items": [
-            {
-              "cart_id": "eval-c2e8c796-04_sin_existencias-c1",
-              "product_id": "B08GPGJY8M",
-              "quantity": 1
-            }
-          ],
+          "cart_items": [],
           "inventory_changes": [
             {
               "product_id": "B083DM54G6",
@@ -610,7 +577,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-c2e8c796-04_sin_existencias-c1",
+        "cart_id": "eval-3e6f9559-04_sin_existencias-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -661,9 +628,9 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-c2e8c796-04_sin_existencias-c1",
+              "cart_id": "eval-3e6f9559-04_sin_existencias-c1",
               "product_id": "B08GPGJY8M",
-              "quantity": 2
+              "quantity": 1
             }
           ],
           "inventory_changes": [
@@ -713,8 +680,8 @@
               }
             ]
           },
-          "ok": false,
-          "detail": "carrito: 2 × B08GPGJY8M"
+          "ok": true,
+          "detail": "carrito: 1 × B08GPGJY8M"
         }
       ]
     },
@@ -726,8 +693,8 @@
       "transcript": null,
       "expected_text": "Cierra el pedido.",
       "agent_input": "Cierra el pedido.",
-      "response": "Te repito el pedido antes de registrarlo: 2 unidades de «TENQUAN Esterilla Yoga Antideslizante – 8mm Esterilla Yoga con Correa…» a 18,00 € cada una, 36,00 €. Total: 36,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
-      "spoken_text": "Te repito el pedido antes de registrarlo: dos unidades de TENQUAN Esterilla Yoga Antideslizante a dieciocho euros cada una, treinta y seis euros. Total: treinta y seis euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "response": "Te repito el pedido antes de registrarlo: 1 unidad de «TENQUAN Esterilla Yoga Antideslizante – 8mm Esterilla Yoga con Correa…» a 18,00 € cada una, 18,00 €. Total: 18,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "spoken_text": "Te repito el pedido antes de registrarlo: una unidad de TENQUAN Esterilla Yoga Antideslizante a dieciocho euros cada una, dieciocho euros. Total: dieciocho euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": true,
@@ -735,7 +702,7 @@
         {
           "tool": "cotizar",
           "args": {},
-          "reason": "cotizar el carrito",
+          "reason": "cotizar el pedido",
           "ok": true,
           "summary": "cotización creada; falta la confirmación del usuario.",
           "issues": []
@@ -744,17 +711,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 2.241,
-        "tools": 0.037,
+        "llm": 2.292,
+        "tools": 0.039,
         "tts": 0.0,
-        "total": 2.278
+        "total": 2.331
       },
       "llm_steps": 1,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-c2e8c796-04_sin_existencias-c1",
+        "cart_id": "eval-3e6f9559-04_sin_existencias-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -805,9 +772,9 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-c2e8c796-04_sin_existencias-c1",
+              "cart_id": "eval-3e6f9559-04_sin_existencias-c1",
               "product_id": "B08GPGJY8M",
-              "quantity": 2
+              "quantity": 1
             }
           ],
           "inventory_changes": [
@@ -847,26 +814,26 @@
         }
       },
       "after": {
-        "cart_id": "eval-c2e8c796-04_sin_existencias-c1",
+        "cart_id": "eval-3e6f9559-04_sin_existencias-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "637cef5656ec4fdfa344301d74859b34",
+            "quote_id": "c1f8b8ddebd241c18a55083e436d095f",
             "items": [
               {
                 "product_id": "B08GPGJY8M",
                 "title": "TENQUAN Esterilla Yoga Antideslizante – 8mm Esterilla Yoga con Correa para Yoga Pilates y Ejercicios de Piso",
-                "quantity": 2,
+                "quantity": 1,
                 "unit_price_cents": 1800,
-                "subtotal_cents": 3600,
+                "subtotal_cents": 1800,
                 "stock": 10
               }
             ],
-            "total_cents": 3600,
+            "total_cents": 1800,
             "budget_cents": null,
-            "message": "Te repito el pedido antes de registrarlo: 2 unidades de «TENQUAN Esterilla Yoga Antideslizante – 8mm Esterilla Yoga con Correa…» a 18,00 € cada una, 36,00 €. Total: 36,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+            "message": "Te repito el pedido antes de registrarlo: 1 unidad de «TENQUAN Esterilla Yoga Antideslizante – 8mm Esterilla Yoga con Correa…» a 18,00 € cada una, 18,00 €. Total: 18,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
           },
           "order": null,
           "candidates": [
@@ -913,9 +880,9 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-c2e8c796-04_sin_existencias-c1",
+              "cart_id": "eval-3e6f9559-04_sin_existencias-c1",
               "product_id": "B08GPGJY8M",
-              "quantity": 2
+              "quantity": 1
             }
           ],
           "inventory_changes": [
@@ -981,8 +948,8 @@
       "transcript": null,
       "expected_text": "Sí, confirmo.",
       "agent_input": "Sí, confirmo.",
-      "response": "Pedido número 1 registrado: 2 unidades de «TENQUAN Esterilla Yoga Antideslizante – 8mm Esterilla Yoga con Correa…» a 18,00 € cada una, 36,00 €. Total: 36,00 €. Gracias por tu compra.",
-      "spoken_text": "Pedido número uno registrado: dos unidades de TENQUAN Esterilla Yoga Antideslizante a dieciocho euros cada una, treinta y seis euros. Total: treinta y seis euros. Gracias por tu compra.",
+      "response": "Pedido número 1 registrado: 1 unidad de «TENQUAN Esterilla Yoga Antideslizante – 8mm Esterilla Yoga con Correa…» a 18,00 € cada una, 18,00 €. Total: 18,00 €. Gracias por tu compra.",
+      "spoken_text": "Pedido número uno registrado: una unidad de TENQUAN Esterilla Yoga Antideslizante a dieciocho euros cada una, dieciocho euros. Total: dieciocho euros. Gracias por tu compra.",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -990,7 +957,7 @@
         {
           "tool": "confirmar_pedido",
           "args": {
-            "quote_id": "637cef5656ec4fdfa344301d74859b34"
+            "quote_id": "c1f8b8ddebd241c18a55083e436d095f"
           },
           "reason": "el usuario confirmó la cotización",
           "ok": true,
@@ -1002,35 +969,35 @@
         "asr": 0.0,
         "retrieval": 0.0,
         "llm": 0.0,
-        "tools": 0.031,
+        "tools": 0.032,
         "tts": 0.0,
-        "total": 0.031
+        "total": 0.032
       },
       "llm_steps": 0,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-c2e8c796-04_sin_existencias-c1",
+        "cart_id": "eval-3e6f9559-04_sin_existencias-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "637cef5656ec4fdfa344301d74859b34",
+            "quote_id": "c1f8b8ddebd241c18a55083e436d095f",
             "items": [
               {
                 "product_id": "B08GPGJY8M",
                 "title": "TENQUAN Esterilla Yoga Antideslizante – 8mm Esterilla Yoga con Correa para Yoga Pilates y Ejercicios de Piso",
-                "quantity": 2,
+                "quantity": 1,
                 "unit_price_cents": 1800,
-                "subtotal_cents": 3600,
+                "subtotal_cents": 1800,
                 "stock": 10
               }
             ],
-            "total_cents": 3600,
+            "total_cents": 1800,
             "budget_cents": null,
-            "message": "Te repito el pedido antes de registrarlo: 2 unidades de «TENQUAN Esterilla Yoga Antideslizante – 8mm Esterilla Yoga con Correa…» a 18,00 € cada una, 36,00 €. Total: 36,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+            "message": "Te repito el pedido antes de registrarlo: 1 unidad de «TENQUAN Esterilla Yoga Antideslizante – 8mm Esterilla Yoga con Correa…» a 18,00 € cada una, 18,00 €. Total: 18,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
           },
           "order": null,
           "candidates": [
@@ -1077,9 +1044,9 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-c2e8c796-04_sin_existencias-c1",
+              "cart_id": "eval-3e6f9559-04_sin_existencias-c1",
               "product_id": "B08GPGJY8M",
-              "quantity": 2
+              "quantity": 1
             }
           ],
           "inventory_changes": [
@@ -1119,7 +1086,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-c2e8c796-04_sin_existencias-c1",
+        "cart_id": "eval-3e6f9559-04_sin_existencias-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -1127,18 +1094,18 @@
           "quote": null,
           "order": {
             "order_id": 1,
-            "quote_id": "637cef5656ec4fdfa344301d74859b34",
+            "quote_id": "c1f8b8ddebd241c18a55083e436d095f",
             "items": [
               {
                 "product_id": "B08GPGJY8M",
                 "title": "TENQUAN Esterilla Yoga Antideslizante – 8mm Esterilla Yoga con Correa para Yoga Pilates y Ejercicios de Piso",
-                "quantity": 2,
+                "quantity": 1,
                 "unit_price_cents": 1800,
-                "subtotal_cents": 3600
+                "subtotal_cents": 1800
               }
             ],
-            "total_cents": 3600,
-            "message": "Pedido número 1 registrado: 2 unidades de «TENQUAN Esterilla Yoga Antideslizante – 8mm Esterilla Yoga con Correa…» a 18,00 € cada una, 36,00 €. Total: 36,00 €. Gracias por tu compra."
+            "total_cents": 1800,
+            "message": "Pedido número 1 registrado: 1 unidad de «TENQUAN Esterilla Yoga Antideslizante – 8mm Esterilla Yoga con Correa…» a 18,00 € cada una, 18,00 €. Total: 18,00 €. Gracias por tu compra."
           },
           "candidates": [
             {
@@ -1183,15 +1150,15 @@
           "orders": [
             {
               "order_id": 1,
-              "quote_id": "637cef5656ec4fdfa344301d74859b34",
-              "total_cents": 3600
+              "quote_id": "c1f8b8ddebd241c18a55083e436d095f",
+              "total_cents": 1800
             }
           ],
           "order_items": [
             {
               "order_id": 1,
               "product_id": "B08GPGJY8M",
-              "quantity": 2,
+              "quantity": 1,
               "unit_price_cents": 1800
             }
           ],
@@ -1205,7 +1172,7 @@
             {
               "product_id": "B08GPGJY8M",
               "initial_stock": 4,
-              "stock": 8
+              "stock": 9
             }
           ]
         },
@@ -1228,7 +1195,7 @@
           },
           "B08GPGJY8M": {
             "price_cents": 1800,
-            "stock": 8
+            "stock": 9
           }
         }
       },
@@ -1246,7 +1213,7 @@
   ],
   "final": {
     "snapshot": {
-      "cart_id": "eval-c2e8c796-04_sin_existencias-c1",
+      "cart_id": "eval-3e6f9559-04_sin_existencias-c1",
       "state": {
         "budget_cents": null,
         "preferences": [],
@@ -1254,18 +1221,18 @@
         "quote": null,
         "order": {
           "order_id": 1,
-          "quote_id": "637cef5656ec4fdfa344301d74859b34",
+          "quote_id": "c1f8b8ddebd241c18a55083e436d095f",
           "items": [
             {
               "product_id": "B08GPGJY8M",
               "title": "TENQUAN Esterilla Yoga Antideslizante – 8mm Esterilla Yoga con Correa para Yoga Pilates y Ejercicios de Piso",
-              "quantity": 2,
+              "quantity": 1,
               "unit_price_cents": 1800,
-              "subtotal_cents": 3600
+              "subtotal_cents": 1800
             }
           ],
-          "total_cents": 3600,
-          "message": "Pedido número 1 registrado: 2 unidades de «TENQUAN Esterilla Yoga Antideslizante – 8mm Esterilla Yoga con Correa…» a 18,00 € cada una, 36,00 €. Total: 36,00 €. Gracias por tu compra."
+          "total_cents": 1800,
+          "message": "Pedido número 1 registrado: 1 unidad de «TENQUAN Esterilla Yoga Antideslizante – 8mm Esterilla Yoga con Correa…» a 18,00 € cada una, 18,00 €. Total: 18,00 €. Gracias por tu compra."
         },
         "candidates": [
           {
@@ -1310,15 +1277,15 @@
         "orders": [
           {
             "order_id": 1,
-            "quote_id": "637cef5656ec4fdfa344301d74859b34",
-            "total_cents": 3600
+            "quote_id": "c1f8b8ddebd241c18a55083e436d095f",
+            "total_cents": 1800
           }
         ],
         "order_items": [
           {
             "order_id": 1,
             "product_id": "B08GPGJY8M",
-            "quantity": 2,
+            "quantity": 1,
             "unit_price_cents": 1800
           }
         ],
@@ -1332,7 +1299,7 @@
           {
             "product_id": "B08GPGJY8M",
             "initial_stock": 4,
-            "stock": 8
+            "stock": 9
           }
         ]
       },
@@ -1355,7 +1322,7 @@
         },
         "B08GPGJY8M": {
           "price_cents": 1800,
-          "stock": 8
+          "stock": 9
         }
       }
     },
@@ -1378,8 +1345,8 @@
             }
           ]
         },
-        "ok": false,
-        "detail": "pedido 1: 2 × B08GPGJY8M; total 3600 céntimos"
+        "ok": true,
+        "detail": "pedido 1: 1 × B08GPGJY8M; total 1800 céntimos"
       },
       {
         "check": "stock",
@@ -1402,7 +1369,7 @@
   },
   "violations": [],
   "problems": [],
-  "passed": false,
+  "passed": true,
   "timings": {
     "all": {
       "turns": 5,
@@ -1415,20 +1382,20 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 4.65,
-        "max": 8.69
+        "mean": 4.27,
+        "max": 7.07
       },
       "tools": {
         "mean": 0.04,
-        "max": 0.07
+        "max": 0.05
       },
       "tts": {
         "mean": 0.0,
         "max": 0.0
       },
       "total": {
-        "mean": 4.7,
-        "max": 8.76
+        "mean": 4.31,
+        "max": 7.11
       }
     },
     "with_llm": {
@@ -1442,20 +1409,20 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 5.81,
-        "max": 8.69
+        "mean": 5.34,
+        "max": 7.07
       },
       "tools": {
-        "mean": 0.05,
-        "max": 0.07
+        "mean": 0.04,
+        "max": 0.05
       },
       "tts": {
         "mean": 0.0,
         "max": 0.0
       },
       "total": {
-        "mean": 5.86,
-        "max": 8.76
+        "mean": 5.38,
+        "max": 7.11
       }
     },
     "without_llm": {

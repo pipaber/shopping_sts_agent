@@ -5,15 +5,15 @@
 - Tipo: `confirmacion_con_cambio`
 - Qué se prueba: A la cotización de una unidad el usuario contesta «sí, pero que sean tres». No es una confirmación limpia: no debe registrarse el pedido de una unidad. El pedido final lleva tres.
 
-## Turno 1 (7.4 s)
+## Turno 1 (7.9 s)
 
 **Usuario (texto):** Busco un paraguas plegable.
 
 - `buscar_productos(consulta="paraguas plegable")` → OK: estos son ahora los CANDIDATOS, del más al menos relevante: [1] id=B08ZC4844X | Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a Prueba de Viento de Toldo Doble, Paraguas Compacto de 54 Pulgadas, Ventilado y a Prueba de Lluvia para Deportes, Negocios y Viajes | marca: Gonex | color:…
 
-**Agente:** Tengo un paraguas plegable Gonex Negro por 6,52 euros, uno xj Camuflaje por 16,30 euros, uno Mr. Wonderful Multicolor por 150,31 euros, uno LJGYX Blue por 49,59 euros y uno Yosoo Health Gear plata por 16,34 euros. ¿Te interesa alguno?
+**Agente:** Tengo el paraguas Gonex Negro por 6,52 euros, el paraguas xj Camuflaje por 16,30 euros, el paraguas Mr. Wonderful Multicolor por 150,31 euros, el paraguas LJGYX Blue por 49,59 euros y el paraguas Jooayou Night Sky por 30,33 euros. ¿Te interesa alguno?
 
-**Enviado al TTS:** Tengo un paraguas plegable Gonex Negro por seis euros con cincuenta y dos céntimos, uno xj Camuflaje por dieciséis euros con treinta céntimos, uno Mr. Wonderful Multicolor por ciento cincuenta euros con treinta y un céntimos, uno LJGYX Blue por cuarenta y nueve euros con cincuenta y nueve céntimos y uno Yosoo Health Gear plata por dieciséis euros con treinta y cuatro céntimos. ¿Te interesa alguno?
+**Enviado al TTS:** Tengo el paraguas Gonex Negro por seis euros con cincuenta y dos céntimos, el paraguas xj Camuflaje por dieciséis euros con treinta céntimos, el paraguas Mr. Wonderful Multicolor por ciento cincuenta euros con treinta y un céntimos, el paraguas LJGYX Blue por cuarenta y nueve euros con cincuenta y nueve céntimos y el paraguas Jooayou Night Sky por treinta euros con treinta y tres céntimos. ¿Te interesa alguno?
 
 - ✔ `cart(empty=true)` — carrito: vacío
 
@@ -21,19 +21,19 @@
 
 > **Suceso externo:** la tienda deja `B08ZC4844X` (@elegido) con precio 9,00 € y existencias 20.
 
-## Turno 2 (5.3 s)
+## Turno 2 (4.8 s)
 
 **Usuario (texto):** Añade uno del primero.
 
 - `agregar_al_carrito(product_id="B08ZC4844X", cantidad=1)` → OK: hecho. Así queda el carrito. CARRITO: - id=B08ZC4844X | Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a… | 1 unidad × 9,00 € = 9,00 € | existencias: 20 Total del carrito: 9,00 €
 
-**Agente:** Hecho, añadido un paraguas Gonex Negro al carrito. En el carrito hay 1 unidad de «Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a…» a 9,00 € cada una, 9,00 €. Total: 9,00 €.
+**Agente:** Hecho, añadida una unidad al carrito. En el carrito hay 1 unidad de «Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a…» a 9,00 € cada una, 9,00 €. Total: 9,00 €.
 
-**Enviado al TTS:** Hecho, añadido un paraguas Gonex Negro al carrito. En el carrito hay una unidad de Gonex Paraguas de Golf Plegable de diez a nueve euros cada una, nueve euros. Total: nueve euros.
+**Enviado al TTS:** Hecho, añadida una unidad al carrito. En el carrito hay una unidad de Gonex Paraguas de Golf Plegable de diez a nueve euros cada una, nueve euros. Total: nueve euros.
 
 - ✔ `cart(lines=[{"product": "@elegido", "quantity": 1}])` — carrito: 1 × B08ZC4844X
 
-## Turno 3 (2.1 s)
+## Turno 3 (2.2 s)
 
 **Usuario (texto):** Cierra el pedido.
 
@@ -46,20 +46,20 @@
 - ✔ `awaiting_confirmation(value=true)` — esperando confirmación: sí
 - ✔ `orders(count=0)` — pedidos registrados: 0
 
-## Turno 4 (5.9 s)
+## Turno 4 (7.4 s)
 
 **Usuario (texto):** Sí, pero que sean tres.
 
 - `cambiar_cantidad(product_id="B08ZC4844X", cantidad=3)` → OK: hecho. Así queda el carrito. CARRITO: - id=B08ZC4844X | Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a… | 3 unidades × 9,00 € = 27,00 € | existencias: 20 Total del carrito: 27,00 €
 
-**Agente:** Hecho, el carrito ahora tiene 3 unidades de paraguas Gonex Negro por 9,00 € cada uno, total 27,00 €. En el carrito hay 3 unidades de «Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a…» a 9,00 € cada una, 27,00 €. Total: 27,00 €.
+**Agente:** Hecho, añadidas dos unidades más. Ahora tienes 3 unidades de «Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a…» a 9,00 € cada una, 27,00 €. Total: 27,00 €. En el carrito hay 3 unidades de «Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a…» a 9,00 € cada una, 27,00 €. Total: 27,00 €.
 
-**Enviado al TTS:** Hecho, el carrito ahora tiene tres unidades de paraguas Gonex Negro por nueve euros cada uno, total veintisiete euros. En el carrito hay tres unidades de Gonex Paraguas de Golf Plegable de diez a nueve euros cada una, veintisiete euros. Total: veintisiete euros.
+**Enviado al TTS:** Hecho, añadidas dos unidades más. Ahora tienes tres unidades de Gonex Paraguas de Golf Plegable de diez a nueve euros cada una, veintisiete euros. Total: veintisiete euros. En el carrito hay tres unidades de Gonex Paraguas de Golf Plegable de diez a nueve euros cada una, veintisiete euros. Total: veintisiete euros.
 
 - ✔ `orders(count=0)` — pedidos registrados: 0
 - ✔ `cart(lines=[{"product": "@elegido", "quantity": 3}])` — carrito: 3 × B08ZC4844X
 
-## Turno 5 (2.2 s)
+## Turno 5 (2.3 s)
 
 **Usuario (texto):** Cierra el pedido.
 
@@ -76,7 +76,7 @@
 
 **Usuario (texto):** Sí.
 
-- `confirmar_pedido(quote_id="867b173e889d40fd9111e47913f3d281")` → OK: pedido registrado
+- `confirmar_pedido(quote_id="86a5333706a24aedab0415b19c332950")` → OK: pedido registrado
 
 **Agente:** Pedido número 1 registrado: 3 unidades de «Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a…» a 9,00 € cada una, 27,00 €. Total: 27,00 €. Gracias por tu compra.
 
@@ -106,12 +106,12 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.04 | 7.37 | 0.03 | 0.00 | 7.43 | 0.0 s |
-| 2 | 0.00 | 0.00 | 5.24 | 0.03 | 0.00 | 5.27 | 0.0 s |
-| 3 | 0.00 | 0.00 | 2.10 | 0.04 | 0.00 | 2.14 | 0.0 s |
-| 4 | 0.00 | 0.00 | 5.81 | 0.04 | 0.00 | 5.85 | 0.0 s |
-| 5 | 0.00 | 0.00 | 2.12 | 0.04 | 0.00 | 2.16 | 0.0 s |
+| 1 | 0.00 | 0.04 | 7.81 | 0.03 | 0.00 | 7.87 | 0.0 s |
+| 2 | 0.00 | 0.00 | 4.75 | 0.05 | 0.00 | 4.80 | 0.0 s |
+| 3 | 0.00 | 0.00 | 2.19 | 0.04 | 0.00 | 2.23 | 0.0 s |
+| 4 | 0.00 | 0.00 | 7.35 | 0.05 | 0.00 | 7.41 | 0.0 s |
+| 5 | 0.00 | 0.00 | 2.23 | 0.04 | 0.00 | 2.27 | 0.0 s |
 | 6 | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | 0.0 s |
-| **Media de los turnos con LLM (5)** | 0.00 | 0.01 | 4.53 | 0.04 | 0.00 | 4.57 | |
+| **Media de los turnos con LLM (5)** | 0.00 | 0.01 | 4.87 | 0.04 | 0.00 | 4.92 | |
 | **Media de los turnos sin LLM (1)** | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | |
 

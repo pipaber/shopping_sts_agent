@@ -6,9 +6,9 @@
   "voice": false,
   "input": "texto",
   "audio_source": null,
-  "user_id": "eval-c2e8c796-07_presupuesto_excedido",
+  "user_id": "eval-3e6f9559-07_presupuesto_excedido",
   "threads": [
-    "eval-c2e8c796-07_presupuesto_excedido-c1"
+    "eval-3e6f9559-07_presupuesto_excedido-c1"
   ],
   "names": {
     "elegida": "B091TXCPQQ"
@@ -22,8 +22,8 @@
       "transcript": null,
       "expected_text": "Busco una mochila para portátil. Como mucho quiero gastar 30 euros.",
       "agent_input": "Busco una mochila para portátil. Como mucho quiero gastar 30 euros.",
-      "response": "Tengo la mochila SONAMBULO por 6,13 euros, la Lubardy por 17,46 euros, la KTMOUW por 24,01 euros, la Under Armour por 11,65 euros y la Della Gao por 20,79 euros. ¿Te interesa alguna? He anotado un presupuesto de 30,00 €.",
-      "spoken_text": "Tengo la mochila SONAMBULO por seis euros con trece céntimos, la Lubardy por diecisiete euros con cuarenta y seis céntimos, la KTMOUW por veinticuatro euros con un céntimo, la Under Armour por once euros con sesenta y cinco céntimos y la Della Gao por veinte euros con setenta y nueve céntimos. ¿Te interesa alguna? He anotado un presupuesto de treinta euros.",
+      "response": "Tengo la mochila SONAMBULO por 6,13 euros, la Lubardy por 17,46, la KTMOUW por 24,01, la Under Armour por 11,65 y la Della Gao por 20,79. ¿Te interesa alguna? He anotado un presupuesto de 30,00 €.",
+      "spoken_text": "Tengo la mochila SONAMBULO por seis euros con trece céntimos, la Lubardy por diecisiete coma cuarenta y seis, la KTMOUW por veinticuatro coma cero uno, la Under Armour por once coma sesenta y cinco y la Della Gao por veinte coma setenta y nueve. ¿Te interesa alguna? He anotado un presupuesto de treinta euros.",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -51,18 +51,18 @@
       ],
       "timings": {
         "asr": 0.0,
-        "retrieval": 0.029,
-        "llm": 8.21,
-        "tools": 0.029,
+        "retrieval": 0.028,
+        "llm": 8.108,
+        "tools": 0.032,
         "tts": 0.0,
-        "total": 8.268
+        "total": 8.168
       },
       "llm_steps": 3,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-c2e8c796-07_presupuesto_excedido-c1",
+        "cart_id": "eval-3e6f9559-07_presupuesto_excedido-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -81,7 +81,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-c2e8c796-07_presupuesto_excedido-c1",
+        "cart_id": "eval-3e6f9559-07_presupuesto_excedido-c1",
         "state": {
           "budget_cents": 3000,
           "preferences": [],
@@ -198,8 +198,8 @@
       "transcript": null,
       "expected_text": "Añade tres de la primera.",
       "agent_input": "Añade tres de la primera.",
-      "response": "Lo siento, con tres unidades el total supera tu presupuesto. ¿Te interesa añadir dos en su lugar?",
-      "spoken_text": "Lo siento, con tres unidades el total supera tu presupuesto. ¿Te interesa añadir dos en su lugar?",
+      "response": "Ese producto supera tu presupuesto. ¿Te interesa una unidad o quieres buscar otro?",
+      "spoken_text": "Ese producto supera tu presupuesto. ¿Te interesa una unidad o quieres buscar otro?",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -233,17 +233,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 5.54,
-        "tools": 0.032,
+        "llm": 5.426,
+        "tools": 0.034,
         "tts": 0.0,
-        "total": 5.572
+        "total": 5.46
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-c2e8c796-07_presupuesto_excedido-c1",
+        "cart_id": "eval-3e6f9559-07_presupuesto_excedido-c1",
         "state": {
           "budget_cents": 3000,
           "preferences": [],
@@ -325,7 +325,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-c2e8c796-07_presupuesto_excedido-c1",
+        "cart_id": "eval-3e6f9559-07_presupuesto_excedido-c1",
         "state": {
           "budget_cents": 3000,
           "preferences": [],
@@ -454,17 +454,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 5.002,
-        "tools": 0.05,
+        "llm": 5.128,
+        "tools": 0.053,
         "tts": 0.0,
-        "total": 5.052
+        "total": 5.181
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-c2e8c796-07_presupuesto_excedido-c1",
+        "cart_id": "eval-3e6f9559-07_presupuesto_excedido-c1",
         "state": {
           "budget_cents": 3000,
           "preferences": [],
@@ -546,7 +546,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-c2e8c796-07_presupuesto_excedido-c1",
+        "cart_id": "eval-3e6f9559-07_presupuesto_excedido-c1",
         "state": {
           "budget_cents": 3000,
           "preferences": [],
@@ -597,7 +597,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-c2e8c796-07_presupuesto_excedido-c1",
+              "cart_id": "eval-3e6f9559-07_presupuesto_excedido-c1",
               "product_id": "B091TXCPQQ",
               "quantity": 2
             }
@@ -652,7 +652,7 @@
   ],
   "final": {
     "snapshot": {
-      "cart_id": "eval-c2e8c796-07_presupuesto_excedido-c1",
+      "cart_id": "eval-3e6f9559-07_presupuesto_excedido-c1",
       "state": {
         "budget_cents": 3000,
         "preferences": [],
@@ -703,7 +703,7 @@
         "order_items": [],
         "cart_items": [
           {
-            "cart_id": "eval-c2e8c796-07_presupuesto_excedido-c1",
+            "cart_id": "eval-3e6f9559-07_presupuesto_excedido-c1",
             "product_id": "B091TXCPQQ",
             "quantity": 2
           }
@@ -795,8 +795,8 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 6.25,
-        "max": 8.21
+        "mean": 6.22,
+        "max": 8.11
       },
       "tools": {
         "mean": 0.04,
@@ -807,8 +807,8 @@
         "max": 0.0
       },
       "total": {
-        "mean": 6.3,
-        "max": 8.27
+        "mean": 6.27,
+        "max": 8.17
       }
     },
     "with_llm": {
@@ -822,8 +822,8 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 6.25,
-        "max": 8.21
+        "mean": 6.22,
+        "max": 8.11
       },
       "tools": {
         "mean": 0.04,
@@ -834,8 +834,8 @@
         "max": 0.0
       },
       "total": {
-        "mean": 6.3,
-        "max": 8.27
+        "mean": 6.27,
+        "max": 8.17
       }
     },
     "without_llm": {

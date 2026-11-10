@@ -5,7 +5,7 @@
 - Tipo: `compra_confirmada`
 - Qué se prueba: El usuario busca con presupuesto, añade dos unidades, pide cerrar y confirma. Tras la búsqueda la tienda fija el primer candidato en 14,50 € y 20 unidades, para que el resultado no dependa de qué producto salga primero.
 
-## Turno 1 (10.9 s)
+## Turno 1 (10.8 s)
 
 **Usuario (texto):** Hola, busco una cafetera italiana. Tengo un presupuesto de 60 euros.
 
@@ -29,9 +29,9 @@
 
 - `agregar_al_carrito(product_id="B06WGTZ874", cantidad=2)` → OK: hecho. Así queda el carrito. CARRITO: - id=B06WGTZ874 | De'longhi Dedica - Cafetera de Bomba de Acero Inoxidable para Café… | 2 unidades × 14,50 € = 29,00 € | existencias: 20 Total del carrito: 29,00 €
 
-**Agente:** Hecho, añadidas dos unidades. El total ahora es 29,00 €. En el carrito hay 2 unidades de «De'longhi Dedica - Cafetera de Bomba de Acero Inoxidable para Café…» a 14,50 € cada una, 29,00 €. Total: 29,00 €. Tu presupuesto es de 60,00 € y te quedan 31,00 €.
+**Agente:** Hecho, añadidas dos unidades. El total es 29,00 €. En el carrito hay 2 unidades de «De'longhi Dedica - Cafetera de Bomba de Acero Inoxidable para Café…» a 14,50 € cada una, 29,00 €. Total: 29,00 €. Tu presupuesto es de 60,00 € y te quedan 31,00 €.
 
-**Enviado al TTS:** Hecho, añadidas dos unidades. El total ahora es veintinueve euros. En el carrito hay dos unidades de De'longhi Dedica a catorce euros con cincuenta céntimos cada una, veintinueve euros. Total: veintinueve euros. Tu presupuesto es de sesenta euros y te quedan treinta y un euros.
+**Enviado al TTS:** Hecho, añadidas dos unidades. El total es veintinueve euros. En el carrito hay dos unidades de De'longhi Dedica a catorce euros con cincuenta céntimos cada una, veintinueve euros. Total: veintinueve euros. Tu presupuesto es de sesenta euros y te quedan treinta y un euros.
 
 - ✔ `cart(lines=[{"product": "@elegida", "quantity": 2}])` — carrito: 2 × B06WGTZ874
 - ✔ `orders(count=0)` — pedidos registrados: 0
@@ -53,7 +53,7 @@
 
 **Usuario (texto):** Sí, confirmo.
 
-- `confirmar_pedido(quote_id="ff17b279d7ba4080b680f9b8a2c2ddf4")` → OK: pedido registrado
+- `confirmar_pedido(quote_id="817899f14f064994bf0933ebeb269569")` → OK: pedido registrado
 
 **Agente:** Pedido número 1 registrado: 2 unidades de «De'longhi Dedica - Cafetera de Bomba de Acero Inoxidable para Café…» a 14,50 € cada una, 29,00 €. Total: 29,00 €. Gracias por tu compra.
 
@@ -84,10 +84,10 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.04 | 10.85 | 0.04 | 0.00 | 10.92 | 0.0 s |
-| 2 | 0.00 | 0.00 | 4.94 | 0.05 | 0.00 | 4.99 | 0.0 s |
+| 1 | 0.00 | 0.04 | 10.75 | 0.04 | 0.00 | 10.83 | 0.0 s |
+| 2 | 0.00 | 0.00 | 4.91 | 0.05 | 0.00 | 4.97 | 0.0 s |
 | 3 | 0.00 | 0.00 | 2.04 | 0.04 | 0.00 | 2.08 | 0.0 s |
 | 4 | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | 0.0 s |
-| **Media de los turnos con LLM (3)** | 0.00 | 0.01 | 5.94 | 0.04 | 0.00 | 6.00 | |
+| **Media de los turnos con LLM (3)** | 0.00 | 0.01 | 5.90 | 0.04 | 0.00 | 5.96 | |
 | **Media de los turnos sin LLM (1)** | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | |
 

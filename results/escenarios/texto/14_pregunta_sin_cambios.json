@@ -6,9 +6,9 @@
   "voice": false,
   "input": "texto",
   "audio_source": null,
-  "user_id": "eval-6b9dd32e-14_pregunta_sin_cambios",
+  "user_id": "eval-5e374f37-14_pregunta_sin_cambios",
   "threads": [
-    "eval-6b9dd32e-14_pregunta_sin_cambios-c1"
+    "eval-5e374f37-14_pregunta_sin_cambios-c1"
   ],
   "names": {
     "primera": "B091HXTM73"
@@ -22,8 +22,8 @@
       "transcript": null,
       "expected_text": "Busco una funda para móvil.",
       "agent_input": "Busco una funda para móvil.",
-      "response": "Tengo la funda KEELYY por 18,23 euros, la Cocoda por 21,73, la MOBESV por 17,62, la kwmobile por 81,81 y la BeCool por 15,43. ¿Te interesa alguna?",
-      "spoken_text": "Tengo la funda KEELYY por dieciocho euros con veintitrés céntimos, la Cocoda por veintiuno coma setenta y tres, la MOBESV por diecisiete coma sesenta y dos, la kwmobile por ochenta y uno coma ochenta y uno y la BeCool por quince coma cuarenta y tres. ¿Te interesa alguna?",
+      "response": "Tengo la funda KEELYY por 18,23 euros, la Cocoda por 21,73, la MOBESV por 17,62 y la kwmobile por 81,81. ¿Te interesa alguna?",
+      "spoken_text": "Tengo la funda KEELYY por dieciocho euros con veintitrés céntimos, la Cocoda por veintiuno coma setenta y tres, la MOBESV por diecisiete coma sesenta y dos y la kwmobile por ochenta y uno coma ochenta y uno. ¿Te interesa alguna?",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -41,18 +41,18 @@
       ],
       "timings": {
         "asr": 0.0,
-        "retrieval": 0.03,
-        "llm": 6.595,
-        "tools": 0.026,
+        "retrieval": 0.031,
+        "llm": 5.952,
+        "tools": 0.027,
         "tts": 0.0,
-        "total": 6.651
+        "total": 6.011
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-6b9dd32e-14_pregunta_sin_cambios-c1",
+        "cart_id": "eval-5e374f37-14_pregunta_sin_cambios-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -71,7 +71,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-6b9dd32e-14_pregunta_sin_cambios-c1",
+        "cart_id": "eval-5e374f37-14_pregunta_sin_cambios-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -172,8 +172,8 @@
       "transcript": null,
       "expected_text": "¿La segunda está disponible?",
       "agent_input": "¿La segunda está disponible?",
-      "response": "Sí, la funda Cocoda está disponible, quedan 10 unidades.",
-      "spoken_text": "Sí, la funda Cocoda está disponible, quedan diez unidades.",
+      "response": "Sí, la funda Cocoda está disponible. Quedan 10 unidades.",
+      "spoken_text": "Sí, la funda Cocoda está disponible. Quedan diez unidades.",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -183,7 +183,7 @@
           "args": {
             "product_id": "B098NQLJKX"
           },
-          "reason": "consultar existencias de la segunda opción",
+          "reason": "consultar existencias",
           "ok": true,
           "summary": "precio 21,73 €; quedan 10 unidades. Esta herramienta no da características: para color, batería, medidas u otros datos del producto usa detalle_producto.",
           "issues": []
@@ -192,17 +192,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 5.005,
-        "tools": 0.031,
+        "llm": 4.637,
+        "tools": 0.03,
         "tts": 0.0,
-        "total": 5.036
+        "total": 4.667
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-6b9dd32e-14_pregunta_sin_cambios-c1",
+        "cart_id": "eval-5e374f37-14_pregunta_sin_cambios-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -278,7 +278,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-6b9dd32e-14_pregunta_sin_cambios-c1",
+        "cart_id": "eval-5e374f37-14_pregunta_sin_cambios-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -381,17 +381,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 3.074,
-        "tools": 0.027,
+        "llm": 3.208,
+        "tools": 0.031,
         "tts": 0.0,
-        "total": 3.101
+        "total": 3.239
       },
       "llm_steps": 1,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-6b9dd32e-14_pregunta_sin_cambios-c1",
+        "cart_id": "eval-5e374f37-14_pregunta_sin_cambios-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -467,7 +467,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-6b9dd32e-14_pregunta_sin_cambios-c1",
+        "cart_id": "eval-5e374f37-14_pregunta_sin_cambios-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -564,7 +564,7 @@
   ],
   "final": {
     "snapshot": {
-      "cart_id": "eval-6b9dd32e-14_pregunta_sin_cambios-c1",
+      "cart_id": "eval-5e374f37-14_pregunta_sin_cambios-c1",
       "state": {
         "budget_cents": null,
         "preferences": [],
@@ -673,8 +673,8 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 4.89,
-        "max": 6.59
+        "mean": 4.6,
+        "max": 5.95
       },
       "tools": {
         "mean": 0.03,
@@ -685,8 +685,8 @@
         "max": 0.0
       },
       "total": {
-        "mean": 4.93,
-        "max": 6.65
+        "mean": 4.64,
+        "max": 6.01
       }
     },
     "with_llm": {
@@ -700,8 +700,8 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 4.89,
-        "max": 6.59
+        "mean": 4.6,
+        "max": 5.95
       },
       "tools": {
         "mean": 0.03,
@@ -712,8 +712,8 @@
         "max": 0.0
       },
       "total": {
-        "mean": 4.93,
-        "max": 6.65
+        "mean": 4.64,
+        "max": 6.01
       }
     },
     "without_llm": {

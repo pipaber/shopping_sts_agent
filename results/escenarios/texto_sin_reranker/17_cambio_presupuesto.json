@@ -6,9 +6,9 @@
   "voice": false,
   "input": "texto",
   "audio_source": null,
-  "user_id": "eval-c2e8c796-17_cambio_presupuesto",
+  "user_id": "eval-3e6f9559-17_cambio_presupuesto",
   "threads": [
-    "eval-c2e8c796-17_cambio_presupuesto-c1"
+    "eval-3e6f9559-17_cambio_presupuesto-c1"
   ],
   "names": {
     "elegida": "B08ZLX5MXL"
@@ -22,8 +22,8 @@
       "transcript": null,
       "expected_text": "Busco una taza de desayuno. Tengo 40 euros.",
       "agent_input": "Busco una taza de desayuno. Tengo 40 euros.",
-      "response": "Tengo una taza de desayuno de AN por 7,48 euros, una de MUGFFINS por 18,90 euros, un pack de 2 tazas por 5,30 euros, una taza de Wistty por 5,05 euros y una taza infantil de Badabulle por 12,37 euros. ¿Te interesa alguna? He anotado un presupuesto de 40,00 €.",
-      "spoken_text": "Tengo una taza de desayuno de AN por siete euros con cuarenta y ocho céntimos, una de MUGFFINS por dieciocho euros con noventa céntimos, un pack de dos tazas por cinco euros con treinta céntimos, una taza de Wistty por cinco euros con cinco céntimos y una taza infantil de Badabulle por doce euros con treinta y siete céntimos. ¿Te interesa alguna? He anotado un presupuesto de cuarenta euros.",
+      "response": "Tengo una taza de desayuno de AN por 7,48 euros, una de MUGFFINS por 18,90, una de Genérico por 5,30 y otra de Wistty por 5,05. ¿Te interesa alguna? He anotado un presupuesto de 40,00 €.",
+      "spoken_text": "Tengo una taza de desayuno de AN por siete euros con cuarenta y ocho céntimos, una de MUGFFINS por dieciocho coma noventa, una de Genérico por cinco coma treinta y otra de Wistty por cinco coma cero cinco. ¿Te interesa alguna? He anotado un presupuesto de cuarenta euros.",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -51,18 +51,18 @@
       ],
       "timings": {
         "asr": 0.0,
-        "retrieval": 0.028,
-        "llm": 8.812,
-        "tools": 0.028,
+        "retrieval": 0.025,
+        "llm": 7.579,
+        "tools": 0.029,
         "tts": 0.0,
-        "total": 8.868
+        "total": 7.634
       },
       "llm_steps": 3,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-c2e8c796-17_cambio_presupuesto-c1",
+        "cart_id": "eval-3e6f9559-17_cambio_presupuesto-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -81,7 +81,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-c2e8c796-17_cambio_presupuesto-c1",
+        "cart_id": "eval-3e6f9559-17_cambio_presupuesto-c1",
         "state": {
           "budget_cents": 4000,
           "preferences": [],
@@ -219,17 +219,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 5.059,
-        "tools": 0.051,
+        "llm": 5.091,
+        "tools": 0.049,
         "tts": 0.0,
-        "total": 5.109
+        "total": 5.141
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-c2e8c796-17_cambio_presupuesto-c1",
+        "cart_id": "eval-3e6f9559-17_cambio_presupuesto-c1",
         "state": {
           "budget_cents": 4000,
           "preferences": [],
@@ -311,7 +311,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-c2e8c796-17_cambio_presupuesto-c1",
+        "cart_id": "eval-3e6f9559-17_cambio_presupuesto-c1",
         "state": {
           "budget_cents": 4000,
           "preferences": [],
@@ -362,7 +362,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-c2e8c796-17_cambio_presupuesto-c1",
+              "cart_id": "eval-3e6f9559-17_cambio_presupuesto-c1",
               "product_id": "B08ZLX5MXL",
               "quantity": 3
             }
@@ -422,8 +422,8 @@
       "transcript": null,
       "expected_text": "Mejor baja mi presupuesto a 25 euros.",
       "agent_input": "Mejor baja mi presupuesto a 25 euros.",
-      "response": "El presupuesto se ha fijado en 25,00 €, pero el carrito supera ese importe en 5,00 €. ¿Qué deseas hacer? En el carrito hay 3 unidades de «Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_…» a 10,00 € cada una, 30,00 €. Total: 30,00 €. Tu presupuesto es de 25,00 € y lo superas en 5,00 €.",
-      "spoken_text": "El presupuesto se ha fijado en veinticinco euros, pero el carrito supera ese importe en cinco euros. ¿Qué deseas hacer? En el carrito hay tres unidades de Taza Desayuno con Mensaje Respira Regalos Originales a diez euros cada una, treinta euros. Total: treinta euros. Tu presupuesto es de veinticinco euros y lo superas en cinco euros.",
+      "response": "El carrito supera tu presupuesto en 5,00 €. ¿Qué deseas hacer? En el carrito hay 3 unidades de «Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_…» a 10,00 € cada una, 30,00 €. Total: 30,00 €. Tu presupuesto es de 25,00 € y lo superas en 5,00 €.",
+      "spoken_text": "El carrito supera tu presupuesto en cinco euros. ¿Qué deseas hacer? En el carrito hay tres unidades de Taza Desayuno con Mensaje Respira Regalos Originales a diez euros cada una, treinta euros. Total: treinta euros. Tu presupuesto es de veinticinco euros y lo superas en cinco euros.",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -442,17 +442,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 5.585,
+        "llm": 4.922,
         "tools": 0.031,
         "tts": 0.0,
-        "total": 5.616
+        "total": 4.953
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-c2e8c796-17_cambio_presupuesto-c1",
+        "cart_id": "eval-3e6f9559-17_cambio_presupuesto-c1",
         "state": {
           "budget_cents": 4000,
           "preferences": [],
@@ -503,7 +503,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-c2e8c796-17_cambio_presupuesto-c1",
+              "cart_id": "eval-3e6f9559-17_cambio_presupuesto-c1",
               "product_id": "B08ZLX5MXL",
               "quantity": 3
             }
@@ -540,7 +540,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-c2e8c796-17_cambio_presupuesto-c1",
+        "cart_id": "eval-3e6f9559-17_cambio_presupuesto-c1",
         "state": {
           "budget_cents": 2500,
           "preferences": [],
@@ -591,7 +591,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-c2e8c796-17_cambio_presupuesto-c1",
+              "cart_id": "eval-3e6f9559-17_cambio_presupuesto-c1",
               "product_id": "B08ZLX5MXL",
               "quantity": 3
             }
@@ -659,8 +659,8 @@
       "transcript": null,
       "expected_text": "Cierra el pedido.",
       "agent_input": "Cierra el pedido.",
-      "response": "El pedido no se puede realizar porque supera tu presupuesto en 5,00 €. ¿Quieres bajar el presupuesto o cambiar el carrito?",
-      "spoken_text": "El pedido no se puede realizar porque supera tu presupuesto en cinco euros. ¿Quieres bajar el presupuesto o cambiar el carrito?",
+      "response": "El carrito supera tu presupuesto en 5,00 €. ¿Qué deseas hacer?",
+      "spoken_text": "El carrito supera tu presupuesto en cinco euros. ¿Qué deseas hacer?",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -688,17 +688,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 4.669,
-        "tools": 0.035,
+        "llm": 4.627,
+        "tools": 0.03,
         "tts": 0.0,
-        "total": 4.703
+        "total": 4.657
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-c2e8c796-17_cambio_presupuesto-c1",
+        "cart_id": "eval-3e6f9559-17_cambio_presupuesto-c1",
         "state": {
           "budget_cents": 2500,
           "preferences": [],
@@ -749,7 +749,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-c2e8c796-17_cambio_presupuesto-c1",
+              "cart_id": "eval-3e6f9559-17_cambio_presupuesto-c1",
               "product_id": "B08ZLX5MXL",
               "quantity": 3
             }
@@ -786,7 +786,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-c2e8c796-17_cambio_presupuesto-c1",
+        "cart_id": "eval-3e6f9559-17_cambio_presupuesto-c1",
         "state": {
           "budget_cents": 2500,
           "preferences": [],
@@ -837,7 +837,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-c2e8c796-17_cambio_presupuesto-c1",
+              "cart_id": "eval-3e6f9559-17_cambio_presupuesto-c1",
               "product_id": "B08ZLX5MXL",
               "quantity": 3
             }
@@ -913,8 +913,8 @@
       "transcript": null,
       "expected_text": "Entonces deja solo dos.",
       "agent_input": "Entonces deja solo dos.",
-      "response": "Hecho, el carrito ahora tiene 2 unidades de taza desayuno por 20,00 €. En el carrito hay 2 unidades de «Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_…» a 10,00 € cada una, 20,00 €. Total: 20,00 €. Tu presupuesto es de 25,00 € y te quedan 5,00 €.",
-      "spoken_text": "Hecho, el carrito ahora tiene dos unidades de taza desayuno por veinte euros. En el carrito hay dos unidades de Taza Desayuno con Mensaje Respira Regalos Originales a diez euros cada una, veinte euros. Total: veinte euros. Tu presupuesto es de veinticinco euros y te quedan cinco euros.",
+      "response": "Hecho, el carrito ahora tiene 2 unidades de la taza de desayuno por 10,00 € cada una, totalizando 20,00 €. En el carrito hay 2 unidades de «Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_…» a 10,00 € cada una, 20,00 €. Total: 20,00 €. Tu presupuesto es de 25,00 € y te quedan 5,00 €.",
+      "spoken_text": "Hecho, el carrito ahora tiene dos unidades de la taza de desayuno por diez euros cada una, totalizando veinte euros. En el carrito hay dos unidades de Taza Desayuno con Mensaje Respira Regalos Originales a diez euros cada una, veinte euros. Total: veinte euros. Tu presupuesto es de veinticinco euros y te quedan cinco euros.",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -925,7 +925,7 @@
             "product_id": "B08ZLX5MXL",
             "cantidad": 2
           },
-          "reason": "cambiar la cantidad del producto en el carrito",
+          "reason": "reducir el carrito a dos unidades",
           "ok": true,
           "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B08ZLX5MXL | Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_… | 2 unidades × 10,00 € = 20,00 € | existencias: 20\nTotal del carrito: 20,00 €",
           "issues": []
@@ -934,17 +934,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 5.482,
-        "tools": 0.044,
+        "llm": 6.005,
+        "tools": 0.053,
         "tts": 0.0,
-        "total": 5.527
+        "total": 6.058
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-c2e8c796-17_cambio_presupuesto-c1",
+        "cart_id": "eval-3e6f9559-17_cambio_presupuesto-c1",
         "state": {
           "budget_cents": 2500,
           "preferences": [],
@@ -995,7 +995,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-c2e8c796-17_cambio_presupuesto-c1",
+              "cart_id": "eval-3e6f9559-17_cambio_presupuesto-c1",
               "product_id": "B08ZLX5MXL",
               "quantity": 3
             }
@@ -1032,7 +1032,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-c2e8c796-17_cambio_presupuesto-c1",
+        "cart_id": "eval-3e6f9559-17_cambio_presupuesto-c1",
         "state": {
           "budget_cents": 2500,
           "preferences": [],
@@ -1083,7 +1083,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-c2e8c796-17_cambio_presupuesto-c1",
+              "cart_id": "eval-3e6f9559-17_cambio_presupuesto-c1",
               "product_id": "B08ZLX5MXL",
               "quantity": 2
             }
@@ -1150,17 +1150,6 @@
       "awaiting_confirmation": true,
       "operations": [
         {
-          "tool": "cambiar_cantidad",
-          "args": {
-            "product_id": "B08ZLX5MXL",
-            "cantidad": 2
-          },
-          "reason": "reducir la cantidad del producto en el carrito",
-          "ok": true,
-          "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B08ZLX5MXL | Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_… | 2 unidades × 10,00 € = 20,00 € | existencias: 20\nTotal del carrito: 20,00 €",
-          "issues": []
-        },
-        {
           "tool": "cotizar",
           "args": {},
           "reason": "cotizar el carrito",
@@ -1172,17 +1161,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 4.592,
-        "tools": 0.041,
+        "llm": 2.509,
+        "tools": 0.04,
         "tts": 0.0,
-        "total": 4.633
+        "total": 2.549
       },
-      "llm_steps": 2,
+      "llm_steps": 1,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-c2e8c796-17_cambio_presupuesto-c1",
+        "cart_id": "eval-3e6f9559-17_cambio_presupuesto-c1",
         "state": {
           "budget_cents": 2500,
           "preferences": [],
@@ -1233,7 +1222,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-c2e8c796-17_cambio_presupuesto-c1",
+              "cart_id": "eval-3e6f9559-17_cambio_presupuesto-c1",
               "product_id": "B08ZLX5MXL",
               "quantity": 2
             }
@@ -1270,13 +1259,13 @@
         }
       },
       "after": {
-        "cart_id": "eval-c2e8c796-17_cambio_presupuesto-c1",
+        "cart_id": "eval-3e6f9559-17_cambio_presupuesto-c1",
         "state": {
           "budget_cents": 2500,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "99bfd8d154584f3088e39ae34255e846",
+            "quote_id": "8ffc47e13a5b4d6390cc6b816b96b8d3",
             "items": [
               {
                 "product_id": "B08ZLX5MXL",
@@ -1336,7 +1325,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-c2e8c796-17_cambio_presupuesto-c1",
+              "cart_id": "eval-3e6f9559-17_cambio_presupuesto-c1",
               "product_id": "B08ZLX5MXL",
               "quantity": 2
             }
@@ -1408,7 +1397,7 @@
         {
           "tool": "confirmar_pedido",
           "args": {
-            "quote_id": "99bfd8d154584f3088e39ae34255e846"
+            "quote_id": "8ffc47e13a5b4d6390cc6b816b96b8d3"
           },
           "reason": "el usuario confirmó la cotización",
           "ok": true,
@@ -1420,22 +1409,22 @@
         "asr": 0.0,
         "retrieval": 0.0,
         "llm": 0.0,
-        "tools": 0.034,
+        "tools": 0.03,
         "tts": 0.0,
-        "total": 0.034
+        "total": 0.03
       },
       "llm_steps": 0,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-c2e8c796-17_cambio_presupuesto-c1",
+        "cart_id": "eval-3e6f9559-17_cambio_presupuesto-c1",
         "state": {
           "budget_cents": 2500,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "99bfd8d154584f3088e39ae34255e846",
+            "quote_id": "8ffc47e13a5b4d6390cc6b816b96b8d3",
             "items": [
               {
                 "product_id": "B08ZLX5MXL",
@@ -1495,7 +1484,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-c2e8c796-17_cambio_presupuesto-c1",
+              "cart_id": "eval-3e6f9559-17_cambio_presupuesto-c1",
               "product_id": "B08ZLX5MXL",
               "quantity": 2
             }
@@ -1532,7 +1521,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-c2e8c796-17_cambio_presupuesto-c1",
+        "cart_id": "eval-3e6f9559-17_cambio_presupuesto-c1",
         "state": {
           "budget_cents": 2500,
           "preferences": [],
@@ -1540,7 +1529,7 @@
           "quote": null,
           "order": {
             "order_id": 1,
-            "quote_id": "99bfd8d154584f3088e39ae34255e846",
+            "quote_id": "8ffc47e13a5b4d6390cc6b816b96b8d3",
             "items": [
               {
                 "product_id": "B08ZLX5MXL",
@@ -1596,7 +1585,7 @@
           "orders": [
             {
               "order_id": 1,
-              "quote_id": "99bfd8d154584f3088e39ae34255e846",
+              "quote_id": "8ffc47e13a5b4d6390cc6b816b96b8d3",
               "total_cents": 2000
             }
           ],
@@ -1654,7 +1643,7 @@
   ],
   "final": {
     "snapshot": {
-      "cart_id": "eval-c2e8c796-17_cambio_presupuesto-c1",
+      "cart_id": "eval-3e6f9559-17_cambio_presupuesto-c1",
       "state": {
         "budget_cents": 2500,
         "preferences": [],
@@ -1662,7 +1651,7 @@
         "quote": null,
         "order": {
           "order_id": 1,
-          "quote_id": "99bfd8d154584f3088e39ae34255e846",
+          "quote_id": "8ffc47e13a5b4d6390cc6b816b96b8d3",
           "items": [
             {
               "product_id": "B08ZLX5MXL",
@@ -1718,7 +1707,7 @@
         "orders": [
           {
             "order_id": 1,
-            "quote_id": "99bfd8d154584f3088e39ae34255e846",
+            "quote_id": "8ffc47e13a5b4d6390cc6b816b96b8d3",
             "total_cents": 2000
           }
         ],
@@ -1827,8 +1816,8 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 4.89,
-        "max": 8.81
+        "mean": 4.39,
+        "max": 7.58
       },
       "tools": {
         "mean": 0.04,
@@ -1839,8 +1828,8 @@
         "max": 0.0
       },
       "total": {
-        "mean": 4.93,
-        "max": 8.87
+        "mean": 4.43,
+        "max": 7.63
       }
     },
     "with_llm": {
@@ -1854,8 +1843,8 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 5.7,
-        "max": 8.81
+        "mean": 5.12,
+        "max": 7.58
       },
       "tools": {
         "mean": 0.04,
@@ -1866,8 +1855,8 @@
         "max": 0.0
       },
       "total": {
-        "mean": 5.74,
-        "max": 8.87
+        "mean": 5.17,
+        "max": 7.63
       }
     },
     "without_llm": {

@@ -6,9 +6,9 @@
   "voice": false,
   "input": "texto",
   "audio_source": null,
-  "user_id": "eval-a557491f-18_cierre_sin_carrito",
+  "user_id": "eval-49d0281c-18_cierre_sin_carrito",
   "threads": [
-    "eval-a557491f-18_cierre_sin_carrito-c1"
+    "eval-49d0281c-18_cierre_sin_carrito-c1"
   ],
   "names": {},
   "steps": [
@@ -45,17 +45,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 2.903,
-        "tools": 0.029,
+        "llm": 2.896,
+        "tools": 0.027,
         "tts": 0.0,
-        "total": 2.932
+        "total": 2.923
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-a557491f-18_cierre_sin_carrito-c1",
+        "cart_id": "eval-49d0281c-18_cierre_sin_carrito-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -74,7 +74,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-a557491f-18_cierre_sin_carrito-c1",
+        "cart_id": "eval-49d0281c-18_cierre_sin_carrito-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -119,8 +119,8 @@
       "transcript": null,
       "expected_text": "Sí, confirmo.",
       "agent_input": "Sí, confirmo.",
-      "response": "Tu carrito está vacío. ¿Quieres buscar algún producto para cotizar?",
-      "spoken_text": "Tu carrito está vacío. ¿Quieres buscar algún producto para cotizar?",
+      "response": "Tu carrito está vacío. ¿Quieres añadir algo antes de cerrar el pedido?",
+      "spoken_text": "Tu carrito está vacío. ¿Quieres añadir algo antes de cerrar el pedido?",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -128,17 +128,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 1.92,
-        "tools": 0.017,
+        "llm": 2.131,
+        "tools": 0.032,
         "tts": 0.0,
-        "total": 1.937
+        "total": 2.162
       },
       "llm_steps": 1,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-a557491f-18_cierre_sin_carrito-c1",
+        "cart_id": "eval-49d0281c-18_cierre_sin_carrito-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -157,7 +157,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-a557491f-18_cierre_sin_carrito-c1",
+        "cart_id": "eval-49d0281c-18_cierre_sin_carrito-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -189,7 +189,7 @@
   ],
   "final": {
     "snapshot": {
-      "cart_id": "eval-a557491f-18_cierre_sin_carrito-c1",
+      "cart_id": "eval-49d0281c-18_cierre_sin_carrito-c1",
       "state": {
         "budget_cents": null,
         "preferences": [],
@@ -241,11 +241,11 @@
         "max": 0.0
       },
       "llm": {
-        "mean": 2.41,
+        "mean": 2.51,
         "max": 2.9
       },
       "tools": {
-        "mean": 0.02,
+        "mean": 0.03,
         "max": 0.03
       },
       "tts": {
@@ -253,8 +253,8 @@
         "max": 0.0
       },
       "total": {
-        "mean": 2.43,
-        "max": 2.93
+        "mean": 2.54,
+        "max": 2.92
       }
     },
     "with_llm": {
@@ -268,11 +268,11 @@
         "max": 0.0
       },
       "llm": {
-        "mean": 2.41,
+        "mean": 2.51,
         "max": 2.9
       },
       "tools": {
-        "mean": 0.02,
+        "mean": 0.03,
         "max": 0.03
       },
       "tts": {
@@ -280,8 +280,8 @@
         "max": 0.0
       },
       "total": {
-        "mean": 2.43,
-        "max": 2.93
+        "mean": 2.54,
+        "max": 2.92
       }
     },
     "without_llm": {

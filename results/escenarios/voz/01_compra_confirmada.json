@@ -6,9 +6,9 @@
   "voice": true,
   "input": "audio",
   "audio_source": "sintéticos, hablante de prueba «Luis Moray» de XTTS-v2 (no es la voz del usuario)",
-  "user_id": "eval-b9a61af9-01_compra_confirmada",
+  "user_id": "eval-9da5336e-01_compra_confirmada",
   "threads": [
-    "eval-b9a61af9-01_compra_confirmada-c1"
+    "eval-9da5336e-01_compra_confirmada-c1"
   ],
   "names": {
     "elegida": "B06WGTZ874"
@@ -22,10 +22,10 @@
       "transcript": "Hola, busco una cafetera italiana. Tengo un presupuesto de 60 euros.",
       "expected_text": "Hola, busco una cafetera italiana. Tengo un presupuesto de 60 euros.",
       "agent_input": "Hola, busco una cafetera italiana. Tengo un presupuesto de 60 euros.",
-      "response": "Tengo la De'Longhi Dedica por 5,03 euros, la Gastroback por 46,24 euros, la De'Longhi ECOV por 44,50 euros, la CREATE Thera Classic por 5,05 euros y la CREATE Thera Stylance Pro por 5,23 euros. ¿Te interesa alguna? He anotado un presupuesto de 60,00 €.",
-      "spoken_text": "Tengo la De'Longhi Dedica por cinco euros con tres céntimos, la Gastroback por cuarenta y seis euros con veinticuatro céntimos, la De'Longhi ECOV por cuarenta y cuatro euros con cincuenta céntimos, la CREATE Thera Classic por cinco euros con cinco céntimos y la CREATE Thera Stylance Pro por cinco euros con veintitrés céntimos. ¿Te interesa alguna? He anotado un presupuesto de sesenta euros.",
+      "response": "Tengo la De'Longhi Dedica por 5,03 €, la Gastroback por 46,24 €, la De'Longhi ECOV por 44,50 €, la CREATE THERA Classic por 5,05 € y la CREATE Stylance Pro por 5,23 €. ¿Te interesa alguna? He anotado un presupuesto de 60,00 €.",
+      "spoken_text": "Tengo la De'Longhi Dedica por cinco euros con tres céntimos, la Gastroback por cuarenta y seis euros con veinticuatro céntimos, la De'Longhi ECOV por cuarenta y cuatro euros con cincuenta céntimos, la CREATE THERA Classic por cinco euros con cinco céntimos y la CREATE Stylance Pro por cinco euros con veintitrés céntimos. ¿Te interesa alguna? He anotado un presupuesto de sesenta euros.",
       "output_audio": "respuesta_01.wav",
-      "output_seconds": 30.910666666666668,
+      "output_seconds": 33.18266666666667,
       "awaiting_confirmation": false,
       "operations": [
         {
@@ -43,28 +43,28 @@
           "args": {
             "consulta": "cafetera italiana"
           },
-          "reason": "buscar una cafetera italiana dentro del presupuesto",
+          "reason": "buscar lo que pide",
           "ok": true,
           "summary": "estos son ahora los CANDIDATOS, del más al menos relevante:\n[1] id=B06WGTZ874 | De'longhi Dedica - Cafetera de Bomba de Acero Inoxidable para Café Molido o Monodosis, Cafetera para Espresso y Cappuccino, Depósito de 1.3 Litros, Sistema Anti-goteo, EC685.M, Metal 30x33x15cm | marca: De'Longhi | color: Metal | precio: 5,03 € | existencias: 27 | características (extracto): La presión de 15 bares crea un espresso con un rico aroma y una espuma de color nuez en la parte superior La tecnología Thermoblock calienta el agua en 35 segundos a la temperatura exacta para preparar un espresso óptimo Capuccinatore con… | descripción: desconocido\n[2] id=B07V47R2Z2 | Gastroback 42619 Design Espresso Advanced Barista - Cafetera espresso (programable, con mecanismo cónico y bomba de espresso italiana, 15 bares, acero inoxidable) | marca: GASTROBACK | color: Acero Inoxidable. | precio: 46,24 € | existencias: 26 | características (extracto): Para granos de café recién molido, café en polvo o E. S E Pads Sistema de calefacción de bloque térmico: tiempo de calentamiento rápido (aprox. 1, 5 minutos) ULKA - Bomba de espresso profesional (15 bares) 11 niveles de molido y cantidad… | descripción: desconocido\n[3] id=B00S4U4W4I | De'Longhi ECOV 311.BG Cafetera Automática, 1100 W, 1.4 L, 15 Bares, 2 Tazas, Acero Inoxidable, Beige | marca: De'Longhi | color: Beige | precio: 44,50 € | existencias: 44 | características (extracto): Cafetera ECOV311 BG Delonghi Siguiendo la tendencia más actual de los conceptos clásicos y retro la Vintage Icona es una máquina de café espresso de bomba tradicional con estilo y con una tecnología avanzada que garantiza un espresso… | descripción: desconocido\n[4] id=B0819Y9TPK | CREATE Cafetera THERA Classic - Cafetera Espress Semiautomática para Espresso y Cappuccinos, Presión 20 Bares, Capacidad 1,25 L, 1100W, Vaporizador Orientable, Acero Inoxidable | marca: CREATE | color: Plateado | precio: 5,05 € | existencias: 28 | características (extracto): Para poder disfrutar con todos los sentidos de la experiencia de un buen café espresso, necesitas una máquina perfecta. Así es la nueva KAFFETA Espress de CREATE : 1100W de potencia para poder desarrollar 20 bares reales de presión que… | descripción: Descubre hasta dónde pueden llegar tus sentidos con la nueva cafetera espress eléctrica de CREATE . Cualquier momento del día será ideal para disfrutar de un buen café espresso o un cappuccino con el…\n[5] id=B083P4NPWQ | CREATE Cafetera Expresso Automática Thera Stylance Pro - Cafetera Espress para Espresso y Cappuccino, 20 Bares, 1100 W, 1,5 litros, Vaporizador Orientable, Doble Salida, Regulador de Presión | marca: CREATE | color: desconocido | precio: 5,23 € | existencias: 38 | características (extracto): Cafetera automática, con una bomba de presión de 20 bares y 1100 W de potencia, con doble sistema de seguridad que evita el sobrecalentamiento y la sobrepresión. Se calienta rápidamente, y prepara un café con mucha crema, sin apenas hacer… | descripción: Con 20 bares de presión, más potencia, un depósito de 1,5 litros, doble sistema de seguridad y acabados en acero inoxidable. Completamente automática, prepara café de cafetería en casa con café…",
           "issues": []
         }
       ],
       "timings": {
-        "asr": 0.541,
-        "retrieval": 0.029,
-        "llm": 9.76,
+        "asr": 0.558,
+        "retrieval": 0.03,
+        "llm": 9.844,
         "tools": 0.043,
-        "tts": 7.09,
-        "total": 17.463
+        "tts": 7.703,
+        "total": 18.178
       },
       "llm_steps": 3,
-      "tts_first_chunk_seconds": 3.49,
+      "tts_first_chunk_seconds": 3.525,
       "tts_retries": 0,
       "product_terms": [
         "cafetera italiana"
       ],
       "before": {
-        "cart_id": "eval-b9a61af9-01_compra_confirmada-c1",
+        "cart_id": "eval-9da5336e-01_compra_confirmada-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -83,7 +83,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-b9a61af9-01_compra_confirmada-c1",
+        "cart_id": "eval-9da5336e-01_compra_confirmada-c1",
         "state": {
           "budget_cents": 6000,
           "preferences": [],
@@ -219,21 +219,21 @@
         }
       ],
       "timings": {
-        "asr": 0.34,
+        "asr": 0.35,
         "retrieval": 0.0,
-        "llm": 4.937,
-        "tools": 0.042,
-        "tts": 6.138,
-        "total": 11.458
+        "llm": 5.108,
+        "tools": 0.054,
+        "tts": 6.185,
+        "total": 11.697
       },
       "llm_steps": 2,
-      "tts_first_chunk_seconds": 4.227,
+      "tts_first_chunk_seconds": 4.266,
       "tts_retries": 0,
       "product_terms": [
         "primera"
       ],
       "before": {
-        "cart_id": "eval-b9a61af9-01_compra_confirmada-c1",
+        "cart_id": "eval-9da5336e-01_compra_confirmada-c1",
         "state": {
           "budget_cents": 6000,
           "preferences": [],
@@ -315,7 +315,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-b9a61af9-01_compra_confirmada-c1",
+        "cart_id": "eval-9da5336e-01_compra_confirmada-c1",
         "state": {
           "budget_cents": 6000,
           "preferences": [],
@@ -366,7 +366,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-b9a61af9-01_compra_confirmada-c1",
+              "cart_id": "eval-9da5336e-01_compra_confirmada-c1",
               "product_id": "B06WGTZ874",
               "quantity": 2
             }
@@ -450,19 +450,19 @@
         }
       ],
       "timings": {
-        "asr": 0.326,
+        "asr": 0.332,
         "retrieval": 0.0,
-        "llm": 2.135,
-        "tools": 0.028,
-        "tts": 6.424,
-        "total": 8.913
+        "llm": 2.213,
+        "tools": 0.041,
+        "tts": 6.467,
+        "total": 9.053
       },
       "llm_steps": 1,
-      "tts_first_chunk_seconds": 3.043,
+      "tts_first_chunk_seconds": 3.064,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-b9a61af9-01_compra_confirmada-c1",
+        "cart_id": "eval-9da5336e-01_compra_confirmada-c1",
         "state": {
           "budget_cents": 6000,
           "preferences": [],
@@ -513,7 +513,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-b9a61af9-01_compra_confirmada-c1",
+              "cart_id": "eval-9da5336e-01_compra_confirmada-c1",
               "product_id": "B06WGTZ874",
               "quantity": 2
             }
@@ -550,13 +550,13 @@
         }
       },
       "after": {
-        "cart_id": "eval-b9a61af9-01_compra_confirmada-c1",
+        "cart_id": "eval-9da5336e-01_compra_confirmada-c1",
         "state": {
           "budget_cents": 6000,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "24d9a09c7f484282b853ab656e790048",
+            "quote_id": "5f154455f4e445f09bd828afa26f8a8e",
             "items": [
               {
                 "product_id": "B06WGTZ874",
@@ -616,7 +616,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-b9a61af9-01_compra_confirmada-c1",
+              "cart_id": "eval-9da5336e-01_compra_confirmada-c1",
               "product_id": "B06WGTZ874",
               "quantity": 2
             }
@@ -688,7 +688,7 @@
         {
           "tool": "confirmar_pedido",
           "args": {
-            "quote_id": "24d9a09c7f484282b853ab656e790048"
+            "quote_id": "5f154455f4e445f09bd828afa26f8a8e"
           },
           "reason": "el usuario confirmó la cotización",
           "ok": true,
@@ -697,25 +697,25 @@
         }
       ],
       "timings": {
-        "asr": 0.322,
+        "asr": 0.33,
         "retrieval": 0.0,
         "llm": 0.0,
-        "tools": 0.04,
-        "tts": 3.78,
-        "total": 4.142
+        "tools": 0.042,
+        "tts": 3.814,
+        "total": 4.186
       },
       "llm_steps": 0,
-      "tts_first_chunk_seconds": 3.773,
+      "tts_first_chunk_seconds": 3.807,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-b9a61af9-01_compra_confirmada-c1",
+        "cart_id": "eval-9da5336e-01_compra_confirmada-c1",
         "state": {
           "budget_cents": 6000,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "24d9a09c7f484282b853ab656e790048",
+            "quote_id": "5f154455f4e445f09bd828afa26f8a8e",
             "items": [
               {
                 "product_id": "B06WGTZ874",
@@ -775,7 +775,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-b9a61af9-01_compra_confirmada-c1",
+              "cart_id": "eval-9da5336e-01_compra_confirmada-c1",
               "product_id": "B06WGTZ874",
               "quantity": 2
             }
@@ -812,7 +812,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-b9a61af9-01_compra_confirmada-c1",
+        "cart_id": "eval-9da5336e-01_compra_confirmada-c1",
         "state": {
           "budget_cents": 6000,
           "preferences": [],
@@ -820,7 +820,7 @@
           "quote": null,
           "order": {
             "order_id": 1,
-            "quote_id": "24d9a09c7f484282b853ab656e790048",
+            "quote_id": "5f154455f4e445f09bd828afa26f8a8e",
             "items": [
               {
                 "product_id": "B06WGTZ874",
@@ -876,7 +876,7 @@
           "orders": [
             {
               "order_id": 1,
-              "quote_id": "24d9a09c7f484282b853ab656e790048",
+              "quote_id": "5f154455f4e445f09bd828afa26f8a8e",
               "total_cents": 2900
             }
           ],
@@ -934,7 +934,7 @@
   ],
   "final": {
     "snapshot": {
-      "cart_id": "eval-b9a61af9-01_compra_confirmada-c1",
+      "cart_id": "eval-9da5336e-01_compra_confirmada-c1",
       "state": {
         "budget_cents": 6000,
         "preferences": [],
@@ -942,7 +942,7 @@
         "quote": null,
         "order": {
           "order_id": 1,
-          "quote_id": "24d9a09c7f484282b853ab656e790048",
+          "quote_id": "5f154455f4e445f09bd828afa26f8a8e",
           "items": [
             {
               "product_id": "B06WGTZ874",
@@ -998,7 +998,7 @@
         "orders": [
           {
             "order_id": 1,
-            "quote_id": "24d9a09c7f484282b853ab656e790048",
+            "quote_id": "5f154455f4e445f09bd828afa26f8a8e",
             "total_cents": 2900
           }
         ],
@@ -1099,62 +1099,62 @@
     "all": {
       "turns": 4,
       "asr": {
-        "mean": 0.38,
-        "max": 0.54
+        "mean": 0.39,
+        "max": 0.56
       },
       "retrieval": {
         "mean": 0.01,
         "max": 0.03
       },
       "llm": {
-        "mean": 4.21,
-        "max": 9.76
+        "mean": 4.29,
+        "max": 9.84
       },
       "tools": {
-        "mean": 0.04,
-        "max": 0.04
+        "mean": 0.05,
+        "max": 0.05
       },
       "tts": {
-        "mean": 5.86,
-        "max": 7.09
+        "mean": 6.04,
+        "max": 7.7
       },
       "total": {
-        "mean": 10.49,
-        "max": 17.46
+        "mean": 10.78,
+        "max": 18.18
       }
     },
     "with_llm": {
       "turns": 3,
       "asr": {
-        "mean": 0.4,
-        "max": 0.54
+        "mean": 0.41,
+        "max": 0.56
       },
       "retrieval": {
         "mean": 0.01,
         "max": 0.03
       },
       "llm": {
-        "mean": 5.61,
-        "max": 9.76
+        "mean": 5.72,
+        "max": 9.84
       },
       "tools": {
-        "mean": 0.04,
-        "max": 0.04
+        "mean": 0.05,
+        "max": 0.05
       },
       "tts": {
-        "mean": 6.55,
-        "max": 7.09
+        "mean": 6.79,
+        "max": 7.7
       },
       "total": {
-        "mean": 12.61,
-        "max": 17.46
+        "mean": 12.98,
+        "max": 18.18
       }
     },
     "without_llm": {
       "turns": 1,
       "asr": {
-        "mean": 0.32,
-        "max": 0.32
+        "mean": 0.33,
+        "max": 0.33
       },
       "retrieval": {
         "mean": 0.0,
@@ -1169,12 +1169,12 @@
         "max": 0.04
       },
       "tts": {
-        "mean": 3.78,
-        "max": 3.78
+        "mean": 3.81,
+        "max": 3.81
       },
       "total": {
-        "mean": 4.14,
-        "max": 4.14
+        "mean": 4.19,
+        "max": 4.19
       }
     }
   }

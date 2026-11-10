@@ -6,9 +6,9 @@
   "voice": true,
   "input": "texto",
   "audio_source": null,
-  "user_id": "eval-c2e8c796-02_pedido_ambiguo",
+  "user_id": "eval-3e6f9559-02_pedido_ambiguo",
   "threads": [
-    "eval-c2e8c796-02_pedido_ambiguo-c1"
+    "eval-3e6f9559-02_pedido_ambiguo-c1"
   ],
   "names": {
     "elegido": "B07TXSV5X6"
@@ -22,8 +22,8 @@
       "transcript": null,
       "expected_text": "Quiero comprar un regalo para mi hermana.",
       "agent_input": "Quiero comprar un regalo para mi hermana.",
-      "response": "¿Qué tipo de regalo estás buscando para tu hermana?",
-      "spoken_text": "¿Qué tipo de regalo estás buscando para tu hermana?",
+      "response": "¿Qué tipo de regalo tienes en mente para tu hermana?",
+      "spoken_text": "¿Qué tipo de regalo tienes en mente para tu hermana?",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -31,9 +31,9 @@
         {
           "tool": "pedir_aclaracion",
           "args": {
-            "pregunta": "¿Qué tipo de regalo estás buscando para tu hermana?"
+            "pregunta": "¿Qué tipo de regalo tienes en mente para tu hermana?"
           },
-          "reason": "pedir más información",
+          "reason": "pedir información sobre el regalo",
           "ok": true,
           "summary": "pregunta enviada al usuario",
           "issues": []
@@ -42,17 +42,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 1.743,
-        "tools": 0.025,
+        "llm": 1.844,
+        "tools": 0.013,
         "tts": 0.0,
-        "total": 1.767
+        "total": 1.857
       },
       "llm_steps": 1,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-c2e8c796-02_pedido_ambiguo-c1",
+        "cart_id": "eval-3e6f9559-02_pedido_ambiguo-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -71,11 +71,11 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-c2e8c796-02_pedido_ambiguo-c1",
+        "cart_id": "eval-3e6f9559-02_pedido_ambiguo-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
-          "pending_clarification": "¿Qué tipo de regalo estás buscando para tu hermana?",
+          "pending_clarification": "¿Qué tipo de regalo tienes en mente para tu hermana?",
           "quote": null,
           "order": null,
           "candidates": [],
@@ -122,8 +122,8 @@
       "transcript": null,
       "expected_text": "Unos auriculares bluetooth, y no quiero gastar más de 50 euros.",
       "agent_input": "Unos auriculares bluetooth, y no quiero gastar más de 50 euros.",
-      "response": "Tengo auriculares Bluetooth de WDGP por 32,06 euros, de Mgrett en Rosa1 por 9,18 euros, de DZTA en White1 por 14,19 euros, de Leynatic con Q13S1 por 7,71 euros y de OVIFM con color 2 por 4,61 euros. ¿Te interesa alguno? He anotado un presupuesto de 50,00 €.",
-      "spoken_text": "Tengo auriculares Bluetooth de WDGP por treinta y dos euros con seis céntimos, de Mgrett en Rosa1 por nueve euros con dieciocho céntimos, de DZTA en White1 por catorce euros con diecinueve céntimos, de Leynatic con por siete euros con setenta y un céntimos y de OVIFM con color dos por cuatro euros con sesenta y un céntimos. ¿Te interesa alguno? He anotado un presupuesto de cincuenta euros.",
+      "response": "Tengo auriculares Bluetooth de WDGP por 32,06 euros, de Mgrett en Rosa1 por 9,18 euros, de DZTA en White1 por 14,19 euros, de Leynatic con Q13S1 por 7,71 euros y de OVIFM por 4,61 euros. ¿Te interesa alguno? He anotado un presupuesto de 50,00 €.",
+      "spoken_text": "Tengo auriculares Bluetooth de WDGP por treinta y dos euros con seis céntimos, de Mgrett en Rosa1 por nueve euros con dieciocho céntimos, de DZTA en White1 por catorce euros con diecinueve céntimos, de Leynatic con por siete euros con setenta y un céntimos y de OVIFM por cuatro euros con sesenta y un céntimos. ¿Te interesa alguno? He anotado un presupuesto de cincuenta euros.",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -151,11 +151,11 @@
       ],
       "timings": {
         "asr": 0.0,
-        "retrieval": 0.029,
-        "llm": 8.542,
-        "tools": 0.029,
+        "retrieval": 0.03,
+        "llm": 8.489,
+        "tools": 0.028,
         "tts": 0.0,
-        "total": 8.6
+        "total": 8.547
       },
       "llm_steps": 3,
       "tts_first_chunk_seconds": null,
@@ -164,11 +164,11 @@
         "auriculares bluetooth"
       ],
       "before": {
-        "cart_id": "eval-c2e8c796-02_pedido_ambiguo-c1",
+        "cart_id": "eval-3e6f9559-02_pedido_ambiguo-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
-          "pending_clarification": "¿Qué tipo de regalo estás buscando para tu hermana?",
+          "pending_clarification": "¿Qué tipo de regalo tienes en mente para tu hermana?",
           "quote": null,
           "order": null,
           "candidates": [],
@@ -183,7 +183,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-c2e8c796-02_pedido_ambiguo-c1",
+        "cart_id": "eval-3e6f9559-02_pedido_ambiguo-c1",
         "state": {
           "budget_cents": 5000,
           "preferences": [],
@@ -300,8 +300,8 @@
       "transcript": null,
       "expected_text": "Ponme uno del primero.",
       "agent_input": "Ponme uno del primero.",
-      "response": "Hecho, añadido uno de los auriculares al carrito. En el carrito hay 1 unidad de «Auriculares Bluetooth,Auriculares Inalámbricos Bluetooth táctiles…» a 19,90 € cada una, 19,90 €. Total: 19,90 €. Tu presupuesto es de 50,00 € y te quedan 30,10 €.",
-      "spoken_text": "Hecho, añadido uno de los auriculares al carrito. En el carrito hay una unidad de Auriculares Bluetooth a diecinueve euros con noventa céntimos cada una, diecinueve euros con noventa céntimos. Total: diecinueve euros con noventa céntimos. Tu presupuesto es de cincuenta euros y te quedan treinta euros con diez céntimos.",
+      "response": "Hecho, añadido uno de los auriculares Bluetooth WDGP al carrito. En el carrito hay 1 unidad de «Auriculares Bluetooth,Auriculares Inalámbricos Bluetooth táctiles…» a 19,90 € cada una, 19,90 €. Total: 19,90 €. Tu presupuesto es de 50,00 € y te quedan 30,10 €.",
+      "spoken_text": "Hecho, añadido uno de los auriculares Bluetooth WDGP al carrito. En el carrito hay una unidad de Auriculares Bluetooth a diecinueve euros con noventa céntimos cada una, diecinueve euros con noventa céntimos. Total: diecinueve euros con noventa céntimos. Tu presupuesto es de cincuenta euros y te quedan treinta euros con diez céntimos.",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -312,7 +312,7 @@
             "product_id": "B07TXSV5X6",
             "cantidad": 1
           },
-          "reason": "añadir un auricular del primer candidato",
+          "reason": "añadir uno del candidato 1",
           "ok": true,
           "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B07TXSV5X6 | Auriculares Bluetooth,Auriculares Inalámbricos Bluetooth táctiles… | 1 unidad × 19,90 € = 19,90 € | existencias: 20\nTotal del carrito: 19,90 €",
           "issues": []
@@ -321,10 +321,10 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 4.712,
-        "tools": 0.052,
+        "llm": 4.933,
+        "tools": 0.053,
         "tts": 0.0,
-        "total": 4.764
+        "total": 4.986
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
@@ -333,7 +333,7 @@
         "primero"
       ],
       "before": {
-        "cart_id": "eval-c2e8c796-02_pedido_ambiguo-c1",
+        "cart_id": "eval-3e6f9559-02_pedido_ambiguo-c1",
         "state": {
           "budget_cents": 5000,
           "preferences": [],
@@ -415,7 +415,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-c2e8c796-02_pedido_ambiguo-c1",
+        "cart_id": "eval-3e6f9559-02_pedido_ambiguo-c1",
         "state": {
           "budget_cents": 5000,
           "preferences": [],
@@ -466,7 +466,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-c2e8c796-02_pedido_ambiguo-c1",
+              "cart_id": "eval-3e6f9559-02_pedido_ambiguo-c1",
               "product_id": "B07TXSV5X6",
               "quantity": 1
             }
@@ -521,7 +521,7 @@
   ],
   "final": {
     "snapshot": {
-      "cart_id": "eval-c2e8c796-02_pedido_ambiguo-c1",
+      "cart_id": "eval-3e6f9559-02_pedido_ambiguo-c1",
       "state": {
         "budget_cents": 5000,
         "preferences": [],
@@ -572,7 +572,7 @@
         "order_items": [],
         "cart_items": [
           {
-            "cart_id": "eval-c2e8c796-02_pedido_ambiguo-c1",
+            "cart_id": "eval-3e6f9559-02_pedido_ambiguo-c1",
             "product_id": "B07TXSV5X6",
             "quantity": 1
           }
@@ -664,11 +664,11 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 5.0,
-        "max": 8.54
+        "mean": 5.09,
+        "max": 8.49
       },
       "tools": {
-        "mean": 0.04,
+        "mean": 0.03,
         "max": 0.05
       },
       "tts": {
@@ -676,8 +676,8 @@
         "max": 0.0
       },
       "total": {
-        "mean": 5.04,
-        "max": 8.6
+        "mean": 5.13,
+        "max": 8.55
       }
     },
     "with_llm": {
@@ -691,11 +691,11 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 5.0,
-        "max": 8.54
+        "mean": 5.09,
+        "max": 8.49
       },
       "tools": {
-        "mean": 0.04,
+        "mean": 0.03,
         "max": 0.05
       },
       "tts": {
@@ -703,8 +703,8 @@
         "max": 0.0
       },
       "total": {
-        "mean": 5.04,
-        "max": 8.6
+        "mean": 5.13,
+        "max": 8.55
       }
     },
     "without_llm": {

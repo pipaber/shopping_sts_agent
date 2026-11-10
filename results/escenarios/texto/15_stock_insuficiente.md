@@ -5,15 +5,15 @@
 - Tipo: `stock_insuficiente`
 - Qué se prueba: Del primer candidato quedan tres unidades y el usuario pide cinco: el carrito no debe cambiar. Después pide las tres que quedan.
 
-## Turno 1 (6.8 s)
+## Turno 1 (7.5 s)
 
 **Usuario (texto):** Busco una linterna LED.
 
 - `buscar_productos(consulta="linterna LED")` → OK: estos son ahora los CANDIDATOS, del más al menos relevante: [1] id=B096M7FCYF | Linterna led recargable, 4 modos de luz, carga solar, IPX4 resistente al agua, apto para luces de emergencia domésticas, luces de camping al aire libre, luces de trabajo | marca: hctaw | color: desconocido | precio: 22,8…
 
-**Agente:** Tengo la linterna LED de HCTAW por 22,83 euros, la de GS1 por 9,84 euros, la de Lumpur por 34,33 euros, la de Simpeak por 21,12 euros y la de iTimo por 15,73 euros. ¿Te interesa alguna?
+**Agente:** Tengo la linterna LED recargable de HCTAW por 22,83 €, la linterna LED profesional de GS1 por 9,84 €, la linterna de mano de Lumpur por 34,33 €, la linterna mini portátil de Simpeak por 21,12 € y la linterna LED iTimo por 15,73 €. ¿Te interesa alguna?
 
-**Enviado al TTS:** Tengo la linterna LED de HCTAW por veintidós euros con ochenta y tres céntimos, la de GS1 por nueve euros con ochenta y cuatro céntimos, la de Lumpur por treinta y cuatro euros con treinta y tres céntimos, la de Simpeak por veintiún euros con doce céntimos y la de iTimo por quince euros con setenta y tres céntimos. ¿Te interesa alguna?
+**Enviado al TTS:** Tengo la linterna LED recargable de HCTAW por veintidós euros con ochenta y tres céntimos, la linterna LED profesional de GS1 por nueve euros con ochenta y cuatro céntimos, la linterna de mano de Lumpur por treinta y cuatro euros con treinta y tres céntimos, la linterna mini portátil de Simpeak por veintiún euros con doce céntimos y la linterna LED iTimo por quince euros con setenta y tres céntimos. ¿Te interesa alguna?
 
 - ✔ `cart(empty=true)` — carrito: vacío
 
@@ -21,28 +21,28 @@
 
 > **Suceso externo:** la tienda deja `B096M7FCYF` (@elegida) con precio 7,00 € y existencias 3.
 
-## Turno 2 (5.5 s)
+## Turno 2 (5.7 s)
 
 **Usuario (texto):** Añade cinco de la primera.
 
 - `agregar_al_carrito(product_id="B096M7FCYF", cantidad=5)` → RECHAZADO: [stock_insuficiente] Solo quedan 3 unidades del producto B096M7FCYF y se pidieron 5.
 
-**Agente:** Lo siento, solo quedan 3 unidades de esa linterna. ¿Te interesa alguna otra?
+**Agente:** Lo siento, solo quedan 3 unidades disponibles. ¿Te interesa 3 unidades en lugar de 5?
 
-**Enviado al TTS:** Lo siento, solo quedan tres unidades de esa linterna. ¿Te interesa alguna otra?
+**Enviado al TTS:** Lo siento, solo quedan tres unidades disponibles. ¿Te interesa tres unidades en lugar de cinco?
 
 - ✔ `cart(empty=true)` — carrito: vacío
 - ✔ `orders(count=0)` — pedidos registrados: 0
 
-## Turno 3 (5.5 s)
+## Turno 3 (5.2 s)
 
 **Usuario (texto):** Pues ponme las tres que quedan.
 
 - `agregar_al_carrito(product_id="B096M7FCYF", cantidad=3)` → OK: hecho. Así queda el carrito. CARRITO: - id=B096M7FCYF | Linterna led recargable, 4 modos de luz, carga solar, IPX4 resistente… | 3 unidades × 7,00 € = 21,00 € | existencias: 3 Total del carrito: 21,00 €
 
-**Agente:** Hecho, añadidas tres unidades. El total es 21,00 euros. En el carrito hay 3 unidades de «Linterna led recargable, 4 modos de luz, carga solar, IPX4 resistente…» a 7,00 € cada una, 21,00 €. Total: 21,00 €.
+**Agente:** Hecho, añadidas 3 unidades de la linterna LED recargable. En el carrito hay 3 unidades de «Linterna led recargable, 4 modos de luz, carga solar, IPX4 resistente…» a 7,00 € cada una, 21,00 €. Total: 21,00 €.
 
-**Enviado al TTS:** Hecho, añadidas tres unidades. El total es veintiún euros. En el carrito hay tres unidades de Linterna led recargable a siete euros cada una, veintiún euros. Total: veintiún euros.
+**Enviado al TTS:** Hecho, añadidas tres unidades de la linterna LED recargable. En el carrito hay tres unidades de Linterna led recargable a siete euros cada una, veintiún euros. Total: veintiún euros.
 
 - ✔ `cart(lines=[{"product": "@elegida", "quantity": 3}])` — carrito: 3 × B096M7FCYF
 
@@ -65,8 +65,8 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.03 | 6.73 | 0.03 | 0.00 | 6.79 | 0.0 s |
-| 2 | 0.00 | 0.00 | 5.51 | 0.02 | 0.00 | 5.53 | 0.0 s |
-| 3 | 0.00 | 0.00 | 5.44 | 0.05 | 0.00 | 5.49 | 0.0 s |
-| **Media de los turnos con LLM (3)** | 0.00 | 0.01 | 5.89 | 0.03 | 0.00 | 5.94 | |
+| 1 | 0.00 | 0.03 | 7.46 | 0.03 | 0.00 | 7.52 | 0.0 s |
+| 2 | 0.00 | 0.00 | 5.66 | 0.02 | 0.00 | 5.68 | 0.0 s |
+| 3 | 0.00 | 0.00 | 5.17 | 0.05 | 0.00 | 5.22 | 0.0 s |
+| **Media de los turnos con LLM (3)** | 0.00 | 0.01 | 6.10 | 0.03 | 0.00 | 6.14 | |
 

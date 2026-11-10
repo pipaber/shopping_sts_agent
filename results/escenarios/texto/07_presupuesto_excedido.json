@@ -6,9 +6,9 @@
   "voice": false,
   "input": "texto",
   "audio_source": null,
-  "user_id": "eval-6b9dd32e-07_presupuesto_excedido",
+  "user_id": "eval-5e374f37-07_presupuesto_excedido",
   "threads": [
-    "eval-6b9dd32e-07_presupuesto_excedido-c1"
+    "eval-5e374f37-07_presupuesto_excedido-c1"
   ],
   "names": {
     "elegida": "B091TXCPQQ"
@@ -51,18 +51,18 @@
       ],
       "timings": {
         "asr": 0.0,
-        "retrieval": 0.03,
-        "llm": 8.472,
-        "tools": 0.027,
+        "retrieval": 0.032,
+        "llm": 8.129,
+        "tools": 0.029,
         "tts": 0.0,
-        "total": 8.528
+        "total": 8.19
       },
       "llm_steps": 3,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-6b9dd32e-07_presupuesto_excedido-c1",
+        "cart_id": "eval-5e374f37-07_presupuesto_excedido-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -81,7 +81,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-6b9dd32e-07_presupuesto_excedido-c1",
+        "cart_id": "eval-5e374f37-07_presupuesto_excedido-c1",
         "state": {
           "budget_cents": 3000,
           "preferences": [],
@@ -198,8 +198,8 @@
       "transcript": null,
       "expected_text": "Añade tres de la primera.",
       "agent_input": "Añade tres de la primera.",
-      "response": "Lo siento, con tres unidades el total supera tu presupuesto. ¿Te interesa añadir dos en su lugar?",
-      "spoken_text": "Lo siento, con tres unidades el total supera tu presupuesto. ¿Te interesa añadir dos en su lugar?",
+      "response": "Ese producto supera tu presupuesto. ¿Te interesa una unidad o quieres buscar otro?",
+      "spoken_text": "Ese producto supera tu presupuesto. ¿Te interesa una unidad o quieres buscar otro?",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -233,17 +233,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 5.688,
-        "tools": 0.031,
+        "llm": 5.462,
+        "tools": 0.033,
         "tts": 0.0,
-        "total": 5.719
+        "total": 5.495
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-6b9dd32e-07_presupuesto_excedido-c1",
+        "cart_id": "eval-5e374f37-07_presupuesto_excedido-c1",
         "state": {
           "budget_cents": 3000,
           "preferences": [],
@@ -325,7 +325,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-6b9dd32e-07_presupuesto_excedido-c1",
+        "cart_id": "eval-5e374f37-07_presupuesto_excedido-c1",
         "state": {
           "budget_cents": 3000,
           "preferences": [],
@@ -433,8 +433,8 @@
       "transcript": null,
       "expected_text": "Vale, pues ponme dos.",
       "agent_input": "Vale, pues ponme dos.",
-      "response": "Hecho, añadidas dos unidades. El total es 24,00 €. En el carrito hay 2 unidades de «SONAMBULO Mochila para Portátil, Mochila Unisex Impermeable de hasta…» a 12,00 € cada una, 24,00 €. Total: 24,00 €. Tu presupuesto es de 30,00 € y te quedan 6,00 €.",
-      "spoken_text": "Hecho, añadidas dos unidades. El total es veinticuatro euros. En el carrito hay dos unidades de SONAMBULO Mochila para Portátil a doce euros cada una, veinticuatro euros. Total: veinticuatro euros. Tu presupuesto es de treinta euros y te quedan seis euros.",
+      "response": "Hecho, añadidas dos unidades. Ahora el carrito incluye 24,00 €. En el carrito hay 2 unidades de «SONAMBULO Mochila para Portátil, Mochila Unisex Impermeable de hasta…» a 12,00 € cada una, 24,00 €. Total: 24,00 €. Tu presupuesto es de 30,00 € y te quedan 6,00 €.",
+      "spoken_text": "Hecho, añadidas dos unidades. Ahora el carrito incluye veinticuatro euros. En el carrito hay dos unidades de SONAMBULO Mochila para Portátil a doce euros cada una, veinticuatro euros. Total: veinticuatro euros. Tu presupuesto es de treinta euros y te quedan seis euros.",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -445,7 +445,7 @@
             "product_id": "B091TXCPQQ",
             "cantidad": 2
           },
-          "reason": "añadir dos unidades del candidato 1",
+          "reason": "añadir dos unidades del producto 1",
           "ok": true,
           "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B091TXCPQQ | SONAMBULO Mochila para Portátil, Mochila Unisex Impermeable de hasta… | 2 unidades × 12,00 € = 24,00 € | existencias: 20\nTotal del carrito: 24,00 €",
           "issues": []
@@ -454,17 +454,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 5.478,
-        "tools": 0.052,
+        "llm": 5.488,
+        "tools": 0.053,
         "tts": 0.0,
-        "total": 5.53
+        "total": 5.541
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-6b9dd32e-07_presupuesto_excedido-c1",
+        "cart_id": "eval-5e374f37-07_presupuesto_excedido-c1",
         "state": {
           "budget_cents": 3000,
           "preferences": [],
@@ -546,7 +546,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-6b9dd32e-07_presupuesto_excedido-c1",
+        "cart_id": "eval-5e374f37-07_presupuesto_excedido-c1",
         "state": {
           "budget_cents": 3000,
           "preferences": [],
@@ -597,7 +597,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-6b9dd32e-07_presupuesto_excedido-c1",
+              "cart_id": "eval-5e374f37-07_presupuesto_excedido-c1",
               "product_id": "B091TXCPQQ",
               "quantity": 2
             }
@@ -652,7 +652,7 @@
   ],
   "final": {
     "snapshot": {
-      "cart_id": "eval-6b9dd32e-07_presupuesto_excedido-c1",
+      "cart_id": "eval-5e374f37-07_presupuesto_excedido-c1",
       "state": {
         "budget_cents": 3000,
         "preferences": [],
@@ -703,7 +703,7 @@
         "order_items": [],
         "cart_items": [
           {
-            "cart_id": "eval-6b9dd32e-07_presupuesto_excedido-c1",
+            "cart_id": "eval-5e374f37-07_presupuesto_excedido-c1",
             "product_id": "B091TXCPQQ",
             "quantity": 2
           }
@@ -795,8 +795,8 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 6.55,
-        "max": 8.47
+        "mean": 6.36,
+        "max": 8.13
       },
       "tools": {
         "mean": 0.04,
@@ -807,8 +807,8 @@
         "max": 0.0
       },
       "total": {
-        "mean": 6.59,
-        "max": 8.53
+        "mean": 6.41,
+        "max": 8.19
       }
     },
     "with_llm": {
@@ -822,8 +822,8 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 6.55,
-        "max": 8.47
+        "mean": 6.36,
+        "max": 8.13
       },
       "tools": {
         "mean": 0.04,
@@ -834,8 +834,8 @@
         "max": 0.0
       },
       "total": {
-        "mean": 6.59,
-        "max": 8.53
+        "mean": 6.41,
+        "max": 8.19
       }
     },
     "without_llm": {

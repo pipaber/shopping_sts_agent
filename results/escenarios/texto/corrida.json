@@ -1,6 +1,6 @@
 {
-  "date": "2026-11-10T14:45:03",
-  "commit": "8711c79+cambios",
+  "date": "2026-11-10T16:37:09",
+  "commit": "5d31abf",
   "memory_backend": "postgres",
   "models": {
     "llm": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
@@ -11,11 +11,11 @@
   },
   "voice": {},
   "load": {
-    "search_seconds": 16.4,
-    "llm_seconds": 0.8,
+    "search_seconds": 16.2,
+    "llm_seconds": 0.7,
     "asr_seconds": null,
     "tts_seconds": null,
-    "total_seconds": 17.6,
+    "total_seconds": 17.3,
     "vram_mib": {
       "search": 706,
       "llm": 5820,
@@ -42,13 +42,13 @@
       "id": "03_cambio_cantidad",
       "title": "Cambio de cantidad manteniendo las demás restricciones",
       "kind": "cambio_cantidad",
-      "passed": false
+      "passed": true
     },
     {
       "id": "04_sin_existencias",
       "title": "Producto sin existencias que requiere alternativa",
       "kind": "sin_existencias",
-      "passed": false
+      "passed": true
     },
     {
       "id": "05_correccion_transcripcion",
@@ -60,7 +60,7 @@
       "id": "06_cambio_stock_confirmacion_repetida",
       "title": "Cambio de stock entre cotización y confirmación, y confirmación repetida",
       "kind": "cambio_stock_confirmacion_repetida",
-      "passed": false
+      "passed": true
     },
     {
       "id": "07_presupuesto_excedido",
@@ -78,13 +78,13 @@
       "id": "09_producto_inexistente",
       "title": "Producto inexistente",
       "kind": "producto_inexistente",
-      "passed": false
+      "passed": true
     },
     {
       "id": "10_atributo_no_verificable",
       "title": "Atributo no verificable",
       "kind": "atributo_no_verificable",
-      "passed": false
+      "passed": true
     },
     {
       "id": "11_rechazo_confirmacion",
@@ -144,21 +144,14 @@
       "id": "20_agotado_al_confirmar",
       "title": "Producto agotado entre la cotización y la confirmación",
       "kind": "agotado_al_confirmar",
-      "passed": false
+      "passed": true
     }
   ],
   "summary": {
     "scenarios": 20,
-    "passed": 14,
-    "pass_rate": 0.7,
-    "failed": [
-      "03_cambio_cantidad",
-      "04_sin_existencias",
-      "06_cambio_stock_confirmacion_repetida",
-      "09_producto_inexistente",
-      "10_atributo_no_verificable",
-      "20_agotado_al_confirmar"
-    ],
+    "passed": 20,
+    "pass_rate": 1.0,
+    "failed": [],
     "turns": 87,
     "violations": {
       "cantidad": 0,
@@ -179,35 +172,8 @@
           "max": 0.03
         },
         "llm": {
-          "mean": 4.58,
-          "max": 10.21
-        },
-        "tools": {
-          "mean": 0.03,
-          "max": 0.08
-        },
-        "tts": {
-          "mean": 0.0,
-          "max": 0.0
-        },
-        "total": {
-          "mean": 4.62,
-          "max": 10.27
-        }
-      },
-      "with_llm": {
-        "turns": 74,
-        "asr": {
-          "mean": 0.0,
-          "max": 0.0
-        },
-        "retrieval": {
-          "mean": 0.01,
-          "max": 0.03
-        },
-        "llm": {
-          "mean": 5.38,
-          "max": 10.21
+          "mean": 4.23,
+          "max": 9.79
         },
         "tools": {
           "mean": 0.04,
@@ -218,26 +184,53 @@
           "max": 0.0
         },
         "total": {
-          "mean": 5.43,
-          "max": 10.27
+          "mean": 4.27,
+          "max": 9.86
+        }
+      },
+      "with_llm": {
+        "turns": 73,
+        "asr": {
+          "mean": 0.0,
+          "max": 0.0
+        },
+        "retrieval": {
+          "mean": 0.01,
+          "max": 0.03
+        },
+        "llm": {
+          "mean": 5.04,
+          "max": 9.79
+        },
+        "tools": {
+          "mean": 0.04,
+          "max": 0.08
+        },
+        "tts": {
+          "mean": 0.0,
+          "max": 0.0
+        },
+        "total": {
+          "mean": 5.08,
+          "max": 9.86
         }
       },
       "without_llm": {
-        "turns": 13,
+        "turns": 14,
         "asr": {
           "mean": 0.0,
           "max": 0.0
         },
         "retrieval": {
           "mean": 0.0,
-          "max": 0.03
+          "max": 0.02
         },
         "llm": {
           "mean": 0.0,
           "max": 0.0
         },
         "tools": {
-          "mean": 0.02,
+          "mean": 0.03,
           "max": 0.03
         },
         "tts": {

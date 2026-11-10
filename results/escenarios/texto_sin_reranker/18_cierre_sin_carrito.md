@@ -18,13 +18,13 @@
 - ✔ `orders(count=0)` — pedidos registrados: 0
 - ✔ `awaiting_confirmation(value=false)` — esperando confirmación: no
 
-## Turno 2 (1.9 s)
+## Turno 2 (2.2 s)
 
 **Usuario (texto):** Sí, confirmo.
 
-**Agente:** Tu carrito está vacío. ¿Quieres buscar algún producto para cotizar?
+**Agente:** Tu carrito está vacío. ¿Quieres añadir algo antes de cerrar el pedido?
 
-**Enviado al TTS:** Tu carrito está vacío. ¿Quieres buscar algún producto para cotizar?
+**Enviado al TTS:** Tu carrito está vacío. ¿Quieres añadir algo antes de cerrar el pedido?
 
 - ✔ `orders(count=0)` — pedidos registrados: 0
 
@@ -45,7 +45,7 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.00 | 2.90 | 0.02 | 0.00 | 2.91 | 0.0 s |
-| 2 | 0.00 | 0.00 | 1.92 | 0.03 | 0.00 | 1.94 | 0.0 s |
-| **Media de los turnos con LLM (2)** | 0.00 | 0.00 | 2.41 | 0.02 | 0.00 | 2.43 | |
+| 1 | 0.00 | 0.00 | 2.90 | 0.03 | 0.00 | 2.93 | 0.0 s |
+| 2 | 0.00 | 0.00 | 2.13 | 0.03 | 0.00 | 2.16 | 0.0 s |
+| **Media de los turnos con LLM (2)** | 0.00 | 0.00 | 2.52 | 0.03 | 0.00 | 2.54 | |
 

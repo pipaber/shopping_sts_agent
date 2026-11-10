@@ -6,13 +6,13 @@
   "voice": false,
   "input": "texto",
   "audio_source": null,
-  "user_id": "eval-a557491f-16_quitar_del_carrito",
+  "user_id": "eval-49d0281c-16_quitar_del_carrito",
   "threads": [
-    "eval-a557491f-16_quitar_del_carrito-c1"
+    "eval-49d0281c-16_quitar_del_carrito-c1"
   ],
   "names": {
-    "primero": "B00IKDR9O4",
-    "segundo": "B09DBFG8W3"
+    "primero": "B09DBFG8W3",
+    "segundo": "B00IKDR9O4"
   },
   "steps": [
     {
@@ -23,8 +23,8 @@
       "transcript": null,
       "expected_text": "Busco un teclado inalámbrico.",
       "agent_input": "Busco un teclado inalámbrico.",
-      "response": "Tengo el teclado inalámbrico de Phoenix Technologies por 18,24 euros, el de Mimei por 42,90 euros, el de TedGem por 25,59 euros, el de I8X Plus por 8,48 euros y el de TECKNET por 45,00 euros. ¿Te interesa alguno?",
-      "spoken_text": "Tengo el teclado inalámbrico de Phoenix Technologies por dieciocho euros con veinticuatro céntimos, el de Mimei por cuarenta y dos euros con noventa céntimos, el de TedGem por veinticinco euros con cincuenta y nueve céntimos, el de I8X Plus por ocho euros con cuarenta y ocho céntimos y el de TECKNET por cuarenta y cinco euros. ¿Te interesa alguno?",
+      "response": "Tengo el teclado inalámbrico Mimei por 42,90 €, el de Phoenix Technologies por 18,24 €, el de TedGem por 25,59 €, el de I8X Plus por 8,48 € y el de TECKNET por 45,00 €. ¿Te interesa alguno?",
+      "spoken_text": "Tengo el teclado inalámbrico Mimei por cuarenta y dos euros con noventa céntimos, el de Phoenix Technologies por dieciocho euros con veinticuatro céntimos, el de TedGem por veinticinco euros con cincuenta y nueve céntimos, el de I8X Plus por ocho euros con cuarenta y ocho céntimos y el de TECKNET por cuarenta y cinco euros. ¿Te interesa alguno?",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -36,24 +36,24 @@
           },
           "reason": "buscar el teclado inalámbrico",
           "ok": true,
-          "summary": "estos son ahora los CANDIDATOS, del más al menos relevante:\n[1] id=B00IKDR9O4 | Phoenix Technologies - Mini teclado inalámbrico 2.4Ghz con touchpad integrado para Android TV Box, PC, Pad, Smart TV, X-Box, HTPC | marca: Phoenix Technologies | color: Monótono | precio: 18,24 € | existencias: 47 | características (extracto): MULTIFUNCIÓN - Mini teclado inalámbrico Bluetooth, combinación de panel táctil, teclas de control multimedia y teclas de control de juegos de PC con adaptador de interfaz USB. COMBINACIÓN PERFECTA: 92 teclas Teclado QWERTY inalámbrico +… | descripción: desconocido\n[2] id=B09DBFG8W3 | Mimei Teclado silencioso inalámbrico, Teclado de conexión Estable y Recargable por USB Aplicable a los Cuatro Sistemas operativos Que admiten Bluetooth 28,5 12 2,2 CM Superb | marca: Mimei | color: Negro | precio: 42,90 € | existencias: 21 | características (extracto): Amplia compatibilidad: aplicable a los cuatro sistemas operativos que admiten conexiones inalámbricas (para iOS, Android, OS y Windows), compatible con, y tabletas, computadoras portátiles y teléfonos móviles con capacidad inalámbrica… | descripción: Especificación: Método de transmisión: inalámbrico Tamaño del producto: aproximadamente 28,5 * 12 * 2,2 CM / 11,22 * 4,72 * 0.87in Lista de empaque: 1 * Teclado de silencio inalámbrico (excluyendo…\n[3] id=B07XD94VGX | Teclado y Raton Inalambrico Español, TedGem 2.4G Teclado Inalambrico USB Teclado Raton Inalambrico PC Ergonómico Teclado Inalambrico PC con 105 Tecla para Windows 7/8/10/2000 / XP/Vista (Black) | marca: TedGem | color: Black | precio: 25,59 € | existencias: 12 | características (extracto): ✔【TECLADO Y RATÓN INALÁMBRICOS】El teclado y el mouse inalámbricos funcionan cómodamente. La tecnología inalámbrica de 2,4 GHz, el teclado y el mouse garantizan una conexión estable y confiable con una distancia de hasta 15 metros. 【NOTA… | descripción: TedGem Teclado y mouse inalámbricos, un buen socio para la vida y el trabajo. Ratón inalámbrico de estilo simple de tres botones Elegante y simple, puedes llevarlo contigo o ponerlo en la bolsa de tu…\n[4] id=B08FTGCCS6 | I8X Plus 2.4G Mini Teclado inalámbrico, Combo de Mouse de Teclado Recargable USB retroiluminado portátil con Panel táctil, Teclado de Control Remoto de 92 Teclas para computadora portátil/Smart TV | marca: GTMEDIA | color: i8X Plus-Español | precio: 8,48 € | existencias: 35 | características (extracto): [Mini teclado inalámbrico] 92 teclas con teclado QWERTY multimedia completo. El panel táctil sensible facilita el cambio de diapositivas y opciones de pantalla como su mouse. Combo de teclado y mouse. Mas practico. El diseño práctico y… | descripción: Realce 1. Teclado en español, teclado inalámbrico de 2,4 GHz de 92 teclas con panel táctil ajustable de alta sensibilidad, teclas de control multimedia y teclas de control de juegos de PC. 2…\n[5] id=B07FMGVRMS | TECKNET Mini Teclado Inalámbrico 2.4G Ultra Delgado, Teclado Inalámbrico USB Ordenador Portátil para PC, Android Smart TV, Laptops (Español,con la Ñ) | marca: TECKNET | color: desconocido | precio: 45,00 € | existencias: 23 | características (extracto): Diseño inalámbrico: tecnología inalámbrica avanzada de 2.4 GHz, hasta 10 metros de alcance de uso, disfrute de la libertad de la conexión inalámbrica, reduzca la confusión de los cables de escritorio. Contiene la Ñ: Diseñado para la… | descripción: Teclado inalámbrico TeckNet - X315: Plug-and-play sin preocupaciones: Simplemente conecte el receptor USB Nano en un puerto USB vacío en su PC y deje el resto en Co-Link, nuestra tecnología de…",
+          "summary": "estos son ahora los CANDIDATOS, del más al menos relevante:\n[1] id=B09DBFG8W3 | Mimei Teclado silencioso inalámbrico, Teclado de conexión Estable y Recargable por USB Aplicable a los Cuatro Sistemas operativos Que admiten Bluetooth 28,5 12 2,2 CM Superb | marca: Mimei | color: Negro | precio: 42,90 € | existencias: 21 | características (extracto): Amplia compatibilidad: aplicable a los cuatro sistemas operativos que admiten conexiones inalámbricas (para iOS, Android, OS y Windows), compatible con, y tabletas, computadoras portátiles y teléfonos móviles con capacidad inalámbrica… | descripción: Especificación: Método de transmisión: inalámbrico Tamaño del producto: aproximadamente 28,5 * 12 * 2,2 CM / 11,22 * 4,72 * 0.87in Lista de empaque: 1 * Teclado de silencio inalámbrico (excluyendo…\n[2] id=B00IKDR9O4 | Phoenix Technologies - Mini teclado inalámbrico 2.4Ghz con touchpad integrado para Android TV Box, PC, Pad, Smart TV, X-Box, HTPC | marca: Phoenix Technologies | color: Monótono | precio: 18,24 € | existencias: 47 | características (extracto): MULTIFUNCIÓN - Mini teclado inalámbrico Bluetooth, combinación de panel táctil, teclas de control multimedia y teclas de control de juegos de PC con adaptador de interfaz USB. COMBINACIÓN PERFECTA: 92 teclas Teclado QWERTY inalámbrico +… | descripción: desconocido\n[3] id=B07XD94VGX | Teclado y Raton Inalambrico Español, TedGem 2.4G Teclado Inalambrico USB Teclado Raton Inalambrico PC Ergonómico Teclado Inalambrico PC con 105 Tecla para Windows 7/8/10/2000 / XP/Vista (Black) | marca: TedGem | color: Black | precio: 25,59 € | existencias: 12 | características (extracto): ✔【TECLADO Y RATÓN INALÁMBRICOS】El teclado y el mouse inalámbricos funcionan cómodamente. La tecnología inalámbrica de 2,4 GHz, el teclado y el mouse garantizan una conexión estable y confiable con una distancia de hasta 15 metros. 【NOTA… | descripción: TedGem Teclado y mouse inalámbricos, un buen socio para la vida y el trabajo. Ratón inalámbrico de estilo simple de tres botones Elegante y simple, puedes llevarlo contigo o ponerlo en la bolsa de tu…\n[4] id=B08FTGCCS6 | I8X Plus 2.4G Mini Teclado inalámbrico, Combo de Mouse de Teclado Recargable USB retroiluminado portátil con Panel táctil, Teclado de Control Remoto de 92 Teclas para computadora portátil/Smart TV | marca: GTMEDIA | color: i8X Plus-Español | precio: 8,48 € | existencias: 35 | características (extracto): [Mini teclado inalámbrico] 92 teclas con teclado QWERTY multimedia completo. El panel táctil sensible facilita el cambio de diapositivas y opciones de pantalla como su mouse. Combo de teclado y mouse. Mas practico. El diseño práctico y… | descripción: Realce 1. Teclado en español, teclado inalámbrico de 2,4 GHz de 92 teclas con panel táctil ajustable de alta sensibilidad, teclas de control multimedia y teclas de control de juegos de PC. 2…\n[5] id=B07FMGVRMS | TECKNET Mini Teclado Inalámbrico 2.4G Ultra Delgado, Teclado Inalámbrico USB Ordenador Portátil para PC, Android Smart TV, Laptops (Español,con la Ñ) | marca: TECKNET | color: desconocido | precio: 45,00 € | existencias: 23 | características (extracto): Diseño inalámbrico: tecnología inalámbrica avanzada de 2.4 GHz, hasta 10 metros de alcance de uso, disfrute de la libertad de la conexión inalámbrica, reduzca la confusión de los cables de escritorio. Contiene la Ñ: Diseñado para la… | descripción: Teclado inalámbrico TeckNet - X315: Plug-and-play sin preocupaciones: Simplemente conecte el receptor USB Nano en un puerto USB vacío en su PC y deje el resto en Co-Link, nuestra tecnología de…",
           "issues": []
         }
       ],
       "timings": {
         "asr": 0.0,
-        "retrieval": 0.041,
-        "llm": 7.447,
-        "tools": 0.025,
+        "retrieval": 0.04,
+        "llm": 7.383,
+        "tools": 0.03,
         "tts": 0.0,
-        "total": 7.514
+        "total": 7.452
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-a557491f-16_quitar_del_carrito-c1",
+        "cart_id": "eval-49d0281c-16_quitar_del_carrito-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -72,7 +72,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-a557491f-16_quitar_del_carrito-c1",
+        "cart_id": "eval-49d0281c-16_quitar_del_carrito-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -81,18 +81,18 @@
           "order": null,
           "candidates": [
             {
-              "product_id": "B00IKDR9O4",
-              "title": "Phoenix Technologies - Mini teclado inalámbrico 2.4Ghz con touchpad integrado para Android TV Box, PC, Pad, Smart TV, X-Box, HTPC",
-              "brand": "Phoenix Technologies",
-              "price_cents": 1824,
-              "stock": 47
-            },
-            {
               "product_id": "B09DBFG8W3",
               "title": "Mimei Teclado silencioso inalámbrico, Teclado de conexión Estable y Recargable por USB Aplicable a los Cuatro Sistemas operativos Que admiten Bluetooth 28,5 12 2,2 CM Superb",
               "brand": "Mimei",
               "price_cents": 4290,
               "stock": 21
+            },
+            {
+              "product_id": "B00IKDR9O4",
+              "title": "Phoenix Technologies - Mini teclado inalámbrico 2.4Ghz con touchpad integrado para Android TV Box, PC, Pad, Smart TV, X-Box, HTPC",
+              "brand": "Phoenix Technologies",
+              "price_cents": 1824,
+              "stock": 47
             },
             {
               "product_id": "B07XD94VGX",
@@ -162,21 +162,21 @@
       "kind": "remember",
       "name": "primero",
       "ref": "candidate:1",
-      "product_id": "B00IKDR9O4",
-      "title": "Phoenix Technologies - Mini teclado inalámbrico 2.4Ghz con touchpad integrado para Android TV Box, PC, Pad, Smart TV, X-Box, HTPC"
+      "product_id": "B09DBFG8W3",
+      "title": "Mimei Teclado silencioso inalámbrico, Teclado de conexión Estable y Recargable por USB Aplicable a los Cuatro Sistemas operativos Que admiten Bluetooth 28,5 12 2,2 CM Superb"
     },
     {
       "kind": "remember",
       "name": "segundo",
       "ref": "candidate:2",
-      "product_id": "B09DBFG8W3",
-      "title": "Mimei Teclado silencioso inalámbrico, Teclado de conexión Estable y Recargable por USB Aplicable a los Cuatro Sistemas operativos Que admiten Bluetooth 28,5 12 2,2 CM Superb"
+      "product_id": "B00IKDR9O4",
+      "title": "Phoenix Technologies - Mini teclado inalámbrico 2.4Ghz con touchpad integrado para Android TV Box, PC, Pad, Smart TV, X-Box, HTPC"
     },
     {
       "kind": "event",
       "event": "set_offer",
       "product": "@primero",
-      "product_id": "B00IKDR9O4",
+      "product_id": "B09DBFG8W3",
       "price_cents": 1500,
       "stock": 20
     },
@@ -184,7 +184,7 @@
       "kind": "event",
       "event": "set_offer",
       "product": "@segundo",
-      "product_id": "B09DBFG8W3",
+      "product_id": "B00IKDR9O4",
       "price_cents": 1800,
       "stock": 20
     },
@@ -196,8 +196,8 @@
       "transcript": null,
       "expected_text": "Añade uno del primero y uno del segundo.",
       "agent_input": "Añade uno del primero y uno del segundo.",
-      "response": "Hecho, añadidas dos unidades al carrito. En el carrito hay 1 unidad de «Phoenix Technologies - Mini teclado inalámbrico 2.4Ghz con touchpad…» a 15,00 € cada una, 15,00 €; 1 unidad de «Mimei Teclado silencioso inalámbrico, Teclado de conexión Estable y…» a 18,00 € cada una, 18,00 €. Total: 33,00 €.",
-      "spoken_text": "Hecho, añadidas dos unidades al carrito. En el carrito hay una unidad de Phoenix Technologies a quince euros cada una, quince euros, una unidad de Mimei Teclado silencioso inalámbrico a dieciocho euros cada una, dieciocho euros. Total: treinta y tres euros.",
+      "response": "Hecho, añadidos los dos teclados al carrito. En el carrito hay 1 unidad de «Mimei Teclado silencioso inalámbrico, Teclado de conexión Estable y…» a 15,00 € cada una, 15,00 €; 1 unidad de «Phoenix Technologies - Mini teclado inalámbrico 2.4Ghz con touchpad…» a 18,00 € cada una, 18,00 €. Total: 33,00 €.",
+      "spoken_text": "Hecho, añadidos los dos teclados al carrito. En el carrito hay una unidad de Mimei Teclado silencioso inalámbrico a quince euros cada una, quince euros, una unidad de Phoenix Technologies a dieciocho euros cada una, dieciocho euros. Total: treinta y tres euros.",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -205,40 +205,40 @@
         {
           "tool": "agregar_al_carrito",
           "args": {
-            "product_id": "B00IKDR9O4",
+            "product_id": "B09DBFG8W3",
             "cantidad": 1
           },
-          "reason": "añadir uno del candidato 1",
+          "reason": "añadir uno del primero",
           "ok": true,
-          "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B00IKDR9O4 | Phoenix Technologies - Mini teclado inalámbrico 2.4Ghz con touchpad… | 1 unidad × 15,00 € = 15,00 € | existencias: 20\nTotal del carrito: 15,00 €",
+          "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B09DBFG8W3 | Mimei Teclado silencioso inalámbrico, Teclado de conexión Estable y… | 1 unidad × 15,00 € = 15,00 € | existencias: 20\nTotal del carrito: 15,00 €",
           "issues": []
         },
         {
           "tool": "agregar_al_carrito",
           "args": {
-            "product_id": "B09DBFG8W3",
+            "product_id": "B00IKDR9O4",
             "cantidad": 1
           },
-          "reason": "añadir uno del candidato 2",
+          "reason": "añadir uno del segundo",
           "ok": true,
-          "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B00IKDR9O4 | Phoenix Technologies - Mini teclado inalámbrico 2.4Ghz con touchpad… | 1 unidad × 15,00 € = 15,00 € | existencias: 20\n- id=B09DBFG8W3 | Mimei Teclado silencioso inalámbrico, Teclado de conexión Estable y… | 1 unidad × 18,00 € = 18,00 € | existencias: 20\nTotal del carrito: 33,00 €",
+          "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B09DBFG8W3 | Mimei Teclado silencioso inalámbrico, Teclado de conexión Estable y… | 1 unidad × 15,00 € = 15,00 € | existencias: 20\n- id=B00IKDR9O4 | Phoenix Technologies - Mini teclado inalámbrico 2.4Ghz con touchpad… | 1 unidad × 18,00 € = 18,00 € | existencias: 20\nTotal del carrito: 33,00 €",
           "issues": []
         }
       ],
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 7.333,
-        "tools": 0.073,
+        "llm": 6.734,
+        "tools": 0.075,
         "tts": 0.0,
-        "total": 7.406
+        "total": 6.809
       },
       "llm_steps": 3,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-a557491f-16_quitar_del_carrito-c1",
+        "cart_id": "eval-49d0281c-16_quitar_del_carrito-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -247,18 +247,18 @@
           "order": null,
           "candidates": [
             {
-              "product_id": "B00IKDR9O4",
-              "title": "Phoenix Technologies - Mini teclado inalámbrico 2.4Ghz con touchpad integrado para Android TV Box, PC, Pad, Smart TV, X-Box, HTPC",
-              "brand": "Phoenix Technologies",
-              "price_cents": 1824,
-              "stock": 47
-            },
-            {
               "product_id": "B09DBFG8W3",
               "title": "Mimei Teclado silencioso inalámbrico, Teclado de conexión Estable y Recargable por USB Aplicable a los Cuatro Sistemas operativos Que admiten Bluetooth 28,5 12 2,2 CM Superb",
               "brand": "Mimei",
               "price_cents": 4290,
               "stock": 21
+            },
+            {
+              "product_id": "B00IKDR9O4",
+              "title": "Phoenix Technologies - Mini teclado inalámbrico 2.4Ghz con touchpad integrado para Android TV Box, PC, Pad, Smart TV, X-Box, HTPC",
+              "brand": "Phoenix Technologies",
+              "price_cents": 1824,
+              "stock": 47
             },
             {
               "product_id": "B07XD94VGX",
@@ -303,7 +303,7 @@
         },
         "offers": {
           "B00IKDR9O4": {
-            "price_cents": 1500,
+            "price_cents": 1800,
             "stock": 20
           },
           "B07FMGVRMS": {
@@ -319,13 +319,13 @@
             "stock": 35
           },
           "B09DBFG8W3": {
-            "price_cents": 1800,
+            "price_cents": 1500,
             "stock": 20
           }
         }
       },
       "after": {
-        "cart_id": "eval-a557491f-16_quitar_del_carrito-c1",
+        "cart_id": "eval-49d0281c-16_quitar_del_carrito-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -334,16 +334,16 @@
           "order": null,
           "candidates": [
             {
-              "product_id": "B00IKDR9O4",
-              "title": "Phoenix Technologies - Mini teclado inalámbrico 2.4Ghz con touchpad integrado para Android TV Box, PC, Pad, Smart TV, X-Box, HTPC",
-              "brand": "Phoenix Technologies",
+              "product_id": "B09DBFG8W3",
+              "title": "Mimei Teclado silencioso inalámbrico, Teclado de conexión Estable y Recargable por USB Aplicable a los Cuatro Sistemas operativos Que admiten Bluetooth 28,5 12 2,2 CM Superb",
+              "brand": "Mimei",
               "price_cents": 1500,
               "stock": 20
             },
             {
-              "product_id": "B09DBFG8W3",
-              "title": "Mimei Teclado silencioso inalámbrico, Teclado de conexión Estable y Recargable por USB Aplicable a los Cuatro Sistemas operativos Que admiten Bluetooth 28,5 12 2,2 CM Superb",
-              "brand": "Mimei",
+              "product_id": "B00IKDR9O4",
+              "title": "Phoenix Technologies - Mini teclado inalámbrico 2.4Ghz con touchpad integrado para Android TV Box, PC, Pad, Smart TV, X-Box, HTPC",
+              "brand": "Phoenix Technologies",
               "price_cents": 1800,
               "stock": 20
             },
@@ -376,13 +376,13 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-a557491f-16_quitar_del_carrito-c1",
-              "product_id": "B00IKDR9O4",
+              "cart_id": "eval-49d0281c-16_quitar_del_carrito-c1",
+              "product_id": "B09DBFG8W3",
               "quantity": 1
             },
             {
-              "cart_id": "eval-a557491f-16_quitar_del_carrito-c1",
-              "product_id": "B09DBFG8W3",
+              "cart_id": "eval-49d0281c-16_quitar_del_carrito-c1",
+              "product_id": "B00IKDR9O4",
               "quantity": 1
             }
           ],
@@ -401,7 +401,7 @@
         },
         "offers": {
           "B00IKDR9O4": {
-            "price_cents": 1500,
+            "price_cents": 1800,
             "stock": 20
           },
           "B07FMGVRMS": {
@@ -417,7 +417,7 @@
             "stock": 35
           },
           "B09DBFG8W3": {
-            "price_cents": 1800,
+            "price_cents": 1500,
             "stock": 20
           }
         }
@@ -438,7 +438,7 @@
             ]
           },
           "ok": true,
-          "detail": "carrito: 1 × B00IKDR9O4, 1 × B09DBFG8W3"
+          "detail": "carrito: 1 × B09DBFG8W3, 1 × B00IKDR9O4"
         }
       ]
     },
@@ -450,8 +450,8 @@
       "transcript": null,
       "expected_text": "Quita el primero.",
       "agent_input": "Quita el primero.",
-      "response": "Hecho, el carrito ahora contiene solo el teclado inalámbrico de Mimei por 18,00 €. En el carrito hay 1 unidad de «Mimei Teclado silencioso inalámbrico, Teclado de conexión Estable y…» a 18,00 € cada una, 18,00 €. Total: 18,00 €.",
-      "spoken_text": "Hecho, el carrito ahora contiene solo el teclado inalámbrico de Mimei por dieciocho euros. En el carrito hay una unidad de Mimei Teclado silencioso inalámbrico a dieciocho euros cada una, dieciocho euros. Total: dieciocho euros.",
+      "response": "Hecho, el carrito ahora contiene solo el teclado inalámbrico de Phoenix Technologies por 18,00 €. En el carrito hay 1 unidad de «Phoenix Technologies - Mini teclado inalámbrico 2.4Ghz con touchpad…» a 18,00 € cada una, 18,00 €. Total: 18,00 €.",
+      "spoken_text": "Hecho, el carrito ahora contiene solo el teclado inalámbrico de Phoenix Technologies por dieciocho euros. En el carrito hay una unidad de Phoenix Technologies a dieciocho euros cada una, dieciocho euros. Total: dieciocho euros.",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -459,28 +459,28 @@
         {
           "tool": "quitar_del_carrito",
           "args": {
-            "product_id": "B00IKDR9O4"
+            "product_id": "B09DBFG8W3"
           },
-          "reason": "quitar el producto del carrito",
+          "reason": "quitar el primero del carrito",
           "ok": true,
-          "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B09DBFG8W3 | Mimei Teclado silencioso inalámbrico, Teclado de conexión Estable y… | 1 unidad × 18,00 € = 18,00 € | existencias: 20\nTotal del carrito: 18,00 €",
+          "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B00IKDR9O4 | Phoenix Technologies - Mini teclado inalámbrico 2.4Ghz con touchpad… | 1 unidad × 18,00 € = 18,00 € | existencias: 20\nTotal del carrito: 18,00 €",
           "issues": []
         }
       ],
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 5.695,
-        "tools": 0.043,
+        "llm": 5.487,
+        "tools": 0.059,
         "tts": 0.0,
-        "total": 5.737
+        "total": 5.546
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-a557491f-16_quitar_del_carrito-c1",
+        "cart_id": "eval-49d0281c-16_quitar_del_carrito-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -489,16 +489,16 @@
           "order": null,
           "candidates": [
             {
-              "product_id": "B00IKDR9O4",
-              "title": "Phoenix Technologies - Mini teclado inalámbrico 2.4Ghz con touchpad integrado para Android TV Box, PC, Pad, Smart TV, X-Box, HTPC",
-              "brand": "Phoenix Technologies",
+              "product_id": "B09DBFG8W3",
+              "title": "Mimei Teclado silencioso inalámbrico, Teclado de conexión Estable y Recargable por USB Aplicable a los Cuatro Sistemas operativos Que admiten Bluetooth 28,5 12 2,2 CM Superb",
+              "brand": "Mimei",
               "price_cents": 1500,
               "stock": 20
             },
             {
-              "product_id": "B09DBFG8W3",
-              "title": "Mimei Teclado silencioso inalámbrico, Teclado de conexión Estable y Recargable por USB Aplicable a los Cuatro Sistemas operativos Que admiten Bluetooth 28,5 12 2,2 CM Superb",
-              "brand": "Mimei",
+              "product_id": "B00IKDR9O4",
+              "title": "Phoenix Technologies - Mini teclado inalámbrico 2.4Ghz con touchpad integrado para Android TV Box, PC, Pad, Smart TV, X-Box, HTPC",
+              "brand": "Phoenix Technologies",
               "price_cents": 1800,
               "stock": 20
             },
@@ -531,13 +531,13 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-a557491f-16_quitar_del_carrito-c1",
-              "product_id": "B00IKDR9O4",
+              "cart_id": "eval-49d0281c-16_quitar_del_carrito-c1",
+              "product_id": "B09DBFG8W3",
               "quantity": 1
             },
             {
-              "cart_id": "eval-a557491f-16_quitar_del_carrito-c1",
-              "product_id": "B09DBFG8W3",
+              "cart_id": "eval-49d0281c-16_quitar_del_carrito-c1",
+              "product_id": "B00IKDR9O4",
               "quantity": 1
             }
           ],
@@ -556,7 +556,7 @@
         },
         "offers": {
           "B00IKDR9O4": {
-            "price_cents": 1500,
+            "price_cents": 1800,
             "stock": 20
           },
           "B07FMGVRMS": {
@@ -572,13 +572,13 @@
             "stock": 35
           },
           "B09DBFG8W3": {
-            "price_cents": 1800,
+            "price_cents": 1500,
             "stock": 20
           }
         }
       },
       "after": {
-        "cart_id": "eval-a557491f-16_quitar_del_carrito-c1",
+        "cart_id": "eval-49d0281c-16_quitar_del_carrito-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -587,16 +587,16 @@
           "order": null,
           "candidates": [
             {
-              "product_id": "B00IKDR9O4",
-              "title": "Phoenix Technologies - Mini teclado inalámbrico 2.4Ghz con touchpad integrado para Android TV Box, PC, Pad, Smart TV, X-Box, HTPC",
-              "brand": "Phoenix Technologies",
+              "product_id": "B09DBFG8W3",
+              "title": "Mimei Teclado silencioso inalámbrico, Teclado de conexión Estable y Recargable por USB Aplicable a los Cuatro Sistemas operativos Que admiten Bluetooth 28,5 12 2,2 CM Superb",
+              "brand": "Mimei",
               "price_cents": 1500,
               "stock": 20
             },
             {
-              "product_id": "B09DBFG8W3",
-              "title": "Mimei Teclado silencioso inalámbrico, Teclado de conexión Estable y Recargable por USB Aplicable a los Cuatro Sistemas operativos Que admiten Bluetooth 28,5 12 2,2 CM Superb",
-              "brand": "Mimei",
+              "product_id": "B00IKDR9O4",
+              "title": "Phoenix Technologies - Mini teclado inalámbrico 2.4Ghz con touchpad integrado para Android TV Box, PC, Pad, Smart TV, X-Box, HTPC",
+              "brand": "Phoenix Technologies",
               "price_cents": 1800,
               "stock": 20
             },
@@ -629,8 +629,8 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-a557491f-16_quitar_del_carrito-c1",
-              "product_id": "B09DBFG8W3",
+              "cart_id": "eval-49d0281c-16_quitar_del_carrito-c1",
+              "product_id": "B00IKDR9O4",
               "quantity": 1
             }
           ],
@@ -649,7 +649,7 @@
         },
         "offers": {
           "B00IKDR9O4": {
-            "price_cents": 1500,
+            "price_cents": 1800,
             "stock": 20
           },
           "B07FMGVRMS": {
@@ -665,7 +665,7 @@
             "stock": 35
           },
           "B09DBFG8W3": {
-            "price_cents": 1800,
+            "price_cents": 1500,
             "stock": 20
           }
         }
@@ -682,7 +682,7 @@
             ]
           },
           "ok": true,
-          "detail": "carrito: 1 × B09DBFG8W3"
+          "detail": "carrito: 1 × B00IKDR9O4"
         }
       ]
     },
@@ -694,8 +694,8 @@
       "transcript": null,
       "expected_text": "Cierra el pedido.",
       "agent_input": "Cierra el pedido.",
-      "response": "Te repito el pedido antes de registrarlo: 1 unidad de «Mimei Teclado silencioso inalámbrico, Teclado de conexión Estable y…» a 18,00 € cada una, 18,00 €. Total: 18,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
-      "spoken_text": "Te repito el pedido antes de registrarlo: una unidad de Mimei Teclado silencioso inalámbrico a dieciocho euros cada una, dieciocho euros. Total: dieciocho euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "response": "Te repito el pedido antes de registrarlo: 1 unidad de «Phoenix Technologies - Mini teclado inalámbrico 2.4Ghz con touchpad…» a 18,00 € cada una, 18,00 €. Total: 18,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "spoken_text": "Te repito el pedido antes de registrarlo: una unidad de Phoenix Technologies a dieciocho euros cada una, dieciocho euros. Total: dieciocho euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": true,
@@ -712,17 +712,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 2.531,
-        "tools": 0.027,
+        "llm": 2.357,
+        "tools": 0.026,
         "tts": 0.0,
-        "total": 2.558
+        "total": 2.383
       },
       "llm_steps": 1,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-a557491f-16_quitar_del_carrito-c1",
+        "cart_id": "eval-49d0281c-16_quitar_del_carrito-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -731,16 +731,16 @@
           "order": null,
           "candidates": [
             {
-              "product_id": "B00IKDR9O4",
-              "title": "Phoenix Technologies - Mini teclado inalámbrico 2.4Ghz con touchpad integrado para Android TV Box, PC, Pad, Smart TV, X-Box, HTPC",
-              "brand": "Phoenix Technologies",
+              "product_id": "B09DBFG8W3",
+              "title": "Mimei Teclado silencioso inalámbrico, Teclado de conexión Estable y Recargable por USB Aplicable a los Cuatro Sistemas operativos Que admiten Bluetooth 28,5 12 2,2 CM Superb",
+              "brand": "Mimei",
               "price_cents": 1500,
               "stock": 20
             },
             {
-              "product_id": "B09DBFG8W3",
-              "title": "Mimei Teclado silencioso inalámbrico, Teclado de conexión Estable y Recargable por USB Aplicable a los Cuatro Sistemas operativos Que admiten Bluetooth 28,5 12 2,2 CM Superb",
-              "brand": "Mimei",
+              "product_id": "B00IKDR9O4",
+              "title": "Phoenix Technologies - Mini teclado inalámbrico 2.4Ghz con touchpad integrado para Android TV Box, PC, Pad, Smart TV, X-Box, HTPC",
+              "brand": "Phoenix Technologies",
               "price_cents": 1800,
               "stock": 20
             },
@@ -773,8 +773,8 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-a557491f-16_quitar_del_carrito-c1",
-              "product_id": "B09DBFG8W3",
+              "cart_id": "eval-49d0281c-16_quitar_del_carrito-c1",
+              "product_id": "B00IKDR9O4",
               "quantity": 1
             }
           ],
@@ -793,7 +793,7 @@
         },
         "offers": {
           "B00IKDR9O4": {
-            "price_cents": 1500,
+            "price_cents": 1800,
             "stock": 20
           },
           "B07FMGVRMS": {
@@ -809,23 +809,23 @@
             "stock": 35
           },
           "B09DBFG8W3": {
-            "price_cents": 1800,
+            "price_cents": 1500,
             "stock": 20
           }
         }
       },
       "after": {
-        "cart_id": "eval-a557491f-16_quitar_del_carrito-c1",
+        "cart_id": "eval-49d0281c-16_quitar_del_carrito-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "7629a0a4cae748a0b9551c7fd35cf868",
+            "quote_id": "07db640422ca4fe09e638f4c39d5f206",
             "items": [
               {
-                "product_id": "B09DBFG8W3",
-                "title": "Mimei Teclado silencioso inalámbrico, Teclado de conexión Estable y Recargable por USB Aplicable a los Cuatro Sistemas operativos Que admiten Bluetooth 28,5 12 2,2 CM Superb",
+                "product_id": "B00IKDR9O4",
+                "title": "Phoenix Technologies - Mini teclado inalámbrico 2.4Ghz con touchpad integrado para Android TV Box, PC, Pad, Smart TV, X-Box, HTPC",
                 "quantity": 1,
                 "unit_price_cents": 1800,
                 "subtotal_cents": 1800,
@@ -834,21 +834,21 @@
             ],
             "total_cents": 1800,
             "budget_cents": null,
-            "message": "Te repito el pedido antes de registrarlo: 1 unidad de «Mimei Teclado silencioso inalámbrico, Teclado de conexión Estable y…» a 18,00 € cada una, 18,00 €. Total: 18,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+            "message": "Te repito el pedido antes de registrarlo: 1 unidad de «Phoenix Technologies - Mini teclado inalámbrico 2.4Ghz con touchpad…» a 18,00 € cada una, 18,00 €. Total: 18,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
           },
           "order": null,
           "candidates": [
             {
-              "product_id": "B00IKDR9O4",
-              "title": "Phoenix Technologies - Mini teclado inalámbrico 2.4Ghz con touchpad integrado para Android TV Box, PC, Pad, Smart TV, X-Box, HTPC",
-              "brand": "Phoenix Technologies",
+              "product_id": "B09DBFG8W3",
+              "title": "Mimei Teclado silencioso inalámbrico, Teclado de conexión Estable y Recargable por USB Aplicable a los Cuatro Sistemas operativos Que admiten Bluetooth 28,5 12 2,2 CM Superb",
+              "brand": "Mimei",
               "price_cents": 1500,
               "stock": 20
             },
             {
-              "product_id": "B09DBFG8W3",
-              "title": "Mimei Teclado silencioso inalámbrico, Teclado de conexión Estable y Recargable por USB Aplicable a los Cuatro Sistemas operativos Que admiten Bluetooth 28,5 12 2,2 CM Superb",
-              "brand": "Mimei",
+              "product_id": "B00IKDR9O4",
+              "title": "Phoenix Technologies - Mini teclado inalámbrico 2.4Ghz con touchpad integrado para Android TV Box, PC, Pad, Smart TV, X-Box, HTPC",
+              "brand": "Phoenix Technologies",
               "price_cents": 1800,
               "stock": 20
             },
@@ -881,8 +881,8 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-a557491f-16_quitar_del_carrito-c1",
-              "product_id": "B09DBFG8W3",
+              "cart_id": "eval-49d0281c-16_quitar_del_carrito-c1",
+              "product_id": "B00IKDR9O4",
               "quantity": 1
             }
           ],
@@ -901,7 +901,7 @@
         },
         "offers": {
           "B00IKDR9O4": {
-            "price_cents": 1500,
+            "price_cents": 1800,
             "stock": 20
           },
           "B07FMGVRMS": {
@@ -917,7 +917,7 @@
             "stock": 35
           },
           "B09DBFG8W3": {
-            "price_cents": 1800,
+            "price_cents": 1500,
             "stock": 20
           }
         }
@@ -949,8 +949,8 @@
       "transcript": null,
       "expected_text": "Sí.",
       "agent_input": "Sí.",
-      "response": "Pedido número 1 registrado: 1 unidad de «Mimei Teclado silencioso inalámbrico, Teclado de conexión Estable y…» a 18,00 € cada una, 18,00 €. Total: 18,00 €. Gracias por tu compra.",
-      "spoken_text": "Pedido número uno registrado: una unidad de Mimei Teclado silencioso inalámbrico a dieciocho euros cada una, dieciocho euros. Total: dieciocho euros. Gracias por tu compra.",
+      "response": "Pedido número 1 registrado: 1 unidad de «Phoenix Technologies - Mini teclado inalámbrico 2.4Ghz con touchpad…» a 18,00 € cada una, 18,00 €. Total: 18,00 €. Gracias por tu compra.",
+      "spoken_text": "Pedido número uno registrado: una unidad de Phoenix Technologies a dieciocho euros cada una, dieciocho euros. Total: dieciocho euros. Gracias por tu compra.",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -958,7 +958,7 @@
         {
           "tool": "confirmar_pedido",
           "args": {
-            "quote_id": "7629a0a4cae748a0b9551c7fd35cf868"
+            "quote_id": "07db640422ca4fe09e638f4c39d5f206"
           },
           "reason": "el usuario confirmó la cotización",
           "ok": true,
@@ -970,26 +970,26 @@
         "asr": 0.0,
         "retrieval": 0.0,
         "llm": 0.0,
-        "tools": 0.027,
+        "tools": 0.032,
         "tts": 0.0,
-        "total": 0.027
+        "total": 0.032
       },
       "llm_steps": 0,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-a557491f-16_quitar_del_carrito-c1",
+        "cart_id": "eval-49d0281c-16_quitar_del_carrito-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "7629a0a4cae748a0b9551c7fd35cf868",
+            "quote_id": "07db640422ca4fe09e638f4c39d5f206",
             "items": [
               {
-                "product_id": "B09DBFG8W3",
-                "title": "Mimei Teclado silencioso inalámbrico, Teclado de conexión Estable y Recargable por USB Aplicable a los Cuatro Sistemas operativos Que admiten Bluetooth 28,5 12 2,2 CM Superb",
+                "product_id": "B00IKDR9O4",
+                "title": "Phoenix Technologies - Mini teclado inalámbrico 2.4Ghz con touchpad integrado para Android TV Box, PC, Pad, Smart TV, X-Box, HTPC",
                 "quantity": 1,
                 "unit_price_cents": 1800,
                 "subtotal_cents": 1800,
@@ -998,21 +998,21 @@
             ],
             "total_cents": 1800,
             "budget_cents": null,
-            "message": "Te repito el pedido antes de registrarlo: 1 unidad de «Mimei Teclado silencioso inalámbrico, Teclado de conexión Estable y…» a 18,00 € cada una, 18,00 €. Total: 18,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+            "message": "Te repito el pedido antes de registrarlo: 1 unidad de «Phoenix Technologies - Mini teclado inalámbrico 2.4Ghz con touchpad…» a 18,00 € cada una, 18,00 €. Total: 18,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
           },
           "order": null,
           "candidates": [
             {
-              "product_id": "B00IKDR9O4",
-              "title": "Phoenix Technologies - Mini teclado inalámbrico 2.4Ghz con touchpad integrado para Android TV Box, PC, Pad, Smart TV, X-Box, HTPC",
-              "brand": "Phoenix Technologies",
+              "product_id": "B09DBFG8W3",
+              "title": "Mimei Teclado silencioso inalámbrico, Teclado de conexión Estable y Recargable por USB Aplicable a los Cuatro Sistemas operativos Que admiten Bluetooth 28,5 12 2,2 CM Superb",
+              "brand": "Mimei",
               "price_cents": 1500,
               "stock": 20
             },
             {
-              "product_id": "B09DBFG8W3",
-              "title": "Mimei Teclado silencioso inalámbrico, Teclado de conexión Estable y Recargable por USB Aplicable a los Cuatro Sistemas operativos Que admiten Bluetooth 28,5 12 2,2 CM Superb",
-              "brand": "Mimei",
+              "product_id": "B00IKDR9O4",
+              "title": "Phoenix Technologies - Mini teclado inalámbrico 2.4Ghz con touchpad integrado para Android TV Box, PC, Pad, Smart TV, X-Box, HTPC",
+              "brand": "Phoenix Technologies",
               "price_cents": 1800,
               "stock": 20
             },
@@ -1045,8 +1045,8 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-a557491f-16_quitar_del_carrito-c1",
-              "product_id": "B09DBFG8W3",
+              "cart_id": "eval-49d0281c-16_quitar_del_carrito-c1",
+              "product_id": "B00IKDR9O4",
               "quantity": 1
             }
           ],
@@ -1065,7 +1065,7 @@
         },
         "offers": {
           "B00IKDR9O4": {
-            "price_cents": 1500,
+            "price_cents": 1800,
             "stock": 20
           },
           "B07FMGVRMS": {
@@ -1081,13 +1081,13 @@
             "stock": 35
           },
           "B09DBFG8W3": {
-            "price_cents": 1800,
+            "price_cents": 1500,
             "stock": 20
           }
         }
       },
       "after": {
-        "cart_id": "eval-a557491f-16_quitar_del_carrito-c1",
+        "cart_id": "eval-49d0281c-16_quitar_del_carrito-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -1095,31 +1095,31 @@
           "quote": null,
           "order": {
             "order_id": 1,
-            "quote_id": "7629a0a4cae748a0b9551c7fd35cf868",
+            "quote_id": "07db640422ca4fe09e638f4c39d5f206",
             "items": [
               {
-                "product_id": "B09DBFG8W3",
-                "title": "Mimei Teclado silencioso inalámbrico, Teclado de conexión Estable y Recargable por USB Aplicable a los Cuatro Sistemas operativos Que admiten Bluetooth 28,5 12 2,2 CM Superb",
+                "product_id": "B00IKDR9O4",
+                "title": "Phoenix Technologies - Mini teclado inalámbrico 2.4Ghz con touchpad integrado para Android TV Box, PC, Pad, Smart TV, X-Box, HTPC",
                 "quantity": 1,
                 "unit_price_cents": 1800,
                 "subtotal_cents": 1800
               }
             ],
             "total_cents": 1800,
-            "message": "Pedido número 1 registrado: 1 unidad de «Mimei Teclado silencioso inalámbrico, Teclado de conexión Estable y…» a 18,00 € cada una, 18,00 €. Total: 18,00 €. Gracias por tu compra."
+            "message": "Pedido número 1 registrado: 1 unidad de «Phoenix Technologies - Mini teclado inalámbrico 2.4Ghz con touchpad…» a 18,00 € cada una, 18,00 €. Total: 18,00 €. Gracias por tu compra."
           },
           "candidates": [
-            {
-              "product_id": "B00IKDR9O4",
-              "title": "Phoenix Technologies - Mini teclado inalámbrico 2.4Ghz con touchpad integrado para Android TV Box, PC, Pad, Smart TV, X-Box, HTPC",
-              "brand": "Phoenix Technologies",
-              "price_cents": 1500,
-              "stock": 20
-            },
             {
               "product_id": "B09DBFG8W3",
               "title": "Mimei Teclado silencioso inalámbrico, Teclado de conexión Estable y Recargable por USB Aplicable a los Cuatro Sistemas operativos Que admiten Bluetooth 28,5 12 2,2 CM Superb",
               "brand": "Mimei",
+              "price_cents": 1500,
+              "stock": 20
+            },
+            {
+              "product_id": "B00IKDR9O4",
+              "title": "Phoenix Technologies - Mini teclado inalámbrico 2.4Ghz con touchpad integrado para Android TV Box, PC, Pad, Smart TV, X-Box, HTPC",
+              "brand": "Phoenix Technologies",
               "price_cents": 1800,
               "stock": 20
             },
@@ -1151,14 +1151,14 @@
           "orders": [
             {
               "order_id": 1,
-              "quote_id": "7629a0a4cae748a0b9551c7fd35cf868",
+              "quote_id": "07db640422ca4fe09e638f4c39d5f206",
               "total_cents": 1800
             }
           ],
           "order_items": [
             {
               "order_id": 1,
-              "product_id": "B09DBFG8W3",
+              "product_id": "B00IKDR9O4",
               "quantity": 1,
               "unit_price_cents": 1800
             }
@@ -1168,19 +1168,19 @@
             {
               "product_id": "B00IKDR9O4",
               "initial_stock": 47,
-              "stock": 20
+              "stock": 19
             },
             {
               "product_id": "B09DBFG8W3",
               "initial_stock": 21,
-              "stock": 19
+              "stock": 20
             }
           ]
         },
         "offers": {
           "B00IKDR9O4": {
-            "price_cents": 1500,
-            "stock": 20
+            "price_cents": 1800,
+            "stock": 19
           },
           "B07FMGVRMS": {
             "price_cents": 4500,
@@ -1195,8 +1195,8 @@
             "stock": 35
           },
           "B09DBFG8W3": {
-            "price_cents": 1800,
-            "stock": 19
+            "price_cents": 1500,
+            "stock": 20
           }
         }
       },
@@ -1214,7 +1214,7 @@
   ],
   "final": {
     "snapshot": {
-      "cart_id": "eval-a557491f-16_quitar_del_carrito-c1",
+      "cart_id": "eval-49d0281c-16_quitar_del_carrito-c1",
       "state": {
         "budget_cents": null,
         "preferences": [],
@@ -1222,31 +1222,31 @@
         "quote": null,
         "order": {
           "order_id": 1,
-          "quote_id": "7629a0a4cae748a0b9551c7fd35cf868",
+          "quote_id": "07db640422ca4fe09e638f4c39d5f206",
           "items": [
             {
-              "product_id": "B09DBFG8W3",
-              "title": "Mimei Teclado silencioso inalámbrico, Teclado de conexión Estable y Recargable por USB Aplicable a los Cuatro Sistemas operativos Que admiten Bluetooth 28,5 12 2,2 CM Superb",
+              "product_id": "B00IKDR9O4",
+              "title": "Phoenix Technologies - Mini teclado inalámbrico 2.4Ghz con touchpad integrado para Android TV Box, PC, Pad, Smart TV, X-Box, HTPC",
               "quantity": 1,
               "unit_price_cents": 1800,
               "subtotal_cents": 1800
             }
           ],
           "total_cents": 1800,
-          "message": "Pedido número 1 registrado: 1 unidad de «Mimei Teclado silencioso inalámbrico, Teclado de conexión Estable y…» a 18,00 € cada una, 18,00 €. Total: 18,00 €. Gracias por tu compra."
+          "message": "Pedido número 1 registrado: 1 unidad de «Phoenix Technologies - Mini teclado inalámbrico 2.4Ghz con touchpad…» a 18,00 € cada una, 18,00 €. Total: 18,00 €. Gracias por tu compra."
         },
         "candidates": [
-          {
-            "product_id": "B00IKDR9O4",
-            "title": "Phoenix Technologies - Mini teclado inalámbrico 2.4Ghz con touchpad integrado para Android TV Box, PC, Pad, Smart TV, X-Box, HTPC",
-            "brand": "Phoenix Technologies",
-            "price_cents": 1500,
-            "stock": 20
-          },
           {
             "product_id": "B09DBFG8W3",
             "title": "Mimei Teclado silencioso inalámbrico, Teclado de conexión Estable y Recargable por USB Aplicable a los Cuatro Sistemas operativos Que admiten Bluetooth 28,5 12 2,2 CM Superb",
             "brand": "Mimei",
+            "price_cents": 1500,
+            "stock": 20
+          },
+          {
+            "product_id": "B00IKDR9O4",
+            "title": "Phoenix Technologies - Mini teclado inalámbrico 2.4Ghz con touchpad integrado para Android TV Box, PC, Pad, Smart TV, X-Box, HTPC",
+            "brand": "Phoenix Technologies",
             "price_cents": 1800,
             "stock": 20
           },
@@ -1278,14 +1278,14 @@
         "orders": [
           {
             "order_id": 1,
-            "quote_id": "7629a0a4cae748a0b9551c7fd35cf868",
+            "quote_id": "07db640422ca4fe09e638f4c39d5f206",
             "total_cents": 1800
           }
         ],
         "order_items": [
           {
             "order_id": 1,
-            "product_id": "B09DBFG8W3",
+            "product_id": "B00IKDR9O4",
             "quantity": 1,
             "unit_price_cents": 1800
           }
@@ -1295,19 +1295,19 @@
           {
             "product_id": "B00IKDR9O4",
             "initial_stock": 47,
-            "stock": 20
+            "stock": 19
           },
           {
             "product_id": "B09DBFG8W3",
             "initial_stock": 21,
-            "stock": 19
+            "stock": 20
           }
         ]
       },
       "offers": {
         "B00IKDR9O4": {
-          "price_cents": 1500,
-          "stock": 20
+          "price_cents": 1800,
+          "stock": 19
         },
         "B07FMGVRMS": {
           "price_cents": 4500,
@@ -1322,8 +1322,8 @@
           "stock": 35
         },
         "B09DBFG8W3": {
-          "price_cents": 1800,
-          "stock": 19
+          "price_cents": 1500,
+          "stock": 20
         }
       }
     },
@@ -1348,7 +1348,7 @@
           "total_cents": 1800
         },
         "ok": true,
-        "detail": "pedido 1: 1 × B09DBFG8W3; total 1800 céntimos"
+        "detail": "pedido 1: 1 × B00IKDR9O4; total 1800 céntimos"
       },
       {
         "check": "stock",
@@ -1357,7 +1357,7 @@
           "equals": 20
         },
         "ok": true,
-        "detail": "existencias de B00IKDR9O4: 20"
+        "detail": "existencias de B09DBFG8W3: 20"
       },
       {
         "check": "stock",
@@ -1366,7 +1366,7 @@
           "equals": 19
         },
         "ok": true,
-        "detail": "existencias de B09DBFG8W3: 19"
+        "detail": "existencias de B00IKDR9O4: 19"
       },
       {
         "check": "cart",
@@ -1393,8 +1393,8 @@
         "max": 0.04
       },
       "llm": {
-        "mean": 4.6,
-        "max": 7.45
+        "mean": 4.39,
+        "max": 7.38
       },
       "tools": {
         "mean": 0.04,
@@ -1405,8 +1405,8 @@
         "max": 0.0
       },
       "total": {
-        "mean": 4.65,
-        "max": 7.51
+        "mean": 4.44,
+        "max": 7.45
       }
     },
     "with_llm": {
@@ -1420,11 +1420,11 @@
         "max": 0.04
       },
       "llm": {
-        "mean": 5.75,
-        "max": 7.45
+        "mean": 5.49,
+        "max": 7.38
       },
       "tools": {
-        "mean": 0.04,
+        "mean": 0.05,
         "max": 0.07
       },
       "tts": {
@@ -1432,8 +1432,8 @@
         "max": 0.0
       },
       "total": {
-        "mean": 5.8,
-        "max": 7.51
+        "mean": 5.55,
+        "max": 7.45
       }
     },
     "without_llm": {

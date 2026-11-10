@@ -6,9 +6,9 @@
   "voice": false,
   "input": "texto",
   "audio_source": null,
-  "user_id": "eval-6b9dd32e-19_presupuesto_compartido",
+  "user_id": "eval-5e374f37-19_presupuesto_compartido",
   "threads": [
-    "eval-6b9dd32e-19_presupuesto_compartido-c1"
+    "eval-5e374f37-19_presupuesto_compartido-c1"
   ],
   "names": {
     "primeras": "B01M0TJMI7",
@@ -23,8 +23,8 @@
       "transcript": null,
       "expected_text": "Busco unas toallas de baño. Mi presupuesto es de 50 euros.",
       "agent_input": "Busco unas toallas de baño. Mi presupuesto es de 50 euros.",
-      "response": "Tengo para ti las toallas de baño Amazon Basics por 11,93 €, las de Chantarole por 35,15 €, las de Utopia Towels por 48,03 € y las de Utopia Towels en gris por 9,24 €. ¿Te interesa alguna? He anotado un presupuesto de 50,00 €.",
-      "spoken_text": "Tengo para ti las toallas de baño Amazon Basics por once euros con noventa y tres céntimos, las de Chantarole por treinta y cinco euros con quince céntimos, las de Utopia Towels por cuarenta y ocho euros con tres céntimos y las de Utopia Towels en gris por nueve euros con veinticuatro céntimos. ¿Te interesa alguna? He anotado un presupuesto de cincuenta euros.",
+      "response": "Tengo estas opciones para ti: las toallas de Amazon Basics por 11,93 euros, las de Chantarole por 35,15 euros, las de Utopia Towels por 48,03 euros y las de Utopia Towels en gris por 9,24 euros. ¿Te interesa alguna? He anotado un presupuesto de 50,00 €.",
+      "spoken_text": "Tengo estas opciones para ti: las toallas de Amazon Basics por once euros con noventa y tres céntimos, las de Chantarole por treinta y cinco euros con quince céntimos, las de Utopia Towels por cuarenta y ocho euros con tres céntimos y las de Utopia Towels en gris por nueve euros con veinticuatro céntimos. ¿Te interesa alguna? He anotado un presupuesto de cincuenta euros.",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -44,7 +44,7 @@
           "args": {
             "consulta": "toallas de baño"
           },
-          "reason": "buscar toallas de baño dentro del presupuesto",
+          "reason": "buscar lo que pide",
           "ok": true,
           "summary": "estos son ahora los CANDIDATOS, del más al menos relevante:\n[1] id=B01M0TJMI7 | Amazon Basics - Juego de toallas (colores resistentes, 2 toallas de baño, 2 de manos y 2 para bidé), color blanco | marca: Amazon Basics | color: Blanco | precio: 11,93 € | existencias: 39 | características (extracto): Incluye 2 toallas de baño, 2 toallas de manos y 2 toallas pequeñas para bidé. Tamaño: 140 x 70 cm (toalla de baño), 50 x 100 cm (toalla de manos) y 30 x 30 (toalla para bidé). Fabricada en 100% algodón. Lavables en lavadora a 60 °C; se… | descripción: desconocido\n[2] id=B07P67N2J1 | Chantarole - Juego de Toallas baño Grandes: 1 Toalla de baño + 1 Toalla Manos + 1 Toalla Pelo + 1 Alfombra baño; Toallas Blancas Algodon; Toallas Hotel (Blanco, 4) | marca: Chantarole | color: Blanco | precio: 35,15 € | existencias: 38 | características (extracto): Toallas de baño grandes: nuestro juego de baño incluye 4 toallas grandes de baño: 1 toalla de baño de 150 x 100 cm; 1 toallas de mano de 100 x 50 cm; 1 toalla secado rapido pelo de 23 x 67 cm y 1 alfombra bañera antideslizante extra-gruesa… | descripción: Consigue unas toallas de baño y lavabo con las que poder taparte completamente. ¡Compra toallas de tamaño adecuado y cúbrete!La calidad de su algodon y altísimo gramaje confiere al conjunto gran…\n[3] id=B009SZ2P4C | Utopia Towels - Toalla de baño Grande, Paquete de 1 (90 x 180 cm, Blanco) | marca: Utopia Towels | color: Blanco | precio: 48,03 € | existencias: 30 | características (extracto): NO UTILICE Lejía, suavizantes de telas ni plancha, ya que puede dañar su calidad; siempre lave las toallas por separado para minimizar la pelusa. Toalla de baño de algodón medidas 90 x 180 cm Lave las toallas a máquina en agua tibia con un… | descripción: Esta lujosa toalla de baño suave ofrece una sensación suave a la piel y una alta absorción. Con 2 capas, hilado en anillo, construcción de algodón peinado, la toalla es duradera y de tamaño generoso…\n[4] id=B01N2VYEFS | Utopia Towels - Conjunto de Toallas de baño (Paquete de 4, 69 x 137 cm) Toallas de algodón 100 por ciento Ring-Spun para Hotel y SPA, máxima suavidad y Altamente Absorbente (Gris) | marca: Utopia Towels | color: Gris | precio: 9,24 € | existencias: 28 | características (extracto): No use blanqueador, suavizante de telas ni plancha, ya que puede dañar su calidad; lave siempre las toallas por separado para minimizar la pelusa. El juego incluye cuatro toallas de baño de algodón de lujo en color gris de 69 x 137 cm cada… | descripción: ¡Obtenga el mayor valor por su dinero con nuestra toalla de baño de mayor calidad y tamaño premium! Consiéntete con la toalla de baño 100% algodón hecha de suave y duradera toalla de filtro de…\n[5] id=B01N0SVK1K | Utopia Towels - 700 gsm Toallas de baño de algodón (90 x 180 cm) Hoja de baño de Lujo hogar, los baños, la Piscina y el Gimnasio Algodón de Anillos (Blanco) | marca: Utopia Towels | color: Blanco | precio: 45,75 € | existencias: 42 | características (extracto): No use blanqueador, suavizante de telas ni plancha, ya que puede dañar su calidad; lave siempre las toallas por separado para minimizar la pelusa. 700 GSM toalla de baño de algodón de lujo medidas 90 x 180 cm Tejido con 100% algodón hilado… | descripción: Obtener el máximo valor por su dinero con nuestra toalla de baño Toprated! Consiéntete con el algodón 700 GSM toalla de baño 100% hecha de tela de toalla suave y duradero. Cada toalla de baño ofrece…",
           "issues": []
@@ -53,17 +53,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.028,
-        "llm": 8.752,
-        "tools": 0.029,
+        "llm": 8.242,
+        "tools": 0.027,
         "tts": 0.0,
-        "total": 8.809
+        "total": 8.298
       },
       "llm_steps": 3,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-6b9dd32e-19_presupuesto_compartido-c1",
+        "cart_id": "eval-5e374f37-19_presupuesto_compartido-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -82,7 +82,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-6b9dd32e-19_presupuesto_compartido-c1",
+        "cart_id": "eval-5e374f37-19_presupuesto_compartido-c1",
         "state": {
           "budget_cents": 5000,
           "preferences": [],
@@ -214,8 +214,8 @@
       "transcript": null,
       "expected_text": "Añade dos de la primera opción.",
       "agent_input": "Añade dos de la primera opción.",
-      "response": "Hecho, añadidas dos unidades. El total ahora es 28,00 €. En el carrito hay 2 unidades de «Amazon Basics - Juego de toallas (colores resistentes, 2 toallas de…» a 14,00 € cada una, 28,00 €. Total: 28,00 €. Tu presupuesto es de 50,00 € y te quedan 22,00 €.",
-      "spoken_text": "Hecho, añadidas dos unidades. El total ahora es veintiocho euros. En el carrito hay dos unidades de Amazon Basics a catorce euros cada una, veintiocho euros. Total: veintiocho euros. Tu presupuesto es de cincuenta euros y te quedan veintidós euros.",
+      "response": "Hecho, añadidas dos unidades. El total es 28,00 €. En el carrito hay 2 unidades de «Amazon Basics - Juego de toallas (colores resistentes, 2 toallas de…» a 14,00 € cada una, 28,00 €. Total: 28,00 €. Tu presupuesto es de 50,00 € y te quedan 22,00 €.",
+      "spoken_text": "Hecho, añadidas dos unidades. El total es veintiocho euros. En el carrito hay dos unidades de Amazon Basics a catorce euros cada una, veintiocho euros. Total: veintiocho euros. Tu presupuesto es de cincuenta euros y te quedan veintidós euros.",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -235,17 +235,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 5.391,
-        "tools": 0.044,
+        "llm": 5.288,
+        "tools": 0.056,
         "tts": 0.0,
-        "total": 5.435
+        "total": 5.343
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-6b9dd32e-19_presupuesto_compartido-c1",
+        "cart_id": "eval-5e374f37-19_presupuesto_compartido-c1",
         "state": {
           "budget_cents": 5000,
           "preferences": [],
@@ -332,7 +332,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-6b9dd32e-19_presupuesto_compartido-c1",
+        "cart_id": "eval-5e374f37-19_presupuesto_compartido-c1",
         "state": {
           "budget_cents": 5000,
           "preferences": [],
@@ -383,7 +383,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-6b9dd32e-19_presupuesto_compartido-c1",
+              "cart_id": "eval-5e374f37-19_presupuesto_compartido-c1",
               "product_id": "B01M0TJMI7",
               "quantity": 2
             }
@@ -448,8 +448,8 @@
       "transcript": null,
       "expected_text": "Añade también dos de la segunda opción.",
       "agent_input": "Añade también dos de la segunda opción.",
-      "response": "Lo siento, con dos unidades de la segunda opción el total supera tu presupuesto. ¿Quieres reducir la cantidad o cambiar a otro producto?",
-      "spoken_text": "Lo siento, con dos unidades de la segunda opción el total supera tu presupuesto. ¿Quieres reducir la cantidad o cambiar a otro producto?",
+      "response": "Ese producto supera tu presupuesto. ¿Quieres añadirlo de todas formas o prefieres buscar algo más económico?",
+      "spoken_text": "Ese producto supera tu presupuesto. ¿Quieres añadirlo de todas formas o prefieres buscar algo más económico?",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -483,17 +483,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 6.586,
-        "tools": 0.029,
+        "llm": 6.018,
+        "tools": 0.033,
         "tts": 0.0,
-        "total": 6.615
+        "total": 6.051
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-6b9dd32e-19_presupuesto_compartido-c1",
+        "cart_id": "eval-5e374f37-19_presupuesto_compartido-c1",
         "state": {
           "budget_cents": 5000,
           "preferences": [],
@@ -544,7 +544,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-6b9dd32e-19_presupuesto_compartido-c1",
+              "cart_id": "eval-5e374f37-19_presupuesto_compartido-c1",
               "product_id": "B01M0TJMI7",
               "quantity": 2
             }
@@ -586,7 +586,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-6b9dd32e-19_presupuesto_compartido-c1",
+        "cart_id": "eval-5e374f37-19_presupuesto_compartido-c1",
         "state": {
           "budget_cents": 5000,
           "preferences": [],
@@ -637,7 +637,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-6b9dd32e-19_presupuesto_compartido-c1",
+              "cart_id": "eval-5e374f37-19_presupuesto_compartido-c1",
               "product_id": "B01M0TJMI7",
               "quantity": 2
             }
@@ -702,8 +702,8 @@
       "transcript": null,
       "expected_text": "Pues solo una de la segunda.",
       "agent_input": "Pues solo una de la segunda.",
-      "response": "Hecho, añadida una unidad. El total ahora es 44,00 €. En el carrito hay 2 unidades de «Amazon Basics - Juego de toallas (colores resistentes, 2 toallas de…» a 14,00 € cada una, 28,00 €; 1 unidad de «Chantarole - Juego de Toallas baño Grandes: 1 Toalla de baño + 1…» a 16,00 € cada una, 16,00 €. Total: 44,00 €. Tu presupuesto es de 50,00 € y te quedan 6,00 €.",
-      "spoken_text": "Hecho, añadida una unidad. El total ahora es cuarenta y cuatro euros. En el carrito hay dos unidades de Amazon Basics a catorce euros cada una, veintiocho euros, una unidad de Chantarole a dieciséis euros cada una, dieciséis euros. Total: cuarenta y cuatro euros. Tu presupuesto es de cincuenta euros y te quedan seis euros.",
+      "response": "Hecho, añadidas una unidad. El total es 44,00 €. En el carrito hay 2 unidades de «Amazon Basics - Juego de toallas (colores resistentes, 2 toallas de…» a 14,00 € cada una, 28,00 €; 1 unidad de «Chantarole - Juego de Toallas baño Grandes: 1 Toalla de baño + 1…» a 16,00 € cada una, 16,00 €. Total: 44,00 €. Tu presupuesto es de 50,00 € y te quedan 6,00 €.",
+      "spoken_text": "Hecho, añadidas una unidad. El total es cuarenta y cuatro euros. En el carrito hay dos unidades de Amazon Basics a catorce euros cada una, veintiocho euros, una unidad de Chantarole a dieciséis euros cada una, dieciséis euros. Total: cuarenta y cuatro euros. Tu presupuesto es de cincuenta euros y te quedan seis euros.",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -723,17 +723,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 5.668,
-        "tools": 0.032,
+        "llm": 5.715,
+        "tools": 0.053,
         "tts": 0.0,
-        "total": 5.7
+        "total": 5.768
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-6b9dd32e-19_presupuesto_compartido-c1",
+        "cart_id": "eval-5e374f37-19_presupuesto_compartido-c1",
         "state": {
           "budget_cents": 5000,
           "preferences": [],
@@ -784,7 +784,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-6b9dd32e-19_presupuesto_compartido-c1",
+              "cart_id": "eval-5e374f37-19_presupuesto_compartido-c1",
               "product_id": "B01M0TJMI7",
               "quantity": 2
             }
@@ -826,7 +826,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-6b9dd32e-19_presupuesto_compartido-c1",
+        "cart_id": "eval-5e374f37-19_presupuesto_compartido-c1",
         "state": {
           "budget_cents": 5000,
           "preferences": [],
@@ -877,12 +877,12 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-6b9dd32e-19_presupuesto_compartido-c1",
+              "cart_id": "eval-5e374f37-19_presupuesto_compartido-c1",
               "product_id": "B01M0TJMI7",
               "quantity": 2
             },
             {
-              "cart_id": "eval-6b9dd32e-19_presupuesto_compartido-c1",
+              "cart_id": "eval-5e374f37-19_presupuesto_compartido-c1",
               "product_id": "B07P67N2J1",
               "quantity": 1
             }
@@ -969,17 +969,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 2.585,
-        "tools": 0.037,
+        "llm": 2.503,
+        "tools": 0.041,
         "tts": 0.0,
-        "total": 2.622
+        "total": 2.544
       },
       "llm_steps": 1,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-6b9dd32e-19_presupuesto_compartido-c1",
+        "cart_id": "eval-5e374f37-19_presupuesto_compartido-c1",
         "state": {
           "budget_cents": 5000,
           "preferences": [],
@@ -1030,12 +1030,12 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-6b9dd32e-19_presupuesto_compartido-c1",
+              "cart_id": "eval-5e374f37-19_presupuesto_compartido-c1",
               "product_id": "B01M0TJMI7",
               "quantity": 2
             },
             {
-              "cart_id": "eval-6b9dd32e-19_presupuesto_compartido-c1",
+              "cart_id": "eval-5e374f37-19_presupuesto_compartido-c1",
               "product_id": "B07P67N2J1",
               "quantity": 1
             }
@@ -1077,13 +1077,13 @@
         }
       },
       "after": {
-        "cart_id": "eval-6b9dd32e-19_presupuesto_compartido-c1",
+        "cart_id": "eval-5e374f37-19_presupuesto_compartido-c1",
         "state": {
           "budget_cents": 5000,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "a74e34884882491a9c552d4bb0bdfcf8",
+            "quote_id": "050fc4ce68dc4e45a999ab56097479d7",
             "items": [
               {
                 "product_id": "B01M0TJMI7",
@@ -1151,12 +1151,12 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-6b9dd32e-19_presupuesto_compartido-c1",
+              "cart_id": "eval-5e374f37-19_presupuesto_compartido-c1",
               "product_id": "B01M0TJMI7",
               "quantity": 2
             },
             {
-              "cart_id": "eval-6b9dd32e-19_presupuesto_compartido-c1",
+              "cart_id": "eval-5e374f37-19_presupuesto_compartido-c1",
               "product_id": "B07P67N2J1",
               "quantity": 1
             }
@@ -1233,7 +1233,7 @@
         {
           "tool": "confirmar_pedido",
           "args": {
-            "quote_id": "a74e34884882491a9c552d4bb0bdfcf8"
+            "quote_id": "050fc4ce68dc4e45a999ab56097479d7"
           },
           "reason": "el usuario confirmó la cotización",
           "ok": true,
@@ -1254,13 +1254,13 @@
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-6b9dd32e-19_presupuesto_compartido-c1",
+        "cart_id": "eval-5e374f37-19_presupuesto_compartido-c1",
         "state": {
           "budget_cents": 5000,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "a74e34884882491a9c552d4bb0bdfcf8",
+            "quote_id": "050fc4ce68dc4e45a999ab56097479d7",
             "items": [
               {
                 "product_id": "B01M0TJMI7",
@@ -1328,12 +1328,12 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-6b9dd32e-19_presupuesto_compartido-c1",
+              "cart_id": "eval-5e374f37-19_presupuesto_compartido-c1",
               "product_id": "B01M0TJMI7",
               "quantity": 2
             },
             {
-              "cart_id": "eval-6b9dd32e-19_presupuesto_compartido-c1",
+              "cart_id": "eval-5e374f37-19_presupuesto_compartido-c1",
               "product_id": "B07P67N2J1",
               "quantity": 1
             }
@@ -1375,7 +1375,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-6b9dd32e-19_presupuesto_compartido-c1",
+        "cart_id": "eval-5e374f37-19_presupuesto_compartido-c1",
         "state": {
           "budget_cents": 5000,
           "preferences": [],
@@ -1383,7 +1383,7 @@
           "quote": null,
           "order": {
             "order_id": 1,
-            "quote_id": "a74e34884882491a9c552d4bb0bdfcf8",
+            "quote_id": "050fc4ce68dc4e45a999ab56097479d7",
             "items": [
               {
                 "product_id": "B01M0TJMI7",
@@ -1446,7 +1446,7 @@
           "orders": [
             {
               "order_id": 1,
-              "quote_id": "a74e34884882491a9c552d4bb0bdfcf8",
+              "quote_id": "050fc4ce68dc4e45a999ab56097479d7",
               "total_cents": 4400
             }
           ],
@@ -1515,7 +1515,7 @@
   ],
   "final": {
     "snapshot": {
-      "cart_id": "eval-6b9dd32e-19_presupuesto_compartido-c1",
+      "cart_id": "eval-5e374f37-19_presupuesto_compartido-c1",
       "state": {
         "budget_cents": 5000,
         "preferences": [],
@@ -1523,7 +1523,7 @@
         "quote": null,
         "order": {
           "order_id": 1,
-          "quote_id": "a74e34884882491a9c552d4bb0bdfcf8",
+          "quote_id": "050fc4ce68dc4e45a999ab56097479d7",
           "items": [
             {
               "product_id": "B01M0TJMI7",
@@ -1586,7 +1586,7 @@
         "orders": [
           {
             "order_id": 1,
-            "quote_id": "a74e34884882491a9c552d4bb0bdfcf8",
+            "quote_id": "050fc4ce68dc4e45a999ab56097479d7",
             "total_cents": 4400
           }
         ],
@@ -1701,20 +1701,20 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 4.83,
-        "max": 8.75
+        "mean": 4.63,
+        "max": 8.24
       },
       "tools": {
-        "mean": 0.03,
-        "max": 0.04
+        "mean": 0.04,
+        "max": 0.06
       },
       "tts": {
         "mean": 0.0,
         "max": 0.0
       },
       "total": {
-        "mean": 4.87,
-        "max": 8.81
+        "mean": 4.67,
+        "max": 8.3
       }
     },
     "with_llm": {
@@ -1728,20 +1728,20 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 5.8,
-        "max": 8.75
+        "mean": 5.55,
+        "max": 8.24
       },
       "tools": {
-        "mean": 0.03,
-        "max": 0.04
+        "mean": 0.04,
+        "max": 0.06
       },
       "tts": {
         "mean": 0.0,
         "max": 0.0
       },
       "total": {
-        "mean": 5.84,
-        "max": 8.81
+        "mean": 5.6,
+        "max": 8.3
       }
     },
     "without_llm": {

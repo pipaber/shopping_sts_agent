@@ -6,9 +6,9 @@
   "voice": false,
   "input": "texto",
   "audio_source": null,
-  "user_id": "eval-c2e8c796-08_cantidad_invalida",
+  "user_id": "eval-3e6f9559-08_cantidad_invalida",
   "threads": [
-    "eval-c2e8c796-08_cantidad_invalida-c1"
+    "eval-3e6f9559-08_cantidad_invalida-c1"
   ],
   "names": {
     "elegido": "B07MBYH3F7"
@@ -22,8 +22,8 @@
       "transcript": null,
       "expected_text": "Busco un cargador USB C.",
       "agent_input": "Busco un cargador USB C.",
-      "response": "Tengo el Cable USB Tipo C [3 Pack 1M] de Yosou por 13,65 €, el cargador JOOMFEEN USB Tipo C por 9,96 €, el mismo cargador pero de color Plata por 25,13 €, el cargador Avolare de 45W por 35,15 € y el cargador para iPhone de Unique Secure por 57,07 €. ¿Te interesa alguno?",
-      "spoken_text": "Tengo el Cable USB Tipo C, tres Pack 1M, de Yosou por trece euros con sesenta y cinco céntimos, el cargador JOOMFEEN USB Tipo C por nueve euros con noventa y seis céntimos, el mismo cargador pero de color Plata por veinticinco euros con trece céntimos, el cargador Avolare de cuarenta y cinco vatios por treinta y cinco euros con quince céntimos y el cargador para iPhone de Unique Secure por cincuenta y siete euros con siete céntimos. ¿Te interesa alguno?",
+      "response": "Tengo el Cable USB Tipo C [3 Pack 1M] de Yosou por 13,65 €, el cargador JOOMFEEN USB Tipo C por 9,96 € y el cargador JOOMFEEN USB Tipo C Plata por 25,13 €. ¿Te interesa alguno?",
+      "spoken_text": "Tengo el Cable USB Tipo C, tres Pack 1M, de Yosou por trece euros con sesenta y cinco céntimos, el cargador JOOMFEEN USB Tipo C por nueve euros con noventa y seis céntimos y el cargador JOOMFEEN USB Tipo C Plata por veinticinco euros con trece céntimos. ¿Te interesa alguno?",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -41,18 +41,18 @@
       ],
       "timings": {
         "asr": 0.0,
-        "retrieval": 0.028,
-        "llm": 8.115,
-        "tools": 0.028,
+        "retrieval": 0.029,
+        "llm": 6.752,
+        "tools": 0.027,
         "tts": 0.0,
-        "total": 8.171
+        "total": 6.809
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-c2e8c796-08_cantidad_invalida-c1",
+        "cart_id": "eval-3e6f9559-08_cantidad_invalida-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -71,7 +71,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-c2e8c796-08_cantidad_invalida-c1",
+        "cart_id": "eval-3e6f9559-08_cantidad_invalida-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -180,44 +180,26 @@
       "transcript": null,
       "expected_text": "Añade cero unidades del primero.",
       "agent_input": "Añade cero unidades del primero.",
-      "response": "El producto que has buscado no está en el carrito. ¿Quieres añadirlo?",
-      "spoken_text": "El producto que has buscado no está en el carrito. ¿Quieres añadirlo?",
+      "response": "Hecho, no se han añadido unidades del primero.",
+      "spoken_text": "Hecho, no se han añadido unidades del primero.",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
-      "operations": [
-        {
-          "tool": "quitar_del_carrito",
-          "args": {
-            "product_id": "B07MBYH3F7"
-          },
-          "reason": "quitar el producto del carrito",
-          "ok": false,
-          "summary": "[no_esta_en_el_carrito] El producto B07MBYH3F7 no está en el carrito.",
-          "issues": [
-            {
-              "code": "no_esta_en_el_carrito",
-              "message": "El producto B07MBYH3F7 no está en el carrito.",
-              "product_id": "B07MBYH3F7",
-              "details": {}
-            }
-          ]
-        }
-      ],
+      "operations": [],
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 4.905,
-        "tools": 0.033,
+        "llm": 3.021,
+        "tools": 0.028,
         "tts": 0.0,
-        "total": 4.938
+        "total": 3.049
       },
-      "llm_steps": 2,
+      "llm_steps": 1,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-c2e8c796-08_cantidad_invalida-c1",
+        "cart_id": "eval-3e6f9559-08_cantidad_invalida-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -299,7 +281,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-c2e8c796-08_cantidad_invalida-c1",
+        "cart_id": "eval-3e6f9559-08_cantidad_invalida-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -399,26 +381,45 @@
       "transcript": null,
       "expected_text": "Añade menos dos unidades del primero.",
       "agent_input": "Añade menos dos unidades del primero.",
-      "response": "El producto que buscas no está en el carrito. ¿Quieres añadirlo?",
-      "spoken_text": "El producto que buscas no está en el carrito. ¿Quieres añadirlo?",
+      "response": "Ese producto no está en el carrito. ¿Quieres añadirlo?",
+      "spoken_text": "Ese producto no está en el carrito. ¿Quieres añadirlo?",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
-      "operations": [],
+      "operations": [
+        {
+          "tool": "cambiar_cantidad",
+          "args": {
+            "product_id": "B07MBYH3F7",
+            "cantidad": 1
+          },
+          "reason": "reducir la cantidad del producto 1",
+          "ok": false,
+          "summary": "[no_esta_en_el_carrito] El producto B07MBYH3F7 no está en el carrito.",
+          "issues": [
+            {
+              "code": "no_esta_en_el_carrito",
+              "message": "El producto B07MBYH3F7 no está en el carrito.",
+              "product_id": "B07MBYH3F7",
+              "details": {}
+            }
+          ]
+        }
+      ],
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 3.569,
-        "tools": 0.027,
+        "llm": 5.372,
+        "tools": 0.031,
         "tts": 0.0,
-        "total": 3.596
+        "total": 5.403
       },
-      "llm_steps": 1,
+      "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-c2e8c796-08_cantidad_invalida-c1",
+        "cart_id": "eval-3e6f9559-08_cantidad_invalida-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -500,7 +501,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-c2e8c796-08_cantidad_invalida-c1",
+        "cart_id": "eval-3e6f9559-08_cantidad_invalida-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -595,7 +596,7 @@
   ],
   "final": {
     "snapshot": {
-      "cart_id": "eval-c2e8c796-08_cantidad_invalida-c1",
+      "cart_id": "eval-3e6f9559-08_cantidad_invalida-c1",
       "state": {
         "budget_cents": null,
         "preferences": [],
@@ -719,8 +720,8 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 5.53,
-        "max": 8.12
+        "mean": 5.05,
+        "max": 6.75
       },
       "tools": {
         "mean": 0.03,
@@ -731,8 +732,8 @@
         "max": 0.0
       },
       "total": {
-        "mean": 5.57,
-        "max": 8.17
+        "mean": 5.09,
+        "max": 6.81
       }
     },
     "with_llm": {
@@ -746,8 +747,8 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 5.53,
-        "max": 8.12
+        "mean": 5.05,
+        "max": 6.75
       },
       "tools": {
         "mean": 0.03,
@@ -758,8 +759,8 @@
         "max": 0.0
       },
       "total": {
-        "mean": 5.57,
-        "max": 8.17
+        "mean": 5.09,
+        "max": 6.81
       }
     },
     "without_llm": {

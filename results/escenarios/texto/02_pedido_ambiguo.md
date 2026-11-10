@@ -5,30 +5,30 @@
 - Tipo: `pedido_ambiguo`
 - Qué se prueba: El primer mensaje no dice qué producto se busca: el agente debe preguntar en lugar de suponer. Después el usuario concreta el producto y el presupuesto, y añade una unidad.
 
-## Turno 1 (1.8 s)
+## Turno 1 (1.9 s)
 
 **Usuario (texto):** Quiero comprar un regalo para mi hermana.
 
-- `pedir_aclaracion(pregunta="¿Qué tipo de regalo estás buscando para tu hermana?")` → OK: pregunta enviada al usuario
+- `pedir_aclaracion(pregunta="¿Qué tipo de regalo tienes en mente para tu hermana?")` → OK: pregunta enviada al usuario
 
-**Agente:** ¿Qué tipo de regalo estás buscando para tu hermana?
+**Agente:** ¿Qué tipo de regalo tienes en mente para tu hermana?
 
-**Enviado al TTS:** ¿Qué tipo de regalo estás buscando para tu hermana?
+**Enviado al TTS:** ¿Qué tipo de regalo tienes en mente para tu hermana?
 
 - ✔ `asked_clarification()` — pidió aclaración
 - ✔ `cart(empty=true)` — carrito: vacío
 - ✔ `orders(count=0)` — pedidos registrados: 0
 
-## Turno 2 (8.1 s)
+## Turno 2 (8.4 s)
 
 **Usuario (texto):** Unos auriculares bluetooth, y no quiero gastar más de 50 euros.
 
 - `fijar_presupuesto(importe_eur=50)` → OK: presupuesto fijado en 50,00 €.
 - `buscar_productos(consulta="auriculares bluetooth")` → OK: estos son ahora los CANDIDATOS, del más al menos relevante: [1] id=B081C31KV4 | Auriculares Bluetooth, 5.0 Auriculares Bluetooth In Ear Inalámbricos Auricular Estéreo en Oreja Manos Libres con Caja de Carga Portátil para Airpods Android/iPhone (Rosa1) | marca: Mgrett | color: Rosa1 | precio: 9,18 € …
 
-**Agente:** Tengo varios auriculares bluetooth para ti. El primero, de la marca Mgrett, cuesta 9,18 euros. El segundo, de TAIN, es 9,84 euros. El tercero, de WDGP, vale 32,06 euros. ¿Te interesa alguno de estos? He anotado un presupuesto de 50,00 €.
+**Agente:** Tengo estos auriculares bluetooth para ti: los de Mgrett por 9,18 euros, los de TAIN por 9,84 euros, los de WDGP por 32,06 euros, los de GSBLBL por 25,15 euros y los de HoLiv por 16,49 euros. ¿Te interesa alguno? He anotado un presupuesto de 50,00 €.
 
-**Enviado al TTS:** Tengo varios auriculares bluetooth para ti. El primero, de la marca Mgrett, cuesta nueve euros con dieciocho céntimos. El segundo, de TAIN, es nueve euros con ochenta y cuatro céntimos. El tercero, de WDGP, vale treinta y dos euros con seis céntimos. ¿Te interesa alguno de estos? He anotado un presupuesto de cincuenta euros.
+**Enviado al TTS:** Tengo estos auriculares bluetooth para ti: los de Mgrett por nueve euros con dieciocho céntimos, los de TAIN por nueve euros con ochenta y cuatro céntimos, los de WDGP por treinta y dos euros con seis céntimos, los de GSBLBL por veinticinco euros con quince céntimos y los de HoLiv por dieciséis euros con cuarenta y nueve céntimos. ¿Te interesa alguno? He anotado un presupuesto de cincuenta euros.
 
 - ✔ `budget(cents=5000)` — presupuesto en el estado: 5000
 - ✔ `cart(empty=true)` — carrito: vacío
@@ -43,9 +43,9 @@
 
 - `agregar_al_carrito(product_id="B081C31KV4", cantidad=1)` → OK: hecho. Así queda el carrito. CARRITO: - id=B081C31KV4 | Auriculares Bluetooth, 5.0 Auriculares Bluetooth In Ear Inalámbricos… | 1 unidad × 19,90 € = 19,90 € | existencias: 20 Total del carrito: 19,90 €
 
-**Agente:** Hecho, añadido un auricular al carrito. En el carrito hay 1 unidad de «Auriculares Bluetooth, 5.0 Auriculares Bluetooth In Ear Inalámbricos…» a 19,90 € cada una, 19,90 €. Total: 19,90 €. Tu presupuesto es de 50,00 € y te quedan 30,10 €.
+**Agente:** Hecho, añadido uno de esos auriculares al carrito. En el carrito hay 1 unidad de «Auriculares Bluetooth, 5.0 Auriculares Bluetooth In Ear Inalámbricos…» a 19,90 € cada una, 19,90 €. Total: 19,90 €. Tu presupuesto es de 50,00 € y te quedan 30,10 €.
 
-**Enviado al TTS:** Hecho, añadido un auricular al carrito. En el carrito hay una unidad de Auriculares Bluetooth a diecinueve euros con noventa céntimos cada una, diecinueve euros con noventa céntimos. Total: diecinueve euros con noventa céntimos. Tu presupuesto es de cincuenta euros y te quedan treinta euros con diez céntimos.
+**Enviado al TTS:** Hecho, añadido uno de esos auriculares al carrito. En el carrito hay una unidad de Auriculares Bluetooth a diecinueve euros con noventa céntimos cada una, diecinueve euros con noventa céntimos. Total: diecinueve euros con noventa céntimos. Tu presupuesto es de cincuenta euros y te quedan treinta euros con diez céntimos.
 
 - ✔ `cart(lines=[{"product": "@elegido", "quantity": 1}])` — carrito: 1 × B081C31KV4
 
@@ -69,8 +69,8 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.00 | 1.79 | 0.03 | 0.00 | 1.82 | 0.0 s |
-| 2 | 0.00 | 0.03 | 8.03 | 0.03 | 0.00 | 8.09 | 0.0 s |
-| 3 | 0.00 | 0.00 | 4.84 | 0.05 | 0.00 | 4.89 | 0.0 s |
-| **Media de los turnos con LLM (3)** | 0.00 | 0.01 | 4.89 | 0.04 | 0.00 | 4.93 | |
+| 1 | 0.00 | 0.00 | 1.83 | 0.02 | 0.00 | 1.85 | 0.0 s |
+| 2 | 0.00 | 0.03 | 8.31 | 0.03 | 0.00 | 8.37 | 0.0 s |
+| 3 | 0.00 | 0.00 | 4.82 | 0.05 | 0.00 | 4.87 | 0.0 s |
+| **Media de los turnos con LLM (3)** | 0.00 | 0.01 | 4.99 | 0.04 | 0.00 | 5.03 | |
 

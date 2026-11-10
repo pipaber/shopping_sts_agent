@@ -5,7 +5,7 @@
 - Tipo: `quitar_del_carrito`
 - Qué se prueba: El usuario añade dos productos en un mismo turno, quita el primero y compra. El pedido solo debe llevar el segundo y el inventario del primero no debe cambiar.
 
-## Turno 1 (7.5 s)
+## Turno 1 (7.3 s)
 
 **Usuario (texto):** Busco un teclado inalámbrico.
 
@@ -25,20 +25,20 @@
 
 > **Suceso externo:** la tienda deja `B07XD94VGX` (@segundo) con precio 18,00 € y existencias 20.
 
-## Turno 2 (7.1 s)
+## Turno 2 (6.7 s)
 
 **Usuario (texto):** Añade uno del primero y uno del segundo.
 
 - `agregar_al_carrito(product_id="B09DBFG8W3", cantidad=1)` → OK: hecho. Así queda el carrito. CARRITO: - id=B09DBFG8W3 | Mimei Teclado silencioso inalámbrico, Teclado de conexión Estable y… | 1 unidad × 15,00 € = 15,00 € | existencias: 20 Total del carrito: 15,00 €
 - `agregar_al_carrito(product_id="B07XD94VGX", cantidad=1)` → OK: hecho. Así queda el carrito. CARRITO: - id=B09DBFG8W3 | Mimei Teclado silencioso inalámbrico, Teclado de conexión Estable y… | 1 unidad × 15,00 € = 15,00 € | existencias: 20 - id=B07XD94VGX | Teclado y Raton Inalambrico Español, TedGem 2.4G Teclado Inalambrico… | 1 unidad × 18,00 € = 18,00 € | exist…
 
-**Agente:** Hecho, añadidas dos unidades al carrito. En el carrito hay 1 unidad de «Mimei Teclado silencioso inalámbrico, Teclado de conexión Estable y…» a 15,00 € cada una, 15,00 €; 1 unidad de «Teclado y Raton Inalambrico Español, TedGem 2.4G Teclado Inalambrico…» a 18,00 € cada una, 18,00 €. Total: 33,00 €.
+**Agente:** Hecho, añadidos los teclados al carrito. En el carrito hay 1 unidad de «Mimei Teclado silencioso inalámbrico, Teclado de conexión Estable y…» a 15,00 € cada una, 15,00 €; 1 unidad de «Teclado y Raton Inalambrico Español, TedGem 2.4G Teclado Inalambrico…» a 18,00 € cada una, 18,00 €. Total: 33,00 €.
 
-**Enviado al TTS:** Hecho, añadidas dos unidades al carrito. En el carrito hay una unidad de Mimei Teclado silencioso inalámbrico a quince euros cada una, quince euros, una unidad de Teclado y Raton Inalambrico Español a dieciocho euros cada una, dieciocho euros. Total: treinta y tres euros.
+**Enviado al TTS:** Hecho, añadidos los teclados al carrito. En el carrito hay una unidad de Mimei Teclado silencioso inalámbrico a quince euros cada una, quince euros, una unidad de Teclado y Raton Inalambrico Español a dieciocho euros cada una, dieciocho euros. Total: treinta y tres euros.
 
 - ✔ `cart(lines=[{"product": "@primero", "quantity": 1}, {"product": "@segundo", "quantity": 1}])` — carrito: 1 × B09DBFG8W3, 1 × B07XD94VGX
 
-## Turno 3 (6.0 s)
+## Turno 3 (5.5 s)
 
 **Usuario (texto):** Quita el primero.
 
@@ -67,7 +67,7 @@
 
 **Usuario (texto):** Sí.
 
-- `confirmar_pedido(quote_id="25d9269975934f459499120d2326c189")` → OK: pedido registrado
+- `confirmar_pedido(quote_id="d1718688355e4d028c9730bdb71f56a6")` → OK: pedido registrado
 
 **Agente:** Pedido número 1 registrado: 1 unidad de «Teclado y Raton Inalambrico Español, TedGem 2.4G Teclado Inalambrico…» a 18,00 € cada una, 18,00 €. Total: 18,00 €. Gracias por tu compra.
 
@@ -99,11 +99,11 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.03 | 7.42 | 0.02 | 0.00 | 7.47 | 0.0 s |
-| 2 | 0.00 | 0.00 | 7.00 | 0.08 | 0.00 | 7.08 | 0.0 s |
-| 3 | 0.00 | 0.00 | 5.91 | 0.05 | 0.00 | 5.96 | 0.0 s |
-| 4 | 0.00 | 0.00 | 2.41 | 0.03 | 0.00 | 2.44 | 0.0 s |
+| 1 | 0.00 | 0.03 | 7.21 | 0.02 | 0.00 | 7.25 | 0.0 s |
+| 2 | 0.00 | 0.00 | 6.67 | 0.08 | 0.00 | 6.74 | 0.0 s |
+| 3 | 0.00 | 0.00 | 5.47 | 0.05 | 0.00 | 5.53 | 0.0 s |
+| 4 | 0.00 | 0.00 | 2.36 | 0.04 | 0.00 | 2.40 | 0.0 s |
 | 5 | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | 0.0 s |
-| **Media de los turnos con LLM (4)** | 0.00 | 0.01 | 5.69 | 0.04 | 0.00 | 5.74 | |
+| **Media de los turnos con LLM (4)** | 0.00 | 0.01 | 5.43 | 0.05 | 0.00 | 5.48 | |
 | **Media de los turnos sin LLM (1)** | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | |
 

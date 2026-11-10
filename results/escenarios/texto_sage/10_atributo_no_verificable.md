@@ -19,13 +19,15 @@
 
 > `@elegida` = `B08C73K4CV` (candidate:1): ilimiti Sartenes Induccion Antiadherentes 20 cm, Sarten Piedra Aluminio Fundido, Libre de PFOA, Apta para Todo Tipo de Cocina
 
-## Turno 2 (3.3 s)
+## Turno 2 (4.8 s)
 
 **Usuario (texto):** ¿Qué valoración le dan los clientes a la primera?
 
-**Agente:** Lo siento, el catálogo no indica valoraciones de clientes para esta sartén.
+- `detalle_producto(product_id="B08C73K4CV")` → OK: [1] id=B08C73K4CV | ilimiti Sartenes Induccion Antiadherentes 20 cm, Sarten Piedra Aluminio Fundido, Libre de PFOA, Apta para Todo Tipo de Cocina | marca: ilimiti | color: desconocido | precio: 83,75 € | existencias: 46 | características (extracto): APTO PARA TODOS TIPOS DE COCINAS: La sartén antiad…
 
-**Enviado al TTS:** Lo siento, el catálogo no indica valoraciones de clientes para esta sartén.
+**Agente:** El catálogo no indica una valoración de los clientes para este producto.
+
+**Enviado al TTS:** El catálogo no indica una valoración de los clientes para este producto.
 
 - ✔ `declares_unknown(product="@elegida", keywords=["valoraci", "estrellas", "reseñ", "opiniones", "puntuaci"])` — dato en el catálogo: no; la respuesta dice que no consta: sí
 - ✔ `cart(empty=true)` — carrito: vacío
@@ -47,7 +49,7 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.04 | 7.74 | 0.02 | 0.00 | 7.79 | 0.0 s |
-| 2 | 0.00 | 0.00 | 3.25 | 0.03 | 0.00 | 3.28 | 0.0 s |
-| **Media de los turnos con LLM (2)** | 0.00 | 0.02 | 5.49 | 0.02 | 0.00 | 5.53 | |
+| 1 | 0.00 | 0.04 | 7.76 | 0.03 | 0.00 | 7.82 | 0.0 s |
+| 2 | 0.00 | 0.00 | 4.83 | 0.02 | 0.00 | 4.85 | 0.0 s |
+| **Media de los turnos con LLM (2)** | 0.00 | 0.02 | 6.29 | 0.02 | 0.00 | 6.33 | |
 

@@ -5,16 +5,16 @@
 - Tipo: `presupuesto_compartido`
 - Qué se prueba: Con 50 € de presupuesto, dos unidades del primero (28,00 €) caben, pero otras dos del segundo (32,00 €) ya no: solo cabe una (16,00 €). El pedido final suma 44,00 €.
 
-## Turno 1 (8.8 s)
+## Turno 1 (8.3 s)
 
 **Usuario (texto):** Busco unas toallas de baño. Mi presupuesto es de 50 euros.
 
 - `fijar_presupuesto(importe_eur=50)` → OK: presupuesto fijado en 50,00 €.
 - `buscar_productos(consulta="toallas de baño")` → OK: estos son ahora los CANDIDATOS, del más al menos relevante: [1] id=B01M0TJMI7 | Amazon Basics - Juego de toallas (colores resistentes, 2 toallas de baño, 2 de manos y 2 para bidé), color blanco | marca: Amazon Basics | color: Blanco | precio: 11,93 € | existencias: 39 | características (extracto): I…
 
-**Agente:** Tengo para ti las toallas de baño Amazon Basics por 11,93 €, las de Chantarole por 35,15 €, las de Utopia Towels por 48,03 € y las de Utopia Towels en gris por 9,24 €. ¿Te interesa alguna? He anotado un presupuesto de 50,00 €.
+**Agente:** Tengo estas opciones para ti: las toallas de Amazon Basics por 11,93 euros, las de Chantarole por 35,15 euros, las de Utopia Towels por 48,03 euros y las de Utopia Towels en gris por 9,24 euros. ¿Te interesa alguna? He anotado un presupuesto de 50,00 €.
 
-**Enviado al TTS:** Tengo para ti las toallas de baño Amazon Basics por once euros con noventa y tres céntimos, las de Chantarole por treinta y cinco euros con quince céntimos, las de Utopia Towels por cuarenta y ocho euros con tres céntimos y las de Utopia Towels en gris por nueve euros con veinticuatro céntimos. ¿Te interesa alguna? He anotado un presupuesto de cincuenta euros.
+**Enviado al TTS:** Tengo estas opciones para ti: las toallas de Amazon Basics por once euros con noventa y tres céntimos, las de Chantarole por treinta y cinco euros con quince céntimos, las de Utopia Towels por cuarenta y ocho euros con tres céntimos y las de Utopia Towels en gris por nueve euros con veinticuatro céntimos. ¿Te interesa alguna? He anotado un presupuesto de cincuenta euros.
 
 - ✔ `budget(cents=5000)` — presupuesto en el estado: 5000
 - ✔ `cart(empty=true)` — carrito: vacío
@@ -27,43 +27,43 @@
 
 > **Suceso externo:** la tienda deja `B07P67N2J1` (@segundas) con precio 16,00 € y existencias 20.
 
-## Turno 2 (5.4 s)
+## Turno 2 (5.3 s)
 
 **Usuario (texto):** Añade dos de la primera opción.
 
 - `agregar_al_carrito(product_id="B01M0TJMI7", cantidad=2)` → OK: hecho. Así queda el carrito. CARRITO: - id=B01M0TJMI7 | Amazon Basics - Juego de toallas (colores resistentes, 2 toallas de… | 2 unidades × 14,00 € = 28,00 € | existencias: 20 Total del carrito: 28,00 €
 
-**Agente:** Hecho, añadidas dos unidades. El total ahora es 28,00 €. En el carrito hay 2 unidades de «Amazon Basics - Juego de toallas (colores resistentes, 2 toallas de…» a 14,00 € cada una, 28,00 €. Total: 28,00 €. Tu presupuesto es de 50,00 € y te quedan 22,00 €.
+**Agente:** Hecho, añadidas dos unidades. El total es 28,00 €. En el carrito hay 2 unidades de «Amazon Basics - Juego de toallas (colores resistentes, 2 toallas de…» a 14,00 € cada una, 28,00 €. Total: 28,00 €. Tu presupuesto es de 50,00 € y te quedan 22,00 €.
 
-**Enviado al TTS:** Hecho, añadidas dos unidades. El total ahora es veintiocho euros. En el carrito hay dos unidades de Amazon Basics a catorce euros cada una, veintiocho euros. Total: veintiocho euros. Tu presupuesto es de cincuenta euros y te quedan veintidós euros.
+**Enviado al TTS:** Hecho, añadidas dos unidades. El total es veintiocho euros. En el carrito hay dos unidades de Amazon Basics a catorce euros cada una, veintiocho euros. Total: veintiocho euros. Tu presupuesto es de cincuenta euros y te quedan veintidós euros.
 
 - ✔ `cart(lines=[{"product": "@primeras", "quantity": 2}])` — carrito: 2 × B01M0TJMI7
 
-## Turno 3 (6.6 s)
+## Turno 3 (6.1 s)
 
 **Usuario (texto):** Añade también dos de la segunda opción.
 
 - `agregar_al_carrito(product_id="B07P67N2J1", cantidad=2)` → RECHAZADO: [presupuesto_excedido] El total sería 60,00 € y supera el presupuesto de 50,00 € por 10,00 €. Dentro del presupuesto caben como máximo 1 unidades de este producto.
 
-**Agente:** Lo siento, con dos unidades de la segunda opción el total supera tu presupuesto. ¿Quieres reducir la cantidad o cambiar a otro producto?
+**Agente:** Ese producto supera tu presupuesto. ¿Quieres añadirlo de todas formas o prefieres buscar algo más económico?
 
-**Enviado al TTS:** Lo siento, con dos unidades de la segunda opción el total supera tu presupuesto. ¿Quieres reducir la cantidad o cambiar a otro producto?
+**Enviado al TTS:** Ese producto supera tu presupuesto. ¿Quieres añadirlo de todas formas o prefieres buscar algo más económico?
 
 - ✔ `cart(lines=[{"product": "@primeras", "quantity": 2}])` — carrito: 2 × B01M0TJMI7
 
-## Turno 4 (5.7 s)
+## Turno 4 (5.8 s)
 
 **Usuario (texto):** Pues solo una de la segunda.
 
 - `agregar_al_carrito(product_id="B07P67N2J1", cantidad=1)` → OK: hecho. Así queda el carrito. CARRITO: - id=B01M0TJMI7 | Amazon Basics - Juego de toallas (colores resistentes, 2 toallas de… | 2 unidades × 14,00 € = 28,00 € | existencias: 20 - id=B07P67N2J1 | Chantarole - Juego de Toallas baño Grandes: 1 Toalla de baño + 1… | 1 unidad × 16,00 € = 16,00 € | existen…
 
-**Agente:** Hecho, añadida una unidad. El total ahora es 44,00 €. En el carrito hay 2 unidades de «Amazon Basics - Juego de toallas (colores resistentes, 2 toallas de…» a 14,00 € cada una, 28,00 €; 1 unidad de «Chantarole - Juego de Toallas baño Grandes: 1 Toalla de baño + 1…» a 16,00 € cada una, 16,00 €. Total: 44,00 €. Tu presupuesto es de 50,00 € y te quedan 6,00 €.
+**Agente:** Hecho, añadidas una unidad. El total es 44,00 €. En el carrito hay 2 unidades de «Amazon Basics - Juego de toallas (colores resistentes, 2 toallas de…» a 14,00 € cada una, 28,00 €; 1 unidad de «Chantarole - Juego de Toallas baño Grandes: 1 Toalla de baño + 1…» a 16,00 € cada una, 16,00 €. Total: 44,00 €. Tu presupuesto es de 50,00 € y te quedan 6,00 €.
 
-**Enviado al TTS:** Hecho, añadida una unidad. El total ahora es cuarenta y cuatro euros. En el carrito hay dos unidades de Amazon Basics a catorce euros cada una, veintiocho euros, una unidad de Chantarole a dieciséis euros cada una, dieciséis euros. Total: cuarenta y cuatro euros. Tu presupuesto es de cincuenta euros y te quedan seis euros.
+**Enviado al TTS:** Hecho, añadidas una unidad. El total es cuarenta y cuatro euros. En el carrito hay dos unidades de Amazon Basics a catorce euros cada una, veintiocho euros, una unidad de Chantarole a dieciséis euros cada una, dieciséis euros. Total: cuarenta y cuatro euros. Tu presupuesto es de cincuenta euros y te quedan seis euros.
 
 - ✔ `cart(lines=[{"product": "@primeras", "quantity": 2}, {"product": "@segundas", "quantity": 1}])` — carrito: 2 × B01M0TJMI7, 1 × B07P67N2J1
 
-## Turno 5 (2.6 s)
+## Turno 5 (2.5 s)
 
 **Usuario (texto):** Cierra el pedido.
 
@@ -80,7 +80,7 @@
 
 **Usuario (texto):** Sí.
 
-- `confirmar_pedido(quote_id="a74e34884882491a9c552d4bb0bdfcf8")` → OK: pedido registrado
+- `confirmar_pedido(quote_id="050fc4ce68dc4e45a999ab56097479d7")` → OK: pedido registrado
 
 **Agente:** Pedido número 1 registrado: 2 unidades de «Amazon Basics - Juego de toallas (colores resistentes, 2 toallas de…» a 14,00 € cada una, 28,00 €; 1 unidad de «Chantarole - Juego de Toallas baño Grandes: 1 Toalla de baño + 1…» a 16,00 € cada una, 16,00 €. Total: 44,00 €. Gracias por tu compra.
 
@@ -112,12 +112,12 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.03 | 8.75 | 0.03 | 0.00 | 8.81 | 0.0 s |
-| 2 | 0.00 | 0.00 | 5.39 | 0.04 | 0.00 | 5.43 | 0.0 s |
-| 3 | 0.00 | 0.00 | 6.59 | 0.03 | 0.00 | 6.62 | 0.0 s |
-| 4 | 0.00 | 0.00 | 5.67 | 0.03 | 0.00 | 5.70 | 0.0 s |
-| 5 | 0.00 | 0.00 | 2.58 | 0.04 | 0.00 | 2.62 | 0.0 s |
+| 1 | 0.00 | 0.03 | 8.24 | 0.03 | 0.00 | 8.30 | 0.0 s |
+| 2 | 0.00 | 0.00 | 5.29 | 0.06 | 0.00 | 5.34 | 0.0 s |
+| 3 | 0.00 | 0.00 | 6.02 | 0.03 | 0.00 | 6.05 | 0.0 s |
+| 4 | 0.00 | 0.00 | 5.71 | 0.05 | 0.00 | 5.77 | 0.0 s |
+| 5 | 0.00 | 0.00 | 2.50 | 0.04 | 0.00 | 2.54 | 0.0 s |
 | 6 | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | 0.0 s |
-| **Media de los turnos con LLM (5)** | 0.00 | 0.01 | 5.80 | 0.03 | 0.00 | 5.84 | |
+| **Media de los turnos con LLM (5)** | 0.00 | 0.01 | 5.55 | 0.04 | 0.00 | 5.60 | |
 | **Media de los turnos sin LLM (1)** | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | |
 

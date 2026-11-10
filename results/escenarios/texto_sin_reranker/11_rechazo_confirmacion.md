@@ -5,15 +5,15 @@
 - Tipo: `rechazo_confirmacion`
 - Qué se prueba: El usuario llega a la cotización y contesta que no. No debe registrarse ningún pedido y el carrito debe quedar como estaba.
 
-## Turno 1 (8.7 s)
+## Turno 1 (8.6 s)
 
 **Usuario (texto):** Busco unas bombillas LED.
 
 - `buscar_productos(consulta="bombillas LED")` → OK: estos son ahora los CANDIDATOS, del más al menos relevante: [1] id=B072BG3H7Y | 1 bombilla LED de xenón blanco con halo | marca: Global Fortune | color: desconocido | precio: 17,01 € | existencias: 4 | características (extracto): 1 par de bombillas para faros LED para BMW con halo de alta potencia, …
 
-**Agente:** Tengo estas opciones: 1 bombilla LED de xenón blanco por 17,01 €, 10 unidades de bombillas LED MENTA blancas frías por 24,96 €, 12000LM H1 LED para coches por 63,71 €, 6 bombillas LED Philips blancas cálidas por 14,22 € y 10 bombillas LED Eofiti blancas frías por 16,77 €. ¿Cuál te interesa?
+**Agente:** Tengo estas opciones: bombillas LED de xenón blanco con halo de Global Fortune por 17,01 €, 10 unidades de MENTA bombillas vela de filamento LED por 24,96 €, H1 LED de 12000LM de CAR WORK BOX por 63,71 €, bombillas LED Philips blancas cálidas por 14,22 € y Eofiti bombillas LED MR16 por 16,77 €. ¿Te interesa alguna?
 
-**Enviado al TTS:** Tengo estas opciones: uno bombilla LED de xenón blanco por diecisiete euros con un céntimo, diez unidades de bombillas LED MENTA blancas frías por veinticuatro euros con noventa y seis céntimos, H1 LED para coches por sesenta y tres euros con setenta y un céntimos, seis bombillas LED Philips blancas cálidas por catorce euros con veintidós céntimos y diez bombillas LED Eofiti blancas frías por dieciséis euros con setenta y siete céntimos. ¿Cuál te interesa?
+**Enviado al TTS:** Tengo estas opciones: bombillas LED de xenón blanco con halo de Global Fortune por diecisiete euros con un céntimo, diez unidades de MENTA bombillas vela de filamento LED por veinticuatro euros con noventa y seis céntimos, H1 LED de de CAR WORK BOX por sesenta y tres euros con setenta y un céntimos, bombillas LED Philips blancas cálidas por catorce euros con veintidós céntimos y Eofiti bombillas LED MR16 por dieciséis euros con setenta y siete céntimos. ¿Te interesa alguna?
 
 - ✔ `cart(empty=true)` — carrito: vacío
 
@@ -21,7 +21,7 @@
 
 > **Suceso externo:** la tienda deja `B072BG3H7Y` (@elegidas) con precio 6,00 € y existencias 20.
 
-## Turno 2 (4.8 s)
+## Turno 2 (4.9 s)
 
 **Usuario (texto):** Añade dos de la primera opción.
 
@@ -77,10 +77,10 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.03 | 8.60 | 0.03 | 0.00 | 8.65 | 0.0 s |
-| 2 | 0.00 | 0.00 | 4.77 | 0.05 | 0.00 | 4.83 | 0.0 s |
-| 3 | 0.00 | 0.00 | 2.21 | 0.04 | 0.00 | 2.25 | 0.0 s |
+| 1 | 0.00 | 0.03 | 8.51 | 0.02 | 0.00 | 8.56 | 0.0 s |
+| 2 | 0.00 | 0.00 | 4.86 | 0.05 | 0.00 | 4.91 | 0.0 s |
+| 3 | 0.00 | 0.00 | 2.30 | 0.04 | 0.00 | 2.35 | 0.0 s |
 | 4 | 0.00 | 0.00 | 0.00 | 0.01 | 0.00 | 0.01 | 0.0 s |
-| **Media de los turnos con LLM (3)** | 0.00 | 0.01 | 5.19 | 0.04 | 0.00 | 5.24 | |
+| **Media de los turnos con LLM (3)** | 0.00 | 0.01 | 5.23 | 0.04 | 0.00 | 5.27 | |
 | **Media de los turnos sin LLM (1)** | 0.00 | 0.00 | 0.00 | 0.01 | 0.00 | 0.01 | |
 

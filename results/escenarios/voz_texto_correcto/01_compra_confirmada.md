@@ -5,16 +5,16 @@
 - Tipo: `compra_confirmada`
 - Qué se prueba: El usuario busca con presupuesto, añade dos unidades, pide cerrar y confirma. Tras la búsqueda la tienda fija el primer candidato en 14,50 € y 20 unidades, para que el resultado no dependa de qué producto salga primero.
 
-## Turno 1 (9.5 s)
+## Turno 1 (9.0 s)
 
 **Usuario (texto):** Hola, busco una cafetera italiana. Tengo un presupuesto de 60 euros.
 
 - `fijar_presupuesto(importe_eur=60)` → OK: presupuesto fijado en 60,00 €.
 - `buscar_productos(consulta="cafetera italiana")` → OK: estos son ahora los CANDIDATOS, del más al menos relevante: [1] id=B06WGTZ874 | De'longhi Dedica - Cafetera de Bomba de Acero Inoxidable para Café Molido o Monodosis, Cafetera para Espresso y Cappuccino, Depósito de 1.3 Litros, Sistema Anti-goteo, EC685.M, Metal 30x33x15cm | marca: De'Longhi | color…
 
-**Agente:** Tengo la De'Longhi Dedica por 5,03 euros, la Gastroback por 46,24 euros, la De'Longhi ECOV por 44,50 euros, la CREATE Thera Classic por 5,05 euros y la CREATE Thera Stylance Pro por 5,23 euros. ¿Te interesa alguna? He anotado un presupuesto de 60,00 €.
+**Agente:** Tengo la De'Longhi Dedica por 5,03 €, la Gastroback por 46,24 €, la De'Longhi ECOV por 44,50 €, la CREATE Cafetera THERA Classic por 5,05 € y la CREATE Cafetera Expresso Automática Thera Stylance Pro por 5,23 €. ¿Te interesa alguna? He anotado un presupuesto de 60,00 €.
 
-**Enviado al TTS:** Tengo la De'Longhi Dedica por cinco euros con tres céntimos, la Gastroback por cuarenta y seis euros con veinticuatro céntimos, la De'Longhi ECOV por cuarenta y cuatro euros con cincuenta céntimos, la CREATE Thera Classic por cinco euros con cinco céntimos y la CREATE Thera Stylance Pro por cinco euros con veintitrés céntimos. ¿Te interesa alguna? He anotado un presupuesto de sesenta euros.
+**Enviado al TTS:** Tengo la De'Longhi Dedica por cinco euros con tres céntimos, la Gastroback por cuarenta y seis euros con veinticuatro céntimos, la De'Longhi ECOV por cuarenta y cuatro euros con cincuenta céntimos, la CREATE Cafetera THERA Classic por cinco euros con cinco céntimos y la CREATE Cafetera Expresso Automática Thera Stylance Pro por cinco euros con veintitrés céntimos. ¿Te interesa alguna? He anotado un presupuesto de sesenta euros.
 
 - ✔ `budget(cents=6000)` — presupuesto en el estado: 6000
 - ✔ `cart(empty=true)` — carrito: vacío
@@ -23,7 +23,7 @@
 
 > **Suceso externo:** la tienda deja `B06WGTZ874` (@elegida) con precio 14,50 € y existencias 20.
 
-## Turno 2 (5.4 s)
+## Turno 2 (5.2 s)
 
 **Usuario (texto):** Añade dos de la primera al carrito.
 
@@ -53,7 +53,7 @@
 
 **Usuario (texto):** Sí, confirmo.
 
-- `confirmar_pedido(quote_id="226cd4cdbaf246b7bdfab77088e883ec")` → OK: pedido registrado
+- `confirmar_pedido(quote_id="d98bcf8b256949d883bcb3a61ad07eb9")` → OK: pedido registrado
 
 **Agente:** Pedido número 1 registrado: 2 unidades de «De'longhi Dedica - Cafetera de Bomba de Acero Inoxidable para Café…» a 14,50 € cada una, 29,00 €. Total: 29,00 €. Gracias por tu compra.
 
@@ -84,10 +84,10 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.05 | 9.47 | 0.03 | 0.00 | 9.55 | 0.0 s |
-| 2 | 0.00 | 0.00 | 5.34 | 0.05 | 0.00 | 5.39 | 0.0 s |
-| 3 | 0.00 | 0.00 | 2.21 | 0.04 | 0.00 | 2.24 | 0.0 s |
-| 4 | 0.00 | 0.00 | 0.00 | 0.04 | 0.00 | 0.04 | 0.0 s |
-| **Media de los turnos con LLM (3)** | 0.00 | 0.02 | 5.68 | 0.04 | 0.00 | 5.73 | |
-| **Media de los turnos sin LLM (1)** | 0.00 | 0.00 | 0.00 | 0.04 | 0.00 | 0.04 | |
+| 1 | 0.00 | 0.03 | 8.93 | 0.03 | 0.00 | 8.99 | 0.0 s |
+| 2 | 0.00 | 0.00 | 5.12 | 0.05 | 0.00 | 5.17 | 0.0 s |
+| 3 | 0.00 | 0.00 | 2.19 | 0.04 | 0.00 | 2.23 | 0.0 s |
+| 4 | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | 0.0 s |
+| **Media de los turnos con LLM (3)** | 0.00 | 0.01 | 5.41 | 0.04 | 0.00 | 5.46 | |
+| **Media de los turnos sin LLM (1)** | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | |
 

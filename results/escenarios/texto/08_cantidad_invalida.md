@@ -5,15 +5,15 @@
 - Tipo: `cantidad_invalida`
 - Qué se prueba: El usuario pide cero unidades y después una cantidad negativa. Ninguna de las dos debe llegar al carrito.
 
-## Turno 1 (7.8 s)
+## Turno 1 (6.7 s)
 
 **Usuario (texto):** Busco un cargador USB C.
 
 - `buscar_productos(consulta="cargador USB C")` → OK: estos son ahora los CANDIDATOS, del más al menos relevante: [1] id=B07MBYH3F7 | Cable USB Tipo C [3 Pack 1M] Cable Cargador Tipo C De Nylon Carga Rápida Movil Tipo C USB Cargador para Samsung Galaxy S10/S9/S8/A20/A40/A50/A70, Huawei P9/P10/P20/P30, Nintendo Switch, Sony Xperia | marca: Yosou | color…
 
-**Agente:** Tengo el Cable USB Tipo C [3 Pack 1M] de Yosou por 13,65 €, el cargador JOOMFEEN Negro por 9,96 €, el JOOMFEEN Plata por 25,13 €, el cargador Avolare Negro por 35,15 € y el cargador Samsung Negro por 12,72 €. ¿Te interesa alguno?
+**Agente:** Tengo el Cable USB Tipo C de Yosou por 13,65 €, el cargador JOOMFEEN Negro por 9,96 €, el JOOMFEEN Plata por 25,13 € y el cargador Avolare Negro por 35,15 €. ¿Te interesa alguno?
 
-**Enviado al TTS:** Tengo el Cable USB Tipo C, tres Pack 1M, de Yosou por trece euros con sesenta y cinco céntimos, el cargador JOOMFEEN Negro por nueve euros con noventa y seis céntimos, el JOOMFEEN Plata por veinticinco euros con trece céntimos, el cargador Avolare Negro por treinta y cinco euros con quince céntimos y el cargador Samsung Negro por doce euros con setenta y dos céntimos. ¿Te interesa alguno?
+**Enviado al TTS:** Tengo el Cable USB Tipo C de Yosou por trece euros con sesenta y cinco céntimos, el cargador JOOMFEEN Negro por nueve euros con noventa y seis céntimos, el JOOMFEEN Plata por veinticinco euros con trece céntimos y el cargador Avolare Negro por treinta y cinco euros con quince céntimos. ¿Te interesa alguno?
 
 - ✔ `cart(empty=true)` — carrito: vacío
 
@@ -21,27 +21,25 @@
 
 > **Suceso externo:** la tienda deja `B07MBYH3F7` (@elegido) con precio 8,00 € y existencias 20.
 
-## Turno 2 (4.6 s)
+## Turno 2 (5.0 s)
 
 **Usuario (texto):** Añade cero unidades del primero.
 
 - `quitar_del_carrito(product_id="B07MBYH3F7")` → RECHAZADO: [no_esta_en_el_carrito] El producto B07MBYH3F7 no está en el carrito.
 
-**Agente:** El producto que buscabas no estaba en el carrito.
+**Agente:** Ese producto no está en el carrito. ¿Quieres añadirlo o buscas otro?
 
-**Enviado al TTS:** El producto que buscabas no estaba en el carrito.
+**Enviado al TTS:** Ese producto no está en el carrito. ¿Quieres añadirlo o buscas otro?
 
 - ✔ `cart(empty=true)` — carrito: vacío
 
-## Turno 3 (5.4 s)
+## Turno 3 (3.5 s)
 
 **Usuario (texto):** Añade menos dos unidades del primero.
 
-- `cambiar_cantidad(product_id="B07MBYH3F7", cantidad=1)` → RECHAZADO: [no_esta_en_el_carrito] El producto B07MBYH3F7 no está en el carrito.
+**Agente:** Ese producto no está en el carrito. ¿Quieres añadirlo o buscas otro?
 
-**Agente:** El producto que buscabas no está en el carrito. ¿Quieres añadirlo?
-
-**Enviado al TTS:** El producto que buscabas no está en el carrito. ¿Quieres añadirlo?
+**Enviado al TTS:** Ese producto no está en el carrito. ¿Quieres añadirlo o buscas otro?
 
 - ✔ `cart(empty=true)` — carrito: vacío
 
@@ -64,8 +62,8 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.03 | 7.75 | 0.03 | 0.00 | 7.81 | 0.0 s |
-| 2 | 0.00 | 0.00 | 4.59 | 0.03 | 0.00 | 4.62 | 0.0 s |
-| 3 | 0.00 | 0.00 | 5.40 | 0.03 | 0.00 | 5.43 | 0.0 s |
-| **Media de los turnos con LLM (3)** | 0.00 | 0.01 | 5.91 | 0.03 | 0.00 | 5.96 | |
+| 1 | 0.00 | 0.03 | 6.70 | 0.02 | 0.00 | 6.75 | 0.0 s |
+| 2 | 0.00 | 0.00 | 4.98 | 0.02 | 0.00 | 5.00 | 0.0 s |
+| 3 | 0.00 | 0.00 | 3.52 | 0.03 | 0.00 | 3.55 | 0.0 s |
+| **Media de los turnos con LLM (3)** | 0.00 | 0.01 | 5.07 | 0.02 | 0.00 | 5.10 | |
 

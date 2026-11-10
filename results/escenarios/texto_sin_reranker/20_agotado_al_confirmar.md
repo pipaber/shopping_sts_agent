@@ -5,15 +5,15 @@
 - Tipo: `agotado_al_confirmar`
 - Qué se prueba: Con la cotización pendiente, el producto se agota. La confirmación debe rechazarse sin cambios y el agente debe proponer alternativas con existencias. El usuario cambia el producto por la primera alternativa y compra.
 
-## Turno 1 (5.9 s)
+## Turno 1 (7.6 s)
 
 **Usuario (texto):** Busco un cuaderno de tapa dura.
 
 - `buscar_productos(consulta="cuaderno tapa dura")` → OK: estos son ahora los CANDIDATOS, del más al menos relevante: [1] id=B08VMR6YL7 | Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 2, Azul Cobalto y Gris], Pack Cuadernos de Dibujo, Diarios de Tapa Dura con Papel de Escribir en Blanco [96 Hojas] | marca: ARTEZA | color: Azul cobalto y gris | precio: 10,9…
 
-**Agente:** Tengo el Arteza de Azul cobalto y gris por 10,95 € y el Arteza de Rosa claro, Rosa oscuro y Granate por 10,16 €. ¿Te interesa alguno?
+**Agente:** Tengo el Arteza de Azul cobalto y gris por 10,95 €, el Arteza de Rosa y Granate por 10,16 €, el Eachgoo A5 negro por 43,88 €, el Moleskine negro por 7,01 € y el Eachgoo A4 negro por 26,05 €. ¿Te interesa alguno?
 
-**Enviado al TTS:** Tengo el Arteza de Azul cobalto y gris por diez euros con noventa y cinco céntimos y el Arteza de Rosa claro, Rosa oscuro y Granate por diez euros con dieciséis céntimos. ¿Te interesa alguno?
+**Enviado al TTS:** Tengo el Arteza de Azul cobalto y gris por diez euros con noventa y cinco céntimos, el Arteza de Rosa y Granate por diez euros con dieciséis céntimos, el Eachgoo A5 negro por cuarenta y tres euros con ochenta y ocho céntimos, el Moleskine negro por siete euros con un céntimo y el Eachgoo A4 negro por veintiséis euros con cinco céntimos. ¿Te interesa alguno?
 
 - ✔ `cart(empty=true)` — carrito: vacío
 
@@ -21,7 +21,7 @@
 
 > **Suceso externo:** la tienda deja `B08VMR6YL7` (@elegido) con precio 6,00 € y existencias 5.
 
-## Turno 2 (4.8 s)
+## Turno 2 (4.9 s)
 
 **Usuario (texto):** Añade dos del primero.
 
@@ -52,7 +52,7 @@
 
 **Usuario (texto):** Sí.
 
-- `confirmar_pedido(quote_id="4ea5f474f1c548ce80b7ef2320312e21")` → RECHAZADO: [agotado] El producto B08VMR6YL7 está agotado.
+- `confirmar_pedido(quote_id="fb2aab8a27574315987d00ac28a56bfc")` → RECHAZADO: [agotado] El producto B08VMR6YL7 está agotado.
 
 **Agente:** No he registrado el pedido porque la tienda cambió después de la cotización. «Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 2, Azul Cobalto y…» se ha agotado. Como alternativa tengo: «Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 3: Rosa Claro, Rosa…» a 10,16 €, con 39 en existencias; «Arteza Cuaderno de dibujo, 5.5x8.5” (14 x 21,6 cm), pack 3 blocs de…» a 11,47 €, con 43 en existencias; «perfect ideaz Cuaderno de bocetos DIN-A5, 96 páginas (48 Hojas)…» a 73,87 €, con 41 en existencias. ¿Qué prefieres?
 
@@ -78,7 +78,7 @@
 
 - ✔ `cart(lines=[{"product": "@alternativa", "quantity": 2}])` — carrito: 2 × B08VMTLR4V
 
-## Turno 6 (2.3 s)
+## Turno 6 (2.4 s)
 
 **Usuario (texto):** Cierra el pedido.
 
@@ -95,7 +95,7 @@
 
 **Usuario (texto):** Sí.
 
-- `confirmar_pedido(quote_id="01c0b23fa58a4e48940208b958245af2")` → OK: pedido registrado
+- `confirmar_pedido(quote_id="28ebe0a9e5dc405d89994ee0e93f83c7")` → OK: pedido registrado
 
 **Agente:** Pedido número 1 registrado: 2 unidades de «Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 3: Rosa Claro, Rosa…» a 10,16 € cada una, 20,32 €. Total: 20,32 €. Gracias por tu compra.
 
@@ -126,13 +126,13 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.03 | 5.83 | 0.03 | 0.00 | 5.88 | 0.0 s |
-| 2 | 0.00 | 0.00 | 4.71 | 0.05 | 0.00 | 4.76 | 0.0 s |
-| 3 | 0.00 | 0.00 | 2.31 | 0.04 | 0.00 | 2.35 | 0.0 s |
+| 1 | 0.00 | 0.03 | 7.53 | 0.03 | 0.00 | 7.58 | 0.0 s |
+| 2 | 0.00 | 0.00 | 4.81 | 0.05 | 0.00 | 4.86 | 0.0 s |
+| 3 | 0.00 | 0.00 | 2.36 | 0.04 | 0.00 | 2.40 | 0.0 s |
 | 4 | 0.00 | 0.02 | 0.00 | 0.01 | 0.00 | 0.03 | 0.0 s |
-| 5 | 0.00 | 0.00 | 6.58 | 0.07 | 0.00 | 6.65 | 0.0 s |
-| 6 | 0.00 | 0.00 | 2.30 | 0.04 | 0.00 | 2.34 | 0.0 s |
+| 5 | 0.00 | 0.00 | 6.51 | 0.07 | 0.00 | 6.59 | 0.0 s |
+| 6 | 0.00 | 0.00 | 2.38 | 0.04 | 0.00 | 2.42 | 0.0 s |
 | 7 | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | 0.0 s |
-| **Media de los turnos con LLM (5)** | 0.00 | 0.01 | 4.34 | 0.05 | 0.00 | 4.40 | |
+| **Media de los turnos con LLM (5)** | 0.00 | 0.01 | 4.72 | 0.05 | 0.00 | 4.77 | |
 | **Media de los turnos sin LLM (2)** | 0.00 | 0.01 | 0.00 | 0.02 | 0.00 | 0.03 | |
 

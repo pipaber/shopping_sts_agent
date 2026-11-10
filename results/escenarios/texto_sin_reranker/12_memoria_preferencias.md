@@ -17,17 +17,17 @@
 
 - ✔ `preference(contains="azul")` — preferencias: ['color azul']
 
-> **Conversación nueva** del mismo usuario (hilo `eval-c2e8c796-12_memoria_preferencias-c2`).
+> **Conversación nueva** del mismo usuario (hilo `eval-3e6f9559-12_memoria_preferencias-c2`).
 
-## Turno 2 (3.1 s)
+## Turno 2 (3.2 s)
 
 **Usuario (texto):** Hola, ¿recuerdas qué color prefiero?
 
 - `guardar_preferencia(preferencia="color azul")` → OK: preferencia guardada.
 
-**Agente:** Sí, he guardado que tu color preferido es azul.
+**Agente:** Sí, he guardado tu preferencia de color azul.
 
-**Enviado al TTS:** Sí, he guardado que tu color preferido es azul.
+**Enviado al TTS:** Sí, he guardado tu preferencia de color azul.
 
 - ✔ `preference(contains="azul")` — preferencias: ['color azul']
 - ✔ `response_contains(text="azul")` — la respuesta contiene «azul»
@@ -49,7 +49,7 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.00 | 3.30 | 0.04 | 0.00 | 3.34 | 0.0 s |
-| 2 | 0.00 | 0.00 | 3.11 | 0.03 | 0.00 | 3.14 | 0.0 s |
-| **Media de los turnos con LLM (2)** | 0.00 | 0.00 | 3.20 | 0.04 | 0.00 | 3.24 | |
+| 1 | 0.00 | 0.00 | 3.31 | 0.03 | 0.00 | 3.34 | 0.0 s |
+| 2 | 0.00 | 0.00 | 3.14 | 0.03 | 0.00 | 3.17 | 0.0 s |
+| **Media de los turnos con LLM (2)** | 0.00 | 0.00 | 3.23 | 0.03 | 0.00 | 3.26 | |
 

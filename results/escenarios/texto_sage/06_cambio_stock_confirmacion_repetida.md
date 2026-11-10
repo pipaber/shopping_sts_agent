@@ -1,19 +1,19 @@
 # 06_cambio_stock_confirmacion_repetida — Cambio de stock entre cotización y confirmación, y confirmación repetida
 
-- Veredicto: **fallo**
+- Veredicto: **correcto**
 - Entrada: texto
 - Tipo: `cambio_stock_confirmacion_repetida`
 - Qué se prueba: Con la cotización de tres unidades pendiente, la tienda se queda con una sola. La confirmación debe rechazarse sin tocar nada y ofrecer una salida. El usuario lo deja en una unidad, confirma y repite el sí: debe haber un único pedido.
 
-## Turno 1 (7.5 s)
+## Turno 1 (7.6 s)
 
 **Usuario (texto):** Busco una lámpara de escritorio LED.
 
 - `buscar_productos(consulta="lámpara escritorio LED")` → OK: estos son ahora los CANDIDATOS, del más al menos relevante: [1] id=B085CHJ9BD | Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege los ojos, Lampara led Escritorio regulable con puerto de carga USB, 5 Modos, 10 Niveles de Brillo,Temporizador de 30/60min | marca: SLATOR | color: Negr…
 
-**Agente:** Tengo la lámpara de escritorio LED SLATOR por 44,20 €, la SENXINGYAN por 36,61 €, la SOFIL por 38,74 €, la Prtukyt por 23,86 € y la JUKSTG por 34,86 €. ¿Te interesa alguna?
+**Agente:** Tengo la lámpara de escritorio LED de SLATOR por 44,20 €, la de SENXINGYAN por 36,61 €, la de SOFIL por 38,74 €, la de JUKSTG por 34,86 € y la de Prtukyt por 23,86 €. ¿Te interesa alguna?
 
-**Enviado al TTS:** Tengo la lámpara de escritorio LED SLATOR por cuarenta y cuatro euros con veinte céntimos, la SENXINGYAN por treinta y seis euros con sesenta y un céntimos, la SOFIL por treinta y ocho euros con setenta y cuatro céntimos, la Prtukyt por veintitrés euros con ochenta y seis céntimos y la JUKSTG por treinta y cuatro euros con ochenta y seis céntimos. ¿Te interesa alguna?
+**Enviado al TTS:** Tengo la lámpara de escritorio LED de SLATOR por cuarenta y cuatro euros con veinte céntimos, la de SENXINGYAN por treinta y seis euros con sesenta y un céntimos, la de SOFIL por treinta y ocho euros con setenta y cuatro céntimos, la de JUKSTG por treinta y cuatro euros con ochenta y seis céntimos y la de Prtukyt por veintitrés euros con ochenta y seis céntimos. ¿Te interesa alguna?
 
 - ✔ `cart(empty=true)` — carrito: vacío
 
@@ -21,7 +21,7 @@
 
 > **Suceso externo:** la tienda deja `B085CHJ9BD` (@elegida) con precio 15,00 € y existencias 10.
 
-## Turno 2 (5.2 s)
+## Turno 2 (5.4 s)
 
 **Usuario (texto):** Añade tres de la primera.
 
@@ -48,11 +48,11 @@
 
 > **Suceso externo:** la tienda deja `B085CHJ9BD` (@elegida) con existencias 1.
 
-## Turno 4 (0.0 s)
+## Turno 4 (0.1 s)
 
 **Usuario (texto):** Sí.
 
-- `confirmar_pedido(quote_id="ab2b5b77b4024012a9a4eb7b9dcfc403")` → RECHAZADO: [stock_insuficiente] Solo queda 1 unidad del producto B085CHJ9BD y se pidieron 3.
+- `confirmar_pedido(quote_id="2ad2d1349ada45fcb8dbe61f68621af4")` → RECHAZADO: [stock_insuficiente] Solo queda 1 unidad del producto B085CHJ9BD y se pidieron 3.
 
 **Agente:** No he registrado el pedido porque la tienda cambió después de la cotización. De «Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege…» solo queda 1 unidad y habías pedido 3. Puedo dejarlo en 1. Como alternativa tengo: «Lámpara Escritorio LED, Flexo de Escritorio (Cuidado Ocular, Puerto…» a 23,23 €, con 16 en existencias; «Lámpara Escritorio LED,JUKSTG 5 Modos 10 Niveles de Brillo Lámpara de…» a 34,86 €, con 25 en existencias; «Lámpara de escritorio LED Lámpara de lectura de brazo Eye-Care…» a 23,86 €, con 34 en existencias. ¿Qué prefieres?
 
@@ -63,61 +63,61 @@
 - ✔ `cart(lines=[{"product": "@elegida", "quantity": 3}])` — carrito: 3 × B085CHJ9BD
 - ✔ `stock(product="@elegida", equals=1)` — existencias de B085CHJ9BD: 1
 
-## Turno 5 (4.1 s)
+## Turno 5 (6.7 s)
 
 **Usuario (texto):** Vale, déjalo en una.
 
-- `quitar_del_carrito(product_id="B085CHJ9BD")` → OK: hecho. Así queda el carrito. CARRITO: vacío
+- `cambiar_cantidad(product_id="B085CHJ9BD", cantidad=1)` → OK: hecho. Así queda el carrito. CARRITO: - id=B085CHJ9BD | Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege… | 1 unidad × 15,00 € = 15,00 € | existencias: 1 Total del carrito: 15,00 €
 
-**Agente:** Hecho, el carrito está vacío. El carrito está vacío.
+**Agente:** Hecho, ahora el carrito tiene 1 unidad de «Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege…» a 15,00 €, total 15,00 €. En el carrito hay 1 unidad de «Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege…» a 15,00 € cada una, 15,00 €. Total: 15,00 €.
 
-**Enviado al TTS:** Hecho, el carrito está vacío. El carrito está vacío.
+**Enviado al TTS:** Hecho, ahora el carrito tiene una unidad de Lámpara Escritorio LED a quince euros, total quince euros. En el carrito hay una unidad de Lámpara Escritorio LED a quince euros cada una, quince euros. Total: quince euros.
 
-- ✘ `cart(lines=[{"product": "@elegida", "quantity": 1}])` — carrito: vacío
+- ✔ `cart(lines=[{"product": "@elegida", "quantity": 1}])` — carrito: 1 × B085CHJ9BD
 - ✔ `orders(count=0)` — pedidos registrados: 0
 
-## Turno 6 (3.9 s)
+## Turno 6 (2.1 s)
 
 **Usuario (texto):** Cierra el pedido.
 
-- `cotizar()` → RECHAZADO: [carrito_vacio] El carrito está vacío; no hay nada que cotizar.
+- `cotizar()` → OK: cotización creada; falta la confirmación del usuario.
 
-**Agente:** El carrito está vacío. ¿Quieres añadir algo?
+**Agente:** Te repito el pedido antes de registrarlo: 1 unidad de «Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege…» a 15,00 € cada una, 15,00 €. Total: 15,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar. *(esperando confirmación)*
 
-**Enviado al TTS:** El carrito está vacío. ¿Quieres añadir algo?
+**Enviado al TTS:** Te repito el pedido antes de registrarlo: una unidad de Lámpara Escritorio LED a quince euros cada una, quince euros. Total: quince euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.
 
-- ✘ `awaiting_confirmation(value=true)` — esperando confirmación: no
+- ✔ `awaiting_confirmation(value=true)` — esperando confirmación: sí
 - ✔ `orders(count=0)` — pedidos registrados: 0
 
-## Turno 7 (3.7 s)
+## Turno 7 (0.0 s)
 
 **Usuario (texto):** Sí.
 
-- `cotizar()` → RECHAZADO: [carrito_vacio] El carrito está vacío; no hay nada que cotizar.
+- `confirmar_pedido(quote_id="c74a8195f10b4124ac4528e9733e62a4")` → OK: pedido registrado
 
-**Agente:** El carrito está vacío. ¿Quieres añadir algo?
+**Agente:** Pedido número 1 registrado: 1 unidad de «Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege…» a 15,00 € cada una, 15,00 €. Total: 15,00 €. Gracias por tu compra.
 
-**Enviado al TTS:** El carrito está vacío. ¿Quieres añadir algo?
+**Enviado al TTS:** Pedido número uno registrado: una unidad de Lámpara Escritorio LED a quince euros cada una, quince euros. Total: quince euros. Gracias por tu compra.
 
-- ✘ `orders(count=1)` — pedidos registrados: 0
+- ✔ `orders(count=1)` — pedidos registrados: 1
 
-## Turno 8 (7.1 s)
+## Turno 8 (0.0 s)
 
 **Usuario (texto):** Sí.
 
-- `buscar_productos(consulta="lámpara escritorio")` → OK: estos son ahora los CANDIDATOS, del más al menos relevante: [1] id=B085CHJ9BD | Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege los ojos, Lampara led Escritorio regulable con puerto de carga USB, 5 Modos, 10 Niveles de Brillo,Temporizador de 30/60min | marca: SLATOR | color: Negr…
+- `confirmar_pedido(quote_id="c74a8195f10b4124ac4528e9733e62a4")` → OK: el pedido ya estaba registrado; no se duplicó
 
-**Agente:** Tengo la lámpara de escritorio SLATOR por 15 euros, la JUKSTG por 34,86 y la SENXINGYAN por 36,61. ¿Te interesa alguna?
+**Agente:** Ese pedido ya estaba registrado con el número 1, así que no lo he duplicado. Total: 15,00 €.
 
-**Enviado al TTS:** Tengo la lámpara de escritorio SLATOR por quince euros, la JUKSTG por treinta y cuatro coma ochenta y seis y la SENXINGYAN por treinta y seis coma sesenta y uno. ¿Te interesa alguna?
+**Enviado al TTS:** Ese pedido ya estaba registrado con el número uno, así que no lo he duplicado. Total: quince euros.
 
-- ✘ `orders(count=1)` — pedidos registrados: 0
+- ✔ `orders(count=1)` — pedidos registrados: 1
 
 ## Comprobaciones finales
 
-- ✘ `orders(count=1)` — pedidos registrados: 0
-- ✘ `order(lines=[{"product": "@elegida", "quantity": 1}], total_cents=1500)` — no hay ningún pedido
-- ✘ `stock(product="@elegida", equals=0)` — existencias de B085CHJ9BD: 1
+- ✔ `orders(count=1)` — pedidos registrados: 1
+- ✔ `order(lines=[{"product": "@elegida", "quantity": 1}], total_cents=1500)` — pedido 1: 1 × B085CHJ9BD; total 1500 céntimos
+- ✔ `stock(product="@elegida", equals=0)` — existencias de B085CHJ9BD: 0
 - ✔ `cart(empty=true)` — carrito: vacío
 
 ## Violaciones de restricciones
@@ -126,21 +126,23 @@
 
 ## Estado final de la tienda
 
-- Inventario `B085CHJ9BD`: 34 → 1
+- Pedido 1: total 15,00 €
+  - pedido 1: 1 × `B085CHJ9BD` a 15,00 €
+- Inventario `B085CHJ9BD`: 34 → 0
 - Líneas de carrito pendientes: 0
 
 ## Latencia por turno (segundos)
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.04 | 7.42 | 0.03 | 0.00 | 7.49 | 0.0 s |
-| 2 | 0.00 | 0.00 | 5.14 | 0.05 | 0.00 | 5.19 | 0.0 s |
-| 3 | 0.00 | 0.00 | 2.32 | 0.04 | 0.00 | 2.36 | 0.0 s |
-| 4 | 0.00 | 0.03 | 0.00 | 0.01 | 0.00 | 0.04 | 0.0 s |
-| 5 | 0.00 | 0.00 | 4.01 | 0.05 | 0.00 | 4.07 | 0.0 s |
-| 6 | 0.00 | 0.00 | 3.88 | 0.03 | 0.00 | 3.91 | 0.0 s |
-| 7 | 0.00 | 0.00 | 3.68 | 0.03 | 0.00 | 3.71 | 0.0 s |
-| 8 | 0.00 | 0.04 | 7.07 | 0.03 | 0.00 | 7.14 | 0.0 s |
-| **Media de los turnos con LLM (7)** | 0.00 | 0.01 | 4.79 | 0.04 | 0.00 | 4.84 | |
-| **Media de los turnos sin LLM (1)** | 0.00 | 0.03 | 0.00 | 0.01 | 0.00 | 0.04 | |
+| 1 | 0.00 | 0.04 | 7.58 | 0.03 | 0.00 | 7.65 | 0.0 s |
+| 2 | 0.00 | 0.00 | 5.37 | 0.04 | 0.00 | 5.41 | 0.0 s |
+| 3 | 0.00 | 0.00 | 2.34 | 0.04 | 0.00 | 2.38 | 0.0 s |
+| 4 | 0.00 | 0.04 | 0.00 | 0.01 | 0.00 | 0.05 | 0.0 s |
+| 5 | 0.00 | 0.00 | 6.67 | 0.05 | 0.00 | 6.72 | 0.0 s |
+| 6 | 0.00 | 0.00 | 2.11 | 0.03 | 0.00 | 2.14 | 0.0 s |
+| 7 | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | 0.0 s |
+| 8 | 0.00 | 0.00 | 0.00 | 0.02 | 0.00 | 0.02 | 0.0 s |
+| **Media de los turnos con LLM (5)** | 0.00 | 0.01 | 4.82 | 0.04 | 0.00 | 4.86 | |
+| **Media de los turnos sin LLM (3)** | 0.00 | 0.01 | 0.00 | 0.02 | 0.00 | 0.03 | |
 

@@ -6,9 +6,9 @@
   "voice": false,
   "input": "texto",
   "audio_source": null,
-  "user_id": "eval-6b9dd32e-13_confirmacion_con_cambio",
+  "user_id": "eval-5e374f37-13_confirmacion_con_cambio",
   "threads": [
-    "eval-6b9dd32e-13_confirmacion_con_cambio-c1"
+    "eval-5e374f37-13_confirmacion_con_cambio-c1"
   ],
   "names": {
     "elegido": "B08ZC4844X"
@@ -22,8 +22,8 @@
       "transcript": null,
       "expected_text": "Busco un paraguas plegable.",
       "agent_input": "Busco un paraguas plegable.",
-      "response": "Tengo el paraguas Gonex Negro por 6,52 euros, el sombrero xj Camuflaje por 16,30 euros, el paraguas LJGYX Blue por 49,59 euros, el paraguas Jooayou Night Sky por 30,33 euros y el sombrero Yosoo Health Gear plata por 16,34 euros. ¿Te interesa alguno?",
-      "spoken_text": "Tengo el paraguas Gonex Negro por seis euros con cincuenta y dos céntimos, el sombrero xj Camuflaje por dieciséis euros con treinta céntimos, el paraguas LJGYX Blue por cuarenta y nueve euros con cincuenta y nueve céntimos, el paraguas Jooayou Night Sky por treinta euros con treinta y tres céntimos y el sombrero Yosoo Health Gear plata por dieciséis euros con treinta y cuatro céntimos. ¿Te interesa alguno?",
+      "response": "Tengo el paraguas de Gonex por 6,52 euros, el de xj por 16,30 euros, el de LJGYX por 49,59 euros, el de Jooayou por 30,33 euros y el de Yosoo Health Gear por 16,34 euros. ¿Te interesa alguno?",
+      "spoken_text": "Tengo el paraguas de Gonex por seis euros con cincuenta y dos céntimos, el de xj por dieciséis euros con treinta céntimos, el de LJGYX por cuarenta y nueve euros con cincuenta y nueve céntimos, el de Jooayou por treinta euros con treinta y tres céntimos y el de Yosoo Health Gear por dieciséis euros con treinta y cuatro céntimos. ¿Te interesa alguno?",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -41,18 +41,18 @@
       ],
       "timings": {
         "asr": 0.0,
-        "retrieval": 0.029,
-        "llm": 7.988,
-        "tools": 0.026,
+        "retrieval": 0.031,
+        "llm": 7.198,
+        "tools": 0.028,
         "tts": 0.0,
-        "total": 8.043
+        "total": 7.257
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-6b9dd32e-13_confirmacion_con_cambio-c1",
+        "cart_id": "eval-5e374f37-13_confirmacion_con_cambio-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -71,7 +71,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-6b9dd32e-13_confirmacion_con_cambio-c1",
+        "cart_id": "eval-5e374f37-13_confirmacion_con_cambio-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -180,8 +180,8 @@
       "transcript": null,
       "expected_text": "Añade uno del primero.",
       "agent_input": "Añade uno del primero.",
-      "response": "Hecho, añadido un paraguas Gonex Negro al carrito. En el carrito hay 1 unidad de «Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a…» a 9,00 € cada una, 9,00 €. Total: 9,00 €.",
-      "spoken_text": "Hecho, añadido un paraguas Gonex Negro al carrito. En el carrito hay una unidad de Gonex Paraguas de Golf Plegable de diez a nueve euros cada una, nueve euros. Total: nueve euros.",
+      "response": "Hecho, añadida una unidad. En el carrito hay 1 unidad de «Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a…» a 9,00 € cada una, 9,00 €. Total: 9,00 €.",
+      "spoken_text": "Hecho, añadida una unidad. En el carrito hay una unidad de Gonex Paraguas de Golf Plegable de diez a nueve euros cada una, nueve euros. Total: nueve euros.",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -192,7 +192,7 @@
             "product_id": "B08ZC4844X",
             "cantidad": 1
           },
-          "reason": "añadir un paraguas Gonex Negro al carrito",
+          "reason": "añadir uno del candidato 1",
           "ok": true,
           "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B08ZC4844X | Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a… | 1 unidad × 9,00 € = 9,00 € | existencias: 20\nTotal del carrito: 9,00 €",
           "issues": []
@@ -201,17 +201,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 5.495,
-        "tools": 0.051,
+        "llm": 4.694,
+        "tools": 0.053,
         "tts": 0.0,
-        "total": 5.546
+        "total": 4.747
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-6b9dd32e-13_confirmacion_con_cambio-c1",
+        "cart_id": "eval-5e374f37-13_confirmacion_con_cambio-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -293,7 +293,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-6b9dd32e-13_confirmacion_con_cambio-c1",
+        "cart_id": "eval-5e374f37-13_confirmacion_con_cambio-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -344,7 +344,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-6b9dd32e-13_confirmacion_con_cambio-c1",
+              "cart_id": "eval-5e374f37-13_confirmacion_con_cambio-c1",
               "product_id": "B08ZC4844X",
               "quantity": 1
             }
@@ -422,17 +422,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 2.254,
-        "tools": 0.038,
+        "llm": 2.255,
+        "tools": 0.042,
         "tts": 0.0,
-        "total": 2.292
+        "total": 2.297
       },
       "llm_steps": 1,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-6b9dd32e-13_confirmacion_con_cambio-c1",
+        "cart_id": "eval-5e374f37-13_confirmacion_con_cambio-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -483,7 +483,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-6b9dd32e-13_confirmacion_con_cambio-c1",
+              "cart_id": "eval-5e374f37-13_confirmacion_con_cambio-c1",
               "product_id": "B08ZC4844X",
               "quantity": 1
             }
@@ -520,13 +520,13 @@
         }
       },
       "after": {
-        "cart_id": "eval-6b9dd32e-13_confirmacion_con_cambio-c1",
+        "cart_id": "eval-5e374f37-13_confirmacion_con_cambio-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "bca5c7c099e34ddd94c2b2a16531687d",
+            "quote_id": "a3a252806787424a94838acf08d1eada",
             "items": [
               {
                 "product_id": "B08ZC4844X",
@@ -586,7 +586,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-6b9dd32e-13_confirmacion_con_cambio-c1",
+              "cart_id": "eval-5e374f37-13_confirmacion_con_cambio-c1",
               "product_id": "B08ZC4844X",
               "quantity": 1
             }
@@ -649,8 +649,8 @@
       "transcript": null,
       "expected_text": "Sí, pero que sean tres.",
       "agent_input": "Sí, pero que sean tres.",
-      "response": "Hecho, el carrito ahora incluye 3 unidades de paraguas Gonex Negro por 9,00 € cada uno, total 27,00 €. En el carrito hay 3 unidades de «Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a…» a 9,00 € cada una, 27,00 €. Total: 27,00 €.",
-      "spoken_text": "Hecho, el carrito ahora incluye tres unidades de paraguas Gonex Negro por nueve euros cada uno, total veintisiete euros. En el carrito hay tres unidades de Gonex Paraguas de Golf Plegable de diez a nueve euros cada una, veintisiete euros. Total: veintisiete euros.",
+      "response": "Hecho, añadidas dos unidades más. Ahora en el carrito tienes 3 unidades de «Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a…» a 9,00 € cada una, 27,00 €. Total: 27,00 €. En el carrito hay 3 unidades de «Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a…» a 9,00 € cada una, 27,00 €. Total: 27,00 €.",
+      "spoken_text": "Hecho, añadidas dos unidades más. Ahora en el carrito tienes tres unidades de Gonex Paraguas de Golf Plegable de diez a nueve euros cada una, veintisiete euros. Total: veintisiete euros. En el carrito hay tres unidades de Gonex Paraguas de Golf Plegable de diez a nueve euros cada una, veintisiete euros. Total: veintisiete euros.",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -670,23 +670,23 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 6.14,
-        "tools": 0.044,
+        "llm": 7.591,
+        "tools": 0.046,
         "tts": 0.0,
-        "total": 6.184
+        "total": 7.636
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-6b9dd32e-13_confirmacion_con_cambio-c1",
+        "cart_id": "eval-5e374f37-13_confirmacion_con_cambio-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "bca5c7c099e34ddd94c2b2a16531687d",
+            "quote_id": "a3a252806787424a94838acf08d1eada",
             "items": [
               {
                 "product_id": "B08ZC4844X",
@@ -746,7 +746,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-6b9dd32e-13_confirmacion_con_cambio-c1",
+              "cart_id": "eval-5e374f37-13_confirmacion_con_cambio-c1",
               "product_id": "B08ZC4844X",
               "quantity": 1
             }
@@ -783,7 +783,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-6b9dd32e-13_confirmacion_con_cambio-c1",
+        "cart_id": "eval-5e374f37-13_confirmacion_con_cambio-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -834,7 +834,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-6b9dd32e-13_confirmacion_con_cambio-c1",
+              "cart_id": "eval-5e374f37-13_confirmacion_con_cambio-c1",
               "product_id": "B08ZC4844X",
               "quantity": 3
             }
@@ -911,7 +911,7 @@
         {
           "tool": "cotizar",
           "args": {},
-          "reason": "confirmar el pedido",
+          "reason": "cotizar el carrito",
           "ok": true,
           "summary": "cotización creada; falta la confirmación del usuario.",
           "issues": []
@@ -920,17 +920,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 2.295,
-        "tools": 0.037,
+        "llm": 2.357,
+        "tools": 0.04,
         "tts": 0.0,
-        "total": 2.332
+        "total": 2.396
       },
       "llm_steps": 1,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-6b9dd32e-13_confirmacion_con_cambio-c1",
+        "cart_id": "eval-5e374f37-13_confirmacion_con_cambio-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -981,7 +981,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-6b9dd32e-13_confirmacion_con_cambio-c1",
+              "cart_id": "eval-5e374f37-13_confirmacion_con_cambio-c1",
               "product_id": "B08ZC4844X",
               "quantity": 3
             }
@@ -1018,13 +1018,13 @@
         }
       },
       "after": {
-        "cart_id": "eval-6b9dd32e-13_confirmacion_con_cambio-c1",
+        "cart_id": "eval-5e374f37-13_confirmacion_con_cambio-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "68032ca4a6e54ea68c6b68bf062cdab2",
+            "quote_id": "d18e6ede30834c19a4b7bd5a1aa27fe4",
             "items": [
               {
                 "product_id": "B08ZC4844X",
@@ -1084,7 +1084,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-6b9dd32e-13_confirmacion_con_cambio-c1",
+              "cart_id": "eval-5e374f37-13_confirmacion_con_cambio-c1",
               "product_id": "B08ZC4844X",
               "quantity": 3
             }
@@ -1156,7 +1156,7 @@
         {
           "tool": "confirmar_pedido",
           "args": {
-            "quote_id": "68032ca4a6e54ea68c6b68bf062cdab2"
+            "quote_id": "d18e6ede30834c19a4b7bd5a1aa27fe4"
           },
           "reason": "el usuario confirmó la cotización",
           "ok": true,
@@ -1168,22 +1168,22 @@
         "asr": 0.0,
         "retrieval": 0.0,
         "llm": 0.0,
-        "tools": 0.03,
+        "tools": 0.034,
         "tts": 0.0,
-        "total": 0.03
+        "total": 0.034
       },
       "llm_steps": 0,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-6b9dd32e-13_confirmacion_con_cambio-c1",
+        "cart_id": "eval-5e374f37-13_confirmacion_con_cambio-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "68032ca4a6e54ea68c6b68bf062cdab2",
+            "quote_id": "d18e6ede30834c19a4b7bd5a1aa27fe4",
             "items": [
               {
                 "product_id": "B08ZC4844X",
@@ -1243,7 +1243,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-6b9dd32e-13_confirmacion_con_cambio-c1",
+              "cart_id": "eval-5e374f37-13_confirmacion_con_cambio-c1",
               "product_id": "B08ZC4844X",
               "quantity": 3
             }
@@ -1280,7 +1280,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-6b9dd32e-13_confirmacion_con_cambio-c1",
+        "cart_id": "eval-5e374f37-13_confirmacion_con_cambio-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -1288,7 +1288,7 @@
           "quote": null,
           "order": {
             "order_id": 1,
-            "quote_id": "68032ca4a6e54ea68c6b68bf062cdab2",
+            "quote_id": "d18e6ede30834c19a4b7bd5a1aa27fe4",
             "items": [
               {
                 "product_id": "B08ZC4844X",
@@ -1344,7 +1344,7 @@
           "orders": [
             {
               "order_id": 1,
-              "quote_id": "68032ca4a6e54ea68c6b68bf062cdab2",
+              "quote_id": "d18e6ede30834c19a4b7bd5a1aa27fe4",
               "total_cents": 2700
             }
           ],
@@ -1402,7 +1402,7 @@
   ],
   "final": {
     "snapshot": {
-      "cart_id": "eval-6b9dd32e-13_confirmacion_con_cambio-c1",
+      "cart_id": "eval-5e374f37-13_confirmacion_con_cambio-c1",
       "state": {
         "budget_cents": null,
         "preferences": [],
@@ -1410,7 +1410,7 @@
         "quote": null,
         "order": {
           "order_id": 1,
-          "quote_id": "68032ca4a6e54ea68c6b68bf062cdab2",
+          "quote_id": "d18e6ede30834c19a4b7bd5a1aa27fe4",
           "items": [
             {
               "product_id": "B08ZC4844X",
@@ -1466,7 +1466,7 @@
         "orders": [
           {
             "order_id": 1,
-            "quote_id": "68032ca4a6e54ea68c6b68bf062cdab2",
+            "quote_id": "d18e6ede30834c19a4b7bd5a1aa27fe4",
             "total_cents": 2700
           }
         ],
@@ -1563,12 +1563,12 @@
         "max": 0.0
       },
       "retrieval": {
-        "mean": 0.0,
+        "mean": 0.01,
         "max": 0.03
       },
       "llm": {
-        "mean": 4.03,
-        "max": 7.99
+        "mean": 4.02,
+        "max": 7.59
       },
       "tools": {
         "mean": 0.04,
@@ -1579,8 +1579,8 @@
         "max": 0.0
       },
       "total": {
-        "mean": 4.07,
-        "max": 8.04
+        "mean": 4.06,
+        "max": 7.64
       }
     },
     "with_llm": {
@@ -1594,8 +1594,8 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 4.83,
-        "max": 7.99
+        "mean": 4.82,
+        "max": 7.59
       },
       "tools": {
         "mean": 0.04,
@@ -1606,8 +1606,8 @@
         "max": 0.0
       },
       "total": {
-        "mean": 4.88,
-        "max": 8.04
+        "mean": 4.87,
+        "max": 7.64
       }
     },
     "without_llm": {

@@ -6,10 +6,10 @@
   "voice": false,
   "input": "texto",
   "audio_source": null,
-  "user_id": "eval-a557491f-12_memoria_preferencias",
+  "user_id": "eval-49d0281c-12_memoria_preferencias",
   "threads": [
-    "eval-a557491f-12_memoria_preferencias-c1",
-    "eval-a557491f-12_memoria_preferencias-c2"
+    "eval-49d0281c-12_memoria_preferencias-c1",
+    "eval-49d0281c-12_memoria_preferencias-c2"
   ],
   "names": {},
   "steps": [
@@ -32,7 +32,7 @@
           "args": {
             "preferencia": "color azul"
           },
-          "reason": "guardar la preferencia de color",
+          "reason": "guardar la preferencia del usuario",
           "ok": true,
           "summary": "preferencia guardada.",
           "issues": []
@@ -41,17 +41,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 3.307,
-        "tools": 0.04,
+        "llm": 3.312,
+        "tools": 0.041,
         "tts": 0.0,
-        "total": 3.347
+        "total": 3.353
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-a557491f-12_memoria_preferencias-c1",
+        "cart_id": "eval-49d0281c-12_memoria_preferencias-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -70,7 +70,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-a557491f-12_memoria_preferencias-c1",
+        "cart_id": "eval-49d0281c-12_memoria_preferencias-c1",
         "state": {
           "budget_cents": null,
           "preferences": [
@@ -103,7 +103,7 @@
     },
     {
       "kind": "new_conversation",
-      "thread_id": "eval-a557491f-12_memoria_preferencias-c2"
+      "thread_id": "eval-49d0281c-12_memoria_preferencias-c2"
     },
     {
       "kind": "turn",
@@ -113,8 +113,8 @@
       "transcript": null,
       "expected_text": "Hola, ¿recuerdas qué color prefiero?",
       "agent_input": "Hola, ¿recuerdas qué color prefiero?",
-      "response": "Sí, he guardado que tu color preferido es azul.",
-      "spoken_text": "Sí, he guardado que tu color preferido es azul.",
+      "response": "Sí, he guardado tu preferencia de color azul.",
+      "spoken_text": "Sí, he guardado tu preferencia de color azul.",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -133,17 +133,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 3.119,
+        "llm": 3.078,
         "tools": 0.039,
         "tts": 0.0,
-        "total": 3.157
+        "total": 3.117
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-a557491f-12_memoria_preferencias-c2",
+        "cart_id": "eval-49d0281c-12_memoria_preferencias-c2",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -162,7 +162,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-a557491f-12_memoria_preferencias-c2",
+        "cart_id": "eval-49d0281c-12_memoria_preferencias-c2",
         "state": {
           "budget_cents": null,
           "preferences": [
@@ -204,7 +204,7 @@
   ],
   "final": {
     "snapshot": {
-      "cart_id": "eval-a557491f-12_memoria_preferencias-c2",
+      "cart_id": "eval-49d0281c-12_memoria_preferencias-c2",
       "state": {
         "budget_cents": null,
         "preferences": [
@@ -258,7 +258,7 @@
         "max": 0.0
       },
       "llm": {
-        "mean": 3.21,
+        "mean": 3.19,
         "max": 3.31
       },
       "tools": {
@@ -270,7 +270,7 @@
         "max": 0.0
       },
       "total": {
-        "mean": 3.25,
+        "mean": 3.24,
         "max": 3.35
       }
     },
@@ -285,7 +285,7 @@
         "max": 0.0
       },
       "llm": {
-        "mean": 3.21,
+        "mean": 3.19,
         "max": 3.31
       },
       "tools": {
@@ -297,7 +297,7 @@
         "max": 0.0
       },
       "total": {
-        "mean": 3.25,
+        "mean": 3.24,
         "max": 3.35
       }
     },

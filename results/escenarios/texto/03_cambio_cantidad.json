@@ -6,9 +6,9 @@
   "voice": true,
   "input": "texto",
   "audio_source": null,
-  "user_id": "eval-6b9dd32e-03_cambio_cantidad",
+  "user_id": "eval-5e374f37-03_cambio_cantidad",
   "threads": [
-    "eval-6b9dd32e-03_cambio_cantidad-c1"
+    "eval-5e374f37-03_cambio_cantidad-c1"
   ],
   "names": {
     "elegida": "B07VQNY8PK"
@@ -52,10 +52,10 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.03,
-        "llm": 7.944,
-        "tools": 0.028,
+        "llm": 7.884,
+        "tools": 0.031,
         "tts": 0.0,
-        "total": 8.002
+        "total": 7.945
       },
       "llm_steps": 3,
       "tts_first_chunk_seconds": null,
@@ -64,7 +64,7 @@
         "botella de agua de acero inoxidable"
       ],
       "before": {
-        "cart_id": "eval-6b9dd32e-03_cambio_cantidad-c1",
+        "cart_id": "eval-5e374f37-03_cambio_cantidad-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -83,7 +83,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-6b9dd32e-03_cambio_cantidad-c1",
+        "cart_id": "eval-5e374f37-03_cambio_cantidad-c1",
         "state": {
           "budget_cents": 4500,
           "preferences": [],
@@ -192,8 +192,8 @@
       "transcript": null,
       "expected_text": "Añade dos de la primera.",
       "agent_input": "Añade dos de la primera.",
-      "response": "Hecho, añadidas dos unidades. El total ahora es 19,00 €. En el carrito hay 2 unidades de «Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío…» a 9,50 € cada una, 19,00 €. Total: 19,00 €. Tu presupuesto es de 45,00 € y te quedan 26,00 €.",
-      "spoken_text": "Hecho, añadidas dos unidades. El total ahora es diecinueve euros. En el carrito hay dos unidades de Newdora Botella de Agua Acero Inoxidable quinientos mililitros a nueve euros con cincuenta céntimos cada una, diecinueve euros. Total: diecinueve euros. Tu presupuesto es de cuarenta y cinco euros y te quedan veintiséis euros.",
+      "response": "Hecho, añadidas dos unidades. El total es 19,00 €. En el carrito hay 2 unidades de «Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío…» a 9,50 € cada una, 19,00 €. Total: 19,00 €. Tu presupuesto es de 45,00 € y te quedan 26,00 €.",
+      "spoken_text": "Hecho, añadidas dos unidades. El total es diecinueve euros. En el carrito hay dos unidades de Newdora Botella de Agua Acero Inoxidable quinientos mililitros a nueve euros con cincuenta céntimos cada una, diecinueve euros. Total: diecinueve euros. Tu presupuesto es de cuarenta y cinco euros y te quedan veintiséis euros.",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -213,10 +213,10 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 4.977,
-        "tools": 0.04,
+        "llm": 4.929,
+        "tools": 0.052,
         "tts": 0.0,
-        "total": 5.016
+        "total": 4.981
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
@@ -225,7 +225,7 @@
         "primera"
       ],
       "before": {
-        "cart_id": "eval-6b9dd32e-03_cambio_cantidad-c1",
+        "cart_id": "eval-5e374f37-03_cambio_cantidad-c1",
         "state": {
           "budget_cents": 4500,
           "preferences": [],
@@ -307,7 +307,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-6b9dd32e-03_cambio_cantidad-c1",
+        "cart_id": "eval-5e374f37-03_cambio_cantidad-c1",
         "state": {
           "budget_cents": 4500,
           "preferences": [],
@@ -358,7 +358,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-6b9dd32e-03_cambio_cantidad-c1",
+              "cart_id": "eval-5e374f37-03_cambio_cantidad-c1",
               "product_id": "B07VQNY8PK",
               "quantity": 2
             }
@@ -418,8 +418,8 @@
       "transcript": null,
       "expected_text": "Mejor que sean cuatro.",
       "agent_input": "Mejor que sean cuatro.",
-      "response": "Hecho, el carrito ahora tiene 4 unidades de la botella de agua de Newdora por 9,50 € cada una, totalizando 38,00 €. En el carrito hay 4 unidades de «Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío…» a 9,50 € cada una, 38,00 €. Total: 38,00 €. Tu presupuesto es de 45,00 € y te quedan 7,00 €.",
-      "spoken_text": "Hecho, el carrito ahora tiene cuatro unidades de la botella de agua de Newdora por nueve euros con cincuenta céntimos cada una, totalizando treinta y ocho euros. En el carrito hay cuatro unidades de Newdora Botella de Agua Acero Inoxidable quinientos mililitros a nueve euros con cincuenta céntimos cada una, treinta y ocho euros. Total: treinta y ocho euros. Tu presupuesto es de cuarenta y cinco euros y te quedan siete euros.",
+      "response": "Hecho, el total es 38,00 €. En el carrito hay 4 unidades de «Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío…» a 9,50 € cada una, 38,00 €. Total: 38,00 €. Tu presupuesto es de 45,00 € y te quedan 7,00 €.",
+      "spoken_text": "Hecho, el total es treinta y ocho euros. En el carrito hay cuatro unidades de Newdora Botella de Agua Acero Inoxidable quinientos mililitros a nueve euros con cincuenta céntimos cada una, treinta y ocho euros. Total: treinta y ocho euros. Tu presupuesto es de cuarenta y cinco euros y te quedan siete euros.",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -430,7 +430,7 @@
             "product_id": "B07VQNY8PK",
             "cantidad": 4
           },
-          "reason": "corrige la cantidad",
+          "reason": "cambiar la cantidad del producto en el carrito",
           "ok": true,
           "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B07VQNY8PK | Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío… | 4 unidades × 9,50 € = 38,00 € | existencias: 20\nTotal del carrito: 38,00 €",
           "issues": []
@@ -439,17 +439,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 5.807,
-        "tools": 0.051,
+        "llm": 4.862,
+        "tools": 0.053,
         "tts": 0.0,
-        "total": 5.858
+        "total": 4.915
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-6b9dd32e-03_cambio_cantidad-c1",
+        "cart_id": "eval-5e374f37-03_cambio_cantidad-c1",
         "state": {
           "budget_cents": 4500,
           "preferences": [],
@@ -500,7 +500,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-6b9dd32e-03_cambio_cantidad-c1",
+              "cart_id": "eval-5e374f37-03_cambio_cantidad-c1",
               "product_id": "B07VQNY8PK",
               "quantity": 2
             }
@@ -537,7 +537,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-6b9dd32e-03_cambio_cantidad-c1",
+        "cart_id": "eval-5e374f37-03_cambio_cantidad-c1",
         "state": {
           "budget_cents": 4500,
           "preferences": [],
@@ -588,7 +588,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-6b9dd32e-03_cambio_cantidad-c1",
+              "cart_id": "eval-5e374f37-03_cambio_cantidad-c1",
               "product_id": "B07VQNY8PK",
               "quantity": 4
             }
@@ -656,26 +656,35 @@
       "transcript": null,
       "expected_text": "Ciérralo.",
       "agent_input": "Ciérralo.",
-      "response": "Hecho, el carrito ahora tiene 4 unidades de la botella de agua de Newdora por 9,50 € cada una, totalizando 38,00 €. ¿Necesitas algo más?",
-      "spoken_text": "Hecho, el carrito ahora tiene cuatro unidades de la botella de agua de Newdora por nueve euros con cincuenta céntimos cada una, totalizando treinta y ocho euros. ¿Necesitas algo más?",
+      "response": "Te repito el pedido antes de registrarlo: 4 unidades de «Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío…» a 9,50 € cada una, 38,00 €. Total: 38,00 €. Tu presupuesto es de 45,00 € y te quedan 7,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "spoken_text": "Te repito el pedido antes de registrarlo: cuatro unidades de Newdora Botella de Agua Acero Inoxidable quinientos mililitros a nueve euros con cincuenta céntimos cada una, treinta y ocho euros. Total: treinta y ocho euros. Tu presupuesto es de cuarenta y cinco euros y te quedan siete euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
       "output_audio": null,
       "output_seconds": null,
-      "awaiting_confirmation": false,
-      "operations": [],
+      "awaiting_confirmation": true,
+      "operations": [
+        {
+          "tool": "cotizar",
+          "args": {},
+          "reason": "cotizar el carrito",
+          "ok": true,
+          "summary": "cotización creada; falta la confirmación del usuario.",
+          "issues": []
+        }
+      ],
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 4.568,
-        "tools": 0.03,
+        "llm": 2.072,
+        "tools": 0.027,
         "tts": 0.0,
-        "total": 4.598
+        "total": 2.099
       },
       "llm_steps": 1,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-6b9dd32e-03_cambio_cantidad-c1",
+        "cart_id": "eval-5e374f37-03_cambio_cantidad-c1",
         "state": {
           "budget_cents": 4500,
           "preferences": [],
@@ -726,7 +735,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-6b9dd32e-03_cambio_cantidad-c1",
+              "cart_id": "eval-5e374f37-03_cambio_cantidad-c1",
               "product_id": "B07VQNY8PK",
               "quantity": 4
             }
@@ -763,12 +772,27 @@
         }
       },
       "after": {
-        "cart_id": "eval-6b9dd32e-03_cambio_cantidad-c1",
+        "cart_id": "eval-5e374f37-03_cambio_cantidad-c1",
         "state": {
           "budget_cents": 4500,
           "preferences": [],
           "pending_clarification": null,
-          "quote": null,
+          "quote": {
+            "quote_id": "6797cf40ac31431ea13b53ede75c90db",
+            "items": [
+              {
+                "product_id": "B07VQNY8PK",
+                "title": "Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío de Doble Pared, Botellas de Frío/Caliente, con 1 un Cepillo de Limpieza, para Niños, Deporte, Oficina, Gimnasio, Ciclismo, Negro",
+                "quantity": 4,
+                "unit_price_cents": 950,
+                "subtotal_cents": 3800,
+                "stock": 20
+              }
+            ],
+            "total_cents": 3800,
+            "budget_cents": 4500,
+            "message": "Te repito el pedido antes de registrarlo: 4 unidades de «Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío…» a 9,50 € cada una, 38,00 €. Total: 38,00 €. Tu presupuesto es de 45,00 € y te quedan 7,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+          },
           "order": null,
           "candidates": [
             {
@@ -807,14 +831,14 @@
               "stock": 32
             }
           ],
-          "awaiting_confirmation": false
+          "awaiting_confirmation": true
         },
         "store": {
           "orders": [],
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-6b9dd32e-03_cambio_cantidad-c1",
+              "cart_id": "eval-5e374f37-03_cambio_cantidad-c1",
               "product_id": "B07VQNY8PK",
               "quantity": 4
             }
@@ -856,8 +880,8 @@
           "params": {
             "value": true
           },
-          "ok": false,
-          "detail": "esperando confirmación: no"
+          "ok": true,
+          "detail": "esperando confirmación: sí"
         },
         {
           "check": "orders",
@@ -877,31 +901,57 @@
       "transcript": null,
       "expected_text": "Sí.",
       "agent_input": "Sí.",
-      "response": "Tu presupuesto es de 45,00 €. ¿Necesitas cambiar algo?",
-      "spoken_text": "Tu presupuesto es de cuarenta y cinco euros. ¿Necesitas cambiar algo?",
+      "response": "Pedido número 1 registrado: 4 unidades de «Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío…» a 9,50 € cada una, 38,00 €. Total: 38,00 €. Gracias por tu compra.",
+      "spoken_text": "Pedido número uno registrado: cuatro unidades de Newdora Botella de Agua Acero Inoxidable quinientos mililitros a nueve euros con cincuenta céntimos cada una, treinta y ocho euros. Total: treinta y ocho euros. Gracias por tu compra.",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
-      "operations": [],
+      "operations": [
+        {
+          "tool": "confirmar_pedido",
+          "args": {
+            "quote_id": "6797cf40ac31431ea13b53ede75c90db"
+          },
+          "reason": "el usuario confirmó la cotización",
+          "ok": true,
+          "summary": "pedido registrado",
+          "issues": []
+        }
+      ],
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 3.181,
-        "tools": 0.029,
+        "llm": 0.0,
+        "tools": 0.031,
         "tts": 0.0,
-        "total": 3.21
+        "total": 0.031
       },
-      "llm_steps": 1,
+      "llm_steps": 0,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-6b9dd32e-03_cambio_cantidad-c1",
+        "cart_id": "eval-5e374f37-03_cambio_cantidad-c1",
         "state": {
           "budget_cents": 4500,
           "preferences": [],
           "pending_clarification": null,
-          "quote": null,
+          "quote": {
+            "quote_id": "6797cf40ac31431ea13b53ede75c90db",
+            "items": [
+              {
+                "product_id": "B07VQNY8PK",
+                "title": "Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío de Doble Pared, Botellas de Frío/Caliente, con 1 un Cepillo de Limpieza, para Niños, Deporte, Oficina, Gimnasio, Ciclismo, Negro",
+                "quantity": 4,
+                "unit_price_cents": 950,
+                "subtotal_cents": 3800,
+                "stock": 20
+              }
+            ],
+            "total_cents": 3800,
+            "budget_cents": 4500,
+            "message": "Te repito el pedido antes de registrarlo: 4 unidades de «Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío…» a 9,50 € cada una, 38,00 €. Total: 38,00 €. Tu presupuesto es de 45,00 € y te quedan 7,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+          },
           "order": null,
           "candidates": [
             {
@@ -940,14 +990,14 @@
               "stock": 32
             }
           ],
-          "awaiting_confirmation": false
+          "awaiting_confirmation": true
         },
         "store": {
           "orders": [],
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-6b9dd32e-03_cambio_cantidad-c1",
+              "cart_id": "eval-5e374f37-03_cambio_cantidad-c1",
               "product_id": "B07VQNY8PK",
               "quantity": 4
             }
@@ -984,13 +1034,27 @@
         }
       },
       "after": {
-        "cart_id": "eval-6b9dd32e-03_cambio_cantidad-c1",
+        "cart_id": "eval-5e374f37-03_cambio_cantidad-c1",
         "state": {
           "budget_cents": 4500,
           "preferences": [],
           "pending_clarification": null,
           "quote": null,
-          "order": null,
+          "order": {
+            "order_id": 1,
+            "quote_id": "6797cf40ac31431ea13b53ede75c90db",
+            "items": [
+              {
+                "product_id": "B07VQNY8PK",
+                "title": "Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío de Doble Pared, Botellas de Frío/Caliente, con 1 un Cepillo de Limpieza, para Niños, Deporte, Oficina, Gimnasio, Ciclismo, Negro",
+                "quantity": 4,
+                "unit_price_cents": 950,
+                "subtotal_cents": 3800
+              }
+            ],
+            "total_cents": 3800,
+            "message": "Pedido número 1 registrado: 4 unidades de «Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío…» a 9,50 € cada una, 38,00 €. Total: 38,00 €. Gracias por tu compra."
+          },
           "candidates": [
             {
               "product_id": "B07VQNY8PK",
@@ -1031,20 +1095,27 @@
           "awaiting_confirmation": false
         },
         "store": {
-          "orders": [],
-          "order_items": [],
-          "cart_items": [
+          "orders": [
             {
-              "cart_id": "eval-6b9dd32e-03_cambio_cantidad-c1",
-              "product_id": "B07VQNY8PK",
-              "quantity": 4
+              "order_id": 1,
+              "quote_id": "6797cf40ac31431ea13b53ede75c90db",
+              "total_cents": 3800
             }
           ],
+          "order_items": [
+            {
+              "order_id": 1,
+              "product_id": "B07VQNY8PK",
+              "quantity": 4,
+              "unit_price_cents": 950
+            }
+          ],
+          "cart_items": [],
           "inventory_changes": [
             {
               "product_id": "B07VQNY8PK",
               "initial_stock": 46,
-              "stock": 20
+              "stock": 16
             }
           ]
         },
@@ -1055,7 +1126,7 @@
           },
           "B07VQNY8PK": {
             "price_cents": 950,
-            "stock": 20
+            "stock": 16
           },
           "B0819WJQFX": {
             "price_cents": 1237,
@@ -1077,21 +1148,35 @@
           "params": {
             "count": 1
           },
-          "ok": false,
-          "detail": "pedidos registrados: 0"
+          "ok": true,
+          "detail": "pedidos registrados: 1"
         }
       ]
     }
   ],
   "final": {
     "snapshot": {
-      "cart_id": "eval-6b9dd32e-03_cambio_cantidad-c1",
+      "cart_id": "eval-5e374f37-03_cambio_cantidad-c1",
       "state": {
         "budget_cents": 4500,
         "preferences": [],
         "pending_clarification": null,
         "quote": null,
-        "order": null,
+        "order": {
+          "order_id": 1,
+          "quote_id": "6797cf40ac31431ea13b53ede75c90db",
+          "items": [
+            {
+              "product_id": "B07VQNY8PK",
+              "title": "Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío de Doble Pared, Botellas de Frío/Caliente, con 1 un Cepillo de Limpieza, para Niños, Deporte, Oficina, Gimnasio, Ciclismo, Negro",
+              "quantity": 4,
+              "unit_price_cents": 950,
+              "subtotal_cents": 3800
+            }
+          ],
+          "total_cents": 3800,
+          "message": "Pedido número 1 registrado: 4 unidades de «Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío…» a 9,50 € cada una, 38,00 €. Total: 38,00 €. Gracias por tu compra."
+        },
         "candidates": [
           {
             "product_id": "B07VQNY8PK",
@@ -1132,20 +1217,27 @@
         "awaiting_confirmation": false
       },
       "store": {
-        "orders": [],
-        "order_items": [],
-        "cart_items": [
+        "orders": [
           {
-            "cart_id": "eval-6b9dd32e-03_cambio_cantidad-c1",
-            "product_id": "B07VQNY8PK",
-            "quantity": 4
+            "order_id": 1,
+            "quote_id": "6797cf40ac31431ea13b53ede75c90db",
+            "total_cents": 3800
           }
         ],
+        "order_items": [
+          {
+            "order_id": 1,
+            "product_id": "B07VQNY8PK",
+            "quantity": 4,
+            "unit_price_cents": 950
+          }
+        ],
+        "cart_items": [],
         "inventory_changes": [
           {
             "product_id": "B07VQNY8PK",
             "initial_stock": 46,
-            "stock": 20
+            "stock": 16
           }
         ]
       },
@@ -1156,7 +1248,7 @@
         },
         "B07VQNY8PK": {
           "price_cents": 950,
-          "stock": 20
+          "stock": 16
         },
         "B0819WJQFX": {
           "price_cents": 1237,
@@ -1178,8 +1270,8 @@
         "params": {
           "count": 1
         },
-        "ok": false,
-        "detail": "pedidos registrados: 0"
+        "ok": true,
+        "detail": "pedidos registrados: 1"
       },
       {
         "check": "order",
@@ -1192,8 +1284,8 @@
           ],
           "total_cents": 3800
         },
-        "ok": false,
-        "detail": "no hay ningún pedido"
+        "ok": true,
+        "detail": "pedido 1: 4 × B07VQNY8PK; total 3800 céntimos"
       },
       {
         "check": "stock",
@@ -1201,16 +1293,16 @@
           "product": "@elegida",
           "equals": 16
         },
-        "ok": false,
-        "detail": "existencias de B07VQNY8PK: 20"
+        "ok": true,
+        "detail": "existencias de B07VQNY8PK: 16"
       },
       {
         "check": "cart",
         "params": {
           "empty": true
         },
-        "ok": false,
-        "detail": "carrito: 4 × B07VQNY8PK"
+        "ok": true,
+        "detail": "carrito: vacío"
       },
       {
         "check": "budget",
@@ -1224,7 +1316,7 @@
   },
   "violations": [],
   "problems": [],
-  "passed": false,
+  "passed": true,
   "timings": {
     "all": {
       "turns": 5,
@@ -1237,8 +1329,8 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 5.3,
-        "max": 7.94
+        "mean": 3.95,
+        "max": 7.88
       },
       "tools": {
         "mean": 0.04,
@@ -1249,12 +1341,12 @@
         "max": 0.0
       },
       "total": {
-        "mean": 5.34,
-        "max": 8.0
+        "mean": 3.99,
+        "max": 7.95
       }
     },
     "with_llm": {
-      "turns": 5,
+      "turns": 4,
       "asr": {
         "mean": 0.0,
         "max": 0.0
@@ -1264,8 +1356,8 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 5.3,
-        "max": 7.94
+        "mean": 4.94,
+        "max": 7.88
       },
       "tools": {
         "mean": 0.04,
@@ -1276,12 +1368,36 @@
         "max": 0.0
       },
       "total": {
-        "mean": 5.34,
-        "max": 8.0
+        "mean": 4.99,
+        "max": 7.95
       }
     },
     "without_llm": {
-      "turns": 0
+      "turns": 1,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "llm": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "tools": {
+        "mean": 0.03,
+        "max": 0.03
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 0.03,
+        "max": 0.03
+      }
     }
   }
 }

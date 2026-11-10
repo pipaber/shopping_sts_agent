@@ -6,9 +6,9 @@
   "voice": false,
   "input": "texto",
   "audio_source": null,
-  "user_id": "eval-a557491f-11_rechazo_confirmacion",
+  "user_id": "eval-49d0281c-11_rechazo_confirmacion",
   "threads": [
-    "eval-a557491f-11_rechazo_confirmacion-c1"
+    "eval-49d0281c-11_rechazo_confirmacion-c1"
   ],
   "names": {
     "elegidas": "B01KHILJ5O"
@@ -22,8 +22,8 @@
       "transcript": null,
       "expected_text": "Busco unas bombillas LED.",
       "agent_input": "Busco unas bombillas LED.",
-      "response": "Tengo estas opciones: bombillas LED de Philips por 14,22 euros, bombillas LED de Global Fortune por 17,01 euros, bombillas LED portátil por 10,83 euros, bombillas LED para coches por 63,71 euros y bombillas LED menta por 24,96 euros. ¿Cuál te interesa?",
-      "spoken_text": "Tengo estas opciones: bombillas LED de Philips por catorce euros con veintidós céntimos, bombillas LED de Global Fortune por diecisiete euros con un céntimo, bombillas LED portátil por diez euros con ochenta y tres céntimos, bombillas LED para coches por sesenta y tres euros con setenta y un céntimos y bombillas LED menta por veinticuatro euros con noventa y seis céntimos. ¿Cuál te interesa?",
+      "response": "Tengo la bombilla LED Philips por 14,22 euros, la de Global Fortune por 17,01 euros, la de Amazingdeal365 por 10,83 euros, la de CAR WORK BOX por 63,71 euros y la de MENTA por 24,96 euros. ¿Te interesa alguna?",
+      "spoken_text": "Tengo la bombilla LED Philips por catorce euros con veintidós céntimos, la de Global Fortune por diecisiete euros con un céntimo, la de Amazingdeal365 por diez euros con ochenta y tres céntimos, la de CAR WORK BOX por sesenta y tres euros con setenta y un céntimos y la de MENTA por veinticuatro euros con noventa y seis céntimos. ¿Te interesa alguna?",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -41,18 +41,18 @@
       ],
       "timings": {
         "asr": 0.0,
-        "retrieval": 0.038,
-        "llm": 7.012,
-        "tools": 0.028,
+        "retrieval": 0.039,
+        "llm": 6.717,
+        "tools": 0.026,
         "tts": 0.0,
-        "total": 7.079
+        "total": 6.782
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-a557491f-11_rechazo_confirmacion-c1",
+        "cart_id": "eval-49d0281c-11_rechazo_confirmacion-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -71,7 +71,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-a557491f-11_rechazo_confirmacion-c1",
+        "cart_id": "eval-49d0281c-11_rechazo_confirmacion-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -180,8 +180,8 @@
       "transcript": null,
       "expected_text": "Añade dos de la primera opción.",
       "agent_input": "Añade dos de la primera opción.",
-      "response": "Hecho, añadidas dos unidades. Ahora el total es 12,00 euros. En el carrito hay 2 unidades de «Philips - Bombilla LED cristal 50W, GU10, luz blanca cálida…» a 6,00 € cada una, 12,00 €. Total: 12,00 €.",
-      "spoken_text": "Hecho, añadidas dos unidades. Ahora el total es doce euros. En el carrito hay dos unidades de Philips a seis euros cada una, doce euros. Total: doce euros.",
+      "response": "Hecho, añadidas dos unidades. En el carrito hay 2 unidades de «Philips - Bombilla LED cristal 50W, GU10, luz blanca cálida…» a 6,00 € cada una, 12,00 €. Total: 12,00 €.",
+      "spoken_text": "Hecho, añadidas dos unidades. En el carrito hay dos unidades de Philips a seis euros cada una, doce euros. Total: doce euros.",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -201,17 +201,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 5.098,
+        "llm": 4.597,
         "tools": 0.054,
         "tts": 0.0,
-        "total": 5.152
+        "total": 4.651
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-a557491f-11_rechazo_confirmacion-c1",
+        "cart_id": "eval-49d0281c-11_rechazo_confirmacion-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -293,7 +293,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-a557491f-11_rechazo_confirmacion-c1",
+        "cart_id": "eval-49d0281c-11_rechazo_confirmacion-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -344,7 +344,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-a557491f-11_rechazo_confirmacion-c1",
+              "cart_id": "eval-49d0281c-11_rechazo_confirmacion-c1",
               "product_id": "B01KHILJ5O",
               "quantity": 2
             }
@@ -413,7 +413,7 @@
         {
           "tool": "cotizar",
           "args": {},
-          "reason": "cotizar el pedido",
+          "reason": "cotizar el carrito",
           "ok": true,
           "summary": "cotización creada; falta la confirmación del usuario.",
           "issues": []
@@ -422,17 +422,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 2.138,
-        "tools": 0.041,
+        "llm": 2.224,
+        "tools": 0.04,
         "tts": 0.0,
-        "total": 2.179
+        "total": 2.264
       },
       "llm_steps": 1,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-a557491f-11_rechazo_confirmacion-c1",
+        "cart_id": "eval-49d0281c-11_rechazo_confirmacion-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -483,7 +483,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-a557491f-11_rechazo_confirmacion-c1",
+              "cart_id": "eval-49d0281c-11_rechazo_confirmacion-c1",
               "product_id": "B01KHILJ5O",
               "quantity": 2
             }
@@ -520,13 +520,13 @@
         }
       },
       "after": {
-        "cart_id": "eval-a557491f-11_rechazo_confirmacion-c1",
+        "cart_id": "eval-49d0281c-11_rechazo_confirmacion-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "25e74faf02274dbdbbe9a4253ce53cd4",
+            "quote_id": "cddc8ad06ae244e98ba8f18c3fa90fc3",
             "items": [
               {
                 "product_id": "B01KHILJ5O",
@@ -586,7 +586,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-a557491f-11_rechazo_confirmacion-c1",
+              "cart_id": "eval-49d0281c-11_rechazo_confirmacion-c1",
               "product_id": "B01KHILJ5O",
               "quantity": 2
             }
@@ -668,13 +668,13 @@
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-a557491f-11_rechazo_confirmacion-c1",
+        "cart_id": "eval-49d0281c-11_rechazo_confirmacion-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "25e74faf02274dbdbbe9a4253ce53cd4",
+            "quote_id": "cddc8ad06ae244e98ba8f18c3fa90fc3",
             "items": [
               {
                 "product_id": "B01KHILJ5O",
@@ -734,7 +734,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-a557491f-11_rechazo_confirmacion-c1",
+              "cart_id": "eval-49d0281c-11_rechazo_confirmacion-c1",
               "product_id": "B01KHILJ5O",
               "quantity": 2
             }
@@ -771,7 +771,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-a557491f-11_rechazo_confirmacion-c1",
+        "cart_id": "eval-49d0281c-11_rechazo_confirmacion-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -822,7 +822,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-a557491f-11_rechazo_confirmacion-c1",
+              "cart_id": "eval-49d0281c-11_rechazo_confirmacion-c1",
               "product_id": "B01KHILJ5O",
               "quantity": 2
             }
@@ -893,7 +893,7 @@
   ],
   "final": {
     "snapshot": {
-      "cart_id": "eval-a557491f-11_rechazo_confirmacion-c1",
+      "cart_id": "eval-49d0281c-11_rechazo_confirmacion-c1",
       "state": {
         "budget_cents": null,
         "preferences": [],
@@ -944,7 +944,7 @@
         "order_items": [],
         "cart_items": [
           {
-            "cart_id": "eval-a557491f-11_rechazo_confirmacion-c1",
+            "cart_id": "eval-49d0281c-11_rechazo_confirmacion-c1",
             "product_id": "B01KHILJ5O",
             "quantity": 2
           }
@@ -1028,8 +1028,8 @@
         "max": 0.04
       },
       "llm": {
-        "mean": 3.56,
-        "max": 7.01
+        "mean": 3.38,
+        "max": 6.72
       },
       "tools": {
         "mean": 0.03,
@@ -1040,8 +1040,8 @@
         "max": 0.0
       },
       "total": {
-        "mean": 3.61,
-        "max": 7.08
+        "mean": 3.43,
+        "max": 6.78
       }
     },
     "with_llm": {
@@ -1055,8 +1055,8 @@
         "max": 0.04
       },
       "llm": {
-        "mean": 4.75,
-        "max": 7.01
+        "mean": 4.51,
+        "max": 6.72
       },
       "tools": {
         "mean": 0.04,
@@ -1067,8 +1067,8 @@
         "max": 0.0
       },
       "total": {
-        "mean": 4.8,
-        "max": 7.08
+        "mean": 4.57,
+        "max": 6.78
       }
     },
     "without_llm": {

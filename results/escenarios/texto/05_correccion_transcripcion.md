@@ -5,15 +5,15 @@
 - Tipo: `correccion_transcripcion`
 - Qué se prueba: El agente repite el pedido con dos unidades y el usuario corrige antes de confirmar: había dicho doce (dos y doce se confunden con facilidad al transcribir). No debe registrarse nada con dos unidades; el pedido final lleva doce.
 
-## Turno 1 (8.1 s)
+## Turno 1 (7.8 s)
 
 **Usuario (texto):** Busco un ratón inalámbrico.
 
 - `buscar_productos(consulta="ratón inalámbrico")` → OK: estos son ahora los CANDIDATOS, del más al menos relevante: [1] id=B08P34RJSX | Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con Receptor USB, 3 Niveles Ajustables De dpi para Computadora PortáTil, Pc, Mac, Computadora, Macbook, Plata | marca: INPHIC | color: plata | precio: 33,29 € |…
 
-**Agente:** Tengo el ratón inalámbrico INPHIC en plata por 33,29 €, el de INPHIC en plata clara por 42,45 €, el de Anmck en negro por 23,61 €, el de WisFox en gris por 19,69 € y el OMEN VECTOR de HP por 10,84 €. ¿Te interesa alguno?
+**Agente:** Tengo el ratón inalámbrico INPHIC de plata por 33,29 €, el de INPHIC de plata clara por 42,45 €, el de Anmck negro por 23,61 €, el de WisFox gris por 19,69 € y el OMEN VECTOR de HP por 10,84 €. ¿Te interesa alguno?
 
-**Enviado al TTS:** Tengo el ratón inalámbrico INPHIC en plata por treinta y tres euros con veintinueve céntimos, el de INPHIC en plata clara por cuarenta y dos euros con cuarenta y cinco céntimos, el de Anmck en negro por veintitrés euros con sesenta y un céntimos, el de WisFox en gris por diecinueve euros con sesenta y nueve céntimos y el OMEN VECTOR de HP por diez euros con ochenta y cuatro céntimos. ¿Te interesa alguno?
+**Enviado al TTS:** Tengo el ratón inalámbrico INPHIC de plata por treinta y tres euros con veintinueve céntimos, el de INPHIC de plata clara por cuarenta y dos euros con cuarenta y cinco céntimos, el de Anmck negro por veintitrés euros con sesenta y un céntimos, el de WisFox gris por diecinueve euros con sesenta y nueve céntimos y el OMEN VECTOR de HP por diez euros con ochenta y cuatro céntimos. ¿Te interesa alguno?
 
 - ✔ `cart(empty=true)` — carrito: vacío
 
@@ -21,15 +21,15 @@
 
 > **Suceso externo:** la tienda deja `B08P34RJSX` (@elegido) con precio 11,00 € y existencias 20.
 
-## Turno 2 (5.3 s)
+## Turno 2 (4.8 s)
 
 **Usuario (texto):** Añade dos del primero.
 
 - `agregar_al_carrito(product_id="B08P34RJSX", cantidad=2)` → OK: hecho. Así queda el carrito. CARRITO: - id=B08P34RJSX | Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con… | 2 unidades × 11,00 € = 22,00 € | existencias: 20 Total del carrito: 22,00 €
 
-**Agente:** Hecho, añadidas dos unidades. El total ahora es 22,00 €. En el carrito hay 2 unidades de «Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con…» a 11,00 € cada una, 22,00 €. Total: 22,00 €.
+**Agente:** Hecho, añadidas dos unidades. En el carrito hay 2 unidades de «Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con…» a 11,00 € cada una, 22,00 €. Total: 22,00 €.
 
-**Enviado al TTS:** Hecho, añadidas dos unidades. El total ahora es veintidós euros. En el carrito hay dos unidades de Raton inalámbrico a once euros cada una, veintidós euros. Total: veintidós euros.
+**Enviado al TTS:** Hecho, añadidas dos unidades. En el carrito hay dos unidades de Raton inalámbrico a once euros cada una, veintidós euros. Total: veintidós euros.
 
 - ✔ `cart(lines=[{"product": "@elegido", "quantity": 2}])` — carrito: 2 × B08P34RJSX
 
@@ -46,20 +46,20 @@
 - ✔ `awaiting_confirmation(value=true)` — esperando confirmación: sí
 - ✔ `orders(count=0)` — pedidos registrados: 0
 
-## Turno 4 (5.9 s)
+## Turno 4 (7.8 s)
 
 **Usuario (texto):** No, espera, he dicho doce, no dos.
 
 - `cambiar_cantidad(product_id="B08P34RJSX", cantidad=12)` → OK: hecho. Así queda el carrito. CARRITO: - id=B08P34RJSX | Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con… | 12 unidades × 11,00 € = 132,00 € | existencias: 20 Total del carrito: 132,00 €
 
-**Agente:** Hecho, añadidas 10 unidades más. El total ahora es 132,00 €. En el carrito hay 12 unidades de «Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con…» a 11,00 € cada una, 132,00 €. Total: 132,00 €.
+**Agente:** Hecho, añadidas 10 unidades más. En total, 12 unidades de «Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con…» a 11,00 € cada una, 132,00 €. Total: 132,00 €. En el carrito hay 12 unidades de «Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con…» a 11,00 € cada una, 132,00 €. Total: 132,00 €.
 
-**Enviado al TTS:** Hecho, añadidas diez unidades más. El total ahora es ciento treinta y dos euros. En el carrito hay doce unidades de Raton inalámbrico a once euros cada una, ciento treinta y dos euros. Total: ciento treinta y dos euros.
+**Enviado al TTS:** Hecho, añadidas diez unidades más. En total, doce unidades de Raton inalámbrico a once euros cada una, ciento treinta y dos euros. Total: ciento treinta y dos euros. En el carrito hay doce unidades de Raton inalámbrico a once euros cada una, ciento treinta y dos euros. Total: ciento treinta y dos euros.
 
 - ✔ `orders(count=0)` — pedidos registrados: 0
 - ✔ `cart(lines=[{"product": "@elegido", "quantity": 12}])` — carrito: 12 × B08P34RJSX
 
-## Turno 5 (2.3 s)
+## Turno 5 (2.4 s)
 
 **Usuario (texto):** Ahora sí, cierra el pedido.
 
@@ -76,7 +76,7 @@
 
 **Usuario (texto):** Sí, confirmo.
 
-- `confirmar_pedido(quote_id="17102677fdaa419aa0eff3d74d3b8e61")` → OK: pedido registrado
+- `confirmar_pedido(quote_id="7733d6481c024c8b89f463588c9faf66")` → OK: pedido registrado
 
 **Agente:** Pedido número 1 registrado: 12 unidades de «Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con…» a 11,00 € cada una, 132,00 €. Total: 132,00 €. Gracias por tu compra.
 
@@ -106,12 +106,12 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.03 | 8.05 | 0.03 | 0.00 | 8.11 | 0.0 s |
-| 2 | 0.00 | 0.00 | 5.23 | 0.04 | 0.00 | 5.28 | 0.0 s |
-| 3 | 0.00 | 0.00 | 2.29 | 0.04 | 0.00 | 2.32 | 0.0 s |
-| 4 | 0.00 | 0.00 | 5.82 | 0.05 | 0.00 | 5.88 | 0.0 s |
-| 5 | 0.00 | 0.00 | 2.24 | 0.03 | 0.00 | 2.26 | 0.0 s |
-| 6 | 0.00 | 0.00 | 0.00 | 0.02 | 0.00 | 0.02 | 0.0 s |
-| **Media de los turnos con LLM (5)** | 0.00 | 0.01 | 4.72 | 0.04 | 0.00 | 4.77 | |
-| **Media de los turnos sin LLM (1)** | 0.00 | 0.00 | 0.00 | 0.02 | 0.00 | 0.02 | |
+| 1 | 0.00 | 0.03 | 7.72 | 0.03 | 0.00 | 7.78 | 0.0 s |
+| 2 | 0.00 | 0.00 | 4.71 | 0.06 | 0.00 | 4.77 | 0.0 s |
+| 3 | 0.00 | 0.00 | 2.23 | 0.04 | 0.00 | 2.27 | 0.0 s |
+| 4 | 0.00 | 0.00 | 7.78 | 0.06 | 0.00 | 7.84 | 0.0 s |
+| 5 | 0.00 | 0.00 | 2.32 | 0.04 | 0.00 | 2.36 | 0.0 s |
+| 6 | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | 0.0 s |
+| **Media de los turnos con LLM (5)** | 0.00 | 0.01 | 4.95 | 0.04 | 0.00 | 5.00 | |
+| **Media de los turnos sin LLM (1)** | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | |
 

@@ -1,8 +1,8 @@
 {
   "runs": {
     "texto": {
-      "date": "2026-11-10T14:45:03",
-      "commit": "8711c79+cambios",
+      "date": "2026-11-10T16:37:09",
+      "commit": "5d31abf",
       "input": "texto",
       "models": {
         "llm": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
@@ -13,11 +13,11 @@
       },
       "voice": {},
       "load": {
-        "search_seconds": 16.4,
-        "llm_seconds": 0.8,
+        "search_seconds": 16.2,
+        "llm_seconds": 0.7,
         "asr_seconds": null,
         "tts_seconds": null,
-        "total_seconds": 17.6,
+        "total_seconds": 17.3,
         "vram_mib": {
           "search": 706,
           "llm": 5820,
@@ -28,16 +28,9 @@
       "memory_backend": "postgres",
       "audio_sources": {},
       "scenarios": 20,
-      "passed": 14,
-      "pass_rate": 0.7,
-      "failed": [
-        "03_cambio_cantidad",
-        "04_sin_existencias",
-        "06_cambio_stock_confirmacion_repetida",
-        "09_producto_inexistente",
-        "10_atributo_no_verificable",
-        "20_agotado_al_confirmar"
-      ],
+      "passed": 20,
+      "pass_rate": 1.0,
+      "failed": [],
       "turns": 87,
       "violations": {
         "cantidad": 0,
@@ -58,35 +51,8 @@
             "max": 0.03
           },
           "llm": {
-            "mean": 4.58,
-            "max": 10.21
-          },
-          "tools": {
-            "mean": 0.03,
-            "max": 0.08
-          },
-          "tts": {
-            "mean": 0.0,
-            "max": 0.0
-          },
-          "total": {
-            "mean": 4.62,
-            "max": 10.27
-          }
-        },
-        "with_llm": {
-          "turns": 74,
-          "asr": {
-            "mean": 0.0,
-            "max": 0.0
-          },
-          "retrieval": {
-            "mean": 0.01,
-            "max": 0.03
-          },
-          "llm": {
-            "mean": 5.38,
-            "max": 10.21
+            "mean": 4.23,
+            "max": 9.79
           },
           "tools": {
             "mean": 0.04,
@@ -97,732 +63,39 @@
             "max": 0.0
           },
           "total": {
-            "mean": 5.43,
-            "max": 10.27
-          }
-        },
-        "without_llm": {
-          "turns": 13,
-          "asr": {
-            "mean": 0.0,
-            "max": 0.0
-          },
-          "retrieval": {
-            "mean": 0.0,
-            "max": 0.03
-          },
-          "llm": {
-            "mean": 0.0,
-            "max": 0.0
-          },
-          "tools": {
-            "mean": 0.02,
-            "max": 0.03
-          },
-          "tts": {
-            "mean": 0.0,
-            "max": 0.0
-          },
-          "total": {
-            "mean": 0.03,
-            "max": 0.04
-          }
-        }
-      },
-      "verdicts": {
-        "01_compra_confirmada": true,
-        "02_pedido_ambiguo": true,
-        "03_cambio_cantidad": false,
-        "04_sin_existencias": false,
-        "05_correccion_transcripcion": true,
-        "06_cambio_stock_confirmacion_repetida": false,
-        "07_presupuesto_excedido": true,
-        "08_cantidad_invalida": true,
-        "09_producto_inexistente": false,
-        "10_atributo_no_verificable": false,
-        "11_rechazo_confirmacion": true,
-        "12_memoria_preferencias": true,
-        "13_confirmacion_con_cambio": true,
-        "14_pregunta_sin_cambios": true,
-        "15_stock_insuficiente": true,
-        "16_quitar_del_carrito": true,
-        "17_cambio_presupuesto": true,
-        "18_cierre_sin_carrito": true,
-        "19_presupuesto_compartido": true,
-        "20_agotado_al_confirmar": false
-      },
-      "failed_checks": {
-        "03_cambio_cantidad": [
-          {
-            "turn": 4,
-            "check": "awaiting_confirmation",
-            "params": {
-              "value": true
-            },
-            "ok": false,
-            "detail": "esperando confirmación: no"
-          },
-          {
-            "turn": 5,
-            "check": "orders",
-            "params": {
-              "count": 1
-            },
-            "ok": false,
-            "detail": "pedidos registrados: 0"
-          },
-          {
-            "turn": "final",
-            "check": "orders",
-            "params": {
-              "count": 1
-            },
-            "ok": false,
-            "detail": "pedidos registrados: 0"
-          },
-          {
-            "turn": "final",
-            "check": "order",
-            "params": {
-              "lines": [
-                {
-                  "product": "@elegida",
-                  "quantity": 4
-                }
-              ],
-              "total_cents": 3800
-            },
-            "ok": false,
-            "detail": "no hay ningún pedido"
-          },
-          {
-            "turn": "final",
-            "check": "stock",
-            "params": {
-              "product": "@elegida",
-              "equals": 16
-            },
-            "ok": false,
-            "detail": "existencias de B07VQNY8PK: 20"
-          },
-          {
-            "turn": "final",
-            "check": "cart",
-            "params": {
-              "empty": true
-            },
-            "ok": false,
-            "detail": "carrito: 4 × B07VQNY8PK"
-          }
-        ],
-        "04_sin_existencias": [
-          {
-            "turn": 2,
-            "check": "cart",
-            "params": {
-              "empty": true
-            },
-            "ok": false,
-            "detail": "carrito: 1 × B09738BXB2"
-          },
-          {
-            "turn": 3,
-            "check": "cart",
-            "params": {
-              "lines": [
-                {
-                  "product": "@segunda",
-                  "quantity": 1
-                }
-              ]
-            },
-            "ok": false,
-            "detail": "carrito: 2 × B09738BXB2"
-          },
-          {
-            "turn": "final",
-            "check": "order",
-            "params": {
-              "lines": [
-                {
-                  "not": "@agotada",
-                  "quantity": 1
-                }
-              ]
-            },
-            "ok": false,
-            "detail": "pedido 1: 2 × B09738BXB2; total 3600 céntimos"
-          }
-        ],
-        "06_cambio_stock_confirmacion_repetida": [
-          {
-            "turn": 5,
-            "check": "cart",
-            "params": {
-              "lines": [
-                {
-                  "product": "@elegida",
-                  "quantity": 1
-                }
-              ]
-            },
-            "ok": false,
-            "detail": "carrito: 1 × B07ZCY9XZ9"
-          },
-          {
-            "turn": "final",
-            "check": "order",
-            "params": {
-              "lines": [
-                {
-                  "product": "@elegida",
-                  "quantity": 1
-                }
-              ],
-              "total_cents": 1500
-            },
-            "ok": false,
-            "detail": "pedido 1: 1 × B07ZCY9XZ9; total 2323 céntimos"
-          },
-          {
-            "turn": "final",
-            "check": "stock",
-            "params": {
-              "product": "@elegida",
-              "equals": 0
-            },
-            "ok": false,
-            "detail": "existencias de B085CHJ9BD: 1"
-          }
-        ],
-        "09_producto_inexistente": [
-          {
-            "turn": 2,
-            "check": "cart",
-            "params": {
-              "empty": true
-            },
-            "ok": false,
-            "detail": "carrito: 2 × B07TY4VMZ3"
-          },
-          {
-            "turn": 3,
-            "check": "cart",
-            "params": {
-              "empty": true
-            },
-            "ok": false,
-            "detail": "carrito: 2 × B07TY4VMZ3"
-          },
-          {
-            "turn": "final",
-            "check": "cart",
-            "params": {
-              "empty": true
-            },
-            "ok": false,
-            "detail": "carrito: 2 × B07TY4VMZ3"
-          }
-        ],
-        "10_atributo_no_verificable": [
-          {
-            "turn": 2,
-            "check": "declares_unknown",
-            "params": {
-              "product": "@elegida",
-              "keywords": [
-                "valoraci",
-                "estrellas",
-                "reseñ",
-                "opiniones",
-                "puntuaci"
-              ]
-            },
-            "ok": false,
-            "detail": "dato en el catálogo: no; la respuesta dice que no consta: no"
-          }
-        ],
-        "20_agotado_al_confirmar": [
-          {
-            "turn": 5,
-            "check": "cart",
-            "params": {
-              "lines": [
-                {
-                  "product": "@alternativa",
-                  "quantity": 2
-                }
-              ]
-            },
-            "ok": false,
-            "detail": "carrito: 2 × B07XCPXLBW"
-          }
-        ]
-      },
-      "voice_metrics": null
-    },
-    "texto_sage": {
-      "date": "2026-11-10T14:15:30",
-      "commit": "8711c79+cambios",
-      "input": "texto",
-      "models": {
-        "llm": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
-        "asr": null,
-        "tts": null,
-        "embeddings": "intfloat/multilingual-e5-small",
-        "reranker": "sage"
-      },
-      "voice": {},
-      "load": {
-        "search_seconds": 16.0,
-        "llm_seconds": 0.7,
-        "asr_seconds": null,
-        "tts_seconds": null,
-        "total_seconds": 17.1,
-        "vram_mib": {
-          "search": 834,
-          "llm": 5948,
-          "asr": 5948,
-          "loaded": 5948
-        }
-      },
-      "memory_backend": "postgres",
-      "audio_sources": {},
-      "scenarios": 20,
-      "passed": 16,
-      "pass_rate": 0.8,
-      "failed": [
-        "03_cambio_cantidad",
-        "04_sin_existencias",
-        "06_cambio_stock_confirmacion_repetida",
-        "09_producto_inexistente"
-      ],
-      "turns": 87,
-      "violations": {
-        "cantidad": 0,
-        "presupuesto": 0,
-        "existencias": 0,
-        "pedido_duplicado": 0,
-        "cambio_parcial": 0
-      },
-      "timings": {
-        "all": {
-          "turns": 87,
-          "asr": {
-            "mean": 0.0,
-            "max": 0.0
-          },
-          "retrieval": {
-            "mean": 0.01,
-            "max": 0.06
-          },
-          "llm": {
-            "mean": 4.58,
-            "max": 12.22
-          },
-          "tools": {
-            "mean": 0.04,
-            "max": 0.07
-          },
-          "tts": {
-            "mean": 0.0,
-            "max": 0.0
-          },
-          "total": {
-            "mean": 4.63,
-            "max": 12.24
+            "mean": 4.27,
+            "max": 9.86
           }
         },
         "with_llm": {
-          "turns": 76,
+          "turns": 73,
           "asr": {
             "mean": 0.0,
             "max": 0.0
           },
           "retrieval": {
             "mean": 0.01,
-            "max": 0.06
+            "max": 0.03
           },
           "llm": {
-            "mean": 5.24,
-            "max": 12.22
+            "mean": 5.04,
+            "max": 9.79
           },
           "tools": {
             "mean": 0.04,
-            "max": 0.07
+            "max": 0.08
           },
           "tts": {
             "mean": 0.0,
             "max": 0.0
           },
           "total": {
-            "mean": 5.29,
-            "max": 12.24
+            "mean": 5.08,
+            "max": 9.86
           }
         },
         "without_llm": {
-          "turns": 11,
-          "asr": {
-            "mean": 0.0,
-            "max": 0.0
-          },
-          "retrieval": {
-            "mean": 0.01,
-            "max": 0.03
-          },
-          "llm": {
-            "mean": 0.0,
-            "max": 0.0
-          },
-          "tools": {
-            "mean": 0.02,
-            "max": 0.03
-          },
-          "tts": {
-            "mean": 0.0,
-            "max": 0.0
-          },
-          "total": {
-            "mean": 0.03,
-            "max": 0.04
-          }
-        }
-      },
-      "verdicts": {
-        "01_compra_confirmada": true,
-        "02_pedido_ambiguo": true,
-        "03_cambio_cantidad": false,
-        "04_sin_existencias": false,
-        "05_correccion_transcripcion": true,
-        "06_cambio_stock_confirmacion_repetida": false,
-        "07_presupuesto_excedido": true,
-        "08_cantidad_invalida": true,
-        "09_producto_inexistente": false,
-        "10_atributo_no_verificable": true,
-        "11_rechazo_confirmacion": true,
-        "12_memoria_preferencias": true,
-        "13_confirmacion_con_cambio": true,
-        "14_pregunta_sin_cambios": true,
-        "15_stock_insuficiente": true,
-        "16_quitar_del_carrito": true,
-        "17_cambio_presupuesto": true,
-        "18_cierre_sin_carrito": true,
-        "19_presupuesto_compartido": true,
-        "20_agotado_al_confirmar": true
-      },
-      "failed_checks": {
-        "03_cambio_cantidad": [
-          {
-            "turn": 4,
-            "check": "awaiting_confirmation",
-            "params": {
-              "value": true
-            },
-            "ok": false,
-            "detail": "esperando confirmación: no"
-          },
-          {
-            "turn": 5,
-            "check": "orders",
-            "params": {
-              "count": 1
-            },
-            "ok": false,
-            "detail": "pedidos registrados: 0"
-          },
-          {
-            "turn": "final",
-            "check": "orders",
-            "params": {
-              "count": 1
-            },
-            "ok": false,
-            "detail": "pedidos registrados: 0"
-          },
-          {
-            "turn": "final",
-            "check": "order",
-            "params": {
-              "lines": [
-                {
-                  "product": "@elegida",
-                  "quantity": 4
-                }
-              ],
-              "total_cents": 3800
-            },
-            "ok": false,
-            "detail": "no hay ningún pedido"
-          },
-          {
-            "turn": "final",
-            "check": "stock",
-            "params": {
-              "product": "@elegida",
-              "equals": 16
-            },
-            "ok": false,
-            "detail": "existencias de B07VQNY8PK: 20"
-          },
-          {
-            "turn": "final",
-            "check": "cart",
-            "params": {
-              "empty": true
-            },
-            "ok": false,
-            "detail": "carrito: 4 × B07VQNY8PK"
-          }
-        ],
-        "04_sin_existencias": [
-          {
-            "turn": 2,
-            "check": "cart",
-            "params": {
-              "empty": true
-            },
-            "ok": false,
-            "detail": "carrito: 1 × B09738BXB2"
-          },
-          {
-            "turn": 3,
-            "check": "cart",
-            "params": {
-              "lines": [
-                {
-                  "product": "@segunda",
-                  "quantity": 1
-                }
-              ]
-            },
-            "ok": false,
-            "detail": "carrito: 2 × B09738BXB2"
-          },
-          {
-            "turn": "final",
-            "check": "order",
-            "params": {
-              "lines": [
-                {
-                  "not": "@agotada",
-                  "quantity": 1
-                }
-              ]
-            },
-            "ok": false,
-            "detail": "pedido 1: 2 × B09738BXB2; total 3600 céntimos"
-          }
-        ],
-        "06_cambio_stock_confirmacion_repetida": [
-          {
-            "turn": 5,
-            "check": "cart",
-            "params": {
-              "lines": [
-                {
-                  "product": "@elegida",
-                  "quantity": 1
-                }
-              ]
-            },
-            "ok": false,
-            "detail": "carrito: vacío"
-          },
-          {
-            "turn": 6,
-            "check": "awaiting_confirmation",
-            "params": {
-              "value": true
-            },
-            "ok": false,
-            "detail": "esperando confirmación: no"
-          },
-          {
-            "turn": 7,
-            "check": "orders",
-            "params": {
-              "count": 1
-            },
-            "ok": false,
-            "detail": "pedidos registrados: 0"
-          },
-          {
-            "turn": 8,
-            "check": "orders",
-            "params": {
-              "count": 1
-            },
-            "ok": false,
-            "detail": "pedidos registrados: 0"
-          },
-          {
-            "turn": "final",
-            "check": "orders",
-            "params": {
-              "count": 1
-            },
-            "ok": false,
-            "detail": "pedidos registrados: 0"
-          },
-          {
-            "turn": "final",
-            "check": "order",
-            "params": {
-              "lines": [
-                {
-                  "product": "@elegida",
-                  "quantity": 1
-                }
-              ],
-              "total_cents": 1500
-            },
-            "ok": false,
-            "detail": "no hay ningún pedido"
-          },
-          {
-            "turn": "final",
-            "check": "stock",
-            "params": {
-              "product": "@elegida",
-              "equals": 0
-            },
-            "ok": false,
-            "detail": "existencias de B085CHJ9BD: 1"
-          }
-        ],
-        "09_producto_inexistente": [
-          {
-            "turn": 2,
-            "check": "cart",
-            "params": {
-              "empty": true
-            },
-            "ok": false,
-            "detail": "carrito: 2 × B08YDXKTTQ"
-          },
-          {
-            "turn": 3,
-            "check": "cart",
-            "params": {
-              "empty": true
-            },
-            "ok": false,
-            "detail": "carrito: 2 × B08YDXKTTQ"
-          },
-          {
-            "turn": "final",
-            "check": "cart",
-            "params": {
-              "empty": true
-            },
-            "ok": false,
-            "detail": "carrito: 2 × B08YDXKTTQ"
-          }
-        ]
-      },
-      "voice_metrics": null
-    },
-    "texto_sin_reranker": {
-      "date": "2026-11-10T14:24:52",
-      "commit": "8711c79+cambios",
-      "input": "texto",
-      "models": {
-        "llm": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
-        "asr": null,
-        "tts": null,
-        "embeddings": "intfloat/multilingual-e5-small",
-        "reranker": null
-      },
-      "voice": {},
-      "load": {
-        "search_seconds": 151.6,
-        "llm_seconds": 0.8,
-        "asr_seconds": null,
-        "tts_seconds": null,
-        "total_seconds": 152.7,
-        "vram_mib": {
-          "search": 604,
-          "llm": 5718,
-          "asr": 5718,
-          "loaded": 5718
-        }
-      },
-      "memory_backend": "postgres",
-      "audio_sources": {},
-      "scenarios": 20,
-      "passed": 16,
-      "pass_rate": 0.8,
-      "failed": [
-        "03_cambio_cantidad",
-        "04_sin_existencias",
-        "09_producto_inexistente",
-        "10_atributo_no_verificable"
-      ],
-      "turns": 87,
-      "violations": {
-        "cantidad": 0,
-        "presupuesto": 0,
-        "existencias": 0,
-        "pedido_duplicado": 0,
-        "cambio_parcial": 0
-      },
-      "timings": {
-        "all": {
-          "turns": 87,
-          "asr": {
-            "mean": 0.0,
-            "max": 0.0
-          },
-          "retrieval": {
-            "mean": 0.01,
-            "max": 0.03
-          },
-          "llm": {
-            "mean": 4.33,
-            "max": 9.57
-          },
-          "tools": {
-            "mean": 0.04,
-            "max": 0.07
-          },
-          "tts": {
-            "mean": 0.0,
-            "max": 0.0
-          },
-          "total": {
-            "mean": 4.37,
-            "max": 9.63
-          }
-        },
-        "with_llm": {
-          "turns": 74,
-          "asr": {
-            "mean": 0.0,
-            "max": 0.0
-          },
-          "retrieval": {
-            "mean": 0.01,
-            "max": 0.03
-          },
-          "llm": {
-            "mean": 5.09,
-            "max": 9.57
-          },
-          "tools": {
-            "mean": 0.04,
-            "max": 0.07
-          },
-          "tts": {
-            "mean": 0.0,
-            "max": 0.0
-          },
-          "total": {
-            "mean": 5.13,
-            "max": 9.63
-          }
-        },
-        "without_llm": {
-          "turns": 13,
+          "turns": 14,
           "asr": {
             "mean": 0.0,
             "max": 0.0
@@ -852,14 +125,14 @@
       "verdicts": {
         "01_compra_confirmada": true,
         "02_pedido_ambiguo": true,
-        "03_cambio_cantidad": false,
-        "04_sin_existencias": false,
+        "03_cambio_cantidad": true,
+        "04_sin_existencias": true,
         "05_correccion_transcripcion": true,
         "06_cambio_stock_confirmacion_repetida": true,
         "07_presupuesto_excedido": true,
         "08_cantidad_invalida": true,
-        "09_producto_inexistente": false,
-        "10_atributo_no_verificable": false,
+        "09_producto_inexistente": true,
+        "10_atributo_no_verificable": true,
         "11_rechazo_confirmacion": true,
         "12_memoria_preferencias": true,
         "13_confirmacion_con_cambio": true,
@@ -871,162 +144,306 @@
         "19_presupuesto_compartido": true,
         "20_agotado_al_confirmar": true
       },
-      "failed_checks": {
-        "03_cambio_cantidad": [
-          {
-            "turn": 4,
-            "check": "awaiting_confirmation",
-            "params": {
-              "value": true
-            },
-            "ok": false,
-            "detail": "esperando confirmación: no"
-          },
-          {
-            "turn": 5,
-            "check": "orders",
-            "params": {
-              "count": 1
-            },
-            "ok": false,
-            "detail": "pedidos registrados: 0"
-          },
-          {
-            "turn": "final",
-            "check": "orders",
-            "params": {
-              "count": 1
-            },
-            "ok": false,
-            "detail": "pedidos registrados: 0"
-          },
-          {
-            "turn": "final",
-            "check": "order",
-            "params": {
-              "lines": [
-                {
-                  "product": "@elegida",
-                  "quantity": 4
-                }
-              ],
-              "total_cents": 3800
-            },
-            "ok": false,
-            "detail": "no hay ningún pedido"
-          },
-          {
-            "turn": "final",
-            "check": "stock",
-            "params": {
-              "product": "@elegida",
-              "equals": 16
-            },
-            "ok": false,
-            "detail": "existencias de B07VQNY8PK: 20"
-          },
-          {
-            "turn": "final",
-            "check": "cart",
-            "params": {
-              "empty": true
-            },
-            "ok": false,
-            "detail": "carrito: 4 × B07VQNY8PK"
-          }
-        ],
-        "04_sin_existencias": [
-          {
-            "turn": 2,
-            "check": "cart",
-            "params": {
-              "empty": true
-            },
-            "ok": false,
-            "detail": "carrito: 1 × B08GPGJY8M"
-          },
-          {
-            "turn": 3,
-            "check": "cart",
-            "params": {
-              "lines": [
-                {
-                  "product": "@segunda",
-                  "quantity": 1
-                }
-              ]
-            },
-            "ok": false,
-            "detail": "carrito: 2 × B08GPGJY8M"
-          },
-          {
-            "turn": "final",
-            "check": "order",
-            "params": {
-              "lines": [
-                {
-                  "not": "@agotada",
-                  "quantity": 1
-                }
-              ]
-            },
-            "ok": false,
-            "detail": "pedido 1: 2 × B08GPGJY8M; total 3600 céntimos"
-          }
-        ],
-        "09_producto_inexistente": [
-          {
-            "turn": 2,
-            "check": "cart",
-            "params": {
-              "empty": true
-            },
-            "ok": false,
-            "detail": "carrito: 2 × B07QG82RGM"
-          },
-          {
-            "turn": 3,
-            "check": "cart",
-            "params": {
-              "empty": true
-            },
-            "ok": false,
-            "detail": "carrito: 2 × B07QG82RGM"
-          },
-          {
-            "turn": "final",
-            "check": "cart",
-            "params": {
-              "empty": true
-            },
-            "ok": false,
-            "detail": "carrito: 2 × B07QG82RGM"
-          }
-        ],
-        "10_atributo_no_verificable": [
-          {
-            "turn": 2,
-            "check": "declares_unknown",
-            "params": {
-              "product": "@elegida",
-              "keywords": [
-                "valoraci",
-                "estrellas",
-                "reseñ",
-                "opiniones",
-                "puntuaci"
-              ]
-            },
-            "ok": false,
-            "detail": "dato en el catálogo: no; la respuesta dice que no consta: no"
-          }
-        ]
+      "failed_checks": {},
+      "voice_metrics": null
+    },
+    "texto_sage": {
+      "date": "2026-11-10T16:45:58",
+      "commit": "5d31abf+cambios",
+      "input": "texto",
+      "models": {
+        "llm": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+        "asr": null,
+        "tts": null,
+        "embeddings": "intfloat/multilingual-e5-small",
+        "reranker": "sage"
       },
+      "voice": {},
+      "load": {
+        "search_seconds": 149.8,
+        "llm_seconds": 0.8,
+        "asr_seconds": null,
+        "tts_seconds": null,
+        "total_seconds": 150.9,
+        "vram_mib": {
+          "search": 930,
+          "llm": 6044,
+          "asr": 6044,
+          "loaded": 6044
+        }
+      },
+      "memory_backend": "postgres",
+      "audio_sources": {},
+      "scenarios": 20,
+      "passed": 20,
+      "pass_rate": 1.0,
+      "failed": [],
+      "turns": 87,
+      "violations": {
+        "cantidad": 0,
+        "presupuesto": 0,
+        "existencias": 0,
+        "pedido_duplicado": 0,
+        "cambio_parcial": 0
+      },
+      "timings": {
+        "all": {
+          "turns": 87,
+          "asr": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "retrieval": {
+            "mean": 0.01,
+            "max": 0.04
+          },
+          "llm": {
+            "mean": 4.19,
+            "max": 10.75
+          },
+          "tools": {
+            "mean": 0.04,
+            "max": 0.07
+          },
+          "tts": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "total": {
+            "mean": 4.23,
+            "max": 10.83
+          }
+        },
+        "with_llm": {
+          "turns": 73,
+          "asr": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "retrieval": {
+            "mean": 0.01,
+            "max": 0.04
+          },
+          "llm": {
+            "mean": 4.99,
+            "max": 10.75
+          },
+          "tools": {
+            "mean": 0.04,
+            "max": 0.07
+          },
+          "tts": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "total": {
+            "mean": 5.03,
+            "max": 10.83
+          }
+        },
+        "without_llm": {
+          "turns": 14,
+          "asr": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "retrieval": {
+            "mean": 0.01,
+            "max": 0.04
+          },
+          "llm": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "tools": {
+            "mean": 0.03,
+            "max": 0.03
+          },
+          "tts": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "total": {
+            "mean": 0.03,
+            "max": 0.06
+          }
+        }
+      },
+      "verdicts": {
+        "01_compra_confirmada": true,
+        "02_pedido_ambiguo": true,
+        "03_cambio_cantidad": true,
+        "04_sin_existencias": true,
+        "05_correccion_transcripcion": true,
+        "06_cambio_stock_confirmacion_repetida": true,
+        "07_presupuesto_excedido": true,
+        "08_cantidad_invalida": true,
+        "09_producto_inexistente": true,
+        "10_atributo_no_verificable": true,
+        "11_rechazo_confirmacion": true,
+        "12_memoria_preferencias": true,
+        "13_confirmacion_con_cambio": true,
+        "14_pregunta_sin_cambios": true,
+        "15_stock_insuficiente": true,
+        "16_quitar_del_carrito": true,
+        "17_cambio_presupuesto": true,
+        "18_cierre_sin_carrito": true,
+        "19_presupuesto_compartido": true,
+        "20_agotado_al_confirmar": true
+      },
+      "failed_checks": {},
+      "voice_metrics": null
+    },
+    "texto_sin_reranker": {
+      "date": "2026-11-10T16:52:29",
+      "commit": "5d31abf+cambios",
+      "input": "texto",
+      "models": {
+        "llm": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+        "asr": null,
+        "tts": null,
+        "embeddings": "intfloat/multilingual-e5-small",
+        "reranker": null
+      },
+      "voice": {},
+      "load": {
+        "search_seconds": 15.8,
+        "llm_seconds": 0.7,
+        "asr_seconds": null,
+        "tts_seconds": null,
+        "total_seconds": 16.9,
+        "vram_mib": {
+          "search": 604,
+          "llm": 5718,
+          "asr": 5718,
+          "loaded": 5718
+        }
+      },
+      "memory_backend": "postgres",
+      "audio_sources": {},
+      "scenarios": 20,
+      "passed": 20,
+      "pass_rate": 1.0,
+      "failed": [],
+      "turns": 87,
+      "violations": {
+        "cantidad": 0,
+        "presupuesto": 0,
+        "existencias": 0,
+        "pedido_duplicado": 0,
+        "cambio_parcial": 0
+      },
+      "timings": {
+        "all": {
+          "turns": 87,
+          "asr": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "retrieval": {
+            "mean": 0.01,
+            "max": 0.03
+          },
+          "llm": {
+            "mean": 4.17,
+            "max": 9.42
+          },
+          "tools": {
+            "mean": 0.04,
+            "max": 0.07
+          },
+          "tts": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "total": {
+            "mean": 4.21,
+            "max": 9.5
+          }
+        },
+        "with_llm": {
+          "turns": 73,
+          "asr": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "retrieval": {
+            "mean": 0.01,
+            "max": 0.03
+          },
+          "llm": {
+            "mean": 4.97,
+            "max": 9.42
+          },
+          "tools": {
+            "mean": 0.04,
+            "max": 0.07
+          },
+          "tts": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "total": {
+            "mean": 5.02,
+            "max": 9.5
+          }
+        },
+        "without_llm": {
+          "turns": 14,
+          "asr": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "retrieval": {
+            "mean": 0.0,
+            "max": 0.02
+          },
+          "llm": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "tools": {
+            "mean": 0.03,
+            "max": 0.03
+          },
+          "tts": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "total": {
+            "mean": 0.03,
+            "max": 0.03
+          }
+        }
+      },
+      "verdicts": {
+        "01_compra_confirmada": true,
+        "02_pedido_ambiguo": true,
+        "03_cambio_cantidad": true,
+        "04_sin_existencias": true,
+        "05_correccion_transcripcion": true,
+        "06_cambio_stock_confirmacion_repetida": true,
+        "07_presupuesto_excedido": true,
+        "08_cantidad_invalida": true,
+        "09_producto_inexistente": true,
+        "10_atributo_no_verificable": true,
+        "11_rechazo_confirmacion": true,
+        "12_memoria_preferencias": true,
+        "13_confirmacion_con_cambio": true,
+        "14_pregunta_sin_cambios": true,
+        "15_stock_insuficiente": true,
+        "16_quitar_del_carrito": true,
+        "17_cambio_presupuesto": true,
+        "18_cierre_sin_carrito": true,
+        "19_presupuesto_compartido": true,
+        "20_agotado_al_confirmar": true
+      },
+      "failed_checks": {},
       "voice_metrics": null
     },
     "voz": {
-      "date": "2026-11-10T14:34:29",
-      "commit": "8711c79+cambios",
+      "date": "2026-11-10T16:59:11",
+      "commit": "5d31abf+cambios",
       "input": "audio",
       "models": {
         "llm": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
@@ -1040,11 +457,11 @@
         "speaker": null
       },
       "load": {
-        "search_seconds": 16.2,
-        "llm_seconds": 0.8,
-        "asr_seconds": 1.0,
-        "tts_seconds": 8.8,
-        "total_seconds": 27.4,
+        "search_seconds": 16.3,
+        "llm_seconds": 0.7,
+        "asr_seconds": 1.1,
+        "tts_seconds": 10.1,
+        "total_seconds": 28.8,
         "vram_mib": {
           "search": 706,
           "llm": 5820,
@@ -1062,13 +479,9 @@
         "06_cambio_stock_confirmacion_repetida": "sintéticos, hablante de prueba «Luis Moray» de XTTS-v2 (no es la voz del usuario)"
       },
       "scenarios": 6,
-      "passed": 3,
-      "pass_rate": 0.5,
-      "failed": [
-        "03_cambio_cantidad",
-        "04_sin_existencias",
-        "06_cambio_stock_confirmacion_repetida"
-      ],
+      "passed": 6,
+      "pass_rate": 1.0,
+      "failed": [],
       "turns": 31,
       "violations": {
         "cantidad": 0,
@@ -1082,61 +495,61 @@
           "turns": 31,
           "asr": {
             "mean": 0.34,
-            "max": 0.54
+            "max": 0.56
           },
           "retrieval": {
             "mean": 0.01,
-            "max": 0.03
+            "max": 0.05
           },
           "llm": {
-            "mean": 4.15,
-            "max": 9.76
+            "mean": 3.91,
+            "max": 9.84
           },
           "tools": {
             "mean": 0.04,
-            "max": 0.09
+            "max": 0.06
           },
           "tts": {
-            "mean": 6.19,
-            "max": 17.33
+            "mean": 5.88,
+            "max": 11.85
           },
           "total": {
-            "mean": 10.73,
-            "max": 25.57
+            "mean": 10.19,
+            "max": 20.62
           }
         },
         "with_llm": {
-          "turns": 25,
+          "turns": 24,
           "asr": {
             "mean": 0.35,
-            "max": 0.54
+            "max": 0.56
           },
           "retrieval": {
             "mean": 0.01,
-            "max": 0.03
+            "max": 0.05
           },
           "llm": {
-            "mean": 5.14,
-            "max": 9.76
+            "mean": 5.05,
+            "max": 9.84
           },
           "tools": {
             "mean": 0.04,
-            "max": 0.09
+            "max": 0.06
           },
           "tts": {
-            "mean": 6.42,
-            "max": 17.33
+            "mean": 6.3,
+            "max": 11.85
           },
           "total": {
-            "mean": 11.96,
-            "max": 25.57
+            "mean": 11.75,
+            "max": 20.62
           }
         },
         "without_llm": {
-          "turns": 6,
+          "turns": 7,
           "asr": {
-            "mean": 0.33,
-            "max": 0.36
+            "mean": 0.32,
+            "max": 0.33
           },
           "retrieval": {
             "mean": 0.0,
@@ -1147,172 +560,28 @@
             "max": 0.0
           },
           "tools": {
-            "mean": 0.03,
+            "mean": 0.04,
             "max": 0.04
           },
           "tts": {
-            "mean": 5.22,
-            "max": 10.69
+            "mean": 4.46,
+            "max": 10.64
           },
           "total": {
-            "mean": 5.59,
-            "max": 11.05
+            "mean": 4.82,
+            "max": 11.01
           }
         }
       },
       "verdicts": {
         "01_compra_confirmada": true,
         "02_pedido_ambiguo": true,
-        "03_cambio_cantidad": false,
-        "04_sin_existencias": false,
+        "03_cambio_cantidad": true,
+        "04_sin_existencias": true,
         "05_correccion_transcripcion": true,
-        "06_cambio_stock_confirmacion_repetida": false
+        "06_cambio_stock_confirmacion_repetida": true
       },
-      "failed_checks": {
-        "03_cambio_cantidad": [
-          {
-            "turn": 4,
-            "check": "awaiting_confirmation",
-            "params": {
-              "value": true
-            },
-            "ok": false,
-            "detail": "esperando confirmación: no"
-          },
-          {
-            "turn": 5,
-            "check": "orders",
-            "params": {
-              "count": 1
-            },
-            "ok": false,
-            "detail": "pedidos registrados: 0"
-          },
-          {
-            "turn": "final",
-            "check": "orders",
-            "params": {
-              "count": 1
-            },
-            "ok": false,
-            "detail": "pedidos registrados: 0"
-          },
-          {
-            "turn": "final",
-            "check": "order",
-            "params": {
-              "lines": [
-                {
-                  "product": "@elegida",
-                  "quantity": 4
-                }
-              ],
-              "total_cents": 3800
-            },
-            "ok": false,
-            "detail": "no hay ningún pedido"
-          },
-          {
-            "turn": "final",
-            "check": "stock",
-            "params": {
-              "product": "@elegida",
-              "equals": 16
-            },
-            "ok": false,
-            "detail": "existencias de B07VQNY8PK: 20"
-          },
-          {
-            "turn": "final",
-            "check": "cart",
-            "params": {
-              "empty": true
-            },
-            "ok": false,
-            "detail": "carrito: 4 × B07VQNY8PK"
-          }
-        ],
-        "04_sin_existencias": [
-          {
-            "turn": 2,
-            "check": "cart",
-            "params": {
-              "empty": true
-            },
-            "ok": false,
-            "detail": "carrito: 1 × B09738BXB2"
-          },
-          {
-            "turn": 3,
-            "check": "cart",
-            "params": {
-              "lines": [
-                {
-                  "product": "@segunda",
-                  "quantity": 1
-                }
-              ]
-            },
-            "ok": false,
-            "detail": "carrito: 2 × B09738BXB2"
-          },
-          {
-            "turn": "final",
-            "check": "order",
-            "params": {
-              "lines": [
-                {
-                  "not": "@agotada",
-                  "quantity": 1
-                }
-              ]
-            },
-            "ok": false,
-            "detail": "pedido 1: 2 × B09738BXB2; total 3600 céntimos"
-          }
-        ],
-        "06_cambio_stock_confirmacion_repetida": [
-          {
-            "turn": 5,
-            "check": "cart",
-            "params": {
-              "lines": [
-                {
-                  "product": "@elegida",
-                  "quantity": 1
-                }
-              ]
-            },
-            "ok": false,
-            "detail": "carrito: 1 × B08NNZ6NC2"
-          },
-          {
-            "turn": "final",
-            "check": "order",
-            "params": {
-              "lines": [
-                {
-                  "product": "@elegida",
-                  "quantity": 1
-                }
-              ],
-              "total_cents": 1500
-            },
-            "ok": false,
-            "detail": "pedido 1: 1 × B08NNZ6NC2; total 2386 céntimos"
-          },
-          {
-            "turn": "final",
-            "check": "stock",
-            "params": {
-              "product": "@elegida",
-              "equals": 0
-            },
-            "ok": false,
-            "detail": "existencias de B085CHJ9BD: 1"
-          }
-        ]
-      },
+      "failed_checks": {},
       "voice_metrics": {
         "asr": {
           "cases": 31,
@@ -1336,15 +605,15 @@
         },
         "tts": {
           "cases": 31,
-          "wer": 0.038461538461538464,
-          "similarity_mean": 0.7415483323325186,
-          "similarity_min": 0.5893252374166551
+          "wer": 0.039097744360902256,
+          "similarity_mean": 0.7413332651340095,
+          "similarity_min": 0.5005643381032236
         }
       }
     },
     "voz_texto_correcto": {
-      "date": "2026-11-10T14:34:29",
-      "commit": "8711c79+cambios",
+      "date": "2026-11-10T16:59:11",
+      "commit": "5d31abf+cambios",
       "input": "texto",
       "models": {
         "llm": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
@@ -1358,11 +627,11 @@
         "speaker": null
       },
       "load": {
-        "search_seconds": 16.2,
-        "llm_seconds": 0.8,
-        "asr_seconds": 1.0,
-        "tts_seconds": 8.8,
-        "total_seconds": 27.4,
+        "search_seconds": 16.3,
+        "llm_seconds": 0.7,
+        "asr_seconds": 1.1,
+        "tts_seconds": 10.1,
+        "total_seconds": 28.8,
         "vram_mib": {
           "search": 706,
           "llm": 5820,
@@ -1373,13 +642,9 @@
       "memory_backend": "postgres",
       "audio_sources": {},
       "scenarios": 6,
-      "passed": 3,
-      "pass_rate": 0.5,
-      "failed": [
-        "03_cambio_cantidad",
-        "04_sin_existencias",
-        "06_cambio_stock_confirmacion_repetida"
-      ],
+      "passed": 6,
+      "pass_rate": 1.0,
+      "failed": [],
       "turns": 31,
       "violations": {
         "cantidad": 0,
@@ -1397,69 +662,69 @@
           },
           "retrieval": {
             "mean": 0.01,
-            "max": 0.05
+            "max": 0.03
           },
           "llm": {
-            "mean": 4.41,
-            "max": 9.72
+            "mean": 3.9,
+            "max": 8.93
           },
           "tools": {
-            "mean": 0.03,
-            "max": 0.07
+            "mean": 0.04,
+            "max": 0.1
           },
           "tts": {
             "mean": 0.0,
             "max": 0.0
           },
           "total": {
-            "mean": 4.45,
-            "max": 9.77
+            "mean": 3.95,
+            "max": 8.99
           }
         },
         "with_llm": {
-          "turns": 25,
+          "turns": 24,
           "asr": {
             "mean": 0.0,
             "max": 0.0
           },
           "retrieval": {
             "mean": 0.01,
-            "max": 0.05
+            "max": 0.03
           },
           "llm": {
-            "mean": 5.47,
-            "max": 9.72
+            "mean": 5.04,
+            "max": 8.93
           },
           "tools": {
             "mean": 0.04,
-            "max": 0.07
+            "max": 0.1
           },
           "tts": {
             "mean": 0.0,
             "max": 0.0
           },
           "total": {
-            "mean": 5.51,
-            "max": 9.77
+            "mean": 5.09,
+            "max": 8.99
           }
         },
         "without_llm": {
-          "turns": 6,
+          "turns": 7,
           "asr": {
             "mean": 0.0,
             "max": 0.0
           },
           "retrieval": {
             "mean": 0.0,
-            "max": 0.03
+            "max": 0.02
           },
           "llm": {
             "mean": 0.0,
             "max": 0.0
           },
           "tools": {
-            "mean": 0.02,
-            "max": 0.04
+            "mean": 0.03,
+            "max": 0.03
           },
           "tts": {
             "mean": 0.0,
@@ -1474,156 +739,12 @@
       "verdicts": {
         "01_compra_confirmada": true,
         "02_pedido_ambiguo": true,
-        "03_cambio_cantidad": false,
-        "04_sin_existencias": false,
+        "03_cambio_cantidad": true,
+        "04_sin_existencias": true,
         "05_correccion_transcripcion": true,
-        "06_cambio_stock_confirmacion_repetida": false
+        "06_cambio_stock_confirmacion_repetida": true
       },
-      "failed_checks": {
-        "03_cambio_cantidad": [
-          {
-            "turn": 4,
-            "check": "awaiting_confirmation",
-            "params": {
-              "value": true
-            },
-            "ok": false,
-            "detail": "esperando confirmación: no"
-          },
-          {
-            "turn": 5,
-            "check": "orders",
-            "params": {
-              "count": 1
-            },
-            "ok": false,
-            "detail": "pedidos registrados: 0"
-          },
-          {
-            "turn": "final",
-            "check": "orders",
-            "params": {
-              "count": 1
-            },
-            "ok": false,
-            "detail": "pedidos registrados: 0"
-          },
-          {
-            "turn": "final",
-            "check": "order",
-            "params": {
-              "lines": [
-                {
-                  "product": "@elegida",
-                  "quantity": 4
-                }
-              ],
-              "total_cents": 3800
-            },
-            "ok": false,
-            "detail": "no hay ningún pedido"
-          },
-          {
-            "turn": "final",
-            "check": "stock",
-            "params": {
-              "product": "@elegida",
-              "equals": 16
-            },
-            "ok": false,
-            "detail": "existencias de B07VQNY8PK: 20"
-          },
-          {
-            "turn": "final",
-            "check": "cart",
-            "params": {
-              "empty": true
-            },
-            "ok": false,
-            "detail": "carrito: 4 × B07VQNY8PK"
-          }
-        ],
-        "04_sin_existencias": [
-          {
-            "turn": 2,
-            "check": "cart",
-            "params": {
-              "empty": true
-            },
-            "ok": false,
-            "detail": "carrito: 1 × B09738BXB2"
-          },
-          {
-            "turn": 3,
-            "check": "cart",
-            "params": {
-              "lines": [
-                {
-                  "product": "@segunda",
-                  "quantity": 1
-                }
-              ]
-            },
-            "ok": false,
-            "detail": "carrito: 2 × B09738BXB2"
-          },
-          {
-            "turn": "final",
-            "check": "order",
-            "params": {
-              "lines": [
-                {
-                  "not": "@agotada",
-                  "quantity": 1
-                }
-              ]
-            },
-            "ok": false,
-            "detail": "pedido 1: 2 × B09738BXB2; total 3600 céntimos"
-          }
-        ],
-        "06_cambio_stock_confirmacion_repetida": [
-          {
-            "turn": 5,
-            "check": "cart",
-            "params": {
-              "lines": [
-                {
-                  "product": "@elegida",
-                  "quantity": 1
-                }
-              ]
-            },
-            "ok": false,
-            "detail": "carrito: 1 × B07ZCY9XZ9"
-          },
-          {
-            "turn": "final",
-            "check": "order",
-            "params": {
-              "lines": [
-                {
-                  "product": "@elegida",
-                  "quantity": 1
-                }
-              ],
-              "total_cents": 1500
-            },
-            "ok": false,
-            "detail": "pedido 1: 1 × B07ZCY9XZ9; total 2323 céntimos"
-          },
-          {
-            "turn": "final",
-            "check": "stock",
-            "params": {
-              "product": "@elegida",
-              "equals": 0
-            },
-            "ok": false,
-            "detail": "existencias de B085CHJ9BD: 1"
-          }
-        ]
-      },
+      "failed_checks": {},
       "voice_metrics": null
     }
   },
@@ -1650,16 +771,16 @@
     },
     {
       "id": "03_cambio_cantidad",
-      "passed_audio": false,
-      "passed_text": false,
+      "passed_audio": true,
+      "passed_text": true,
       "asr_changed_words": [],
       "different_operations": [],
       "same_store": true
     },
     {
       "id": "04_sin_existencias",
-      "passed_audio": false,
-      "passed_text": false,
+      "passed_audio": true,
+      "passed_text": true,
       "asr_changed_words": [
         3
       ],
@@ -1676,15 +797,379 @@
     },
     {
       "id": "06_cambio_stock_confirmacion_repetida",
-      "passed_audio": false,
-      "passed_text": false,
+      "passed_audio": true,
+      "passed_text": true,
       "asr_changed_words": [
         1
       ],
-      "different_operations": [
-        5
+      "different_operations": [],
+      "same_store": true
+    }
+  ],
+  "baseline": "results/escenarios_base",
+  "before_after": [
+    {
+      "run": "texto",
+      "scenarios": 20,
+      "before": 14,
+      "after": 20,
+      "fixed": [
+        "03_cambio_cantidad",
+        "04_sin_existencias",
+        "06_cambio_stock_confirmacion_repetida",
+        "09_producto_inexistente",
+        "10_atributo_no_verificable",
+        "20_agotado_al_confirmar"
       ],
-      "same_store": false
+      "regressions": [],
+      "verdicts": {
+        "01_compra_confirmada": [
+          true,
+          true
+        ],
+        "02_pedido_ambiguo": [
+          true,
+          true
+        ],
+        "03_cambio_cantidad": [
+          false,
+          true
+        ],
+        "04_sin_existencias": [
+          false,
+          true
+        ],
+        "05_correccion_transcripcion": [
+          true,
+          true
+        ],
+        "06_cambio_stock_confirmacion_repetida": [
+          false,
+          true
+        ],
+        "07_presupuesto_excedido": [
+          true,
+          true
+        ],
+        "08_cantidad_invalida": [
+          true,
+          true
+        ],
+        "09_producto_inexistente": [
+          false,
+          true
+        ],
+        "10_atributo_no_verificable": [
+          false,
+          true
+        ],
+        "11_rechazo_confirmacion": [
+          true,
+          true
+        ],
+        "12_memoria_preferencias": [
+          true,
+          true
+        ],
+        "13_confirmacion_con_cambio": [
+          true,
+          true
+        ],
+        "14_pregunta_sin_cambios": [
+          true,
+          true
+        ],
+        "15_stock_insuficiente": [
+          true,
+          true
+        ],
+        "16_quitar_del_carrito": [
+          true,
+          true
+        ],
+        "17_cambio_presupuesto": [
+          true,
+          true
+        ],
+        "18_cierre_sin_carrito": [
+          true,
+          true
+        ],
+        "19_presupuesto_compartido": [
+          true,
+          true
+        ],
+        "20_agotado_al_confirmar": [
+          false,
+          true
+        ]
+      }
+    },
+    {
+      "run": "texto_sage",
+      "scenarios": 20,
+      "before": 16,
+      "after": 20,
+      "fixed": [
+        "03_cambio_cantidad",
+        "04_sin_existencias",
+        "06_cambio_stock_confirmacion_repetida",
+        "09_producto_inexistente"
+      ],
+      "regressions": [],
+      "verdicts": {
+        "01_compra_confirmada": [
+          true,
+          true
+        ],
+        "02_pedido_ambiguo": [
+          true,
+          true
+        ],
+        "03_cambio_cantidad": [
+          false,
+          true
+        ],
+        "04_sin_existencias": [
+          false,
+          true
+        ],
+        "05_correccion_transcripcion": [
+          true,
+          true
+        ],
+        "06_cambio_stock_confirmacion_repetida": [
+          false,
+          true
+        ],
+        "07_presupuesto_excedido": [
+          true,
+          true
+        ],
+        "08_cantidad_invalida": [
+          true,
+          true
+        ],
+        "09_producto_inexistente": [
+          false,
+          true
+        ],
+        "10_atributo_no_verificable": [
+          true,
+          true
+        ],
+        "11_rechazo_confirmacion": [
+          true,
+          true
+        ],
+        "12_memoria_preferencias": [
+          true,
+          true
+        ],
+        "13_confirmacion_con_cambio": [
+          true,
+          true
+        ],
+        "14_pregunta_sin_cambios": [
+          true,
+          true
+        ],
+        "15_stock_insuficiente": [
+          true,
+          true
+        ],
+        "16_quitar_del_carrito": [
+          true,
+          true
+        ],
+        "17_cambio_presupuesto": [
+          true,
+          true
+        ],
+        "18_cierre_sin_carrito": [
+          true,
+          true
+        ],
+        "19_presupuesto_compartido": [
+          true,
+          true
+        ],
+        "20_agotado_al_confirmar": [
+          true,
+          true
+        ]
+      }
+    },
+    {
+      "run": "texto_sin_reranker",
+      "scenarios": 20,
+      "before": 16,
+      "after": 20,
+      "fixed": [
+        "03_cambio_cantidad",
+        "04_sin_existencias",
+        "09_producto_inexistente",
+        "10_atributo_no_verificable"
+      ],
+      "regressions": [],
+      "verdicts": {
+        "01_compra_confirmada": [
+          true,
+          true
+        ],
+        "02_pedido_ambiguo": [
+          true,
+          true
+        ],
+        "03_cambio_cantidad": [
+          false,
+          true
+        ],
+        "04_sin_existencias": [
+          false,
+          true
+        ],
+        "05_correccion_transcripcion": [
+          true,
+          true
+        ],
+        "06_cambio_stock_confirmacion_repetida": [
+          true,
+          true
+        ],
+        "07_presupuesto_excedido": [
+          true,
+          true
+        ],
+        "08_cantidad_invalida": [
+          true,
+          true
+        ],
+        "09_producto_inexistente": [
+          false,
+          true
+        ],
+        "10_atributo_no_verificable": [
+          false,
+          true
+        ],
+        "11_rechazo_confirmacion": [
+          true,
+          true
+        ],
+        "12_memoria_preferencias": [
+          true,
+          true
+        ],
+        "13_confirmacion_con_cambio": [
+          true,
+          true
+        ],
+        "14_pregunta_sin_cambios": [
+          true,
+          true
+        ],
+        "15_stock_insuficiente": [
+          true,
+          true
+        ],
+        "16_quitar_del_carrito": [
+          true,
+          true
+        ],
+        "17_cambio_presupuesto": [
+          true,
+          true
+        ],
+        "18_cierre_sin_carrito": [
+          true,
+          true
+        ],
+        "19_presupuesto_compartido": [
+          true,
+          true
+        ],
+        "20_agotado_al_confirmar": [
+          true,
+          true
+        ]
+      }
+    },
+    {
+      "run": "voz",
+      "scenarios": 6,
+      "before": 3,
+      "after": 6,
+      "fixed": [
+        "03_cambio_cantidad",
+        "04_sin_existencias",
+        "06_cambio_stock_confirmacion_repetida"
+      ],
+      "regressions": [],
+      "verdicts": {
+        "01_compra_confirmada": [
+          true,
+          true
+        ],
+        "02_pedido_ambiguo": [
+          true,
+          true
+        ],
+        "03_cambio_cantidad": [
+          false,
+          true
+        ],
+        "04_sin_existencias": [
+          false,
+          true
+        ],
+        "05_correccion_transcripcion": [
+          true,
+          true
+        ],
+        "06_cambio_stock_confirmacion_repetida": [
+          false,
+          true
+        ]
+      }
+    },
+    {
+      "run": "voz_texto_correcto",
+      "scenarios": 6,
+      "before": 3,
+      "after": 6,
+      "fixed": [
+        "03_cambio_cantidad",
+        "04_sin_existencias",
+        "06_cambio_stock_confirmacion_repetida"
+      ],
+      "regressions": [],
+      "verdicts": {
+        "01_compra_confirmada": [
+          true,
+          true
+        ],
+        "02_pedido_ambiguo": [
+          true,
+          true
+        ],
+        "03_cambio_cantidad": [
+          false,
+          true
+        ],
+        "04_sin_existencias": [
+          false,
+          true
+        ],
+        "05_correccion_transcripcion": [
+          true,
+          true
+        ],
+        "06_cambio_stock_confirmacion_repetida": [
+          false,
+          true
+        ]
+      }
     }
   ]
 }

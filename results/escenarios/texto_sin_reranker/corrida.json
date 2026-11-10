@@ -1,6 +1,6 @@
 {
-  "date": "2026-11-10T14:24:52",
-  "commit": "8711c79+cambios",
+  "date": "2026-11-10T16:52:29",
+  "commit": "5d31abf+cambios",
   "memory_backend": "postgres",
   "models": {
     "llm": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
@@ -11,11 +11,11 @@
   },
   "voice": {},
   "load": {
-    "search_seconds": 151.6,
-    "llm_seconds": 0.8,
+    "search_seconds": 15.8,
+    "llm_seconds": 0.7,
     "asr_seconds": null,
     "tts_seconds": null,
-    "total_seconds": 152.7,
+    "total_seconds": 16.9,
     "vram_mib": {
       "search": 604,
       "llm": 5718,
@@ -42,13 +42,13 @@
       "id": "03_cambio_cantidad",
       "title": "Cambio de cantidad manteniendo las demás restricciones",
       "kind": "cambio_cantidad",
-      "passed": false
+      "passed": true
     },
     {
       "id": "04_sin_existencias",
       "title": "Producto sin existencias que requiere alternativa",
       "kind": "sin_existencias",
-      "passed": false
+      "passed": true
     },
     {
       "id": "05_correccion_transcripcion",
@@ -78,13 +78,13 @@
       "id": "09_producto_inexistente",
       "title": "Producto inexistente",
       "kind": "producto_inexistente",
-      "passed": false
+      "passed": true
     },
     {
       "id": "10_atributo_no_verificable",
       "title": "Atributo no verificable",
       "kind": "atributo_no_verificable",
-      "passed": false
+      "passed": true
     },
     {
       "id": "11_rechazo_confirmacion",
@@ -149,14 +149,9 @@
   ],
   "summary": {
     "scenarios": 20,
-    "passed": 16,
-    "pass_rate": 0.8,
-    "failed": [
-      "03_cambio_cantidad",
-      "04_sin_existencias",
-      "09_producto_inexistente",
-      "10_atributo_no_verificable"
-    ],
+    "passed": 20,
+    "pass_rate": 1.0,
+    "failed": [],
     "turns": 87,
     "violations": {
       "cantidad": 0,
@@ -177,8 +172,8 @@
           "max": 0.03
         },
         "llm": {
-          "mean": 4.33,
-          "max": 9.57
+          "mean": 4.17,
+          "max": 9.42
         },
         "tools": {
           "mean": 0.04,
@@ -189,12 +184,12 @@
           "max": 0.0
         },
         "total": {
-          "mean": 4.37,
-          "max": 9.63
+          "mean": 4.21,
+          "max": 9.5
         }
       },
       "with_llm": {
-        "turns": 74,
+        "turns": 73,
         "asr": {
           "mean": 0.0,
           "max": 0.0
@@ -204,8 +199,8 @@
           "max": 0.03
         },
         "llm": {
-          "mean": 5.09,
-          "max": 9.57
+          "mean": 4.97,
+          "max": 9.42
         },
         "tools": {
           "mean": 0.04,
@@ -216,12 +211,12 @@
           "max": 0.0
         },
         "total": {
-          "mean": 5.13,
-          "max": 9.63
+          "mean": 5.02,
+          "max": 9.5
         }
       },
       "without_llm": {
-        "turns": 13,
+        "turns": 14,
         "asr": {
           "mean": 0.0,
           "max": 0.0
@@ -244,7 +239,7 @@
         },
         "total": {
           "mean": 0.03,
-          "max": 0.04
+          "max": 0.03
         }
       }
     }

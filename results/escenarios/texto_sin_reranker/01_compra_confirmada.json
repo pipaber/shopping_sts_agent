@@ -6,9 +6,9 @@
   "voice": true,
   "input": "texto",
   "audio_source": null,
-  "user_id": "eval-c2e8c796-01_compra_confirmada",
+  "user_id": "eval-3e6f9559-01_compra_confirmada",
   "threads": [
-    "eval-c2e8c796-01_compra_confirmada-c1"
+    "eval-3e6f9559-01_compra_confirmada-c1"
   ],
   "names": {
     "elegida": "B07V47R2Z2"
@@ -22,8 +22,8 @@
       "transcript": null,
       "expected_text": "Hola, busco una cafetera italiana. Tengo un presupuesto de 60 euros.",
       "agent_input": "Hola, busco una cafetera italiana. Tengo un presupuesto de 60 euros.",
-      "response": "Tengo una cafetera Gastroback por 46,24 euros, una De'Longhi por 5,03 euros, una Solis por 20,53 euros, una Princess por 7,74 euros y una Cecotec por 15,19 euros. ¿Te interesa alguna? He anotado un presupuesto de 60,00 €.",
-      "spoken_text": "Tengo una cafetera Gastroback por cuarenta y seis euros con veinticuatro céntimos, una De'Longhi por cinco euros con tres céntimos, una Solis por veinte euros con cincuenta y tres céntimos, una Princess por siete euros con setenta y cuatro céntimos y una Cecotec por quince euros con diecinueve céntimos. ¿Te interesa alguna? He anotado un presupuesto de sesenta euros.",
+      "response": "Tengo la cafetera Gastroback por 46,24 euros, la De'Longhi por 5,03 euros, la Solis por 20,53 euros, la Princess por 7,74 euros y la Cecotec por 15,19 euros. ¿Te interesa alguna? He anotado un presupuesto de 60,00 €.",
+      "spoken_text": "Tengo la cafetera Gastroback por cuarenta y seis euros con veinticuatro céntimos, la De'Longhi por cinco euros con tres céntimos, la Solis por veinte euros con cincuenta y tres céntimos, la Princess por siete euros con setenta y cuatro céntimos y la Cecotec por quince euros con diecinueve céntimos. ¿Te interesa alguna? He anotado un presupuesto de sesenta euros.",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -43,7 +43,7 @@
           "args": {
             "consulta": "cafetera italiana"
           },
-          "reason": "buscar una cafetera italiana dentro del presupuesto",
+          "reason": "buscar lo que pide",
           "ok": true,
           "summary": "estos son ahora los CANDIDATOS, del más al menos relevante:\n[1] id=B07V47R2Z2 | Gastroback 42619 Design Espresso Advanced Barista - Cafetera espresso (programable, con mecanismo cónico y bomba de espresso italiana, 15 bares, acero inoxidable) | marca: GASTROBACK | color: Acero Inoxidable. | precio: 46,24 € | existencias: 26 | características (extracto): Para granos de café recién molido, café en polvo o E. S E Pads Sistema de calefacción de bloque térmico: tiempo de calentamiento rápido (aprox. 1, 5 minutos) ULKA - Bomba de espresso profesional (15 bares) 11 niveles de molido y cantidad… | descripción: desconocido\n[2] id=B06WGTZ874 | De'longhi Dedica - Cafetera de Bomba de Acero Inoxidable para Café Molido o Monodosis, Cafetera para Espresso y Cappuccino, Depósito de 1.3 Litros, Sistema Anti-goteo, EC685.M, Metal 30x33x15cm | marca: De'Longhi | color: Metal | precio: 5,03 € | existencias: 27 | características (extracto): La presión de 15 bares crea un espresso con un rico aroma y una espuma de color nuez en la parte superior La tecnología Thermoblock calienta el agua en 35 segundos a la temperatura exacta para preparar un espresso óptimo Capuccinatore con… | descripción: desconocido\n[3] id=B08MYCPDZX | Solis Grind & Infuse Compact 1018 Cafetera Express con Molinillo Incorporado de Café y Espumador de Leche - Cafetera Acero Inoxidable Semiautomática - Negro | marca: Solis | color: Grind & Infuse Compact Negro | precio: 20,53 € | existencias: 9 | características (extracto): TU TAZA DE CAFÉ PERFECTA - El Solis Grind & Infuse Compact 1018 es la cafetera express, molinillo café, máquina de té y espumador de leche que tiene todo lo necesario para hacer la taza de café perfecta. CAFETERA DIGITAL PROGRAMABLE -… | descripción: Solis Grind & Infuse Compact 1018 Cafetera ExpressEl Grind & Infuse Compact de Solis es una máquina de café expreso, un molinillo de café, una máquina de té y una cafetera con vaporizador de leche…\n[4] id=B086W37XZ5 | Princess 249412 Máquina de café para Espresso italiano, Compatible con cápsulas Nespresso, 20 bares de presión, Depósito extraíble de 1.5L, 1100 W, 1 o 2 tazas , Negro | marca: Princess | color: Plateado Y Negro | precio: 7,74 € | existencias: 40 | características (extracto): Cafetera apta para capsulas Nespresso. Con la cafetera espresso Princess 249412, te sentirás como un barista en tu propia casa. Fácil de llenar y limpiar gracias al depósito de agua, transparente, extraíble y de 1,5 L Espumador de leche… | descripción: desconocido\n[5] id=B07YLN1KR6 | Cecotec Cafetera Express Power Espresso 20 Tradizionale para espressos y cappuccinos, rápido Sistema de Calentamiento por thermoblock, 20 Bares, manómetro PressurePro y vaporizador orientable | marca: Cecotec | color: desconocido | precio: 15,19 € | existencias: 31 | características (extracto): Cafetera express para café espresso y cappuccino ,1350 W ,diseño vintage. Bomba italiana de presión 20 bares,consigue la mejor crema y máximo aroma. Sistema de rápido calentamiento por Thermoblock. Manómetro de control PressurePro para… | descripción: desconocido",
           "issues": []
@@ -51,11 +51,11 @@
       ],
       "timings": {
         "asr": 0.0,
-        "retrieval": 0.026,
-        "llm": 9.57,
-        "tools": 0.037,
+        "retrieval": 0.029,
+        "llm": 9.423,
+        "tools": 0.049,
         "tts": 0.0,
-        "total": 9.633
+        "total": 9.5
       },
       "llm_steps": 3,
       "tts_first_chunk_seconds": null,
@@ -64,7 +64,7 @@
         "cafetera italiana"
       ],
       "before": {
-        "cart_id": "eval-c2e8c796-01_compra_confirmada-c1",
+        "cart_id": "eval-3e6f9559-01_compra_confirmada-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -83,7 +83,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-c2e8c796-01_compra_confirmada-c1",
+        "cart_id": "eval-3e6f9559-01_compra_confirmada-c1",
         "state": {
           "budget_cents": 6000,
           "preferences": [],
@@ -221,10 +221,10 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 4.962,
+        "llm": 5.037,
         "tools": 0.053,
         "tts": 0.0,
-        "total": 5.016
+        "total": 5.09
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
@@ -233,7 +233,7 @@
         "primera"
       ],
       "before": {
-        "cart_id": "eval-c2e8c796-01_compra_confirmada-c1",
+        "cart_id": "eval-3e6f9559-01_compra_confirmada-c1",
         "state": {
           "budget_cents": 6000,
           "preferences": [],
@@ -315,7 +315,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-c2e8c796-01_compra_confirmada-c1",
+        "cart_id": "eval-3e6f9559-01_compra_confirmada-c1",
         "state": {
           "budget_cents": 6000,
           "preferences": [],
@@ -366,7 +366,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-c2e8c796-01_compra_confirmada-c1",
+              "cart_id": "eval-3e6f9559-01_compra_confirmada-c1",
               "product_id": "B07V47R2Z2",
               "quantity": 2
             }
@@ -452,17 +452,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 2.052,
-        "tools": 0.04,
+        "llm": 2.131,
+        "tools": 0.042,
         "tts": 0.0,
-        "total": 2.092
+        "total": 2.174
       },
       "llm_steps": 1,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-c2e8c796-01_compra_confirmada-c1",
+        "cart_id": "eval-3e6f9559-01_compra_confirmada-c1",
         "state": {
           "budget_cents": 6000,
           "preferences": [],
@@ -513,7 +513,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-c2e8c796-01_compra_confirmada-c1",
+              "cart_id": "eval-3e6f9559-01_compra_confirmada-c1",
               "product_id": "B07V47R2Z2",
               "quantity": 2
             }
@@ -550,13 +550,13 @@
         }
       },
       "after": {
-        "cart_id": "eval-c2e8c796-01_compra_confirmada-c1",
+        "cart_id": "eval-3e6f9559-01_compra_confirmada-c1",
         "state": {
           "budget_cents": 6000,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "aad74610e2e24621b03c27eb43a6e475",
+            "quote_id": "1ff45734cc9a47bba3b08cf9ded665aa",
             "items": [
               {
                 "product_id": "B07V47R2Z2",
@@ -616,7 +616,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-c2e8c796-01_compra_confirmada-c1",
+              "cart_id": "eval-3e6f9559-01_compra_confirmada-c1",
               "product_id": "B07V47R2Z2",
               "quantity": 2
             }
@@ -688,7 +688,7 @@
         {
           "tool": "confirmar_pedido",
           "args": {
-            "quote_id": "aad74610e2e24621b03c27eb43a6e475"
+            "quote_id": "1ff45734cc9a47bba3b08cf9ded665aa"
           },
           "reason": "el usuario confirmó la cotización",
           "ok": true,
@@ -700,22 +700,22 @@
         "asr": 0.0,
         "retrieval": 0.0,
         "llm": 0.0,
-        "tools": 0.032,
+        "tools": 0.027,
         "tts": 0.0,
-        "total": 0.032
+        "total": 0.027
       },
       "llm_steps": 0,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-c2e8c796-01_compra_confirmada-c1",
+        "cart_id": "eval-3e6f9559-01_compra_confirmada-c1",
         "state": {
           "budget_cents": 6000,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "aad74610e2e24621b03c27eb43a6e475",
+            "quote_id": "1ff45734cc9a47bba3b08cf9ded665aa",
             "items": [
               {
                 "product_id": "B07V47R2Z2",
@@ -775,7 +775,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-c2e8c796-01_compra_confirmada-c1",
+              "cart_id": "eval-3e6f9559-01_compra_confirmada-c1",
               "product_id": "B07V47R2Z2",
               "quantity": 2
             }
@@ -812,7 +812,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-c2e8c796-01_compra_confirmada-c1",
+        "cart_id": "eval-3e6f9559-01_compra_confirmada-c1",
         "state": {
           "budget_cents": 6000,
           "preferences": [],
@@ -820,7 +820,7 @@
           "quote": null,
           "order": {
             "order_id": 1,
-            "quote_id": "aad74610e2e24621b03c27eb43a6e475",
+            "quote_id": "1ff45734cc9a47bba3b08cf9ded665aa",
             "items": [
               {
                 "product_id": "B07V47R2Z2",
@@ -876,7 +876,7 @@
           "orders": [
             {
               "order_id": 1,
-              "quote_id": "aad74610e2e24621b03c27eb43a6e475",
+              "quote_id": "1ff45734cc9a47bba3b08cf9ded665aa",
               "total_cents": 2900
             }
           ],
@@ -934,7 +934,7 @@
   ],
   "final": {
     "snapshot": {
-      "cart_id": "eval-c2e8c796-01_compra_confirmada-c1",
+      "cart_id": "eval-3e6f9559-01_compra_confirmada-c1",
       "state": {
         "budget_cents": 6000,
         "preferences": [],
@@ -942,7 +942,7 @@
         "quote": null,
         "order": {
           "order_id": 1,
-          "quote_id": "aad74610e2e24621b03c27eb43a6e475",
+          "quote_id": "1ff45734cc9a47bba3b08cf9ded665aa",
           "items": [
             {
               "product_id": "B07V47R2Z2",
@@ -998,7 +998,7 @@
         "orders": [
           {
             "order_id": 1,
-            "quote_id": "aad74610e2e24621b03c27eb43a6e475",
+            "quote_id": "1ff45734cc9a47bba3b08cf9ded665aa",
             "total_cents": 2900
           }
         ],
@@ -1108,7 +1108,7 @@
       },
       "llm": {
         "mean": 4.15,
-        "max": 9.57
+        "max": 9.42
       },
       "tools": {
         "mean": 0.04,
@@ -1119,8 +1119,8 @@
         "max": 0.0
       },
       "total": {
-        "mean": 4.19,
-        "max": 9.63
+        "mean": 4.2,
+        "max": 9.5
       }
     },
     "with_llm": {
@@ -1135,10 +1135,10 @@
       },
       "llm": {
         "mean": 5.53,
-        "max": 9.57
+        "max": 9.42
       },
       "tools": {
-        "mean": 0.04,
+        "mean": 0.05,
         "max": 0.05
       },
       "tts": {
@@ -1146,8 +1146,8 @@
         "max": 0.0
       },
       "total": {
-        "mean": 5.58,
-        "max": 9.63
+        "mean": 5.59,
+        "max": 9.5
       }
     },
     "without_llm": {

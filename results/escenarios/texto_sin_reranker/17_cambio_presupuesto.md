@@ -5,16 +5,16 @@
 - Tipo: `cambio_presupuesto`
 - Qué se prueba: Con tres unidades en el carrito (30,00 €) el usuario baja el presupuesto a 25 €. Cerrar el pedido debe rechazarse sin que el agente cambie el carrito por su cuenta. Con dos unidades (20,00 €) sí se puede comprar.
 
-## Turno 1 (8.9 s)
+## Turno 1 (7.6 s)
 
 **Usuario (texto):** Busco una taza de desayuno. Tengo 40 euros.
 
 - `fijar_presupuesto(importe_eur=40)` → OK: presupuesto fijado en 40,00 €.
 - `buscar_productos(consulta="taza desayuno")` → OK: estos son ahora los CANDIDATOS, del más al menos relevante: [1] id=B08ZLX5MXL | Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_ Taza café Infusiones o Decoración Hogar en Cerámica de Gran Calidad. | marca: AN | color: desconocido | precio: 7,48 € | existencias: 17 | características…
 
-**Agente:** Tengo una taza de desayuno de AN por 7,48 euros, una de MUGFFINS por 18,90 euros, un pack de 2 tazas por 5,30 euros, una taza de Wistty por 5,05 euros y una taza infantil de Badabulle por 12,37 euros. ¿Te interesa alguna? He anotado un presupuesto de 40,00 €.
+**Agente:** Tengo una taza de desayuno de AN por 7,48 euros, una de MUGFFINS por 18,90, una de Genérico por 5,30 y otra de Wistty por 5,05. ¿Te interesa alguna? He anotado un presupuesto de 40,00 €.
 
-**Enviado al TTS:** Tengo una taza de desayuno de AN por siete euros con cuarenta y ocho céntimos, una de MUGFFINS por dieciocho euros con noventa céntimos, un pack de dos tazas por cinco euros con treinta céntimos, una taza de Wistty por cinco euros con cinco céntimos y una taza infantil de Badabulle por doce euros con treinta y siete céntimos. ¿Te interesa alguna? He anotado un presupuesto de cuarenta euros.
+**Enviado al TTS:** Tengo una taza de desayuno de AN por siete euros con cuarenta y ocho céntimos, una de MUGFFINS por dieciocho coma noventa, una de Genérico por cinco coma treinta y otra de Wistty por cinco coma cero cinco. ¿Te interesa alguna? He anotado un presupuesto de cuarenta euros.
 
 - ✔ `budget(cents=4000)` — presupuesto en el estado: 4000
 - ✔ `cart(empty=true)` — carrito: vacío
@@ -35,15 +35,15 @@
 
 - ✔ `cart(lines=[{"product": "@elegida", "quantity": 3}])` — carrito: 3 × B08ZLX5MXL
 
-## Turno 3 (5.6 s)
+## Turno 3 (5.0 s)
 
 **Usuario (texto):** Mejor baja mi presupuesto a 25 euros.
 
 - `fijar_presupuesto(importe_eur=25)` → OK: presupuesto fijado en 25,00 €. Aviso: el carrito suma 30,00 € y lo supera en 5,00 €.
 
-**Agente:** El presupuesto se ha fijado en 25,00 €, pero el carrito supera ese importe en 5,00 €. ¿Qué deseas hacer? En el carrito hay 3 unidades de «Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_…» a 10,00 € cada una, 30,00 €. Total: 30,00 €. Tu presupuesto es de 25,00 € y lo superas en 5,00 €.
+**Agente:** El carrito supera tu presupuesto en 5,00 €. ¿Qué deseas hacer? En el carrito hay 3 unidades de «Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_…» a 10,00 € cada una, 30,00 €. Total: 30,00 €. Tu presupuesto es de 25,00 € y lo superas en 5,00 €.
 
-**Enviado al TTS:** El presupuesto se ha fijado en veinticinco euros, pero el carrito supera ese importe en cinco euros. ¿Qué deseas hacer? En el carrito hay tres unidades de Taza Desayuno con Mensaje Respira Regalos Originales a diez euros cada una, treinta euros. Total: treinta euros. Tu presupuesto es de veinticinco euros y lo superas en cinco euros.
+**Enviado al TTS:** El carrito supera tu presupuesto en cinco euros. ¿Qué deseas hacer? En el carrito hay tres unidades de Taza Desayuno con Mensaje Respira Regalos Originales a diez euros cada una, treinta euros. Total: treinta euros. Tu presupuesto es de veinticinco euros y lo superas en cinco euros.
 
 - ✔ `budget(cents=2500)` — presupuesto en el estado: 2500
 - ✔ `cart(lines=[{"product": "@elegida", "quantity": 3}])` — carrito: 3 × B08ZLX5MXL
@@ -54,31 +54,30 @@
 
 - `cotizar()` → RECHAZADO: [presupuesto_excedido] El total sería 30,00 € y supera el presupuesto de 25,00 € por 5,00 €.
 
-**Agente:** El pedido no se puede realizar porque supera tu presupuesto en 5,00 €. ¿Quieres bajar el presupuesto o cambiar el carrito?
+**Agente:** El carrito supera tu presupuesto en 5,00 €. ¿Qué deseas hacer?
 
-**Enviado al TTS:** El pedido no se puede realizar porque supera tu presupuesto en cinco euros. ¿Quieres bajar el presupuesto o cambiar el carrito?
+**Enviado al TTS:** El carrito supera tu presupuesto en cinco euros. ¿Qué deseas hacer?
 
 - ✔ `orders(count=0)` — pedidos registrados: 0
 - ✔ `awaiting_confirmation(value=false)` — esperando confirmación: no
 - ✔ `cart(lines=[{"product": "@elegida", "quantity": 3}])` — carrito: 3 × B08ZLX5MXL
 
-## Turno 5 (5.5 s)
+## Turno 5 (6.1 s)
 
 **Usuario (texto):** Entonces deja solo dos.
 
 - `cambiar_cantidad(product_id="B08ZLX5MXL", cantidad=2)` → OK: hecho. Así queda el carrito. CARRITO: - id=B08ZLX5MXL | Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_… | 2 unidades × 10,00 € = 20,00 € | existencias: 20 Total del carrito: 20,00 €
 
-**Agente:** Hecho, el carrito ahora tiene 2 unidades de taza desayuno por 20,00 €. En el carrito hay 2 unidades de «Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_…» a 10,00 € cada una, 20,00 €. Total: 20,00 €. Tu presupuesto es de 25,00 € y te quedan 5,00 €.
+**Agente:** Hecho, el carrito ahora tiene 2 unidades de la taza de desayuno por 10,00 € cada una, totalizando 20,00 €. En el carrito hay 2 unidades de «Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_…» a 10,00 € cada una, 20,00 €. Total: 20,00 €. Tu presupuesto es de 25,00 € y te quedan 5,00 €.
 
-**Enviado al TTS:** Hecho, el carrito ahora tiene dos unidades de taza desayuno por veinte euros. En el carrito hay dos unidades de Taza Desayuno con Mensaje Respira Regalos Originales a diez euros cada una, veinte euros. Total: veinte euros. Tu presupuesto es de veinticinco euros y te quedan cinco euros.
+**Enviado al TTS:** Hecho, el carrito ahora tiene dos unidades de la taza de desayuno por diez euros cada una, totalizando veinte euros. En el carrito hay dos unidades de Taza Desayuno con Mensaje Respira Regalos Originales a diez euros cada una, veinte euros. Total: veinte euros. Tu presupuesto es de veinticinco euros y te quedan cinco euros.
 
 - ✔ `cart(lines=[{"product": "@elegida", "quantity": 2}])` — carrito: 2 × B08ZLX5MXL
 
-## Turno 6 (4.6 s)
+## Turno 6 (2.5 s)
 
 **Usuario (texto):** Cierra el pedido.
 
-- `cambiar_cantidad(product_id="B08ZLX5MXL", cantidad=2)` → OK: hecho. Así queda el carrito. CARRITO: - id=B08ZLX5MXL | Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_… | 2 unidades × 10,00 € = 20,00 € | existencias: 20 Total del carrito: 20,00 €
 - `cotizar()` → OK: cotización creada; falta la confirmación del usuario.
 
 **Agente:** Te repito el pedido antes de registrarlo: 2 unidades de «Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_…» a 10,00 € cada una, 20,00 €. Total: 20,00 €. Tu presupuesto es de 25,00 € y te quedan 5,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar. *(esperando confirmación)*
@@ -92,7 +91,7 @@
 
 **Usuario (texto):** Sí.
 
-- `confirmar_pedido(quote_id="99bfd8d154584f3088e39ae34255e846")` → OK: pedido registrado
+- `confirmar_pedido(quote_id="8ffc47e13a5b4d6390cc6b816b96b8d3")` → OK: pedido registrado
 
 **Agente:** Pedido número 1 registrado: 2 unidades de «Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_…» a 10,00 € cada una, 20,00 €. Total: 20,00 €. Gracias por tu compra.
 
@@ -123,13 +122,13 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.03 | 8.81 | 0.03 | 0.00 | 8.87 | 0.0 s |
-| 2 | 0.00 | 0.00 | 5.06 | 0.05 | 0.00 | 5.11 | 0.0 s |
-| 3 | 0.00 | 0.00 | 5.58 | 0.03 | 0.00 | 5.62 | 0.0 s |
-| 4 | 0.00 | 0.00 | 4.67 | 0.04 | 0.00 | 4.70 | 0.0 s |
-| 5 | 0.00 | 0.00 | 5.48 | 0.04 | 0.00 | 5.53 | 0.0 s |
-| 6 | 0.00 | 0.00 | 4.59 | 0.04 | 0.00 | 4.63 | 0.0 s |
+| 1 | 0.00 | 0.03 | 7.58 | 0.03 | 0.00 | 7.63 | 0.0 s |
+| 2 | 0.00 | 0.00 | 5.09 | 0.05 | 0.00 | 5.14 | 0.0 s |
+| 3 | 0.00 | 0.00 | 4.92 | 0.03 | 0.00 | 4.95 | 0.0 s |
+| 4 | 0.00 | 0.00 | 4.63 | 0.03 | 0.00 | 4.66 | 0.0 s |
+| 5 | 0.00 | 0.00 | 6.00 | 0.05 | 0.00 | 6.06 | 0.0 s |
+| 6 | 0.00 | 0.00 | 2.51 | 0.04 | 0.00 | 2.55 | 0.0 s |
 | 7 | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | 0.0 s |
-| **Media de los turnos con LLM (6)** | 0.00 | 0.00 | 5.70 | 0.04 | 0.00 | 5.74 | |
+| **Media de los turnos con LLM (6)** | 0.00 | 0.00 | 5.12 | 0.04 | 0.00 | 5.17 | |
 | **Media de los turnos sin LLM (1)** | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | |
 

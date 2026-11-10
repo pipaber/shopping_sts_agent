@@ -6,9 +6,9 @@
   "voice": false,
   "input": "texto",
   "audio_source": null,
-  "user_id": "eval-c2e8c796-11_rechazo_confirmacion",
+  "user_id": "eval-3e6f9559-11_rechazo_confirmacion",
   "threads": [
-    "eval-c2e8c796-11_rechazo_confirmacion-c1"
+    "eval-3e6f9559-11_rechazo_confirmacion-c1"
   ],
   "names": {
     "elegidas": "B072BG3H7Y"
@@ -22,8 +22,8 @@
       "transcript": null,
       "expected_text": "Busco unas bombillas LED.",
       "agent_input": "Busco unas bombillas LED.",
-      "response": "Tengo estas opciones: 1 bombilla LED de xenón blanco por 17,01 €, 10 unidades de bombillas LED MENTA blancas frías por 24,96 €, 12000LM H1 LED para coches por 63,71 €, 6 bombillas LED Philips blancas cálidas por 14,22 € y 10 bombillas LED Eofiti blancas frías por 16,77 €. ¿Cuál te interesa?",
-      "spoken_text": "Tengo estas opciones: uno bombilla LED de xenón blanco por diecisiete euros con un céntimo, diez unidades de bombillas LED MENTA blancas frías por veinticuatro euros con noventa y seis céntimos, H1 LED para coches por sesenta y tres euros con setenta y un céntimos, seis bombillas LED Philips blancas cálidas por catorce euros con veintidós céntimos y diez bombillas LED Eofiti blancas frías por dieciséis euros con setenta y siete céntimos. ¿Cuál te interesa?",
+      "response": "Tengo estas opciones: bombillas LED de xenón blanco con halo de Global Fortune por 17,01 €, 10 unidades de MENTA bombillas vela de filamento LED por 24,96 €, H1 LED de 12000LM de CAR WORK BOX por 63,71 €, bombillas LED Philips blancas cálidas por 14,22 € y Eofiti bombillas LED MR16 por 16,77 €. ¿Te interesa alguna?",
+      "spoken_text": "Tengo estas opciones: bombillas LED de xenón blanco con halo de Global Fortune por diecisiete euros con un céntimo, diez unidades de MENTA bombillas vela de filamento LED por veinticuatro euros con noventa y seis céntimos, H1 LED de de CAR WORK BOX por sesenta y tres euros con setenta y un céntimos, bombillas LED Philips blancas cálidas por catorce euros con veintidós céntimos y Eofiti bombillas LED MR16 por dieciséis euros con setenta y siete céntimos. ¿Te interesa alguna?",
       "output_audio": null,
       "output_seconds": null,
       "awaiting_confirmation": false,
@@ -41,18 +41,18 @@
       ],
       "timings": {
         "asr": 0.0,
-        "retrieval": 0.029,
-        "llm": 8.597,
-        "tools": 0.027,
+        "retrieval": 0.028,
+        "llm": 8.514,
+        "tools": 0.016,
         "tts": 0.0,
-        "total": 8.653
+        "total": 8.558
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-c2e8c796-11_rechazo_confirmacion-c1",
+        "cart_id": "eval-3e6f9559-11_rechazo_confirmacion-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -71,7 +71,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-c2e8c796-11_rechazo_confirmacion-c1",
+        "cart_id": "eval-3e6f9559-11_rechazo_confirmacion-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -201,17 +201,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 4.773,
+        "llm": 4.861,
         "tools": 0.053,
         "tts": 0.0,
-        "total": 4.826
+        "total": 4.914
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-c2e8c796-11_rechazo_confirmacion-c1",
+        "cart_id": "eval-3e6f9559-11_rechazo_confirmacion-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -293,7 +293,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-c2e8c796-11_rechazo_confirmacion-c1",
+        "cart_id": "eval-3e6f9559-11_rechazo_confirmacion-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -344,7 +344,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-c2e8c796-11_rechazo_confirmacion-c1",
+              "cart_id": "eval-3e6f9559-11_rechazo_confirmacion-c1",
               "product_id": "B072BG3H7Y",
               "quantity": 2
             }
@@ -422,17 +422,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 2.215,
-        "tools": 0.038,
+        "llm": 2.304,
+        "tools": 0.042,
         "tts": 0.0,
-        "total": 2.253
+        "total": 2.346
       },
       "llm_steps": 1,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-c2e8c796-11_rechazo_confirmacion-c1",
+        "cart_id": "eval-3e6f9559-11_rechazo_confirmacion-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -483,7 +483,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-c2e8c796-11_rechazo_confirmacion-c1",
+              "cart_id": "eval-3e6f9559-11_rechazo_confirmacion-c1",
               "product_id": "B072BG3H7Y",
               "quantity": 2
             }
@@ -520,13 +520,13 @@
         }
       },
       "after": {
-        "cart_id": "eval-c2e8c796-11_rechazo_confirmacion-c1",
+        "cart_id": "eval-3e6f9559-11_rechazo_confirmacion-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "11cfb4b06a27492aad91157d97746eac",
+            "quote_id": "3835430a65254df6b63cf90ce49e3f81",
             "items": [
               {
                 "product_id": "B072BG3H7Y",
@@ -586,7 +586,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-c2e8c796-11_rechazo_confirmacion-c1",
+              "cart_id": "eval-3e6f9559-11_rechazo_confirmacion-c1",
               "product_id": "B072BG3H7Y",
               "quantity": 2
             }
@@ -668,13 +668,13 @@
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-c2e8c796-11_rechazo_confirmacion-c1",
+        "cart_id": "eval-3e6f9559-11_rechazo_confirmacion-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "11cfb4b06a27492aad91157d97746eac",
+            "quote_id": "3835430a65254df6b63cf90ce49e3f81",
             "items": [
               {
                 "product_id": "B072BG3H7Y",
@@ -734,7 +734,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-c2e8c796-11_rechazo_confirmacion-c1",
+              "cart_id": "eval-3e6f9559-11_rechazo_confirmacion-c1",
               "product_id": "B072BG3H7Y",
               "quantity": 2
             }
@@ -771,7 +771,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-c2e8c796-11_rechazo_confirmacion-c1",
+        "cart_id": "eval-3e6f9559-11_rechazo_confirmacion-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -822,7 +822,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-c2e8c796-11_rechazo_confirmacion-c1",
+              "cart_id": "eval-3e6f9559-11_rechazo_confirmacion-c1",
               "product_id": "B072BG3H7Y",
               "quantity": 2
             }
@@ -893,7 +893,7 @@
   ],
   "final": {
     "snapshot": {
-      "cart_id": "eval-c2e8c796-11_rechazo_confirmacion-c1",
+      "cart_id": "eval-3e6f9559-11_rechazo_confirmacion-c1",
       "state": {
         "budget_cents": null,
         "preferences": [],
@@ -944,7 +944,7 @@
         "order_items": [],
         "cart_items": [
           {
-            "cart_id": "eval-c2e8c796-11_rechazo_confirmacion-c1",
+            "cart_id": "eval-3e6f9559-11_rechazo_confirmacion-c1",
             "product_id": "B072BG3H7Y",
             "quantity": 2
           }
@@ -1028,8 +1028,8 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 3.9,
-        "max": 8.6
+        "mean": 3.92,
+        "max": 8.51
       },
       "tools": {
         "mean": 0.03,
@@ -1040,8 +1040,8 @@
         "max": 0.0
       },
       "total": {
-        "mean": 3.94,
-        "max": 8.65
+        "mean": 3.96,
+        "max": 8.56
       }
     },
     "with_llm": {
@@ -1055,8 +1055,8 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 5.19,
-        "max": 8.6
+        "mean": 5.23,
+        "max": 8.51
       },
       "tools": {
         "mean": 0.04,
@@ -1067,8 +1067,8 @@
         "max": 0.0
       },
       "total": {
-        "mean": 5.24,
-        "max": 8.65
+        "mean": 5.27,
+        "max": 8.56
       }
     },
     "without_llm": {

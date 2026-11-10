@@ -5,41 +5,41 @@
 - Tipo: `cantidad_invalida`
 - Qué se prueba: El usuario pide cero unidades y después una cantidad negativa. Ninguna de las dos debe llegar al carrito.
 
-## Turno 1 (6.6 s)
+## Turno 1 (6.4 s)
 
 **Usuario (texto):** Busco un cargador USB C.
 
-- `buscar_productos(consulta="cargador USB C")` → OK: estos son ahora los CANDIDATOS, del más al menos relevante: [1] id=B01M3XQ2KL | Samsung EP-LN920CBEGWW, Cargador de coche Dual con Carga rápida y cable USB-C incluído, color negro | marca: SAMSUNG | color: negro | precio: 12,72 € | existencias: 6 | características (extracto): Diseño elegante y creat…
+- `buscar_productos(consulta="cargador USB C")` → OK: estos son ahora los CANDIDATOS, del más al menos relevante: [1] id=B07MBYH3F7 | Cable USB Tipo C [3 Pack 1M] Cable Cargador Tipo C De Nylon Carga Rápida Movil Tipo C USB Cargador para Samsung Galaxy S10/S9/S8/A20/A40/A50/A70, Huawei P9/P10/P20/P30, Nintendo Switch, Sony Xperia | marca: Yosou | color…
 
-**Agente:** Tengo el cargador USB C de Samsung por 12,72 euros, el de Yosou por 13,65 euros, el de JOOMFEEN en negro por 9,96 euros y otro de JOOMFEEN en plata por 25,13 euros. ¿Te interesa alguno?
+**Agente:** Tengo el cargador USB C de Yosou por 13,65 euros, el de Samsung por 12,72 euros, y dos opciones de JOOMFEEN por 9,96 y 25,13 euros. ¿Te interesa alguna?
 
-**Enviado al TTS:** Tengo el cargador USB C de Samsung por doce euros con setenta y dos céntimos, el de Yosou por trece euros con sesenta y cinco céntimos, el de JOOMFEEN en negro por nueve euros con noventa y seis céntimos y otro de JOOMFEEN en plata por veinticinco euros con trece céntimos. ¿Te interesa alguno?
+**Enviado al TTS:** Tengo el cargador USB C de Yosou por trece euros con sesenta y cinco céntimos, el de Samsung por doce euros con setenta y dos céntimos, y dos opciones de JOOMFEEN por nueve coma noventa y seis y veinticinco euros con trece céntimos. ¿Te interesa alguna?
 
 - ✔ `cart(empty=true)` — carrito: vacío
 
-> `@elegido` = `B01M3XQ2KL` (candidate:1): Samsung EP-LN920CBEGWW, Cargador de coche Dual con Carga rápida y cable USB-C incluído, color negro
+> `@elegido` = `B07MBYH3F7` (candidate:1): Cable USB Tipo C [3 Pack 1M] Cable Cargador Tipo C De Nylon Carga Rápida Movil Tipo C USB Cargador para Samsung Galaxy S10/S9/S8/A20/A40/A50/A70, Huawei P9/P10/P20/P30, Nintendo Switch, Sony Xperia
 
-> **Suceso externo:** la tienda deja `B01M3XQ2KL` (@elegido) con precio 8,00 € y existencias 20.
+> **Suceso externo:** la tienda deja `B07MBYH3F7` (@elegido) con precio 8,00 € y existencias 20.
 
-## Turno 2 (2.9 s)
+## Turno 2 (2.5 s)
 
 **Usuario (texto):** Añade cero unidades del primero.
 
-**Agente:** Entendido, no se añadirán unidades del primero.
+**Agente:** Hecho.
 
-**Enviado al TTS:** Entendido, no se añadirán unidades del primero.
+**Enviado al TTS:** Hecho.
 
 - ✔ `cart(empty=true)` — carrito: vacío
 
-## Turno 3 (5.3 s)
+## Turno 3 (5.7 s)
 
 **Usuario (texto):** Añade menos dos unidades del primero.
 
-- `cambiar_cantidad(product_id="B01M3XQ2KL", cantidad=1)` → RECHAZADO: [no_esta_en_el_carrito] El producto B01M3XQ2KL no está en el carrito.
+- `cambiar_cantidad(product_id="B07MBYH3F7", cantidad=0)` → RECHAZADO: [cantidad_invalida] La cantidad debe ser un número entero mayor que cero (se recibió 0).
 
-**Agente:** Lo siento, el producto que buscas no está en el carrito. ¿Quieres añadirlo directamente?
+**Agente:** No se puede añadir cero unidades. ¿Te interesa añadir una unidad del cargador USB C de Yosou?
 
-**Enviado al TTS:** Lo siento, el producto que buscas no está en el carrito. ¿Quieres añadirlo directamente?
+**Enviado al TTS:** No se puede añadir cero unidades. ¿Te interesa añadir una unidad del cargador USB C de Yosou?
 
 - ✔ `cart(empty=true)` — carrito: vacío
 
@@ -47,7 +47,7 @@
 
 - ✔ `orders(count=0)` — pedidos registrados: 0
 - ✔ `cart(empty=true)` — carrito: vacío
-- ✔ `stock(product="@elegido", equals=20)` — existencias de B01M3XQ2KL: 20
+- ✔ `stock(product="@elegido", equals=20)` — existencias de B07MBYH3F7: 20
 
 ## Violaciones de restricciones
 
@@ -55,15 +55,15 @@
 
 ## Estado final de la tienda
 
-- Inventario `B01M3XQ2KL`: 6 → 20
+- Inventario `B07MBYH3F7`: 11 → 20
 - Líneas de carrito pendientes: 0
 
 ## Latencia por turno (segundos)
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.05 | 6.54 | 0.01 | 0.00 | 6.61 | 0.0 s |
-| 2 | 0.00 | 0.00 | 2.82 | 0.03 | 0.00 | 2.85 | 0.0 s |
-| 3 | 0.00 | 0.00 | 5.30 | 0.03 | 0.00 | 5.33 | 0.0 s |
-| **Media de los turnos con LLM (3)** | 0.00 | 0.02 | 4.89 | 0.02 | 0.00 | 4.93 | |
+| 1 | 0.00 | 0.04 | 6.29 | 0.03 | 0.00 | 6.36 | 0.0 s |
+| 2 | 0.00 | 0.00 | 2.43 | 0.03 | 0.00 | 2.46 | 0.0 s |
+| 3 | 0.00 | 0.00 | 5.66 | 0.03 | 0.00 | 5.69 | 0.0 s |
+| **Media de los turnos con LLM (3)** | 0.00 | 0.01 | 4.79 | 0.03 | 0.00 | 4.83 | |
 

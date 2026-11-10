@@ -1,11 +1,11 @@
 # 03_cambio_cantidad — Cambio de cantidad manteniendo las demás restricciones
 
-- Veredicto: **fallo**
+- Veredicto: **correcto**
 - Entrada: texto
 - Tipo: `cambio_cantidad`
 - Qué se prueba: El usuario añade dos unidades y después corrige a cuatro. El producto y el presupuesto deben seguir siendo los mismos y el pedido final debe llevar cuatro unidades (38,00 € de un presupuesto de 45 €).
 
-## Turno 1 (8.0 s)
+## Turno 1 (7.9 s)
 
 **Usuario (texto):** Busco una botella de agua de acero inoxidable. Mi presupuesto es de 45 euros.
 
@@ -28,52 +28,56 @@
 
 - `agregar_al_carrito(product_id="B07VQNY8PK", cantidad=2)` → OK: hecho. Así queda el carrito. CARRITO: - id=B07VQNY8PK | Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío… | 2 unidades × 9,50 € = 19,00 € | existencias: 20 Total del carrito: 19,00 €
 
-**Agente:** Hecho, añadidas dos unidades. El total ahora es 19,00 €. En el carrito hay 2 unidades de «Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío…» a 9,50 € cada una, 19,00 €. Total: 19,00 €. Tu presupuesto es de 45,00 € y te quedan 26,00 €.
+**Agente:** Hecho, añadidas dos unidades. El total es 19,00 €. En el carrito hay 2 unidades de «Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío…» a 9,50 € cada una, 19,00 €. Total: 19,00 €. Tu presupuesto es de 45,00 € y te quedan 26,00 €.
 
-**Enviado al TTS:** Hecho, añadidas dos unidades. El total ahora es diecinueve euros. En el carrito hay dos unidades de Newdora Botella de Agua Acero Inoxidable quinientos mililitros a nueve euros con cincuenta céntimos cada una, diecinueve euros. Total: diecinueve euros. Tu presupuesto es de cuarenta y cinco euros y te quedan veintiséis euros.
+**Enviado al TTS:** Hecho, añadidas dos unidades. El total es diecinueve euros. En el carrito hay dos unidades de Newdora Botella de Agua Acero Inoxidable quinientos mililitros a nueve euros con cincuenta céntimos cada una, diecinueve euros. Total: diecinueve euros. Tu presupuesto es de cuarenta y cinco euros y te quedan veintiséis euros.
 
 - ✔ `cart(lines=[{"product": "@elegida", "quantity": 2}])` — carrito: 2 × B07VQNY8PK
 
-## Turno 3 (5.9 s)
+## Turno 3 (4.9 s)
 
 **Usuario (texto):** Mejor que sean cuatro.
 
 - `cambiar_cantidad(product_id="B07VQNY8PK", cantidad=4)` → OK: hecho. Así queda el carrito. CARRITO: - id=B07VQNY8PK | Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío… | 4 unidades × 9,50 € = 38,00 € | existencias: 20 Total del carrito: 38,00 €
 
-**Agente:** Hecho, el carrito ahora tiene 4 unidades de la botella de agua de Newdora por 9,50 € cada una, totalizando 38,00 €. En el carrito hay 4 unidades de «Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío…» a 9,50 € cada una, 38,00 €. Total: 38,00 €. Tu presupuesto es de 45,00 € y te quedan 7,00 €.
+**Agente:** Hecho, el total es 38,00 €. En el carrito hay 4 unidades de «Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío…» a 9,50 € cada una, 38,00 €. Total: 38,00 €. Tu presupuesto es de 45,00 € y te quedan 7,00 €.
 
-**Enviado al TTS:** Hecho, el carrito ahora tiene cuatro unidades de la botella de agua de Newdora por nueve euros con cincuenta céntimos cada una, totalizando treinta y ocho euros. En el carrito hay cuatro unidades de Newdora Botella de Agua Acero Inoxidable quinientos mililitros a nueve euros con cincuenta céntimos cada una, treinta y ocho euros. Total: treinta y ocho euros. Tu presupuesto es de cuarenta y cinco euros y te quedan siete euros.
+**Enviado al TTS:** Hecho, el total es treinta y ocho euros. En el carrito hay cuatro unidades de Newdora Botella de Agua Acero Inoxidable quinientos mililitros a nueve euros con cincuenta céntimos cada una, treinta y ocho euros. Total: treinta y ocho euros. Tu presupuesto es de cuarenta y cinco euros y te quedan siete euros.
 
 - ✔ `cart(lines=[{"product": "@elegida", "quantity": 4}])` — carrito: 4 × B07VQNY8PK
 - ✔ `budget(cents=4500)` — presupuesto en el estado: 4500
 
-## Turno 4 (4.6 s)
+## Turno 4 (2.1 s)
 
 **Usuario (texto):** Ciérralo.
 
-**Agente:** Hecho, el carrito ahora tiene 4 unidades de la botella de agua de Newdora por 9,50 € cada una, totalizando 38,00 €. ¿Necesitas algo más?
+- `cotizar()` → OK: cotización creada; falta la confirmación del usuario.
 
-**Enviado al TTS:** Hecho, el carrito ahora tiene cuatro unidades de la botella de agua de Newdora por nueve euros con cincuenta céntimos cada una, totalizando treinta y ocho euros. ¿Necesitas algo más?
+**Agente:** Te repito el pedido antes de registrarlo: 4 unidades de «Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío…» a 9,50 € cada una, 38,00 €. Total: 38,00 €. Tu presupuesto es de 45,00 € y te quedan 7,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar. *(esperando confirmación)*
 
-- ✘ `awaiting_confirmation(value=true)` — esperando confirmación: no
+**Enviado al TTS:** Te repito el pedido antes de registrarlo: cuatro unidades de Newdora Botella de Agua Acero Inoxidable quinientos mililitros a nueve euros con cincuenta céntimos cada una, treinta y ocho euros. Total: treinta y ocho euros. Tu presupuesto es de cuarenta y cinco euros y te quedan siete euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.
+
+- ✔ `awaiting_confirmation(value=true)` — esperando confirmación: sí
 - ✔ `orders(count=0)` — pedidos registrados: 0
 
-## Turno 5 (3.2 s)
+## Turno 5 (0.0 s)
 
 **Usuario (texto):** Sí.
 
-**Agente:** Tu presupuesto es de 45,00 €. ¿Necesitas cambiar algo?
+- `confirmar_pedido(quote_id="6797cf40ac31431ea13b53ede75c90db")` → OK: pedido registrado
 
-**Enviado al TTS:** Tu presupuesto es de cuarenta y cinco euros. ¿Necesitas cambiar algo?
+**Agente:** Pedido número 1 registrado: 4 unidades de «Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío…» a 9,50 € cada una, 38,00 €. Total: 38,00 €. Gracias por tu compra.
 
-- ✘ `orders(count=1)` — pedidos registrados: 0
+**Enviado al TTS:** Pedido número uno registrado: cuatro unidades de Newdora Botella de Agua Acero Inoxidable quinientos mililitros a nueve euros con cincuenta céntimos cada una, treinta y ocho euros. Total: treinta y ocho euros. Gracias por tu compra.
+
+- ✔ `orders(count=1)` — pedidos registrados: 1
 
 ## Comprobaciones finales
 
-- ✘ `orders(count=1)` — pedidos registrados: 0
-- ✘ `order(lines=[{"product": "@elegida", "quantity": 4}], total_cents=3800)` — no hay ningún pedido
-- ✘ `stock(product="@elegida", equals=16)` — existencias de B07VQNY8PK: 20
-- ✘ `cart(empty=true)` — carrito: 4 × B07VQNY8PK
+- ✔ `orders(count=1)` — pedidos registrados: 1
+- ✔ `order(lines=[{"product": "@elegida", "quantity": 4}], total_cents=3800)` — pedido 1: 4 × B07VQNY8PK; total 3800 céntimos
+- ✔ `stock(product="@elegida", equals=16)` — existencias de B07VQNY8PK: 16
+- ✔ `cart(empty=true)` — carrito: vacío
 - ✔ `budget(cents=4500)` — presupuesto en el estado: 4500
 
 ## Violaciones de restricciones
@@ -82,17 +86,20 @@
 
 ## Estado final de la tienda
 
-- Inventario `B07VQNY8PK`: 46 → 20
-- Líneas de carrito pendientes: 1
+- Pedido 1: total 38,00 €
+  - pedido 1: 4 × `B07VQNY8PK` a 9,50 €
+- Inventario `B07VQNY8PK`: 46 → 16
+- Líneas de carrito pendientes: 0
 
 ## Latencia por turno (segundos)
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.03 | 7.94 | 0.03 | 0.00 | 8.00 | 0.0 s |
-| 2 | 0.00 | 0.00 | 4.98 | 0.04 | 0.00 | 5.02 | 0.0 s |
-| 3 | 0.00 | 0.00 | 5.81 | 0.05 | 0.00 | 5.86 | 0.0 s |
-| 4 | 0.00 | 0.00 | 4.57 | 0.03 | 0.00 | 4.60 | 0.0 s |
-| 5 | 0.00 | 0.00 | 3.18 | 0.03 | 0.00 | 3.21 | 0.0 s |
-| **Media de los turnos con LLM (5)** | 0.00 | 0.01 | 5.30 | 0.04 | 0.00 | 5.34 | |
+| 1 | 0.00 | 0.03 | 7.88 | 0.03 | 0.00 | 7.95 | 0.0 s |
+| 2 | 0.00 | 0.00 | 4.93 | 0.05 | 0.00 | 4.98 | 0.0 s |
+| 3 | 0.00 | 0.00 | 4.86 | 0.05 | 0.00 | 4.92 | 0.0 s |
+| 4 | 0.00 | 0.00 | 2.07 | 0.03 | 0.00 | 2.10 | 0.0 s |
+| 5 | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | 0.0 s |
+| **Media de los turnos con LLM (4)** | 0.00 | 0.01 | 4.94 | 0.04 | 0.00 | 4.99 | |
+| **Media de los turnos sin LLM (1)** | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | |
 
