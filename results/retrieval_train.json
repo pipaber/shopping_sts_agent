@@ -1,0 +1,27 @@
+{
+  "split": "train",
+  "model": "intfloat/multilingual-e5-small",
+  "metrics": {
+    "BM25 (base léxica)": {
+      "ndcg@10": 0.6807307894423854,
+      "recall@50": 0.6399160767789606,
+      "queries": 1500.0
+    },
+    "Denso (multilingual-e5-small)": {
+      "ndcg@10": 0.7371968349099023,
+      "recall@50": 0.663666926583549,
+      "queries": 1500.0
+    },
+    "Híbrido RRF": {
+      "ndcg@10": 0.7236295935100154,
+      "recall@50": 0.7229650642025811,
+      "queries": 1500.0
+    }
+  },
+  "timings": {
+    "bm25_index_s": 8.135766323001008,
+    "bm25_ms_per_query": 0.051305287997820415,
+    "dense_index_s": 362.430300025997,
+    "dense_ms_per_query": 0.37343858400223934
+  }
+}
