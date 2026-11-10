@@ -8,26 +8,24 @@ from __future__ import annotations
 
 import json
 import re
-from collections.abc import Iterable, Sequence
+from collections.abc import Iterable, Mapping, Sequence
 
 from shopping_agent.agent.state import AgentState, Candidate, CartLine, Step, cart_total
 from shopping_agent.agent.texts import short_title, units
-from shopping_agent.agent.tools import TOOL_DOCS
 from shopping_agent.store.ops import Issue, format_eur
 
 UNKNOWN = "desconocido"
 HISTORY_MESSAGES = 8
 HISTORY_CHARS = 600
 
-SYSTEM_PROMPT = (
-    """Eres el asistente de compras por voz de una tienda en línea. Hablas en español de España, con frases cortas y naturales, porque tu respuesta se leerá en voz alta: sin listas, sin emojis y sin símbolos raros.
+_RULES_BEFORE_TOOLS = """Eres el asistente de compras por voz de una tienda en línea. Hablas en español de España, con frases cortas y naturales, porque tu respuesta se leerá en voz alta: sin listas, sin emojis y sin símbolos raros.
 
 Trabajas por pasos. En cada paso eliges UNA herramienta y contestas solo con un objeto JSON con los campos "motivo" (una frase corta), "herramienta" y sus argumentos. El sistema la ejecuta y te devuelve un RESULTADO; entonces eliges el paso siguiente. El turno termina cuando usas `responder` o `pedir_aclaracion`. Lo normal son uno o dos pasos y después `responder`.
 
 Herramientas:
 """
-    + "\n".join(f"- {name} {doc}" for name, doc in TOOL_DOCS.items())
-    + """
+
+_RULES_AFTER_TOOLS = """
 
 Reglas:
 1. Sobre un producto solo puedes afirmar lo que aparece en CANDIDATOS o en un RESULTADO. Si un dato figura como "desconocido", di que no consta en el catálogo; nunca lo inventes. CANDIDATOS solo trae un extracto de las características: si te preguntan por un dato que no ves ahí, mira `detalle_producto` antes de decir que no consta.
@@ -60,7 +58,12 @@ Usuario: "¿Y el tercero está disponible?" (el candidato [3] tiene id=B00TERCER
 {"motivo": "contestar la pregunta", "herramienta": "responder", "texto": "Sí, quedan … unidades."}
 Usuario: "¿De qué color es el primero?" (en CANDIDATOS pone color: desconocido)
 {"motivo": "el dato no consta", "herramienta": "responder", "texto": "El catálogo no indica el color de ese producto."}"""
-)
+
+
+def system_prompt(tool_docs: Mapping[str, str]) -> str:
+    """Instrucciones del LLM, con la lista de herramientas (nombre → descripción)."""
+    listed = "\n".join(f"- {name} {doc}" for name, doc in tool_docs.items())
+    return _RULES_BEFORE_TOOLS + listed + _RULES_AFTER_TOOLS
 
 
 def _field(value: object) -> str:
@@ -164,7 +167,7 @@ def result_message(step: Step) -> str:
     )
 
 
-def build_messages(state: AgentState) -> list[dict[str, str]]:
+def build_messages(state: AgentState, instructions: str) -> list[dict[str, str]]:
     """Mensajes para el LLM: reglas, historial reciente, estado al empezar el turno y,
     después, cada paso como un intercambio (su decisión y el resultado del sistema).
 
@@ -173,7 +176,7 @@ def build_messages(state: AgentState) -> list[dict[str, str]]:
     """
     history = list(state.messages)
     current = history.pop()["content"] if history and history[-1]["role"] == "user" else state.user_input
-    messages = [{"role": "system", "content": SYSTEM_PROMPT}]
+    messages = [{"role": "system", "content": instructions}]
     for message in history[-HISTORY_MESSAGES:]:
         content = message["content"]
         if len(content) > HISTORY_CHARS:

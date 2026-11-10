@@ -9,7 +9,7 @@ from langgraph.checkpoint.memory import InMemorySaver
 from langgraph.store.memory import InMemoryStore
 
 from shopping_agent.agent import graph as agent_graph
-from shopping_agent.agent import texts, tools
+from shopping_agent.agent import guards, texts, tools
 from shopping_agent.agent.graph import build_graph
 from shopping_agent.agent.llm import LLMError, ScriptedLLM
 from shopping_agent.agent.memory import open_memory
@@ -368,14 +368,14 @@ def test_response_with_invented_number_is_rejected_by_code(shop):
     session.send("Busco auriculares Sony")
 
     def corrected(messages, schema):
-        assert tools.UNGROUNDED_NUMBER in messages[-1]["content"] and "(30)" in messages[-1]["content"]
+        assert guards.UNGROUNDED_NUMBER in messages[-1]["content"] and "(30)" in messages[-1]["content"]
         return say("Según el catálogo, hasta 50 horas de batería.")
 
     # "30 horas" no aparece en ningún dato; "50 horas" sí está en las características.
     shop.llm.extend([say("Los Sony tienen 30 horas de batería."), corrected])
     turn = session.send("¿Cuánta batería tienen los Sony?")
     assert turn.response == "Según el catálogo, hasta 50 horas de batería."
-    assert codes(turn.operations[0]) == [tools.UNGROUNDED_NUMBER]
+    assert codes(turn.operations[0]) == [guards.UNGROUNDED_NUMBER]
 
     # Si insiste, el turno acaba con la respuesta de respaldo, nunca con la cifra inventada.
     shop.llm.extend([say("Pesan 250 gramos."), say("Pesan 250 gramos.")])
@@ -390,7 +390,7 @@ def test_llm_cannot_claim_an_order_that_does_not_exist(shop):
     # El LLM "cierra" la compra de palabra: el código lo rechaza y le exige cotizar.
     shop.llm.extend([say("Perfecto, tu pedido está listo. ¡Gracias por tu compra!"), call(tools.QUOTE)])
     turn = session.send("Ciérralo")
-    assert codes(turn.operations[0]) == [tools.FALSE_ORDER_CLAIM]
+    assert codes(turn.operations[0]) == [guards.FALSE_ORDER_CLAIM]
     assert turn.awaiting_confirmation and "¿Lo confirmo?" in turn.response
     assert shop.orders() == 0
 
@@ -400,7 +400,7 @@ def test_llm_cannot_claim_an_order_that_does_not_exist(shop):
 
 
 def test_numbers_in_ignores_identifiers_and_normalizes_formats():
-    assert tools.numbers_in("id=B08K91F1M4 a 45,70 € (45.7), Bluetooth 5.0, IP7, 500ml, 3 unidades") == {
+    assert guards.numbers_in("id=B08K91F1M4 a 45,70 € (45.7), Bluetooth 5.0, IP7, 500ml, 3 unidades") == {
         "45.7", "5", "500", "3",
     }
 
@@ -466,7 +466,7 @@ def test_preferences_follow_the_user_across_conversations(shop):
     ],
 )
 def test_classify_confirmation(text, expected):
-    assert tools.classify_confirmation(text) == expected
+    assert guards.classify_confirmation(text) == expected
 
 
 def test_agent_never_reads_relevance_labels():

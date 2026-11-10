@@ -33,7 +33,8 @@ from langgraph.graph import END, START, StateGraph
 from langgraph.store.base import BaseStore
 from langgraph.types import interrupt
 
-from shopping_agent.agent import prompt, texts, tools
+from shopping_agent.agent import guards, prompt, texts, tools
+from shopping_agent.agent.deps import Deps, cart_id, user_id
 from shopping_agent.agent.llm import DecisionLLM, LLMError
 from shopping_agent.agent.search import CatalogSearch
 from shopping_agent.agent.state import (
@@ -59,9 +60,6 @@ MAX_STEPS = 6  # decisiones del LLM por turno
 SHOWN_CANDIDATES = 5
 RERANK_WINDOW = 20  # entre los primeros se priorizan los que se pueden comprar
 ALTERNATIVES = 3
-PROFILE_NAMESPACE = "usuarios"
-DETAIL_CHARS = (1600, 800)  # viñetas y descripción de un producto
-COMPARE_CHARS = (600, 300)  # por producto al comparar varios
 
 def _by_route(state: AgentState) -> str:
     return state.route
@@ -76,44 +74,7 @@ def build_graph(
 ):
     """Compila el grafo. ``db_path`` es la tienda SQLite; el carrito es el del hilo."""
 
-    @contextmanager
-    def shop() -> Iterator[sqlite3.Connection]:
-        conn = connect(db_path)
-        try:
-            yield conn
-        finally:
-            conn.close()
-
-    def cart_id(config: RunnableConfig) -> str:
-        return str(config.get("configurable", {})["thread_id"])
-
-    def user_id(config: RunnableConfig) -> str:
-        return str(config.get("configurable", {}).get("user_id", "anonimo"))
-
-    def priced_line(item: dict[str, Any]) -> PricedLine:
-        return PricedLine(
-            product_id=item["product_id"],
-            title=search.title(item["product_id"]),
-            quantity=item["quantity"],
-            unit_price_cents=item["unit_price_cents"],
-            subtotal_cents=item["subtotal_cents"],
-        )
-
-    def cart_line(item: dict[str, Any]) -> CartLine:
-        return CartLine(**priced_line(item), stock=item["stock"])
-
-    def read_cart(conn: sqlite3.Connection, config: RunnableConfig) -> list[CartLine]:
-        return [cart_line(item) for item in ops.get_cart(conn, cart_id(config)).data["items"]]
-
-    def priced(conn: sqlite3.Connection, product_id: str, *chars: int) -> Candidate:
-        """Evidencia del catálogo con el precio y las existencias de ahora."""
-        offer = ops.price_and_stock(conn, product_id).data
-        return Candidate(**search.evidence(product_id, *chars), price_cents=offer["price_cents"], stock=offer["stock"])
-
-    def candidate(conn: sqlite3.Connection, product_id: str) -> Candidate | None:
-        if product_id not in search or not ops.price_and_stock(conn, product_id).ok:
-            return None
-        return priced(conn, product_id)
+    deps = Deps(llm, search, db_path, store)
 
     def step(state: AgentState, ok: bool, summary: str, result: Any = None, issues: Iterable[Issue] = ()) -> Step:
         decision = state.decision
@@ -138,16 +99,14 @@ def build_graph(
         """Anota el mensaje, sincroniza el estado con la tienda y reinicia el trabajo del turno."""
         text = state.user_input.strip()
         update = {**new_turn(state, text), "route": "interpretar"}
-        with shop() as conn:
-            cart = read_cart(conn, config)
-            refreshed = [candidate(conn, c["product_id"]) for c in state.candidates]
+        with deps.shop() as conn:
+            cart = deps.cart(conn, cart_id(config))
+            refreshed = [deps.candidate(conn, c["product_id"]) for c in state.candidates]
         candidates = [c for c in refreshed if c is not None]
         preferences = state.preferences
-        if not state.messages and store is not None:
+        if not state.messages:
             # Primera vez en este hilo: recupera las preferencias guardadas del usuario.
-            profile = store.get((PROFILE_NAMESPACE, user_id(config)), "perfil")
-            if profile is not None:
-                preferences = list(profile.value.get("preferencias", []))
+            preferences = deps.saved_preferences(user_id(config)) or preferences
         update.update(cart=cart, candidates=candidates, preferences=preferences)
 
         if not text:
@@ -166,7 +125,7 @@ def build_graph(
             order
             and history
             and history[-1]["content"] == order["message"]
-            and tools.classify_confirmation(text) == "si"
+            and guards.classify_confirmation(text) == "si"
         ):
             update["route"] = "registrar_pedido"
         return update
@@ -178,7 +137,7 @@ def build_graph(
         if len(steps) < MAX_STEPS:
             schema = tools.decision_schema(tools.known_product_ids(state))
             try:
-                decision = llm.decide(prompt.build_messages(state), schema)
+                decision = llm.decide(prompt.build_messages(state, tools.SYSTEM_PROMPT), schema)
             except LLMError:
                 decision = None
             if decision is not None and steps:
@@ -190,29 +149,22 @@ def build_graph(
             # Respuesta de respaldo: el último rechazo de la tienda, que sí es para el usuario.
             text = texts.FALLBACK
             for previous in reversed(steps):
-                reasons = [i["message"] for i in previous["issues"] if i["code"] not in tools.INTERNAL_CODES]
+                reasons = [i["message"] for i in previous["issues"] if i["code"] not in guards.INTERNAL_CODES]
                 if reasons:
                     text = texts.could_not_complete(reasons)
                     break
             decision = {"motivo": "respuesta de respaldo del sistema", "herramienta": tools.RESPOND, "texto": text}
             return {"decision": decision, "response": text, "route": "responder"}
 
-        tool = decision.get("herramienta")
-        update: Update = {"decision": decision}
-        if tool == tools.RESPOND:
-            text = decision.get("texto")
-            # Una sola línea: la respuesta se leerá en voz alta.
-            text = " ".join(text.split()) if isinstance(text, str) else ""
-            update.update(response=text or texts.FALLBACK, route="validar_respuesta" if text else "responder")
-        elif tool == tools.CLARIFY:
-            update["route"] = "pedir_aclaracion"
-        elif tool == tools.SEARCH:
-            update["route"] = "recuperar"
-        elif tool == tools.QUOTE:
-            update["route"] = "cotizar"
-        else:
-            update["route"] = "validar"
-        return update
+        tool = tools.TOOLS.get(str(decision.get("herramienta")))
+        if tool is None or tool.name != tools.RESPOND:
+            # Una herramienta que no existe también va a validar, que la rechaza.
+            return {"decision": decision, "route": tool.node if tool else "validar"}
+        text = decision.get("texto")
+        # Una sola línea: la respuesta se leerá en voz alta.
+        text = " ".join(text.split()) if isinstance(text, str) else ""
+        route = "validar_respuesta" if text else "responder"
+        return {"decision": decision, "response": text or texts.FALLBACK, "route": route}
 
     def validar_respuesta(state: AgentState) -> Update:
         """Comprueba la respuesta del LLM contra lo que tuvo delante; si no se sostiene, se la devuelve."""
@@ -224,7 +176,7 @@ def build_graph(
                 *(previous["summary"] for previous in state.steps),
             ]
         )
-        issues = tools.check_response(state.response, evidence, has_order=state.order is not None)
+        issues = guards.check_response(state.response, evidence, has_order=state.order is not None)
         if issues:
             return record(state, step(state, False, prompt.rejection(issues), issues=issues), route="interpretar")
         return {"route": "responder"}
@@ -250,8 +202,8 @@ def build_graph(
 
         budget = state.budget_cents
         remaining = None if budget is None else budget - cart_total(state.cart)
-        with shop() as conn:
-            found = [candidate(conn, product_id) for product_id in search.rank(query, top=50)]
+        with deps.shop() as conn:
+            found = [deps.candidate(conn, product_id) for product_id in search.rank(query, top=50)]
         ranked = [c for c in found if c is not None]
         # Regla de negocio: entre los primeros resultados van antes los que se pueden
         # comprar (con existencias y dentro de lo que queda de presupuesto).
@@ -275,73 +227,24 @@ def build_graph(
 
     def ejecutar_herramienta(state: AgentState, config: RunnableConfig) -> Update:
         """Ejecuta una herramienta ya validada. Stock y presupuesto los decide ``store.ops``."""
-        decision = state.decision
-        tool, args = decision["herramienta"], decision_args(decision)
-        budget = state.budget_cents
-
-        if tool == tools.SET_BUDGET:
-            cents = tools.budget_to_cents(args["importe_eur"])
-            assert cents is not None  # lo garantiza la validación previa
-            total = cart_total(state.cart)
-            summary = f"presupuesto fijado en {format_eur(cents)}."
-            if total > cents:
-                summary += f" Aviso: el carrito suma {format_eur(total)} y lo supera en {format_eur(total - cents)}."
-            entry = step(state, True, summary, result={"budget_cents": cents})
-            return record(state, entry, budget_cents=cents, quote=None, budget_changed=True)
-
-        if tool == tools.SAVE_PREFERENCE:
-            preference = args["preferencia"].strip()
-            preferences = list(dict.fromkeys([*state.preferences, preference]))
-            if store is not None:
-                store.put((PROFILE_NAMESPACE, user_id(config)), "perfil", {"preferencias": preferences})
-            return record(state, step(state, True, "preferencia guardada.", result=preferences), preferences=preferences)
-
-        with shop() as conn:
-            if tool in (tools.DETAIL, tools.COMPARE):
-                ids = [args["product_id"]] if tool == tools.DETAIL else list(dict.fromkeys(args["product_ids"]))
-                chars = DETAIL_CHARS if tool == tools.DETAIL else COMPARE_CHARS
-                rows = [priced(conn, product_id, *chars) for product_id in ids]
-                summary = "\n" + "\n".join(prompt.candidate_line(i, row) for i, row in enumerate(rows, 1))
-                return record(state, step(state, True, summary, result=[row["product_id"] for row in rows]))
-
-            if tool == tools.PRICE_STOCK:
-                offer = ops.price_and_stock(conn, args["product_id"])
-                if not offer.ok:
-                    return record(state, step(state, False, prompt.rejection(offer.issues), issues=offer.issues))
-                stock = offer.data["stock"]
-                summary = (
-                    f"precio {format_eur(offer.data['price_cents'])}; "
-                    + (f"quedan {stock} unidades." if stock else "agotado.")
-                    + " Esta herramienta no da características: para color, batería, medidas u otros datos"
-                    " del producto usa detalle_producto."
-                )
-                return record(state, step(state, True, summary, result=offer.data))
-
-            if tool == tools.ADD:
-                result = ops.add_to_cart(conn, cart_id(config), args["product_id"], args["cantidad"], budget)
-            elif tool == tools.SET_QUANTITY:
-                result = ops.set_quantity(conn, cart_id(config), args["product_id"], args["cantidad"], budget)
-            else:
-                result = ops.remove_from_cart(conn, cart_id(config), args["product_id"])
-            cart = read_cart(conn, config)
-
-        if not result.ok:
-            return record(state, step(state, False, prompt.rejection(result.issues), issues=result.issues), cart=cart)
-        summary = f"hecho. Así queda el carrito.\n{prompt.render_cart(cart)}"
-        entry = step(state, True, summary, result={"total_cents": cart_total(cart)})
-        # Cualquier cambio en el carrito invalida la cotización anterior.
-        return record(state, entry, cart=cart, quote=None, cart_changed=True)
+        run = tools.TOOLS[state.decision["herramienta"]].run
+        assert run is not None  # validar solo deja pasar herramientas con función
+        with deps.shop() as conn:
+            call = tools.ToolCall(decision_args(state.decision), state, deps, conn, cart_id(config), user_id(config))
+            outcome = run(call)
+        entry = step(state, outcome.ok, outcome.summary, outcome.result, outcome.issues)
+        return record(state, entry, **outcome.update)
 
     def cotizar(state: AgentState, config: RunnableConfig) -> Update:
         """Congela el carrito en una cotización y redacta lo que se repite al usuario."""
-        with shop() as conn:
+        with deps.shop() as conn:
             result = ops.create_quote(conn, cart_id(config), state.budget_cents)
-            cart = read_cart(conn, config)
+            cart = deps.cart(conn, cart_id(config))
         if not result.ok:
             entry = step(state, False, prompt.rejection(result.issues), issues=result.issues)
             return record(state, entry, cart=cart, route="interpretar")
         data = result.data
-        items = [cart_line(item) for item in data["items"]]
+        items = [deps.cart_line(item) for item in data["items"]]
         message = texts.quote_message(items, data["total_cents"], data["budget_cents"])
         quote = Quote(
             quote_id=data["quote_id"],
@@ -375,7 +278,7 @@ def build_graph(
             }
         )
         text = str(answer or "").strip()
-        verdict = tools.classify_confirmation(text)
+        verdict = guards.classify_confirmation(text)
         if verdict == "otro":
             # No es un sí ni un no: no se compra nada y el mensaje se atiende como turno nuevo.
             return {"user_input": text, "route": "iniciar_turno"}
@@ -389,9 +292,9 @@ def build_graph(
         pending = state.quote or state.order  # la cotización a confirmar o, si se repite el sí, la ya confirmada
         assert pending is not None
         quote_id = pending["quote_id"]
-        with shop() as conn:
+        with deps.shop() as conn:
             result = ops.confirm_quote(conn, quote_id)
-            cart = read_cart(conn, config)
+            cart = deps.cart(conn, cart_id(config))
         entry = Step(
             turn=state.turn,
             tool="confirmar_pedido",
@@ -411,7 +314,7 @@ def build_graph(
                 "route": "proponer_alternativa",
             }
         data = result.data
-        items = [priced_line(item) for item in data["items"]]
+        items = [deps.priced_line(item) for item in data["items"]]
         if data["already_confirmed"]:
             entry["summary"] = "el pedido ya estaba registrado; no se duplicó"
             message = texts.order_already_registered(data["order_id"], data["total_cents"])
@@ -435,7 +338,7 @@ def build_graph(
         parts = [texts.NOT_REGISTERED]
         alternatives: list[Candidate] = []
 
-        with shop() as conn:
+        with deps.shop() as conn:
             for issue in issues:
                 code, product_id = issue["code"], issue["product_id"]
                 if product_id is None or code not in (ops.OUT_OF_STOCK, ops.INSUFFICIENT_STOCK):
@@ -451,7 +354,7 @@ def build_graph(
                 for other_id in search.rank(search.title(product_id), top=50):
                     if len(alternatives) >= ALTERNATIVES:
                         break
-                    option = candidate(conn, other_id)
+                    option = deps.candidate(conn, other_id)
                     if option is None or other_id in in_cart or other_id in {a["product_id"] for a in alternatives}:
                         continue
                     affordable = budget is None or others + option["price_cents"] * wanted <= budget
