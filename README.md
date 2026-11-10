@@ -42,6 +42,49 @@ Compara BM25, denso e híbrido con nDCG@10 sobre los candidatos anotados. `test`
 uv run python -m shopping_agent.eval.retrieval --split train
 ```
 
+## Reranker (GraphSAGE)
+
+Segunda etapa opcional de la búsqueda: una GNN (GraphSAGE, con PyTorch Geometric) reordena los 50 primeros del híbrido sobre un grafo de consultas y productos. Es el componente de la ablación: el agente se puede correr con y sin él. El diseño, las decisiones y las limitaciones están en [documentation/PLAN.md](documentation/PLAN.md) ("Diseño y resultados del reranker").
+
+Las 1 500 consultas de `train` se reparten con semilla fija en 1 200 de ajuste y 300 de validación; las de `test` no se leen en ningún paso.
+
+```bash
+uv run python -m shopping_agent.retrieval.train --variant sage --seed 0
+```
+
+Entrena con las consultas de ajuste y guarda los pesos y el grafo en `datasets/processed/reranker.pt` (13 MB, fuera de git; se regenera con este comando en unos 3 minutos). Imprime el nDCG@10 de validación del modelo guardado. La misma semilla lo reproduce con una diferencia de hasta ±0,0005, por operaciones de GPU que no son deterministas. `--variant` admite las variantes de la comparación: `sage` (la del agente), `control` (el mismo modelo sin grafo), `sage_exact` (con aristas de etiquetas de ajuste), `gatv2`…
+
+```bash
+uv run python -m shopping_agent.eval.reranker --seeds 5
+```
+
+Compara en validación los modelos base, el control sin grafo y cada variante con 5 semillas (unos 15 minutos en GPU), y escribe [results/reranker_validation.md](results/reranker_validation.md) y su `.json`. Resumen (nDCG@10 sobre candidatos anotados, media ± desviación entre semillas):
+
+| Sistema | nDCG@10 en validación |
+|---|---|
+| BM25 (base léxica) | 0,6750 |
+| Denso | 0,7535 |
+| Híbrido RRF | 0,7403 |
+| Control sin grafo (mismo modelo, sin paso de mensajes) | 0,7582 ± 0,0005 |
+| GraphSAGE | 0,7619 ± 0,0009 |
+| GraphSAGE con aristas de etiquetas | 0,7631 ± 0,0015 |
+
+Reordenar mejora al híbrido en +0,022, pero casi toda la mejora la da ya el control sin grafo: el paso de mensajes añade +0,004 (IC 95 % [+0,0004; +0,0073]), una diferencia pequeña y sensible al número de épocas. Las aristas con etiquetas no aportan nada medible y el modelo del agente no las usa.
+
+```bash
+uv run python -m shopping_agent.eval.reranker_cost
+```
+
+Mide el coste en la búsqueda ([results/reranker_cost.json](results/reranker_cost.json)): +10 ms por consulta en GPU (+124 ms en CPU) y 230 MiB más de VRAM.
+
+**Interruptor.** El agente usa el reranker por defecto. `SHOPPING_AGENT_RERANKER=off` (en el entorno o en el `.env`) deja la búsqueda en el híbrido; las transcripciones anotan cuál se usó. Con el reranker activado hacen falta los pesos: si no están, el agente se detiene con un mensaje que dice cómo generarlos.
+
+```bash
+SHOPPING_AGENT_RERANKER=off uv run python -m shopping_agent.agent.chat --script scenarios/demo_compra.txt --restore --out results/chat_compra_sin_gnn
+```
+
+Las transcripciones que ya estaban en `results/` (`chat_*` y `voz_*`) se hicieron antes de que existiera el reranker, con la búsqueda híbrida sola.
+
 ## Memoria del agente (Postgres)
 
 Los checkpoints de la conversación (`PostgresSaver`) y la memoria entre conversaciones (`PostgresStore`) se guardan en Postgres. La conexión se lee de `SHOPPING_AGENT_PG_URL` y las tablas se crean solas la primera vez. Postgres es obligatorio: sin esa variable los comandos se detienen con un error que lo explica, para no quedarse sin persistencia sin notarlo. Para trabajar a propósito sin Postgres hay que pedirlo con la opción `--volatile-memory` (en código, `open_memory(volatile=True)`); la transcripción deja anotado qué memoria se usó.
@@ -172,6 +215,9 @@ Calcula, sobre una corrida guardada: la inteligibilidad (WER de Whisper sobre el
 src/shopping_agent/
   data/        preparación de ESCI y de la tienda simulada
   retrieval/   BM25, denso, fusión RRF y métricas
+    dev_data.py, first_stage.py   consultas de ajuste y validación; señales de la primera etapa
+    graph.py, gnn.py              grafo consulta–producto; modelo GraphSAGE y su pérdida
+    train.py, reranker.py         entrenamiento; reranker ya entrenado, para el agente
   store/       esquema SQLite, operaciones con validación y restauración
   agent/
     state.py     estado de la conversación, con un valor por defecto en cada campo
@@ -184,16 +230,16 @@ src/shopping_agent/
     graph.py     el cableado del grafo: a dónde puede ir cada nodo
     session.py   un mensaje entra, una respuesta sale
     chat.py, report.py   comando de chat por texto y transcripción
-    memory.py, llm.py, search.py   Postgres, LLM local y búsqueda híbrida
+    memory.py, llm.py, search.py   Postgres, LLM local y búsqueda híbrida con reranker opcional
   voice/       audio, asr, speech_text, tts, pipeline (un turno por voz), chat (comando), report
-  eval/        evaluación de la recuperación y métricas de voz
+  eval/        evaluación de la recuperación, del reranker (comparación y coste) y métricas de voz
 ```
 
 Criterio de idioma: los identificadores del código (módulos, funciones, clases, variables, campos, claves de los JSON de resultados y opciones de los comandos) van en inglés. Va en español todo lo que es lenguaje: los textos para el usuario y para el LLM, los comentarios y la documentación, y los nombres que el LLM o las transcripciones muestran (nodos del grafo, herramientas y sus argumentos, códigos de rechazo). La función que implementa un nodo se llama como el nodo. Los archivos de resultados y de escenarios, que son contenido, también van en español.
 
 ## Pruebas
 
-Las pruebas no necesitan GPU, modelos ni grabaciones: el grafo se prueba con un LLM guionizado y el canal de voz con un ASR y un TTS simulados. Las que no tratan de Postgres usan memoria volátil pedida de forma explícita; las de Postgres se omiten si `SHOPPING_AGENT_PG_URL` no está definida o el servidor no responde.
+Las pruebas no necesitan GPU, modelos ni grabaciones: el grafo del agente se prueba con un LLM guionizado, el canal de voz con un ASR y un TTS simulados, y el reranker con un grafo sintético de doce productos. Las que no tratan de Postgres usan memoria volátil pedida de forma explícita; las de Postgres se omiten si `SHOPPING_AGENT_PG_URL` no está definida o el servidor no responde.
 
 ```bash
 uv run pytest
