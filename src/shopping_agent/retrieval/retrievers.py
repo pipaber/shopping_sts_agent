@@ -14,6 +14,7 @@ import numpy as np
 from shopping_agent.retrieval.text import tokenize
 
 DEFAULT_DENSE_MODEL = "intfloat/multilingual-e5-small"
+RRF_K = 60
 
 
 class BM25Retriever:
@@ -76,12 +77,15 @@ class DenseRetriever:
             convert_to_numpy=True,
         ).astype(np.float32)
 
+    def embed(self, queries: list[str]) -> np.ndarray:
+        """Embeddings normalizados de las consultas, en el espacio de los productos."""
+        return self._encode([self.query_prefix + query for query in queries])
+
     def score(self, queries: list[str]) -> np.ndarray:
-        query_embeddings = self._encode([self.query_prefix + query for query in queries])
-        return query_embeddings @ self.doc_embeddings.T
+        return self.embed(queries) @ self.doc_embeddings.T
 
 
-def rrf(score_matrices: list[np.ndarray], k: int = 60) -> np.ndarray:
+def rrf(score_matrices: list[np.ndarray], k: int = RRF_K) -> np.ndarray:
     """Reciprocal Rank Fusion: suma de ``1 / (k + rango)`` en cada recuperador."""
     fused = np.zeros_like(score_matrices[0], dtype=np.float32)
     positions = np.arange(1, fused.shape[1] + 1, dtype=np.float32)

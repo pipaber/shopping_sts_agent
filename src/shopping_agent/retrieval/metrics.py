@@ -20,6 +20,16 @@ def ndcg(ranked_gains: np.ndarray, k: int = 10) -> float:
     return dcg(ranked_gains, k) / ideal if ideal > 0 else 0.0
 
 
+def ndcg_by_query(qrels: pd.DataFrame, scores: np.ndarray, k: int = 10) -> pd.Series:
+    """nDCG@k de cada consulta sobre sus candidatos anotados.
+
+    ``scores`` trae la puntuación del sistema para cada fila de ``qrels``.
+    """
+    order = np.lexsort((-np.asarray(scores, dtype=float), qrels["query_id"].to_numpy()))
+    ranked = qrels.iloc[order]
+    return ranked.groupby("query_id", sort=True)["gain"].agg(lambda gains: ndcg(gains.to_numpy(), k))
+
+
 def evaluate(
     scores: np.ndarray,
     query_ids: list[int],
@@ -38,23 +48,18 @@ def evaluate(
     """
     column = {product_id: index for index, product_id in enumerate(product_ids)}
     row = {query_id: index for index, query_id in enumerate(query_ids)}
+    pairs = (qrels["query_id"].map(row).to_numpy(), qrels["product_id"].map(column).to_numpy())
+    ndcgs = ndcg_by_query(qrels, scores[pairs], k)
 
-    ndcgs, recalls = [], []
-    for query_id, group in qrels.groupby("query_id"):
+    recalls = []
+    exact = qrels[qrels["esci_label"] == "E"]
+    for query_id, group in exact.groupby("query_id"):
         query_scores = scores[row[query_id]]
-        candidates = group["product_id"].map(column).to_numpy()
-        gains = group["gain"].to_numpy()
-
-        order = np.argsort(-query_scores[candidates], kind="stable")
-        ndcgs.append(ndcg(gains[order], k))
-
-        exact = candidates[group["esci_label"].to_numpy() == "E"]
-        if len(exact):
-            top = np.argpartition(-query_scores, recall_depth)[:recall_depth]
-            recalls.append(np.isin(exact, top).mean())
+        top = np.argpartition(-query_scores, recall_depth)[:recall_depth]
+        recalls.append(np.isin(group["product_id"].map(column).to_numpy(), top).mean())
 
     return {
-        f"ndcg@{k}": float(np.mean(ndcgs)),
+        f"ndcg@{k}": float(ndcgs.mean()),
         f"recall@{recall_depth}": float(np.mean(recalls)),
         "queries": len(ndcgs),
     }
