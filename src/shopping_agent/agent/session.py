@@ -19,8 +19,9 @@ RECURSION_LIMIT = 80  # cada decisión del LLM son hasta tres nodos
 
 # Etapa a la que se imputa el tiempo de cada nodo del grafo. Lo que no aparece
 # aquí (validar, ejecutar, cotizar, confirmar, registrar…) cuenta como herramientas.
-RETRIEVAL, LLM, TOOLS = "recuperacion", "llm", "herramientas"
-NODE_STAGE = {"interpretar": LLM, "recuperar": RETRIEVAL, "proponer_alternativa": RETRIEVAL}
+RETRIEVAL, LLM, TOOLS = "retrieval", "llm", "tools"
+LLM_NODE = "interpretar"
+NODE_STAGE = {LLM_NODE: LLM, "recuperar": RETRIEVAL, "proponer_alternativa": RETRIEVAL}
 
 
 @dataclass
@@ -32,6 +33,7 @@ class TurnResult:
     operations: list[Step] = field(default_factory=list)  # ejecutadas o rechazadas en el turno
     # Segundos por etapa (recuperación, LLM, herramientas); suman ``seconds``.
     stages: dict[str, float] = field(default_factory=dict)
+    llm_steps: int = 0  # veces que se consultó al LLM; confirmar un pedido no lo necesita
 
 
 class ShoppingSession:
@@ -60,17 +62,19 @@ class ShoppingSession:
         # El grafo avisa al terminar cada nodo: el tiempo entre avisos es el del nodo
         # (con su checkpoint) y se suma a la etapa que le corresponde.
         stages = {RETRIEVAL: 0.0, LLM: 0.0, TOOLS: 0.0}
+        llm_steps = 0
         start = last = time.perf_counter()
         for update in self.graph.stream(payload, self.config, stream_mode="updates"):
             now = time.perf_counter()
             node = next(iter(update), "")
             stages[NODE_STAGE.get(node, TOOLS)] += now - last
+            llm_steps += node == LLM_NODE
             last = now
         seconds = time.perf_counter() - start
         stages[TOOLS] += seconds - sum(stages.values())
 
         after = self.graph.get_state(self.config)
         waiting = bool(after.interrupts)
-        response = after.interrupts[0].value["mensaje"] if waiting else after.values.get("response", "")
+        response = after.interrupts[0].value["message"] if waiting else after.values.get("response", "")
         operations = (after.values.get("ops_log") or [])[done:]
-        return TurnResult(text, response, waiting, seconds, operations, stages)
+        return TurnResult(text, response, waiting, seconds, operations, stages, llm_steps)

@@ -143,6 +143,25 @@ def ensure_model() -> tuple[Path, Path]:
     return model_dir, Path(config_path) if config_path else model_dir / "config.json"
 
 
+def _pick_device(device: str) -> str:
+    if device != "auto":
+        return device
+    import torch
+
+    return "cuda" if torch.cuda.is_available() else "cpu"
+
+
+def _load_xtts(model_dir: Path, config_path: Path, device: str) -> Any:
+    from TTS.tts.configs.xtts_config import XttsConfig
+    from TTS.tts.models.xtts import Xtts
+
+    config = XttsConfig()
+    config.load_json(str(config_path))
+    model = Xtts.init_from_config(config)
+    model.load_checkpoint(config, checkpoint_dir=str(model_dir), eval=True)
+    return model.to(device)
+
+
 class XttsTTS:
     """XTTS-v2 con una voz fija: clonada de una grabación o un hablante incluido."""
 
@@ -159,49 +178,34 @@ class XttsTTS:
         seed: int = 0,
         max_chars: int = MAX_CHARS,
     ) -> None:
-        import torch
-
         self.reference, self.speaker = resolve_voice(reference, speaker)
         self.language = language
         self.temperature = temperature
         self.seed = seed
         self.max_chars = max_chars
-        if device == "auto":
-            device = "cuda" if torch.cuda.is_available() else "cpu"
-        self.device = device
+        self.device = _pick_device(device)
 
         vram_before = process_vram_mib() or 0
         start = time.perf_counter()
-        model_dir, config_path = ensure_model()
-
-        from TTS.tts.configs.xtts_config import XttsConfig
-        from TTS.tts.models.xtts import Xtts
-
-        config = XttsConfig()
-        config.load_json(str(config_path))
-        self.model = Xtts.init_from_config(config)
-        self.model.load_checkpoint(config, checkpoint_dir=str(model_dir), eval=True)
-        self.model.to(device)
-        self.model_dir = model_dir
-
-        if self.reference is not None:
-            self.gpt_cond_latent, self.speaker_embedding = self.model.get_conditioning_latents(
-                audio_path=[str(self.reference)]
-            )
-        else:
-            speakers = self.speaker_names
-            if self.speaker not in speakers:
-                raise VoiceNotConfigured(
-                    f"XTTS-v2 no trae el hablante {self.speaker!r}. Disponibles: {', '.join(sorted(speakers))}"
-                )
-            latent, embedding = self.model.speaker_manager.speakers[self.speaker].values()
-            self.gpt_cond_latent, self.speaker_embedding = latent.to(device), embedding.to(device)
-
+        self.model_dir, config_path = ensure_model()
+        self.model = _load_xtts(self.model_dir, config_path, self.device)
+        self.gpt_cond_latent, self.speaker_embedding = self._voice_latents()
         self._generate("Hola.")  # deja fuera del primer turno la inicialización perezosa
         self._release_gpu_cache()
         self.load_seconds = time.perf_counter() - start
         vram_after = process_vram_mib()
         self.vram_mib = None if vram_after is None else vram_after - vram_before
+
+    def _voice_latents(self) -> tuple[Any, Any]:
+        """Lo que XTTS-v2 necesita para hablar con una voz: sale de la grabación de
+        referencia (clonación) o de los hablantes que trae el modelo."""
+        if self.reference is not None:
+            return self.model.get_conditioning_latents(audio_path=[str(self.reference)])
+        if self.speaker not in self.speaker_names:
+            available = ", ".join(sorted(self.speaker_names))
+            raise VoiceNotConfigured(f"XTTS-v2 no trae el hablante {self.speaker!r}. Disponibles: {available}")
+        latent, embedding = self.model.speaker_manager.speakers[self.speaker].values()
+        return latent.to(self.device), embedding.to(self.device)
 
     @property
     def speaker_names(self) -> list[str]:
@@ -211,9 +215,7 @@ class XttsTTS:
     @property
     def voice(self) -> dict[str, Any]:
         """De dónde sale la voz, para dejarlo escrito en los resultados."""
-        if self.reference is not None:
-            return {"mode": "referencia", "reference": str(self.reference), "speaker": None}
-        return {"mode": "hablante_incluido", "reference": None, "speaker": self.speaker}
+        return {"reference": str(self.reference) if self.reference else None, "speaker": self.speaker}
 
     def _generate(self, text: str) -> np.ndarray:
         import torch
@@ -284,7 +286,7 @@ class XttsTTS:
         )
 
 
-def main() -> None:
+def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Síntesis de voz con XTTS-v2.")
     parser.add_argument("--reference", type=Path, default=None, help="grabación de referencia para clonar la voz")
     parser.add_argument("--speaker", default=None, help="hablante incluido en XTTS-v2 (solo para pruebas)")
@@ -294,8 +296,21 @@ def main() -> None:
     parser.add_argument("--script", type=Path, default=None, help="archivo con una frase por línea")
     parser.add_argument("--out-dir", type=Path, default=None, help="carpeta de salida para --script (01.wav, 02.wav…)")
     parser.add_argument("--seed", type=int, default=0)
-    args = parser.parse_args()
+    return parser.parse_args()
 
+
+def _jobs(args: argparse.Namespace) -> list[tuple[str, Path]]:
+    """Qué hay que sintetizar y dónde se guarda: el texto suelto y las líneas del guion."""
+    jobs = [(args.text, args.out or Path("salida.wav"))] if args.text else []
+    if args.script:
+        out_dir = args.out_dir or args.script.with_suffix("")
+        lines = [line.strip() for line in args.script.read_text(encoding="utf-8").splitlines() if line.strip()]
+        jobs += [(line, out_dir / f"{number:02d}.wav") for number, line in enumerate(lines, 1)]
+    return jobs
+
+
+def main() -> None:
+    args = parse_args()
     try:
         if args.list_speakers:
             import torch
@@ -308,14 +323,7 @@ def main() -> None:
         sys.exit(str(error))
     print(f"[XTTS-v2 en {tts.device}; voz: {tts.voice}; carga {tts.load_seconds:.1f} s; VRAM {tts.vram_mib} MiB]", file=sys.stderr)
 
-    jobs: list[tuple[str, Path]] = []
-    if args.text:
-        jobs.append((args.text, args.out or Path("salida.wav")))
-    if args.script:
-        out_dir = args.out_dir or args.script.with_suffix("")
-        lines = [line.strip() for line in args.script.read_text(encoding="utf-8").splitlines() if line.strip()]
-        jobs += [(line, out_dir / f"{number:02d}.wav") for number, line in enumerate(lines, 1)]
-    for text, path in jobs:
+    for text, path in _jobs(args):
         result = tts.synthesize(to_speech(text))
         write_wav(path, result.audio, result.sample_rate)
         retried = f", {result.retries} reintentos" if result.retries else ""

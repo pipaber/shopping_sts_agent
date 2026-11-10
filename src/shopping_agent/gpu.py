@@ -10,20 +10,15 @@ import os
 import subprocess
 
 
+QUERY = ["nvidia-smi", "--query-compute-apps=pid,used_memory", "--format=csv,noheader,nounits"]
+
+
 def process_vram_mib() -> int | None:
     """Memoria de GPU que ocupa este proceso según ``nvidia-smi`` (``None`` si no se puede saber)."""
     try:
-        output = subprocess.run(
-            ["nvidia-smi", "--query-compute-apps=pid,used_memory", "--format=csv,noheader,nounits"],
-            capture_output=True, text=True, timeout=10, check=True,
-        ).stdout
+        output = subprocess.run(QUERY, capture_output=True, text=True, timeout=10, check=True).stdout
     except (OSError, subprocess.SubprocessError):
         return None
-    for line in output.splitlines():
-        pid, _, used = line.partition(",")
-        if pid.strip() == str(os.getpid()):
-            try:
-                return int(used.strip())
-            except ValueError:
-                return None
-    return None
+    used = {pid.strip(): memory.strip() for pid, _, memory in (line.partition(",") for line in output.splitlines())}
+    memory = used.get(str(os.getpid()), "")
+    return int(memory) if memory.isdigit() else None

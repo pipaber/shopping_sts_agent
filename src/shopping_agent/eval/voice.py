@@ -7,7 +7,7 @@
 - **Errores del ASR:** además del WER, qué cantidades, importes y nombres de
   producto del texto correcto no llegaron a la transcripción.
 
-Uso, sobre una corrida guardada por ``shopping_agent.voice.pipeline``::
+Uso, sobre una corrida guardada por ``shopping_agent.voice.chat``::
 
     python -m shopping_agent.eval.voice results/voz_compra
 """
@@ -146,35 +146,40 @@ class Figures:
     quantities: list[int] = field(default_factory=list)
 
 
+def _read_amount(tokens: Sequence[str], value: int, after: int) -> tuple[int, int] | None:
+    """Si tras un número viene "euros" (y quizá "con N céntimos") o "céntimos", el
+    importe en céntimos y el índice siguiente; ``None`` si el número no es un importe."""
+    following = tokens[after] if after < len(tokens) else ""
+    if following in _CENTS:
+        return value, after + 1
+    if following not in _EUROS:
+        return None
+    cents, after = value * 100, after + 1
+    fraction = read_number(tokens, after + 1) if after < len(tokens) and tokens[after] == "con" else None
+    if fraction and fraction[1] < len(tokens) and tokens[fraction[1]] in _CENTS:
+        return cents + fraction[0], fraction[1] + 1
+    return cents, after
+
+
+def _is_article(tokens: Sequence[str], index: int, after: int) -> bool:
+    """"un" y "una" sueltos son artículos, salvo delante de lo que se cuenta."""
+    following = tokens[after] if after < len(tokens) else ""
+    return after - index == 1 and tokens[index] in ("un", "una") and following not in _COUNTED
+
+
 def extract_figures(text: str) -> Figures:
     """Importes (en céntimos) y cantidades que menciona un texto, vengan en cifras o
-    en palabras. "un" y "una" sueltos son artículos y no cuentan como cantidad."""
+    en palabras."""
     tokens = re.findall(r"[a-z0-9]+|[^\sa-z0-9]", _fold(to_speech(text)).replace("'", ""))
     figures = Figures()
     index = 0
     while index < len(tokens):
-        number = read_number(tokens, index)
-        if number is None:
-            index += 1
-            continue
-        value, after = number
-        following = tokens[after] if after < len(tokens) else ""
-        if after - index == 1 and tokens[index] in ("un", "una") and following not in _COUNTED:
-            index = after
-            continue
-        if following in _EUROS:
-            cents = value * 100
-            after += 1
-            if after < len(tokens) and tokens[after] == "con":
-                fraction = read_number(tokens, after + 1)
-                if fraction and fraction[1] < len(tokens) and tokens[fraction[1]] in _CENTS:
-                    cents += fraction[0]
-                    after = fraction[1] + 1
-            figures.amounts.append(cents)
-        elif following in _CENTS:
-            figures.amounts.append(value)
-            after += 1
-        else:
+        value, after = read_number(tokens, index) or (None, index + 1)
+        amount = None if value is None else _read_amount(tokens, value, after)
+        if amount is not None:
+            figures.amounts.append(amount[0])
+            after = amount[1]
+        elif value is not None and not _is_article(tokens, index, after):
             figures.quantities.append(value)
         index = after
     return figures
@@ -305,6 +310,13 @@ def speaker_similarity(embedder: SpeakerEmbedder, reference: tuple[np.ndarray, i
 # --- Evaluación de una corrida guardada -----------------------------------------------
 
 
+def _asr_case(turn: dict[str, Any]) -> dict[str, Any] | None:
+    """Comparación del ASR en un turno; ``None`` si no hubo audio o no se sabe qué se dijo."""
+    if not (turn.get("expected_text") and turn.get("input_audio")) or turn.get("transcript") is None:
+        return None
+    return {"turn": turn["turn"], **asr_errors(turn["expected_text"], turn["transcript"], turn.get("product_terms") or ())}
+
+
 def evaluate_run(
     run_dir: Path,
     transcribe: Callable[[Path], str],
@@ -317,35 +329,34 @@ def evaluate_run(
     ``transcribe`` y ``embedder`` llegan desde fuera para poder probar esta función
     sin modelos.
     """
-    record = json.loads((run_dir / "turnos.json").read_text(encoding="utf-8"))
+    turns = json.loads((run_dir / "turnos.json").read_text(encoding="utf-8"))["turns"]
     reference = read(reference_audio) if embedder is not None and reference_audio else None
 
-    asr_cases, tts_cases = [], []
-    for turn in record["turns"]:
-        expected = turn.get("expected_text")
-        if expected and turn.get("transcript") is not None and turn.get("input_audio"):
-            case = asr_errors(expected, turn["transcript"], turn.get("product_terms") or ())
-            asr_cases.append({"turn": turn["turn"], **case})
-        if turn.get("output_audio") and turn.get("spoken_text"):
-            path = run_dir / turn["output_audio"]
-            heard = transcribe(path)
-            case = {"turn": turn["turn"], "spoken_text": turn["spoken_text"], "heard": heard, "wer": wer(turn["spoken_text"], heard)}
-            if reference is not None and embedder is not None:
-                case["similarity"] = speaker_similarity(embedder, reference, read(path))
-            tts_cases.append(case)
+    tts_cases = []
+    for turn in turns:
+        if not (turn.get("output_audio") and turn.get("spoken_text")):
+            continue
+        path = run_dir / turn["output_audio"]
+        heard = transcribe(path)
+        case = {"turn": turn["turn"], "spoken_text": turn["spoken_text"], "heard": heard, "wer": wer(turn["spoken_text"], heard)}
+        if reference is not None and embedder is not None:
+            case["similarity"] = speaker_similarity(embedder, reference, read(path))
+        tts_cases.append(case)
 
-    similarities = [case["similarity"] for case in tts_cases if "similarity" in case]
+    asr_cases = [case for case in map(_asr_case, turns) if case is not None]
     return {
         "asr": {"summary": summarize_asr(asr_cases), "cases": asr_cases},
-        "tts": {
-            "summary": {
-                "cases": len(tts_cases),
-                "wer": pooled_wer(case["wer"] for case in tts_cases),
-                "similarity_mean": float(np.mean(similarities)) if similarities else None,
-                "similarity_min": float(np.min(similarities)) if similarities else None,
-            },
-            "cases": tts_cases,
-        },
+        "tts": {"summary": summarize_tts(tts_cases), "cases": tts_cases},
+    }
+
+
+def summarize_tts(cases: Sequence[dict[str, Any]]) -> dict[str, Any]:
+    similarities = [case["similarity"] for case in cases if "similarity" in case]
+    return {
+        "cases": len(cases),
+        "wer": pooled_wer(case["wer"] for case in cases),
+        "similarity_mean": float(np.mean(similarities)) if similarities else None,
+        "similarity_min": float(np.min(similarities)) if similarities else None,
     }
 
 
@@ -353,42 +364,60 @@ def _percent(value: float | None) -> str:
     return "—" if value is None else f"{100 * value:.1f} %"
 
 
-def to_markdown(metrics: dict[str, Any]) -> str:
-    asr, tts = metrics["asr"]["summary"], metrics["tts"]["summary"]
+_FIGURE_LABELS = (("amounts", "Importes"), ("quantities", "Cantidades"), ("products", "Nombres de producto"))
+
+
+def _asr_case_lines(case: dict[str, Any]) -> list[str]:
+    """Un turno en el que el ASR falló: qué se dijo, qué entendió y en qué cifras o nombres."""
+    problems = [
+        f"{key}: faltan {case[key]['missing']}, sobran {case[key]['extra']}"
+        for key in ("amounts", "quantities")
+        if case[key]["errors"]
+    ]
+    problems += [f"producto «{miss['term']}» → «{miss['closest']}»" for miss in case["products"]["missing"]]
+    if not problems and not case["wer"]["wer"]:
+        return []
+    header = f"- Turno {case['turn']} (WER {_percent(case['wer']['wer'])}): «{case['reference']}» → «{case['hypothesis']}»"
+    return ["", header, *(f"  - {problem}" for problem in problems)]
+
+
+def _asr_lines(asr: dict[str, Any]) -> list[str]:
+    summary = asr["summary"]
     lines = [
-        "# Métricas de voz",
-        "",
         "## Errores del ASR (transcripción frente al texto correcto)",
         "",
-        f"- Turnos comparados: {asr['cases']}; idénticos tras normalizar: {asr['exact']}",
-        f"- WER: {_percent(asr['wer'])}",
+        f"- Turnos comparados: {summary['cases']}; idénticos tras normalizar: {summary['exact']}",
+        f"- WER: {_percent(summary['wer'])}",
     ]
-    for key, label in (("amounts", "Importes"), ("quantities", "Cantidades"), ("products", "Nombres de producto")):
-        lines.append(f"- {label}: {asr[key]['errors']} errores de {asr[key]['total']} ({_percent(asr[key]['error_rate'])})")
-    for case in metrics["asr"]["cases"]:
-        problems = []
-        for key in ("amounts", "quantities"):
-            if case[key]["errors"]:
-                problems.append(f"{key}: faltan {case[key]['missing']}, sobran {case[key]['extra']}")
-        for miss in case["products"]["missing"]:
-            problems.append(f"producto «{miss['term']}» → «{miss['closest']}»")
-        if problems or case["wer"]["wer"]:
-            lines += ["", f"- Turno {case['turn']} (WER {_percent(case['wer']['wer'])}): «{case['reference']}» → «{case['hypothesis']}»"]
-            lines += [f"  - {problem}" for problem in problems]
-    lines += [
-        "",
+    for key, label in _FIGURE_LABELS:
+        figures = summary[key]
+        lines.append(f"- {label}: {figures['errors']} errores de {figures['total']} ({_percent(figures['error_rate'])})")
+    for case in asr["cases"]:
+        lines += _asr_case_lines(case)
+    return lines
+
+
+def _tts_lines(tts: dict[str, Any]) -> list[str]:
+    summary = tts["summary"]
+    lines = [
         "## Voz sintetizada",
         "",
-        f"- Respuestas evaluadas: {tts['cases']}",
-        f"- Inteligibilidad (WER de Whisper sobre la síntesis): {_percent(tts['wer'])}",
+        f"- Respuestas evaluadas: {summary['cases']}",
+        f"- Inteligibilidad (WER de Whisper sobre la síntesis): {_percent(summary['wer'])}",
     ]
-    if tts["similarity_mean"] is not None:
+    if summary["similarity_mean"] is not None:
         lines.append(
-            f"- Semejanza con la referencia (coseno ECAPA): media {tts['similarity_mean']:.3f}, mínima {tts['similarity_min']:.3f}"
+            "- Semejanza con la referencia (coseno ECAPA): "
+            f"media {summary['similarity_mean']:.3f}, mínima {summary['similarity_min']:.3f}"
         )
-    for case in metrics["tts"]["cases"]:
+    for case in tts["cases"]:
         similarity = f", semejanza {case['similarity']:.3f}" if "similarity" in case else ""
         lines.append(f"- Turno {case['turn']}: WER {_percent(case['wer']['wer'])}{similarity}")
+    return lines
+
+
+def to_markdown(metrics: dict[str, Any]) -> str:
+    lines = ["# Métricas de voz", "", *_asr_lines(metrics["asr"]), "", *_tts_lines(metrics["tts"])]
     return "\n".join(lines) + "\n"
 
 

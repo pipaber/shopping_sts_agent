@@ -60,6 +60,17 @@ def resolve_model_path() -> Path:
     return paths[0]
 
 
+def parse_decision(text: str, finish_reason: object = None) -> dict[str, Any]:
+    """El objeto JSON que escribió el modelo; :class:`LLMError` si no lo es o quedó cortado."""
+    try:
+        decision = json.loads(text)
+    except json.JSONDecodeError as error:
+        raise LLMError(f"JSON incompleto (finish_reason={finish_reason}): {text[:200]}") from error
+    if not isinstance(decision, dict):
+        raise LLMError(f"Se esperaba un objeto JSON: {text[:200]}")
+    return decision
+
+
 class LocalLLM:
     """Qwen en GGUF con todas las capas en la GPU y salida restringida por gramática."""
 
@@ -110,14 +121,7 @@ class LocalLLM:
                 "completion_tokens": usage.get("completion_tokens"),
             }
         )
-        text = choice["message"]["content"] or ""
-        try:
-            decision = json.loads(text)
-        except json.JSONDecodeError as error:
-            raise LLMError(f"JSON incompleto (finish_reason={choice.get('finish_reason')}): {text[:200]}") from error
-        if not isinstance(decision, dict):
-            raise LLMError(f"Se esperaba un objeto JSON: {text[:200]}")
-        return decision
+        return parse_decision(choice["message"]["content"] or "", choice.get("finish_reason"))
 
 
 Scripted = dict[str, Any] | Callable[[Messages, dict[str, Any]], dict[str, Any]]

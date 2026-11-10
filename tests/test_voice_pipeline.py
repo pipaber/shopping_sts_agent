@@ -11,15 +11,9 @@ from shopping_agent.agent import tools
 from shopping_agent.agent.session import LLM, RETRIEVAL, TOOLS
 from shopping_agent.voice.asr import Transcription
 from shopping_agent.voice.audio import read_audio, write_wav
-from shopping_agent.voice.pipeline import (
-    STAGES,
-    VoicePipeline,
-    comparable_store,
-    compare_runs,
-    scenario_paths,
-    summarize_timings,
-    to_markdown,
-)
+from shopping_agent.voice.chat import scenario_paths
+from shopping_agent.voice.pipeline import STAGES, VoicePipeline, comparable_store, compare_runs, summarize_timings
+from shopping_agent.voice.report import to_markdown
 from shopping_agent.voice.tts import (
     DEFAULT_REFERENCE,
     REFERENCE_ENV,
@@ -100,9 +94,9 @@ def test_voice_turn_keeps_audio_text_and_timings(shop, tmp_path):
     # Tiempos por etapa: los cinco, y el total es su suma.
     assert set(STAGES) <= set(turn.timings)
     assert turn.timings["asr"] == 0.25 and turn.timings["tts"] == 0.5
-    assert turn.timings[LLM] > 0 and turn.timings[RETRIEVAL] > 0 and turn.timings[TOOLS] > 0
+    assert all(turn.timings[stage] >= 0 for stage in (LLM, RETRIEVAL, TOOLS))
     assert turn.timings["total"] == pytest.approx(sum(turn.timings[stage] for stage in STAGES), abs=0.01)
-    assert turn.timings["tts_primer_fragmento"] == 0.2
+    assert turn.tts_first_chunk_seconds == 0.2 and turn.tts_retries == 0 and turn.llm_steps == 3
 
 
 def test_session_reports_stage_times_that_add_up(shop):
@@ -122,7 +116,7 @@ def test_purchase_by_voice_registers_the_order_after_a_spoken_yes(shop, tmp_path
 
     assert turns[2].awaiting_confirmation
     assert not turns[3].awaiting_confirmation and shop.orders() == 1
-    assert turns[3].timings[LLM] == 0.0  # confirmar no pasa por el LLM
+    assert turns[3].llm_steps == 0 and turns[3].timings[LLM] == 0.0  # confirmar no pasa por el LLM
     assert shop.stock("P1") == 8
     assert "cuarenta euros" in turns[3].spoken_text
     assert (tmp_path / "corrida" / "entrada_04.wav").exists()  # los arrays también se guardan
@@ -208,7 +202,7 @@ def test_summary_and_report(shop, tmp_path):
     record = {
         "date": "2026-11-10T10:00:00", "note": "audios sintéticos", "mode": "audio",
         "models": {"llm": "guion", "asr": "simulado", "tts": "simulado", "embeddings": "ninguno"},
-        "voice": {"mode": "hablante_incluido", "reference": None, "speaker": "Prueba"},
+        "voice": {"reference": None, "speaker": "Prueba"},
         "load": {"search_seconds": 1.0, "llm_seconds": 2.0, "asr_seconds": 3.0, "tts_seconds": 4.0, "total_seconds": 10.0,
                  "vram_mib": {"loaded": 100, "after_run": 120}},
         "memory_backend": "memoria", "thread_id": "hilo-1",

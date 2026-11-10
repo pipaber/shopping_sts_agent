@@ -29,7 +29,7 @@ def test_without_url_and_without_asking_for_volatile_memory_it_fails(monkeypatch
     message = str(error.value)
     assert message == MISSING_URL_MESSAGE
     assert PG_URL_ENV in message and "README" in message
-    assert "--memoria-volatil" in message and "volatile=True" in message
+    assert "--volatile-memory" in message and "volatile=True" in message
 
 
 def test_volatile_memory_only_when_asked_for(monkeypatch):

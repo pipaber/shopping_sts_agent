@@ -44,7 +44,7 @@ uv run python -m shopping_agent.eval.retrieval --split train
 
 ## Memoria del agente (Postgres)
 
-Los checkpoints de la conversación (`PostgresSaver`) y la memoria entre conversaciones (`PostgresStore`) se guardan en Postgres. La conexión se lee de `SHOPPING_AGENT_PG_URL` y las tablas se crean solas la primera vez. Postgres es obligatorio: sin esa variable los comandos se detienen con un error que lo explica, para no quedarse sin persistencia sin notarlo. Para trabajar a propósito sin Postgres hay que pedirlo con la opción `--memoria-volatil` (en código, `open_memory(volatile=True)`); la transcripción deja anotado qué memoria se usó.
+Los checkpoints de la conversación (`PostgresSaver`) y la memoria entre conversaciones (`PostgresStore`) se guardan en Postgres. La conexión se lee de `SHOPPING_AGENT_PG_URL` y las tablas se crean solas la primera vez. Postgres es obligatorio: sin esa variable los comandos se detienen con un error que lo explica, para no quedarse sin persistencia sin notarlo. Para trabajar a propósito sin Postgres hay que pedirlo con la opción `--volatile-memory` (en código, `open_memory(volatile=True)`); la transcripción deja anotado qué memoria se usó.
 
 Lo más sencillo es un contenedor, que no necesita permisos de administrador ni toca otros Postgres de la máquina:
 
@@ -143,10 +143,10 @@ Por ahora hay dos guiones para grabar: [scenarios/demo_compra.txt](scenarios/dem
 ### Conversación por voz
 
 ```bash
-uv run python -m shopping_agent.voice.pipeline --scenario demo_compra --mode ambos --restore
+uv run python -m shopping_agent.voice.chat --scenario demo_compra --mode both --restore
 ```
 
-Cada turno hace audio → ASR → agente → TTS → audio. En `results/voz_demo_compra/` quedan `turnos.json` y `transcripcion.md` con la transcripción del ASR, las operaciones, el texto de la respuesta, el texto enviado al TTS y los tiempos por etapa (ASR, recuperación, LLM, herramientas, TTS), con la carga inicial de los modelos aparte; los audios de entrada y de respuesta se guardan en la misma carpeta, fuera de git. Con `--mode ambos` la conversación se repite después con el texto correcto en lugar del audio, para separar los errores del ASR de los del agente; `--mode texto` hace solo esa parte.
+Cada turno hace audio → ASR → agente → TTS → audio. En `results/voz_demo_compra/` quedan `turnos.json` y `transcripcion.md` con la transcripción del ASR, las operaciones, el texto de la respuesta, el texto enviado al TTS y los tiempos por etapa (ASR, recuperación, LLM, herramientas, TTS), con la carga inicial de los modelos aparte; los audios de entrada y de respuesta se guardan en la misma carpeta, fuera de git. Con `--mode both` la conversación se repite después con el texto correcto en lugar del audio, para separar los errores del ASR de los del agente; `--mode text` hace solo esa parte.
 
 Antes de sintetizar, la respuesta se pasa a una forma apta para voz (importes y cantidades en palabras, sin identificadores ni símbolos, títulos de catálogo acortados). La transcripción conserva el texto original.
 
@@ -165,6 +165,31 @@ uv run python -m shopping_agent.eval.voice results/voz_demo_compra
 ```
 
 Calcula, sobre una corrida guardada: la inteligibilidad (WER de Whisper sobre el audio sintetizado frente al texto enviado al TTS), la semejanza con la referencia (coseno entre embeddings de hablante) y los errores del ASR en importes, cantidades y nombres de producto frente al texto correcto. Los nombres de producto esperados en cada turno se indican en `scenarios/<escenario>.terminos.json`.
+
+## Organización del código
+
+```
+src/shopping_agent/
+  data/        preparación de ESCI y de la tienda simulada
+  retrieval/   BM25, denso, fusión RRF y métricas
+  store/       esquema SQLite, operaciones con validación y restauración
+  agent/
+    state.py     estado de la conversación, con un valor por defecto en cada campo
+    tools.py     registro de herramientas: descripción, esquema, validación y función de cada una
+    prompt.py    lo que ve el LLM (reglas, estado, resultados)
+    texts.py     lo que el código le dice al usuario
+    guards.py    comprobaciones sobre texto libre: confirmación y respuesta del LLM
+    deps.py      lo que los nodos necesitan de fuera (LLM, búsqueda, tienda, Store)
+    nodes/       los nodos del grafo: turn (conversación), actions (acciones), checkout (cierre)
+    graph.py     el cableado del grafo: a dónde puede ir cada nodo
+    session.py   un mensaje entra, una respuesta sale
+    chat.py, report.py   comando de chat por texto y transcripción
+    memory.py, llm.py, search.py   Postgres, LLM local y búsqueda híbrida
+  voice/       audio, asr, speech_text, tts, pipeline (un turno por voz), chat (comando), report
+  eval/        evaluación de la recuperación y métricas de voz
+```
+
+Criterio de idioma: los identificadores del código (módulos, funciones, clases, variables, campos, claves de los JSON de resultados y opciones de los comandos) van en inglés. Va en español todo lo que es lenguaje: los textos para el usuario y para el LLM, los comentarios y la documentación, y los nombres que el LLM o las transcripciones muestran (nodos del grafo, herramientas y sus argumentos, códigos de rechazo). La función que implementa un nodo se llama como el nodo. Los archivos de resultados y de escenarios, que son contenido, también van en español.
 
 ## Pruebas
 

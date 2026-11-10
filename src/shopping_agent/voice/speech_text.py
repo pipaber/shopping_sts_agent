@@ -26,6 +26,18 @@ _HUNDREDS = {
 _ONE = {"uno": ("uno", "veintiuno"), "un": ("un", "veintiún"), "una": ("una", "veintiuna")}
 
 
+def _under_100(number: int, form: str) -> str:
+    one, twenty_one = _ONE[form]
+    if number == 1:
+        return one
+    if number == 21:
+        return twenty_one
+    if number < 30:
+        return _UNITS[number]
+    tens, unit = divmod(number, 10)
+    return _TENS[tens] + (f" y {one if unit == 1 else _UNITS[unit]}" if unit else "")
+
+
 def _under_1000(number: int, form: str) -> str:
     if number == 100:
         return "cien"
@@ -35,16 +47,7 @@ def _under_1000(number: int, form: str) -> str:
         word = _HUNDREDS[hundreds]
         parts.append(word[:-2] + "as" if form == "una" and hundreds > 1 else word)
     if rest:
-        one, twenty_one = _ONE[form]
-        if rest == 1:
-            parts.append(one)
-        elif rest == 21:
-            parts.append(twenty_one)
-        elif rest < 30:
-            parts.append(_UNITS[rest])
-        else:
-            tens, unit = divmod(rest, 10)
-            parts.append(_TENS[tens] + (f" y {one if unit == 1 else _UNITS[unit]}" if unit else ""))
+        parts.append(_under_100(rest, form))
     return " ".join(parts)
 
 
@@ -192,13 +195,8 @@ def _plain(match: re.Match[str]) -> str:
     return number_to_words(int(match.group(1)), form) + following
 
 
-def to_speech(text: str) -> str:
-    """Versión del texto para el TTS: sin símbolos ni identificadores y con las cifras en palabras."""
-    text = unicodedata.normalize("NFC", text)
-    text = _QUOTED_TITLE.sub(lambda match: spoken_title(match.group(1)), text)
-    text = _LONG_DIGITS.sub(" ", _IDENTIFIER.sub(" ", text))  # referencias, no cantidades
-    text = re.sub(r"\bn\.?\s?º|\bnº|\bnúm\.", "número", text)
-
+def _spell_figures(text: str) -> str:
+    """Importes, porcentajes, medidas y números sueltos, en palabras."""
     text = _AMOUNT.sub(_amount, text)
     text = _PERCENT.sub(_percent, text)
     text = _WITH_UNIT.sub(_with_unit, text)
@@ -206,8 +204,11 @@ def to_speech(text: str) -> str:
     text = _DECIMAL_COMMA.sub(_decimal("coma"), text)
     text = _THOUSANDS.sub(lambda match: str(_to_int(match.group(0))), text)
     text = _DECIMAL_DOT.sub(_decimal("punto"), text)
-    text = _PLAIN.sub(_plain, text)
+    return _PLAIN.sub(_plain, text)
 
+
+def _drop_symbols(text: str) -> str:
+    """Símbolos que un TTS leería mal: unos se dicen con palabras y otros sobran."""
     text = text.replace("€", " euros ").replace("%", " por ciento ").replace("&", " y ").replace("…", " ")
     text = re.sub(r"\s\+\s", " más ", text)
     text = re.sub(r"\s=\s", " igual a ", text)
@@ -216,8 +217,11 @@ def to_speech(text: str) -> str:
     text = re.sub(r"\s*[(\[{]\s*", ", ", text)
     text = re.sub(r"\s*[)\]}]", ",", text)
     text = text.replace(";", ",")
-    text = re.sub(r"\s[-–—]\s", ", ", text)
+    return re.sub(r"\s[-–—]\s", ", ", text)
 
+
+def _tidy_punctuation(text: str) -> str:
+    """Espacios y signos que quedan sueltos al quitar o sustituir trozos."""
     text = re.sub(r"\s+", " ", text)
     text = re.sub(r"\s+([,.:?!])", r"\1", text)
     text = re.sub(r",(?:\s*,)+", ",", text)
@@ -228,9 +232,45 @@ def to_speech(text: str) -> str:
     return re.sub(r"(?:^|(?<=[.?!]\s))([^\W\d_])", lambda match: match.group(1).upper(), text)
 
 
+def to_speech(text: str) -> str:
+    """Versión del texto para el TTS: sin símbolos ni identificadores y con las cifras en palabras."""
+    text = unicodedata.normalize("NFC", text)
+    text = _QUOTED_TITLE.sub(lambda match: spoken_title(match.group(1)), text)
+    text = _LONG_DIGITS.sub(" ", _IDENTIFIER.sub(" ", text))  # referencias, no cantidades
+    text = re.sub(r"\bn\.?\s?º|\bnº|\bnúm\.", "número", text)
+    return _tidy_punctuation(_drop_symbols(_spell_figures(text)))
+
+
 # --- Troceado para el TTS -------------------------------------------------------------
 
 _SENTENCE_END = re.compile(r"(?<=[.?!])\s+")
+
+
+_CLAUSE_END = re.compile(r"(?<=,)\s+")
+
+
+def _pack(pieces: list[str], max_chars: int) -> list[str]:
+    """Une piezas consecutivas mientras quepan en ``max_chars``; una que no cabe queda sola."""
+    packed, current = [], ""
+    for piece in pieces:
+        candidate = f"{current} {piece}" if current else piece
+        if len(candidate) <= max_chars:
+            current = candidate
+            continue
+        if current:
+            packed.append(current)
+        current = piece
+    return [*packed, current] if current else packed
+
+
+def _fit(sentence: str, max_chars: int) -> list[str]:
+    """Una frase que no cabe se parte por comas y, en último caso, por palabras."""
+    if len(sentence) <= max_chars:
+        return [sentence]
+    pieces: list[str] = []
+    for clause in _pack(_CLAUSE_END.split(sentence), max_chars):
+        pieces += [clause] if len(clause) <= max_chars else _pack(clause.split(), max_chars)
+    return pieces
 
 
 def split_for_tts(text: str, max_chars: int = 200) -> list[str]:
@@ -238,34 +278,6 @@ def split_for_tts(text: str, max_chars: int = 200) -> list[str]:
     frase no cabe, por comas (y en último caso por palabras). XTTS-v2 recorta las
     frases largas, y sintetizar por fragmentos permite empezar a reproducir antes."""
     chunks: list[str] = []
-
-    def add(piece: str) -> None:
-        piece = piece.strip()
-        if piece:
-            chunks.append(piece)
-
-    def pack(pieces: list[str], joiner: str) -> list[str]:
-        packed, current = [], ""
-        for piece in pieces:
-            candidate = f"{current}{joiner}{piece}" if current else piece
-            if len(candidate) <= max_chars:
-                current = candidate
-            else:
-                if current:
-                    packed.append(current)
-                current = piece
-        if current:
-            packed.append(current)
-        return packed
-
-    for sentence in pack(_SENTENCE_END.split(text.strip()), " "):
-        if len(sentence) <= max_chars:
-            add(sentence)
-            continue
-        for clause in pack(re.split(r"(?<=,)\s+", sentence), " "):
-            if len(clause) <= max_chars:
-                add(clause)
-            else:
-                for words in pack(clause.split(), " "):
-                    add(words)
-    return chunks
+    for sentence in _pack(_SENTENCE_END.split(text.strip()), max_chars):
+        chunks += _fit(sentence, max_chars)
+    return [chunk.strip() for chunk in chunks if chunk.strip()]

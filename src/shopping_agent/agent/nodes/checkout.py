@@ -71,8 +71,8 @@ def confirmar(state: AgentState) -> Command[Literal["registrar_pedido", "respond
     assert quote is not None  # a este nodo solo se llega desde cotizar
     answer = interrupt(
         {
-            "tipo": "confirmacion_pedido",
-            "mensaje": quote["message"],
+            "type": "order_confirmation",
+            "message": quote["message"],
             "quote_id": quote["quote_id"],
             "total_cents": quote["total_cents"],
         }

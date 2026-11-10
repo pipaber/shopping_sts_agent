@@ -20,8 +20,15 @@ from collections.abc import Iterator
 from contextlib import contextmanager
 from dataclasses import dataclass
 
+from typing import TYPE_CHECKING
+
 from langgraph.checkpoint.base import BaseCheckpointSaver
 from langgraph.store.base import BaseStore
+
+if TYPE_CHECKING:  # psycopg solo hace falta si de verdad se usa Postgres
+    from psycopg import Connection
+    from psycopg.rows import DictRow
+    from psycopg_pool import ConnectionPool
 
 PG_URL_ENV = "SHOPPING_AGENT_PG_URL"
 POSTGRES, VOLATILE = "postgres", "memoria volátil"
@@ -29,7 +36,7 @@ MISSING_URL_MESSAGE = (
     f"Falta la variable {PG_URL_ENV}: el agente guarda sus checkpoints y su Store en Postgres. "
     "Defínela en el .env (el README explica cómo levantar Postgres en «Memoria del agente (Postgres)»). "
     "Si quieres trabajar a propósito sin persistencia, pide la memoria volátil: la opción "
-    "--memoria-volatil de los comandos o open_memory(volatile=True)."
+    "--volatile-memory de los comandos o open_memory(volatile=True)."
 )
 
 log = logging.getLogger(__name__)
@@ -69,19 +76,8 @@ def open_memory(url: str | None = None, *, volatile: bool = False, pool_size: in
 
     from langgraph.checkpoint.postgres import PostgresSaver
     from langgraph.store.postgres import PostgresStore
-    from psycopg import Connection
-    from psycopg.rows import DictRow, dict_row
-    from psycopg_pool import ConnectionPool
 
-    # Los parámetros de conexión son los que piden PostgresSaver y PostgresStore.
-    pool: ConnectionPool[Connection[DictRow]] = ConnectionPool(
-        url,
-        min_size=1,
-        max_size=pool_size,
-        kwargs={"autocommit": True, "prepare_threshold": 0, "row_factory": dict_row},
-        open=False,
-    )
-    pool.open(wait=True, timeout=10)
+    pool = _open_pool(url, pool_size)
     try:
         checkpointer = PostgresSaver(pool)
         checkpointer.setup()
@@ -90,3 +86,20 @@ def open_memory(url: str | None = None, *, volatile: bool = False, pool_size: in
         yield Memory(checkpointer, store, POSTGRES)
     finally:
         pool.close()
+
+
+def _open_pool(url: str, pool_size: int) -> ConnectionPool[Connection[DictRow]]:
+    """Pool compartido por los checkpoints y el Store, con los parámetros de conexión
+    que piden ``PostgresSaver`` y ``PostgresStore``."""
+    from psycopg.rows import dict_row
+    from psycopg_pool import ConnectionPool
+
+    pool: ConnectionPool[Connection[DictRow]] = ConnectionPool(
+        url,
+        min_size=1,
+        max_size=pool_size,
+        kwargs={"autocommit": True, "prepare_threshold": 0, "row_factory": dict_row},
+        open=False,
+    )
+    pool.open(wait=True, timeout=10)
+    return pool

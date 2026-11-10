@@ -40,7 +40,7 @@ sudo -u postgres createdb -O shopping_agent shopping_agent
 # SHOPPING_AGENT_PG_URL=postgresql://shopping_agent:colab@localhost:5432/shopping_agent
 ```
 
-pgvector no hace falta por ahora: el Store solo guarda las preferencias del usuario por clave, sin búsqueda semántica. En local se usa un contenedor `postgres:16-alpine` (ver README). Postgres es obligatorio: sin `SHOPPING_AGENT_PG_URL` los comandos se detienen con un error, para no perder la persistencia sin notarlo (por ejemplo en Colab). La memoria volátil solo se usa si se pide de forma explícita (`--memoria-volatil` u `open_memory(volatile=True)`) y queda anotada en la transcripción.
+pgvector no hace falta por ahora: el Store solo guarda las preferencias del usuario por clave, sin búsqueda semántica. En local se usa un contenedor `postgres:16-alpine` (ver README). Postgres es obligatorio: sin `SHOPPING_AGENT_PG_URL` los comandos se detienen con un error, para no perder la persistencia sin notarlo (por ejemplo en Colab). La memoria volátil solo se usa si se pide de forma explícita (`--volatile-memory` u `open_memory(volatile=True)`) y queda anotada en la transcripción.
 
 `llama-cpp-python` en Colab: hay que instalarlo con CUDA (`CMAKE_ARGS="-DGGML_CUDA=on" pip install llama-cpp-python`). En la workstation la compilación tardó unos 20 minutos; en Colab conviene medirlo el día 7 y, si es demasiado, usar una rueda precompilada para la versión de CUDA de la sesión.
 
@@ -90,7 +90,7 @@ Limitaciones observadas con el modelo de 7B: es sensible a la redacción del pro
 
 ### Decisiones de diseño de la voz (día 7)
 
-- **El agente no cambia.** La voz se monta alrededor de la conversación por texto: ASR antes y TTS después (`voice/pipeline.py`). El grafo no se tocó; la sesión solo mide además cuánto tarda cada nodo.
+- **El agente no cambia.** La voz se monta alrededor de la conversación por texto: ASR antes y TTS después (`voice/pipeline.py`; el comando es `voice/chat.py`). El grafo no se tocó; la sesión solo mide además cuánto tarda cada nodo.
 - **Latencia.** Va desde que el audio del usuario está disponible hasta que la respuesta puede reproducirse, y se reparte en ASR, recuperación (nodos `recuperar` y `proponer_alternativa`), LLM (nodo `interpretar`), herramientas (el resto de nodos, con sus checkpoints) y TTS. La carga de los modelos se mide aparte. También se anota cuándo estaría listo el primer fragmento de audio, por si más adelante se reproduce mientras se sintetiza el resto.
 - **Silencio.** Whisper large-v3-turbo transcribe el silencio o el ruido como "Gracias por ver el vídeo" y su probabilidad de no-voz no lo detecta. Se activa el filtro de voz de `faster-whisper` (Silero VAD, en CPU): sin voz, la transcripción queda vacía y el agente pide que se repita.
 - **Texto para el TTS.** Antes de sintetizar, los importes y cantidades pasan a palabras con su concordancia ("7,74 €" → "siete euros con setenta y cuatro céntimos", "1 unidad" → "una unidad"), se quitan identificadores y símbolos y los títulos de catálogo se acortan a su primera parte. La transcripción guarda el texto original del agente y, aparte, lo que se envió al TTS.
@@ -172,15 +172,17 @@ Orden pensado para tener un sistema completo sin GNN al final del día 7; el GNN
 ```
 src/shopping_agent/
   data/        preparación de ESCI y tienda simulada
-  retrieval/   bm25, denso, fusión, gnn, métricas
+  retrieval/   bm25, denso, fusión, métricas (gnn pendiente)
   store/       esquema SQLite, transacciones, restauración
-  agent/       estado, nodos, herramientas, validaciones, grafo
-  voice/       audio, asr, texto para voz, tts, turno completo
+  agent/       estado, herramientas (registro), textos, nodos (nodes/), cableado del grafo, sesión, chat
+  voice/       audio, asr, texto para voz, tts, turno completo, chat por voz
   eval/        recuperación, métricas de voz; escenarios y runner (pendiente)
-notebooks/     lab4_colab.ipynb (ejecución principal)
-scenarios/     20 JSON + audios
+notebooks/     lab4_colab.ipynb (ejecución principal, pendiente)
+scenarios/     guiones de los escenarios (los audios van en audio/, sin versionar)
 tests/
 ```
+
+El detalle de los módulos del agente y el criterio de idioma de los nombres están en el README ("Organización del código").
 
 Dependencias a añadir: `langgraph-checkpoint-postgres`, `psycopg[binary,pool]`, `faiss-cpu`, `bm25s`, `faster-whisper`, `llama-cpp-python`, `coqui-tts`, `torch-geometric`, `jiwer`, `speechbrain`.
 
