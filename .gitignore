@@ -23,3 +23,15 @@ documentation/*.pdf
 
 # Variables locales (rutas de cachés, credenciales)
 .env
+
+# Voz: la grabación de referencia y los audios de los turnos son datos personales
+# y no se suben. Los audios que generan las corridas tampoco.
+grabaciones/
+*.wav
+*.flac
+*.mp3
+*.m4a
+*.ogg
+*.opus
+*.aac
+*.webm
