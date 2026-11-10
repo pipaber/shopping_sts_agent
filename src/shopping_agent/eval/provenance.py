@@ -10,7 +10,9 @@ def _git(*args: str) -> str:
 
 
 def current_commit() -> str:
-    """El commit en curso; con ``+cambios`` si hay archivos versionados sin confirmar."""
+    """El commit en curso; con ``+cambios`` si hay archivos versionados sin confirmar.
+
+    No cuentan los de ``results/``: los reescribe cada corrida y no cambian el código."""
     commit = _git("rev-parse", "--short", "HEAD") or "desconocido"
-    dirty = _git("status", "--porcelain", "--untracked-files=no")
+    dirty = _git("status", "--porcelain", "--untracked-files=no", "--", ".", ":(exclude,top)results")
     return f"{commit}+cambios" if dirty else commit
