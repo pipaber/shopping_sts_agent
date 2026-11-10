@@ -1,0 +1,1450 @@
+{
+  "id": "22_agotado_otro_candidato",
+  "title": "Producto agotado que no es el primero",
+  "kind": "agotado_otro_candidato",
+  "description": "Escenario de reserva, escrito antes de corregir el agente y sin ejecutarlo. Tras la búsqueda se agota el tercer candidato y el cuarto queda con 10 unidades a 9,00 €. El usuario pide dos del tercero: el agente no puede añadirlo, no debe añadir otro por su cuenta y debe ofrecer uno con existencias. Después el usuario pide dos del cuarto y compra.",
+  "voice": false,
+  "input": "texto",
+  "audio_source": null,
+  "user_id": "eval-36c88a7d-22_agotado_otro_candidato",
+  "threads": [
+    "eval-36c88a7d-22_agotado_otro_candidato-c1"
+  ],
+  "names": {
+    "agotado": "B07WL8FQ45",
+    "cuarto": "B07NWRML8S",
+    "elegido": "B07NWRML8S"
+  },
+  "steps": [
+    {
+      "kind": "turn",
+      "turn": 1,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Quiero unos calcetines de deporte.",
+      "agent_input": "Quiero unos calcetines de deporte.",
+      "response": "Tengo estos calcetines de deporte: unos de RUNNING por 10,28 euros, unos de TANSTC por 93,79 euros, unos de coskefy por 25,75 euros, unos de DEPORTE por 19,39 euros y unos de Cerdá por 36,32 euros. ¿Te interesa alguno?",
+      "spoken_text": "Tengo estos calcetines de deporte: unos de RUNNING por diez euros con veintiocho céntimos, unos de TANSTC por noventa y tres euros con setenta y nueve céntimos, unos de coskefy por veinticinco euros con setenta y cinco céntimos, unos de DEPORTE por diecinueve euros con treinta y nueve céntimos y unos de Cerdá por treinta y seis euros con treinta y dos céntimos. ¿Te interesa alguno?",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "buscar_productos",
+          "args": {
+            "consulta": "calcetines deporte"
+          },
+          "reason": "buscar los calcetines de deporte",
+          "ok": true,
+          "summary": "estos son ahora los CANDIDATOS, del más al menos relevante:\n[1] id=B07HJ33XGV | Calcetines (3 Pares) de RUNNING, CICLISMO, TENIS, PADEL,… Calcetines SIN COSTURAS unisex con puntera y talón reforzados. Calcetines tobilleros de deporte. Anti-rozaduras y con gomas anti-presión. | marca: RUNNING - CRONOS ONE | color: Negro | precio: 10,28 € | existencias: 50 | características (extracto): PROPIEDADES: Con Algodón natural y goma anti-movimiento. Cómodos y resistentes. Adecuados para deportes todo el año. Duraderos con gran resistencia a la abrasión. Goma anti-presión. TECNOLOGIA: El diseño de la puntera y el talón reduce la… | descripción: Calcetín de DEPORTE sin costuras ideales para la practica de running, ciclismo, tenis, pádel, gimnasia, fitness, triatlón, mountain bike,… 3 pares de calcetines de alto rendimiento especialmente…\n[2] id=B08G8D9267 | TANSTC Calcetines Altos Hombres Mujeres Calcetines De Algodón De Deporte Ciclismo Futbol Running Invierno Verano Antiampollas Senderismo Trekking Skate Calcetines Largos Multipack 6 Pares | marca: TANSTC | color: Negro y gris claro | precio: 93,79 € | existencias: 12 | características (extracto): Calcetines para correr antibacterianos y transpirables: hechos de algodón de alta calidad que tiene propiedades ultra permeables al aire y absorben la humedad, haciendo que nuestros calcetines para correr sean tan transpirables y cómodos… | descripción: Acerca de los calcetines Tanstc TANSTC - Calcetines largos unisex para correr, 6 unidades Características de los calcetines: Estos calcetines deportivos e informales son imprescindibles tanto para…\n[3] id=B07WL8FQ45 | coskefy Calcetines Cortos para Hombre y Mujer 6 Pares Calcetines Deportivos Algodon Transpirable Low Cut Calcetin Deporte Running Ciclismo Antideslizantes, Gris Oscuro(39-42) | marca: coskefy | color: Gris Oscuro-04 | precio: 25,75 € | existencias: 2 | características (extracto): 【Transpirable y Confortable】Hecho de algodón peinado de alta calidad, los calcetines deportivos proporcionan suficiente comodidad y transpirabilidad para mantener los pies secos e inodoros todo el día 【Calcetines Acolchados】Agregue algodón… | descripción: Acerca de los calcetines atléticos coskefy coskefy se dedica a proporcionar calcetines de moda y de alta calidad para hombres y mujeres para nuestros clientes. los calcetines coskefy están hechos de…\n[4] id=B07NWRML8S | Calcetines deportivos (3 pares) SIN COSTURAS de alto rendimiento para hombre o mujer. Ideales para deportes como running, crossfit, ciclismo, pádel, trekking; Cómodos y resistentes. (Am/Az/Na, 39-42) | marca: DEPORTE – CRONOS ONE - | color: Am/Az/Na | precio: 19,39 € | existencias: 47 | características (extracto): PROPIEDADES: Con Algodón natural y control de sustancias nocivas. Cómodos y resistentes. Adecuados para todo el año. Con propiedades que ayudan a prevenir ampollas. TECNOLOGIA: El diseño de la planta y el talón reduce la acumulación de la… | descripción: Calcetines de DEPORTE de alto rendimiento (3 Pares) SIN COSTURAS. Recomendado para la mayoría de los deportes. Calcetines especialmente diseñados para el ejercicio de actividades físicas deportivas…\n[5] id=B07D2BWWC1 | Cerdá Calcetines modelo CALCETINES ADULTO THE MANDALORIAN marca | marca: Cerdá | color: Multicolor | precio: 36,32 € | existencias: 3 | características (extracto): Calcetines para practicar Tiempo libre y sportwear de unisex infantil Ropa deportiva Multicolor de la marca CERDÁ Calcetines CALCETINES ADULTO THE MANDALORIAN Multicolor Los productos deportivos de la marca CERDÁ están diseñados para que… | descripción: desconocido",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.038,
+        "llm": 7.213,
+        "tools": 0.029,
+        "tts": 0.0,
+        "total": 7.281
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-36c88a7d-22_agotado_otro_candidato-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {}
+      },
+      "after": {
+        "cart_id": "eval-36c88a7d-22_agotado_otro_candidato-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07HJ33XGV",
+              "title": "Calcetines (3 Pares) de RUNNING, CICLISMO, TENIS, PADEL,… Calcetines SIN COSTURAS unisex con puntera y talón reforzados. Calcetines tobilleros de deporte. Anti-rozaduras y con gomas anti-presión.",
+              "brand": "RUNNING - CRONOS ONE",
+              "price_cents": 1028,
+              "stock": 50
+            },
+            {
+              "product_id": "B08G8D9267",
+              "title": "TANSTC Calcetines Altos Hombres Mujeres Calcetines De Algodón De Deporte Ciclismo Futbol Running Invierno Verano Antiampollas Senderismo Trekking Skate Calcetines Largos Multipack 6 Pares",
+              "brand": "TANSTC",
+              "price_cents": 9379,
+              "stock": 12
+            },
+            {
+              "product_id": "B07WL8FQ45",
+              "title": "coskefy Calcetines Cortos para Hombre y Mujer 6 Pares Calcetines Deportivos Algodon Transpirable Low Cut Calcetin Deporte Running Ciclismo Antideslizantes, Gris Oscuro(39-42)",
+              "brand": "coskefy",
+              "price_cents": 2575,
+              "stock": 2
+            },
+            {
+              "product_id": "B07NWRML8S",
+              "title": "Calcetines deportivos (3 pares) SIN COSTURAS de alto rendimiento para hombre o mujer. Ideales para deportes como running, crossfit, ciclismo, pádel, trekking; Cómodos y resistentes. (Am/Az/Na, 39-42)",
+              "brand": "DEPORTE – CRONOS ONE -",
+              "price_cents": 1939,
+              "stock": 47
+            },
+            {
+              "product_id": "B07D2BWWC1",
+              "title": "Cerdá Calcetines modelo CALCETINES ADULTO THE MANDALORIAN marca",
+              "brand": "Cerdá",
+              "price_cents": 3632,
+              "stock": 3
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {
+          "B07D2BWWC1": {
+            "price_cents": 3632,
+            "stock": 3
+          },
+          "B07HJ33XGV": {
+            "price_cents": 1028,
+            "stock": 50
+          },
+          "B07NWRML8S": {
+            "price_cents": 1939,
+            "stock": 47
+          },
+          "B07WL8FQ45": {
+            "price_cents": 2575,
+            "stock": 2
+          },
+          "B08G8D9267": {
+            "price_cents": 9379,
+            "stock": 12
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        }
+      ]
+    },
+    {
+      "kind": "remember",
+      "name": "agotado",
+      "ref": "candidate:3",
+      "product_id": "B07WL8FQ45",
+      "title": "coskefy Calcetines Cortos para Hombre y Mujer 6 Pares Calcetines Deportivos Algodon Transpirable Low Cut Calcetin Deporte Running Ciclismo Antideslizantes, Gris Oscuro(39-42)"
+    },
+    {
+      "kind": "remember",
+      "name": "cuarto",
+      "ref": "candidate:4",
+      "product_id": "B07NWRML8S",
+      "title": "Calcetines deportivos (3 pares) SIN COSTURAS de alto rendimiento para hombre o mujer. Ideales para deportes como running, crossfit, ciclismo, pádel, trekking; Cómodos y resistentes. (Am/Az/Na, 39-42)"
+    },
+    {
+      "kind": "event",
+      "event": "set_offer",
+      "product": "@agotado",
+      "product_id": "B07WL8FQ45",
+      "price_cents": null,
+      "stock": 0
+    },
+    {
+      "kind": "event",
+      "event": "set_offer",
+      "product": "@cuarto",
+      "product_id": "B07NWRML8S",
+      "price_cents": 900,
+      "stock": 10
+    },
+    {
+      "kind": "turn",
+      "turn": 2,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Quiero dos del tercero.",
+      "agent_input": "Quiero dos del tercero.",
+      "response": "Lo siento, esos calcetines están agotados. ¿Te interesa alguno de los demás? Como alternativa tengo: «Calcetines (3 Pares) de RUNNING, CICLISMO, TENIS, PADEL,… Calcetines…» a 10,28 €, con 50 en existencias; «TANSTC Calcetines Altos Hombres Mujeres Calcetines De Algodón De…» a 93,79 €, con 12 en existencias.",
+      "spoken_text": "Lo siento, esos calcetines están agotados. ¿Te interesa alguno de los demás? Como alternativa tengo: Calcetines a diez euros con veintiocho céntimos, con cincuenta en existencias, TANSTC Calcetines Altos Hombres Mujeres Calcetines a noventa y tres euros con setenta y nueve céntimos, con doce en existencias.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "agregar_al_carrito",
+          "args": {
+            "product_id": "B07WL8FQ45",
+            "cantidad": 2
+          },
+          "reason": "añadir dos unidades del candidato 3",
+          "ok": false,
+          "summary": "[agotado] El producto B07WL8FQ45 está agotado.",
+          "issues": [
+            {
+              "code": "agotado",
+              "message": "El producto B07WL8FQ45 está agotado.",
+              "product_id": "B07WL8FQ45",
+              "details": {
+                "requested": 2,
+                "available": 0
+              }
+            }
+          ]
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 5.446,
+        "tools": 0.022,
+        "tts": 0.0,
+        "total": 5.468
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-36c88a7d-22_agotado_otro_candidato-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07HJ33XGV",
+              "title": "Calcetines (3 Pares) de RUNNING, CICLISMO, TENIS, PADEL,… Calcetines SIN COSTURAS unisex con puntera y talón reforzados. Calcetines tobilleros de deporte. Anti-rozaduras y con gomas anti-presión.",
+              "brand": "RUNNING - CRONOS ONE",
+              "price_cents": 1028,
+              "stock": 50
+            },
+            {
+              "product_id": "B08G8D9267",
+              "title": "TANSTC Calcetines Altos Hombres Mujeres Calcetines De Algodón De Deporte Ciclismo Futbol Running Invierno Verano Antiampollas Senderismo Trekking Skate Calcetines Largos Multipack 6 Pares",
+              "brand": "TANSTC",
+              "price_cents": 9379,
+              "stock": 12
+            },
+            {
+              "product_id": "B07WL8FQ45",
+              "title": "coskefy Calcetines Cortos para Hombre y Mujer 6 Pares Calcetines Deportivos Algodon Transpirable Low Cut Calcetin Deporte Running Ciclismo Antideslizantes, Gris Oscuro(39-42)",
+              "brand": "coskefy",
+              "price_cents": 2575,
+              "stock": 2
+            },
+            {
+              "product_id": "B07NWRML8S",
+              "title": "Calcetines deportivos (3 pares) SIN COSTURAS de alto rendimiento para hombre o mujer. Ideales para deportes como running, crossfit, ciclismo, pádel, trekking; Cómodos y resistentes. (Am/Az/Na, 39-42)",
+              "brand": "DEPORTE – CRONOS ONE -",
+              "price_cents": 1939,
+              "stock": 47
+            },
+            {
+              "product_id": "B07D2BWWC1",
+              "title": "Cerdá Calcetines modelo CALCETINES ADULTO THE MANDALORIAN marca",
+              "brand": "Cerdá",
+              "price_cents": 3632,
+              "stock": 3
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B07NWRML8S",
+              "initial_stock": 47,
+              "stock": 10
+            },
+            {
+              "product_id": "B07WL8FQ45",
+              "initial_stock": 2,
+              "stock": 0
+            }
+          ]
+        },
+        "offers": {
+          "B07D2BWWC1": {
+            "price_cents": 3632,
+            "stock": 3
+          },
+          "B07HJ33XGV": {
+            "price_cents": 1028,
+            "stock": 50
+          },
+          "B07NWRML8S": {
+            "price_cents": 900,
+            "stock": 10
+          },
+          "B07WL8FQ45": {
+            "price_cents": 2575,
+            "stock": 0
+          },
+          "B08G8D9267": {
+            "price_cents": 9379,
+            "stock": 12
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-36c88a7d-22_agotado_otro_candidato-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07HJ33XGV",
+              "title": "Calcetines (3 Pares) de RUNNING, CICLISMO, TENIS, PADEL,… Calcetines SIN COSTURAS unisex con puntera y talón reforzados. Calcetines tobilleros de deporte. Anti-rozaduras y con gomas anti-presión.",
+              "brand": "RUNNING - CRONOS ONE",
+              "price_cents": 1028,
+              "stock": 50
+            },
+            {
+              "product_id": "B08G8D9267",
+              "title": "TANSTC Calcetines Altos Hombres Mujeres Calcetines De Algodón De Deporte Ciclismo Futbol Running Invierno Verano Antiampollas Senderismo Trekking Skate Calcetines Largos Multipack 6 Pares",
+              "brand": "TANSTC",
+              "price_cents": 9379,
+              "stock": 12
+            },
+            {
+              "product_id": "B07WL8FQ45",
+              "title": "coskefy Calcetines Cortos para Hombre y Mujer 6 Pares Calcetines Deportivos Algodon Transpirable Low Cut Calcetin Deporte Running Ciclismo Antideslizantes, Gris Oscuro(39-42)",
+              "brand": "coskefy",
+              "price_cents": 2575,
+              "stock": 0
+            },
+            {
+              "product_id": "B07NWRML8S",
+              "title": "Calcetines deportivos (3 pares) SIN COSTURAS de alto rendimiento para hombre o mujer. Ideales para deportes como running, crossfit, ciclismo, pádel, trekking; Cómodos y resistentes. (Am/Az/Na, 39-42)",
+              "brand": "DEPORTE – CRONOS ONE -",
+              "price_cents": 900,
+              "stock": 10
+            },
+            {
+              "product_id": "B07D2BWWC1",
+              "title": "Cerdá Calcetines modelo CALCETINES ADULTO THE MANDALORIAN marca",
+              "brand": "Cerdá",
+              "price_cents": 3632,
+              "stock": 3
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B07NWRML8S",
+              "initial_stock": 47,
+              "stock": 10
+            },
+            {
+              "product_id": "B07WL8FQ45",
+              "initial_stock": 2,
+              "stock": 0
+            }
+          ]
+        },
+        "offers": {
+          "B07D2BWWC1": {
+            "price_cents": 3632,
+            "stock": 3
+          },
+          "B07HJ33XGV": {
+            "price_cents": 1028,
+            "stock": 50
+          },
+          "B07NWRML8S": {
+            "price_cents": 900,
+            "stock": 10
+          },
+          "B07WL8FQ45": {
+            "price_cents": 2575,
+            "stock": 0
+          },
+          "B08G8D9267": {
+            "price_cents": 9379,
+            "stock": 12
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        },
+        {
+          "check": "offered_alternative",
+          "params": {
+            "instead_of": "@agotado"
+          },
+          "ok": true,
+          "detail": "alternativas con existencias citadas: ['B07HJ33XGV', 'B08G8D9267']"
+        },
+        {
+          "check": "orders",
+          "params": {
+            "count": 0
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 0"
+        }
+      ]
+    },
+    {
+      "kind": "remember",
+      "name": "elegido",
+      "ref": "candidate:4",
+      "product_id": "B07NWRML8S",
+      "title": "Calcetines deportivos (3 pares) SIN COSTURAS de alto rendimiento para hombre o mujer. Ideales para deportes como running, crossfit, ciclismo, pádel, trekking; Cómodos y resistentes. (Am/Az/Na, 39-42)"
+    },
+    {
+      "kind": "turn",
+      "turn": 3,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Vale, pues dos del cuarto.",
+      "agent_input": "Vale, pues dos del cuarto.",
+      "response": "Hecho, añadidas dos unidades. Ahora el carrito tiene 18,00 €. En el carrito hay 2 unidades de «Calcetines deportivos (3 pares) SIN COSTURAS de alto rendimiento para…» a 9,00 € cada una, 18,00 €. Total: 18,00 €.",
+      "spoken_text": "Hecho, añadidas dos unidades. Ahora el carrito tiene dieciocho euros. En el carrito hay dos unidades de Calcetines deportivos a nueve euros cada una, dieciocho euros. Total: dieciocho euros.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "agregar_al_carrito",
+          "args": {
+            "product_id": "B07NWRML8S",
+            "cantidad": 2
+          },
+          "reason": "añadir dos unidades del cuarto candidato",
+          "ok": true,
+          "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B07NWRML8S | Calcetines deportivos (3 pares) SIN COSTURAS de alto rendimiento para… | 2 unidades × 9,00 € = 18,00 € | existencias: 10\nTotal del carrito: 18,00 €",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 5.41,
+        "tools": 0.051,
+        "tts": 0.0,
+        "total": 5.461
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-36c88a7d-22_agotado_otro_candidato-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07HJ33XGV",
+              "title": "Calcetines (3 Pares) de RUNNING, CICLISMO, TENIS, PADEL,… Calcetines SIN COSTURAS unisex con puntera y talón reforzados. Calcetines tobilleros de deporte. Anti-rozaduras y con gomas anti-presión.",
+              "brand": "RUNNING - CRONOS ONE",
+              "price_cents": 1028,
+              "stock": 50
+            },
+            {
+              "product_id": "B08G8D9267",
+              "title": "TANSTC Calcetines Altos Hombres Mujeres Calcetines De Algodón De Deporte Ciclismo Futbol Running Invierno Verano Antiampollas Senderismo Trekking Skate Calcetines Largos Multipack 6 Pares",
+              "brand": "TANSTC",
+              "price_cents": 9379,
+              "stock": 12
+            },
+            {
+              "product_id": "B07WL8FQ45",
+              "title": "coskefy Calcetines Cortos para Hombre y Mujer 6 Pares Calcetines Deportivos Algodon Transpirable Low Cut Calcetin Deporte Running Ciclismo Antideslizantes, Gris Oscuro(39-42)",
+              "brand": "coskefy",
+              "price_cents": 2575,
+              "stock": 0
+            },
+            {
+              "product_id": "B07NWRML8S",
+              "title": "Calcetines deportivos (3 pares) SIN COSTURAS de alto rendimiento para hombre o mujer. Ideales para deportes como running, crossfit, ciclismo, pádel, trekking; Cómodos y resistentes. (Am/Az/Na, 39-42)",
+              "brand": "DEPORTE – CRONOS ONE -",
+              "price_cents": 900,
+              "stock": 10
+            },
+            {
+              "product_id": "B07D2BWWC1",
+              "title": "Cerdá Calcetines modelo CALCETINES ADULTO THE MANDALORIAN marca",
+              "brand": "Cerdá",
+              "price_cents": 3632,
+              "stock": 3
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B07NWRML8S",
+              "initial_stock": 47,
+              "stock": 10
+            },
+            {
+              "product_id": "B07WL8FQ45",
+              "initial_stock": 2,
+              "stock": 0
+            }
+          ]
+        },
+        "offers": {
+          "B07D2BWWC1": {
+            "price_cents": 3632,
+            "stock": 3
+          },
+          "B07HJ33XGV": {
+            "price_cents": 1028,
+            "stock": 50
+          },
+          "B07NWRML8S": {
+            "price_cents": 900,
+            "stock": 10
+          },
+          "B07WL8FQ45": {
+            "price_cents": 2575,
+            "stock": 0
+          },
+          "B08G8D9267": {
+            "price_cents": 9379,
+            "stock": 12
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-36c88a7d-22_agotado_otro_candidato-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07HJ33XGV",
+              "title": "Calcetines (3 Pares) de RUNNING, CICLISMO, TENIS, PADEL,… Calcetines SIN COSTURAS unisex con puntera y talón reforzados. Calcetines tobilleros de deporte. Anti-rozaduras y con gomas anti-presión.",
+              "brand": "RUNNING - CRONOS ONE",
+              "price_cents": 1028,
+              "stock": 50
+            },
+            {
+              "product_id": "B08G8D9267",
+              "title": "TANSTC Calcetines Altos Hombres Mujeres Calcetines De Algodón De Deporte Ciclismo Futbol Running Invierno Verano Antiampollas Senderismo Trekking Skate Calcetines Largos Multipack 6 Pares",
+              "brand": "TANSTC",
+              "price_cents": 9379,
+              "stock": 12
+            },
+            {
+              "product_id": "B07WL8FQ45",
+              "title": "coskefy Calcetines Cortos para Hombre y Mujer 6 Pares Calcetines Deportivos Algodon Transpirable Low Cut Calcetin Deporte Running Ciclismo Antideslizantes, Gris Oscuro(39-42)",
+              "brand": "coskefy",
+              "price_cents": 2575,
+              "stock": 0
+            },
+            {
+              "product_id": "B07NWRML8S",
+              "title": "Calcetines deportivos (3 pares) SIN COSTURAS de alto rendimiento para hombre o mujer. Ideales para deportes como running, crossfit, ciclismo, pádel, trekking; Cómodos y resistentes. (Am/Az/Na, 39-42)",
+              "brand": "DEPORTE – CRONOS ONE -",
+              "price_cents": 900,
+              "stock": 10
+            },
+            {
+              "product_id": "B07D2BWWC1",
+              "title": "Cerdá Calcetines modelo CALCETINES ADULTO THE MANDALORIAN marca",
+              "brand": "Cerdá",
+              "price_cents": 3632,
+              "stock": 3
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-36c88a7d-22_agotado_otro_candidato-c1",
+              "product_id": "B07NWRML8S",
+              "quantity": 2
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B07NWRML8S",
+              "initial_stock": 47,
+              "stock": 10
+            },
+            {
+              "product_id": "B07WL8FQ45",
+              "initial_stock": 2,
+              "stock": 0
+            }
+          ]
+        },
+        "offers": {
+          "B07D2BWWC1": {
+            "price_cents": 3632,
+            "stock": 3
+          },
+          "B07HJ33XGV": {
+            "price_cents": 1028,
+            "stock": 50
+          },
+          "B07NWRML8S": {
+            "price_cents": 900,
+            "stock": 10
+          },
+          "B07WL8FQ45": {
+            "price_cents": 2575,
+            "stock": 0
+          },
+          "B08G8D9267": {
+            "price_cents": 9379,
+            "stock": 12
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "lines": [
+              {
+                "product": "@elegido",
+                "quantity": 2
+              }
+            ]
+          },
+          "ok": true,
+          "detail": "carrito: 2 × B07NWRML8S"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 4,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Ya está, finaliza la compra.",
+      "agent_input": "Ya está, finaliza la compra.",
+      "response": "Te repito el pedido antes de registrarlo: 2 unidades de «Calcetines deportivos (3 pares) SIN COSTURAS de alto rendimiento para…» a 9,00 € cada una, 18,00 €. Total: 18,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "spoken_text": "Te repito el pedido antes de registrarlo: dos unidades de Calcetines deportivos a nueve euros cada una, dieciocho euros. Total: dieciocho euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": true,
+      "operations": [
+        {
+          "tool": "cotizar",
+          "args": {},
+          "reason": "cotizar el carrito",
+          "ok": true,
+          "summary": "cotización creada; falta la confirmación del usuario.",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 2.217,
+        "tools": 0.039,
+        "tts": 0.0,
+        "total": 2.256
+      },
+      "llm_steps": 1,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-36c88a7d-22_agotado_otro_candidato-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07HJ33XGV",
+              "title": "Calcetines (3 Pares) de RUNNING, CICLISMO, TENIS, PADEL,… Calcetines SIN COSTURAS unisex con puntera y talón reforzados. Calcetines tobilleros de deporte. Anti-rozaduras y con gomas anti-presión.",
+              "brand": "RUNNING - CRONOS ONE",
+              "price_cents": 1028,
+              "stock": 50
+            },
+            {
+              "product_id": "B08G8D9267",
+              "title": "TANSTC Calcetines Altos Hombres Mujeres Calcetines De Algodón De Deporte Ciclismo Futbol Running Invierno Verano Antiampollas Senderismo Trekking Skate Calcetines Largos Multipack 6 Pares",
+              "brand": "TANSTC",
+              "price_cents": 9379,
+              "stock": 12
+            },
+            {
+              "product_id": "B07WL8FQ45",
+              "title": "coskefy Calcetines Cortos para Hombre y Mujer 6 Pares Calcetines Deportivos Algodon Transpirable Low Cut Calcetin Deporte Running Ciclismo Antideslizantes, Gris Oscuro(39-42)",
+              "brand": "coskefy",
+              "price_cents": 2575,
+              "stock": 0
+            },
+            {
+              "product_id": "B07NWRML8S",
+              "title": "Calcetines deportivos (3 pares) SIN COSTURAS de alto rendimiento para hombre o mujer. Ideales para deportes como running, crossfit, ciclismo, pádel, trekking; Cómodos y resistentes. (Am/Az/Na, 39-42)",
+              "brand": "DEPORTE – CRONOS ONE -",
+              "price_cents": 900,
+              "stock": 10
+            },
+            {
+              "product_id": "B07D2BWWC1",
+              "title": "Cerdá Calcetines modelo CALCETINES ADULTO THE MANDALORIAN marca",
+              "brand": "Cerdá",
+              "price_cents": 3632,
+              "stock": 3
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-36c88a7d-22_agotado_otro_candidato-c1",
+              "product_id": "B07NWRML8S",
+              "quantity": 2
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B07NWRML8S",
+              "initial_stock": 47,
+              "stock": 10
+            },
+            {
+              "product_id": "B07WL8FQ45",
+              "initial_stock": 2,
+              "stock": 0
+            }
+          ]
+        },
+        "offers": {
+          "B07D2BWWC1": {
+            "price_cents": 3632,
+            "stock": 3
+          },
+          "B07HJ33XGV": {
+            "price_cents": 1028,
+            "stock": 50
+          },
+          "B07NWRML8S": {
+            "price_cents": 900,
+            "stock": 10
+          },
+          "B07WL8FQ45": {
+            "price_cents": 2575,
+            "stock": 0
+          },
+          "B08G8D9267": {
+            "price_cents": 9379,
+            "stock": 12
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-36c88a7d-22_agotado_otro_candidato-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": {
+            "quote_id": "b2c4881db9d74f01845ad15636f477bc",
+            "items": [
+              {
+                "product_id": "B07NWRML8S",
+                "title": "Calcetines deportivos (3 pares) SIN COSTURAS de alto rendimiento para hombre o mujer. Ideales para deportes como running, crossfit, ciclismo, pádel, trekking; Cómodos y resistentes. (Am/Az/Na, 39-42)",
+                "quantity": 2,
+                "unit_price_cents": 900,
+                "subtotal_cents": 1800,
+                "stock": 10
+              }
+            ],
+            "total_cents": 1800,
+            "budget_cents": null,
+            "message": "Te repito el pedido antes de registrarlo: 2 unidades de «Calcetines deportivos (3 pares) SIN COSTURAS de alto rendimiento para…» a 9,00 € cada una, 18,00 €. Total: 18,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+          },
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07HJ33XGV",
+              "title": "Calcetines (3 Pares) de RUNNING, CICLISMO, TENIS, PADEL,… Calcetines SIN COSTURAS unisex con puntera y talón reforzados. Calcetines tobilleros de deporte. Anti-rozaduras y con gomas anti-presión.",
+              "brand": "RUNNING - CRONOS ONE",
+              "price_cents": 1028,
+              "stock": 50
+            },
+            {
+              "product_id": "B08G8D9267",
+              "title": "TANSTC Calcetines Altos Hombres Mujeres Calcetines De Algodón De Deporte Ciclismo Futbol Running Invierno Verano Antiampollas Senderismo Trekking Skate Calcetines Largos Multipack 6 Pares",
+              "brand": "TANSTC",
+              "price_cents": 9379,
+              "stock": 12
+            },
+            {
+              "product_id": "B07WL8FQ45",
+              "title": "coskefy Calcetines Cortos para Hombre y Mujer 6 Pares Calcetines Deportivos Algodon Transpirable Low Cut Calcetin Deporte Running Ciclismo Antideslizantes, Gris Oscuro(39-42)",
+              "brand": "coskefy",
+              "price_cents": 2575,
+              "stock": 0
+            },
+            {
+              "product_id": "B07NWRML8S",
+              "title": "Calcetines deportivos (3 pares) SIN COSTURAS de alto rendimiento para hombre o mujer. Ideales para deportes como running, crossfit, ciclismo, pádel, trekking; Cómodos y resistentes. (Am/Az/Na, 39-42)",
+              "brand": "DEPORTE – CRONOS ONE -",
+              "price_cents": 900,
+              "stock": 10
+            },
+            {
+              "product_id": "B07D2BWWC1",
+              "title": "Cerdá Calcetines modelo CALCETINES ADULTO THE MANDALORIAN marca",
+              "brand": "Cerdá",
+              "price_cents": 3632,
+              "stock": 3
+            }
+          ],
+          "awaiting_confirmation": true
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-36c88a7d-22_agotado_otro_candidato-c1",
+              "product_id": "B07NWRML8S",
+              "quantity": 2
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B07NWRML8S",
+              "initial_stock": 47,
+              "stock": 10
+            },
+            {
+              "product_id": "B07WL8FQ45",
+              "initial_stock": 2,
+              "stock": 0
+            }
+          ]
+        },
+        "offers": {
+          "B07D2BWWC1": {
+            "price_cents": 3632,
+            "stock": 3
+          },
+          "B07HJ33XGV": {
+            "price_cents": 1028,
+            "stock": 50
+          },
+          "B07NWRML8S": {
+            "price_cents": 900,
+            "stock": 10
+          },
+          "B07WL8FQ45": {
+            "price_cents": 2575,
+            "stock": 0
+          },
+          "B08G8D9267": {
+            "price_cents": 9379,
+            "stock": 12
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "awaiting_confirmation",
+          "params": {
+            "value": true
+          },
+          "ok": true,
+          "detail": "esperando confirmación: sí"
+        },
+        {
+          "check": "orders",
+          "params": {
+            "count": 0
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 0"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 5,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Sí, confirmo.",
+      "agent_input": "Sí, confirmo.",
+      "response": "Pedido número 1 registrado: 2 unidades de «Calcetines deportivos (3 pares) SIN COSTURAS de alto rendimiento para…» a 9,00 € cada una, 18,00 €. Total: 18,00 €. Gracias por tu compra.",
+      "spoken_text": "Pedido número uno registrado: dos unidades de Calcetines deportivos a nueve euros cada una, dieciocho euros. Total: dieciocho euros. Gracias por tu compra.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "confirmar_pedido",
+          "args": {
+            "quote_id": "b2c4881db9d74f01845ad15636f477bc"
+          },
+          "reason": "el usuario confirmó la cotización",
+          "ok": true,
+          "summary": "pedido registrado",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 0.0,
+        "tools": 0.033,
+        "tts": 0.0,
+        "total": 0.033
+      },
+      "llm_steps": 0,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-36c88a7d-22_agotado_otro_candidato-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": {
+            "quote_id": "b2c4881db9d74f01845ad15636f477bc",
+            "items": [
+              {
+                "product_id": "B07NWRML8S",
+                "title": "Calcetines deportivos (3 pares) SIN COSTURAS de alto rendimiento para hombre o mujer. Ideales para deportes como running, crossfit, ciclismo, pádel, trekking; Cómodos y resistentes. (Am/Az/Na, 39-42)",
+                "quantity": 2,
+                "unit_price_cents": 900,
+                "subtotal_cents": 1800,
+                "stock": 10
+              }
+            ],
+            "total_cents": 1800,
+            "budget_cents": null,
+            "message": "Te repito el pedido antes de registrarlo: 2 unidades de «Calcetines deportivos (3 pares) SIN COSTURAS de alto rendimiento para…» a 9,00 € cada una, 18,00 €. Total: 18,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+          },
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07HJ33XGV",
+              "title": "Calcetines (3 Pares) de RUNNING, CICLISMO, TENIS, PADEL,… Calcetines SIN COSTURAS unisex con puntera y talón reforzados. Calcetines tobilleros de deporte. Anti-rozaduras y con gomas anti-presión.",
+              "brand": "RUNNING - CRONOS ONE",
+              "price_cents": 1028,
+              "stock": 50
+            },
+            {
+              "product_id": "B08G8D9267",
+              "title": "TANSTC Calcetines Altos Hombres Mujeres Calcetines De Algodón De Deporte Ciclismo Futbol Running Invierno Verano Antiampollas Senderismo Trekking Skate Calcetines Largos Multipack 6 Pares",
+              "brand": "TANSTC",
+              "price_cents": 9379,
+              "stock": 12
+            },
+            {
+              "product_id": "B07WL8FQ45",
+              "title": "coskefy Calcetines Cortos para Hombre y Mujer 6 Pares Calcetines Deportivos Algodon Transpirable Low Cut Calcetin Deporte Running Ciclismo Antideslizantes, Gris Oscuro(39-42)",
+              "brand": "coskefy",
+              "price_cents": 2575,
+              "stock": 0
+            },
+            {
+              "product_id": "B07NWRML8S",
+              "title": "Calcetines deportivos (3 pares) SIN COSTURAS de alto rendimiento para hombre o mujer. Ideales para deportes como running, crossfit, ciclismo, pádel, trekking; Cómodos y resistentes. (Am/Az/Na, 39-42)",
+              "brand": "DEPORTE – CRONOS ONE -",
+              "price_cents": 900,
+              "stock": 10
+            },
+            {
+              "product_id": "B07D2BWWC1",
+              "title": "Cerdá Calcetines modelo CALCETINES ADULTO THE MANDALORIAN marca",
+              "brand": "Cerdá",
+              "price_cents": 3632,
+              "stock": 3
+            }
+          ],
+          "awaiting_confirmation": true
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-36c88a7d-22_agotado_otro_candidato-c1",
+              "product_id": "B07NWRML8S",
+              "quantity": 2
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B07NWRML8S",
+              "initial_stock": 47,
+              "stock": 10
+            },
+            {
+              "product_id": "B07WL8FQ45",
+              "initial_stock": 2,
+              "stock": 0
+            }
+          ]
+        },
+        "offers": {
+          "B07D2BWWC1": {
+            "price_cents": 3632,
+            "stock": 3
+          },
+          "B07HJ33XGV": {
+            "price_cents": 1028,
+            "stock": 50
+          },
+          "B07NWRML8S": {
+            "price_cents": 900,
+            "stock": 10
+          },
+          "B07WL8FQ45": {
+            "price_cents": 2575,
+            "stock": 0
+          },
+          "B08G8D9267": {
+            "price_cents": 9379,
+            "stock": 12
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-36c88a7d-22_agotado_otro_candidato-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": {
+            "order_id": 1,
+            "quote_id": "b2c4881db9d74f01845ad15636f477bc",
+            "items": [
+              {
+                "product_id": "B07NWRML8S",
+                "title": "Calcetines deportivos (3 pares) SIN COSTURAS de alto rendimiento para hombre o mujer. Ideales para deportes como running, crossfit, ciclismo, pádel, trekking; Cómodos y resistentes. (Am/Az/Na, 39-42)",
+                "quantity": 2,
+                "unit_price_cents": 900,
+                "subtotal_cents": 1800
+              }
+            ],
+            "total_cents": 1800,
+            "message": "Pedido número 1 registrado: 2 unidades de «Calcetines deportivos (3 pares) SIN COSTURAS de alto rendimiento para…» a 9,00 € cada una, 18,00 €. Total: 18,00 €. Gracias por tu compra."
+          },
+          "candidates": [
+            {
+              "product_id": "B07HJ33XGV",
+              "title": "Calcetines (3 Pares) de RUNNING, CICLISMO, TENIS, PADEL,… Calcetines SIN COSTURAS unisex con puntera y talón reforzados. Calcetines tobilleros de deporte. Anti-rozaduras y con gomas anti-presión.",
+              "brand": "RUNNING - CRONOS ONE",
+              "price_cents": 1028,
+              "stock": 50
+            },
+            {
+              "product_id": "B08G8D9267",
+              "title": "TANSTC Calcetines Altos Hombres Mujeres Calcetines De Algodón De Deporte Ciclismo Futbol Running Invierno Verano Antiampollas Senderismo Trekking Skate Calcetines Largos Multipack 6 Pares",
+              "brand": "TANSTC",
+              "price_cents": 9379,
+              "stock": 12
+            },
+            {
+              "product_id": "B07WL8FQ45",
+              "title": "coskefy Calcetines Cortos para Hombre y Mujer 6 Pares Calcetines Deportivos Algodon Transpirable Low Cut Calcetin Deporte Running Ciclismo Antideslizantes, Gris Oscuro(39-42)",
+              "brand": "coskefy",
+              "price_cents": 2575,
+              "stock": 0
+            },
+            {
+              "product_id": "B07NWRML8S",
+              "title": "Calcetines deportivos (3 pares) SIN COSTURAS de alto rendimiento para hombre o mujer. Ideales para deportes como running, crossfit, ciclismo, pádel, trekking; Cómodos y resistentes. (Am/Az/Na, 39-42)",
+              "brand": "DEPORTE – CRONOS ONE -",
+              "price_cents": 900,
+              "stock": 10
+            },
+            {
+              "product_id": "B07D2BWWC1",
+              "title": "Cerdá Calcetines modelo CALCETINES ADULTO THE MANDALORIAN marca",
+              "brand": "Cerdá",
+              "price_cents": 3632,
+              "stock": 3
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [
+            {
+              "order_id": 1,
+              "quote_id": "b2c4881db9d74f01845ad15636f477bc",
+              "total_cents": 1800
+            }
+          ],
+          "order_items": [
+            {
+              "order_id": 1,
+              "product_id": "B07NWRML8S",
+              "quantity": 2,
+              "unit_price_cents": 900
+            }
+          ],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B07NWRML8S",
+              "initial_stock": 47,
+              "stock": 8
+            },
+            {
+              "product_id": "B07WL8FQ45",
+              "initial_stock": 2,
+              "stock": 0
+            }
+          ]
+        },
+        "offers": {
+          "B07D2BWWC1": {
+            "price_cents": 3632,
+            "stock": 3
+          },
+          "B07HJ33XGV": {
+            "price_cents": 1028,
+            "stock": 50
+          },
+          "B07NWRML8S": {
+            "price_cents": 900,
+            "stock": 8
+          },
+          "B07WL8FQ45": {
+            "price_cents": 2575,
+            "stock": 0
+          },
+          "B08G8D9267": {
+            "price_cents": 9379,
+            "stock": 12
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "orders",
+          "params": {
+            "count": 1
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 1"
+        }
+      ]
+    }
+  ],
+  "final": {
+    "snapshot": {
+      "cart_id": "eval-36c88a7d-22_agotado_otro_candidato-c1",
+      "state": {
+        "budget_cents": null,
+        "preferences": [],
+        "pending_clarification": null,
+        "quote": null,
+        "order": {
+          "order_id": 1,
+          "quote_id": "b2c4881db9d74f01845ad15636f477bc",
+          "items": [
+            {
+              "product_id": "B07NWRML8S",
+              "title": "Calcetines deportivos (3 pares) SIN COSTURAS de alto rendimiento para hombre o mujer. Ideales para deportes como running, crossfit, ciclismo, pádel, trekking; Cómodos y resistentes. (Am/Az/Na, 39-42)",
+              "quantity": 2,
+              "unit_price_cents": 900,
+              "subtotal_cents": 1800
+            }
+          ],
+          "total_cents": 1800,
+          "message": "Pedido número 1 registrado: 2 unidades de «Calcetines deportivos (3 pares) SIN COSTURAS de alto rendimiento para…» a 9,00 € cada una, 18,00 €. Total: 18,00 €. Gracias por tu compra."
+        },
+        "candidates": [
+          {
+            "product_id": "B07HJ33XGV",
+            "title": "Calcetines (3 Pares) de RUNNING, CICLISMO, TENIS, PADEL,… Calcetines SIN COSTURAS unisex con puntera y talón reforzados. Calcetines tobilleros de deporte. Anti-rozaduras y con gomas anti-presión.",
+            "brand": "RUNNING - CRONOS ONE",
+            "price_cents": 1028,
+            "stock": 50
+          },
+          {
+            "product_id": "B08G8D9267",
+            "title": "TANSTC Calcetines Altos Hombres Mujeres Calcetines De Algodón De Deporte Ciclismo Futbol Running Invierno Verano Antiampollas Senderismo Trekking Skate Calcetines Largos Multipack 6 Pares",
+            "brand": "TANSTC",
+            "price_cents": 9379,
+            "stock": 12
+          },
+          {
+            "product_id": "B07WL8FQ45",
+            "title": "coskefy Calcetines Cortos para Hombre y Mujer 6 Pares Calcetines Deportivos Algodon Transpirable Low Cut Calcetin Deporte Running Ciclismo Antideslizantes, Gris Oscuro(39-42)",
+            "brand": "coskefy",
+            "price_cents": 2575,
+            "stock": 0
+          },
+          {
+            "product_id": "B07NWRML8S",
+            "title": "Calcetines deportivos (3 pares) SIN COSTURAS de alto rendimiento para hombre o mujer. Ideales para deportes como running, crossfit, ciclismo, pádel, trekking; Cómodos y resistentes. (Am/Az/Na, 39-42)",
+            "brand": "DEPORTE – CRONOS ONE -",
+            "price_cents": 900,
+            "stock": 10
+          },
+          {
+            "product_id": "B07D2BWWC1",
+            "title": "Cerdá Calcetines modelo CALCETINES ADULTO THE MANDALORIAN marca",
+            "brand": "Cerdá",
+            "price_cents": 3632,
+            "stock": 3
+          }
+        ],
+        "awaiting_confirmation": false
+      },
+      "store": {
+        "orders": [
+          {
+            "order_id": 1,
+            "quote_id": "b2c4881db9d74f01845ad15636f477bc",
+            "total_cents": 1800
+          }
+        ],
+        "order_items": [
+          {
+            "order_id": 1,
+            "product_id": "B07NWRML8S",
+            "quantity": 2,
+            "unit_price_cents": 900
+          }
+        ],
+        "cart_items": [],
+        "inventory_changes": [
+          {
+            "product_id": "B07NWRML8S",
+            "initial_stock": 47,
+            "stock": 8
+          },
+          {
+            "product_id": "B07WL8FQ45",
+            "initial_stock": 2,
+            "stock": 0
+          }
+        ]
+      },
+      "offers": {
+        "B07D2BWWC1": {
+          "price_cents": 3632,
+          "stock": 3
+        },
+        "B07HJ33XGV": {
+          "price_cents": 1028,
+          "stock": 50
+        },
+        "B07NWRML8S": {
+          "price_cents": 900,
+          "stock": 8
+        },
+        "B07WL8FQ45": {
+          "price_cents": 2575,
+          "stock": 0
+        },
+        "B08G8D9267": {
+          "price_cents": 9379,
+          "stock": 12
+        }
+      }
+    },
+    "checks": [
+      {
+        "check": "orders",
+        "params": {
+          "count": 1
+        },
+        "ok": true,
+        "detail": "pedidos registrados: 1"
+      },
+      {
+        "check": "order",
+        "params": {
+          "lines": [
+            {
+              "not": "@agotado",
+              "quantity": 2
+            }
+          ]
+        },
+        "ok": true,
+        "detail": "pedido 1: 2 × B07NWRML8S; total 1800 céntimos"
+      },
+      {
+        "check": "stock",
+        "params": {
+          "product": "@agotado",
+          "equals": 0
+        },
+        "ok": true,
+        "detail": "existencias de B07WL8FQ45: 0"
+      },
+      {
+        "check": "cart",
+        "params": {
+          "empty": true
+        },
+        "ok": true,
+        "detail": "carrito: vacío"
+      }
+    ]
+  },
+  "violations": [],
+  "problems": [],
+  "passed": true,
+  "timings": {
+    "all": {
+      "turns": 5,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.01,
+        "max": 0.04
+      },
+      "llm": {
+        "mean": 4.06,
+        "max": 7.21
+      },
+      "tools": {
+        "mean": 0.03,
+        "max": 0.05
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 4.1,
+        "max": 7.28
+      }
+    },
+    "with_llm": {
+      "turns": 4,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.01,
+        "max": 0.04
+      },
+      "llm": {
+        "mean": 5.07,
+        "max": 7.21
+      },
+      "tools": {
+        "mean": 0.04,
+        "max": 0.05
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 5.12,
+        "max": 7.28
+      }
+    },
+    "without_llm": {
+      "turns": 1,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "llm": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "tools": {
+        "mean": 0.03,
+        "max": 0.03
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 0.03,
+        "max": 0.03
+      }
+    }
+  }
+}

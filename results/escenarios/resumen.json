@@ -746,6 +746,439 @@
       },
       "failed_checks": {},
       "voice_metrics": null
+    },
+    "reserva": {
+      "date": "2026-11-10T17:12:09",
+      "commit": "9a1a276",
+      "input": "texto",
+      "models": {
+        "llm": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+        "asr": null,
+        "tts": null,
+        "embeddings": "intfloat/multilingual-e5-small",
+        "reranker": "control"
+      },
+      "voice": {},
+      "load": {
+        "search_seconds": 149.8,
+        "llm_seconds": 0.8,
+        "asr_seconds": null,
+        "tts_seconds": null,
+        "total_seconds": 160.9,
+        "vram_mib": {
+          "search": 706,
+          "llm": 5820,
+          "asr": 5820,
+          "loaded": 5820
+        }
+      },
+      "memory_backend": "postgres",
+      "audio_sources": {},
+      "scenarios": 4,
+      "passed": 3,
+      "pass_rate": 0.75,
+      "failed": [
+        "24_dato_que_no_consta"
+      ],
+      "turns": 18,
+      "violations": {
+        "cantidad": 0,
+        "presupuesto": 0,
+        "existencias": 0,
+        "pedido_duplicado": 0,
+        "cambio_parcial": 0
+      },
+      "timings": {
+        "all": {
+          "turns": 18,
+          "asr": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "retrieval": {
+            "mean": 0.01,
+            "max": 0.03
+          },
+          "llm": {
+            "mean": 4.13,
+            "max": 8.39
+          },
+          "tools": {
+            "mean": 0.03,
+            "max": 0.05
+          },
+          "tts": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "total": {
+            "mean": 4.17,
+            "max": 8.45
+          }
+        },
+        "with_llm": {
+          "turns": 15,
+          "asr": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "retrieval": {
+            "mean": 0.01,
+            "max": 0.03
+          },
+          "llm": {
+            "mean": 4.96,
+            "max": 8.39
+          },
+          "tools": {
+            "mean": 0.03,
+            "max": 0.05
+          },
+          "tts": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "total": {
+            "mean": 5.0,
+            "max": 8.45
+          }
+        },
+        "without_llm": {
+          "turns": 3,
+          "asr": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "retrieval": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "llm": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "tools": {
+            "mean": 0.02,
+            "max": 0.03
+          },
+          "tts": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "total": {
+            "mean": 0.02,
+            "max": 0.03
+          }
+        }
+      },
+      "verdicts": {
+        "21_cierre_otras_palabras": true,
+        "22_agotado_otro_candidato": true,
+        "23_candidato_fuera_de_lista": true,
+        "24_dato_que_no_consta": false
+      },
+      "failed_checks": {
+        "24_dato_que_no_consta": [
+          {
+            "turn": 2,
+            "check": "declares_unknown",
+            "params": {
+              "product": "@segunda",
+              "keywords": [
+                "garant"
+              ]
+            },
+            "ok": false,
+            "detail": "dato en el catálogo: sí; la respuesta dice que no consta: sí"
+          }
+        ]
+      },
+      "voice_metrics": null
+    },
+    "reserva_sage": {
+      "date": "2026-11-10T17:16:00",
+      "commit": "9a1a276",
+      "input": "texto",
+      "models": {
+        "llm": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+        "asr": null,
+        "tts": null,
+        "embeddings": "intfloat/multilingual-e5-small",
+        "reranker": "sage"
+      },
+      "voice": {},
+      "load": {
+        "search_seconds": 152.3,
+        "llm_seconds": 0.8,
+        "asr_seconds": null,
+        "tts_seconds": null,
+        "total_seconds": 153.4,
+        "vram_mib": {
+          "search": 930,
+          "llm": 6044,
+          "asr": 6044,
+          "loaded": 6044
+        }
+      },
+      "memory_backend": "postgres",
+      "audio_sources": {},
+      "scenarios": 4,
+      "passed": 4,
+      "pass_rate": 1.0,
+      "failed": [],
+      "turns": 18,
+      "violations": {
+        "cantidad": 0,
+        "presupuesto": 0,
+        "existencias": 0,
+        "pedido_duplicado": 0,
+        "cambio_parcial": 0
+      },
+      "timings": {
+        "all": {
+          "turns": 18,
+          "asr": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "retrieval": {
+            "mean": 0.01,
+            "max": 0.04
+          },
+          "llm": {
+            "mean": 4.12,
+            "max": 8.16
+          },
+          "tools": {
+            "mean": 0.03,
+            "max": 0.06
+          },
+          "tts": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "total": {
+            "mean": 4.16,
+            "max": 8.24
+          }
+        },
+        "with_llm": {
+          "turns": 15,
+          "asr": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "retrieval": {
+            "mean": 0.01,
+            "max": 0.04
+          },
+          "llm": {
+            "mean": 4.94,
+            "max": 8.16
+          },
+          "tools": {
+            "mean": 0.04,
+            "max": 0.06
+          },
+          "tts": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "total": {
+            "mean": 4.99,
+            "max": 8.24
+          }
+        },
+        "without_llm": {
+          "turns": 3,
+          "asr": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "retrieval": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "llm": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "tools": {
+            "mean": 0.03,
+            "max": 0.03
+          },
+          "tts": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "total": {
+            "mean": 0.03,
+            "max": 0.03
+          }
+        }
+      },
+      "verdicts": {
+        "21_cierre_otras_palabras": true,
+        "22_agotado_otro_candidato": true,
+        "23_candidato_fuera_de_lista": true,
+        "24_dato_que_no_consta": true
+      },
+      "failed_checks": {},
+      "voice_metrics": null
+    },
+    "reserva_sin_reranker": {
+      "date": "2026-11-10T17:17:40",
+      "commit": "9a1a276",
+      "input": "texto",
+      "models": {
+        "llm": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+        "asr": null,
+        "tts": null,
+        "embeddings": "intfloat/multilingual-e5-small",
+        "reranker": null
+      },
+      "voice": {},
+      "load": {
+        "search_seconds": 20.8,
+        "llm_seconds": 0.7,
+        "asr_seconds": null,
+        "tts_seconds": null,
+        "total_seconds": 21.9,
+        "vram_mib": {
+          "search": 604,
+          "llm": 5718,
+          "asr": 5718,
+          "loaded": 5718
+        }
+      },
+      "memory_backend": "postgres",
+      "audio_sources": {},
+      "scenarios": 4,
+      "passed": 3,
+      "pass_rate": 0.75,
+      "failed": [
+        "24_dato_que_no_consta"
+      ],
+      "turns": 18,
+      "violations": {
+        "cantidad": 0,
+        "presupuesto": 0,
+        "existencias": 0,
+        "pedido_duplicado": 0,
+        "cambio_parcial": 0
+      },
+      "timings": {
+        "all": {
+          "turns": 18,
+          "asr": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "retrieval": {
+            "mean": 0.01,
+            "max": 0.03
+          },
+          "llm": {
+            "mean": 4.19,
+            "max": 8.45
+          },
+          "tools": {
+            "mean": 0.03,
+            "max": 0.06
+          },
+          "tts": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "total": {
+            "mean": 4.23,
+            "max": 8.52
+          }
+        },
+        "with_llm": {
+          "turns": 15,
+          "asr": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "retrieval": {
+            "mean": 0.01,
+            "max": 0.03
+          },
+          "llm": {
+            "mean": 5.02,
+            "max": 8.45
+          },
+          "tools": {
+            "mean": 0.04,
+            "max": 0.06
+          },
+          "tts": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "total": {
+            "mean": 5.07,
+            "max": 8.52
+          }
+        },
+        "without_llm": {
+          "turns": 3,
+          "asr": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "retrieval": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "llm": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "tools": {
+            "mean": 0.02,
+            "max": 0.03
+          },
+          "tts": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "total": {
+            "mean": 0.02,
+            "max": 0.03
+          }
+        }
+      },
+      "verdicts": {
+        "21_cierre_otras_palabras": true,
+        "22_agotado_otro_candidato": true,
+        "23_candidato_fuera_de_lista": true,
+        "24_dato_que_no_consta": false
+      },
+      "failed_checks": {
+        "24_dato_que_no_consta": [
+          {
+            "turn": 3,
+            "check": "declares_unknown",
+            "params": {
+              "product": "@primera",
+              "keywords": [
+                "entrega",
+                "envío",
+                "envio",
+                "llega en",
+                "días laborables",
+                "24 horas",
+                "48 horas"
+              ]
+            },
+            "ok": false,
+            "detail": "dato en el catálogo: sí; la respuesta dice que no consta: sí"
+          }
+        ]
+      },
+      "voice_metrics": null
     }
   },
   "audio_vs_correct_text": [

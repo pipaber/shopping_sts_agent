@@ -1,0 +1,153 @@
+{
+  "date": "2026-11-10T17:12:09",
+  "commit": "9a1a276",
+  "memory_backend": "postgres",
+  "models": {
+    "llm": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+    "asr": null,
+    "tts": null,
+    "embeddings": "intfloat/multilingual-e5-small",
+    "reranker": "control"
+  },
+  "voice": {},
+  "load": {
+    "search_seconds": 149.8,
+    "llm_seconds": 0.8,
+    "asr_seconds": null,
+    "tts_seconds": null,
+    "total_seconds": 160.9,
+    "vram_mib": {
+      "search": 706,
+      "llm": 5820,
+      "asr": 5820,
+      "loaded": 5820
+    }
+  },
+  "input": "texto",
+  "audio_sources": {},
+  "scenarios": [
+    {
+      "id": "21_cierre_otras_palabras",
+      "title": "Cerrar el pedido con otras palabras",
+      "kind": "cierre_otras_palabras",
+      "passed": true
+    },
+    {
+      "id": "22_agotado_otro_candidato",
+      "title": "Producto agotado que no es el primero",
+      "kind": "agotado_otro_candidato",
+      "passed": true
+    },
+    {
+      "id": "23_candidato_fuera_de_lista",
+      "title": "Referencia a un candidato que no está en la lista",
+      "kind": "candidato_fuera_de_lista",
+      "passed": true
+    },
+    {
+      "id": "24_dato_que_no_consta",
+      "title": "Dato que el catálogo no trae",
+      "kind": "dato_que_no_consta",
+      "passed": false
+    }
+  ],
+  "summary": {
+    "scenarios": 4,
+    "passed": 3,
+    "pass_rate": 0.75,
+    "failed": [
+      "24_dato_que_no_consta"
+    ],
+    "turns": 18,
+    "violations": {
+      "cantidad": 0,
+      "presupuesto": 0,
+      "existencias": 0,
+      "pedido_duplicado": 0,
+      "cambio_parcial": 0
+    },
+    "timings": {
+      "all": {
+        "turns": 18,
+        "asr": {
+          "mean": 0.0,
+          "max": 0.0
+        },
+        "retrieval": {
+          "mean": 0.01,
+          "max": 0.03
+        },
+        "llm": {
+          "mean": 4.13,
+          "max": 8.39
+        },
+        "tools": {
+          "mean": 0.03,
+          "max": 0.05
+        },
+        "tts": {
+          "mean": 0.0,
+          "max": 0.0
+        },
+        "total": {
+          "mean": 4.17,
+          "max": 8.45
+        }
+      },
+      "with_llm": {
+        "turns": 15,
+        "asr": {
+          "mean": 0.0,
+          "max": 0.0
+        },
+        "retrieval": {
+          "mean": 0.01,
+          "max": 0.03
+        },
+        "llm": {
+          "mean": 4.96,
+          "max": 8.39
+        },
+        "tools": {
+          "mean": 0.03,
+          "max": 0.05
+        },
+        "tts": {
+          "mean": 0.0,
+          "max": 0.0
+        },
+        "total": {
+          "mean": 5.0,
+          "max": 8.45
+        }
+      },
+      "without_llm": {
+        "turns": 3,
+        "asr": {
+          "mean": 0.0,
+          "max": 0.0
+        },
+        "retrieval": {
+          "mean": 0.0,
+          "max": 0.0
+        },
+        "llm": {
+          "mean": 0.0,
+          "max": 0.0
+        },
+        "tools": {
+          "mean": 0.02,
+          "max": 0.03
+        },
+        "tts": {
+          "mean": 0.0,
+          "max": 0.0
+        },
+        "total": {
+          "mean": 0.02,
+          "max": 0.03
+        }
+      }
+    }
+  }
+}

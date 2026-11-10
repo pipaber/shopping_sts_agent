@@ -11,29 +11,36 @@ Cada corrida tiene una ficha por escenario en su carpeta.
 | `texto_sin_reranker` | texto | sin reranker | 20 | 20 | 100.0 % |
 | `voz` | audio | control | 6 | 6 | 100.0 % |
 | `voz_texto_correcto` | texto | control | 6 | 6 | 100.0 % |
+| `reserva` | texto | control | 4 | 3 | 75.0 % |
+| `reserva_sage` | texto | sage | 4 | 4 | 100.0 % |
+| `reserva_sin_reranker` | texto | sin reranker | 4 | 3 | 75.0 % |
 
-| Escenario | `texto` | `texto_sage` | `texto_sin_reranker` | `voz` | `voz_texto_correcto` |
-|---|---|---|---|---|---|
-| `01_compra_confirmada` | ✔ | ✔ | ✔ | ✔ | ✔ |
-| `02_pedido_ambiguo` | ✔ | ✔ | ✔ | ✔ | ✔ |
-| `03_cambio_cantidad` | ✔ | ✔ | ✔ | ✔ | ✔ |
-| `04_sin_existencias` | ✔ | ✔ | ✔ | ✔ | ✔ |
-| `05_correccion_transcripcion` | ✔ | ✔ | ✔ | ✔ | ✔ |
-| `06_cambio_stock_confirmacion_repetida` | ✔ | ✔ | ✔ | ✔ | ✔ |
-| `07_presupuesto_excedido` | ✔ | ✔ | ✔ |  |  |
-| `08_cantidad_invalida` | ✔ | ✔ | ✔ |  |  |
-| `09_producto_inexistente` | ✔ | ✔ | ✔ |  |  |
-| `10_atributo_no_verificable` | ✔ | ✔ | ✔ |  |  |
-| `11_rechazo_confirmacion` | ✔ | ✔ | ✔ |  |  |
-| `12_memoria_preferencias` | ✔ | ✔ | ✔ |  |  |
-| `13_confirmacion_con_cambio` | ✔ | ✔ | ✔ |  |  |
-| `14_pregunta_sin_cambios` | ✔ | ✔ | ✔ |  |  |
-| `15_stock_insuficiente` | ✔ | ✔ | ✔ |  |  |
-| `16_quitar_del_carrito` | ✔ | ✔ | ✔ |  |  |
-| `17_cambio_presupuesto` | ✔ | ✔ | ✔ |  |  |
-| `18_cierre_sin_carrito` | ✔ | ✔ | ✔ |  |  |
-| `19_presupuesto_compartido` | ✔ | ✔ | ✔ |  |  |
-| `20_agotado_al_confirmar` | ✔ | ✔ | ✔ |  |  |
+| Escenario | `texto` | `texto_sage` | `texto_sin_reranker` | `voz` | `voz_texto_correcto` | `reserva` | `reserva_sage` | `reserva_sin_reranker` |
+|---|---|---|---|---|---|---|---|---|
+| `01_compra_confirmada` | ✔ | ✔ | ✔ | ✔ | ✔ |  |  |  |
+| `02_pedido_ambiguo` | ✔ | ✔ | ✔ | ✔ | ✔ |  |  |  |
+| `03_cambio_cantidad` | ✔ | ✔ | ✔ | ✔ | ✔ |  |  |  |
+| `04_sin_existencias` | ✔ | ✔ | ✔ | ✔ | ✔ |  |  |  |
+| `05_correccion_transcripcion` | ✔ | ✔ | ✔ | ✔ | ✔ |  |  |  |
+| `06_cambio_stock_confirmacion_repetida` | ✔ | ✔ | ✔ | ✔ | ✔ |  |  |  |
+| `07_presupuesto_excedido` | ✔ | ✔ | ✔ |  |  |  |  |  |
+| `08_cantidad_invalida` | ✔ | ✔ | ✔ |  |  |  |  |  |
+| `09_producto_inexistente` | ✔ | ✔ | ✔ |  |  |  |  |  |
+| `10_atributo_no_verificable` | ✔ | ✔ | ✔ |  |  |  |  |  |
+| `11_rechazo_confirmacion` | ✔ | ✔ | ✔ |  |  |  |  |  |
+| `12_memoria_preferencias` | ✔ | ✔ | ✔ |  |  |  |  |  |
+| `13_confirmacion_con_cambio` | ✔ | ✔ | ✔ |  |  |  |  |  |
+| `14_pregunta_sin_cambios` | ✔ | ✔ | ✔ |  |  |  |  |  |
+| `15_stock_insuficiente` | ✔ | ✔ | ✔ |  |  |  |  |  |
+| `16_quitar_del_carrito` | ✔ | ✔ | ✔ |  |  |  |  |  |
+| `17_cambio_presupuesto` | ✔ | ✔ | ✔ |  |  |  |  |  |
+| `18_cierre_sin_carrito` | ✔ | ✔ | ✔ |  |  |  |  |  |
+| `19_presupuesto_compartido` | ✔ | ✔ | ✔ |  |  |  |  |  |
+| `20_agotado_al_confirmar` | ✔ | ✔ | ✔ |  |  |  |  |  |
+| `21_cierre_otras_palabras` |  |  |  |  |  | ✔ | ✔ | ✔ |
+| `22_agotado_otro_candidato` |  |  |  |  |  | ✔ | ✔ | ✔ |
+| `23_candidato_fuera_de_lista` |  |  |  |  |  | ✔ | ✔ | ✔ |
+| `24_dato_que_no_consta` |  |  |  |  |  | ✘ | ✔ | ✘ |
 
 ## Antes y después de corregir el agente
 
@@ -79,6 +86,9 @@ Línea base: `results/escenarios_base`.
 | `texto_sin_reranker` | 0 | 0 | 0 | 0 | 0 |
 | `voz` | 0 | 0 | 0 | 0 | 0 |
 | `voz_texto_correcto` | 0 | 0 | 0 | 0 | 0 |
+| `reserva` | 0 | 0 | 0 | 0 | 0 |
+| `reserva_sage` | 0 | 0 | 0 | 0 | 0 |
+| `reserva_sin_reranker` | 0 | 0 | 0 | 0 | 0 |
 
 ## Voz
 
@@ -115,6 +125,12 @@ Línea base: `results/escenarios_base`.
 | `voz`, sin LLM | 7 | 0.32 (máx. 0.33) | 0.00 (máx. 0.03) | 0.00 (máx. 0.00) | 0.04 (máx. 0.04) | 4.46 (máx. 10.64) | 4.82 (máx. 11.01) |
 | `voz_texto_correcto`, con LLM | 24 | 0.00 (máx. 0.00) | 0.01 (máx. 0.03) | 5.04 (máx. 8.93) | 0.04 (máx. 0.10) | 0.00 (máx. 0.00) | 5.09 (máx. 8.99) |
 | `voz_texto_correcto`, sin LLM | 7 | 0.00 (máx. 0.00) | 0.00 (máx. 0.02) | 0.00 (máx. 0.00) | 0.03 (máx. 0.03) | 0.00 (máx. 0.00) | 0.03 (máx. 0.04) |
+| `reserva`, con LLM | 15 | 0.00 (máx. 0.00) | 0.01 (máx. 0.03) | 4.96 (máx. 8.39) | 0.03 (máx. 0.05) | 0.00 (máx. 0.00) | 5.00 (máx. 8.45) |
+| `reserva`, sin LLM | 3 | 0.00 (máx. 0.00) | 0.00 (máx. 0.00) | 0.00 (máx. 0.00) | 0.02 (máx. 0.03) | 0.00 (máx. 0.00) | 0.02 (máx. 0.03) |
+| `reserva_sage`, con LLM | 15 | 0.00 (máx. 0.00) | 0.01 (máx. 0.04) | 4.94 (máx. 8.16) | 0.04 (máx. 0.06) | 0.00 (máx. 0.00) | 4.99 (máx. 8.24) |
+| `reserva_sage`, sin LLM | 3 | 0.00 (máx. 0.00) | 0.00 (máx. 0.00) | 0.00 (máx. 0.00) | 0.03 (máx. 0.03) | 0.00 (máx. 0.00) | 0.03 (máx. 0.03) |
+| `reserva_sin_reranker`, con LLM | 15 | 0.00 (máx. 0.00) | 0.01 (máx. 0.03) | 5.02 (máx. 8.45) | 0.04 (máx. 0.06) | 0.00 (máx. 0.00) | 5.07 (máx. 8.52) |
+| `reserva_sin_reranker`, sin LLM | 3 | 0.00 (máx. 0.00) | 0.00 (máx. 0.00) | 0.00 (máx. 0.00) | 0.02 (máx. 0.03) | 0.00 (máx. 0.00) | 0.02 (máx. 0.03) |
 
 Carga inicial de los modelos, aparte de los turnos:
 
@@ -123,7 +139,13 @@ Carga inicial de los modelos, aparte de los turnos:
 - `texto_sin_reranker`: catálogo y recuperadores 15.8 s, LLM 0.7 s; total 16.9 s.
 - `voz`: catálogo y recuperadores 16.3 s, LLM 0.7 s, ASR 1.1 s, TTS 10.1 s; total 28.8 s.
 - `voz_texto_correcto`: catálogo y recuperadores 16.3 s, LLM 0.7 s, ASR 1.1 s, TTS 10.1 s; total 28.8 s.
+- `reserva`: catálogo y recuperadores 149.8 s, LLM 0.8 s; total 160.9 s.
+- `reserva_sage`: catálogo y recuperadores 152.3 s, LLM 0.8 s; total 153.4 s.
+- `reserva_sin_reranker`: catálogo y recuperadores 20.8 s, LLM 0.7 s; total 21.9 s.
 
 ## Comprobaciones que fallaron
 
-- Ninguna.
+- `reserva` / [24_dato_que_no_consta](reserva/24_dato_que_no_consta.md):
+  - turno 2: `declares_unknown` — dato en el catálogo: sí; la respuesta dice que no consta: sí
+- `reserva_sin_reranker` / [24_dato_que_no_consta](reserva_sin_reranker/24_dato_que_no_consta.md):
+  - turno 3: `declares_unknown` — dato en el catálogo: sí; la respuesta dice que no consta: sí

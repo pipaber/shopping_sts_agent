@@ -1,0 +1,1220 @@
+{
+  "id": "23_candidato_fuera_de_lista",
+  "title": "Referencia a un candidato que no está en la lista",
+  "kind": "candidato_fuera_de_lista",
+  "description": "Escenario de reserva, escrito antes de corregir el agente y sin ejecutarlo. La lista tiene cinco candidatos, todos con 20 unidades. El usuario pide el sexto y pregunta por el octavo: el agente no debe añadir nada. Después pide el quinto, que sí existe, y debe añadirse ese y no otro.",
+  "voice": false,
+  "input": "texto",
+  "audio_source": null,
+  "user_id": "eval-b464556d-23_candidato_fuera_de_lista",
+  "threads": [
+    "eval-b464556d-23_candidato_fuera_de_lista-c1"
+  ],
+  "names": {
+    "candidato1": "B07PWQFGQR",
+    "candidato2": "B099D9NWR7",
+    "candidato3": "B00J3TR8UO",
+    "candidato4": "B00ODSSLVK",
+    "candidato5": "B099DBHWHL"
+  },
+  "steps": [
+    {
+      "kind": "turn",
+      "turn": 1,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Busco un reloj de pared.",
+      "agent_input": "Busco un reloj de pared.",
+      "response": "Tengo el reloj de pared Amazon Basics por 16,59 euros, el DIYZON por 22,39 euros, el Planetareloj por 29,60 euros, el SOLEDI por 8,14 euros y el DIYZON por 11,64 euros. ¿Te interesa alguno?",
+      "spoken_text": "Tengo el reloj de pared Amazon Basics por dieciséis euros con cincuenta y nueve céntimos, el DIYZON por veintidós euros con treinta y nueve céntimos, el Planetareloj por veintinueve euros con sesenta céntimos, el SOLEDI por ocho euros con catorce céntimos y el DIYZON por once euros con sesenta y cuatro céntimos. ¿Te interesa alguno?",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "buscar_productos",
+          "args": {
+            "consulta": "reloj de pared"
+          },
+          "reason": "buscar el reloj de pared",
+          "ok": true,
+          "summary": "estos son ahora los CANDIDATOS, del más al menos relevante:\n[1] id=B07PWQFGQR | Amazon Basics - Reloj de pared con números, 30,5 cm, negro | marca: Amazon Basics | color: Negro | precio: 16,59 € | existencias: 19 | características (extracto): Reloj de pared de 30,5 cm con manecillas de operación analógica, hora y minutos Fabricado en plástico de polipropileno duradero y ligero Colgar en oficina, taller, aula, cocina o en cualquier lugar donde la gestión del tiempo sea útil… | descripción: desconocido\n[2] id=B099D9NWR7 | DIYZON Reloj de Pared Moderno, Reloj de 30 cm Silencioso Entry Lux de Moda, Movimiento de Cuarzo sin Tictac con Batería, Lectura Fácil, Adecuado para Dormitorio, Cocina, Escuela, Oficina | marca: DIYZON | color: Blanco | precio: 22,39 € | existencias: 42 | características (extracto): Diseño minimalista moderno: la esfera del reloj es elegante, limpia y simple, con escala negra sobre un fondo blanco que proporciona una visión clara; la superficie está cubierta con vidrio para mantener fuera el polvo y el vapor de agua… | descripción: Características: Diseño moderno y simple, adecuado para cocina, sala de estar, escuela, oficina, etc. Con un marco circular hecho de material ABS de calidad, resistente y fiable, fácil de limpiar…\n[3] id=B00J3TR8UO | Planetareloj - Reloj de Pared Vintage con Temporizador | marca: OoB | color: desconocido | precio: 29,60 € | existencias: 10 | características (extracto): Este reloj de pared Retro dispone de un temporizador de 60 minutos! Está disponible en 4 colores: azul, amarillo, rojo o verde. Es una suerte que usted consigue dip El reloj mide alrededor de 22,5 cm x 15,6 cm x 5 cm. Hecha de plástico y… | descripción: Este reloj de pared Retro dispone de un temporizador de 60 minutos y tiene un fresco de 1950 sienta! Está disponible en 4 colores: azul, amarillo, rojo o verde. Será Lucky Dip que usted recibe. El…\n[4] id=B00ODSSLVK | SOLEDI Reloj de Pared 3D DIY Reloj de Etiqueta de Pared Decoración Ideal para la Casa Oficina Hotel Restaurante Plata | marca: SOLEDI | color: B-plata | precio: 8,14 € | existencias: 47 | características (extracto): ❤ [Reloj de Bricolaje, 60-120 cm] Ideal producto de bricolaje. Tiene un diámetro mínimo de 60 cm y un diámetro máximo de 120 cm. El tamaño grande es adecuado como fondo para rellenar y decorar los paredes vacías. Fácil de instalar el reloj… | descripción: ¿Por qué elegir el SOLEDI reloj de pared? ▶ [Materiales de Buena Calidad] Moderno Reloj de lujo con resistencia a la abrasión y a la corrosión; las Agujas del reloj están hecha de aluminio de alta…\n[5] id=B099DBHWHL | DIYZON Reloj de Pared Minimalista, Reloj silencioso Moderno de 30 cm, Movimiento de Cuarzo sin Tictac con Batería, Fácil de Leer, Adecuado para Dormitorio, Cocina, Escuela, Oficina | marca: DIYZON | color: Blanco | precio: 11,64 € | existencias: 19 | características (extracto): Diseño moderno y simple: este reloj es elegante y simple, con números negros sobre un fondo blanco para proporcionar una lectura clara; la cubierta de vidrio puede bloquear el polvo y el vapor de agua; el marco del reloj está hecho de… | descripción: Características Diseño moderno y simple, adecuado para cocina, sala de estar, escuela, oficina, etc. Marco redondo hecho de material ABS de alta calidad, resistente y confiable, fácil de limpiar…",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.03,
+        "llm": 6.746,
+        "tools": 0.027,
+        "tts": 0.0,
+        "total": 6.802
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-b464556d-23_candidato_fuera_de_lista-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {}
+      },
+      "after": {
+        "cart_id": "eval-b464556d-23_candidato_fuera_de_lista-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07PWQFGQR",
+              "title": "Amazon Basics - Reloj de pared con números, 30,5 cm, negro",
+              "brand": "Amazon Basics",
+              "price_cents": 1659,
+              "stock": 19
+            },
+            {
+              "product_id": "B099D9NWR7",
+              "title": "DIYZON Reloj de Pared Moderno, Reloj de 30 cm Silencioso Entry Lux de Moda, Movimiento de Cuarzo sin Tictac con Batería, Lectura Fácil, Adecuado para Dormitorio, Cocina, Escuela, Oficina",
+              "brand": "DIYZON",
+              "price_cents": 2239,
+              "stock": 42
+            },
+            {
+              "product_id": "B00J3TR8UO",
+              "title": "Planetareloj - Reloj de Pared Vintage con Temporizador",
+              "brand": "OoB",
+              "price_cents": 2960,
+              "stock": 10
+            },
+            {
+              "product_id": "B00ODSSLVK",
+              "title": "SOLEDI Reloj de Pared 3D DIY Reloj de Etiqueta de Pared Decoración Ideal para la Casa Oficina Hotel Restaurante Plata",
+              "brand": "SOLEDI",
+              "price_cents": 814,
+              "stock": 47
+            },
+            {
+              "product_id": "B099DBHWHL",
+              "title": "DIYZON Reloj de Pared Minimalista, Reloj silencioso Moderno de 30 cm, Movimiento de Cuarzo sin Tictac con Batería, Fácil de Leer, Adecuado para Dormitorio, Cocina, Escuela, Oficina",
+              "brand": "DIYZON",
+              "price_cents": 1164,
+              "stock": 19
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {
+          "B00J3TR8UO": {
+            "price_cents": 2960,
+            "stock": 10
+          },
+          "B00ODSSLVK": {
+            "price_cents": 814,
+            "stock": 47
+          },
+          "B07PWQFGQR": {
+            "price_cents": 1659,
+            "stock": 19
+          },
+          "B099D9NWR7": {
+            "price_cents": 2239,
+            "stock": 42
+          },
+          "B099DBHWHL": {
+            "price_cents": 1164,
+            "stock": 19
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        }
+      ]
+    },
+    {
+      "kind": "remember",
+      "name": "candidato1",
+      "ref": "candidate:1",
+      "product_id": "B07PWQFGQR",
+      "title": "Amazon Basics - Reloj de pared con números, 30,5 cm, negro"
+    },
+    {
+      "kind": "remember",
+      "name": "candidato2",
+      "ref": "candidate:2",
+      "product_id": "B099D9NWR7",
+      "title": "DIYZON Reloj de Pared Moderno, Reloj de 30 cm Silencioso Entry Lux de Moda, Movimiento de Cuarzo sin Tictac con Batería, Lectura Fácil, Adecuado para Dormitorio, Cocina, Escuela, Oficina"
+    },
+    {
+      "kind": "remember",
+      "name": "candidato3",
+      "ref": "candidate:3",
+      "product_id": "B00J3TR8UO",
+      "title": "Planetareloj - Reloj de Pared Vintage con Temporizador"
+    },
+    {
+      "kind": "remember",
+      "name": "candidato4",
+      "ref": "candidate:4",
+      "product_id": "B00ODSSLVK",
+      "title": "SOLEDI Reloj de Pared 3D DIY Reloj de Etiqueta de Pared Decoración Ideal para la Casa Oficina Hotel Restaurante Plata"
+    },
+    {
+      "kind": "remember",
+      "name": "candidato5",
+      "ref": "candidate:5",
+      "product_id": "B099DBHWHL",
+      "title": "DIYZON Reloj de Pared Minimalista, Reloj silencioso Moderno de 30 cm, Movimiento de Cuarzo sin Tictac con Batería, Fácil de Leer, Adecuado para Dormitorio, Cocina, Escuela, Oficina"
+    },
+    {
+      "kind": "event",
+      "event": "set_offer",
+      "product": "@candidato1",
+      "product_id": "B07PWQFGQR",
+      "price_cents": null,
+      "stock": 20
+    },
+    {
+      "kind": "event",
+      "event": "set_offer",
+      "product": "@candidato2",
+      "product_id": "B099D9NWR7",
+      "price_cents": null,
+      "stock": 20
+    },
+    {
+      "kind": "event",
+      "event": "set_offer",
+      "product": "@candidato3",
+      "product_id": "B00J3TR8UO",
+      "price_cents": null,
+      "stock": 20
+    },
+    {
+      "kind": "event",
+      "event": "set_offer",
+      "product": "@candidato4",
+      "product_id": "B00ODSSLVK",
+      "price_cents": null,
+      "stock": 20
+    },
+    {
+      "kind": "event",
+      "event": "set_offer",
+      "product": "@candidato5",
+      "product_id": "B099DBHWHL",
+      "price_cents": null,
+      "stock": 20
+    },
+    {
+      "kind": "turn",
+      "turn": 2,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Ponme el sexto.",
+      "agent_input": "Ponme el sexto.",
+      "response": "¿Podrías indicarme cuál es el sexto reloj de pared de la lista que te interesa?",
+      "spoken_text": "¿Podrías indicarme cuál es el sexto reloj de pared de la lista que te interesa?",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "pedir_aclaracion",
+          "args": {
+            "pregunta": "¿Podrías indicarme cuál es el sexto reloj de pared de la lista que te interesa?"
+          },
+          "reason": "leer el mensaje del usuario",
+          "ok": true,
+          "summary": "pregunta enviada al usuario",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 3.469,
+        "tools": 0.026,
+        "tts": 0.0,
+        "total": 3.495
+      },
+      "llm_steps": 1,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-b464556d-23_candidato_fuera_de_lista-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07PWQFGQR",
+              "title": "Amazon Basics - Reloj de pared con números, 30,5 cm, negro",
+              "brand": "Amazon Basics",
+              "price_cents": 1659,
+              "stock": 19
+            },
+            {
+              "product_id": "B099D9NWR7",
+              "title": "DIYZON Reloj de Pared Moderno, Reloj de 30 cm Silencioso Entry Lux de Moda, Movimiento de Cuarzo sin Tictac con Batería, Lectura Fácil, Adecuado para Dormitorio, Cocina, Escuela, Oficina",
+              "brand": "DIYZON",
+              "price_cents": 2239,
+              "stock": 42
+            },
+            {
+              "product_id": "B00J3TR8UO",
+              "title": "Planetareloj - Reloj de Pared Vintage con Temporizador",
+              "brand": "OoB",
+              "price_cents": 2960,
+              "stock": 10
+            },
+            {
+              "product_id": "B00ODSSLVK",
+              "title": "SOLEDI Reloj de Pared 3D DIY Reloj de Etiqueta de Pared Decoración Ideal para la Casa Oficina Hotel Restaurante Plata",
+              "brand": "SOLEDI",
+              "price_cents": 814,
+              "stock": 47
+            },
+            {
+              "product_id": "B099DBHWHL",
+              "title": "DIYZON Reloj de Pared Minimalista, Reloj silencioso Moderno de 30 cm, Movimiento de Cuarzo sin Tictac con Batería, Fácil de Leer, Adecuado para Dormitorio, Cocina, Escuela, Oficina",
+              "brand": "DIYZON",
+              "price_cents": 1164,
+              "stock": 19
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B00J3TR8UO",
+              "initial_stock": 10,
+              "stock": 20
+            },
+            {
+              "product_id": "B00ODSSLVK",
+              "initial_stock": 47,
+              "stock": 20
+            },
+            {
+              "product_id": "B07PWQFGQR",
+              "initial_stock": 19,
+              "stock": 20
+            },
+            {
+              "product_id": "B099D9NWR7",
+              "initial_stock": 42,
+              "stock": 20
+            },
+            {
+              "product_id": "B099DBHWHL",
+              "initial_stock": 19,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B00J3TR8UO": {
+            "price_cents": 2960,
+            "stock": 20
+          },
+          "B00ODSSLVK": {
+            "price_cents": 814,
+            "stock": 20
+          },
+          "B07PWQFGQR": {
+            "price_cents": 1659,
+            "stock": 20
+          },
+          "B099D9NWR7": {
+            "price_cents": 2239,
+            "stock": 20
+          },
+          "B099DBHWHL": {
+            "price_cents": 1164,
+            "stock": 20
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-b464556d-23_candidato_fuera_de_lista-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": "¿Podrías indicarme cuál es el sexto reloj de pared de la lista que te interesa?",
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07PWQFGQR",
+              "title": "Amazon Basics - Reloj de pared con números, 30,5 cm, negro",
+              "brand": "Amazon Basics",
+              "price_cents": 1659,
+              "stock": 20
+            },
+            {
+              "product_id": "B099D9NWR7",
+              "title": "DIYZON Reloj de Pared Moderno, Reloj de 30 cm Silencioso Entry Lux de Moda, Movimiento de Cuarzo sin Tictac con Batería, Lectura Fácil, Adecuado para Dormitorio, Cocina, Escuela, Oficina",
+              "brand": "DIYZON",
+              "price_cents": 2239,
+              "stock": 20
+            },
+            {
+              "product_id": "B00J3TR8UO",
+              "title": "Planetareloj - Reloj de Pared Vintage con Temporizador",
+              "brand": "OoB",
+              "price_cents": 2960,
+              "stock": 20
+            },
+            {
+              "product_id": "B00ODSSLVK",
+              "title": "SOLEDI Reloj de Pared 3D DIY Reloj de Etiqueta de Pared Decoración Ideal para la Casa Oficina Hotel Restaurante Plata",
+              "brand": "SOLEDI",
+              "price_cents": 814,
+              "stock": 20
+            },
+            {
+              "product_id": "B099DBHWHL",
+              "title": "DIYZON Reloj de Pared Minimalista, Reloj silencioso Moderno de 30 cm, Movimiento de Cuarzo sin Tictac con Batería, Fácil de Leer, Adecuado para Dormitorio, Cocina, Escuela, Oficina",
+              "brand": "DIYZON",
+              "price_cents": 1164,
+              "stock": 20
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B00J3TR8UO",
+              "initial_stock": 10,
+              "stock": 20
+            },
+            {
+              "product_id": "B00ODSSLVK",
+              "initial_stock": 47,
+              "stock": 20
+            },
+            {
+              "product_id": "B07PWQFGQR",
+              "initial_stock": 19,
+              "stock": 20
+            },
+            {
+              "product_id": "B099D9NWR7",
+              "initial_stock": 42,
+              "stock": 20
+            },
+            {
+              "product_id": "B099DBHWHL",
+              "initial_stock": 19,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B00J3TR8UO": {
+            "price_cents": 2960,
+            "stock": 20
+          },
+          "B00ODSSLVK": {
+            "price_cents": 814,
+            "stock": 20
+          },
+          "B07PWQFGQR": {
+            "price_cents": 1659,
+            "stock": 20
+          },
+          "B099D9NWR7": {
+            "price_cents": 2239,
+            "stock": 20
+          },
+          "B099DBHWHL": {
+            "price_cents": 1164,
+            "stock": 20
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 3,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "¿Y cuánto cuesta el octavo?",
+      "agent_input": "¿Y cuánto cuesta el octavo?",
+      "response": "¿Podrías indicarme cuál reloj de pared de la lista te interesa?",
+      "spoken_text": "¿Podrías indicarme cuál reloj de pared de la lista te interesa?",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "detalle_producto",
+          "args": {
+            "product_id": "B00ODSSLVK"
+          },
+          "reason": "leer el texto completo del candidato 8",
+          "ok": false,
+          "summary": "[posicion_inexistente] El usuario se refiere al octavo de la lista y CANDIDATOS solo tiene 5. No elijas otro producto por él: usa pedir_aclaracion para decirle cuántos hay y preguntarle cuál quiere.",
+          "issues": [
+            {
+              "code": "posicion_inexistente",
+              "message": "El usuario se refiere al octavo de la lista y CANDIDATOS solo tiene 5. No elijas otro producto por él: usa pedir_aclaracion para decirle cuántos hay y preguntarle cuál quiere.",
+              "product_id": null,
+              "details": {}
+            }
+          ]
+        },
+        {
+          "tool": "pedir_aclaracion",
+          "args": {
+            "pregunta": "¿Podrías indicarme cuál reloj de pared de la lista te interesa?"
+          },
+          "reason": "preguntar cuál reloj de pared quiere",
+          "ok": true,
+          "summary": "pregunta enviada al usuario",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 5.144,
+        "tools": 0.025,
+        "tts": 0.0,
+        "total": 5.169
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-b464556d-23_candidato_fuera_de_lista-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": "¿Podrías indicarme cuál es el sexto reloj de pared de la lista que te interesa?",
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07PWQFGQR",
+              "title": "Amazon Basics - Reloj de pared con números, 30,5 cm, negro",
+              "brand": "Amazon Basics",
+              "price_cents": 1659,
+              "stock": 20
+            },
+            {
+              "product_id": "B099D9NWR7",
+              "title": "DIYZON Reloj de Pared Moderno, Reloj de 30 cm Silencioso Entry Lux de Moda, Movimiento de Cuarzo sin Tictac con Batería, Lectura Fácil, Adecuado para Dormitorio, Cocina, Escuela, Oficina",
+              "brand": "DIYZON",
+              "price_cents": 2239,
+              "stock": 20
+            },
+            {
+              "product_id": "B00J3TR8UO",
+              "title": "Planetareloj - Reloj de Pared Vintage con Temporizador",
+              "brand": "OoB",
+              "price_cents": 2960,
+              "stock": 20
+            },
+            {
+              "product_id": "B00ODSSLVK",
+              "title": "SOLEDI Reloj de Pared 3D DIY Reloj de Etiqueta de Pared Decoración Ideal para la Casa Oficina Hotel Restaurante Plata",
+              "brand": "SOLEDI",
+              "price_cents": 814,
+              "stock": 20
+            },
+            {
+              "product_id": "B099DBHWHL",
+              "title": "DIYZON Reloj de Pared Minimalista, Reloj silencioso Moderno de 30 cm, Movimiento de Cuarzo sin Tictac con Batería, Fácil de Leer, Adecuado para Dormitorio, Cocina, Escuela, Oficina",
+              "brand": "DIYZON",
+              "price_cents": 1164,
+              "stock": 20
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B00J3TR8UO",
+              "initial_stock": 10,
+              "stock": 20
+            },
+            {
+              "product_id": "B00ODSSLVK",
+              "initial_stock": 47,
+              "stock": 20
+            },
+            {
+              "product_id": "B07PWQFGQR",
+              "initial_stock": 19,
+              "stock": 20
+            },
+            {
+              "product_id": "B099D9NWR7",
+              "initial_stock": 42,
+              "stock": 20
+            },
+            {
+              "product_id": "B099DBHWHL",
+              "initial_stock": 19,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B00J3TR8UO": {
+            "price_cents": 2960,
+            "stock": 20
+          },
+          "B00ODSSLVK": {
+            "price_cents": 814,
+            "stock": 20
+          },
+          "B07PWQFGQR": {
+            "price_cents": 1659,
+            "stock": 20
+          },
+          "B099D9NWR7": {
+            "price_cents": 2239,
+            "stock": 20
+          },
+          "B099DBHWHL": {
+            "price_cents": 1164,
+            "stock": 20
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-b464556d-23_candidato_fuera_de_lista-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": "¿Podrías indicarme cuál reloj de pared de la lista te interesa?",
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07PWQFGQR",
+              "title": "Amazon Basics - Reloj de pared con números, 30,5 cm, negro",
+              "brand": "Amazon Basics",
+              "price_cents": 1659,
+              "stock": 20
+            },
+            {
+              "product_id": "B099D9NWR7",
+              "title": "DIYZON Reloj de Pared Moderno, Reloj de 30 cm Silencioso Entry Lux de Moda, Movimiento de Cuarzo sin Tictac con Batería, Lectura Fácil, Adecuado para Dormitorio, Cocina, Escuela, Oficina",
+              "brand": "DIYZON",
+              "price_cents": 2239,
+              "stock": 20
+            },
+            {
+              "product_id": "B00J3TR8UO",
+              "title": "Planetareloj - Reloj de Pared Vintage con Temporizador",
+              "brand": "OoB",
+              "price_cents": 2960,
+              "stock": 20
+            },
+            {
+              "product_id": "B00ODSSLVK",
+              "title": "SOLEDI Reloj de Pared 3D DIY Reloj de Etiqueta de Pared Decoración Ideal para la Casa Oficina Hotel Restaurante Plata",
+              "brand": "SOLEDI",
+              "price_cents": 814,
+              "stock": 20
+            },
+            {
+              "product_id": "B099DBHWHL",
+              "title": "DIYZON Reloj de Pared Minimalista, Reloj silencioso Moderno de 30 cm, Movimiento de Cuarzo sin Tictac con Batería, Fácil de Leer, Adecuado para Dormitorio, Cocina, Escuela, Oficina",
+              "brand": "DIYZON",
+              "price_cents": 1164,
+              "stock": 20
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B00J3TR8UO",
+              "initial_stock": 10,
+              "stock": 20
+            },
+            {
+              "product_id": "B00ODSSLVK",
+              "initial_stock": 47,
+              "stock": 20
+            },
+            {
+              "product_id": "B07PWQFGQR",
+              "initial_stock": 19,
+              "stock": 20
+            },
+            {
+              "product_id": "B099D9NWR7",
+              "initial_stock": 42,
+              "stock": 20
+            },
+            {
+              "product_id": "B099DBHWHL",
+              "initial_stock": 19,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B00J3TR8UO": {
+            "price_cents": 2960,
+            "stock": 20
+          },
+          "B00ODSSLVK": {
+            "price_cents": 814,
+            "stock": 20
+          },
+          "B07PWQFGQR": {
+            "price_cents": 1659,
+            "stock": 20
+          },
+          "B099D9NWR7": {
+            "price_cents": 2239,
+            "stock": 20
+          },
+          "B099DBHWHL": {
+            "price_cents": 1164,
+            "stock": 20
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 4,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Entonces ponme uno del quinto.",
+      "agent_input": "Entonces ponme uno del quinto.",
+      "response": "Hecho, añadido uno del quinto reloj de pared al carrito. En el carrito hay 1 unidad de «DIYZON Reloj de Pared Minimalista, Reloj silencioso Moderno de 30 cm…» a 11,64 € cada una, 11,64 €. Total: 11,64 €.",
+      "spoken_text": "Hecho, añadido uno del quinto reloj de pared al carrito. En el carrito hay una unidad de DIYZON Reloj de Pared Minimalista a once euros con sesenta y cuatro céntimos cada una, once euros con sesenta y cuatro céntimos. Total: once euros con sesenta y cuatro céntimos.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "agregar_al_carrito",
+          "args": {
+            "product_id": "B099DBHWHL",
+            "cantidad": 1
+          },
+          "reason": "añadir uno del quinto candidato",
+          "ok": true,
+          "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B099DBHWHL | DIYZON Reloj de Pared Minimalista, Reloj silencioso Moderno de 30 cm… | 1 unidad × 11,64 € = 11,64 € | existencias: 20\nTotal del carrito: 11,64 €",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 5.063,
+        "tools": 0.053,
+        "tts": 0.0,
+        "total": 5.116
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-b464556d-23_candidato_fuera_de_lista-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": "¿Podrías indicarme cuál reloj de pared de la lista te interesa?",
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07PWQFGQR",
+              "title": "Amazon Basics - Reloj de pared con números, 30,5 cm, negro",
+              "brand": "Amazon Basics",
+              "price_cents": 1659,
+              "stock": 20
+            },
+            {
+              "product_id": "B099D9NWR7",
+              "title": "DIYZON Reloj de Pared Moderno, Reloj de 30 cm Silencioso Entry Lux de Moda, Movimiento de Cuarzo sin Tictac con Batería, Lectura Fácil, Adecuado para Dormitorio, Cocina, Escuela, Oficina",
+              "brand": "DIYZON",
+              "price_cents": 2239,
+              "stock": 20
+            },
+            {
+              "product_id": "B00J3TR8UO",
+              "title": "Planetareloj - Reloj de Pared Vintage con Temporizador",
+              "brand": "OoB",
+              "price_cents": 2960,
+              "stock": 20
+            },
+            {
+              "product_id": "B00ODSSLVK",
+              "title": "SOLEDI Reloj de Pared 3D DIY Reloj de Etiqueta de Pared Decoración Ideal para la Casa Oficina Hotel Restaurante Plata",
+              "brand": "SOLEDI",
+              "price_cents": 814,
+              "stock": 20
+            },
+            {
+              "product_id": "B099DBHWHL",
+              "title": "DIYZON Reloj de Pared Minimalista, Reloj silencioso Moderno de 30 cm, Movimiento de Cuarzo sin Tictac con Batería, Fácil de Leer, Adecuado para Dormitorio, Cocina, Escuela, Oficina",
+              "brand": "DIYZON",
+              "price_cents": 1164,
+              "stock": 20
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B00J3TR8UO",
+              "initial_stock": 10,
+              "stock": 20
+            },
+            {
+              "product_id": "B00ODSSLVK",
+              "initial_stock": 47,
+              "stock": 20
+            },
+            {
+              "product_id": "B07PWQFGQR",
+              "initial_stock": 19,
+              "stock": 20
+            },
+            {
+              "product_id": "B099D9NWR7",
+              "initial_stock": 42,
+              "stock": 20
+            },
+            {
+              "product_id": "B099DBHWHL",
+              "initial_stock": 19,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B00J3TR8UO": {
+            "price_cents": 2960,
+            "stock": 20
+          },
+          "B00ODSSLVK": {
+            "price_cents": 814,
+            "stock": 20
+          },
+          "B07PWQFGQR": {
+            "price_cents": 1659,
+            "stock": 20
+          },
+          "B099D9NWR7": {
+            "price_cents": 2239,
+            "stock": 20
+          },
+          "B099DBHWHL": {
+            "price_cents": 1164,
+            "stock": 20
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-b464556d-23_candidato_fuera_de_lista-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07PWQFGQR",
+              "title": "Amazon Basics - Reloj de pared con números, 30,5 cm, negro",
+              "brand": "Amazon Basics",
+              "price_cents": 1659,
+              "stock": 20
+            },
+            {
+              "product_id": "B099D9NWR7",
+              "title": "DIYZON Reloj de Pared Moderno, Reloj de 30 cm Silencioso Entry Lux de Moda, Movimiento de Cuarzo sin Tictac con Batería, Lectura Fácil, Adecuado para Dormitorio, Cocina, Escuela, Oficina",
+              "brand": "DIYZON",
+              "price_cents": 2239,
+              "stock": 20
+            },
+            {
+              "product_id": "B00J3TR8UO",
+              "title": "Planetareloj - Reloj de Pared Vintage con Temporizador",
+              "brand": "OoB",
+              "price_cents": 2960,
+              "stock": 20
+            },
+            {
+              "product_id": "B00ODSSLVK",
+              "title": "SOLEDI Reloj de Pared 3D DIY Reloj de Etiqueta de Pared Decoración Ideal para la Casa Oficina Hotel Restaurante Plata",
+              "brand": "SOLEDI",
+              "price_cents": 814,
+              "stock": 20
+            },
+            {
+              "product_id": "B099DBHWHL",
+              "title": "DIYZON Reloj de Pared Minimalista, Reloj silencioso Moderno de 30 cm, Movimiento de Cuarzo sin Tictac con Batería, Fácil de Leer, Adecuado para Dormitorio, Cocina, Escuela, Oficina",
+              "brand": "DIYZON",
+              "price_cents": 1164,
+              "stock": 20
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-b464556d-23_candidato_fuera_de_lista-c1",
+              "product_id": "B099DBHWHL",
+              "quantity": 1
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B00J3TR8UO",
+              "initial_stock": 10,
+              "stock": 20
+            },
+            {
+              "product_id": "B00ODSSLVK",
+              "initial_stock": 47,
+              "stock": 20
+            },
+            {
+              "product_id": "B07PWQFGQR",
+              "initial_stock": 19,
+              "stock": 20
+            },
+            {
+              "product_id": "B099D9NWR7",
+              "initial_stock": 42,
+              "stock": 20
+            },
+            {
+              "product_id": "B099DBHWHL",
+              "initial_stock": 19,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B00J3TR8UO": {
+            "price_cents": 2960,
+            "stock": 20
+          },
+          "B00ODSSLVK": {
+            "price_cents": 814,
+            "stock": 20
+          },
+          "B07PWQFGQR": {
+            "price_cents": 1659,
+            "stock": 20
+          },
+          "B099D9NWR7": {
+            "price_cents": 2239,
+            "stock": 20
+          },
+          "B099DBHWHL": {
+            "price_cents": 1164,
+            "stock": 20
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "lines": [
+              {
+                "product": "@candidato5",
+                "quantity": 1
+              }
+            ]
+          },
+          "ok": true,
+          "detail": "carrito: 1 × B099DBHWHL"
+        }
+      ]
+    }
+  ],
+  "final": {
+    "snapshot": {
+      "cart_id": "eval-b464556d-23_candidato_fuera_de_lista-c1",
+      "state": {
+        "budget_cents": null,
+        "preferences": [],
+        "pending_clarification": null,
+        "quote": null,
+        "order": null,
+        "candidates": [
+          {
+            "product_id": "B07PWQFGQR",
+            "title": "Amazon Basics - Reloj de pared con números, 30,5 cm, negro",
+            "brand": "Amazon Basics",
+            "price_cents": 1659,
+            "stock": 20
+          },
+          {
+            "product_id": "B099D9NWR7",
+            "title": "DIYZON Reloj de Pared Moderno, Reloj de 30 cm Silencioso Entry Lux de Moda, Movimiento de Cuarzo sin Tictac con Batería, Lectura Fácil, Adecuado para Dormitorio, Cocina, Escuela, Oficina",
+            "brand": "DIYZON",
+            "price_cents": 2239,
+            "stock": 20
+          },
+          {
+            "product_id": "B00J3TR8UO",
+            "title": "Planetareloj - Reloj de Pared Vintage con Temporizador",
+            "brand": "OoB",
+            "price_cents": 2960,
+            "stock": 20
+          },
+          {
+            "product_id": "B00ODSSLVK",
+            "title": "SOLEDI Reloj de Pared 3D DIY Reloj de Etiqueta de Pared Decoración Ideal para la Casa Oficina Hotel Restaurante Plata",
+            "brand": "SOLEDI",
+            "price_cents": 814,
+            "stock": 20
+          },
+          {
+            "product_id": "B099DBHWHL",
+            "title": "DIYZON Reloj de Pared Minimalista, Reloj silencioso Moderno de 30 cm, Movimiento de Cuarzo sin Tictac con Batería, Fácil de Leer, Adecuado para Dormitorio, Cocina, Escuela, Oficina",
+            "brand": "DIYZON",
+            "price_cents": 1164,
+            "stock": 20
+          }
+        ],
+        "awaiting_confirmation": false
+      },
+      "store": {
+        "orders": [],
+        "order_items": [],
+        "cart_items": [
+          {
+            "cart_id": "eval-b464556d-23_candidato_fuera_de_lista-c1",
+            "product_id": "B099DBHWHL",
+            "quantity": 1
+          }
+        ],
+        "inventory_changes": [
+          {
+            "product_id": "B00J3TR8UO",
+            "initial_stock": 10,
+            "stock": 20
+          },
+          {
+            "product_id": "B00ODSSLVK",
+            "initial_stock": 47,
+            "stock": 20
+          },
+          {
+            "product_id": "B07PWQFGQR",
+            "initial_stock": 19,
+            "stock": 20
+          },
+          {
+            "product_id": "B099D9NWR7",
+            "initial_stock": 42,
+            "stock": 20
+          },
+          {
+            "product_id": "B099DBHWHL",
+            "initial_stock": 19,
+            "stock": 20
+          }
+        ]
+      },
+      "offers": {
+        "B00J3TR8UO": {
+          "price_cents": 2960,
+          "stock": 20
+        },
+        "B00ODSSLVK": {
+          "price_cents": 814,
+          "stock": 20
+        },
+        "B07PWQFGQR": {
+          "price_cents": 1659,
+          "stock": 20
+        },
+        "B099D9NWR7": {
+          "price_cents": 2239,
+          "stock": 20
+        },
+        "B099DBHWHL": {
+          "price_cents": 1164,
+          "stock": 20
+        }
+      }
+    },
+    "checks": [
+      {
+        "check": "orders",
+        "params": {
+          "count": 0
+        },
+        "ok": true,
+        "detail": "pedidos registrados: 0"
+      },
+      {
+        "check": "cart",
+        "params": {
+          "lines": [
+            {
+              "product": "@candidato5",
+              "quantity": 1
+            }
+          ]
+        },
+        "ok": true,
+        "detail": "carrito: 1 × B099DBHWHL"
+      }
+    ]
+  },
+  "violations": [],
+  "problems": [],
+  "passed": true,
+  "timings": {
+    "all": {
+      "turns": 4,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.01,
+        "max": 0.03
+      },
+      "llm": {
+        "mean": 5.11,
+        "max": 6.75
+      },
+      "tools": {
+        "mean": 0.03,
+        "max": 0.05
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 5.15,
+        "max": 6.8
+      }
+    },
+    "with_llm": {
+      "turns": 4,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.01,
+        "max": 0.03
+      },
+      "llm": {
+        "mean": 5.11,
+        "max": 6.75
+      },
+      "tools": {
+        "mean": 0.03,
+        "max": 0.05
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 5.15,
+        "max": 6.8
+      }
+    },
+    "without_llm": {
+      "turns": 0
+    }
+  }
+}

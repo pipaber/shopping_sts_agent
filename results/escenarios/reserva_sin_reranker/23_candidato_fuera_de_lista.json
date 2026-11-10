@@ -1,0 +1,1192 @@
+{
+  "id": "23_candidato_fuera_de_lista",
+  "title": "Referencia a un candidato que no está en la lista",
+  "kind": "candidato_fuera_de_lista",
+  "description": "Escenario de reserva, escrito antes de corregir el agente y sin ejecutarlo. La lista tiene cinco candidatos, todos con 20 unidades. El usuario pide el sexto y pregunta por el octavo: el agente no debe añadir nada. Después pide el quinto, que sí existe, y debe añadirse ese y no otro.",
+  "voice": false,
+  "input": "texto",
+  "audio_source": null,
+  "user_id": "eval-a2217320-23_candidato_fuera_de_lista",
+  "threads": [
+    "eval-a2217320-23_candidato_fuera_de_lista-c1"
+  ],
+  "names": {
+    "candidato1": "B099D9NWR7",
+    "candidato2": "B08MT7PX3C",
+    "candidato3": "B01AXRGQNE",
+    "candidato4": "B099DBHWHL",
+    "candidato5": "B089NMG3TR"
+  },
+  "steps": [
+    {
+      "kind": "turn",
+      "turn": 1,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Busco un reloj de pared.",
+      "agent_input": "Busco un reloj de pared.",
+      "response": "Tengo estos relojes de pared: uno de DIYZON por 22,39 €, uno de Youery por 57,13 €, uno de SOLEDI por 18,35 €, otro de DIYZON por 11,64 € y uno de FreeLeben por 27,42 €. ¿Te interesa alguno?",
+      "spoken_text": "Tengo estos relojes de pared: uno de DIYZON por veintidós euros con treinta y nueve céntimos, uno de Youery por cincuenta y siete euros con trece céntimos, uno de SOLEDI por dieciocho euros con treinta y cinco céntimos, otro de DIYZON por once euros con sesenta y cuatro céntimos y uno de FreeLeben por veintisiete euros con cuarenta y dos céntimos. ¿Te interesa alguno?",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "buscar_productos",
+          "args": {
+            "consulta": "reloj de pared"
+          },
+          "reason": "buscar el reloj de pared",
+          "ok": true,
+          "summary": "estos son ahora los CANDIDATOS, del más al menos relevante:\n[1] id=B099D9NWR7 | DIYZON Reloj de Pared Moderno, Reloj de 30 cm Silencioso Entry Lux de Moda, Movimiento de Cuarzo sin Tictac con Batería, Lectura Fácil, Adecuado para Dormitorio, Cocina, Escuela, Oficina | marca: DIYZON | color: Blanco | precio: 22,39 € | existencias: 42 | características (extracto): Diseño minimalista moderno: la esfera del reloj es elegante, limpia y simple, con escala negra sobre un fondo blanco que proporciona una visión clara; la superficie está cubierta con vidrio para mantener fuera el polvo y el vapor de agua… | descripción: Características: Diseño moderno y simple, adecuado para cocina, sala de estar, escuela, oficina, etc. Con un marco circular hecho de material ABS de calidad, resistente y fiable, fácil de limpiar…\n[2] id=B08MT7PX3C | Youery Reloj de Pared 3D,Relojes Modernos DIY,Reloj de Pared Adhesivo Reloj de Etiqueta de Pared Decoración,llenado Pared Vacía 3D Reloj,Ideal para Oficina Hotel Restaurante(Negro) | marca: Youery | color: Negro | precio: 57,13 € | existencias: 46 | características (extracto): 【Diseño exquisito】No solo un reloj de pared de diseño elegante y moderno, sino también una decoración de pared exquisita.La superficie de espejo acrílico y el efecto 3D hacen que su habitación se vea lujosa. 【Tamaño del reloj de pared… | descripción: Descripción del producto caracteristicas: 1. Este reloj de pared DIY tiene efecto 3D; 2. Las pegatinas de pared son fáciles de montar; 3. Autoadhesivo,resistente al agua y al vapor,no tóxico y seguro…\n[3] id=B01AXRGQNE | Reloj de pared vintage multicolor francés, reloj moderno hecho de madera estilo toscano para decoración del hogar | marca: SOLEDI | color: E | precio: 18,35 € | existencias: 45 | características (extracto): ❤ Reloj de madera estilo campestre: reloj de pared de estilo rústico toscano para crear ambiente ❤ Movimiento silencioso preciso: cuenta con certificado CE y se alimenta con una pila AA, que reduce eficazmente el consumo de energía y… | descripción: Categoría: reloj de pared. Material: madera y fibra de madera. Diámetro: 30 cm, aprox. Estilo: vintage. Pilas: 1 pila AA. Peso: 339 g. Peso bruto: 518 g. ❤ Atención especial - Este reloj de pared…\n[4] id=B099DBHWHL | DIYZON Reloj de Pared Minimalista, Reloj silencioso Moderno de 30 cm, Movimiento de Cuarzo sin Tictac con Batería, Fácil de Leer, Adecuado para Dormitorio, Cocina, Escuela, Oficina | marca: DIYZON | color: Blanco | precio: 11,64 € | existencias: 19 | características (extracto): Diseño moderno y simple: este reloj es elegante y simple, con números negros sobre un fondo blanco para proporcionar una lectura clara; la cubierta de vidrio puede bloquear el polvo y el vapor de agua; el marco del reloj está hecho de… | descripción: Características Diseño moderno y simple, adecuado para cocina, sala de estar, escuela, oficina, etc. Marco redondo hecho de material ABS de alta calidad, resistente y confiable, fácil de limpiar…\n[5] id=B089NMG3TR | FreeLeben Reloj De Pared De Doble Cara Reloj De Pie Retro Reloj De Pared De La Estación De Paddington Soporte Vintage De Aspecto Antiguo Reloj De Decoración Colgante, 12.12 * 7.5cm | marca: FreeLeben | color: A | precio: 27,42 € | existencias: 10 | características (extracto): [RELOJ DE PARED DE DOBLE CARA] === Diseño de doble cara para que ambas caras sean visibles, el reloj de aspecto retro con los grandes números romanos se puede ver claramente incluso si está a distancia. Los números son únicos y precisos, y… | descripción: - Material de hierro forjado con técnica de proceso de horneado, el marco de diseño de carcasa resistente se puede utilizar durante mucho tiempo - Reloj exterior de doble cara, esfera del reloj de 12…",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.028,
+        "llm": 7.25,
+        "tools": 0.027,
+        "tts": 0.0,
+        "total": 7.304
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-a2217320-23_candidato_fuera_de_lista-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {}
+      },
+      "after": {
+        "cart_id": "eval-a2217320-23_candidato_fuera_de_lista-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B099D9NWR7",
+              "title": "DIYZON Reloj de Pared Moderno, Reloj de 30 cm Silencioso Entry Lux de Moda, Movimiento de Cuarzo sin Tictac con Batería, Lectura Fácil, Adecuado para Dormitorio, Cocina, Escuela, Oficina",
+              "brand": "DIYZON",
+              "price_cents": 2239,
+              "stock": 42
+            },
+            {
+              "product_id": "B08MT7PX3C",
+              "title": "Youery Reloj de Pared 3D,Relojes Modernos DIY,Reloj de Pared Adhesivo Reloj de Etiqueta de Pared Decoración,llenado Pared Vacía 3D Reloj,Ideal para Oficina Hotel Restaurante(Negro)",
+              "brand": "Youery",
+              "price_cents": 5713,
+              "stock": 46
+            },
+            {
+              "product_id": "B01AXRGQNE",
+              "title": "Reloj de pared vintage multicolor francés, reloj moderno hecho de madera estilo toscano para decoración del hogar",
+              "brand": "SOLEDI",
+              "price_cents": 1835,
+              "stock": 45
+            },
+            {
+              "product_id": "B099DBHWHL",
+              "title": "DIYZON Reloj de Pared Minimalista, Reloj silencioso Moderno de 30 cm, Movimiento de Cuarzo sin Tictac con Batería, Fácil de Leer, Adecuado para Dormitorio, Cocina, Escuela, Oficina",
+              "brand": "DIYZON",
+              "price_cents": 1164,
+              "stock": 19
+            },
+            {
+              "product_id": "B089NMG3TR",
+              "title": "FreeLeben Reloj De Pared De Doble Cara Reloj De Pie Retro Reloj De Pared De La Estación De Paddington Soporte Vintage De Aspecto Antiguo Reloj De Decoración Colgante, 12.12 * 7.5cm",
+              "brand": "FreeLeben",
+              "price_cents": 2742,
+              "stock": 10
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {
+          "B01AXRGQNE": {
+            "price_cents": 1835,
+            "stock": 45
+          },
+          "B089NMG3TR": {
+            "price_cents": 2742,
+            "stock": 10
+          },
+          "B08MT7PX3C": {
+            "price_cents": 5713,
+            "stock": 46
+          },
+          "B099D9NWR7": {
+            "price_cents": 2239,
+            "stock": 42
+          },
+          "B099DBHWHL": {
+            "price_cents": 1164,
+            "stock": 19
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        }
+      ]
+    },
+    {
+      "kind": "remember",
+      "name": "candidato1",
+      "ref": "candidate:1",
+      "product_id": "B099D9NWR7",
+      "title": "DIYZON Reloj de Pared Moderno, Reloj de 30 cm Silencioso Entry Lux de Moda, Movimiento de Cuarzo sin Tictac con Batería, Lectura Fácil, Adecuado para Dormitorio, Cocina, Escuela, Oficina"
+    },
+    {
+      "kind": "remember",
+      "name": "candidato2",
+      "ref": "candidate:2",
+      "product_id": "B08MT7PX3C",
+      "title": "Youery Reloj de Pared 3D,Relojes Modernos DIY,Reloj de Pared Adhesivo Reloj de Etiqueta de Pared Decoración,llenado Pared Vacía 3D Reloj,Ideal para Oficina Hotel Restaurante(Negro)"
+    },
+    {
+      "kind": "remember",
+      "name": "candidato3",
+      "ref": "candidate:3",
+      "product_id": "B01AXRGQNE",
+      "title": "Reloj de pared vintage multicolor francés, reloj moderno hecho de madera estilo toscano para decoración del hogar"
+    },
+    {
+      "kind": "remember",
+      "name": "candidato4",
+      "ref": "candidate:4",
+      "product_id": "B099DBHWHL",
+      "title": "DIYZON Reloj de Pared Minimalista, Reloj silencioso Moderno de 30 cm, Movimiento de Cuarzo sin Tictac con Batería, Fácil de Leer, Adecuado para Dormitorio, Cocina, Escuela, Oficina"
+    },
+    {
+      "kind": "remember",
+      "name": "candidato5",
+      "ref": "candidate:5",
+      "product_id": "B089NMG3TR",
+      "title": "FreeLeben Reloj De Pared De Doble Cara Reloj De Pie Retro Reloj De Pared De La Estación De Paddington Soporte Vintage De Aspecto Antiguo Reloj De Decoración Colgante, 12.12 * 7.5cm"
+    },
+    {
+      "kind": "event",
+      "event": "set_offer",
+      "product": "@candidato1",
+      "product_id": "B099D9NWR7",
+      "price_cents": null,
+      "stock": 20
+    },
+    {
+      "kind": "event",
+      "event": "set_offer",
+      "product": "@candidato2",
+      "product_id": "B08MT7PX3C",
+      "price_cents": null,
+      "stock": 20
+    },
+    {
+      "kind": "event",
+      "event": "set_offer",
+      "product": "@candidato3",
+      "product_id": "B01AXRGQNE",
+      "price_cents": null,
+      "stock": 20
+    },
+    {
+      "kind": "event",
+      "event": "set_offer",
+      "product": "@candidato4",
+      "product_id": "B099DBHWHL",
+      "price_cents": null,
+      "stock": 20
+    },
+    {
+      "kind": "event",
+      "event": "set_offer",
+      "product": "@candidato5",
+      "product_id": "B089NMG3TR",
+      "price_cents": null,
+      "stock": 20
+    },
+    {
+      "kind": "turn",
+      "turn": 2,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Ponme el sexto.",
+      "agent_input": "Ponme el sexto.",
+      "response": "Lo siento, no hay un sexto producto en la lista. ¿Podrías indicarme uno de los cinco que veo?",
+      "spoken_text": "Lo siento, no hay un sexto producto en la lista. ¿Podrías indicarme uno de los cinco que veo?",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 3.847,
+        "tools": 0.03,
+        "tts": 0.0,
+        "total": 3.876
+      },
+      "llm_steps": 1,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-a2217320-23_candidato_fuera_de_lista-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B099D9NWR7",
+              "title": "DIYZON Reloj de Pared Moderno, Reloj de 30 cm Silencioso Entry Lux de Moda, Movimiento de Cuarzo sin Tictac con Batería, Lectura Fácil, Adecuado para Dormitorio, Cocina, Escuela, Oficina",
+              "brand": "DIYZON",
+              "price_cents": 2239,
+              "stock": 42
+            },
+            {
+              "product_id": "B08MT7PX3C",
+              "title": "Youery Reloj de Pared 3D,Relojes Modernos DIY,Reloj de Pared Adhesivo Reloj de Etiqueta de Pared Decoración,llenado Pared Vacía 3D Reloj,Ideal para Oficina Hotel Restaurante(Negro)",
+              "brand": "Youery",
+              "price_cents": 5713,
+              "stock": 46
+            },
+            {
+              "product_id": "B01AXRGQNE",
+              "title": "Reloj de pared vintage multicolor francés, reloj moderno hecho de madera estilo toscano para decoración del hogar",
+              "brand": "SOLEDI",
+              "price_cents": 1835,
+              "stock": 45
+            },
+            {
+              "product_id": "B099DBHWHL",
+              "title": "DIYZON Reloj de Pared Minimalista, Reloj silencioso Moderno de 30 cm, Movimiento de Cuarzo sin Tictac con Batería, Fácil de Leer, Adecuado para Dormitorio, Cocina, Escuela, Oficina",
+              "brand": "DIYZON",
+              "price_cents": 1164,
+              "stock": 19
+            },
+            {
+              "product_id": "B089NMG3TR",
+              "title": "FreeLeben Reloj De Pared De Doble Cara Reloj De Pie Retro Reloj De Pared De La Estación De Paddington Soporte Vintage De Aspecto Antiguo Reloj De Decoración Colgante, 12.12 * 7.5cm",
+              "brand": "FreeLeben",
+              "price_cents": 2742,
+              "stock": 10
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B01AXRGQNE",
+              "initial_stock": 45,
+              "stock": 20
+            },
+            {
+              "product_id": "B089NMG3TR",
+              "initial_stock": 10,
+              "stock": 20
+            },
+            {
+              "product_id": "B08MT7PX3C",
+              "initial_stock": 46,
+              "stock": 20
+            },
+            {
+              "product_id": "B099D9NWR7",
+              "initial_stock": 42,
+              "stock": 20
+            },
+            {
+              "product_id": "B099DBHWHL",
+              "initial_stock": 19,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B01AXRGQNE": {
+            "price_cents": 1835,
+            "stock": 20
+          },
+          "B089NMG3TR": {
+            "price_cents": 2742,
+            "stock": 20
+          },
+          "B08MT7PX3C": {
+            "price_cents": 5713,
+            "stock": 20
+          },
+          "B099D9NWR7": {
+            "price_cents": 2239,
+            "stock": 20
+          },
+          "B099DBHWHL": {
+            "price_cents": 1164,
+            "stock": 20
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-a2217320-23_candidato_fuera_de_lista-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B099D9NWR7",
+              "title": "DIYZON Reloj de Pared Moderno, Reloj de 30 cm Silencioso Entry Lux de Moda, Movimiento de Cuarzo sin Tictac con Batería, Lectura Fácil, Adecuado para Dormitorio, Cocina, Escuela, Oficina",
+              "brand": "DIYZON",
+              "price_cents": 2239,
+              "stock": 20
+            },
+            {
+              "product_id": "B08MT7PX3C",
+              "title": "Youery Reloj de Pared 3D,Relojes Modernos DIY,Reloj de Pared Adhesivo Reloj de Etiqueta de Pared Decoración,llenado Pared Vacía 3D Reloj,Ideal para Oficina Hotel Restaurante(Negro)",
+              "brand": "Youery",
+              "price_cents": 5713,
+              "stock": 20
+            },
+            {
+              "product_id": "B01AXRGQNE",
+              "title": "Reloj de pared vintage multicolor francés, reloj moderno hecho de madera estilo toscano para decoración del hogar",
+              "brand": "SOLEDI",
+              "price_cents": 1835,
+              "stock": 20
+            },
+            {
+              "product_id": "B099DBHWHL",
+              "title": "DIYZON Reloj de Pared Minimalista, Reloj silencioso Moderno de 30 cm, Movimiento de Cuarzo sin Tictac con Batería, Fácil de Leer, Adecuado para Dormitorio, Cocina, Escuela, Oficina",
+              "brand": "DIYZON",
+              "price_cents": 1164,
+              "stock": 20
+            },
+            {
+              "product_id": "B089NMG3TR",
+              "title": "FreeLeben Reloj De Pared De Doble Cara Reloj De Pie Retro Reloj De Pared De La Estación De Paddington Soporte Vintage De Aspecto Antiguo Reloj De Decoración Colgante, 12.12 * 7.5cm",
+              "brand": "FreeLeben",
+              "price_cents": 2742,
+              "stock": 20
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B01AXRGQNE",
+              "initial_stock": 45,
+              "stock": 20
+            },
+            {
+              "product_id": "B089NMG3TR",
+              "initial_stock": 10,
+              "stock": 20
+            },
+            {
+              "product_id": "B08MT7PX3C",
+              "initial_stock": 46,
+              "stock": 20
+            },
+            {
+              "product_id": "B099D9NWR7",
+              "initial_stock": 42,
+              "stock": 20
+            },
+            {
+              "product_id": "B099DBHWHL",
+              "initial_stock": 19,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B01AXRGQNE": {
+            "price_cents": 1835,
+            "stock": 20
+          },
+          "B089NMG3TR": {
+            "price_cents": 2742,
+            "stock": 20
+          },
+          "B08MT7PX3C": {
+            "price_cents": 5713,
+            "stock": 20
+          },
+          "B099D9NWR7": {
+            "price_cents": 2239,
+            "stock": 20
+          },
+          "B099DBHWHL": {
+            "price_cents": 1164,
+            "stock": 20
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 3,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "¿Y cuánto cuesta el octavo?",
+      "agent_input": "¿Y cuánto cuesta el octavo?",
+      "response": "¿Podrías indicarme el número del producto que te interesa?",
+      "spoken_text": "¿Podrías indicarme el número del producto que te interesa?",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "pedir_aclaracion",
+          "args": {
+            "pregunta": "¿Podrías indicarme el número del producto que te interesa?"
+          },
+          "reason": "leer el número del producto",
+          "ok": true,
+          "summary": "pregunta enviada al usuario",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 3.194,
+        "tools": 0.015,
+        "tts": 0.0,
+        "total": 3.209
+      },
+      "llm_steps": 1,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-a2217320-23_candidato_fuera_de_lista-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B099D9NWR7",
+              "title": "DIYZON Reloj de Pared Moderno, Reloj de 30 cm Silencioso Entry Lux de Moda, Movimiento de Cuarzo sin Tictac con Batería, Lectura Fácil, Adecuado para Dormitorio, Cocina, Escuela, Oficina",
+              "brand": "DIYZON",
+              "price_cents": 2239,
+              "stock": 20
+            },
+            {
+              "product_id": "B08MT7PX3C",
+              "title": "Youery Reloj de Pared 3D,Relojes Modernos DIY,Reloj de Pared Adhesivo Reloj de Etiqueta de Pared Decoración,llenado Pared Vacía 3D Reloj,Ideal para Oficina Hotel Restaurante(Negro)",
+              "brand": "Youery",
+              "price_cents": 5713,
+              "stock": 20
+            },
+            {
+              "product_id": "B01AXRGQNE",
+              "title": "Reloj de pared vintage multicolor francés, reloj moderno hecho de madera estilo toscano para decoración del hogar",
+              "brand": "SOLEDI",
+              "price_cents": 1835,
+              "stock": 20
+            },
+            {
+              "product_id": "B099DBHWHL",
+              "title": "DIYZON Reloj de Pared Minimalista, Reloj silencioso Moderno de 30 cm, Movimiento de Cuarzo sin Tictac con Batería, Fácil de Leer, Adecuado para Dormitorio, Cocina, Escuela, Oficina",
+              "brand": "DIYZON",
+              "price_cents": 1164,
+              "stock": 20
+            },
+            {
+              "product_id": "B089NMG3TR",
+              "title": "FreeLeben Reloj De Pared De Doble Cara Reloj De Pie Retro Reloj De Pared De La Estación De Paddington Soporte Vintage De Aspecto Antiguo Reloj De Decoración Colgante, 12.12 * 7.5cm",
+              "brand": "FreeLeben",
+              "price_cents": 2742,
+              "stock": 20
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B01AXRGQNE",
+              "initial_stock": 45,
+              "stock": 20
+            },
+            {
+              "product_id": "B089NMG3TR",
+              "initial_stock": 10,
+              "stock": 20
+            },
+            {
+              "product_id": "B08MT7PX3C",
+              "initial_stock": 46,
+              "stock": 20
+            },
+            {
+              "product_id": "B099D9NWR7",
+              "initial_stock": 42,
+              "stock": 20
+            },
+            {
+              "product_id": "B099DBHWHL",
+              "initial_stock": 19,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B01AXRGQNE": {
+            "price_cents": 1835,
+            "stock": 20
+          },
+          "B089NMG3TR": {
+            "price_cents": 2742,
+            "stock": 20
+          },
+          "B08MT7PX3C": {
+            "price_cents": 5713,
+            "stock": 20
+          },
+          "B099D9NWR7": {
+            "price_cents": 2239,
+            "stock": 20
+          },
+          "B099DBHWHL": {
+            "price_cents": 1164,
+            "stock": 20
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-a2217320-23_candidato_fuera_de_lista-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": "¿Podrías indicarme el número del producto que te interesa?",
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B099D9NWR7",
+              "title": "DIYZON Reloj de Pared Moderno, Reloj de 30 cm Silencioso Entry Lux de Moda, Movimiento de Cuarzo sin Tictac con Batería, Lectura Fácil, Adecuado para Dormitorio, Cocina, Escuela, Oficina",
+              "brand": "DIYZON",
+              "price_cents": 2239,
+              "stock": 20
+            },
+            {
+              "product_id": "B08MT7PX3C",
+              "title": "Youery Reloj de Pared 3D,Relojes Modernos DIY,Reloj de Pared Adhesivo Reloj de Etiqueta de Pared Decoración,llenado Pared Vacía 3D Reloj,Ideal para Oficina Hotel Restaurante(Negro)",
+              "brand": "Youery",
+              "price_cents": 5713,
+              "stock": 20
+            },
+            {
+              "product_id": "B01AXRGQNE",
+              "title": "Reloj de pared vintage multicolor francés, reloj moderno hecho de madera estilo toscano para decoración del hogar",
+              "brand": "SOLEDI",
+              "price_cents": 1835,
+              "stock": 20
+            },
+            {
+              "product_id": "B099DBHWHL",
+              "title": "DIYZON Reloj de Pared Minimalista, Reloj silencioso Moderno de 30 cm, Movimiento de Cuarzo sin Tictac con Batería, Fácil de Leer, Adecuado para Dormitorio, Cocina, Escuela, Oficina",
+              "brand": "DIYZON",
+              "price_cents": 1164,
+              "stock": 20
+            },
+            {
+              "product_id": "B089NMG3TR",
+              "title": "FreeLeben Reloj De Pared De Doble Cara Reloj De Pie Retro Reloj De Pared De La Estación De Paddington Soporte Vintage De Aspecto Antiguo Reloj De Decoración Colgante, 12.12 * 7.5cm",
+              "brand": "FreeLeben",
+              "price_cents": 2742,
+              "stock": 20
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B01AXRGQNE",
+              "initial_stock": 45,
+              "stock": 20
+            },
+            {
+              "product_id": "B089NMG3TR",
+              "initial_stock": 10,
+              "stock": 20
+            },
+            {
+              "product_id": "B08MT7PX3C",
+              "initial_stock": 46,
+              "stock": 20
+            },
+            {
+              "product_id": "B099D9NWR7",
+              "initial_stock": 42,
+              "stock": 20
+            },
+            {
+              "product_id": "B099DBHWHL",
+              "initial_stock": 19,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B01AXRGQNE": {
+            "price_cents": 1835,
+            "stock": 20
+          },
+          "B089NMG3TR": {
+            "price_cents": 2742,
+            "stock": 20
+          },
+          "B08MT7PX3C": {
+            "price_cents": 5713,
+            "stock": 20
+          },
+          "B099D9NWR7": {
+            "price_cents": 2239,
+            "stock": 20
+          },
+          "B099DBHWHL": {
+            "price_cents": 1164,
+            "stock": 20
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 4,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Entonces ponme uno del quinto.",
+      "agent_input": "Entonces ponme uno del quinto.",
+      "response": "Hecho, añadido uno del quinto candidato. El total del carrito es 27,42 €. En el carrito hay 1 unidad de «FreeLeben Reloj De Pared De Doble Cara Reloj De Pie Retro Reloj De…» a 27,42 € cada una, 27,42 €. Total: 27,42 €.",
+      "spoken_text": "Hecho, añadido uno del quinto candidato. El total del carrito es veintisiete euros con cuarenta y dos céntimos. En el carrito hay una unidad de FreeLeben Reloj De Pared De Doble Cara a veintisiete euros con cuarenta y dos céntimos cada una, veintisiete euros con cuarenta y dos céntimos. Total: veintisiete euros con cuarenta y dos céntimos.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "agregar_al_carrito",
+          "args": {
+            "product_id": "B089NMG3TR",
+            "cantidad": 1
+          },
+          "reason": "añadir uno del quinto candidato",
+          "ok": true,
+          "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B089NMG3TR | FreeLeben Reloj De Pared De Doble Cara Reloj De Pie Retro Reloj De… | 1 unidad × 27,42 € = 27,42 € | existencias: 20\nTotal del carrito: 27,42 €",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 5.606,
+        "tools": 0.059,
+        "tts": 0.0,
+        "total": 5.665
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-a2217320-23_candidato_fuera_de_lista-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": "¿Podrías indicarme el número del producto que te interesa?",
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B099D9NWR7",
+              "title": "DIYZON Reloj de Pared Moderno, Reloj de 30 cm Silencioso Entry Lux de Moda, Movimiento de Cuarzo sin Tictac con Batería, Lectura Fácil, Adecuado para Dormitorio, Cocina, Escuela, Oficina",
+              "brand": "DIYZON",
+              "price_cents": 2239,
+              "stock": 20
+            },
+            {
+              "product_id": "B08MT7PX3C",
+              "title": "Youery Reloj de Pared 3D,Relojes Modernos DIY,Reloj de Pared Adhesivo Reloj de Etiqueta de Pared Decoración,llenado Pared Vacía 3D Reloj,Ideal para Oficina Hotel Restaurante(Negro)",
+              "brand": "Youery",
+              "price_cents": 5713,
+              "stock": 20
+            },
+            {
+              "product_id": "B01AXRGQNE",
+              "title": "Reloj de pared vintage multicolor francés, reloj moderno hecho de madera estilo toscano para decoración del hogar",
+              "brand": "SOLEDI",
+              "price_cents": 1835,
+              "stock": 20
+            },
+            {
+              "product_id": "B099DBHWHL",
+              "title": "DIYZON Reloj de Pared Minimalista, Reloj silencioso Moderno de 30 cm, Movimiento de Cuarzo sin Tictac con Batería, Fácil de Leer, Adecuado para Dormitorio, Cocina, Escuela, Oficina",
+              "brand": "DIYZON",
+              "price_cents": 1164,
+              "stock": 20
+            },
+            {
+              "product_id": "B089NMG3TR",
+              "title": "FreeLeben Reloj De Pared De Doble Cara Reloj De Pie Retro Reloj De Pared De La Estación De Paddington Soporte Vintage De Aspecto Antiguo Reloj De Decoración Colgante, 12.12 * 7.5cm",
+              "brand": "FreeLeben",
+              "price_cents": 2742,
+              "stock": 20
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B01AXRGQNE",
+              "initial_stock": 45,
+              "stock": 20
+            },
+            {
+              "product_id": "B089NMG3TR",
+              "initial_stock": 10,
+              "stock": 20
+            },
+            {
+              "product_id": "B08MT7PX3C",
+              "initial_stock": 46,
+              "stock": 20
+            },
+            {
+              "product_id": "B099D9NWR7",
+              "initial_stock": 42,
+              "stock": 20
+            },
+            {
+              "product_id": "B099DBHWHL",
+              "initial_stock": 19,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B01AXRGQNE": {
+            "price_cents": 1835,
+            "stock": 20
+          },
+          "B089NMG3TR": {
+            "price_cents": 2742,
+            "stock": 20
+          },
+          "B08MT7PX3C": {
+            "price_cents": 5713,
+            "stock": 20
+          },
+          "B099D9NWR7": {
+            "price_cents": 2239,
+            "stock": 20
+          },
+          "B099DBHWHL": {
+            "price_cents": 1164,
+            "stock": 20
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-a2217320-23_candidato_fuera_de_lista-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B099D9NWR7",
+              "title": "DIYZON Reloj de Pared Moderno, Reloj de 30 cm Silencioso Entry Lux de Moda, Movimiento de Cuarzo sin Tictac con Batería, Lectura Fácil, Adecuado para Dormitorio, Cocina, Escuela, Oficina",
+              "brand": "DIYZON",
+              "price_cents": 2239,
+              "stock": 20
+            },
+            {
+              "product_id": "B08MT7PX3C",
+              "title": "Youery Reloj de Pared 3D,Relojes Modernos DIY,Reloj de Pared Adhesivo Reloj de Etiqueta de Pared Decoración,llenado Pared Vacía 3D Reloj,Ideal para Oficina Hotel Restaurante(Negro)",
+              "brand": "Youery",
+              "price_cents": 5713,
+              "stock": 20
+            },
+            {
+              "product_id": "B01AXRGQNE",
+              "title": "Reloj de pared vintage multicolor francés, reloj moderno hecho de madera estilo toscano para decoración del hogar",
+              "brand": "SOLEDI",
+              "price_cents": 1835,
+              "stock": 20
+            },
+            {
+              "product_id": "B099DBHWHL",
+              "title": "DIYZON Reloj de Pared Minimalista, Reloj silencioso Moderno de 30 cm, Movimiento de Cuarzo sin Tictac con Batería, Fácil de Leer, Adecuado para Dormitorio, Cocina, Escuela, Oficina",
+              "brand": "DIYZON",
+              "price_cents": 1164,
+              "stock": 20
+            },
+            {
+              "product_id": "B089NMG3TR",
+              "title": "FreeLeben Reloj De Pared De Doble Cara Reloj De Pie Retro Reloj De Pared De La Estación De Paddington Soporte Vintage De Aspecto Antiguo Reloj De Decoración Colgante, 12.12 * 7.5cm",
+              "brand": "FreeLeben",
+              "price_cents": 2742,
+              "stock": 20
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-a2217320-23_candidato_fuera_de_lista-c1",
+              "product_id": "B089NMG3TR",
+              "quantity": 1
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B01AXRGQNE",
+              "initial_stock": 45,
+              "stock": 20
+            },
+            {
+              "product_id": "B089NMG3TR",
+              "initial_stock": 10,
+              "stock": 20
+            },
+            {
+              "product_id": "B08MT7PX3C",
+              "initial_stock": 46,
+              "stock": 20
+            },
+            {
+              "product_id": "B099D9NWR7",
+              "initial_stock": 42,
+              "stock": 20
+            },
+            {
+              "product_id": "B099DBHWHL",
+              "initial_stock": 19,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B01AXRGQNE": {
+            "price_cents": 1835,
+            "stock": 20
+          },
+          "B089NMG3TR": {
+            "price_cents": 2742,
+            "stock": 20
+          },
+          "B08MT7PX3C": {
+            "price_cents": 5713,
+            "stock": 20
+          },
+          "B099D9NWR7": {
+            "price_cents": 2239,
+            "stock": 20
+          },
+          "B099DBHWHL": {
+            "price_cents": 1164,
+            "stock": 20
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "lines": [
+              {
+                "product": "@candidato5",
+                "quantity": 1
+              }
+            ]
+          },
+          "ok": true,
+          "detail": "carrito: 1 × B089NMG3TR"
+        }
+      ]
+    }
+  ],
+  "final": {
+    "snapshot": {
+      "cart_id": "eval-a2217320-23_candidato_fuera_de_lista-c1",
+      "state": {
+        "budget_cents": null,
+        "preferences": [],
+        "pending_clarification": null,
+        "quote": null,
+        "order": null,
+        "candidates": [
+          {
+            "product_id": "B099D9NWR7",
+            "title": "DIYZON Reloj de Pared Moderno, Reloj de 30 cm Silencioso Entry Lux de Moda, Movimiento de Cuarzo sin Tictac con Batería, Lectura Fácil, Adecuado para Dormitorio, Cocina, Escuela, Oficina",
+            "brand": "DIYZON",
+            "price_cents": 2239,
+            "stock": 20
+          },
+          {
+            "product_id": "B08MT7PX3C",
+            "title": "Youery Reloj de Pared 3D,Relojes Modernos DIY,Reloj de Pared Adhesivo Reloj de Etiqueta de Pared Decoración,llenado Pared Vacía 3D Reloj,Ideal para Oficina Hotel Restaurante(Negro)",
+            "brand": "Youery",
+            "price_cents": 5713,
+            "stock": 20
+          },
+          {
+            "product_id": "B01AXRGQNE",
+            "title": "Reloj de pared vintage multicolor francés, reloj moderno hecho de madera estilo toscano para decoración del hogar",
+            "brand": "SOLEDI",
+            "price_cents": 1835,
+            "stock": 20
+          },
+          {
+            "product_id": "B099DBHWHL",
+            "title": "DIYZON Reloj de Pared Minimalista, Reloj silencioso Moderno de 30 cm, Movimiento de Cuarzo sin Tictac con Batería, Fácil de Leer, Adecuado para Dormitorio, Cocina, Escuela, Oficina",
+            "brand": "DIYZON",
+            "price_cents": 1164,
+            "stock": 20
+          },
+          {
+            "product_id": "B089NMG3TR",
+            "title": "FreeLeben Reloj De Pared De Doble Cara Reloj De Pie Retro Reloj De Pared De La Estación De Paddington Soporte Vintage De Aspecto Antiguo Reloj De Decoración Colgante, 12.12 * 7.5cm",
+            "brand": "FreeLeben",
+            "price_cents": 2742,
+            "stock": 20
+          }
+        ],
+        "awaiting_confirmation": false
+      },
+      "store": {
+        "orders": [],
+        "order_items": [],
+        "cart_items": [
+          {
+            "cart_id": "eval-a2217320-23_candidato_fuera_de_lista-c1",
+            "product_id": "B089NMG3TR",
+            "quantity": 1
+          }
+        ],
+        "inventory_changes": [
+          {
+            "product_id": "B01AXRGQNE",
+            "initial_stock": 45,
+            "stock": 20
+          },
+          {
+            "product_id": "B089NMG3TR",
+            "initial_stock": 10,
+            "stock": 20
+          },
+          {
+            "product_id": "B08MT7PX3C",
+            "initial_stock": 46,
+            "stock": 20
+          },
+          {
+            "product_id": "B099D9NWR7",
+            "initial_stock": 42,
+            "stock": 20
+          },
+          {
+            "product_id": "B099DBHWHL",
+            "initial_stock": 19,
+            "stock": 20
+          }
+        ]
+      },
+      "offers": {
+        "B01AXRGQNE": {
+          "price_cents": 1835,
+          "stock": 20
+        },
+        "B089NMG3TR": {
+          "price_cents": 2742,
+          "stock": 20
+        },
+        "B08MT7PX3C": {
+          "price_cents": 5713,
+          "stock": 20
+        },
+        "B099D9NWR7": {
+          "price_cents": 2239,
+          "stock": 20
+        },
+        "B099DBHWHL": {
+          "price_cents": 1164,
+          "stock": 20
+        }
+      }
+    },
+    "checks": [
+      {
+        "check": "orders",
+        "params": {
+          "count": 0
+        },
+        "ok": true,
+        "detail": "pedidos registrados: 0"
+      },
+      {
+        "check": "cart",
+        "params": {
+          "lines": [
+            {
+              "product": "@candidato5",
+              "quantity": 1
+            }
+          ]
+        },
+        "ok": true,
+        "detail": "carrito: 1 × B089NMG3TR"
+      }
+    ]
+  },
+  "violations": [],
+  "problems": [],
+  "passed": true,
+  "timings": {
+    "all": {
+      "turns": 4,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.01,
+        "max": 0.03
+      },
+      "llm": {
+        "mean": 4.97,
+        "max": 7.25
+      },
+      "tools": {
+        "mean": 0.03,
+        "max": 0.06
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 5.01,
+        "max": 7.3
+      }
+    },
+    "with_llm": {
+      "turns": 4,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.01,
+        "max": 0.03
+      },
+      "llm": {
+        "mean": 4.97,
+        "max": 7.25
+      },
+      "tools": {
+        "mean": 0.03,
+        "max": 0.06
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 5.01,
+        "max": 7.3
+      }
+    },
+    "without_llm": {
+      "turns": 0
+    }
+  }
+}

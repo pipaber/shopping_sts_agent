@@ -1,0 +1,751 @@
+{
+  "id": "24_dato_que_no_consta",
+  "title": "Dato que el catálogo no trae",
+  "kind": "dato_que_no_consta",
+  "description": "Escenario de reserva, escrito antes de corregir el agente y sin ejecutarlo. El usuario pregunta por la garantía del segundo candidato y por el plazo de entrega del primero. La comprobación mira el texto completo de cada producto en el catálogo: si no menciona el dato, la respuesta tiene que decir que no consta; si lo menciona, no puede decir que no consta. El carrito no debe cambiar.",
+  "voice": false,
+  "input": "texto",
+  "audio_source": null,
+  "user_id": "eval-b464556d-24_dato_que_no_consta",
+  "threads": [
+    "eval-b464556d-24_dato_que_no_consta-c1"
+  ],
+  "names": {
+    "primera": "B07SFFT627",
+    "segunda": "B098RT8GHF"
+  },
+  "steps": [
+    {
+      "kind": "turn",
+      "turn": 1,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Busco una silla de oficina.",
+      "agent_input": "Busco una silla de oficina.",
+      "response": "Tengo la silla de oficina Gray de CC Chair por 17,37 €, la de mfavour en Negro por 10,95 €, la de CashOffice en Negro por 13,30 €, la de mfavour en Blanca por 13,19 € y la de mfavour ejecutiva en Negro por 45,28 €. ¿Te interesa alguna?",
+      "spoken_text": "Tengo la silla de oficina Gray de CC Chair por diecisiete euros con treinta y siete céntimos, la de mfavour en Negro por diez euros con noventa y cinco céntimos, la de CashOffice en Negro por trece euros con treinta céntimos, la de mfavour en Blanca por trece euros con diecinueve céntimos y la de mfavour ejecutiva en Negro por cuarenta y cinco euros con veintiocho céntimos. ¿Te interesa alguna?",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "buscar_productos",
+          "args": {
+            "consulta": "silla de oficina"
+          },
+          "reason": "buscar la silla de oficina",
+          "ok": true,
+          "summary": "estos son ahora los CANDIDATOS, del más al menos relevante:\n[1] id=B07SFFT627 | Silla de Oficina, Silla Ergonómica con reposacabezas y reposapiés Respaldo ergonomico,una Mejor protección de la Columna para Personas sedentarias, Carga máx. 130kg,Gray | marca: CC Chair | color: Gray | precio: 17,37 € | existencias: 25 | características (extracto): MATERIAL: algodón y lino. Carga máxima: 130kg. CÓMODO Y RESPIRIBLE: nuestra silla de oficina tiene un diseño excelente y transpirable, mantenga el sudor y la espalda sin sobrecalentarse. DISEÑO ÚNICO: el respaldo ergonómico, el diseño… | descripción: Cuando vas al trabajo, ¿necesitas sentarte por mucho tiempo, te sientes cansado y con dolor de espalda? Si desea mejorar esta situación, elija CC Chair. Presupuesto: - Material: asiento y respaldo de…\n[2] id=B098RT8GHF | mfavour Silla de Oficina Ergonómica con Respaldo Alto de Malla, Silla de Escritorio con Soporte Lumbar para Reposacabezas y Reposabrazos Ajustable, Negro | marca: mfavour | color: Negro | precio: 10,95 € | existencias: 24 | características (extracto): 🔴 Silla de Oficina Ergonomica Ajustable Multifuncional: El reposacabezas de la silla de oficina ergonomica se puede girar en varias dimensiones para proteger la columna cervical. Los reposabrazos de la silla ergonómica se puede ajustar 5… | descripción: desconocido\n[3] id=B0777SG7GP | CashOffice - Silla de Escritorio Ergonómica, Silla de Oficina Giratoria con Respaldo Transpirable (Negro) | marca: Cashoffice | color: Black | precio: 13,30 € | existencias: 27 | características (extracto): Silla ergonómica con asiento firme y respaldo fabricado en malla transpirable. Sus características permiten un perfecto apoyo lumbar y ventilación de la espalda. Modelo muy robusto, asiento acolchado y tapizado en tela resistente y… | descripción: Silla de escritorio ergonómica que combina un diseño juvenil y máxima comodidad, permitiendo mantener una postura óptima en todo momento. Su respaldo ergonómico permite conseguir un mejor apoyo de la…\n[4] id=B09154C5B3 | MFAVOUR,Silla Escritorio,Silla de Oficina,Silla de Oficina Ergonómica,Sillas Despacho Oficina con Apoyabrazos y Soporte Lumbar Ajustables y Rotación de 360 °,Cárga máxima 110 kg/240 lbs | marca: mfavour | color: Blanca | precio: 13,19 € | existencias: 41 | características (extracto): 🧡【Excelente Transpirabilidad】Utilizamos la malla de alta elasticidad y transpirabilidad como respaldo de la silla oficina,Al tiempo que aumenta la comodidad, el cuerpo se adapta mejor al respaldo de la silla oficina.Suave al tacto.El cojín… | descripción: Esta silla de escritorio está especialmente diseñada para trabajadores de oficina y jóvenes.Es una silla de escritorio ergonomica cómodo, portátil y elegante.La silla despacho oficina se puede…\n[5] id=B098RTFX2X | mfavour Silla de Oficina, Silla de Escritorio ergonómica de Malla con Soporte Lumbar, Reposacabezas Ajustable, Reposabrazos, Respaldo, Silla Ergonomica Giratoria Ejecutiva para computadora, Negro | marca: mfavour | color: Negro | precio: 45,28 € | existencias: 4 | características (extracto): ☞【Sillas de Oficina de Buena Calidad】: La silla ergonómica de oficina mfavour ha pasado las certificaciones BIFMA y SGS. La carga máxima de la silla de oficina es de 150 kg. Cualquiera puede instalar esta silla de oficina en unos pocos… | descripción: La silla de oficina ergonómica MFAVOR es una silla de oficina de alta calidad con cobertura de red tanto en la oficina como en el hogar. Las fundas de malla son muy transpirables, muy cómodas para el…",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.031,
+        "llm": 7.388,
+        "tools": 0.028,
+        "tts": 0.0,
+        "total": 7.448
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-b464556d-24_dato_que_no_consta-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {}
+      },
+      "after": {
+        "cart_id": "eval-b464556d-24_dato_que_no_consta-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07SFFT627",
+              "title": "Silla de Oficina, Silla Ergonómica con reposacabezas y reposapiés Respaldo ergonomico,una Mejor protección de la Columna para Personas sedentarias, Carga máx. 130kg,Gray",
+              "brand": "CC Chair",
+              "price_cents": 1737,
+              "stock": 25
+            },
+            {
+              "product_id": "B098RT8GHF",
+              "title": "mfavour Silla de Oficina Ergonómica con Respaldo Alto de Malla, Silla de Escritorio con Soporte Lumbar para Reposacabezas y Reposabrazos Ajustable, Negro",
+              "brand": "mfavour",
+              "price_cents": 1095,
+              "stock": 24
+            },
+            {
+              "product_id": "B0777SG7GP",
+              "title": "CashOffice - Silla de Escritorio Ergonómica, Silla de Oficina Giratoria con Respaldo Transpirable (Negro)",
+              "brand": "Cashoffice",
+              "price_cents": 1330,
+              "stock": 27
+            },
+            {
+              "product_id": "B09154C5B3",
+              "title": "MFAVOUR,Silla Escritorio,Silla de Oficina,Silla de Oficina Ergonómica,Sillas Despacho Oficina con Apoyabrazos y Soporte Lumbar Ajustables y Rotación de 360 °,Cárga máxima 110 kg/240 lbs",
+              "brand": "mfavour",
+              "price_cents": 1319,
+              "stock": 41
+            },
+            {
+              "product_id": "B098RTFX2X",
+              "title": "mfavour Silla de Oficina, Silla de Escritorio ergonómica de Malla con Soporte Lumbar, Reposacabezas Ajustable, Reposabrazos, Respaldo, Silla Ergonomica Giratoria Ejecutiva para computadora, Negro",
+              "brand": "mfavour",
+              "price_cents": 4528,
+              "stock": 4
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {
+          "B0777SG7GP": {
+            "price_cents": 1330,
+            "stock": 27
+          },
+          "B07SFFT627": {
+            "price_cents": 1737,
+            "stock": 25
+          },
+          "B09154C5B3": {
+            "price_cents": 1319,
+            "stock": 41
+          },
+          "B098RT8GHF": {
+            "price_cents": 1095,
+            "stock": 24
+          },
+          "B098RTFX2X": {
+            "price_cents": 4528,
+            "stock": 4
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        }
+      ]
+    },
+    {
+      "kind": "remember",
+      "name": "primera",
+      "ref": "candidate:1",
+      "product_id": "B07SFFT627",
+      "title": "Silla de Oficina, Silla Ergonómica con reposacabezas y reposapiés Respaldo ergonomico,una Mejor protección de la Columna para Personas sedentarias, Carga máx. 130kg,Gray"
+    },
+    {
+      "kind": "remember",
+      "name": "segunda",
+      "ref": "candidate:2",
+      "product_id": "B098RT8GHF",
+      "title": "mfavour Silla de Oficina Ergonómica con Respaldo Alto de Malla, Silla de Escritorio con Soporte Lumbar para Reposacabezas y Reposabrazos Ajustable, Negro"
+    },
+    {
+      "kind": "turn",
+      "turn": 2,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "¿Cuántos años de garantía tiene la segunda?",
+      "agent_input": "¿Cuántos años de garantía tiene la segunda?",
+      "response": "El catálogo no indica cuántos años de garantía tiene esa silla.",
+      "spoken_text": "El catálogo no indica cuántos años de garantía tiene esa silla.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 3.342,
+        "tools": 0.029,
+        "tts": 0.0,
+        "total": 3.371
+      },
+      "llm_steps": 1,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-b464556d-24_dato_que_no_consta-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07SFFT627",
+              "title": "Silla de Oficina, Silla Ergonómica con reposacabezas y reposapiés Respaldo ergonomico,una Mejor protección de la Columna para Personas sedentarias, Carga máx. 130kg,Gray",
+              "brand": "CC Chair",
+              "price_cents": 1737,
+              "stock": 25
+            },
+            {
+              "product_id": "B098RT8GHF",
+              "title": "mfavour Silla de Oficina Ergonómica con Respaldo Alto de Malla, Silla de Escritorio con Soporte Lumbar para Reposacabezas y Reposabrazos Ajustable, Negro",
+              "brand": "mfavour",
+              "price_cents": 1095,
+              "stock": 24
+            },
+            {
+              "product_id": "B0777SG7GP",
+              "title": "CashOffice - Silla de Escritorio Ergonómica, Silla de Oficina Giratoria con Respaldo Transpirable (Negro)",
+              "brand": "Cashoffice",
+              "price_cents": 1330,
+              "stock": 27
+            },
+            {
+              "product_id": "B09154C5B3",
+              "title": "MFAVOUR,Silla Escritorio,Silla de Oficina,Silla de Oficina Ergonómica,Sillas Despacho Oficina con Apoyabrazos y Soporte Lumbar Ajustables y Rotación de 360 °,Cárga máxima 110 kg/240 lbs",
+              "brand": "mfavour",
+              "price_cents": 1319,
+              "stock": 41
+            },
+            {
+              "product_id": "B098RTFX2X",
+              "title": "mfavour Silla de Oficina, Silla de Escritorio ergonómica de Malla con Soporte Lumbar, Reposacabezas Ajustable, Reposabrazos, Respaldo, Silla Ergonomica Giratoria Ejecutiva para computadora, Negro",
+              "brand": "mfavour",
+              "price_cents": 4528,
+              "stock": 4
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {
+          "B0777SG7GP": {
+            "price_cents": 1330,
+            "stock": 27
+          },
+          "B07SFFT627": {
+            "price_cents": 1737,
+            "stock": 25
+          },
+          "B09154C5B3": {
+            "price_cents": 1319,
+            "stock": 41
+          },
+          "B098RT8GHF": {
+            "price_cents": 1095,
+            "stock": 24
+          },
+          "B098RTFX2X": {
+            "price_cents": 4528,
+            "stock": 4
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-b464556d-24_dato_que_no_consta-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07SFFT627",
+              "title": "Silla de Oficina, Silla Ergonómica con reposacabezas y reposapiés Respaldo ergonomico,una Mejor protección de la Columna para Personas sedentarias, Carga máx. 130kg,Gray",
+              "brand": "CC Chair",
+              "price_cents": 1737,
+              "stock": 25
+            },
+            {
+              "product_id": "B098RT8GHF",
+              "title": "mfavour Silla de Oficina Ergonómica con Respaldo Alto de Malla, Silla de Escritorio con Soporte Lumbar para Reposacabezas y Reposabrazos Ajustable, Negro",
+              "brand": "mfavour",
+              "price_cents": 1095,
+              "stock": 24
+            },
+            {
+              "product_id": "B0777SG7GP",
+              "title": "CashOffice - Silla de Escritorio Ergonómica, Silla de Oficina Giratoria con Respaldo Transpirable (Negro)",
+              "brand": "Cashoffice",
+              "price_cents": 1330,
+              "stock": 27
+            },
+            {
+              "product_id": "B09154C5B3",
+              "title": "MFAVOUR,Silla Escritorio,Silla de Oficina,Silla de Oficina Ergonómica,Sillas Despacho Oficina con Apoyabrazos y Soporte Lumbar Ajustables y Rotación de 360 °,Cárga máxima 110 kg/240 lbs",
+              "brand": "mfavour",
+              "price_cents": 1319,
+              "stock": 41
+            },
+            {
+              "product_id": "B098RTFX2X",
+              "title": "mfavour Silla de Oficina, Silla de Escritorio ergonómica de Malla con Soporte Lumbar, Reposacabezas Ajustable, Reposabrazos, Respaldo, Silla Ergonomica Giratoria Ejecutiva para computadora, Negro",
+              "brand": "mfavour",
+              "price_cents": 4528,
+              "stock": 4
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {
+          "B0777SG7GP": {
+            "price_cents": 1330,
+            "stock": 27
+          },
+          "B07SFFT627": {
+            "price_cents": 1737,
+            "stock": 25
+          },
+          "B09154C5B3": {
+            "price_cents": 1319,
+            "stock": 41
+          },
+          "B098RT8GHF": {
+            "price_cents": 1095,
+            "stock": 24
+          },
+          "B098RTFX2X": {
+            "price_cents": 4528,
+            "stock": 4
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "declares_unknown",
+          "params": {
+            "product": "@segunda",
+            "keywords": [
+              "garant"
+            ]
+          },
+          "ok": false,
+          "detail": "dato en el catálogo: sí; la respuesta dice que no consta: sí"
+        },
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 3,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "¿Y en cuántos días llega la primera?",
+      "agent_input": "¿Y en cuántos días llega la primera?",
+      "response": "El catálogo no indica cuántos días tarda en llegar, pero sí que quedan 25 unidades disponibles.",
+      "spoken_text": "El catálogo no indica cuántos días tarda en llegar, pero sí que quedan veinticinco unidades disponibles.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "consultar_precio_stock",
+          "args": {
+            "product_id": "B07SFFT627"
+          },
+          "reason": "consultar el envío del primer candidato",
+          "ok": true,
+          "summary": "precio 17,37 €; quedan 25 unidades. Esta herramienta no da características: para color, batería, medidas u otros datos del producto usa detalle_producto.",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 5.137,
+        "tools": 0.033,
+        "tts": 0.0,
+        "total": 5.17
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-b464556d-24_dato_que_no_consta-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07SFFT627",
+              "title": "Silla de Oficina, Silla Ergonómica con reposacabezas y reposapiés Respaldo ergonomico,una Mejor protección de la Columna para Personas sedentarias, Carga máx. 130kg,Gray",
+              "brand": "CC Chair",
+              "price_cents": 1737,
+              "stock": 25
+            },
+            {
+              "product_id": "B098RT8GHF",
+              "title": "mfavour Silla de Oficina Ergonómica con Respaldo Alto de Malla, Silla de Escritorio con Soporte Lumbar para Reposacabezas y Reposabrazos Ajustable, Negro",
+              "brand": "mfavour",
+              "price_cents": 1095,
+              "stock": 24
+            },
+            {
+              "product_id": "B0777SG7GP",
+              "title": "CashOffice - Silla de Escritorio Ergonómica, Silla de Oficina Giratoria con Respaldo Transpirable (Negro)",
+              "brand": "Cashoffice",
+              "price_cents": 1330,
+              "stock": 27
+            },
+            {
+              "product_id": "B09154C5B3",
+              "title": "MFAVOUR,Silla Escritorio,Silla de Oficina,Silla de Oficina Ergonómica,Sillas Despacho Oficina con Apoyabrazos y Soporte Lumbar Ajustables y Rotación de 360 °,Cárga máxima 110 kg/240 lbs",
+              "brand": "mfavour",
+              "price_cents": 1319,
+              "stock": 41
+            },
+            {
+              "product_id": "B098RTFX2X",
+              "title": "mfavour Silla de Oficina, Silla de Escritorio ergonómica de Malla con Soporte Lumbar, Reposacabezas Ajustable, Reposabrazos, Respaldo, Silla Ergonomica Giratoria Ejecutiva para computadora, Negro",
+              "brand": "mfavour",
+              "price_cents": 4528,
+              "stock": 4
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {
+          "B0777SG7GP": {
+            "price_cents": 1330,
+            "stock": 27
+          },
+          "B07SFFT627": {
+            "price_cents": 1737,
+            "stock": 25
+          },
+          "B09154C5B3": {
+            "price_cents": 1319,
+            "stock": 41
+          },
+          "B098RT8GHF": {
+            "price_cents": 1095,
+            "stock": 24
+          },
+          "B098RTFX2X": {
+            "price_cents": 4528,
+            "stock": 4
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-b464556d-24_dato_que_no_consta-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07SFFT627",
+              "title": "Silla de Oficina, Silla Ergonómica con reposacabezas y reposapiés Respaldo ergonomico,una Mejor protección de la Columna para Personas sedentarias, Carga máx. 130kg,Gray",
+              "brand": "CC Chair",
+              "price_cents": 1737,
+              "stock": 25
+            },
+            {
+              "product_id": "B098RT8GHF",
+              "title": "mfavour Silla de Oficina Ergonómica con Respaldo Alto de Malla, Silla de Escritorio con Soporte Lumbar para Reposacabezas y Reposabrazos Ajustable, Negro",
+              "brand": "mfavour",
+              "price_cents": 1095,
+              "stock": 24
+            },
+            {
+              "product_id": "B0777SG7GP",
+              "title": "CashOffice - Silla de Escritorio Ergonómica, Silla de Oficina Giratoria con Respaldo Transpirable (Negro)",
+              "brand": "Cashoffice",
+              "price_cents": 1330,
+              "stock": 27
+            },
+            {
+              "product_id": "B09154C5B3",
+              "title": "MFAVOUR,Silla Escritorio,Silla de Oficina,Silla de Oficina Ergonómica,Sillas Despacho Oficina con Apoyabrazos y Soporte Lumbar Ajustables y Rotación de 360 °,Cárga máxima 110 kg/240 lbs",
+              "brand": "mfavour",
+              "price_cents": 1319,
+              "stock": 41
+            },
+            {
+              "product_id": "B098RTFX2X",
+              "title": "mfavour Silla de Oficina, Silla de Escritorio ergonómica de Malla con Soporte Lumbar, Reposacabezas Ajustable, Reposabrazos, Respaldo, Silla Ergonomica Giratoria Ejecutiva para computadora, Negro",
+              "brand": "mfavour",
+              "price_cents": 4528,
+              "stock": 4
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {
+          "B0777SG7GP": {
+            "price_cents": 1330,
+            "stock": 27
+          },
+          "B07SFFT627": {
+            "price_cents": 1737,
+            "stock": 25
+          },
+          "B09154C5B3": {
+            "price_cents": 1319,
+            "stock": 41
+          },
+          "B098RT8GHF": {
+            "price_cents": 1095,
+            "stock": 24
+          },
+          "B098RTFX2X": {
+            "price_cents": 4528,
+            "stock": 4
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "declares_unknown",
+          "params": {
+            "product": "@primera",
+            "keywords": [
+              "entrega",
+              "envío",
+              "envio",
+              "llega en",
+              "días laborables",
+              "24 horas",
+              "48 horas"
+            ]
+          },
+          "ok": true,
+          "detail": "dato en el catálogo: no; la respuesta dice que no consta: sí"
+        },
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        }
+      ]
+    }
+  ],
+  "final": {
+    "snapshot": {
+      "cart_id": "eval-b464556d-24_dato_que_no_consta-c1",
+      "state": {
+        "budget_cents": null,
+        "preferences": [],
+        "pending_clarification": null,
+        "quote": null,
+        "order": null,
+        "candidates": [
+          {
+            "product_id": "B07SFFT627",
+            "title": "Silla de Oficina, Silla Ergonómica con reposacabezas y reposapiés Respaldo ergonomico,una Mejor protección de la Columna para Personas sedentarias, Carga máx. 130kg,Gray",
+            "brand": "CC Chair",
+            "price_cents": 1737,
+            "stock": 25
+          },
+          {
+            "product_id": "B098RT8GHF",
+            "title": "mfavour Silla de Oficina Ergonómica con Respaldo Alto de Malla, Silla de Escritorio con Soporte Lumbar para Reposacabezas y Reposabrazos Ajustable, Negro",
+            "brand": "mfavour",
+            "price_cents": 1095,
+            "stock": 24
+          },
+          {
+            "product_id": "B0777SG7GP",
+            "title": "CashOffice - Silla de Escritorio Ergonómica, Silla de Oficina Giratoria con Respaldo Transpirable (Negro)",
+            "brand": "Cashoffice",
+            "price_cents": 1330,
+            "stock": 27
+          },
+          {
+            "product_id": "B09154C5B3",
+            "title": "MFAVOUR,Silla Escritorio,Silla de Oficina,Silla de Oficina Ergonómica,Sillas Despacho Oficina con Apoyabrazos y Soporte Lumbar Ajustables y Rotación de 360 °,Cárga máxima 110 kg/240 lbs",
+            "brand": "mfavour",
+            "price_cents": 1319,
+            "stock": 41
+          },
+          {
+            "product_id": "B098RTFX2X",
+            "title": "mfavour Silla de Oficina, Silla de Escritorio ergonómica de Malla con Soporte Lumbar, Reposacabezas Ajustable, Reposabrazos, Respaldo, Silla Ergonomica Giratoria Ejecutiva para computadora, Negro",
+            "brand": "mfavour",
+            "price_cents": 4528,
+            "stock": 4
+          }
+        ],
+        "awaiting_confirmation": false
+      },
+      "store": {
+        "orders": [],
+        "order_items": [],
+        "cart_items": [],
+        "inventory_changes": []
+      },
+      "offers": {
+        "B0777SG7GP": {
+          "price_cents": 1330,
+          "stock": 27
+        },
+        "B07SFFT627": {
+          "price_cents": 1737,
+          "stock": 25
+        },
+        "B09154C5B3": {
+          "price_cents": 1319,
+          "stock": 41
+        },
+        "B098RT8GHF": {
+          "price_cents": 1095,
+          "stock": 24
+        },
+        "B098RTFX2X": {
+          "price_cents": 4528,
+          "stock": 4
+        }
+      }
+    },
+    "checks": [
+      {
+        "check": "orders",
+        "params": {
+          "count": 0
+        },
+        "ok": true,
+        "detail": "pedidos registrados: 0"
+      },
+      {
+        "check": "cart",
+        "params": {
+          "empty": true
+        },
+        "ok": true,
+        "detail": "carrito: vacío"
+      }
+    ]
+  },
+  "violations": [],
+  "problems": [],
+  "passed": false,
+  "timings": {
+    "all": {
+      "turns": 3,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.01,
+        "max": 0.03
+      },
+      "llm": {
+        "mean": 5.29,
+        "max": 7.39
+      },
+      "tools": {
+        "mean": 0.03,
+        "max": 0.03
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 5.33,
+        "max": 7.45
+      }
+    },
+    "with_llm": {
+      "turns": 3,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.01,
+        "max": 0.03
+      },
+      "llm": {
+        "mean": 5.29,
+        "max": 7.39
+      },
+      "tools": {
+        "mean": 0.03,
+        "max": 0.03
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 5.33,
+        "max": 7.45
+      }
+    },
+    "without_llm": {
+      "turns": 0
+    }
+  }
+}

@@ -1,0 +1,1637 @@
+{
+  "id": "21_cierre_otras_palabras",
+  "title": "Cerrar el pedido con otras palabras",
+  "kind": "cierre_otras_palabras",
+  "description": "Escenario de reserva, escrito antes de corregir el agente y sin ejecutarlo. El usuario pide cerrar la compra sin decir «cierra el pedido»: primero «Eso es todo, ya puedes tramitarlo» y, tras cancelar, «Listo, quiero pagar ya». Las dos veces el agente debe cotizar y esperar la confirmación.",
+  "voice": false,
+  "input": "texto",
+  "audio_source": null,
+  "user_id": "eval-36c88a7d-21_cierre_otras_palabras",
+  "threads": [
+    "eval-36c88a7d-21_cierre_otras_palabras-c1"
+  ],
+  "names": {
+    "elegida": "B08FB5D64D"
+  },
+  "steps": [
+    {
+      "kind": "turn",
+      "turn": 1,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Busco una báscula de cocina.",
+      "agent_input": "Busco una báscula de cocina.",
+      "response": "Tengo la báscula digital Jooheli por 22,56 euros, la Amazon Basics por 11,74, la Medisana por 38,81, la Cocogeneric por 22,71 y la Raniaco por 14,65. ¿Te interesa alguna?",
+      "spoken_text": "Tengo la báscula digital Jooheli por veintidós euros con cincuenta y seis céntimos, la Amazon Basics por once coma setenta y cuatro, la Medisana por treinta y ocho coma ochenta y uno, la Cocogeneric por veintidós coma setenta y uno y la Raniaco por catorce coma sesenta y cinco. ¿Te interesa alguna?",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "buscar_productos",
+          "args": {
+            "consulta": "báscula cocina"
+          },
+          "reason": "buscar la báscula de cocina",
+          "ok": true,
+          "summary": "estos son ahora los CANDIDATOS, del más al menos relevante:\n[1] id=B08FB5D64D | Báscula digital Jooheli, de acero inoxidable, 15 kg/1 g, con gran superficie de pesaje y tara, báscula de cocina de alta precisión (plata) | marca: Jooheli | color: plata | precio: 22,56 € | existencias: 33 | características (extracto): Báscula de cocina: la báscula de cocina resistente al agua puede pesar hasta 15 kg, la precisión es de 1 g (con la función Tara Clear). La conversión de unidades de la báscula digital incluye g, kg, ml, lb:oz, fl:oz. La conversión de… | descripción: Características de la báscula de cocina: ☞ Báscula de cocina digital con función de apagado automático de ahorro de energía, indicador de batería y sobrecarga. ☞ La báscula de cocina de acero…\n[2] id=B06X9NQ8GX | Amazon Basics - Báscula de cocina digital con pantalla LCD, sin bisfenol A (BPA), de acero inoxidable (pilas incluidas) | marca: Amazon Basics | color: negro | precio: 11,74 € | existencias: 37 | características (extracto): Báscula de cocina digital de acero inoxidable con pantalla LCD. Pesa hasta 5000 gramos de comida (mínimo 2 gramos). Tecnología de sensor avanzado que proporciona una respuesta rápida y precisa. La pantalla muestra cantidades en onzas… | descripción: desconocido\n[3] id=B01N5HI4FM | Medisana KS 250 Báscula de cocina, Negro | marca: Medisana | color: Negro | precio: 38,81 € | existencias: 9 | características (extracto): Báscula digital de cocina con aplicación para medir los nutrientes multifuncionales. Teclado táctil con sensor. Pantalla LCD grande y fácil de leer con cifras luminosas blancas. Superficie de acero inoxidable de alta calidad. Función de la… | descripción: desconocido\n[4] id=B08ZH7ZWBC | Bascula de Cocina, 5 kg / 11 lbs 6 Unidades de Medición Báscula de Cocina con Alta Precisión de 1 g / 0,1 oz, Función de Tara, Pantalla LCD, Vidrio Templado, 2 Baterías Incluidas | marca: Cocogeneric | color: Verde | precio: 22,71 € | existencias: 6 | características (extracto): Medición Precisa: Con 4 sensores de peso integrados de alta precisión, ésta bascula de cocina es muy precisa, pesa hasta 11 lb (5 kg), con gran precisión de 1 g / 0,1 oz. Con recomendación de peso mínimo de 3g-5g. Escala Multifuncional: El… | descripción: ¿Necesitas controlar el peso de los condimentos y conseguir un equilibrio perfecto entre la belleza y la practicidad? Si es así, no tenga ninguna duda y elija nuestra báscula de cocina. Creado para…\n[5] id=B08N6GMBFM | Raniaco Básculas de Cocina - Peso Cocina Digital de Hasta 15 kg y Maravillosa Precisión de Hasta 1g - g / kg / lb: oz / ml / fl'oz Funcionamiento con USB o Batería | Balanza Cocina | marca: Raniaco | color: desconocido | precio: 14,65 € | existencias: 21 | características (extracto): ⚖️EXTREMADAMENTE PRÁCTICO - Raniaco Bascula de Cocina con 4 sensores de alta precisión le ofrecen una medición exacta en pasos de 1 g hasta 15 kg y la función de tara indispensable! ¡Puede cambiar entre 5 unidades de medida (g / kg / lb… | descripción: bascula de cocina peso cocina digital bascula cocina balanza cocina peso cocina bascula digital báscula de cocina bascula cocina digital vascula cocina peso digital peso de cocina bascula de cocina…",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.042,
+        "llm": 8.16,
+        "tools": 0.038,
+        "tts": 0.0,
+        "total": 8.24
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-36c88a7d-21_cierre_otras_palabras-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {}
+      },
+      "after": {
+        "cart_id": "eval-36c88a7d-21_cierre_otras_palabras-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08FB5D64D",
+              "title": "Báscula digital Jooheli, de acero inoxidable, 15 kg/1 g, con gran superficie de pesaje y tara, báscula de cocina de alta precisión (plata)",
+              "brand": "Jooheli",
+              "price_cents": 2256,
+              "stock": 33
+            },
+            {
+              "product_id": "B06X9NQ8GX",
+              "title": "Amazon Basics - Báscula de cocina digital con pantalla LCD, sin bisfenol A (BPA), de acero inoxidable (pilas incluidas)",
+              "brand": "Amazon Basics",
+              "price_cents": 1174,
+              "stock": 37
+            },
+            {
+              "product_id": "B01N5HI4FM",
+              "title": "Medisana KS 250 Báscula de cocina, Negro",
+              "brand": "Medisana",
+              "price_cents": 3881,
+              "stock": 9
+            },
+            {
+              "product_id": "B08ZH7ZWBC",
+              "title": "Bascula de Cocina, 5 kg / 11 lbs 6 Unidades de Medición Báscula de Cocina con Alta Precisión de 1 g / 0,1 oz, Función de Tara, Pantalla LCD, Vidrio Templado, 2 Baterías Incluidas",
+              "brand": "Cocogeneric",
+              "price_cents": 2271,
+              "stock": 6
+            },
+            {
+              "product_id": "B08N6GMBFM",
+              "title": "Raniaco Básculas de Cocina - Peso Cocina Digital de Hasta 15 kg y Maravillosa Precisión de Hasta 1g - g / kg / lb: oz / ml / fl'oz Funcionamiento con USB o Batería | Balanza Cocina",
+              "brand": "Raniaco",
+              "price_cents": 1465,
+              "stock": 21
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {
+          "B01N5HI4FM": {
+            "price_cents": 3881,
+            "stock": 9
+          },
+          "B06X9NQ8GX": {
+            "price_cents": 1174,
+            "stock": 37
+          },
+          "B08FB5D64D": {
+            "price_cents": 2256,
+            "stock": 33
+          },
+          "B08N6GMBFM": {
+            "price_cents": 1465,
+            "stock": 21
+          },
+          "B08ZH7ZWBC": {
+            "price_cents": 2271,
+            "stock": 6
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        }
+      ]
+    },
+    {
+      "kind": "remember",
+      "name": "elegida",
+      "ref": "candidate:1",
+      "product_id": "B08FB5D64D",
+      "title": "Báscula digital Jooheli, de acero inoxidable, 15 kg/1 g, con gran superficie de pesaje y tara, báscula de cocina de alta precisión (plata)"
+    },
+    {
+      "kind": "event",
+      "event": "set_offer",
+      "product": "@elegida",
+      "product_id": "B08FB5D64D",
+      "price_cents": 1300,
+      "stock": 20
+    },
+    {
+      "kind": "turn",
+      "turn": 2,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Añade una de la primera.",
+      "agent_input": "Añade una de la primera.",
+      "response": "Hecho, añadida una báscula digital Jooheli al carrito. En el carrito hay 1 unidad de «Báscula digital Jooheli, de acero inoxidable, 15 kg/1 g, con gran…» a 13,00 € cada una, 13,00 €. Total: 13,00 €.",
+      "spoken_text": "Hecho, añadida una báscula digital Jooheli al carrito. En el carrito hay una unidad de Báscula digital Jooheli a trece euros cada una, trece euros. Total: trece euros.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "agregar_al_carrito",
+          "args": {
+            "product_id": "B08FB5D64D",
+            "cantidad": 1
+          },
+          "reason": "añadir la primera opción al carrito",
+          "ok": true,
+          "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B08FB5D64D | Báscula digital Jooheli, de acero inoxidable, 15 kg/1 g, con gran… | 1 unidad × 13,00 € = 13,00 € | existencias: 20\nTotal del carrito: 13,00 €",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 5.01,
+        "tools": 0.064,
+        "tts": 0.0,
+        "total": 5.074
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-36c88a7d-21_cierre_otras_palabras-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08FB5D64D",
+              "title": "Báscula digital Jooheli, de acero inoxidable, 15 kg/1 g, con gran superficie de pesaje y tara, báscula de cocina de alta precisión (plata)",
+              "brand": "Jooheli",
+              "price_cents": 2256,
+              "stock": 33
+            },
+            {
+              "product_id": "B06X9NQ8GX",
+              "title": "Amazon Basics - Báscula de cocina digital con pantalla LCD, sin bisfenol A (BPA), de acero inoxidable (pilas incluidas)",
+              "brand": "Amazon Basics",
+              "price_cents": 1174,
+              "stock": 37
+            },
+            {
+              "product_id": "B01N5HI4FM",
+              "title": "Medisana KS 250 Báscula de cocina, Negro",
+              "brand": "Medisana",
+              "price_cents": 3881,
+              "stock": 9
+            },
+            {
+              "product_id": "B08ZH7ZWBC",
+              "title": "Bascula de Cocina, 5 kg / 11 lbs 6 Unidades de Medición Báscula de Cocina con Alta Precisión de 1 g / 0,1 oz, Función de Tara, Pantalla LCD, Vidrio Templado, 2 Baterías Incluidas",
+              "brand": "Cocogeneric",
+              "price_cents": 2271,
+              "stock": 6
+            },
+            {
+              "product_id": "B08N6GMBFM",
+              "title": "Raniaco Básculas de Cocina - Peso Cocina Digital de Hasta 15 kg y Maravillosa Precisión de Hasta 1g - g / kg / lb: oz / ml / fl'oz Funcionamiento con USB o Batería | Balanza Cocina",
+              "brand": "Raniaco",
+              "price_cents": 1465,
+              "stock": 21
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B08FB5D64D",
+              "initial_stock": 33,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B01N5HI4FM": {
+            "price_cents": 3881,
+            "stock": 9
+          },
+          "B06X9NQ8GX": {
+            "price_cents": 1174,
+            "stock": 37
+          },
+          "B08FB5D64D": {
+            "price_cents": 1300,
+            "stock": 20
+          },
+          "B08N6GMBFM": {
+            "price_cents": 1465,
+            "stock": 21
+          },
+          "B08ZH7ZWBC": {
+            "price_cents": 2271,
+            "stock": 6
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-36c88a7d-21_cierre_otras_palabras-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08FB5D64D",
+              "title": "Báscula digital Jooheli, de acero inoxidable, 15 kg/1 g, con gran superficie de pesaje y tara, báscula de cocina de alta precisión (plata)",
+              "brand": "Jooheli",
+              "price_cents": 1300,
+              "stock": 20
+            },
+            {
+              "product_id": "B06X9NQ8GX",
+              "title": "Amazon Basics - Báscula de cocina digital con pantalla LCD, sin bisfenol A (BPA), de acero inoxidable (pilas incluidas)",
+              "brand": "Amazon Basics",
+              "price_cents": 1174,
+              "stock": 37
+            },
+            {
+              "product_id": "B01N5HI4FM",
+              "title": "Medisana KS 250 Báscula de cocina, Negro",
+              "brand": "Medisana",
+              "price_cents": 3881,
+              "stock": 9
+            },
+            {
+              "product_id": "B08ZH7ZWBC",
+              "title": "Bascula de Cocina, 5 kg / 11 lbs 6 Unidades de Medición Báscula de Cocina con Alta Precisión de 1 g / 0,1 oz, Función de Tara, Pantalla LCD, Vidrio Templado, 2 Baterías Incluidas",
+              "brand": "Cocogeneric",
+              "price_cents": 2271,
+              "stock": 6
+            },
+            {
+              "product_id": "B08N6GMBFM",
+              "title": "Raniaco Básculas de Cocina - Peso Cocina Digital de Hasta 15 kg y Maravillosa Precisión de Hasta 1g - g / kg / lb: oz / ml / fl'oz Funcionamiento con USB o Batería | Balanza Cocina",
+              "brand": "Raniaco",
+              "price_cents": 1465,
+              "stock": 21
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-36c88a7d-21_cierre_otras_palabras-c1",
+              "product_id": "B08FB5D64D",
+              "quantity": 1
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B08FB5D64D",
+              "initial_stock": 33,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B01N5HI4FM": {
+            "price_cents": 3881,
+            "stock": 9
+          },
+          "B06X9NQ8GX": {
+            "price_cents": 1174,
+            "stock": 37
+          },
+          "B08FB5D64D": {
+            "price_cents": 1300,
+            "stock": 20
+          },
+          "B08N6GMBFM": {
+            "price_cents": 1465,
+            "stock": 21
+          },
+          "B08ZH7ZWBC": {
+            "price_cents": 2271,
+            "stock": 6
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "lines": [
+              {
+                "product": "@elegida",
+                "quantity": 1
+              }
+            ]
+          },
+          "ok": true,
+          "detail": "carrito: 1 × B08FB5D64D"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 3,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Eso es todo, ya puedes tramitarlo.",
+      "agent_input": "Eso es todo, ya puedes tramitarlo.",
+      "response": "Te repito el pedido antes de registrarlo: 1 unidad de «Báscula digital Jooheli, de acero inoxidable, 15 kg/1 g, con gran…» a 13,00 € cada una, 13,00 €. Total: 13,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "spoken_text": "Te repito el pedido antes de registrarlo: una unidad de Báscula digital Jooheli a trece euros cada una, trece euros. Total: trece euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": true,
+      "operations": [
+        {
+          "tool": "cotizar",
+          "args": {},
+          "reason": "cotizar el carrito",
+          "ok": true,
+          "summary": "cotización creada; falta la confirmación del usuario.",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 2.118,
+        "tools": 0.04,
+        "tts": 0.0,
+        "total": 2.159
+      },
+      "llm_steps": 1,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-36c88a7d-21_cierre_otras_palabras-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08FB5D64D",
+              "title": "Báscula digital Jooheli, de acero inoxidable, 15 kg/1 g, con gran superficie de pesaje y tara, báscula de cocina de alta precisión (plata)",
+              "brand": "Jooheli",
+              "price_cents": 1300,
+              "stock": 20
+            },
+            {
+              "product_id": "B06X9NQ8GX",
+              "title": "Amazon Basics - Báscula de cocina digital con pantalla LCD, sin bisfenol A (BPA), de acero inoxidable (pilas incluidas)",
+              "brand": "Amazon Basics",
+              "price_cents": 1174,
+              "stock": 37
+            },
+            {
+              "product_id": "B01N5HI4FM",
+              "title": "Medisana KS 250 Báscula de cocina, Negro",
+              "brand": "Medisana",
+              "price_cents": 3881,
+              "stock": 9
+            },
+            {
+              "product_id": "B08ZH7ZWBC",
+              "title": "Bascula de Cocina, 5 kg / 11 lbs 6 Unidades de Medición Báscula de Cocina con Alta Precisión de 1 g / 0,1 oz, Función de Tara, Pantalla LCD, Vidrio Templado, 2 Baterías Incluidas",
+              "brand": "Cocogeneric",
+              "price_cents": 2271,
+              "stock": 6
+            },
+            {
+              "product_id": "B08N6GMBFM",
+              "title": "Raniaco Básculas de Cocina - Peso Cocina Digital de Hasta 15 kg y Maravillosa Precisión de Hasta 1g - g / kg / lb: oz / ml / fl'oz Funcionamiento con USB o Batería | Balanza Cocina",
+              "brand": "Raniaco",
+              "price_cents": 1465,
+              "stock": 21
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-36c88a7d-21_cierre_otras_palabras-c1",
+              "product_id": "B08FB5D64D",
+              "quantity": 1
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B08FB5D64D",
+              "initial_stock": 33,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B01N5HI4FM": {
+            "price_cents": 3881,
+            "stock": 9
+          },
+          "B06X9NQ8GX": {
+            "price_cents": 1174,
+            "stock": 37
+          },
+          "B08FB5D64D": {
+            "price_cents": 1300,
+            "stock": 20
+          },
+          "B08N6GMBFM": {
+            "price_cents": 1465,
+            "stock": 21
+          },
+          "B08ZH7ZWBC": {
+            "price_cents": 2271,
+            "stock": 6
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-36c88a7d-21_cierre_otras_palabras-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": {
+            "quote_id": "c0e035b62bce45a087ed123737662248",
+            "items": [
+              {
+                "product_id": "B08FB5D64D",
+                "title": "Báscula digital Jooheli, de acero inoxidable, 15 kg/1 g, con gran superficie de pesaje y tara, báscula de cocina de alta precisión (plata)",
+                "quantity": 1,
+                "unit_price_cents": 1300,
+                "subtotal_cents": 1300,
+                "stock": 20
+              }
+            ],
+            "total_cents": 1300,
+            "budget_cents": null,
+            "message": "Te repito el pedido antes de registrarlo: 1 unidad de «Báscula digital Jooheli, de acero inoxidable, 15 kg/1 g, con gran…» a 13,00 € cada una, 13,00 €. Total: 13,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+          },
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08FB5D64D",
+              "title": "Báscula digital Jooheli, de acero inoxidable, 15 kg/1 g, con gran superficie de pesaje y tara, báscula de cocina de alta precisión (plata)",
+              "brand": "Jooheli",
+              "price_cents": 1300,
+              "stock": 20
+            },
+            {
+              "product_id": "B06X9NQ8GX",
+              "title": "Amazon Basics - Báscula de cocina digital con pantalla LCD, sin bisfenol A (BPA), de acero inoxidable (pilas incluidas)",
+              "brand": "Amazon Basics",
+              "price_cents": 1174,
+              "stock": 37
+            },
+            {
+              "product_id": "B01N5HI4FM",
+              "title": "Medisana KS 250 Báscula de cocina, Negro",
+              "brand": "Medisana",
+              "price_cents": 3881,
+              "stock": 9
+            },
+            {
+              "product_id": "B08ZH7ZWBC",
+              "title": "Bascula de Cocina, 5 kg / 11 lbs 6 Unidades de Medición Báscula de Cocina con Alta Precisión de 1 g / 0,1 oz, Función de Tara, Pantalla LCD, Vidrio Templado, 2 Baterías Incluidas",
+              "brand": "Cocogeneric",
+              "price_cents": 2271,
+              "stock": 6
+            },
+            {
+              "product_id": "B08N6GMBFM",
+              "title": "Raniaco Básculas de Cocina - Peso Cocina Digital de Hasta 15 kg y Maravillosa Precisión de Hasta 1g - g / kg / lb: oz / ml / fl'oz Funcionamiento con USB o Batería | Balanza Cocina",
+              "brand": "Raniaco",
+              "price_cents": 1465,
+              "stock": 21
+            }
+          ],
+          "awaiting_confirmation": true
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-36c88a7d-21_cierre_otras_palabras-c1",
+              "product_id": "B08FB5D64D",
+              "quantity": 1
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B08FB5D64D",
+              "initial_stock": 33,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B01N5HI4FM": {
+            "price_cents": 3881,
+            "stock": 9
+          },
+          "B06X9NQ8GX": {
+            "price_cents": 1174,
+            "stock": 37
+          },
+          "B08FB5D64D": {
+            "price_cents": 1300,
+            "stock": 20
+          },
+          "B08N6GMBFM": {
+            "price_cents": 1465,
+            "stock": 21
+          },
+          "B08ZH7ZWBC": {
+            "price_cents": 2271,
+            "stock": 6
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "awaiting_confirmation",
+          "params": {
+            "value": true
+          },
+          "ok": true,
+          "detail": "esperando confirmación: sí"
+        },
+        {
+          "check": "orders",
+          "params": {
+            "count": 0
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 0"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 4,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "No, espera.",
+      "agent_input": "No, espera.",
+      "response": "De acuerdo, no registro el pedido. Tu carrito sigue como estaba; dime si quieres cambiar algo.",
+      "spoken_text": "De acuerdo, no registro el pedido. Tu carrito sigue como estaba, dime si quieres cambiar algo.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 0.0,
+        "tools": 0.017,
+        "tts": 0.0,
+        "total": 0.017
+      },
+      "llm_steps": 0,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-36c88a7d-21_cierre_otras_palabras-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": {
+            "quote_id": "c0e035b62bce45a087ed123737662248",
+            "items": [
+              {
+                "product_id": "B08FB5D64D",
+                "title": "Báscula digital Jooheli, de acero inoxidable, 15 kg/1 g, con gran superficie de pesaje y tara, báscula de cocina de alta precisión (plata)",
+                "quantity": 1,
+                "unit_price_cents": 1300,
+                "subtotal_cents": 1300,
+                "stock": 20
+              }
+            ],
+            "total_cents": 1300,
+            "budget_cents": null,
+            "message": "Te repito el pedido antes de registrarlo: 1 unidad de «Báscula digital Jooheli, de acero inoxidable, 15 kg/1 g, con gran…» a 13,00 € cada una, 13,00 €. Total: 13,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+          },
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08FB5D64D",
+              "title": "Báscula digital Jooheli, de acero inoxidable, 15 kg/1 g, con gran superficie de pesaje y tara, báscula de cocina de alta precisión (plata)",
+              "brand": "Jooheli",
+              "price_cents": 1300,
+              "stock": 20
+            },
+            {
+              "product_id": "B06X9NQ8GX",
+              "title": "Amazon Basics - Báscula de cocina digital con pantalla LCD, sin bisfenol A (BPA), de acero inoxidable (pilas incluidas)",
+              "brand": "Amazon Basics",
+              "price_cents": 1174,
+              "stock": 37
+            },
+            {
+              "product_id": "B01N5HI4FM",
+              "title": "Medisana KS 250 Báscula de cocina, Negro",
+              "brand": "Medisana",
+              "price_cents": 3881,
+              "stock": 9
+            },
+            {
+              "product_id": "B08ZH7ZWBC",
+              "title": "Bascula de Cocina, 5 kg / 11 lbs 6 Unidades de Medición Báscula de Cocina con Alta Precisión de 1 g / 0,1 oz, Función de Tara, Pantalla LCD, Vidrio Templado, 2 Baterías Incluidas",
+              "brand": "Cocogeneric",
+              "price_cents": 2271,
+              "stock": 6
+            },
+            {
+              "product_id": "B08N6GMBFM",
+              "title": "Raniaco Básculas de Cocina - Peso Cocina Digital de Hasta 15 kg y Maravillosa Precisión de Hasta 1g - g / kg / lb: oz / ml / fl'oz Funcionamiento con USB o Batería | Balanza Cocina",
+              "brand": "Raniaco",
+              "price_cents": 1465,
+              "stock": 21
+            }
+          ],
+          "awaiting_confirmation": true
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-36c88a7d-21_cierre_otras_palabras-c1",
+              "product_id": "B08FB5D64D",
+              "quantity": 1
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B08FB5D64D",
+              "initial_stock": 33,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B01N5HI4FM": {
+            "price_cents": 3881,
+            "stock": 9
+          },
+          "B06X9NQ8GX": {
+            "price_cents": 1174,
+            "stock": 37
+          },
+          "B08FB5D64D": {
+            "price_cents": 1300,
+            "stock": 20
+          },
+          "B08N6GMBFM": {
+            "price_cents": 1465,
+            "stock": 21
+          },
+          "B08ZH7ZWBC": {
+            "price_cents": 2271,
+            "stock": 6
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-36c88a7d-21_cierre_otras_palabras-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08FB5D64D",
+              "title": "Báscula digital Jooheli, de acero inoxidable, 15 kg/1 g, con gran superficie de pesaje y tara, báscula de cocina de alta precisión (plata)",
+              "brand": "Jooheli",
+              "price_cents": 1300,
+              "stock": 20
+            },
+            {
+              "product_id": "B06X9NQ8GX",
+              "title": "Amazon Basics - Báscula de cocina digital con pantalla LCD, sin bisfenol A (BPA), de acero inoxidable (pilas incluidas)",
+              "brand": "Amazon Basics",
+              "price_cents": 1174,
+              "stock": 37
+            },
+            {
+              "product_id": "B01N5HI4FM",
+              "title": "Medisana KS 250 Báscula de cocina, Negro",
+              "brand": "Medisana",
+              "price_cents": 3881,
+              "stock": 9
+            },
+            {
+              "product_id": "B08ZH7ZWBC",
+              "title": "Bascula de Cocina, 5 kg / 11 lbs 6 Unidades de Medición Báscula de Cocina con Alta Precisión de 1 g / 0,1 oz, Función de Tara, Pantalla LCD, Vidrio Templado, 2 Baterías Incluidas",
+              "brand": "Cocogeneric",
+              "price_cents": 2271,
+              "stock": 6
+            },
+            {
+              "product_id": "B08N6GMBFM",
+              "title": "Raniaco Básculas de Cocina - Peso Cocina Digital de Hasta 15 kg y Maravillosa Precisión de Hasta 1g - g / kg / lb: oz / ml / fl'oz Funcionamiento con USB o Batería | Balanza Cocina",
+              "brand": "Raniaco",
+              "price_cents": 1465,
+              "stock": 21
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-36c88a7d-21_cierre_otras_palabras-c1",
+              "product_id": "B08FB5D64D",
+              "quantity": 1
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B08FB5D64D",
+              "initial_stock": 33,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B01N5HI4FM": {
+            "price_cents": 3881,
+            "stock": 9
+          },
+          "B06X9NQ8GX": {
+            "price_cents": 1174,
+            "stock": 37
+          },
+          "B08FB5D64D": {
+            "price_cents": 1300,
+            "stock": 20
+          },
+          "B08N6GMBFM": {
+            "price_cents": 1465,
+            "stock": 21
+          },
+          "B08ZH7ZWBC": {
+            "price_cents": 2271,
+            "stock": 6
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "orders",
+          "params": {
+            "count": 0
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 0"
+        },
+        {
+          "check": "awaiting_confirmation",
+          "params": {
+            "value": false
+          },
+          "ok": true,
+          "detail": "esperando confirmación: no"
+        },
+        {
+          "check": "cart",
+          "params": {
+            "lines": [
+              {
+                "product": "@elegida",
+                "quantity": 1
+              }
+            ]
+          },
+          "ok": true,
+          "detail": "carrito: 1 × B08FB5D64D"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 5,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Listo, quiero pagar ya.",
+      "agent_input": "Listo, quiero pagar ya.",
+      "response": "Te repito el pedido antes de registrarlo: 1 unidad de «Báscula digital Jooheli, de acero inoxidable, 15 kg/1 g, con gran…» a 13,00 € cada una, 13,00 €. Total: 13,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "spoken_text": "Te repito el pedido antes de registrarlo: una unidad de Báscula digital Jooheli a trece euros cada una, trece euros. Total: trece euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": true,
+      "operations": [
+        {
+          "tool": "cotizar",
+          "args": {},
+          "reason": "cotizar el carrito",
+          "ok": true,
+          "summary": "cotización creada; falta la confirmación del usuario.",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 2.153,
+        "tools": 0.04,
+        "tts": 0.0,
+        "total": 2.193
+      },
+      "llm_steps": 1,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-36c88a7d-21_cierre_otras_palabras-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08FB5D64D",
+              "title": "Báscula digital Jooheli, de acero inoxidable, 15 kg/1 g, con gran superficie de pesaje y tara, báscula de cocina de alta precisión (plata)",
+              "brand": "Jooheli",
+              "price_cents": 1300,
+              "stock": 20
+            },
+            {
+              "product_id": "B06X9NQ8GX",
+              "title": "Amazon Basics - Báscula de cocina digital con pantalla LCD, sin bisfenol A (BPA), de acero inoxidable (pilas incluidas)",
+              "brand": "Amazon Basics",
+              "price_cents": 1174,
+              "stock": 37
+            },
+            {
+              "product_id": "B01N5HI4FM",
+              "title": "Medisana KS 250 Báscula de cocina, Negro",
+              "brand": "Medisana",
+              "price_cents": 3881,
+              "stock": 9
+            },
+            {
+              "product_id": "B08ZH7ZWBC",
+              "title": "Bascula de Cocina, 5 kg / 11 lbs 6 Unidades de Medición Báscula de Cocina con Alta Precisión de 1 g / 0,1 oz, Función de Tara, Pantalla LCD, Vidrio Templado, 2 Baterías Incluidas",
+              "brand": "Cocogeneric",
+              "price_cents": 2271,
+              "stock": 6
+            },
+            {
+              "product_id": "B08N6GMBFM",
+              "title": "Raniaco Básculas de Cocina - Peso Cocina Digital de Hasta 15 kg y Maravillosa Precisión de Hasta 1g - g / kg / lb: oz / ml / fl'oz Funcionamiento con USB o Batería | Balanza Cocina",
+              "brand": "Raniaco",
+              "price_cents": 1465,
+              "stock": 21
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-36c88a7d-21_cierre_otras_palabras-c1",
+              "product_id": "B08FB5D64D",
+              "quantity": 1
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B08FB5D64D",
+              "initial_stock": 33,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B01N5HI4FM": {
+            "price_cents": 3881,
+            "stock": 9
+          },
+          "B06X9NQ8GX": {
+            "price_cents": 1174,
+            "stock": 37
+          },
+          "B08FB5D64D": {
+            "price_cents": 1300,
+            "stock": 20
+          },
+          "B08N6GMBFM": {
+            "price_cents": 1465,
+            "stock": 21
+          },
+          "B08ZH7ZWBC": {
+            "price_cents": 2271,
+            "stock": 6
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-36c88a7d-21_cierre_otras_palabras-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": {
+            "quote_id": "8544b3f2df7844aaac4220248732b426",
+            "items": [
+              {
+                "product_id": "B08FB5D64D",
+                "title": "Báscula digital Jooheli, de acero inoxidable, 15 kg/1 g, con gran superficie de pesaje y tara, báscula de cocina de alta precisión (plata)",
+                "quantity": 1,
+                "unit_price_cents": 1300,
+                "subtotal_cents": 1300,
+                "stock": 20
+              }
+            ],
+            "total_cents": 1300,
+            "budget_cents": null,
+            "message": "Te repito el pedido antes de registrarlo: 1 unidad de «Báscula digital Jooheli, de acero inoxidable, 15 kg/1 g, con gran…» a 13,00 € cada una, 13,00 €. Total: 13,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+          },
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08FB5D64D",
+              "title": "Báscula digital Jooheli, de acero inoxidable, 15 kg/1 g, con gran superficie de pesaje y tara, báscula de cocina de alta precisión (plata)",
+              "brand": "Jooheli",
+              "price_cents": 1300,
+              "stock": 20
+            },
+            {
+              "product_id": "B06X9NQ8GX",
+              "title": "Amazon Basics - Báscula de cocina digital con pantalla LCD, sin bisfenol A (BPA), de acero inoxidable (pilas incluidas)",
+              "brand": "Amazon Basics",
+              "price_cents": 1174,
+              "stock": 37
+            },
+            {
+              "product_id": "B01N5HI4FM",
+              "title": "Medisana KS 250 Báscula de cocina, Negro",
+              "brand": "Medisana",
+              "price_cents": 3881,
+              "stock": 9
+            },
+            {
+              "product_id": "B08ZH7ZWBC",
+              "title": "Bascula de Cocina, 5 kg / 11 lbs 6 Unidades de Medición Báscula de Cocina con Alta Precisión de 1 g / 0,1 oz, Función de Tara, Pantalla LCD, Vidrio Templado, 2 Baterías Incluidas",
+              "brand": "Cocogeneric",
+              "price_cents": 2271,
+              "stock": 6
+            },
+            {
+              "product_id": "B08N6GMBFM",
+              "title": "Raniaco Básculas de Cocina - Peso Cocina Digital de Hasta 15 kg y Maravillosa Precisión de Hasta 1g - g / kg / lb: oz / ml / fl'oz Funcionamiento con USB o Batería | Balanza Cocina",
+              "brand": "Raniaco",
+              "price_cents": 1465,
+              "stock": 21
+            }
+          ],
+          "awaiting_confirmation": true
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-36c88a7d-21_cierre_otras_palabras-c1",
+              "product_id": "B08FB5D64D",
+              "quantity": 1
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B08FB5D64D",
+              "initial_stock": 33,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B01N5HI4FM": {
+            "price_cents": 3881,
+            "stock": 9
+          },
+          "B06X9NQ8GX": {
+            "price_cents": 1174,
+            "stock": 37
+          },
+          "B08FB5D64D": {
+            "price_cents": 1300,
+            "stock": 20
+          },
+          "B08N6GMBFM": {
+            "price_cents": 1465,
+            "stock": 21
+          },
+          "B08ZH7ZWBC": {
+            "price_cents": 2271,
+            "stock": 6
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "awaiting_confirmation",
+          "params": {
+            "value": true
+          },
+          "ok": true,
+          "detail": "esperando confirmación: sí"
+        },
+        {
+          "check": "orders",
+          "params": {
+            "count": 0
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 0"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 6,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Sí.",
+      "agent_input": "Sí.",
+      "response": "Pedido número 1 registrado: 1 unidad de «Báscula digital Jooheli, de acero inoxidable, 15 kg/1 g, con gran…» a 13,00 € cada una, 13,00 €. Total: 13,00 €. Gracias por tu compra.",
+      "spoken_text": "Pedido número uno registrado: una unidad de Báscula digital Jooheli a trece euros cada una, trece euros. Total: trece euros. Gracias por tu compra.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "confirmar_pedido",
+          "args": {
+            "quote_id": "8544b3f2df7844aaac4220248732b426"
+          },
+          "reason": "el usuario confirmó la cotización",
+          "ok": true,
+          "summary": "pedido registrado",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 0.0,
+        "tools": 0.03,
+        "tts": 0.0,
+        "total": 0.03
+      },
+      "llm_steps": 0,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-36c88a7d-21_cierre_otras_palabras-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": {
+            "quote_id": "8544b3f2df7844aaac4220248732b426",
+            "items": [
+              {
+                "product_id": "B08FB5D64D",
+                "title": "Báscula digital Jooheli, de acero inoxidable, 15 kg/1 g, con gran superficie de pesaje y tara, báscula de cocina de alta precisión (plata)",
+                "quantity": 1,
+                "unit_price_cents": 1300,
+                "subtotal_cents": 1300,
+                "stock": 20
+              }
+            ],
+            "total_cents": 1300,
+            "budget_cents": null,
+            "message": "Te repito el pedido antes de registrarlo: 1 unidad de «Báscula digital Jooheli, de acero inoxidable, 15 kg/1 g, con gran…» a 13,00 € cada una, 13,00 €. Total: 13,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+          },
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08FB5D64D",
+              "title": "Báscula digital Jooheli, de acero inoxidable, 15 kg/1 g, con gran superficie de pesaje y tara, báscula de cocina de alta precisión (plata)",
+              "brand": "Jooheli",
+              "price_cents": 1300,
+              "stock": 20
+            },
+            {
+              "product_id": "B06X9NQ8GX",
+              "title": "Amazon Basics - Báscula de cocina digital con pantalla LCD, sin bisfenol A (BPA), de acero inoxidable (pilas incluidas)",
+              "brand": "Amazon Basics",
+              "price_cents": 1174,
+              "stock": 37
+            },
+            {
+              "product_id": "B01N5HI4FM",
+              "title": "Medisana KS 250 Báscula de cocina, Negro",
+              "brand": "Medisana",
+              "price_cents": 3881,
+              "stock": 9
+            },
+            {
+              "product_id": "B08ZH7ZWBC",
+              "title": "Bascula de Cocina, 5 kg / 11 lbs 6 Unidades de Medición Báscula de Cocina con Alta Precisión de 1 g / 0,1 oz, Función de Tara, Pantalla LCD, Vidrio Templado, 2 Baterías Incluidas",
+              "brand": "Cocogeneric",
+              "price_cents": 2271,
+              "stock": 6
+            },
+            {
+              "product_id": "B08N6GMBFM",
+              "title": "Raniaco Básculas de Cocina - Peso Cocina Digital de Hasta 15 kg y Maravillosa Precisión de Hasta 1g - g / kg / lb: oz / ml / fl'oz Funcionamiento con USB o Batería | Balanza Cocina",
+              "brand": "Raniaco",
+              "price_cents": 1465,
+              "stock": 21
+            }
+          ],
+          "awaiting_confirmation": true
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-36c88a7d-21_cierre_otras_palabras-c1",
+              "product_id": "B08FB5D64D",
+              "quantity": 1
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B08FB5D64D",
+              "initial_stock": 33,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B01N5HI4FM": {
+            "price_cents": 3881,
+            "stock": 9
+          },
+          "B06X9NQ8GX": {
+            "price_cents": 1174,
+            "stock": 37
+          },
+          "B08FB5D64D": {
+            "price_cents": 1300,
+            "stock": 20
+          },
+          "B08N6GMBFM": {
+            "price_cents": 1465,
+            "stock": 21
+          },
+          "B08ZH7ZWBC": {
+            "price_cents": 2271,
+            "stock": 6
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-36c88a7d-21_cierre_otras_palabras-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": {
+            "order_id": 1,
+            "quote_id": "8544b3f2df7844aaac4220248732b426",
+            "items": [
+              {
+                "product_id": "B08FB5D64D",
+                "title": "Báscula digital Jooheli, de acero inoxidable, 15 kg/1 g, con gran superficie de pesaje y tara, báscula de cocina de alta precisión (plata)",
+                "quantity": 1,
+                "unit_price_cents": 1300,
+                "subtotal_cents": 1300
+              }
+            ],
+            "total_cents": 1300,
+            "message": "Pedido número 1 registrado: 1 unidad de «Báscula digital Jooheli, de acero inoxidable, 15 kg/1 g, con gran…» a 13,00 € cada una, 13,00 €. Total: 13,00 €. Gracias por tu compra."
+          },
+          "candidates": [
+            {
+              "product_id": "B08FB5D64D",
+              "title": "Báscula digital Jooheli, de acero inoxidable, 15 kg/1 g, con gran superficie de pesaje y tara, báscula de cocina de alta precisión (plata)",
+              "brand": "Jooheli",
+              "price_cents": 1300,
+              "stock": 20
+            },
+            {
+              "product_id": "B06X9NQ8GX",
+              "title": "Amazon Basics - Báscula de cocina digital con pantalla LCD, sin bisfenol A (BPA), de acero inoxidable (pilas incluidas)",
+              "brand": "Amazon Basics",
+              "price_cents": 1174,
+              "stock": 37
+            },
+            {
+              "product_id": "B01N5HI4FM",
+              "title": "Medisana KS 250 Báscula de cocina, Negro",
+              "brand": "Medisana",
+              "price_cents": 3881,
+              "stock": 9
+            },
+            {
+              "product_id": "B08ZH7ZWBC",
+              "title": "Bascula de Cocina, 5 kg / 11 lbs 6 Unidades de Medición Báscula de Cocina con Alta Precisión de 1 g / 0,1 oz, Función de Tara, Pantalla LCD, Vidrio Templado, 2 Baterías Incluidas",
+              "brand": "Cocogeneric",
+              "price_cents": 2271,
+              "stock": 6
+            },
+            {
+              "product_id": "B08N6GMBFM",
+              "title": "Raniaco Básculas de Cocina - Peso Cocina Digital de Hasta 15 kg y Maravillosa Precisión de Hasta 1g - g / kg / lb: oz / ml / fl'oz Funcionamiento con USB o Batería | Balanza Cocina",
+              "brand": "Raniaco",
+              "price_cents": 1465,
+              "stock": 21
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [
+            {
+              "order_id": 1,
+              "quote_id": "8544b3f2df7844aaac4220248732b426",
+              "total_cents": 1300
+            }
+          ],
+          "order_items": [
+            {
+              "order_id": 1,
+              "product_id": "B08FB5D64D",
+              "quantity": 1,
+              "unit_price_cents": 1300
+            }
+          ],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B08FB5D64D",
+              "initial_stock": 33,
+              "stock": 19
+            }
+          ]
+        },
+        "offers": {
+          "B01N5HI4FM": {
+            "price_cents": 3881,
+            "stock": 9
+          },
+          "B06X9NQ8GX": {
+            "price_cents": 1174,
+            "stock": 37
+          },
+          "B08FB5D64D": {
+            "price_cents": 1300,
+            "stock": 19
+          },
+          "B08N6GMBFM": {
+            "price_cents": 1465,
+            "stock": 21
+          },
+          "B08ZH7ZWBC": {
+            "price_cents": 2271,
+            "stock": 6
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "orders",
+          "params": {
+            "count": 1
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 1"
+        }
+      ]
+    }
+  ],
+  "final": {
+    "snapshot": {
+      "cart_id": "eval-36c88a7d-21_cierre_otras_palabras-c1",
+      "state": {
+        "budget_cents": null,
+        "preferences": [],
+        "pending_clarification": null,
+        "quote": null,
+        "order": {
+          "order_id": 1,
+          "quote_id": "8544b3f2df7844aaac4220248732b426",
+          "items": [
+            {
+              "product_id": "B08FB5D64D",
+              "title": "Báscula digital Jooheli, de acero inoxidable, 15 kg/1 g, con gran superficie de pesaje y tara, báscula de cocina de alta precisión (plata)",
+              "quantity": 1,
+              "unit_price_cents": 1300,
+              "subtotal_cents": 1300
+            }
+          ],
+          "total_cents": 1300,
+          "message": "Pedido número 1 registrado: 1 unidad de «Báscula digital Jooheli, de acero inoxidable, 15 kg/1 g, con gran…» a 13,00 € cada una, 13,00 €. Total: 13,00 €. Gracias por tu compra."
+        },
+        "candidates": [
+          {
+            "product_id": "B08FB5D64D",
+            "title": "Báscula digital Jooheli, de acero inoxidable, 15 kg/1 g, con gran superficie de pesaje y tara, báscula de cocina de alta precisión (plata)",
+            "brand": "Jooheli",
+            "price_cents": 1300,
+            "stock": 20
+          },
+          {
+            "product_id": "B06X9NQ8GX",
+            "title": "Amazon Basics - Báscula de cocina digital con pantalla LCD, sin bisfenol A (BPA), de acero inoxidable (pilas incluidas)",
+            "brand": "Amazon Basics",
+            "price_cents": 1174,
+            "stock": 37
+          },
+          {
+            "product_id": "B01N5HI4FM",
+            "title": "Medisana KS 250 Báscula de cocina, Negro",
+            "brand": "Medisana",
+            "price_cents": 3881,
+            "stock": 9
+          },
+          {
+            "product_id": "B08ZH7ZWBC",
+            "title": "Bascula de Cocina, 5 kg / 11 lbs 6 Unidades de Medición Báscula de Cocina con Alta Precisión de 1 g / 0,1 oz, Función de Tara, Pantalla LCD, Vidrio Templado, 2 Baterías Incluidas",
+            "brand": "Cocogeneric",
+            "price_cents": 2271,
+            "stock": 6
+          },
+          {
+            "product_id": "B08N6GMBFM",
+            "title": "Raniaco Básculas de Cocina - Peso Cocina Digital de Hasta 15 kg y Maravillosa Precisión de Hasta 1g - g / kg / lb: oz / ml / fl'oz Funcionamiento con USB o Batería | Balanza Cocina",
+            "brand": "Raniaco",
+            "price_cents": 1465,
+            "stock": 21
+          }
+        ],
+        "awaiting_confirmation": false
+      },
+      "store": {
+        "orders": [
+          {
+            "order_id": 1,
+            "quote_id": "8544b3f2df7844aaac4220248732b426",
+            "total_cents": 1300
+          }
+        ],
+        "order_items": [
+          {
+            "order_id": 1,
+            "product_id": "B08FB5D64D",
+            "quantity": 1,
+            "unit_price_cents": 1300
+          }
+        ],
+        "cart_items": [],
+        "inventory_changes": [
+          {
+            "product_id": "B08FB5D64D",
+            "initial_stock": 33,
+            "stock": 19
+          }
+        ]
+      },
+      "offers": {
+        "B01N5HI4FM": {
+          "price_cents": 3881,
+          "stock": 9
+        },
+        "B06X9NQ8GX": {
+          "price_cents": 1174,
+          "stock": 37
+        },
+        "B08FB5D64D": {
+          "price_cents": 1300,
+          "stock": 19
+        },
+        "B08N6GMBFM": {
+          "price_cents": 1465,
+          "stock": 21
+        },
+        "B08ZH7ZWBC": {
+          "price_cents": 2271,
+          "stock": 6
+        }
+      }
+    },
+    "checks": [
+      {
+        "check": "orders",
+        "params": {
+          "count": 1
+        },
+        "ok": true,
+        "detail": "pedidos registrados: 1"
+      },
+      {
+        "check": "order",
+        "params": {
+          "lines": [
+            {
+              "product": "@elegida",
+              "quantity": 1
+            }
+          ],
+          "total_cents": 1300
+        },
+        "ok": true,
+        "detail": "pedido 1: 1 × B08FB5D64D; total 1300 céntimos"
+      },
+      {
+        "check": "stock",
+        "params": {
+          "product": "@elegida",
+          "equals": 19
+        },
+        "ok": true,
+        "detail": "existencias de B08FB5D64D: 19"
+      },
+      {
+        "check": "cart",
+        "params": {
+          "empty": true
+        },
+        "ok": true,
+        "detail": "carrito: vacío"
+      }
+    ]
+  },
+  "violations": [],
+  "problems": [],
+  "passed": true,
+  "timings": {
+    "all": {
+      "turns": 6,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.01,
+        "max": 0.04
+      },
+      "llm": {
+        "mean": 2.91,
+        "max": 8.16
+      },
+      "tools": {
+        "mean": 0.04,
+        "max": 0.06
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 2.95,
+        "max": 8.24
+      }
+    },
+    "with_llm": {
+      "turns": 4,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.01,
+        "max": 0.04
+      },
+      "llm": {
+        "mean": 4.36,
+        "max": 8.16
+      },
+      "tools": {
+        "mean": 0.05,
+        "max": 0.06
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 4.42,
+        "max": 8.24
+      }
+    },
+    "without_llm": {
+      "turns": 2,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "llm": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "tools": {
+        "mean": 0.02,
+        "max": 0.03
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 0.02,
+        "max": 0.03
+      }
+    }
+  }
+}
