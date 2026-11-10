@@ -20,3 +20,6 @@ documentation/*.pdf
 
 # Configuración local
 .claude/
+
+# Variables locales (rutas de cachés, credenciales)
+.env

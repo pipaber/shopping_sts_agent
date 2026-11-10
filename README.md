@@ -12,6 +12,16 @@ Requiere [uv](https://docs.astral.sh/uv/) y Python 3.11. PyTorch se instala con 
 uv sync
 ```
 
+### Configuración local
+
+Lo que depende de la máquina (rutas, credenciales) va en un archivo `.env` en la raíz del repo, que no se versiona. El paquete lo lee al importarse y no pisa las variables ya definidas en el entorno. [.env.example](.env.example) lista las variables disponibles:
+
+```bash
+cp .env.example .env
+```
+
+Los modelos (embeddings y LLM) se descargan en la caché de Hugging Face. Si el disco del sistema tiene poco espacio, `HF_HOME` en el `.env` la lleva a otro disco; ocupa unos 6 GB.
+
 ## Datos
 
 Descarga ESCI (~1,2 GB), arma el catálogo y las consultas, y genera la tienda simulada. Todo es determinista (semilla 42).
