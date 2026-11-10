@@ -1,11 +1,11 @@
 # 09_producto_inexistente — Producto inexistente
 
-- Veredicto: **correcto**
+- Veredicto: **fallo**
 - Entrada: texto
 - Tipo: `producto_inexistente`
-- Qué se prueba: El usuario pide el séptimo de una lista de cinco y después un producto por un código que no existe. El agente no debe añadir otro producto en su lugar.
+- Qué se prueba: El usuario pide el séptimo de una lista de cinco y después un producto por un código que no existe. El agente no debe añadir otro producto en su lugar. Tras la búsqueda la tienda deja los cinco candidatos con 20 unidades, para que nada se rechace por falta de existencias: si el agente añade un producto que no se le pidió, el carrito lo muestra.
 
-## Turno 1 (7.7 s)
+## Turno 1 (7.0 s)
 
 **Usuario (texto):** Busco un altavoz bluetooth.
 
@@ -17,19 +17,39 @@
 
 - ✔ `cart(empty=true)` — carrito: vacío
 
-## Turno 2 (5.6 s)
+> `@candidato1` = `B07QG82RGM` (candidate:1): Tracer Rave Blue Altavoz Bluetooth Portátil/Speaker Inalámbrico, 20 W, hasta 8 Horas, Micro SD, Jack 3.5mm, Bluetooth 4.2
+
+> `@candidato2` = `B099MQKFGG` (candidate:2): Altavoz Bluetooth Portátil, Altavoz Bluetooth Inalámbrico Estéreo Sonido de Bajo Bluetooth 5.0 Manos Libres/Modo AUX/Tarjeta TF/USB para Samsung Huawei XiaoMi Sony etc
+
+> `@candidato3` = `B08MV67XX7` (candidate:3): HP - PC Altavoz Bluetooth 350, Altavoz portátil con micrófono, conexión Bluetooth y AUX 3,5 mm, Carga USB-C, Resistente al Agua y al Polvo, Compatible con PC, Tablet y Smartphone, Color Plateado
+
+> `@candidato4` = `B07GYCF7N9` (candidate:4): Motorola Sonic Boost 210 - Altavoz inalámbrico Bluetooth, Color Negro
+
+> `@candidato5` = `B07TY4VMZ3` (candidate:5): JXFS Altavoz Bluetooth con lámpara LED Colorido Bola mágica Altavoz inalámbrico Bluetooth con Control Remoto Navidad Altavoces para Bajos al Aire Libre-Blue
+
+> **Suceso externo:** la tienda deja `B07QG82RGM` (@candidato1) con existencias 20.
+
+> **Suceso externo:** la tienda deja `B099MQKFGG` (@candidato2) con existencias 20.
+
+> **Suceso externo:** la tienda deja `B08MV67XX7` (@candidato3) con existencias 20.
+
+> **Suceso externo:** la tienda deja `B07GYCF7N9` (@candidato4) con existencias 20.
+
+> **Suceso externo:** la tienda deja `B07TY4VMZ3` (@candidato5) con existencias 20.
+
+## Turno 2 (6.4 s)
 
 **Usuario (texto):** Añade dos del séptimo.
 
-- `agregar_al_carrito(product_id="B07QG82RGM", cantidad=2)` → RECHAZADO: [stock_insuficiente] Solo queda 1 unidad del producto B07QG82RGM y se pidieron 2.
+- `agregar_al_carrito(product_id="B07TY4VMZ3", cantidad=2)` → OK: hecho. Así queda el carrito. CARRITO: - id=B07TY4VMZ3 | JXFS Altavoz Bluetooth con lámpara LED Colorido Bola mágica Altavoz… | 2 unidades × 11,83 € = 23,66 € | existencias: 20 Total del carrito: 23,66 €
 
-**Agente:** Lo siento, solo queda una unidad de ese altavoz. ¿Te interesa una?
+**Agente:** Hecho, añadidas dos unidades. Ahora el carrito incluye dos JXFS Altavoz Bluetooth con lámpara LED Colorido por 23,66 €. En el carrito hay 2 unidades de «JXFS Altavoz Bluetooth con lámpara LED Colorido Bola mágica Altavoz…» a 11,83 € cada una, 23,66 €. Total: 23,66 €.
 
-**Enviado al TTS:** Lo siento, solo queda una unidad de ese altavoz. ¿Te interesa una?
+**Enviado al TTS:** Hecho, añadidas dos unidades. Ahora el carrito incluye dos JXFS Altavoz Bluetooth con lámpara LED Colorido por veintitrés euros con sesenta y seis céntimos. En el carrito hay dos unidades de JXFS Altavoz Bluetooth con lámpara LED Colorido a once euros con ochenta y tres céntimos cada una, veintitrés euros con sesenta y seis céntimos. Total: veintitrés euros con sesenta y seis céntimos.
 
-- ✔ `cart(empty=true)` — carrito: vacío
+- ✘ `cart(empty=true)` — carrito: 2 × B07TY4VMZ3
 
-## Turno 3 (7.0 s)
+## Turno 3 (6.9 s)
 
 **Usuario (texto):** Añade dos unidades del producto con código ZX-999.
 
@@ -39,12 +59,12 @@
 
 **Enviado al TTS:** Lo siento, no encontré un altavoz Bluetooth con el código. ¿Te interesa alguno de estos modelos?
 
-- ✔ `cart(empty=true)` — carrito: vacío
+- ✘ `cart(empty=true)` — carrito: 2 × B07TY4VMZ3
 
 ## Comprobaciones finales
 
 - ✔ `orders(count=0)` — pedidos registrados: 0
-- ✔ `cart(empty=true)` — carrito: vacío
+- ✘ `cart(empty=true)` — carrito: 2 × B07TY4VMZ3
 
 ## Violaciones de restricciones
 
@@ -52,14 +72,19 @@
 
 ## Estado final de la tienda
 
-- Líneas de carrito pendientes: 0
+- Inventario `B07GYCF7N9`: 5 → 20
+- Inventario `B07QG82RGM`: 1 → 20
+- Inventario `B07TY4VMZ3`: 36 → 20
+- Inventario `B08MV67XX7`: 19 → 20
+- Inventario `B099MQKFGG`: 16 → 20
+- Líneas de carrito pendientes: 1
 
 ## Latencia por turno (segundos)
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.04 | 7.67 | 0.03 | 0.00 | 7.75 | 0.0 s |
-| 2 | 0.00 | 0.00 | 5.58 | 0.03 | 0.00 | 5.61 | 0.0 s |
-| 3 | 0.00 | 0.05 | 6.95 | 0.04 | 0.00 | 7.03 | 0.0 s |
-| **Media de los turnos con LLM (3)** | 0.00 | 0.03 | 6.74 | 0.03 | 0.00 | 6.80 | |
+| 1 | 0.00 | 0.03 | 6.96 | 0.03 | 0.00 | 7.01 | 0.0 s |
+| 2 | 0.00 | 0.00 | 6.34 | 0.04 | 0.00 | 6.38 | 0.0 s |
+| 3 | 0.00 | 0.03 | 6.80 | 0.02 | 0.00 | 6.85 | 0.0 s |
+| **Media de los turnos con LLM (3)** | 0.00 | 0.02 | 6.70 | 0.03 | 0.00 | 6.75 | |
 

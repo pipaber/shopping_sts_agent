@@ -6,10 +6,10 @@
   "voice": false,
   "input": "texto",
   "audio_source": null,
-  "user_id": "eval-d1aab68f-12_memoria_preferencias",
+  "user_id": "eval-6b9dd32e-12_memoria_preferencias",
   "threads": [
-    "eval-d1aab68f-12_memoria_preferencias-c1",
-    "eval-d1aab68f-12_memoria_preferencias-c2"
+    "eval-6b9dd32e-12_memoria_preferencias-c1",
+    "eval-6b9dd32e-12_memoria_preferencias-c2"
   ],
   "names": {},
   "steps": [
@@ -41,17 +41,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 3.283,
+        "llm": 3.43,
         "tools": 0.038,
         "tts": 0.0,
-        "total": 3.321
+        "total": 3.469
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-d1aab68f-12_memoria_preferencias-c1",
+        "cart_id": "eval-6b9dd32e-12_memoria_preferencias-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -70,7 +70,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-d1aab68f-12_memoria_preferencias-c1",
+        "cart_id": "eval-6b9dd32e-12_memoria_preferencias-c1",
         "state": {
           "budget_cents": null,
           "preferences": [
@@ -103,7 +103,7 @@
     },
     {
       "kind": "new_conversation",
-      "thread_id": "eval-d1aab68f-12_memoria_preferencias-c2"
+      "thread_id": "eval-6b9dd32e-12_memoria_preferencias-c2"
     },
     {
       "kind": "turn",
@@ -133,17 +133,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 3.106,
-        "tools": 0.028,
+        "llm": 3.198,
+        "tools": 0.039,
         "tts": 0.0,
-        "total": 3.135
+        "total": 3.237
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-d1aab68f-12_memoria_preferencias-c2",
+        "cart_id": "eval-6b9dd32e-12_memoria_preferencias-c2",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -162,7 +162,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-d1aab68f-12_memoria_preferencias-c2",
+        "cart_id": "eval-6b9dd32e-12_memoria_preferencias-c2",
         "state": {
           "budget_cents": null,
           "preferences": [
@@ -204,7 +204,7 @@
   ],
   "final": {
     "snapshot": {
-      "cart_id": "eval-d1aab68f-12_memoria_preferencias-c2",
+      "cart_id": "eval-6b9dd32e-12_memoria_preferencias-c2",
       "state": {
         "budget_cents": null,
         "preferences": [
@@ -258,11 +258,11 @@
         "max": 0.0
       },
       "llm": {
-        "mean": 3.19,
-        "max": 3.28
+        "mean": 3.31,
+        "max": 3.43
       },
       "tools": {
-        "mean": 0.03,
+        "mean": 0.04,
         "max": 0.04
       },
       "tts": {
@@ -270,8 +270,8 @@
         "max": 0.0
       },
       "total": {
-        "mean": 3.23,
-        "max": 3.32
+        "mean": 3.35,
+        "max": 3.47
       }
     },
     "with_llm": {
@@ -285,11 +285,11 @@
         "max": 0.0
       },
       "llm": {
-        "mean": 3.19,
-        "max": 3.28
+        "mean": 3.31,
+        "max": 3.43
       },
       "tools": {
-        "mean": 0.03,
+        "mean": 0.04,
         "max": 0.04
       },
       "tts": {
@@ -297,8 +297,8 @@
         "max": 0.0
       },
       "total": {
-        "mean": 3.23,
-        "max": 3.32
+        "mean": 3.35,
+        "max": 3.47
       }
     },
     "without_llm": {

@@ -5,7 +5,7 @@
 - Tipo: `cambio_cantidad`
 - Qué se prueba: El usuario añade dos unidades y después corrige a cuatro. El producto y el presupuesto deben seguir siendo los mismos y el pedido final debe llevar cuatro unidades (38,00 € de un presupuesto de 45 €).
 
-## Turno 1 (9.9 s)
+## Turno 1 (8.0 s)
 
 **Usuario (texto):** Busco una botella de agua de acero inoxidable. Mi presupuesto es de 45 euros.
 
@@ -22,7 +22,7 @@
 
 > **Suceso externo:** la tienda deja `B07VQNY8PK` (@elegida) con precio 9,50 € y existencias 20.
 
-## Turno 2 (5.7 s)
+## Turno 2 (5.0 s)
 
 **Usuario (texto):** Añade dos de la primera.
 
@@ -34,7 +34,7 @@
 
 - ✔ `cart(lines=[{"product": "@elegida", "quantity": 2}])` — carrito: 2 × B07VQNY8PK
 
-## Turno 3 (6.5 s)
+## Turno 3 (5.9 s)
 
 **Usuario (texto):** Mejor que sean cuatro.
 
@@ -47,7 +47,7 @@
 - ✔ `cart(lines=[{"product": "@elegida", "quantity": 4}])` — carrito: 4 × B07VQNY8PK
 - ✔ `budget(cents=4500)` — presupuesto en el estado: 4500
 
-## Turno 4 (5.2 s)
+## Turno 4 (4.6 s)
 
 **Usuario (texto):** Ciérralo.
 
@@ -58,7 +58,7 @@
 - ✘ `awaiting_confirmation(value=true)` — esperando confirmación: no
 - ✔ `orders(count=0)` — pedidos registrados: 0
 
-## Turno 5 (3.5 s)
+## Turno 5 (3.2 s)
 
 **Usuario (texto):** Sí.
 
@@ -89,10 +89,10 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.07 | 9.76 | 0.04 | 0.00 | 9.87 | 0.0 s |
-| 2 | 0.00 | 0.00 | 5.64 | 0.06 | 0.00 | 5.70 | 0.0 s |
-| 3 | 0.00 | 0.00 | 6.45 | 0.06 | 0.00 | 6.51 | 0.0 s |
-| 4 | 0.00 | 0.00 | 5.14 | 0.02 | 0.00 | 5.16 | 0.0 s |
-| 5 | 0.00 | 0.00 | 3.50 | 0.04 | 0.00 | 3.53 | 0.0 s |
-| **Media de los turnos con LLM (5)** | 0.00 | 0.01 | 6.10 | 0.04 | 0.00 | 6.15 | |
+| 1 | 0.00 | 0.03 | 7.94 | 0.03 | 0.00 | 8.00 | 0.0 s |
+| 2 | 0.00 | 0.00 | 4.98 | 0.04 | 0.00 | 5.02 | 0.0 s |
+| 3 | 0.00 | 0.00 | 5.81 | 0.05 | 0.00 | 5.86 | 0.0 s |
+| 4 | 0.00 | 0.00 | 4.57 | 0.03 | 0.00 | 4.60 | 0.0 s |
+| 5 | 0.00 | 0.00 | 3.18 | 0.03 | 0.00 | 3.21 | 0.0 s |
+| **Media de los turnos con LLM (5)** | 0.00 | 0.01 | 5.30 | 0.04 | 0.00 | 5.34 | |
 

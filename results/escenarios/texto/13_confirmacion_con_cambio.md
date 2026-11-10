@@ -5,7 +5,7 @@
 - Tipo: `confirmacion_con_cambio`
 - Qué se prueba: A la cotización de una unidad el usuario contesta «sí, pero que sean tres». No es una confirmación limpia: no debe registrarse el pedido de una unidad. El pedido final lleva tres.
 
-## Turno 1 (7.8 s)
+## Turno 1 (8.0 s)
 
 **Usuario (texto):** Busco un paraguas plegable.
 
@@ -21,7 +21,7 @@
 
 > **Suceso externo:** la tienda deja `B08ZC4844X` (@elegido) con precio 9,00 € y existencias 20.
 
-## Turno 2 (5.4 s)
+## Turno 2 (5.5 s)
 
 **Usuario (texto):** Añade uno del primero.
 
@@ -46,7 +46,7 @@
 - ✔ `awaiting_confirmation(value=true)` — esperando confirmación: sí
 - ✔ `orders(count=0)` — pedidos registrados: 0
 
-## Turno 4 (6.0 s)
+## Turno 4 (6.2 s)
 
 **Usuario (texto):** Sí, pero que sean tres.
 
@@ -59,7 +59,7 @@
 - ✔ `orders(count=0)` — pedidos registrados: 0
 - ✔ `cart(lines=[{"product": "@elegido", "quantity": 3}])` — carrito: 3 × B08ZC4844X
 
-## Turno 5 (2.2 s)
+## Turno 5 (2.3 s)
 
 **Usuario (texto):** Cierra el pedido.
 
@@ -76,7 +76,7 @@
 
 **Usuario (texto):** Sí.
 
-- `confirmar_pedido(quote_id="78891010ccd44d8aad7bdda0153c4c1a")` → OK: pedido registrado
+- `confirmar_pedido(quote_id="68032ca4a6e54ea68c6b68bf062cdab2")` → OK: pedido registrado
 
 **Agente:** Pedido número 1 registrado: 3 unidades de «Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a…» a 9,00 € cada una, 27,00 €. Total: 27,00 €. Gracias por tu compra.
 
@@ -106,12 +106,12 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.03 | 7.71 | 0.03 | 0.00 | 7.76 | 0.0 s |
-| 2 | 0.00 | 0.00 | 5.33 | 0.05 | 0.00 | 5.38 | 0.0 s |
-| 3 | 0.00 | 0.00 | 2.21 | 0.04 | 0.00 | 2.25 | 0.0 s |
-| 4 | 0.00 | 0.00 | 5.99 | 0.06 | 0.00 | 6.04 | 0.0 s |
-| 5 | 0.00 | 0.00 | 2.21 | 0.03 | 0.00 | 2.23 | 0.0 s |
+| 1 | 0.00 | 0.03 | 7.99 | 0.03 | 0.00 | 8.04 | 0.0 s |
+| 2 | 0.00 | 0.00 | 5.50 | 0.05 | 0.00 | 5.55 | 0.0 s |
+| 3 | 0.00 | 0.00 | 2.25 | 0.04 | 0.00 | 2.29 | 0.0 s |
+| 4 | 0.00 | 0.00 | 6.14 | 0.04 | 0.00 | 6.18 | 0.0 s |
+| 5 | 0.00 | 0.00 | 2.29 | 0.04 | 0.00 | 2.33 | 0.0 s |
 | 6 | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | 0.0 s |
-| **Media de los turnos con LLM (5)** | 0.00 | 0.01 | 4.69 | 0.04 | 0.00 | 4.74 | |
+| **Media de los turnos con LLM (5)** | 0.00 | 0.01 | 4.83 | 0.04 | 0.00 | 4.88 | |
 | **Media de los turnos sin LLM (1)** | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | |
 

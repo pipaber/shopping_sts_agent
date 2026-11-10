@@ -5,7 +5,7 @@
 - Tipo: `atributo_no_verificable`
 - Qué se prueba: El usuario pregunta por la valoración de los clientes, un dato que el catálogo no trae. El agente debe decir que no consta, sin inventarlo y sin tocar el carrito. La comprobación mira el texto completo del producto en el catálogo: si no menciona valoraciones, la respuesta tiene que decir que no consta.
 
-## Turno 1 (8.7 s)
+## Turno 1 (7.6 s)
 
 **Usuario (texto):** Busco una sartén antiadherente.
 
@@ -19,7 +19,7 @@
 
 > `@elegida` = `B08C73K4CV` (candidate:1): ilimiti Sartenes Induccion Antiadherentes 20 cm, Sarten Piedra Aluminio Fundido, Libre de PFOA, Apta para Todo Tipo de Cocina
 
-## Turno 2 (9.7 s)
+## Turno 2 (9.0 s)
 
 **Usuario (texto):** ¿Qué valoración le dan los clientes a la primera?
 
@@ -49,7 +49,7 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.05 | 8.61 | 0.03 | 0.00 | 8.69 | 0.0 s |
-| 2 | 0.00 | 0.04 | 9.65 | 0.03 | 0.00 | 9.72 | 0.0 s |
-| **Media de los turnos con LLM (2)** | 0.00 | 0.04 | 9.13 | 0.03 | 0.00 | 9.21 | |
+| 1 | 0.00 | 0.03 | 7.54 | 0.03 | 0.00 | 7.60 | 0.0 s |
+| 2 | 0.00 | 0.03 | 8.92 | 0.03 | 0.00 | 8.98 | 0.0 s |
+| **Media de los turnos con LLM (2)** | 0.00 | 0.03 | 8.23 | 0.03 | 0.00 | 8.29 | |
 

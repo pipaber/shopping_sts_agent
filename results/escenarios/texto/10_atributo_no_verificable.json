@@ -6,9 +6,9 @@
   "voice": false,
   "input": "texto",
   "audio_source": null,
-  "user_id": "eval-d1aab68f-10_atributo_no_verificable",
+  "user_id": "eval-6b9dd32e-10_atributo_no_verificable",
   "threads": [
-    "eval-d1aab68f-10_atributo_no_verificable-c1"
+    "eval-6b9dd32e-10_atributo_no_verificable-c1"
   ],
   "names": {
     "elegida": "B08C73K4CV"
@@ -41,18 +41,18 @@
       ],
       "timings": {
         "asr": 0.0,
-        "retrieval": 0.048,
-        "llm": 8.612,
-        "tools": 0.029,
+        "retrieval": 0.032,
+        "llm": 7.538,
+        "tools": 0.026,
         "tts": 0.0,
-        "total": 8.689
+        "total": 7.596
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-d1aab68f-10_atributo_no_verificable-c1",
+        "cart_id": "eval-6b9dd32e-10_atributo_no_verificable-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -71,7 +71,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-d1aab68f-10_atributo_no_verificable-c1",
+        "cart_id": "eval-6b9dd32e-10_atributo_no_verificable-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -191,18 +191,18 @@
       ],
       "timings": {
         "asr": 0.0,
-        "retrieval": 0.042,
-        "llm": 9.65,
-        "tools": 0.032,
+        "retrieval": 0.028,
+        "llm": 8.924,
+        "tools": 0.026,
         "tts": 0.0,
-        "total": 9.724
+        "total": 8.978
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-d1aab68f-10_atributo_no_verificable-c1",
+        "cart_id": "eval-6b9dd32e-10_atributo_no_verificable-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -278,7 +278,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-d1aab68f-10_atributo_no_verificable-c1",
+        "cart_id": "eval-6b9dd32e-10_atributo_no_verificable-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -382,7 +382,7 @@
   ],
   "final": {
     "snapshot": {
-      "cart_id": "eval-d1aab68f-10_atributo_no_verificable-c1",
+      "cart_id": "eval-6b9dd32e-10_atributo_no_verificable-c1",
       "state": {
         "budget_cents": null,
         "preferences": [],
@@ -487,12 +487,12 @@
         "max": 0.0
       },
       "retrieval": {
-        "mean": 0.04,
-        "max": 0.05
+        "mean": 0.03,
+        "max": 0.03
       },
       "llm": {
-        "mean": 9.13,
-        "max": 9.65
+        "mean": 8.23,
+        "max": 8.92
       },
       "tools": {
         "mean": 0.03,
@@ -503,8 +503,8 @@
         "max": 0.0
       },
       "total": {
-        "mean": 9.21,
-        "max": 9.72
+        "mean": 8.29,
+        "max": 8.98
       }
     },
     "with_llm": {
@@ -514,12 +514,12 @@
         "max": 0.0
       },
       "retrieval": {
-        "mean": 0.04,
-        "max": 0.05
+        "mean": 0.03,
+        "max": 0.03
       },
       "llm": {
-        "mean": 9.13,
-        "max": 9.65
+        "mean": 8.23,
+        "max": 8.92
       },
       "tools": {
         "mean": 0.03,
@@ -530,8 +530,8 @@
         "max": 0.0
       },
       "total": {
-        "mean": 9.21,
-        "max": 9.72
+        "mean": 8.29,
+        "max": 8.98
       }
     },
     "without_llm": {

@@ -5,7 +5,7 @@
 - Tipo: `agotado_al_confirmar`
 - Qué se prueba: Con la cotización pendiente, el producto se agota. La confirmación debe rechazarse sin cambios y el agente debe proponer alternativas con existencias. El usuario cambia el producto por la primera alternativa y compra.
 
-## Turno 1 (7.7 s)
+## Turno 1 (7.8 s)
 
 **Usuario (texto):** Busco un cuaderno de tapa dura.
 
@@ -22,7 +22,7 @@
 
 > **Suceso externo:** la tienda deja `B08VMR6YL7` (@elegido) con precio 6,00 € y existencias 5.
 
-## Turno 2 (4.7 s)
+## Turno 2 (4.8 s)
 
 **Usuario (texto):** Añade dos del primero.
 
@@ -34,7 +34,7 @@
 
 - ✔ `cart(lines=[{"product": "@elegido", "quantity": 2}])` — carrito: 2 × B08VMR6YL7
 
-## Turno 3 (2.3 s)
+## Turno 3 (2.4 s)
 
 **Usuario (texto):** Cierra el pedido.
 
@@ -53,7 +53,7 @@
 
 **Usuario (texto):** Sí.
 
-- `confirmar_pedido(quote_id="48d24ab95d374917ad313465ce2a49fb")` → RECHAZADO: [agotado] El producto B08VMR6YL7 está agotado.
+- `confirmar_pedido(quote_id="f25cdb9ef72442a797d25d929b2b7614")` → RECHAZADO: [agotado] El producto B08VMR6YL7 está agotado.
 
 **Agente:** No he registrado el pedido porque la tienda cambió después de la cotización. «Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 2, Azul Cobalto y…» se ha agotado. Como alternativa tengo: «Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 3: Rosa Claro, Rosa…» a 10,16 €, con 39 en existencias; «Arteza Cuaderno de dibujo, 5.5x8.5” (14 x 21,6 cm), pack 3 blocs de…» a 11,47 €, con 43 en existencias; «Arteza Bloc de dibujo para pintura acrílica | Tamaño A3 | 16 hojas |…» a 15,18 €, con 2 en existencias. ¿Qué prefieres?
 
@@ -66,7 +66,7 @@
 
 > `@alternativa` = `B08VMTLR4V` (candidate:1): Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 3: Rosa Claro, Rosa Oscuro, Granate], Pack Cuadernos de Dibujo, Diarios de Tapa Dura, con Rayas, en Blanco y con Puntos [96 Hojas]
 
-## Turno 5 (6.4 s)
+## Turno 5 (6.6 s)
 
 **Usuario (texto):** Quita ese cuaderno y ponme dos de la primera alternativa.
 
@@ -79,7 +79,7 @@
 
 - ✘ `cart(lines=[{"product": "@alternativa", "quantity": 2}])` — carrito: 2 × B07XCPXLBW
 
-## Turno 6 (2.9 s)
+## Turno 6 (2.4 s)
 
 **Usuario (texto):** Cierra el pedido.
 
@@ -96,7 +96,7 @@
 
 **Usuario (texto):** Sí.
 
-- `confirmar_pedido(quote_id="41c39b7a1a3b454e9a2b727a2757925e")` → OK: pedido registrado
+- `confirmar_pedido(quote_id="14b0aa80ef384e73bae8a3434d9f7a3e")` → OK: pedido registrado
 
 **Agente:** Pedido número 1 registrado: 2 unidades de «Arteza Cuaderno de dibujo, 5.5x8.5” (14 x 21,6 cm), pack 3 blocs de…» a 11,47 € cada una, 22,94 €. Total: 22,94 €. Gracias por tu compra.
 
@@ -127,13 +127,13 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.03 | 7.62 | 0.03 | 0.00 | 7.68 | 0.0 s |
-| 2 | 0.00 | 0.00 | 4.62 | 0.05 | 0.00 | 4.67 | 0.0 s |
-| 3 | 0.00 | 0.00 | 2.30 | 0.03 | 0.00 | 2.33 | 0.0 s |
+| 1 | 0.00 | 0.03 | 7.76 | 0.02 | 0.00 | 7.80 | 0.0 s |
+| 2 | 0.00 | 0.00 | 4.77 | 0.05 | 0.00 | 4.82 | 0.0 s |
+| 3 | 0.00 | 0.00 | 2.33 | 0.04 | 0.00 | 2.37 | 0.0 s |
 | 4 | 0.00 | 0.03 | 0.00 | 0.01 | 0.00 | 0.04 | 0.0 s |
-| 5 | 0.00 | 0.00 | 6.37 | 0.08 | 0.00 | 6.44 | 0.0 s |
-| 6 | 0.00 | 0.00 | 2.81 | 0.04 | 0.00 | 2.85 | 0.0 s |
+| 5 | 0.00 | 0.00 | 6.53 | 0.06 | 0.00 | 6.59 | 0.0 s |
+| 6 | 0.00 | 0.00 | 2.41 | 0.03 | 0.00 | 2.44 | 0.0 s |
 | 7 | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | 0.0 s |
-| **Media de los turnos con LLM (5)** | 0.00 | 0.01 | 4.74 | 0.04 | 0.00 | 4.79 | |
+| **Media de los turnos con LLM (5)** | 0.00 | 0.01 | 4.76 | 0.04 | 0.00 | 4.80 | |
 | **Media de los turnos sin LLM (2)** | 0.00 | 0.01 | 0.00 | 0.02 | 0.00 | 0.03 | |
 

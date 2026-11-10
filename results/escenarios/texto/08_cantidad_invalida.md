@@ -5,7 +5,7 @@
 - Tipo: `cantidad_invalida`
 - Qué se prueba: El usuario pide cero unidades y después una cantidad negativa. Ninguna de las dos debe llegar al carrito.
 
-## Turno 1 (8.9 s)
+## Turno 1 (7.8 s)
 
 **Usuario (texto):** Busco un cargador USB C.
 
@@ -21,7 +21,7 @@
 
 > **Suceso externo:** la tienda deja `B07MBYH3F7` (@elegido) con precio 8,00 € y existencias 20.
 
-## Turno 2 (5.0 s)
+## Turno 2 (4.6 s)
 
 **Usuario (texto):** Añade cero unidades del primero.
 
@@ -33,7 +33,7 @@
 
 - ✔ `cart(empty=true)` — carrito: vacío
 
-## Turno 3 (6.0 s)
+## Turno 3 (5.4 s)
 
 **Usuario (texto):** Añade menos dos unidades del primero.
 
@@ -64,8 +64,8 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.03 | 8.80 | 0.03 | 0.00 | 8.86 | 0.0 s |
-| 2 | 0.00 | 0.00 | 4.97 | 0.04 | 0.00 | 5.00 | 0.0 s |
-| 3 | 0.00 | 0.00 | 6.00 | 0.03 | 0.00 | 6.03 | 0.0 s |
-| **Media de los turnos con LLM (3)** | 0.00 | 0.01 | 6.59 | 0.03 | 0.00 | 6.63 | |
+| 1 | 0.00 | 0.03 | 7.75 | 0.03 | 0.00 | 7.81 | 0.0 s |
+| 2 | 0.00 | 0.00 | 4.59 | 0.03 | 0.00 | 4.62 | 0.0 s |
+| 3 | 0.00 | 0.00 | 5.40 | 0.03 | 0.00 | 5.43 | 0.0 s |
+| **Media de los turnos con LLM (3)** | 0.00 | 0.01 | 5.91 | 0.03 | 0.00 | 5.96 | |
 

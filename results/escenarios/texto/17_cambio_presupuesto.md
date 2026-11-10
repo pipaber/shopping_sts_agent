@@ -5,7 +5,7 @@
 - Tipo: `cambio_presupuesto`
 - Qué se prueba: Con tres unidades en el carrito (30,00 €) el usuario baja el presupuesto a 25 €. Cerrar el pedido debe rechazarse sin que el agente cambie el carrito por su cuenta. Con dos unidades (20,00 €) sí se puede comprar.
 
-## Turno 1 (8.5 s)
+## Turno 1 (8.7 s)
 
 **Usuario (texto):** Busco una taza de desayuno. Tengo 40 euros.
 
@@ -23,7 +23,7 @@
 
 > **Suceso externo:** la tienda deja `B08ZLX5MXL` (@elegida) con precio 10,00 € y existencias 20.
 
-## Turno 2 (5.1 s)
+## Turno 2 (5.4 s)
 
 **Usuario (texto):** Añade tres de la primera.
 
@@ -35,7 +35,7 @@
 
 - ✔ `cart(lines=[{"product": "@elegida", "quantity": 3}])` — carrito: 3 × B08ZLX5MXL
 
-## Turno 3 (5.9 s)
+## Turno 3 (6.1 s)
 
 **Usuario (texto):** Mejor baja mi presupuesto a 25 euros.
 
@@ -48,7 +48,7 @@
 - ✔ `budget(cents=2500)` — presupuesto en el estado: 2500
 - ✔ `cart(lines=[{"product": "@elegida", "quantity": 3}])` — carrito: 3 × B08ZLX5MXL
 
-## Turno 4 (4.6 s)
+## Turno 4 (4.8 s)
 
 **Usuario (texto):** Cierra el pedido.
 
@@ -62,7 +62,7 @@
 - ✔ `awaiting_confirmation(value=false)` — esperando confirmación: no
 - ✔ `cart(lines=[{"product": "@elegida", "quantity": 3}])` — carrito: 3 × B08ZLX5MXL
 
-## Turno 5 (5.2 s)
+## Turno 5 (5.4 s)
 
 **Usuario (texto):** Entonces deja solo dos.
 
@@ -74,7 +74,7 @@
 
 - ✔ `cart(lines=[{"product": "@elegida", "quantity": 2}])` — carrito: 2 × B08ZLX5MXL
 
-## Turno 6 (2.5 s)
+## Turno 6 (2.6 s)
 
 **Usuario (texto):** Cierra el pedido.
 
@@ -91,7 +91,7 @@
 
 **Usuario (texto):** Sí.
 
-- `confirmar_pedido(quote_id="3c195096d454426d892ffb7604136d49")` → OK: pedido registrado
+- `confirmar_pedido(quote_id="19e5466766334fe88fff694e7987de6b")` → OK: pedido registrado
 
 **Agente:** Pedido número 1 registrado: 2 unidades de «Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_…» a 10,00 € cada una, 20,00 €. Total: 20,00 €. Gracias por tu compra.
 
@@ -122,13 +122,13 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.04 | 8.42 | 0.03 | 0.00 | 8.49 | 0.0 s |
-| 2 | 0.00 | 0.00 | 5.04 | 0.05 | 0.00 | 5.09 | 0.0 s |
-| 3 | 0.00 | 0.00 | 5.85 | 0.03 | 0.00 | 5.88 | 0.0 s |
-| 4 | 0.00 | 0.00 | 4.62 | 0.02 | 0.00 | 4.64 | 0.0 s |
-| 5 | 0.00 | 0.00 | 5.13 | 0.04 | 0.00 | 5.17 | 0.0 s |
-| 6 | 0.00 | 0.00 | 2.42 | 0.04 | 0.00 | 2.46 | 0.0 s |
+| 1 | 0.00 | 0.03 | 8.66 | 0.03 | 0.00 | 8.72 | 0.0 s |
+| 2 | 0.00 | 0.00 | 5.32 | 0.05 | 0.00 | 5.37 | 0.0 s |
+| 3 | 0.00 | 0.00 | 6.10 | 0.03 | 0.00 | 6.14 | 0.0 s |
+| 4 | 0.00 | 0.00 | 4.73 | 0.03 | 0.00 | 4.76 | 0.0 s |
+| 5 | 0.00 | 0.00 | 5.36 | 0.05 | 0.00 | 5.42 | 0.0 s |
+| 6 | 0.00 | 0.00 | 2.52 | 0.04 | 0.00 | 2.56 | 0.0 s |
 | 7 | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | 0.0 s |
-| **Media de los turnos con LLM (6)** | 0.00 | 0.01 | 5.25 | 0.04 | 0.00 | 5.29 | |
+| **Media de los turnos con LLM (6)** | 0.00 | 0.00 | 5.45 | 0.04 | 0.00 | 5.49 | |
 | **Media de los turnos sin LLM (1)** | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | |
 

@@ -5,7 +5,7 @@
 - Tipo: `stock_insuficiente`
 - Qué se prueba: Del primer candidato quedan tres unidades y el usuario pide cinco: el carrito no debe cambiar. Después pide las tres que quedan.
 
-## Turno 1 (6.6 s)
+## Turno 1 (6.8 s)
 
 **Usuario (texto):** Busco una linterna LED.
 
@@ -21,7 +21,7 @@
 
 > **Suceso externo:** la tienda deja `B096M7FCYF` (@elegida) con precio 7,00 € y existencias 3.
 
-## Turno 2 (5.7 s)
+## Turno 2 (5.5 s)
 
 **Usuario (texto):** Añade cinco de la primera.
 
@@ -34,7 +34,7 @@
 - ✔ `cart(empty=true)` — carrito: vacío
 - ✔ `orders(count=0)` — pedidos registrados: 0
 
-## Turno 3 (5.4 s)
+## Turno 3 (5.5 s)
 
 **Usuario (texto):** Pues ponme las tres que quedan.
 
@@ -65,8 +65,8 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.03 | 6.55 | 0.03 | 0.00 | 6.61 | 0.0 s |
-| 2 | 0.00 | 0.00 | 5.70 | 0.03 | 0.00 | 5.73 | 0.0 s |
-| 3 | 0.00 | 0.00 | 5.35 | 0.04 | 0.00 | 5.39 | 0.0 s |
-| **Media de los turnos con LLM (3)** | 0.00 | 0.01 | 5.87 | 0.03 | 0.00 | 5.91 | |
+| 1 | 0.00 | 0.03 | 6.73 | 0.03 | 0.00 | 6.79 | 0.0 s |
+| 2 | 0.00 | 0.00 | 5.51 | 0.02 | 0.00 | 5.53 | 0.0 s |
+| 3 | 0.00 | 0.00 | 5.44 | 0.05 | 0.00 | 5.49 | 0.0 s |
+| **Media de los turnos con LLM (3)** | 0.00 | 0.01 | 5.89 | 0.03 | 0.00 | 5.94 | |
 

@@ -21,7 +21,7 @@
 
 > **Suceso externo:** la tienda deja `B085CHJ9BD` (@elegida) con precio 15,00 € y existencias 10.
 
-## Turno 2 (5.2 s)
+## Turno 2 (5.5 s)
 
 **Usuario (texto):** Añade tres de la primera.
 
@@ -33,7 +33,7 @@
 
 - ✔ `cart(lines=[{"product": "@elegida", "quantity": 3}])` — carrito: 3 × B085CHJ9BD
 
-## Turno 3 (2.3 s)
+## Turno 3 (2.4 s)
 
 **Usuario (texto):** Quiero cerrar el pedido.
 
@@ -52,7 +52,7 @@
 
 **Usuario (texto):** Sí.
 
-- `confirmar_pedido(quote_id="9630a7e1604b444ca0529a1a1cff313c")` → RECHAZADO: [stock_insuficiente] Solo queda 1 unidad del producto B085CHJ9BD y se pidieron 3.
+- `confirmar_pedido(quote_id="cc1739b0021543ebb12c827cbc9951bd")` → RECHAZADO: [stock_insuficiente] Solo queda 1 unidad del producto B085CHJ9BD y se pidieron 3.
 
 **Agente:** No he registrado el pedido porque la tienda cambió después de la cotización. De «Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege…» solo queda 1 unidad y habías pedido 3. Puedo dejarlo en 1. Como alternativa tengo: «Lámpara Escritorio LED, Flexo de Escritorio (Cuidado Ocular, Puerto…» a 23,23 €, con 16 en existencias; «Lámpara Escritorio LED,JUKSTG 5 Modos 10 Niveles de Brillo Lámpara de…» a 34,86 €, con 25 en existencias; «Lámpara de escritorio LED Lámpara de lectura de brazo Eye-Care…» a 23,86 €, con 34 en existencias. ¿Qué prefieres?
 
@@ -63,7 +63,7 @@
 - ✔ `cart(lines=[{"product": "@elegida", "quantity": 3}])` — carrito: 3 × B085CHJ9BD
 - ✔ `stock(product="@elegida", equals=1)` — existencias de B085CHJ9BD: 1
 
-## Turno 5 (6.3 s)
+## Turno 5 (6.7 s)
 
 **Usuario (texto):** Vale, déjalo en una.
 
@@ -94,7 +94,7 @@
 
 **Usuario (texto):** Sí.
 
-- `confirmar_pedido(quote_id="ee8e7d1f7ddf4d4b9778e996034772e0")` → OK: pedido registrado
+- `confirmar_pedido(quote_id="0c65eaf5af2944afab8517dfb5dd2ba2")` → OK: pedido registrado
 
 **Agente:** Pedido número 1 registrado: 1 unidad de «Lámpara Escritorio LED, Flexo de Escritorio (Cuidado Ocular, Puerto…» a 23,23 € cada una, 23,23 €. Total: 23,23 €. Gracias por tu compra.
 
@@ -106,7 +106,7 @@
 
 **Usuario (texto):** Sí.
 
-- `confirmar_pedido(quote_id="ee8e7d1f7ddf4d4b9778e996034772e0")` → OK: el pedido ya estaba registrado; no se duplicó
+- `confirmar_pedido(quote_id="0c65eaf5af2944afab8517dfb5dd2ba2")` → OK: el pedido ya estaba registrado; no se duplicó
 
 **Agente:** Ese pedido ya estaba registrado con el número 1, así que no lo he duplicado. Total: 23,23 €.
 
@@ -137,14 +137,14 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.03 | 7.42 | 0.03 | 0.00 | 7.48 | 0.0 s |
-| 2 | 0.00 | 0.00 | 5.18 | 0.04 | 0.00 | 5.22 | 0.0 s |
-| 3 | 0.00 | 0.00 | 2.28 | 0.04 | 0.00 | 2.32 | 0.0 s |
-| 4 | 0.00 | 0.03 | 0.00 | 0.01 | 0.00 | 0.04 | 0.0 s |
-| 5 | 0.00 | 0.00 | 6.28 | 0.07 | 0.00 | 6.35 | 0.0 s |
-| 6 | 0.00 | 0.00 | 2.06 | 0.04 | 0.00 | 2.09 | 0.0 s |
-| 7 | 0.00 | 0.00 | 0.00 | 0.02 | 0.00 | 0.02 | 0.0 s |
-| 8 | 0.00 | 0.00 | 0.00 | 0.02 | 0.00 | 0.02 | 0.0 s |
-| **Media de los turnos con LLM (5)** | 0.00 | 0.01 | 4.64 | 0.04 | 0.00 | 4.69 | |
+| 1 | 0.00 | 0.03 | 7.46 | 0.03 | 0.00 | 7.52 | 0.0 s |
+| 2 | 0.00 | 0.00 | 5.43 | 0.05 | 0.00 | 5.48 | 0.0 s |
+| 3 | 0.00 | 0.00 | 2.36 | 0.04 | 0.00 | 2.40 | 0.0 s |
+| 4 | 0.00 | 0.02 | 0.00 | 0.01 | 0.00 | 0.04 | 0.0 s |
+| 5 | 0.00 | 0.00 | 6.64 | 0.07 | 0.00 | 6.71 | 0.0 s |
+| 6 | 0.00 | 0.00 | 2.09 | 0.04 | 0.00 | 2.13 | 0.0 s |
+| 7 | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | 0.0 s |
+| 8 | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | 0.0 s |
+| **Media de los turnos con LLM (5)** | 0.00 | 0.01 | 4.80 | 0.04 | 0.00 | 4.85 | |
 | **Media de los turnos sin LLM (3)** | 0.00 | 0.01 | 0.00 | 0.02 | 0.00 | 0.03 | |
 

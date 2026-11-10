@@ -1,0 +1,714 @@
+{
+  "id": "02_pedido_ambiguo",
+  "title": "Pedido ambiguo que requiere aclaración",
+  "kind": "pedido_ambiguo",
+  "description": "El primer mensaje no dice qué producto se busca: el agente debe preguntar en lugar de suponer. Después el usuario concreta el producto y el presupuesto, y añade una unidad.",
+  "voice": true,
+  "input": "texto",
+  "audio_source": null,
+  "user_id": "eval-c2e8c796-02_pedido_ambiguo",
+  "threads": [
+    "eval-c2e8c796-02_pedido_ambiguo-c1"
+  ],
+  "names": {
+    "elegido": "B07TXSV5X6"
+  },
+  "steps": [
+    {
+      "kind": "turn",
+      "turn": 1,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Quiero comprar un regalo para mi hermana.",
+      "agent_input": "Quiero comprar un regalo para mi hermana.",
+      "response": "¿Qué tipo de regalo estás buscando para tu hermana?",
+      "spoken_text": "¿Qué tipo de regalo estás buscando para tu hermana?",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "pedir_aclaracion",
+          "args": {
+            "pregunta": "¿Qué tipo de regalo estás buscando para tu hermana?"
+          },
+          "reason": "pedir más información",
+          "ok": true,
+          "summary": "pregunta enviada al usuario",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 1.743,
+        "tools": 0.025,
+        "tts": 0.0,
+        "total": 1.767
+      },
+      "llm_steps": 1,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-c2e8c796-02_pedido_ambiguo-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {}
+      },
+      "after": {
+        "cart_id": "eval-c2e8c796-02_pedido_ambiguo-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": "¿Qué tipo de regalo estás buscando para tu hermana?",
+          "quote": null,
+          "order": null,
+          "candidates": [],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {}
+      },
+      "checks": [
+        {
+          "check": "asked_clarification",
+          "params": {},
+          "ok": true,
+          "detail": "pidió aclaración"
+        },
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        },
+        {
+          "check": "orders",
+          "params": {
+            "count": 0
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 0"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 2,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Unos auriculares bluetooth, y no quiero gastar más de 50 euros.",
+      "agent_input": "Unos auriculares bluetooth, y no quiero gastar más de 50 euros.",
+      "response": "Tengo auriculares Bluetooth de WDGP por 32,06 euros, de Mgrett en Rosa1 por 9,18 euros, de DZTA en White1 por 14,19 euros, de Leynatic con Q13S1 por 7,71 euros y de OVIFM con color 2 por 4,61 euros. ¿Te interesa alguno? He anotado un presupuesto de 50,00 €.",
+      "spoken_text": "Tengo auriculares Bluetooth de WDGP por treinta y dos euros con seis céntimos, de Mgrett en Rosa1 por nueve euros con dieciocho céntimos, de DZTA en White1 por catorce euros con diecinueve céntimos, de Leynatic con por siete euros con setenta y un céntimos y de OVIFM con color dos por cuatro euros con sesenta y un céntimos. ¿Te interesa alguno? He anotado un presupuesto de cincuenta euros.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "fijar_presupuesto",
+          "args": {
+            "importe_eur": 50
+          },
+          "reason": "el usuario da su gasto máximo",
+          "ok": true,
+          "summary": "presupuesto fijado en 50,00 €.",
+          "issues": []
+        },
+        {
+          "tool": "buscar_productos",
+          "args": {
+            "consulta": "auriculares bluetooth"
+          },
+          "reason": "buscar auriculares bluetooth dentro del presupuesto",
+          "ok": true,
+          "summary": "estos son ahora los CANDIDATOS, del más al menos relevante:\n[1] id=B07TXSV5X6 | Auriculares Bluetooth,Auriculares Inalámbricos Bluetooth táctiles, Auriculares estéreo Bluetooth IPX7 a Prueba de Agua, con Estuche de Carga para Apple Airpods Android iPhone | marca: WDGP | color: desconocido | precio: 32,06 € | existencias: 29 | características (extracto): desconocido | descripción: desconocido\n[2] id=B081C31KV4 | Auriculares Bluetooth, 5.0 Auriculares Bluetooth In Ear Inalámbricos Auricular Estéreo en Oreja Manos Libres con Caja de Carga Portátil para Airpods Android/iPhone (Rosa1) | marca: Mgrett | color: Rosa1 | precio: 9,18 € | existencias: 14 | características (extracto): Compatibilidad universal: Mini auriculares estéreo inalámbricos blanco Bluetooth 5.0 Micrófono universal Compatible con la mayoría de los dispositivos Auriculares Bluetooth. Diseño perfecto: Súper ligero y el diseño del estabilizador… | descripción: Este Auricular Bluetooth es compatible con la mayoría de los dispositivos Auricular Bluetooth, están diseñados ergonómicamente para un uso prolongado sin dolor. Las manos libres y la reproducción de…\n[3] id=B07VN19JZG | DAZZ Auriculares Bluetooth, Auriculares inalámbricos Bluetooth In-Ear Mini Auriculares Auriculares Deportivos para Apple Airpods iPhone, Android Blanco | marca: DZTA | color: White1 | precio: 14,19 € | existencias: 21 | características (extracto): desconocido | descripción: desconocido\n[4] id=B07WMY33SQ | Auriculares Inalámbricos Bluetooth 5.0 con Estuche de Carga, Auriculares Estéreo TWS Auriculares con Llamadas Binaurales de Micrófono, Emparejamiento en un Solo Paso para Correr Deportivo | marca: Leynatic | color: Q13S1 | precio: 7,71 € | existencias: 10 | características (extracto): ♫【TRULY WIRELESS EARBUDS TWS & BLUETOOTH 5. 0】los auriculares inalámbricos adoptan la tecnología Bluetooth 5.0 más avanzada que garantiza una transmisión de datos estable y un bajo consumo de energía. Maravillosa experiencia del cliente… | descripción: ◕ Estos auriculares están listos para emparejarse de inmediato, solo necesita encender el Bluetooth en su teléfono celular iphone y buscar \"Q13S\", luego se conectarían a su teléfono o cualquier…\n[5] id=B08THP4FCC | Auriculares Inalambricos Bluetooth, Auriculares Bluetooth 5.1 con Microfono, Auricular In-Ear, Auriculares Inalambricos Deporte con Estéreo de HiFi, Control Táctil, 20 Horas de Reproducción | marca: OVIFM | color: 2 | precio: 4,61 € | existencias: 24 | características (extracto): 【Auriculares Inalámbricos Bluetooth 5.1】 Los auriculares bluetooth utilizan la tecnología para lograr la separación inalámbrica de los canales izquierdo y derecho de Bluetooth para experimentar un estéreo de HiFi, mientras que la… | descripción: el microfono es muy buena",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.029,
+        "llm": 8.542,
+        "tools": 0.029,
+        "tts": 0.0,
+        "total": 8.6
+      },
+      "llm_steps": 3,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [
+        "auriculares bluetooth"
+      ],
+      "before": {
+        "cart_id": "eval-c2e8c796-02_pedido_ambiguo-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": "¿Qué tipo de regalo estás buscando para tu hermana?",
+          "quote": null,
+          "order": null,
+          "candidates": [],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {}
+      },
+      "after": {
+        "cart_id": "eval-c2e8c796-02_pedido_ambiguo-c1",
+        "state": {
+          "budget_cents": 5000,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07TXSV5X6",
+              "title": "Auriculares Bluetooth,Auriculares Inalámbricos Bluetooth táctiles, Auriculares estéreo Bluetooth IPX7 a Prueba de Agua, con Estuche de Carga para Apple Airpods Android iPhone",
+              "brand": "WDGP",
+              "price_cents": 3206,
+              "stock": 29
+            },
+            {
+              "product_id": "B081C31KV4",
+              "title": "Auriculares Bluetooth, 5.0 Auriculares Bluetooth In Ear Inalámbricos Auricular Estéreo en Oreja Manos Libres con Caja de Carga Portátil para Airpods Android/iPhone (Rosa1)",
+              "brand": "Mgrett",
+              "price_cents": 918,
+              "stock": 14
+            },
+            {
+              "product_id": "B07VN19JZG",
+              "title": "DAZZ Auriculares Bluetooth, Auriculares inalámbricos Bluetooth In-Ear Mini Auriculares Auriculares Deportivos para Apple Airpods iPhone, Android Blanco",
+              "brand": "DZTA",
+              "price_cents": 1419,
+              "stock": 21
+            },
+            {
+              "product_id": "B07WMY33SQ",
+              "title": "Auriculares Inalámbricos Bluetooth 5.0 con Estuche de Carga, Auriculares Estéreo TWS Auriculares con Llamadas Binaurales de Micrófono, Emparejamiento en un Solo Paso para Correr Deportivo",
+              "brand": "Leynatic",
+              "price_cents": 771,
+              "stock": 10
+            },
+            {
+              "product_id": "B08THP4FCC",
+              "title": "Auriculares Inalambricos Bluetooth, Auriculares Bluetooth 5.1 con Microfono, Auricular In-Ear, Auriculares Inalambricos Deporte con Estéreo de HiFi, Control Táctil, 20 Horas de Reproducción",
+              "brand": "OVIFM",
+              "price_cents": 461,
+              "stock": 24
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {
+          "B07TXSV5X6": {
+            "price_cents": 3206,
+            "stock": 29
+          },
+          "B07VN19JZG": {
+            "price_cents": 1419,
+            "stock": 21
+          },
+          "B07WMY33SQ": {
+            "price_cents": 771,
+            "stock": 10
+          },
+          "B081C31KV4": {
+            "price_cents": 918,
+            "stock": 14
+          },
+          "B08THP4FCC": {
+            "price_cents": 461,
+            "stock": 24
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "budget",
+          "params": {
+            "cents": 5000
+          },
+          "ok": true,
+          "detail": "presupuesto en el estado: 5000"
+        },
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        }
+      ]
+    },
+    {
+      "kind": "remember",
+      "name": "elegido",
+      "ref": "candidate:1",
+      "product_id": "B07TXSV5X6",
+      "title": "Auriculares Bluetooth,Auriculares Inalámbricos Bluetooth táctiles, Auriculares estéreo Bluetooth IPX7 a Prueba de Agua, con Estuche de Carga para Apple Airpods Android iPhone"
+    },
+    {
+      "kind": "event",
+      "event": "set_offer",
+      "product": "@elegido",
+      "product_id": "B07TXSV5X6",
+      "price_cents": 1990,
+      "stock": 20
+    },
+    {
+      "kind": "turn",
+      "turn": 3,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Ponme uno del primero.",
+      "agent_input": "Ponme uno del primero.",
+      "response": "Hecho, añadido uno de los auriculares al carrito. En el carrito hay 1 unidad de «Auriculares Bluetooth,Auriculares Inalámbricos Bluetooth táctiles…» a 19,90 € cada una, 19,90 €. Total: 19,90 €. Tu presupuesto es de 50,00 € y te quedan 30,10 €.",
+      "spoken_text": "Hecho, añadido uno de los auriculares al carrito. En el carrito hay una unidad de Auriculares Bluetooth a diecinueve euros con noventa céntimos cada una, diecinueve euros con noventa céntimos. Total: diecinueve euros con noventa céntimos. Tu presupuesto es de cincuenta euros y te quedan treinta euros con diez céntimos.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "agregar_al_carrito",
+          "args": {
+            "product_id": "B07TXSV5X6",
+            "cantidad": 1
+          },
+          "reason": "añadir un auricular del primer candidato",
+          "ok": true,
+          "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B07TXSV5X6 | Auriculares Bluetooth,Auriculares Inalámbricos Bluetooth táctiles… | 1 unidad × 19,90 € = 19,90 € | existencias: 20\nTotal del carrito: 19,90 €",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 4.712,
+        "tools": 0.052,
+        "tts": 0.0,
+        "total": 4.764
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [
+        "primero"
+      ],
+      "before": {
+        "cart_id": "eval-c2e8c796-02_pedido_ambiguo-c1",
+        "state": {
+          "budget_cents": 5000,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07TXSV5X6",
+              "title": "Auriculares Bluetooth,Auriculares Inalámbricos Bluetooth táctiles, Auriculares estéreo Bluetooth IPX7 a Prueba de Agua, con Estuche de Carga para Apple Airpods Android iPhone",
+              "brand": "WDGP",
+              "price_cents": 3206,
+              "stock": 29
+            },
+            {
+              "product_id": "B081C31KV4",
+              "title": "Auriculares Bluetooth, 5.0 Auriculares Bluetooth In Ear Inalámbricos Auricular Estéreo en Oreja Manos Libres con Caja de Carga Portátil para Airpods Android/iPhone (Rosa1)",
+              "brand": "Mgrett",
+              "price_cents": 918,
+              "stock": 14
+            },
+            {
+              "product_id": "B07VN19JZG",
+              "title": "DAZZ Auriculares Bluetooth, Auriculares inalámbricos Bluetooth In-Ear Mini Auriculares Auriculares Deportivos para Apple Airpods iPhone, Android Blanco",
+              "brand": "DZTA",
+              "price_cents": 1419,
+              "stock": 21
+            },
+            {
+              "product_id": "B07WMY33SQ",
+              "title": "Auriculares Inalámbricos Bluetooth 5.0 con Estuche de Carga, Auriculares Estéreo TWS Auriculares con Llamadas Binaurales de Micrófono, Emparejamiento en un Solo Paso para Correr Deportivo",
+              "brand": "Leynatic",
+              "price_cents": 771,
+              "stock": 10
+            },
+            {
+              "product_id": "B08THP4FCC",
+              "title": "Auriculares Inalambricos Bluetooth, Auriculares Bluetooth 5.1 con Microfono, Auricular In-Ear, Auriculares Inalambricos Deporte con Estéreo de HiFi, Control Táctil, 20 Horas de Reproducción",
+              "brand": "OVIFM",
+              "price_cents": 461,
+              "stock": 24
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B07TXSV5X6",
+              "initial_stock": 29,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B07TXSV5X6": {
+            "price_cents": 1990,
+            "stock": 20
+          },
+          "B07VN19JZG": {
+            "price_cents": 1419,
+            "stock": 21
+          },
+          "B07WMY33SQ": {
+            "price_cents": 771,
+            "stock": 10
+          },
+          "B081C31KV4": {
+            "price_cents": 918,
+            "stock": 14
+          },
+          "B08THP4FCC": {
+            "price_cents": 461,
+            "stock": 24
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-c2e8c796-02_pedido_ambiguo-c1",
+        "state": {
+          "budget_cents": 5000,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07TXSV5X6",
+              "title": "Auriculares Bluetooth,Auriculares Inalámbricos Bluetooth táctiles, Auriculares estéreo Bluetooth IPX7 a Prueba de Agua, con Estuche de Carga para Apple Airpods Android iPhone",
+              "brand": "WDGP",
+              "price_cents": 1990,
+              "stock": 20
+            },
+            {
+              "product_id": "B081C31KV4",
+              "title": "Auriculares Bluetooth, 5.0 Auriculares Bluetooth In Ear Inalámbricos Auricular Estéreo en Oreja Manos Libres con Caja de Carga Portátil para Airpods Android/iPhone (Rosa1)",
+              "brand": "Mgrett",
+              "price_cents": 918,
+              "stock": 14
+            },
+            {
+              "product_id": "B07VN19JZG",
+              "title": "DAZZ Auriculares Bluetooth, Auriculares inalámbricos Bluetooth In-Ear Mini Auriculares Auriculares Deportivos para Apple Airpods iPhone, Android Blanco",
+              "brand": "DZTA",
+              "price_cents": 1419,
+              "stock": 21
+            },
+            {
+              "product_id": "B07WMY33SQ",
+              "title": "Auriculares Inalámbricos Bluetooth 5.0 con Estuche de Carga, Auriculares Estéreo TWS Auriculares con Llamadas Binaurales de Micrófono, Emparejamiento en un Solo Paso para Correr Deportivo",
+              "brand": "Leynatic",
+              "price_cents": 771,
+              "stock": 10
+            },
+            {
+              "product_id": "B08THP4FCC",
+              "title": "Auriculares Inalambricos Bluetooth, Auriculares Bluetooth 5.1 con Microfono, Auricular In-Ear, Auriculares Inalambricos Deporte con Estéreo de HiFi, Control Táctil, 20 Horas de Reproducción",
+              "brand": "OVIFM",
+              "price_cents": 461,
+              "stock": 24
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-c2e8c796-02_pedido_ambiguo-c1",
+              "product_id": "B07TXSV5X6",
+              "quantity": 1
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B07TXSV5X6",
+              "initial_stock": 29,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B07TXSV5X6": {
+            "price_cents": 1990,
+            "stock": 20
+          },
+          "B07VN19JZG": {
+            "price_cents": 1419,
+            "stock": 21
+          },
+          "B07WMY33SQ": {
+            "price_cents": 771,
+            "stock": 10
+          },
+          "B081C31KV4": {
+            "price_cents": 918,
+            "stock": 14
+          },
+          "B08THP4FCC": {
+            "price_cents": 461,
+            "stock": 24
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "lines": [
+              {
+                "product": "@elegido",
+                "quantity": 1
+              }
+            ]
+          },
+          "ok": true,
+          "detail": "carrito: 1 × B07TXSV5X6"
+        }
+      ]
+    }
+  ],
+  "final": {
+    "snapshot": {
+      "cart_id": "eval-c2e8c796-02_pedido_ambiguo-c1",
+      "state": {
+        "budget_cents": 5000,
+        "preferences": [],
+        "pending_clarification": null,
+        "quote": null,
+        "order": null,
+        "candidates": [
+          {
+            "product_id": "B07TXSV5X6",
+            "title": "Auriculares Bluetooth,Auriculares Inalámbricos Bluetooth táctiles, Auriculares estéreo Bluetooth IPX7 a Prueba de Agua, con Estuche de Carga para Apple Airpods Android iPhone",
+            "brand": "WDGP",
+            "price_cents": 1990,
+            "stock": 20
+          },
+          {
+            "product_id": "B081C31KV4",
+            "title": "Auriculares Bluetooth, 5.0 Auriculares Bluetooth In Ear Inalámbricos Auricular Estéreo en Oreja Manos Libres con Caja de Carga Portátil para Airpods Android/iPhone (Rosa1)",
+            "brand": "Mgrett",
+            "price_cents": 918,
+            "stock": 14
+          },
+          {
+            "product_id": "B07VN19JZG",
+            "title": "DAZZ Auriculares Bluetooth, Auriculares inalámbricos Bluetooth In-Ear Mini Auriculares Auriculares Deportivos para Apple Airpods iPhone, Android Blanco",
+            "brand": "DZTA",
+            "price_cents": 1419,
+            "stock": 21
+          },
+          {
+            "product_id": "B07WMY33SQ",
+            "title": "Auriculares Inalámbricos Bluetooth 5.0 con Estuche de Carga, Auriculares Estéreo TWS Auriculares con Llamadas Binaurales de Micrófono, Emparejamiento en un Solo Paso para Correr Deportivo",
+            "brand": "Leynatic",
+            "price_cents": 771,
+            "stock": 10
+          },
+          {
+            "product_id": "B08THP4FCC",
+            "title": "Auriculares Inalambricos Bluetooth, Auriculares Bluetooth 5.1 con Microfono, Auricular In-Ear, Auriculares Inalambricos Deporte con Estéreo de HiFi, Control Táctil, 20 Horas de Reproducción",
+            "brand": "OVIFM",
+            "price_cents": 461,
+            "stock": 24
+          }
+        ],
+        "awaiting_confirmation": false
+      },
+      "store": {
+        "orders": [],
+        "order_items": [],
+        "cart_items": [
+          {
+            "cart_id": "eval-c2e8c796-02_pedido_ambiguo-c1",
+            "product_id": "B07TXSV5X6",
+            "quantity": 1
+          }
+        ],
+        "inventory_changes": [
+          {
+            "product_id": "B07TXSV5X6",
+            "initial_stock": 29,
+            "stock": 20
+          }
+        ]
+      },
+      "offers": {
+        "B07TXSV5X6": {
+          "price_cents": 1990,
+          "stock": 20
+        },
+        "B07VN19JZG": {
+          "price_cents": 1419,
+          "stock": 21
+        },
+        "B07WMY33SQ": {
+          "price_cents": 771,
+          "stock": 10
+        },
+        "B081C31KV4": {
+          "price_cents": 918,
+          "stock": 14
+        },
+        "B08THP4FCC": {
+          "price_cents": 461,
+          "stock": 24
+        }
+      }
+    },
+    "checks": [
+      {
+        "check": "orders",
+        "params": {
+          "count": 0
+        },
+        "ok": true,
+        "detail": "pedidos registrados: 0"
+      },
+      {
+        "check": "cart",
+        "params": {
+          "lines": [
+            {
+              "product": "@elegido",
+              "quantity": 1
+            }
+          ]
+        },
+        "ok": true,
+        "detail": "carrito: 1 × B07TXSV5X6"
+      },
+      {
+        "check": "budget",
+        "params": {
+          "cents": 5000
+        },
+        "ok": true,
+        "detail": "presupuesto en el estado: 5000"
+      },
+      {
+        "check": "stock",
+        "params": {
+          "product": "@elegido",
+          "equals": 20
+        },
+        "ok": true,
+        "detail": "existencias de B07TXSV5X6: 20"
+      }
+    ]
+  },
+  "violations": [],
+  "problems": [],
+  "passed": true,
+  "timings": {
+    "all": {
+      "turns": 3,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.01,
+        "max": 0.03
+      },
+      "llm": {
+        "mean": 5.0,
+        "max": 8.54
+      },
+      "tools": {
+        "mean": 0.04,
+        "max": 0.05
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 5.04,
+        "max": 8.6
+      }
+    },
+    "with_llm": {
+      "turns": 3,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.01,
+        "max": 0.03
+      },
+      "llm": {
+        "mean": 5.0,
+        "max": 8.54
+      },
+      "tools": {
+        "mean": 0.04,
+        "max": 0.05
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 5.04,
+        "max": 8.6
+      }
+    },
+    "without_llm": {
+      "turns": 0
+    }
+  }
+}

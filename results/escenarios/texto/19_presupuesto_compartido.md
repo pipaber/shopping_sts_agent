@@ -5,7 +5,7 @@
 - Tipo: `presupuesto_compartido`
 - Qué se prueba: Con 50 € de presupuesto, dos unidades del primero (28,00 €) caben, pero otras dos del segundo (32,00 €) ya no: solo cabe una (16,00 €). El pedido final suma 44,00 €.
 
-## Turno 1 (8.3 s)
+## Turno 1 (8.8 s)
 
 **Usuario (texto):** Busco unas toallas de baño. Mi presupuesto es de 50 euros.
 
@@ -27,7 +27,7 @@
 
 > **Suceso externo:** la tienda deja `B07P67N2J1` (@segundas) con precio 16,00 € y existencias 20.
 
-## Turno 2 (5.3 s)
+## Turno 2 (5.4 s)
 
 **Usuario (texto):** Añade dos de la primera opción.
 
@@ -39,7 +39,7 @@
 
 - ✔ `cart(lines=[{"product": "@primeras", "quantity": 2}])` — carrito: 2 × B01M0TJMI7
 
-## Turno 3 (6.1 s)
+## Turno 3 (6.6 s)
 
 **Usuario (texto):** Añade también dos de la segunda opción.
 
@@ -51,7 +51,7 @@
 
 - ✔ `cart(lines=[{"product": "@primeras", "quantity": 2}])` — carrito: 2 × B01M0TJMI7
 
-## Turno 4 (5.4 s)
+## Turno 4 (5.7 s)
 
 **Usuario (texto):** Pues solo una de la segunda.
 
@@ -63,7 +63,7 @@
 
 - ✔ `cart(lines=[{"product": "@primeras", "quantity": 2}, {"product": "@segundas", "quantity": 1}])` — carrito: 2 × B01M0TJMI7, 1 × B07P67N2J1
 
-## Turno 5 (2.5 s)
+## Turno 5 (2.6 s)
 
 **Usuario (texto):** Cierra el pedido.
 
@@ -80,7 +80,7 @@
 
 **Usuario (texto):** Sí.
 
-- `confirmar_pedido(quote_id="637cf46ac89f480ea9db4be4af65741e")` → OK: pedido registrado
+- `confirmar_pedido(quote_id="a74e34884882491a9c552d4bb0bdfcf8")` → OK: pedido registrado
 
 **Agente:** Pedido número 1 registrado: 2 unidades de «Amazon Basics - Juego de toallas (colores resistentes, 2 toallas de…» a 14,00 € cada una, 28,00 €; 1 unidad de «Chantarole - Juego de Toallas baño Grandes: 1 Toalla de baño + 1…» a 16,00 € cada una, 16,00 €. Total: 44,00 €. Gracias por tu compra.
 
@@ -112,12 +112,12 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.03 | 8.23 | 0.02 | 0.00 | 8.28 | 0.0 s |
-| 2 | 0.00 | 0.00 | 5.23 | 0.04 | 0.00 | 5.27 | 0.0 s |
-| 3 | 0.00 | 0.00 | 6.06 | 0.03 | 0.00 | 6.09 | 0.0 s |
-| 4 | 0.00 | 0.00 | 5.39 | 0.06 | 0.00 | 5.45 | 0.0 s |
-| 5 | 0.00 | 0.00 | 2.47 | 0.04 | 0.00 | 2.50 | 0.0 s |
-| 6 | 0.00 | 0.00 | 0.00 | 0.04 | 0.00 | 0.04 | 0.0 s |
-| **Media de los turnos con LLM (5)** | 0.00 | 0.01 | 5.48 | 0.04 | 0.00 | 5.52 | |
-| **Media de los turnos sin LLM (1)** | 0.00 | 0.00 | 0.00 | 0.04 | 0.00 | 0.04 | |
+| 1 | 0.00 | 0.03 | 8.75 | 0.03 | 0.00 | 8.81 | 0.0 s |
+| 2 | 0.00 | 0.00 | 5.39 | 0.04 | 0.00 | 5.43 | 0.0 s |
+| 3 | 0.00 | 0.00 | 6.59 | 0.03 | 0.00 | 6.62 | 0.0 s |
+| 4 | 0.00 | 0.00 | 5.67 | 0.03 | 0.00 | 5.70 | 0.0 s |
+| 5 | 0.00 | 0.00 | 2.58 | 0.04 | 0.00 | 2.62 | 0.0 s |
+| 6 | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | 0.0 s |
+| **Media de los turnos con LLM (5)** | 0.00 | 0.01 | 5.80 | 0.03 | 0.00 | 5.84 | |
+| **Media de los turnos sin LLM (1)** | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | |
 

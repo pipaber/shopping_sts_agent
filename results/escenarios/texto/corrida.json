@@ -1,6 +1,6 @@
 {
-  "date": "2026-11-10T13:52:38",
-  "commit": "73d5f12",
+  "date": "2026-11-10T14:45:03",
+  "commit": "8711c79+cambios",
   "memory_backend": "postgres",
   "models": {
     "llm": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
@@ -11,11 +11,11 @@
   },
   "voice": {},
   "load": {
-    "search_seconds": 17.0,
+    "search_seconds": 16.4,
     "llm_seconds": 0.8,
     "asr_seconds": null,
     "tts_seconds": null,
-    "total_seconds": 18.3,
+    "total_seconds": 17.6,
     "vram_mib": {
       "search": 706,
       "llm": 5820,
@@ -78,7 +78,7 @@
       "id": "09_producto_inexistente",
       "title": "Producto inexistente",
       "kind": "producto_inexistente",
-      "passed": true
+      "passed": false
     },
     {
       "id": "10_atributo_no_verificable",
@@ -149,12 +149,13 @@
   ],
   "summary": {
     "scenarios": 20,
-    "passed": 15,
-    "pass_rate": 0.75,
+    "passed": 14,
+    "pass_rate": 0.7,
     "failed": [
       "03_cambio_cantidad",
       "04_sin_existencias",
       "06_cambio_stock_confirmacion_repetida",
+      "09_producto_inexistente",
       "10_atributo_no_verificable",
       "20_agotado_al_confirmar"
     ],
@@ -175,14 +176,14 @@
         },
         "retrieval": {
           "mean": 0.01,
-          "max": 0.09
+          "max": 0.03
         },
         "llm": {
-          "mean": 4.63,
-          "max": 10.5
+          "mean": 4.58,
+          "max": 10.21
         },
         "tools": {
-          "mean": 0.04,
+          "mean": 0.03,
           "max": 0.08
         },
         "tts": {
@@ -190,8 +191,8 @@
           "max": 0.0
         },
         "total": {
-          "mean": 4.68,
-          "max": 10.55
+          "mean": 4.62,
+          "max": 10.27
         }
       },
       "with_llm": {
@@ -202,11 +203,11 @@
         },
         "retrieval": {
           "mean": 0.01,
-          "max": 0.09
+          "max": 0.03
         },
         "llm": {
-          "mean": 5.45,
-          "max": 10.5
+          "mean": 5.38,
+          "max": 10.21
         },
         "tools": {
           "mean": 0.04,
@@ -217,8 +218,8 @@
           "max": 0.0
         },
         "total": {
-          "mean": 5.5,
-          "max": 10.55
+          "mean": 5.43,
+          "max": 10.27
         }
       },
       "without_llm": {
@@ -237,7 +238,7 @@
         },
         "tools": {
           "mean": 0.02,
-          "max": 0.04
+          "max": 0.03
         },
         "tts": {
           "mean": 0.0,

@@ -5,7 +5,7 @@
 - Tipo: `pregunta_sin_cambios`
 - Qué se prueba: El usuario pregunta por disponibilidad y por precio sin pedir nada. El carrito debe seguir vacío y la respuesta sobre el precio debe dar el de la tienda.
 
-## Turno 1 (6.4 s)
+## Turno 1 (6.7 s)
 
 **Usuario (texto):** Busco una funda para móvil.
 
@@ -19,7 +19,7 @@
 
 > `@primera` = `B091HXTM73` (candidate:1): KEELYY Funda Impermeable Móvil IPX8 Universal 4 Unidades, Bolsa para Móvil Estanca a Prueba de Agua para iPhone 12 11 XR X 8 7 Galaxy Note 20 S20 Xiaomi Huawei Mate40 Pro hasta 6.7''
 
-## Turno 2 (4.7 s)
+## Turno 2 (5.0 s)
 
 **Usuario (texto):** ¿La segunda está disponible?
 
@@ -31,7 +31,7 @@
 
 - ✔ `cart(empty=true)` — carrito: vacío
 
-## Turno 3 (3.0 s)
+## Turno 3 (3.1 s)
 
 **Usuario (texto):** ¿Cuánto cuesta la primera?
 
@@ -59,8 +59,8 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.03 | 6.33 | 0.03 | 0.00 | 6.39 | 0.0 s |
-| 2 | 0.00 | 0.00 | 4.67 | 0.02 | 0.00 | 4.69 | 0.0 s |
-| 3 | 0.00 | 0.00 | 3.02 | 0.03 | 0.00 | 3.05 | 0.0 s |
-| **Media de los turnos con LLM (3)** | 0.00 | 0.01 | 4.67 | 0.03 | 0.00 | 4.71 | |
+| 1 | 0.00 | 0.03 | 6.59 | 0.03 | 0.00 | 6.65 | 0.0 s |
+| 2 | 0.00 | 0.00 | 5.00 | 0.03 | 0.00 | 5.04 | 0.0 s |
+| 3 | 0.00 | 0.00 | 3.07 | 0.03 | 0.00 | 3.10 | 0.0 s |
+| **Media de los turnos con LLM (3)** | 0.00 | 0.01 | 4.89 | 0.03 | 0.00 | 4.93 | |
 

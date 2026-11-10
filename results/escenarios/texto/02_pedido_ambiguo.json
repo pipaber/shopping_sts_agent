@@ -6,9 +6,9 @@
   "voice": true,
   "input": "texto",
   "audio_source": null,
-  "user_id": "eval-d1aab68f-02_pedido_ambiguo",
+  "user_id": "eval-6b9dd32e-02_pedido_ambiguo",
   "threads": [
-    "eval-d1aab68f-02_pedido_ambiguo-c1"
+    "eval-6b9dd32e-02_pedido_ambiguo-c1"
   ],
   "names": {
     "elegido": "B081C31KV4"
@@ -43,16 +43,16 @@
         "asr": 0.0,
         "retrieval": 0.0,
         "llm": 1.794,
-        "tools": 0.014,
+        "tools": 0.025,
         "tts": 0.0,
-        "total": 1.807
+        "total": 1.819
       },
       "llm_steps": 1,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-d1aab68f-02_pedido_ambiguo-c1",
+        "cart_id": "eval-6b9dd32e-02_pedido_ambiguo-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -71,7 +71,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-d1aab68f-02_pedido_ambiguo-c1",
+        "cart_id": "eval-6b9dd32e-02_pedido_ambiguo-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -151,11 +151,11 @@
       ],
       "timings": {
         "asr": 0.0,
-        "retrieval": 0.033,
-        "llm": 8.251,
-        "tools": 0.025,
+        "retrieval": 0.032,
+        "llm": 8.034,
+        "tools": 0.028,
         "tts": 0.0,
-        "total": 8.31
+        "total": 8.094
       },
       "llm_steps": 3,
       "tts_first_chunk_seconds": null,
@@ -164,7 +164,7 @@
         "auriculares bluetooth"
       ],
       "before": {
-        "cart_id": "eval-d1aab68f-02_pedido_ambiguo-c1",
+        "cart_id": "eval-6b9dd32e-02_pedido_ambiguo-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -183,7 +183,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-d1aab68f-02_pedido_ambiguo-c1",
+        "cart_id": "eval-6b9dd32e-02_pedido_ambiguo-c1",
         "state": {
           "budget_cents": 5000,
           "preferences": [],
@@ -321,10 +321,10 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 5.062,
-        "tools": 0.054,
+        "llm": 4.836,
+        "tools": 0.052,
         "tts": 0.0,
-        "total": 5.116
+        "total": 4.888
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
@@ -333,7 +333,7 @@
         "primero"
       ],
       "before": {
-        "cart_id": "eval-d1aab68f-02_pedido_ambiguo-c1",
+        "cart_id": "eval-6b9dd32e-02_pedido_ambiguo-c1",
         "state": {
           "budget_cents": 5000,
           "preferences": [],
@@ -415,7 +415,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-d1aab68f-02_pedido_ambiguo-c1",
+        "cart_id": "eval-6b9dd32e-02_pedido_ambiguo-c1",
         "state": {
           "budget_cents": 5000,
           "preferences": [],
@@ -466,7 +466,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-d1aab68f-02_pedido_ambiguo-c1",
+              "cart_id": "eval-6b9dd32e-02_pedido_ambiguo-c1",
               "product_id": "B081C31KV4",
               "quantity": 1
             }
@@ -521,7 +521,7 @@
   ],
   "final": {
     "snapshot": {
-      "cart_id": "eval-d1aab68f-02_pedido_ambiguo-c1",
+      "cart_id": "eval-6b9dd32e-02_pedido_ambiguo-c1",
       "state": {
         "budget_cents": 5000,
         "preferences": [],
@@ -572,7 +572,7 @@
         "order_items": [],
         "cart_items": [
           {
-            "cart_id": "eval-d1aab68f-02_pedido_ambiguo-c1",
+            "cart_id": "eval-6b9dd32e-02_pedido_ambiguo-c1",
             "product_id": "B081C31KV4",
             "quantity": 1
           }
@@ -664,11 +664,11 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 5.04,
-        "max": 8.25
+        "mean": 4.89,
+        "max": 8.03
       },
       "tools": {
-        "mean": 0.03,
+        "mean": 0.04,
         "max": 0.05
       },
       "tts": {
@@ -676,8 +676,8 @@
         "max": 0.0
       },
       "total": {
-        "mean": 5.08,
-        "max": 8.31
+        "mean": 4.93,
+        "max": 8.09
       }
     },
     "with_llm": {
@@ -691,11 +691,11 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 5.04,
-        "max": 8.25
+        "mean": 4.89,
+        "max": 8.03
       },
       "tools": {
-        "mean": 0.03,
+        "mean": 0.04,
         "max": 0.05
       },
       "tts": {
@@ -703,8 +703,8 @@
         "max": 0.0
       },
       "total": {
-        "mean": 5.08,
-        "max": 8.31
+        "mean": 4.93,
+        "max": 8.09
       }
     },
     "without_llm": {

@@ -6,9 +6,9 @@
   "voice": false,
   "input": "texto",
   "audio_source": null,
-  "user_id": "eval-d1aab68f-18_cierre_sin_carrito",
+  "user_id": "eval-6b9dd32e-18_cierre_sin_carrito",
   "threads": [
-    "eval-d1aab68f-18_cierre_sin_carrito-c1"
+    "eval-6b9dd32e-18_cierre_sin_carrito-c1"
   ],
   "names": {},
   "steps": [
@@ -45,17 +45,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 2.872,
-        "tools": 0.027,
+        "llm": 2.978,
+        "tools": 0.026,
         "tts": 0.0,
-        "total": 2.899
+        "total": 3.004
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-d1aab68f-18_cierre_sin_carrito-c1",
+        "cart_id": "eval-6b9dd32e-18_cierre_sin_carrito-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -74,7 +74,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-d1aab68f-18_cierre_sin_carrito-c1",
+        "cart_id": "eval-6b9dd32e-18_cierre_sin_carrito-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -128,17 +128,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 1.907,
-        "tools": 0.027,
+        "llm": 2.063,
+        "tools": 0.028,
         "tts": 0.0,
-        "total": 1.934
+        "total": 2.09
       },
       "llm_steps": 1,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-d1aab68f-18_cierre_sin_carrito-c1",
+        "cart_id": "eval-6b9dd32e-18_cierre_sin_carrito-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -157,7 +157,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-d1aab68f-18_cierre_sin_carrito-c1",
+        "cart_id": "eval-6b9dd32e-18_cierre_sin_carrito-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -189,7 +189,7 @@
   ],
   "final": {
     "snapshot": {
-      "cart_id": "eval-d1aab68f-18_cierre_sin_carrito-c1",
+      "cart_id": "eval-6b9dd32e-18_cierre_sin_carrito-c1",
       "state": {
         "budget_cents": null,
         "preferences": [],
@@ -241,8 +241,8 @@
         "max": 0.0
       },
       "llm": {
-        "mean": 2.39,
-        "max": 2.87
+        "mean": 2.52,
+        "max": 2.98
       },
       "tools": {
         "mean": 0.03,
@@ -253,8 +253,8 @@
         "max": 0.0
       },
       "total": {
-        "mean": 2.42,
-        "max": 2.9
+        "mean": 2.55,
+        "max": 3.0
       }
     },
     "with_llm": {
@@ -268,8 +268,8 @@
         "max": 0.0
       },
       "llm": {
-        "mean": 2.39,
-        "max": 2.87
+        "mean": 2.52,
+        "max": 2.98
       },
       "tools": {
         "mean": 0.03,
@@ -280,8 +280,8 @@
         "max": 0.0
       },
       "total": {
-        "mean": 2.42,
-        "max": 2.9
+        "mean": 2.55,
+        "max": 3.0
       }
     },
     "without_llm": {

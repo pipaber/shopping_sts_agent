@@ -5,7 +5,7 @@
 - Tipo: `memoria_preferencias`
 - Qué se prueba: El usuario deja dicha una preferencia en una conversación y pregunta por ella en otra nueva (otro hilo, mismo usuario). La preferencia debe estar en el estado de la segunda conversación y en la respuesta.
 
-## Turno 1 (3.3 s)
+## Turno 1 (3.5 s)
 
 **Usuario (texto):** Recuerda para otras veces que prefiero el color azul.
 
@@ -17,9 +17,9 @@
 
 - ✔ `preference(contains="azul")` — preferencias: ['color azul']
 
-> **Conversación nueva** del mismo usuario (hilo `eval-d1aab68f-12_memoria_preferencias-c2`).
+> **Conversación nueva** del mismo usuario (hilo `eval-6b9dd32e-12_memoria_preferencias-c2`).
 
-## Turno 2 (3.1 s)
+## Turno 2 (3.2 s)
 
 **Usuario (texto):** Hola, ¿recuerdas qué color prefiero?
 
@@ -49,7 +49,7 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.00 | 3.28 | 0.04 | 0.00 | 3.32 | 0.0 s |
-| 2 | 0.00 | 0.00 | 3.11 | 0.03 | 0.00 | 3.13 | 0.0 s |
-| **Media de los turnos con LLM (2)** | 0.00 | 0.00 | 3.19 | 0.03 | 0.00 | 3.23 | |
+| 1 | 0.00 | 0.00 | 3.43 | 0.04 | 0.00 | 3.47 | 0.0 s |
+| 2 | 0.00 | 0.00 | 3.20 | 0.04 | 0.00 | 3.24 | 0.0 s |
+| **Media de los turnos con LLM (2)** | 0.00 | 0.00 | 3.31 | 0.04 | 0.00 | 3.35 | |
 

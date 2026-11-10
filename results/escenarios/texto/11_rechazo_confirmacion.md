@@ -5,7 +5,7 @@
 - Tipo: `rechazo_confirmacion`
 - Qué se prueba: El usuario llega a la cotización y contesta que no. No debe registrarse ningún pedido y el carrito debe quedar como estaba.
 
-## Turno 1 (7.8 s)
+## Turno 1 (7.3 s)
 
 **Usuario (texto):** Busco unas bombillas LED.
 
@@ -21,7 +21,7 @@
 
 > **Suceso externo:** la tienda deja `B01KHILJ5O` (@elegidas) con precio 6,00 € y existencias 20.
 
-## Turno 2 (5.1 s)
+## Turno 2 (5.2 s)
 
 **Usuario (texto):** Añade dos de la primera opción.
 
@@ -33,7 +33,7 @@
 
 - ✔ `cart(lines=[{"product": "@elegidas", "quantity": 2}])` — carrito: 2 × B01KHILJ5O
 
-## Turno 3 (2.2 s)
+## Turno 3 (2.3 s)
 
 **Usuario (texto):** Cierra el pedido.
 
@@ -77,10 +77,10 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.06 | 7.74 | 0.03 | 0.00 | 7.83 | 0.0 s |
-| 2 | 0.00 | 0.00 | 5.09 | 0.05 | 0.00 | 5.14 | 0.0 s |
-| 3 | 0.00 | 0.00 | 2.12 | 0.04 | 0.00 | 2.16 | 0.0 s |
+| 1 | 0.00 | 0.03 | 7.25 | 0.03 | 0.00 | 7.31 | 0.0 s |
+| 2 | 0.00 | 0.00 | 5.15 | 0.05 | 0.00 | 5.20 | 0.0 s |
+| 3 | 0.00 | 0.00 | 2.24 | 0.04 | 0.00 | 2.28 | 0.0 s |
 | 4 | 0.00 | 0.00 | 0.00 | 0.01 | 0.00 | 0.01 | 0.0 s |
-| **Media de los turnos con LLM (3)** | 0.00 | 0.02 | 4.98 | 0.04 | 0.00 | 5.04 | |
+| **Media de los turnos con LLM (3)** | 0.00 | 0.01 | 4.88 | 0.04 | 0.00 | 4.93 | |
 | **Media de los turnos sin LLM (1)** | 0.00 | 0.00 | 0.00 | 0.01 | 0.00 | 0.01 | |
 

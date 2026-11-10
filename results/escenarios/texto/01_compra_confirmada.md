@@ -5,7 +5,7 @@
 - Tipo: `compra_confirmada`
 - Qué se prueba: El usuario busca con presupuesto, añade dos unidades, pide cerrar y confirma. Tras la búsqueda la tienda fija el primer candidato en 14,50 € y 20 unidades, para que el resultado no dependa de qué producto salga primero.
 
-## Turno 1 (10.1 s)
+## Turno 1 (10.3 s)
 
 **Usuario (texto):** Hola, busco una cafetera italiana. Tengo un presupuesto de 60 euros.
 
@@ -53,7 +53,7 @@
 
 **Usuario (texto):** Sí, confirmo.
 
-- `confirmar_pedido(quote_id="36e16703b885433a8412c48e0e87bd25")` → OK: pedido registrado
+- `confirmar_pedido(quote_id="ed5fb46b2e15422ba8c551cc332031ff")` → OK: pedido registrado
 
 **Agente:** Pedido número 1 registrado: 2 unidades de «De'longhi Dedica - Cafetera de Bomba de Acero Inoxidable para Café…» a 14,50 € cada una, 29,00 €. Total: 29,00 €. Gracias por tu compra.
 
@@ -84,10 +84,10 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.03 | 10.08 | 0.04 | 0.00 | 10.15 | 0.0 s |
-| 2 | 0.00 | 0.00 | 5.08 | 0.05 | 0.00 | 5.13 | 0.0 s |
-| 3 | 0.00 | 0.00 | 2.17 | 0.04 | 0.00 | 2.21 | 0.0 s |
-| 4 | 0.00 | 0.00 | 0.00 | 0.02 | 0.00 | 0.02 | 0.0 s |
-| **Media de los turnos con LLM (3)** | 0.00 | 0.01 | 5.77 | 0.04 | 0.00 | 5.83 | |
-| **Media de los turnos sin LLM (1)** | 0.00 | 0.00 | 0.00 | 0.02 | 0.00 | 0.02 | |
+| 1 | 0.00 | 0.03 | 10.21 | 0.03 | 0.00 | 10.27 | 0.0 s |
+| 2 | 0.00 | 0.00 | 5.07 | 0.05 | 0.00 | 5.12 | 0.0 s |
+| 3 | 0.00 | 0.00 | 2.22 | 0.03 | 0.00 | 2.25 | 0.0 s |
+| 4 | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | 0.0 s |
+| **Media de los turnos con LLM (3)** | 0.00 | 0.01 | 5.83 | 0.04 | 0.00 | 5.88 | |
+| **Media de los turnos sin LLM (1)** | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | |
 

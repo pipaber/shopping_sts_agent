@@ -5,7 +5,7 @@
 - Tipo: `presupuesto_excedido`
 - Qué se prueba: Con 30 € de presupuesto y el producto a 12,00 €, tres unidades (36,00 €) no caben: el carrito no debe cambiar. Dos unidades sí caben.
 
-## Turno 1 (8.4 s)
+## Turno 1 (8.5 s)
 
 **Usuario (texto):** Busco una mochila para portátil. Como mucho quiero gastar 30 euros.
 
@@ -23,7 +23,7 @@
 
 > **Suceso externo:** la tienda deja `B091TXCPQQ` (@elegida) con precio 12,00 € y existencias 20.
 
-## Turno 2 (6.0 s)
+## Turno 2 (5.7 s)
 
 **Usuario (texto):** Añade tres de la primera.
 
@@ -36,7 +36,7 @@
 - ✔ `cart(empty=true)` — carrito: vacío
 - ✔ `orders(count=0)` — pedidos registrados: 0
 
-## Turno 3 (5.4 s)
+## Turno 3 (5.5 s)
 
 **Usuario (texto):** Vale, pues ponme dos.
 
@@ -68,8 +68,8 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.03 | 8.31 | 0.03 | 0.00 | 8.37 | 0.0 s |
-| 2 | 0.00 | 0.00 | 5.98 | 0.03 | 0.00 | 6.01 | 0.0 s |
-| 3 | 0.00 | 0.00 | 5.32 | 0.05 | 0.00 | 5.37 | 0.0 s |
-| **Media de los turnos con LLM (3)** | 0.00 | 0.01 | 6.54 | 0.04 | 0.00 | 6.59 | |
+| 1 | 0.00 | 0.03 | 8.47 | 0.03 | 0.00 | 8.53 | 0.0 s |
+| 2 | 0.00 | 0.00 | 5.69 | 0.03 | 0.00 | 5.72 | 0.0 s |
+| 3 | 0.00 | 0.00 | 5.48 | 0.05 | 0.00 | 5.53 | 0.0 s |
+| **Media de los turnos con LLM (3)** | 0.00 | 0.01 | 6.55 | 0.04 | 0.00 | 6.59 | |
 

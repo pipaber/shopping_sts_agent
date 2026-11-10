@@ -6,9 +6,9 @@
   "voice": false,
   "input": "texto",
   "audio_source": null,
-  "user_id": "eval-d1aab68f-17_cambio_presupuesto",
+  "user_id": "eval-6b9dd32e-17_cambio_presupuesto",
   "threads": [
-    "eval-d1aab68f-17_cambio_presupuesto-c1"
+    "eval-6b9dd32e-17_cambio_presupuesto-c1"
   ],
   "names": {
     "elegida": "B08ZLX5MXL"
@@ -51,18 +51,18 @@
       ],
       "timings": {
         "asr": 0.0,
-        "retrieval": 0.043,
-        "llm": 8.42,
-        "tools": 0.03,
+        "retrieval": 0.028,
+        "llm": 8.661,
+        "tools": 0.028,
         "tts": 0.0,
-        "total": 8.492
+        "total": 8.717
       },
       "llm_steps": 3,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+        "cart_id": "eval-6b9dd32e-17_cambio_presupuesto-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -81,7 +81,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+        "cart_id": "eval-6b9dd32e-17_cambio_presupuesto-c1",
         "state": {
           "budget_cents": 4000,
           "preferences": [],
@@ -219,17 +219,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 5.037,
-        "tools": 0.052,
+        "llm": 5.321,
+        "tools": 0.05,
         "tts": 0.0,
-        "total": 5.09
+        "total": 5.371
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+        "cart_id": "eval-6b9dd32e-17_cambio_presupuesto-c1",
         "state": {
           "budget_cents": 4000,
           "preferences": [],
@@ -311,7 +311,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+        "cart_id": "eval-6b9dd32e-17_cambio_presupuesto-c1",
         "state": {
           "budget_cents": 4000,
           "preferences": [],
@@ -362,7 +362,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+              "cart_id": "eval-6b9dd32e-17_cambio_presupuesto-c1",
               "product_id": "B08ZLX5MXL",
               "quantity": 3
             }
@@ -442,17 +442,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 5.852,
-        "tools": 0.032,
+        "llm": 6.103,
+        "tools": 0.033,
         "tts": 0.0,
-        "total": 5.884
+        "total": 6.136
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+        "cart_id": "eval-6b9dd32e-17_cambio_presupuesto-c1",
         "state": {
           "budget_cents": 4000,
           "preferences": [],
@@ -503,7 +503,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+              "cart_id": "eval-6b9dd32e-17_cambio_presupuesto-c1",
               "product_id": "B08ZLX5MXL",
               "quantity": 3
             }
@@ -540,7 +540,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+        "cart_id": "eval-6b9dd32e-17_cambio_presupuesto-c1",
         "state": {
           "budget_cents": 2500,
           "preferences": [],
@@ -591,7 +591,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+              "cart_id": "eval-6b9dd32e-17_cambio_presupuesto-c1",
               "product_id": "B08ZLX5MXL",
               "quantity": 3
             }
@@ -688,17 +688,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 4.622,
-        "tools": 0.019,
+        "llm": 4.728,
+        "tools": 0.028,
         "tts": 0.0,
-        "total": 4.641
+        "total": 4.756
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+        "cart_id": "eval-6b9dd32e-17_cambio_presupuesto-c1",
         "state": {
           "budget_cents": 2500,
           "preferences": [],
@@ -749,7 +749,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+              "cart_id": "eval-6b9dd32e-17_cambio_presupuesto-c1",
               "product_id": "B08ZLX5MXL",
               "quantity": 3
             }
@@ -786,7 +786,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+        "cart_id": "eval-6b9dd32e-17_cambio_presupuesto-c1",
         "state": {
           "budget_cents": 2500,
           "preferences": [],
@@ -837,7 +837,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+              "cart_id": "eval-6b9dd32e-17_cambio_presupuesto-c1",
               "product_id": "B08ZLX5MXL",
               "quantity": 3
             }
@@ -934,17 +934,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 5.128,
-        "tools": 0.042,
+        "llm": 5.363,
+        "tools": 0.052,
         "tts": 0.0,
-        "total": 5.17
+        "total": 5.415
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+        "cart_id": "eval-6b9dd32e-17_cambio_presupuesto-c1",
         "state": {
           "budget_cents": 2500,
           "preferences": [],
@@ -995,7 +995,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+              "cart_id": "eval-6b9dd32e-17_cambio_presupuesto-c1",
               "product_id": "B08ZLX5MXL",
               "quantity": 3
             }
@@ -1032,7 +1032,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+        "cart_id": "eval-6b9dd32e-17_cambio_presupuesto-c1",
         "state": {
           "budget_cents": 2500,
           "preferences": [],
@@ -1083,7 +1083,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+              "cart_id": "eval-6b9dd32e-17_cambio_presupuesto-c1",
               "product_id": "B08ZLX5MXL",
               "quantity": 2
             }
@@ -1161,17 +1161,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 2.417,
-        "tools": 0.041,
+        "llm": 2.519,
+        "tools": 0.037,
         "tts": 0.0,
-        "total": 2.458
+        "total": 2.556
       },
       "llm_steps": 1,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+        "cart_id": "eval-6b9dd32e-17_cambio_presupuesto-c1",
         "state": {
           "budget_cents": 2500,
           "preferences": [],
@@ -1222,7 +1222,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+              "cart_id": "eval-6b9dd32e-17_cambio_presupuesto-c1",
               "product_id": "B08ZLX5MXL",
               "quantity": 2
             }
@@ -1259,13 +1259,13 @@
         }
       },
       "after": {
-        "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+        "cart_id": "eval-6b9dd32e-17_cambio_presupuesto-c1",
         "state": {
           "budget_cents": 2500,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "3c195096d454426d892ffb7604136d49",
+            "quote_id": "19e5466766334fe88fff694e7987de6b",
             "items": [
               {
                 "product_id": "B08ZLX5MXL",
@@ -1325,7 +1325,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+              "cart_id": "eval-6b9dd32e-17_cambio_presupuesto-c1",
               "product_id": "B08ZLX5MXL",
               "quantity": 2
             }
@@ -1397,7 +1397,7 @@
         {
           "tool": "confirmar_pedido",
           "args": {
-            "quote_id": "3c195096d454426d892ffb7604136d49"
+            "quote_id": "19e5466766334fe88fff694e7987de6b"
           },
           "reason": "el usuario confirmó la cotización",
           "ok": true,
@@ -1409,22 +1409,22 @@
         "asr": 0.0,
         "retrieval": 0.0,
         "llm": 0.0,
-        "tools": 0.025,
+        "tools": 0.027,
         "tts": 0.0,
-        "total": 0.025
+        "total": 0.027
       },
       "llm_steps": 0,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+        "cart_id": "eval-6b9dd32e-17_cambio_presupuesto-c1",
         "state": {
           "budget_cents": 2500,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "3c195096d454426d892ffb7604136d49",
+            "quote_id": "19e5466766334fe88fff694e7987de6b",
             "items": [
               {
                 "product_id": "B08ZLX5MXL",
@@ -1484,7 +1484,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+              "cart_id": "eval-6b9dd32e-17_cambio_presupuesto-c1",
               "product_id": "B08ZLX5MXL",
               "quantity": 2
             }
@@ -1521,7 +1521,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+        "cart_id": "eval-6b9dd32e-17_cambio_presupuesto-c1",
         "state": {
           "budget_cents": 2500,
           "preferences": [],
@@ -1529,7 +1529,7 @@
           "quote": null,
           "order": {
             "order_id": 1,
-            "quote_id": "3c195096d454426d892ffb7604136d49",
+            "quote_id": "19e5466766334fe88fff694e7987de6b",
             "items": [
               {
                 "product_id": "B08ZLX5MXL",
@@ -1585,7 +1585,7 @@
           "orders": [
             {
               "order_id": 1,
-              "quote_id": "3c195096d454426d892ffb7604136d49",
+              "quote_id": "19e5466766334fe88fff694e7987de6b",
               "total_cents": 2000
             }
           ],
@@ -1643,7 +1643,7 @@
   ],
   "final": {
     "snapshot": {
-      "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+      "cart_id": "eval-6b9dd32e-17_cambio_presupuesto-c1",
       "state": {
         "budget_cents": 2500,
         "preferences": [],
@@ -1651,7 +1651,7 @@
         "quote": null,
         "order": {
           "order_id": 1,
-          "quote_id": "3c195096d454426d892ffb7604136d49",
+          "quote_id": "19e5466766334fe88fff694e7987de6b",
           "items": [
             {
               "product_id": "B08ZLX5MXL",
@@ -1707,7 +1707,7 @@
         "orders": [
           {
             "order_id": 1,
-            "quote_id": "3c195096d454426d892ffb7604136d49",
+            "quote_id": "19e5466766334fe88fff694e7987de6b",
             "total_cents": 2000
           }
         ],
@@ -1812,39 +1812,12 @@
         "max": 0.0
       },
       "retrieval": {
-        "mean": 0.01,
-        "max": 0.04
+        "mean": 0.0,
+        "max": 0.03
       },
       "llm": {
-        "mean": 4.5,
-        "max": 8.42
-      },
-      "tools": {
-        "mean": 0.03,
-        "max": 0.05
-      },
-      "tts": {
-        "mean": 0.0,
-        "max": 0.0
-      },
-      "total": {
-        "mean": 4.54,
-        "max": 8.49
-      }
-    },
-    "with_llm": {
-      "turns": 6,
-      "asr": {
-        "mean": 0.0,
-        "max": 0.0
-      },
-      "retrieval": {
-        "mean": 0.01,
-        "max": 0.04
-      },
-      "llm": {
-        "mean": 5.25,
-        "max": 8.42
+        "mean": 4.67,
+        "max": 8.66
       },
       "tools": {
         "mean": 0.04,
@@ -1855,8 +1828,35 @@
         "max": 0.0
       },
       "total": {
-        "mean": 5.29,
-        "max": 8.49
+        "mean": 4.71,
+        "max": 8.72
+      }
+    },
+    "with_llm": {
+      "turns": 6,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.0,
+        "max": 0.03
+      },
+      "llm": {
+        "mean": 5.45,
+        "max": 8.66
+      },
+      "tools": {
+        "mean": 0.04,
+        "max": 0.05
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 5.49,
+        "max": 8.72
       }
     },
     "without_llm": {

@@ -1,0 +1,714 @@
+{
+  "id": "02_pedido_ambiguo",
+  "title": "Pedido ambiguo que requiere aclaración",
+  "kind": "pedido_ambiguo",
+  "description": "El primer mensaje no dice qué producto se busca: el agente debe preguntar en lugar de suponer. Después el usuario concreta el producto y el presupuesto, y añade una unidad.",
+  "voice": true,
+  "input": "texto",
+  "audio_source": null,
+  "user_id": "eval-a557491f-02_pedido_ambiguo",
+  "threads": [
+    "eval-a557491f-02_pedido_ambiguo-c1"
+  ],
+  "names": {
+    "elegido": "B081C31KV4"
+  },
+  "steps": [
+    {
+      "kind": "turn",
+      "turn": 1,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Quiero comprar un regalo para mi hermana.",
+      "agent_input": "Quiero comprar un regalo para mi hermana.",
+      "response": "¿Qué tipo de regalo estás buscando para tu hermana?",
+      "spoken_text": "¿Qué tipo de regalo estás buscando para tu hermana?",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "pedir_aclaracion",
+          "args": {
+            "pregunta": "¿Qué tipo de regalo estás buscando para tu hermana?"
+          },
+          "reason": "pedir más información",
+          "ok": true,
+          "summary": "pregunta enviada al usuario",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 1.752,
+        "tools": 0.014,
+        "tts": 0.0,
+        "total": 1.766
+      },
+      "llm_steps": 1,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-a557491f-02_pedido_ambiguo-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {}
+      },
+      "after": {
+        "cart_id": "eval-a557491f-02_pedido_ambiguo-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": "¿Qué tipo de regalo estás buscando para tu hermana?",
+          "quote": null,
+          "order": null,
+          "candidates": [],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {}
+      },
+      "checks": [
+        {
+          "check": "asked_clarification",
+          "params": {},
+          "ok": true,
+          "detail": "pidió aclaración"
+        },
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        },
+        {
+          "check": "orders",
+          "params": {
+            "count": 0
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 0"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 2,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Unos auriculares bluetooth, y no quiero gastar más de 50 euros.",
+      "agent_input": "Unos auriculares bluetooth, y no quiero gastar más de 50 euros.",
+      "response": "Tengo varios auriculares bluetooth para ti. El primero, de la marca Mgrett, cuesta 9,18 euros. El segundo, de WDGP, es un poco más caro a 32,06 euros. También hay una opción de 9,84 euros de la marca TAIN y una de 25,15 euros de la marca GSBLBL. ¿Te interesa alguna de estas opciones? He anotado un presupuesto de 50,00 €.",
+      "spoken_text": "Tengo varios auriculares bluetooth para ti. El primero, de la marca Mgrett, cuesta nueve euros con dieciocho céntimos. El segundo, de WDGP, es un poco más caro a treinta y dos euros con seis céntimos. También hay una opción de nueve euros con ochenta y cuatro céntimos de la marca TAIN y una de veinticinco euros con quince céntimos de la marca GSBLBL. ¿Te interesa alguna de estas opciones? He anotado un presupuesto de cincuenta euros.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "fijar_presupuesto",
+          "args": {
+            "importe_eur": 50
+          },
+          "reason": "el usuario da su gasto máximo",
+          "ok": true,
+          "summary": "presupuesto fijado en 50,00 €.",
+          "issues": []
+        },
+        {
+          "tool": "buscar_productos",
+          "args": {
+            "consulta": "auriculares bluetooth"
+          },
+          "reason": "buscar auriculares bluetooth dentro del presupuesto",
+          "ok": true,
+          "summary": "estos son ahora los CANDIDATOS, del más al menos relevante:\n[1] id=B081C31KV4 | Auriculares Bluetooth, 5.0 Auriculares Bluetooth In Ear Inalámbricos Auricular Estéreo en Oreja Manos Libres con Caja de Carga Portátil para Airpods Android/iPhone (Rosa1) | marca: Mgrett | color: Rosa1 | precio: 9,18 € | existencias: 14 | características (extracto): Compatibilidad universal: Mini auriculares estéreo inalámbricos blanco Bluetooth 5.0 Micrófono universal Compatible con la mayoría de los dispositivos Auriculares Bluetooth. Diseño perfecto: Súper ligero y el diseño del estabilizador… | descripción: Este Auricular Bluetooth es compatible con la mayoría de los dispositivos Auricular Bluetooth, están diseñados ergonómicamente para un uso prolongado sin dolor. Las manos libres y la reproducción de…\n[2] id=B07TXSV5X6 | Auriculares Bluetooth,Auriculares Inalámbricos Bluetooth táctiles, Auriculares estéreo Bluetooth IPX7 a Prueba de Agua, con Estuche de Carga para Apple Airpods Android iPhone | marca: WDGP | color: desconocido | precio: 32,06 € | existencias: 29 | características (extracto): desconocido | descripción: desconocido\n[3] id=B081JX4NXR | Auriculares Bluetooth Auriculares inalámbricos 5.0 Auriculares Auriculares intrauditivos Bluetooth Manos Libres estéreo inalámbrico en la Oreja para Apple Airpods Android Samsung Huawei/iPhone | marca: TAIN | color: desconocido | precio: 9,84 € | existencias: 32 | características (extracto): 🎶🎼【BLUETOOTH 5.0 y función táctil】 Los auriculares Bluetooth que vende (Kunge ) hacen uso de la última tecnología Bluetooth 5.0 y de los componentes más avanzados. Son compatibles con la mayoría de dispositivos Bluetooth, como iPhone… | descripción: 🎊P: Recibo señal, pero no funciona ¿por qué? A: intenta cargarlos 🎊P: Uno de los auriculares no funciona ¿A que se debe? R: El auricular puede estar apagado, pulsa y mantén presionado unos 3 segundos…\n[4] id=B07XC4RGTM | Auriculares Bluetooth Auriculares Inalámbricos Bluetooth táctiles 3D estéreo HD Micrófono Auricular Emparejamiento Automático de llamadas Binaurales para Apple Airpods Pro Android iPhone 11 | marca: GSBLBL | color: se | precio: 25,15 € | existencias: 22 | características (extracto): desconocido | descripción: desconocido\n[5] id=B0117RGG8E | Bose SoundLink II - Auriculares Supraurales Bluetooth con Micrófono, Control Remoto Integrado, color Negro | marca: Bose | color: Negro | precio: 24,57 € | existencias: 2 | características (extracto): Música de gran rendimiento gracias a la tecnología de Bose Sonido claro y realista para ambos interlocutores incluso si hay mucho ruido o hace viento Alterne fácilmente entre dos dispositivos Bluetooth como una tableta o un Smartphone… | descripción: desconocido",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.039,
+        "llm": 8.721,
+        "tools": 0.028,
+        "tts": 0.0,
+        "total": 8.788
+      },
+      "llm_steps": 3,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [
+        "auriculares bluetooth"
+      ],
+      "before": {
+        "cart_id": "eval-a557491f-02_pedido_ambiguo-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": "¿Qué tipo de regalo estás buscando para tu hermana?",
+          "quote": null,
+          "order": null,
+          "candidates": [],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {}
+      },
+      "after": {
+        "cart_id": "eval-a557491f-02_pedido_ambiguo-c1",
+        "state": {
+          "budget_cents": 5000,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B081C31KV4",
+              "title": "Auriculares Bluetooth, 5.0 Auriculares Bluetooth In Ear Inalámbricos Auricular Estéreo en Oreja Manos Libres con Caja de Carga Portátil para Airpods Android/iPhone (Rosa1)",
+              "brand": "Mgrett",
+              "price_cents": 918,
+              "stock": 14
+            },
+            {
+              "product_id": "B07TXSV5X6",
+              "title": "Auriculares Bluetooth,Auriculares Inalámbricos Bluetooth táctiles, Auriculares estéreo Bluetooth IPX7 a Prueba de Agua, con Estuche de Carga para Apple Airpods Android iPhone",
+              "brand": "WDGP",
+              "price_cents": 3206,
+              "stock": 29
+            },
+            {
+              "product_id": "B081JX4NXR",
+              "title": "Auriculares Bluetooth Auriculares inalámbricos 5.0 Auriculares Auriculares intrauditivos Bluetooth Manos Libres estéreo inalámbrico en la Oreja para Apple Airpods Android Samsung Huawei/iPhone",
+              "brand": "TAIN",
+              "price_cents": 984,
+              "stock": 32
+            },
+            {
+              "product_id": "B07XC4RGTM",
+              "title": "Auriculares Bluetooth Auriculares Inalámbricos Bluetooth táctiles 3D estéreo HD Micrófono Auricular Emparejamiento Automático de llamadas Binaurales para Apple Airpods Pro Android iPhone 11",
+              "brand": "GSBLBL",
+              "price_cents": 2515,
+              "stock": 22
+            },
+            {
+              "product_id": "B0117RGG8E",
+              "title": "Bose SoundLink II - Auriculares Supraurales Bluetooth con Micrófono, Control Remoto Integrado, color Negro",
+              "brand": "Bose",
+              "price_cents": 2457,
+              "stock": 2
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {
+          "B0117RGG8E": {
+            "price_cents": 2457,
+            "stock": 2
+          },
+          "B07TXSV5X6": {
+            "price_cents": 3206,
+            "stock": 29
+          },
+          "B07XC4RGTM": {
+            "price_cents": 2515,
+            "stock": 22
+          },
+          "B081C31KV4": {
+            "price_cents": 918,
+            "stock": 14
+          },
+          "B081JX4NXR": {
+            "price_cents": 984,
+            "stock": 32
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "budget",
+          "params": {
+            "cents": 5000
+          },
+          "ok": true,
+          "detail": "presupuesto en el estado: 5000"
+        },
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        }
+      ]
+    },
+    {
+      "kind": "remember",
+      "name": "elegido",
+      "ref": "candidate:1",
+      "product_id": "B081C31KV4",
+      "title": "Auriculares Bluetooth, 5.0 Auriculares Bluetooth In Ear Inalámbricos Auricular Estéreo en Oreja Manos Libres con Caja de Carga Portátil para Airpods Android/iPhone (Rosa1)"
+    },
+    {
+      "kind": "event",
+      "event": "set_offer",
+      "product": "@elegido",
+      "product_id": "B081C31KV4",
+      "price_cents": 1990,
+      "stock": 20
+    },
+    {
+      "kind": "turn",
+      "turn": 3,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Ponme uno del primero.",
+      "agent_input": "Ponme uno del primero.",
+      "response": "Hecho, añadido un auricular al carrito. En el carrito hay 1 unidad de «Auriculares Bluetooth, 5.0 Auriculares Bluetooth In Ear Inalámbricos…» a 19,90 € cada una, 19,90 €. Total: 19,90 €. Tu presupuesto es de 50,00 € y te quedan 30,10 €.",
+      "spoken_text": "Hecho, añadido un auricular al carrito. En el carrito hay una unidad de Auriculares Bluetooth a diecinueve euros con noventa céntimos cada una, diecinueve euros con noventa céntimos. Total: diecinueve euros con noventa céntimos. Tu presupuesto es de cincuenta euros y te quedan treinta euros con diez céntimos.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "agregar_al_carrito",
+          "args": {
+            "product_id": "B081C31KV4",
+            "cantidad": 1
+          },
+          "reason": "añadir un auricular del primero al carrito",
+          "ok": true,
+          "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B081C31KV4 | Auriculares Bluetooth, 5.0 Auriculares Bluetooth In Ear Inalámbricos… | 1 unidad × 19,90 € = 19,90 € | existencias: 20\nTotal del carrito: 19,90 €",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 4.687,
+        "tools": 0.049,
+        "tts": 0.0,
+        "total": 4.736
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [
+        "primero"
+      ],
+      "before": {
+        "cart_id": "eval-a557491f-02_pedido_ambiguo-c1",
+        "state": {
+          "budget_cents": 5000,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B081C31KV4",
+              "title": "Auriculares Bluetooth, 5.0 Auriculares Bluetooth In Ear Inalámbricos Auricular Estéreo en Oreja Manos Libres con Caja de Carga Portátil para Airpods Android/iPhone (Rosa1)",
+              "brand": "Mgrett",
+              "price_cents": 918,
+              "stock": 14
+            },
+            {
+              "product_id": "B07TXSV5X6",
+              "title": "Auriculares Bluetooth,Auriculares Inalámbricos Bluetooth táctiles, Auriculares estéreo Bluetooth IPX7 a Prueba de Agua, con Estuche de Carga para Apple Airpods Android iPhone",
+              "brand": "WDGP",
+              "price_cents": 3206,
+              "stock": 29
+            },
+            {
+              "product_id": "B081JX4NXR",
+              "title": "Auriculares Bluetooth Auriculares inalámbricos 5.0 Auriculares Auriculares intrauditivos Bluetooth Manos Libres estéreo inalámbrico en la Oreja para Apple Airpods Android Samsung Huawei/iPhone",
+              "brand": "TAIN",
+              "price_cents": 984,
+              "stock": 32
+            },
+            {
+              "product_id": "B07XC4RGTM",
+              "title": "Auriculares Bluetooth Auriculares Inalámbricos Bluetooth táctiles 3D estéreo HD Micrófono Auricular Emparejamiento Automático de llamadas Binaurales para Apple Airpods Pro Android iPhone 11",
+              "brand": "GSBLBL",
+              "price_cents": 2515,
+              "stock": 22
+            },
+            {
+              "product_id": "B0117RGG8E",
+              "title": "Bose SoundLink II - Auriculares Supraurales Bluetooth con Micrófono, Control Remoto Integrado, color Negro",
+              "brand": "Bose",
+              "price_cents": 2457,
+              "stock": 2
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B081C31KV4",
+              "initial_stock": 14,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B0117RGG8E": {
+            "price_cents": 2457,
+            "stock": 2
+          },
+          "B07TXSV5X6": {
+            "price_cents": 3206,
+            "stock": 29
+          },
+          "B07XC4RGTM": {
+            "price_cents": 2515,
+            "stock": 22
+          },
+          "B081C31KV4": {
+            "price_cents": 1990,
+            "stock": 20
+          },
+          "B081JX4NXR": {
+            "price_cents": 984,
+            "stock": 32
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-a557491f-02_pedido_ambiguo-c1",
+        "state": {
+          "budget_cents": 5000,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B081C31KV4",
+              "title": "Auriculares Bluetooth, 5.0 Auriculares Bluetooth In Ear Inalámbricos Auricular Estéreo en Oreja Manos Libres con Caja de Carga Portátil para Airpods Android/iPhone (Rosa1)",
+              "brand": "Mgrett",
+              "price_cents": 1990,
+              "stock": 20
+            },
+            {
+              "product_id": "B07TXSV5X6",
+              "title": "Auriculares Bluetooth,Auriculares Inalámbricos Bluetooth táctiles, Auriculares estéreo Bluetooth IPX7 a Prueba de Agua, con Estuche de Carga para Apple Airpods Android iPhone",
+              "brand": "WDGP",
+              "price_cents": 3206,
+              "stock": 29
+            },
+            {
+              "product_id": "B081JX4NXR",
+              "title": "Auriculares Bluetooth Auriculares inalámbricos 5.0 Auriculares Auriculares intrauditivos Bluetooth Manos Libres estéreo inalámbrico en la Oreja para Apple Airpods Android Samsung Huawei/iPhone",
+              "brand": "TAIN",
+              "price_cents": 984,
+              "stock": 32
+            },
+            {
+              "product_id": "B07XC4RGTM",
+              "title": "Auriculares Bluetooth Auriculares Inalámbricos Bluetooth táctiles 3D estéreo HD Micrófono Auricular Emparejamiento Automático de llamadas Binaurales para Apple Airpods Pro Android iPhone 11",
+              "brand": "GSBLBL",
+              "price_cents": 2515,
+              "stock": 22
+            },
+            {
+              "product_id": "B0117RGG8E",
+              "title": "Bose SoundLink II - Auriculares Supraurales Bluetooth con Micrófono, Control Remoto Integrado, color Negro",
+              "brand": "Bose",
+              "price_cents": 2457,
+              "stock": 2
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-a557491f-02_pedido_ambiguo-c1",
+              "product_id": "B081C31KV4",
+              "quantity": 1
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B081C31KV4",
+              "initial_stock": 14,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B0117RGG8E": {
+            "price_cents": 2457,
+            "stock": 2
+          },
+          "B07TXSV5X6": {
+            "price_cents": 3206,
+            "stock": 29
+          },
+          "B07XC4RGTM": {
+            "price_cents": 2515,
+            "stock": 22
+          },
+          "B081C31KV4": {
+            "price_cents": 1990,
+            "stock": 20
+          },
+          "B081JX4NXR": {
+            "price_cents": 984,
+            "stock": 32
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "lines": [
+              {
+                "product": "@elegido",
+                "quantity": 1
+              }
+            ]
+          },
+          "ok": true,
+          "detail": "carrito: 1 × B081C31KV4"
+        }
+      ]
+    }
+  ],
+  "final": {
+    "snapshot": {
+      "cart_id": "eval-a557491f-02_pedido_ambiguo-c1",
+      "state": {
+        "budget_cents": 5000,
+        "preferences": [],
+        "pending_clarification": null,
+        "quote": null,
+        "order": null,
+        "candidates": [
+          {
+            "product_id": "B081C31KV4",
+            "title": "Auriculares Bluetooth, 5.0 Auriculares Bluetooth In Ear Inalámbricos Auricular Estéreo en Oreja Manos Libres con Caja de Carga Portátil para Airpods Android/iPhone (Rosa1)",
+            "brand": "Mgrett",
+            "price_cents": 1990,
+            "stock": 20
+          },
+          {
+            "product_id": "B07TXSV5X6",
+            "title": "Auriculares Bluetooth,Auriculares Inalámbricos Bluetooth táctiles, Auriculares estéreo Bluetooth IPX7 a Prueba de Agua, con Estuche de Carga para Apple Airpods Android iPhone",
+            "brand": "WDGP",
+            "price_cents": 3206,
+            "stock": 29
+          },
+          {
+            "product_id": "B081JX4NXR",
+            "title": "Auriculares Bluetooth Auriculares inalámbricos 5.0 Auriculares Auriculares intrauditivos Bluetooth Manos Libres estéreo inalámbrico en la Oreja para Apple Airpods Android Samsung Huawei/iPhone",
+            "brand": "TAIN",
+            "price_cents": 984,
+            "stock": 32
+          },
+          {
+            "product_id": "B07XC4RGTM",
+            "title": "Auriculares Bluetooth Auriculares Inalámbricos Bluetooth táctiles 3D estéreo HD Micrófono Auricular Emparejamiento Automático de llamadas Binaurales para Apple Airpods Pro Android iPhone 11",
+            "brand": "GSBLBL",
+            "price_cents": 2515,
+            "stock": 22
+          },
+          {
+            "product_id": "B0117RGG8E",
+            "title": "Bose SoundLink II - Auriculares Supraurales Bluetooth con Micrófono, Control Remoto Integrado, color Negro",
+            "brand": "Bose",
+            "price_cents": 2457,
+            "stock": 2
+          }
+        ],
+        "awaiting_confirmation": false
+      },
+      "store": {
+        "orders": [],
+        "order_items": [],
+        "cart_items": [
+          {
+            "cart_id": "eval-a557491f-02_pedido_ambiguo-c1",
+            "product_id": "B081C31KV4",
+            "quantity": 1
+          }
+        ],
+        "inventory_changes": [
+          {
+            "product_id": "B081C31KV4",
+            "initial_stock": 14,
+            "stock": 20
+          }
+        ]
+      },
+      "offers": {
+        "B0117RGG8E": {
+          "price_cents": 2457,
+          "stock": 2
+        },
+        "B07TXSV5X6": {
+          "price_cents": 3206,
+          "stock": 29
+        },
+        "B07XC4RGTM": {
+          "price_cents": 2515,
+          "stock": 22
+        },
+        "B081C31KV4": {
+          "price_cents": 1990,
+          "stock": 20
+        },
+        "B081JX4NXR": {
+          "price_cents": 984,
+          "stock": 32
+        }
+      }
+    },
+    "checks": [
+      {
+        "check": "orders",
+        "params": {
+          "count": 0
+        },
+        "ok": true,
+        "detail": "pedidos registrados: 0"
+      },
+      {
+        "check": "cart",
+        "params": {
+          "lines": [
+            {
+              "product": "@elegido",
+              "quantity": 1
+            }
+          ]
+        },
+        "ok": true,
+        "detail": "carrito: 1 × B081C31KV4"
+      },
+      {
+        "check": "budget",
+        "params": {
+          "cents": 5000
+        },
+        "ok": true,
+        "detail": "presupuesto en el estado: 5000"
+      },
+      {
+        "check": "stock",
+        "params": {
+          "product": "@elegido",
+          "equals": 20
+        },
+        "ok": true,
+        "detail": "existencias de B081C31KV4: 20"
+      }
+    ]
+  },
+  "violations": [],
+  "problems": [],
+  "passed": true,
+  "timings": {
+    "all": {
+      "turns": 3,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.01,
+        "max": 0.04
+      },
+      "llm": {
+        "mean": 5.05,
+        "max": 8.72
+      },
+      "tools": {
+        "mean": 0.03,
+        "max": 0.05
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 5.1,
+        "max": 8.79
+      }
+    },
+    "with_llm": {
+      "turns": 3,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.01,
+        "max": 0.04
+      },
+      "llm": {
+        "mean": 5.05,
+        "max": 8.72
+      },
+      "tools": {
+        "mean": 0.03,
+        "max": 0.05
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 5.1,
+        "max": 8.79
+      }
+    },
+    "without_llm": {
+      "turns": 0
+    }
+  }
+}

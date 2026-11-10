@@ -5,7 +5,7 @@
 - Tipo: `correccion_transcripcion`
 - Qué se prueba: El agente repite el pedido con dos unidades y el usuario corrige antes de confirmar: había dicho doce (dos y doce se confunden con facilidad al transcribir). No debe registrarse nada con dos unidades; el pedido final lleva doce.
 
-## Turno 1 (7.9 s)
+## Turno 1 (8.1 s)
 
 **Usuario (texto):** Busco un ratón inalámbrico.
 
@@ -21,7 +21,7 @@
 
 > **Suceso externo:** la tienda deja `B08P34RJSX` (@elegido) con precio 11,00 € y existencias 20.
 
-## Turno 2 (5.2 s)
+## Turno 2 (5.3 s)
 
 **Usuario (texto):** Añade dos del primero.
 
@@ -33,7 +33,7 @@
 
 - ✔ `cart(lines=[{"product": "@elegido", "quantity": 2}])` — carrito: 2 × B08P34RJSX
 
-## Turno 3 (2.2 s)
+## Turno 3 (2.3 s)
 
 **Usuario (texto):** Cierra el pedido.
 
@@ -46,7 +46,7 @@
 - ✔ `awaiting_confirmation(value=true)` — esperando confirmación: sí
 - ✔ `orders(count=0)` — pedidos registrados: 0
 
-## Turno 4 (5.5 s)
+## Turno 4 (5.9 s)
 
 **Usuario (texto):** No, espera, he dicho doce, no dos.
 
@@ -76,7 +76,7 @@
 
 **Usuario (texto):** Sí, confirmo.
 
-- `confirmar_pedido(quote_id="39174afebbe04273966ae0a1663dff95")` → OK: pedido registrado
+- `confirmar_pedido(quote_id="17102677fdaa419aa0eff3d74d3b8e61")` → OK: pedido registrado
 
 **Agente:** Pedido número 1 registrado: 12 unidades de «Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con…» a 11,00 € cada una, 132,00 €. Total: 132,00 €. Gracias por tu compra.
 
@@ -106,12 +106,12 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.03 | 7.87 | 0.02 | 0.00 | 7.92 | 0.0 s |
-| 2 | 0.00 | 0.00 | 5.19 | 0.05 | 0.00 | 5.24 | 0.0 s |
-| 3 | 0.00 | 0.00 | 2.18 | 0.04 | 0.00 | 2.22 | 0.0 s |
-| 4 | 0.00 | 0.00 | 5.41 | 0.05 | 0.00 | 5.47 | 0.0 s |
-| 5 | 0.00 | 0.00 | 2.23 | 0.04 | 0.00 | 2.27 | 0.0 s |
-| 6 | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | 0.0 s |
-| **Media de los turnos con LLM (5)** | 0.00 | 0.01 | 4.58 | 0.04 | 0.00 | 4.62 | |
-| **Media de los turnos sin LLM (1)** | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | |
+| 1 | 0.00 | 0.03 | 8.05 | 0.03 | 0.00 | 8.11 | 0.0 s |
+| 2 | 0.00 | 0.00 | 5.23 | 0.04 | 0.00 | 5.28 | 0.0 s |
+| 3 | 0.00 | 0.00 | 2.29 | 0.04 | 0.00 | 2.32 | 0.0 s |
+| 4 | 0.00 | 0.00 | 5.82 | 0.05 | 0.00 | 5.88 | 0.0 s |
+| 5 | 0.00 | 0.00 | 2.24 | 0.03 | 0.00 | 2.26 | 0.0 s |
+| 6 | 0.00 | 0.00 | 0.00 | 0.02 | 0.00 | 0.02 | 0.0 s |
+| **Media de los turnos con LLM (5)** | 0.00 | 0.01 | 4.72 | 0.04 | 0.00 | 4.77 | |
+| **Media de los turnos sin LLM (1)** | 0.00 | 0.00 | 0.00 | 0.02 | 0.00 | 0.02 | |
 

@@ -5,7 +5,7 @@
 - Tipo: `cierre_sin_carrito`
 - Qué se prueba: El usuario pide cerrar el pedido con el carrito vacío y después dice que sí. No hay cotización que confirmar: no debe registrarse nada.
 
-## Turno 1 (2.9 s)
+## Turno 1 (3.0 s)
 
 **Usuario (texto):** Quiero cerrar el pedido.
 
@@ -18,7 +18,7 @@
 - ✔ `orders(count=0)` — pedidos registrados: 0
 - ✔ `awaiting_confirmation(value=false)` — esperando confirmación: no
 
-## Turno 2 (1.9 s)
+## Turno 2 (2.1 s)
 
 **Usuario (texto):** Sí, confirmo.
 
@@ -45,7 +45,7 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.00 | 2.87 | 0.03 | 0.00 | 2.90 | 0.0 s |
-| 2 | 0.00 | 0.00 | 1.91 | 0.03 | 0.00 | 1.93 | 0.0 s |
-| **Media de los turnos con LLM (2)** | 0.00 | 0.00 | 2.39 | 0.03 | 0.00 | 2.42 | |
+| 1 | 0.00 | 0.00 | 2.98 | 0.03 | 0.00 | 3.00 | 0.0 s |
+| 2 | 0.00 | 0.00 | 2.06 | 0.03 | 0.00 | 2.09 | 0.0 s |
+| **Media de los turnos con LLM (2)** | 0.00 | 0.00 | 2.52 | 0.03 | 0.00 | 2.55 | |
 

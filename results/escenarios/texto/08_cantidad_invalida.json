@@ -6,9 +6,9 @@
   "voice": false,
   "input": "texto",
   "audio_source": null,
-  "user_id": "eval-d1aab68f-08_cantidad_invalida",
+  "user_id": "eval-6b9dd32e-08_cantidad_invalida",
   "threads": [
-    "eval-d1aab68f-08_cantidad_invalida-c1"
+    "eval-6b9dd32e-08_cantidad_invalida-c1"
   ],
   "names": {
     "elegido": "B07MBYH3F7"
@@ -41,18 +41,18 @@
       ],
       "timings": {
         "asr": 0.0,
-        "retrieval": 0.031,
-        "llm": 8.804,
-        "tools": 0.026,
+        "retrieval": 0.03,
+        "llm": 7.751,
+        "tools": 0.031,
         "tts": 0.0,
-        "total": 8.862
+        "total": 7.812
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-d1aab68f-08_cantidad_invalida-c1",
+        "cart_id": "eval-6b9dd32e-08_cantidad_invalida-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -71,7 +71,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-d1aab68f-08_cantidad_invalida-c1",
+        "cart_id": "eval-6b9dd32e-08_cantidad_invalida-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -207,17 +207,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 4.966,
-        "tools": 0.038,
+        "llm": 4.592,
+        "tools": 0.031,
         "tts": 0.0,
-        "total": 5.004
+        "total": 4.624
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-d1aab68f-08_cantidad_invalida-c1",
+        "cart_id": "eval-6b9dd32e-08_cantidad_invalida-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -299,7 +299,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-d1aab68f-08_cantidad_invalida-c1",
+        "cart_id": "eval-6b9dd32e-08_cantidad_invalida-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -427,17 +427,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 6.001,
-        "tools": 0.029,
+        "llm": 5.397,
+        "tools": 0.034,
         "tts": 0.0,
-        "total": 6.03
+        "total": 5.43
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-d1aab68f-08_cantidad_invalida-c1",
+        "cart_id": "eval-6b9dd32e-08_cantidad_invalida-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -519,7 +519,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-d1aab68f-08_cantidad_invalida-c1",
+        "cart_id": "eval-6b9dd32e-08_cantidad_invalida-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -614,7 +614,7 @@
   ],
   "final": {
     "snapshot": {
-      "cart_id": "eval-d1aab68f-08_cantidad_invalida-c1",
+      "cart_id": "eval-6b9dd32e-08_cantidad_invalida-c1",
       "state": {
         "budget_cents": null,
         "preferences": [],
@@ -738,20 +738,20 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 6.59,
-        "max": 8.8
+        "mean": 5.91,
+        "max": 7.75
       },
       "tools": {
         "mean": 0.03,
-        "max": 0.04
+        "max": 0.03
       },
       "tts": {
         "mean": 0.0,
         "max": 0.0
       },
       "total": {
-        "mean": 6.63,
-        "max": 8.86
+        "mean": 5.96,
+        "max": 7.81
       }
     },
     "with_llm": {
@@ -765,20 +765,20 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 6.59,
-        "max": 8.8
+        "mean": 5.91,
+        "max": 7.75
       },
       "tools": {
         "mean": 0.03,
-        "max": 0.04
+        "max": 0.03
       },
       "tts": {
         "mean": 0.0,
         "max": 0.0
       },
       "total": {
-        "mean": 6.63,
-        "max": 8.86
+        "mean": 5.96,
+        "max": 7.81
       }
     },
     "without_llm": {

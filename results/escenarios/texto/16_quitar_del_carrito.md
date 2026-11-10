@@ -5,7 +5,7 @@
 - Tipo: `quitar_del_carrito`
 - Qué se prueba: El usuario añade dos productos en un mismo turno, quita el primero y compra. El pedido solo debe llevar el segundo y el inventario del primero no debe cambiar.
 
-## Turno 1 (7.4 s)
+## Turno 1 (7.5 s)
 
 **Usuario (texto):** Busco un teclado inalámbrico.
 
@@ -25,7 +25,7 @@
 
 > **Suceso externo:** la tienda deja `B07XD94VGX` (@segundo) con precio 18,00 € y existencias 20.
 
-## Turno 2 (6.9 s)
+## Turno 2 (7.1 s)
 
 **Usuario (texto):** Añade uno del primero y uno del segundo.
 
@@ -38,7 +38,7 @@
 
 - ✔ `cart(lines=[{"product": "@primero", "quantity": 1}, {"product": "@segundo", "quantity": 1}])` — carrito: 1 × B09DBFG8W3, 1 × B07XD94VGX
 
-## Turno 3 (5.8 s)
+## Turno 3 (6.0 s)
 
 **Usuario (texto):** Quita el primero.
 
@@ -50,7 +50,7 @@
 
 - ✔ `cart(lines=[{"product": "@segundo", "quantity": 1}])` — carrito: 1 × B07XD94VGX
 
-## Turno 4 (2.3 s)
+## Turno 4 (2.4 s)
 
 **Usuario (texto):** Cierra el pedido.
 
@@ -67,7 +67,7 @@
 
 **Usuario (texto):** Sí.
 
-- `confirmar_pedido(quote_id="f6c68479c8b946b8a083dff68b9f2759")` → OK: pedido registrado
+- `confirmar_pedido(quote_id="25d9269975934f459499120d2326c189")` → OK: pedido registrado
 
 **Agente:** Pedido número 1 registrado: 1 unidad de «Teclado y Raton Inalambrico Español, TedGem 2.4G Teclado Inalambrico…» a 18,00 € cada una, 18,00 €. Total: 18,00 €. Gracias por tu compra.
 
@@ -99,11 +99,11 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.05 | 7.28 | 0.03 | 0.00 | 7.35 | 0.0 s |
-| 2 | 0.00 | 0.00 | 6.83 | 0.07 | 0.00 | 6.91 | 0.0 s |
-| 3 | 0.00 | 0.00 | 5.70 | 0.05 | 0.00 | 5.75 | 0.0 s |
-| 4 | 0.00 | 0.00 | 2.28 | 0.04 | 0.00 | 2.32 | 0.0 s |
+| 1 | 0.00 | 0.03 | 7.42 | 0.02 | 0.00 | 7.47 | 0.0 s |
+| 2 | 0.00 | 0.00 | 7.00 | 0.08 | 0.00 | 7.08 | 0.0 s |
+| 3 | 0.00 | 0.00 | 5.91 | 0.05 | 0.00 | 5.96 | 0.0 s |
+| 4 | 0.00 | 0.00 | 2.41 | 0.03 | 0.00 | 2.44 | 0.0 s |
 | 5 | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | 0.0 s |
-| **Media de los turnos con LLM (4)** | 0.00 | 0.01 | 5.52 | 0.05 | 0.00 | 5.58 | |
+| **Media de los turnos con LLM (4)** | 0.00 | 0.01 | 5.69 | 0.04 | 0.00 | 5.74 | |
 | **Media de los turnos sin LLM (1)** | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | |
 

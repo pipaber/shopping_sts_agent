@@ -1,0 +1,770 @@
+{
+  "id": "08_cantidad_invalida",
+  "title": "Cantidad inválida",
+  "kind": "cantidad_invalida",
+  "description": "El usuario pide cero unidades y después una cantidad negativa. Ninguna de las dos debe llegar al carrito.",
+  "voice": false,
+  "input": "texto",
+  "audio_source": null,
+  "user_id": "eval-a557491f-08_cantidad_invalida",
+  "threads": [
+    "eval-a557491f-08_cantidad_invalida-c1"
+  ],
+  "names": {
+    "elegido": "B01M3XQ2KL"
+  },
+  "steps": [
+    {
+      "kind": "turn",
+      "turn": 1,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Busco un cargador USB C.",
+      "agent_input": "Busco un cargador USB C.",
+      "response": "Tengo el cargador USB C de Samsung por 12,72 euros, el de Yosou por 13,65 euros, el de JOOMFEEN en negro por 9,96 euros y otro de JOOMFEEN en plata por 25,13 euros. ¿Te interesa alguno?",
+      "spoken_text": "Tengo el cargador USB C de Samsung por doce euros con setenta y dos céntimos, el de Yosou por trece euros con sesenta y cinco céntimos, el de JOOMFEEN en negro por nueve euros con noventa y seis céntimos y otro de JOOMFEEN en plata por veinticinco euros con trece céntimos. ¿Te interesa alguno?",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "buscar_productos",
+          "args": {
+            "consulta": "cargador USB C"
+          },
+          "reason": "buscar el cargador USB C",
+          "ok": true,
+          "summary": "estos son ahora los CANDIDATOS, del más al menos relevante:\n[1] id=B01M3XQ2KL | Samsung EP-LN920CBEGWW, Cargador de coche Dual con Carga rápida y cable USB-C incluído, color negro | marca: SAMSUNG | color: negro | precio: 12,72 € | existencias: 6 | características (extracto): Diseño elegante y creativo Calidad óptima para los requisitos del cliente Hecho de material resistente para un uso prolongado Producto útil y práctico | descripción: desconocido\n[2] id=B07MBYH3F7 | Cable USB Tipo C [3 Pack 1M] Cable Cargador Tipo C De Nylon Carga Rápida Movil Tipo C USB Cargador para Samsung Galaxy S10/S9/S8/A20/A40/A50/A70, Huawei P9/P10/P20/P30, Nintendo Switch, Sony Xperia | marca: Yosou | color: cable usb c 3 colors | precio: 13,65 € | existencias: 11 | características (extracto): 【Conector Reversible】：Conector USB Type-C Reversible es un nuevo transformación de cables antiguos USB a cables nuevos cargados.Tienen un puerto circular que facilita la inserción de teléfonos móviles sin tener que examinar los conectores… | descripción: desconocido\n[3] id=B07VPJ81BF | JOOMFEEN USB Tipo C Cargador de Coche,Quick Charge 3.0+2.4A 30W Carga Rapida Doble Puertos USB Adaptador cargador de coche con Cable USB C para Samsung Galaxy S10E/S9/S8/Note 8,LG G6,Huawei P20/Mate10 | marca: JOOMFEEN | color: Negro | precio: 9,96 € | existencias: 10 | características (extracto): Carga rápida: Qualcomm Quick Charge 3.0 + 2.4A Doble Puertos USB adaptador cargador coche con 1Metro cable tipo c carga rápida para el conductor y el pasajero, salida del puerto 2.4: DC 5v / 3a, 9v / 2a, 12v / 1.5a, salida del puerto… | descripción: JOOMFEEN Cargador de Coche Tipo C, 30W, Doble Puertos USB con Cable 1meter USB-A a USB-C Cargador de Coche:Quick Charge 3.0 Technología Es una tecnología de carga de la energía que ahorra hasta un…\n[4] id=B07XB73LVF | JOOMFEEN USB Tipo C Cargador de Coche,Quick Charge 3.0+2.4A 30W Carga Rapida Doble Puertos USB Adaptador cargador de coche con Cable USB C para Samsung Galaxy S10E/S9/S8/Note 8,LG G6,Huawei P20/Mate10 | marca: JOOMFEEN | color: Plata | precio: 25,13 € | existencias: 50 | características (extracto): Carga rápida: Qualcomm Quick Charge 3.0 + 2.4A Doble Puertos USB adaptador cargador coche con 1Metro cable tipo c carga rápida para el conductor y el pasajero, salida del puerto 2.4: DC 5v / 3a, 9v / 2a, 12v / 1.5a, salida del puerto… | descripción: JOOMFEEN Cargador de Coche Tipo C, 30W, Doble Puertos USB con Cable 1meter USB-A a USB-C Cargador de Coche:Quick Charge 3.0 Technología Es una tecnología de carga de la energía que ahorra hasta un…\n[5] id=B01J2G52O6 | Amazon - Cargador USB de 5 W - compatible con los dispositivos Amazon | marca: Amazon | color: Negro | precio: 42,47 € | existencias: 11 | características (extracto): Adaptador de corriente de 5 W y 1 A original de Amazon, compatible con la mayoría de dispositivos con puerto micro USB (requiere un cable micro USB, no incluido con el cargador) Apto para uso con todos los e-readers Kindle, tablets Fire… | descripción: desconocido",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.053,
+        "llm": 6.544,
+        "tools": 0.015,
+        "tts": 0.0,
+        "total": 6.611
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-a557491f-08_cantidad_invalida-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {}
+      },
+      "after": {
+        "cart_id": "eval-a557491f-08_cantidad_invalida-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B01M3XQ2KL",
+              "title": "Samsung EP-LN920CBEGWW, Cargador de coche Dual con Carga rápida y cable USB-C incluído, color negro",
+              "brand": "SAMSUNG",
+              "price_cents": 1272,
+              "stock": 6
+            },
+            {
+              "product_id": "B07MBYH3F7",
+              "title": "Cable USB Tipo C [3 Pack 1M] Cable Cargador Tipo C De Nylon Carga Rápida Movil Tipo C USB Cargador para Samsung Galaxy S10/S9/S8/A20/A40/A50/A70, Huawei P9/P10/P20/P30, Nintendo Switch, Sony Xperia",
+              "brand": "Yosou",
+              "price_cents": 1365,
+              "stock": 11
+            },
+            {
+              "product_id": "B07VPJ81BF",
+              "title": "JOOMFEEN USB Tipo C Cargador de Coche,Quick Charge 3.0+2.4A 30W Carga Rapida Doble Puertos USB Adaptador cargador de coche con Cable USB C para Samsung Galaxy S10E/S9/S8/Note 8,LG G6,Huawei P20/Mate10",
+              "brand": "JOOMFEEN",
+              "price_cents": 996,
+              "stock": 10
+            },
+            {
+              "product_id": "B07XB73LVF",
+              "title": "JOOMFEEN USB Tipo C Cargador de Coche,Quick Charge 3.0+2.4A 30W Carga Rapida Doble Puertos USB Adaptador cargador de coche con Cable USB C para Samsung Galaxy S10E/S9/S8/Note 8,LG G6,Huawei P20/Mate10",
+              "brand": "JOOMFEEN",
+              "price_cents": 2513,
+              "stock": 50
+            },
+            {
+              "product_id": "B01J2G52O6",
+              "title": "Amazon - Cargador USB de 5 W - compatible con los dispositivos Amazon",
+              "brand": "Amazon",
+              "price_cents": 4247,
+              "stock": 11
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {
+          "B01J2G52O6": {
+            "price_cents": 4247,
+            "stock": 11
+          },
+          "B01M3XQ2KL": {
+            "price_cents": 1272,
+            "stock": 6
+          },
+          "B07MBYH3F7": {
+            "price_cents": 1365,
+            "stock": 11
+          },
+          "B07VPJ81BF": {
+            "price_cents": 996,
+            "stock": 10
+          },
+          "B07XB73LVF": {
+            "price_cents": 2513,
+            "stock": 50
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        }
+      ]
+    },
+    {
+      "kind": "remember",
+      "name": "elegido",
+      "ref": "candidate:1",
+      "product_id": "B01M3XQ2KL",
+      "title": "Samsung EP-LN920CBEGWW, Cargador de coche Dual con Carga rápida y cable USB-C incluído, color negro"
+    },
+    {
+      "kind": "event",
+      "event": "set_offer",
+      "product": "@elegido",
+      "product_id": "B01M3XQ2KL",
+      "price_cents": 800,
+      "stock": 20
+    },
+    {
+      "kind": "turn",
+      "turn": 2,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Añade cero unidades del primero.",
+      "agent_input": "Añade cero unidades del primero.",
+      "response": "Entendido, no se añadirán unidades del primero.",
+      "spoken_text": "Entendido, no se añadirán unidades del primero.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 2.824,
+        "tools": 0.028,
+        "tts": 0.0,
+        "total": 2.852
+      },
+      "llm_steps": 1,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-a557491f-08_cantidad_invalida-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B01M3XQ2KL",
+              "title": "Samsung EP-LN920CBEGWW, Cargador de coche Dual con Carga rápida y cable USB-C incluído, color negro",
+              "brand": "SAMSUNG",
+              "price_cents": 1272,
+              "stock": 6
+            },
+            {
+              "product_id": "B07MBYH3F7",
+              "title": "Cable USB Tipo C [3 Pack 1M] Cable Cargador Tipo C De Nylon Carga Rápida Movil Tipo C USB Cargador para Samsung Galaxy S10/S9/S8/A20/A40/A50/A70, Huawei P9/P10/P20/P30, Nintendo Switch, Sony Xperia",
+              "brand": "Yosou",
+              "price_cents": 1365,
+              "stock": 11
+            },
+            {
+              "product_id": "B07VPJ81BF",
+              "title": "JOOMFEEN USB Tipo C Cargador de Coche,Quick Charge 3.0+2.4A 30W Carga Rapida Doble Puertos USB Adaptador cargador de coche con Cable USB C para Samsung Galaxy S10E/S9/S8/Note 8,LG G6,Huawei P20/Mate10",
+              "brand": "JOOMFEEN",
+              "price_cents": 996,
+              "stock": 10
+            },
+            {
+              "product_id": "B07XB73LVF",
+              "title": "JOOMFEEN USB Tipo C Cargador de Coche,Quick Charge 3.0+2.4A 30W Carga Rapida Doble Puertos USB Adaptador cargador de coche con Cable USB C para Samsung Galaxy S10E/S9/S8/Note 8,LG G6,Huawei P20/Mate10",
+              "brand": "JOOMFEEN",
+              "price_cents": 2513,
+              "stock": 50
+            },
+            {
+              "product_id": "B01J2G52O6",
+              "title": "Amazon - Cargador USB de 5 W - compatible con los dispositivos Amazon",
+              "brand": "Amazon",
+              "price_cents": 4247,
+              "stock": 11
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B01M3XQ2KL",
+              "initial_stock": 6,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B01J2G52O6": {
+            "price_cents": 4247,
+            "stock": 11
+          },
+          "B01M3XQ2KL": {
+            "price_cents": 800,
+            "stock": 20
+          },
+          "B07MBYH3F7": {
+            "price_cents": 1365,
+            "stock": 11
+          },
+          "B07VPJ81BF": {
+            "price_cents": 996,
+            "stock": 10
+          },
+          "B07XB73LVF": {
+            "price_cents": 2513,
+            "stock": 50
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-a557491f-08_cantidad_invalida-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B01M3XQ2KL",
+              "title": "Samsung EP-LN920CBEGWW, Cargador de coche Dual con Carga rápida y cable USB-C incluído, color negro",
+              "brand": "SAMSUNG",
+              "price_cents": 800,
+              "stock": 20
+            },
+            {
+              "product_id": "B07MBYH3F7",
+              "title": "Cable USB Tipo C [3 Pack 1M] Cable Cargador Tipo C De Nylon Carga Rápida Movil Tipo C USB Cargador para Samsung Galaxy S10/S9/S8/A20/A40/A50/A70, Huawei P9/P10/P20/P30, Nintendo Switch, Sony Xperia",
+              "brand": "Yosou",
+              "price_cents": 1365,
+              "stock": 11
+            },
+            {
+              "product_id": "B07VPJ81BF",
+              "title": "JOOMFEEN USB Tipo C Cargador de Coche,Quick Charge 3.0+2.4A 30W Carga Rapida Doble Puertos USB Adaptador cargador de coche con Cable USB C para Samsung Galaxy S10E/S9/S8/Note 8,LG G6,Huawei P20/Mate10",
+              "brand": "JOOMFEEN",
+              "price_cents": 996,
+              "stock": 10
+            },
+            {
+              "product_id": "B07XB73LVF",
+              "title": "JOOMFEEN USB Tipo C Cargador de Coche,Quick Charge 3.0+2.4A 30W Carga Rapida Doble Puertos USB Adaptador cargador de coche con Cable USB C para Samsung Galaxy S10E/S9/S8/Note 8,LG G6,Huawei P20/Mate10",
+              "brand": "JOOMFEEN",
+              "price_cents": 2513,
+              "stock": 50
+            },
+            {
+              "product_id": "B01J2G52O6",
+              "title": "Amazon - Cargador USB de 5 W - compatible con los dispositivos Amazon",
+              "brand": "Amazon",
+              "price_cents": 4247,
+              "stock": 11
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B01M3XQ2KL",
+              "initial_stock": 6,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B01J2G52O6": {
+            "price_cents": 4247,
+            "stock": 11
+          },
+          "B01M3XQ2KL": {
+            "price_cents": 800,
+            "stock": 20
+          },
+          "B07MBYH3F7": {
+            "price_cents": 1365,
+            "stock": 11
+          },
+          "B07VPJ81BF": {
+            "price_cents": 996,
+            "stock": 10
+          },
+          "B07XB73LVF": {
+            "price_cents": 2513,
+            "stock": 50
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 3,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Añade menos dos unidades del primero.",
+      "agent_input": "Añade menos dos unidades del primero.",
+      "response": "Lo siento, el producto que buscas no está en el carrito. ¿Quieres añadirlo directamente?",
+      "spoken_text": "Lo siento, el producto que buscas no está en el carrito. ¿Quieres añadirlo directamente?",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "cambiar_cantidad",
+          "args": {
+            "product_id": "B01M3XQ2KL",
+            "cantidad": 1
+          },
+          "reason": "reducir la cantidad del producto 1",
+          "ok": false,
+          "summary": "[no_esta_en_el_carrito] El producto B01M3XQ2KL no está en el carrito.",
+          "issues": [
+            {
+              "code": "no_esta_en_el_carrito",
+              "message": "El producto B01M3XQ2KL no está en el carrito.",
+              "product_id": "B01M3XQ2KL",
+              "details": {}
+            }
+          ]
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 5.301,
+        "tools": 0.03,
+        "tts": 0.0,
+        "total": 5.331
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-a557491f-08_cantidad_invalida-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B01M3XQ2KL",
+              "title": "Samsung EP-LN920CBEGWW, Cargador de coche Dual con Carga rápida y cable USB-C incluído, color negro",
+              "brand": "SAMSUNG",
+              "price_cents": 800,
+              "stock": 20
+            },
+            {
+              "product_id": "B07MBYH3F7",
+              "title": "Cable USB Tipo C [3 Pack 1M] Cable Cargador Tipo C De Nylon Carga Rápida Movil Tipo C USB Cargador para Samsung Galaxy S10/S9/S8/A20/A40/A50/A70, Huawei P9/P10/P20/P30, Nintendo Switch, Sony Xperia",
+              "brand": "Yosou",
+              "price_cents": 1365,
+              "stock": 11
+            },
+            {
+              "product_id": "B07VPJ81BF",
+              "title": "JOOMFEEN USB Tipo C Cargador de Coche,Quick Charge 3.0+2.4A 30W Carga Rapida Doble Puertos USB Adaptador cargador de coche con Cable USB C para Samsung Galaxy S10E/S9/S8/Note 8,LG G6,Huawei P20/Mate10",
+              "brand": "JOOMFEEN",
+              "price_cents": 996,
+              "stock": 10
+            },
+            {
+              "product_id": "B07XB73LVF",
+              "title": "JOOMFEEN USB Tipo C Cargador de Coche,Quick Charge 3.0+2.4A 30W Carga Rapida Doble Puertos USB Adaptador cargador de coche con Cable USB C para Samsung Galaxy S10E/S9/S8/Note 8,LG G6,Huawei P20/Mate10",
+              "brand": "JOOMFEEN",
+              "price_cents": 2513,
+              "stock": 50
+            },
+            {
+              "product_id": "B01J2G52O6",
+              "title": "Amazon - Cargador USB de 5 W - compatible con los dispositivos Amazon",
+              "brand": "Amazon",
+              "price_cents": 4247,
+              "stock": 11
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B01M3XQ2KL",
+              "initial_stock": 6,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B01J2G52O6": {
+            "price_cents": 4247,
+            "stock": 11
+          },
+          "B01M3XQ2KL": {
+            "price_cents": 800,
+            "stock": 20
+          },
+          "B07MBYH3F7": {
+            "price_cents": 1365,
+            "stock": 11
+          },
+          "B07VPJ81BF": {
+            "price_cents": 996,
+            "stock": 10
+          },
+          "B07XB73LVF": {
+            "price_cents": 2513,
+            "stock": 50
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-a557491f-08_cantidad_invalida-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B01M3XQ2KL",
+              "title": "Samsung EP-LN920CBEGWW, Cargador de coche Dual con Carga rápida y cable USB-C incluído, color negro",
+              "brand": "SAMSUNG",
+              "price_cents": 800,
+              "stock": 20
+            },
+            {
+              "product_id": "B07MBYH3F7",
+              "title": "Cable USB Tipo C [3 Pack 1M] Cable Cargador Tipo C De Nylon Carga Rápida Movil Tipo C USB Cargador para Samsung Galaxy S10/S9/S8/A20/A40/A50/A70, Huawei P9/P10/P20/P30, Nintendo Switch, Sony Xperia",
+              "brand": "Yosou",
+              "price_cents": 1365,
+              "stock": 11
+            },
+            {
+              "product_id": "B07VPJ81BF",
+              "title": "JOOMFEEN USB Tipo C Cargador de Coche,Quick Charge 3.0+2.4A 30W Carga Rapida Doble Puertos USB Adaptador cargador de coche con Cable USB C para Samsung Galaxy S10E/S9/S8/Note 8,LG G6,Huawei P20/Mate10",
+              "brand": "JOOMFEEN",
+              "price_cents": 996,
+              "stock": 10
+            },
+            {
+              "product_id": "B07XB73LVF",
+              "title": "JOOMFEEN USB Tipo C Cargador de Coche,Quick Charge 3.0+2.4A 30W Carga Rapida Doble Puertos USB Adaptador cargador de coche con Cable USB C para Samsung Galaxy S10E/S9/S8/Note 8,LG G6,Huawei P20/Mate10",
+              "brand": "JOOMFEEN",
+              "price_cents": 2513,
+              "stock": 50
+            },
+            {
+              "product_id": "B01J2G52O6",
+              "title": "Amazon - Cargador USB de 5 W - compatible con los dispositivos Amazon",
+              "brand": "Amazon",
+              "price_cents": 4247,
+              "stock": 11
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B01M3XQ2KL",
+              "initial_stock": 6,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B01J2G52O6": {
+            "price_cents": 4247,
+            "stock": 11
+          },
+          "B01M3XQ2KL": {
+            "price_cents": 800,
+            "stock": 20
+          },
+          "B07MBYH3F7": {
+            "price_cents": 1365,
+            "stock": 11
+          },
+          "B07VPJ81BF": {
+            "price_cents": 996,
+            "stock": 10
+          },
+          "B07XB73LVF": {
+            "price_cents": 2513,
+            "stock": 50
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        }
+      ]
+    }
+  ],
+  "final": {
+    "snapshot": {
+      "cart_id": "eval-a557491f-08_cantidad_invalida-c1",
+      "state": {
+        "budget_cents": null,
+        "preferences": [],
+        "pending_clarification": null,
+        "quote": null,
+        "order": null,
+        "candidates": [
+          {
+            "product_id": "B01M3XQ2KL",
+            "title": "Samsung EP-LN920CBEGWW, Cargador de coche Dual con Carga rápida y cable USB-C incluído, color negro",
+            "brand": "SAMSUNG",
+            "price_cents": 800,
+            "stock": 20
+          },
+          {
+            "product_id": "B07MBYH3F7",
+            "title": "Cable USB Tipo C [3 Pack 1M] Cable Cargador Tipo C De Nylon Carga Rápida Movil Tipo C USB Cargador para Samsung Galaxy S10/S9/S8/A20/A40/A50/A70, Huawei P9/P10/P20/P30, Nintendo Switch, Sony Xperia",
+            "brand": "Yosou",
+            "price_cents": 1365,
+            "stock": 11
+          },
+          {
+            "product_id": "B07VPJ81BF",
+            "title": "JOOMFEEN USB Tipo C Cargador de Coche,Quick Charge 3.0+2.4A 30W Carga Rapida Doble Puertos USB Adaptador cargador de coche con Cable USB C para Samsung Galaxy S10E/S9/S8/Note 8,LG G6,Huawei P20/Mate10",
+            "brand": "JOOMFEEN",
+            "price_cents": 996,
+            "stock": 10
+          },
+          {
+            "product_id": "B07XB73LVF",
+            "title": "JOOMFEEN USB Tipo C Cargador de Coche,Quick Charge 3.0+2.4A 30W Carga Rapida Doble Puertos USB Adaptador cargador de coche con Cable USB C para Samsung Galaxy S10E/S9/S8/Note 8,LG G6,Huawei P20/Mate10",
+            "brand": "JOOMFEEN",
+            "price_cents": 2513,
+            "stock": 50
+          },
+          {
+            "product_id": "B01J2G52O6",
+            "title": "Amazon - Cargador USB de 5 W - compatible con los dispositivos Amazon",
+            "brand": "Amazon",
+            "price_cents": 4247,
+            "stock": 11
+          }
+        ],
+        "awaiting_confirmation": false
+      },
+      "store": {
+        "orders": [],
+        "order_items": [],
+        "cart_items": [],
+        "inventory_changes": [
+          {
+            "product_id": "B01M3XQ2KL",
+            "initial_stock": 6,
+            "stock": 20
+          }
+        ]
+      },
+      "offers": {
+        "B01J2G52O6": {
+          "price_cents": 4247,
+          "stock": 11
+        },
+        "B01M3XQ2KL": {
+          "price_cents": 800,
+          "stock": 20
+        },
+        "B07MBYH3F7": {
+          "price_cents": 1365,
+          "stock": 11
+        },
+        "B07VPJ81BF": {
+          "price_cents": 996,
+          "stock": 10
+        },
+        "B07XB73LVF": {
+          "price_cents": 2513,
+          "stock": 50
+        }
+      }
+    },
+    "checks": [
+      {
+        "check": "orders",
+        "params": {
+          "count": 0
+        },
+        "ok": true,
+        "detail": "pedidos registrados: 0"
+      },
+      {
+        "check": "cart",
+        "params": {
+          "empty": true
+        },
+        "ok": true,
+        "detail": "carrito: vacío"
+      },
+      {
+        "check": "stock",
+        "params": {
+          "product": "@elegido",
+          "equals": 20
+        },
+        "ok": true,
+        "detail": "existencias de B01M3XQ2KL: 20"
+      }
+    ]
+  },
+  "violations": [],
+  "problems": [],
+  "passed": true,
+  "timings": {
+    "all": {
+      "turns": 3,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.02,
+        "max": 0.05
+      },
+      "llm": {
+        "mean": 4.89,
+        "max": 6.54
+      },
+      "tools": {
+        "mean": 0.02,
+        "max": 0.03
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 4.93,
+        "max": 6.61
+      }
+    },
+    "with_llm": {
+      "turns": 3,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.02,
+        "max": 0.05
+      },
+      "llm": {
+        "mean": 4.89,
+        "max": 6.54
+      },
+      "tools": {
+        "mean": 0.02,
+        "max": 0.03
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 4.93,
+        "max": 6.61
+      }
+    },
+    "without_llm": {
+      "turns": 0
+    }
+  }
+}

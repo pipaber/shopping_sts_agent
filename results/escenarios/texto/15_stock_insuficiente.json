@@ -6,9 +6,9 @@
   "voice": false,
   "input": "texto",
   "audio_source": null,
-  "user_id": "eval-d1aab68f-15_stock_insuficiente",
+  "user_id": "eval-6b9dd32e-15_stock_insuficiente",
   "threads": [
-    "eval-d1aab68f-15_stock_insuficiente-c1"
+    "eval-6b9dd32e-15_stock_insuficiente-c1"
   ],
   "names": {
     "elegida": "B096M7FCYF"
@@ -41,18 +41,18 @@
       ],
       "timings": {
         "asr": 0.0,
-        "retrieval": 0.031,
-        "llm": 6.549,
-        "tools": 0.025,
+        "retrieval": 0.034,
+        "llm": 6.727,
+        "tools": 0.026,
         "tts": 0.0,
-        "total": 6.606
+        "total": 6.786
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-d1aab68f-15_stock_insuficiente-c1",
+        "cart_id": "eval-6b9dd32e-15_stock_insuficiente-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -71,7 +71,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-d1aab68f-15_stock_insuficiente-c1",
+        "cart_id": "eval-6b9dd32e-15_stock_insuficiente-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -211,17 +211,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 5.698,
-        "tools": 0.03,
+        "llm": 5.508,
+        "tools": 0.023,
         "tts": 0.0,
-        "total": 5.728
+        "total": 5.531
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-d1aab68f-15_stock_insuficiente-c1",
+        "cart_id": "eval-6b9dd32e-15_stock_insuficiente-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -303,7 +303,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-d1aab68f-15_stock_insuficiente-c1",
+        "cart_id": "eval-6b9dd32e-15_stock_insuficiente-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -432,17 +432,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 5.35,
-        "tools": 0.044,
+        "llm": 5.439,
+        "tools": 0.05,
         "tts": 0.0,
-        "total": 5.394
+        "total": 5.49
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-d1aab68f-15_stock_insuficiente-c1",
+        "cart_id": "eval-6b9dd32e-15_stock_insuficiente-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -524,7 +524,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-d1aab68f-15_stock_insuficiente-c1",
+        "cart_id": "eval-6b9dd32e-15_stock_insuficiente-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -575,7 +575,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-d1aab68f-15_stock_insuficiente-c1",
+              "cart_id": "eval-6b9dd32e-15_stock_insuficiente-c1",
               "product_id": "B096M7FCYF",
               "quantity": 3
             }
@@ -630,7 +630,7 @@
   ],
   "final": {
     "snapshot": {
-      "cart_id": "eval-d1aab68f-15_stock_insuficiente-c1",
+      "cart_id": "eval-6b9dd32e-15_stock_insuficiente-c1",
       "state": {
         "budget_cents": null,
         "preferences": [],
@@ -681,7 +681,7 @@
         "order_items": [],
         "cart_items": [
           {
-            "cart_id": "eval-d1aab68f-15_stock_insuficiente-c1",
+            "cart_id": "eval-6b9dd32e-15_stock_insuficiente-c1",
             "product_id": "B096M7FCYF",
             "quantity": 3
           }
@@ -765,20 +765,20 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 5.87,
-        "max": 6.55
+        "mean": 5.89,
+        "max": 6.73
       },
       "tools": {
         "mean": 0.03,
-        "max": 0.04
+        "max": 0.05
       },
       "tts": {
         "mean": 0.0,
         "max": 0.0
       },
       "total": {
-        "mean": 5.91,
-        "max": 6.61
+        "mean": 5.94,
+        "max": 6.79
       }
     },
     "with_llm": {
@@ -792,20 +792,20 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 5.87,
-        "max": 6.55
+        "mean": 5.89,
+        "max": 6.73
       },
       "tools": {
         "mean": 0.03,
-        "max": 0.04
+        "max": 0.05
       },
       "tts": {
         "mean": 0.0,
         "max": 0.0
       },
       "total": {
-        "mean": 5.91,
-        "max": 6.61
+        "mean": 5.94,
+        "max": 6.79
       }
     },
     "without_llm": {
