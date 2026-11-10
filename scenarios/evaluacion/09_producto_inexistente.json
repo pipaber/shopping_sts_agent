@@ -3,7 +3,7 @@
   "title": "Producto inexistente",
   "kind": "producto_inexistente",
   "voice": false,
-  "description": "El usuario pide el séptimo de una lista de cinco y después un producto por un código que no existe. El agente no debe añadir otro producto en su lugar.",
+  "description": "El usuario pide el séptimo de una lista de cinco y después un producto por un código que no existe. El agente no debe añadir otro producto en su lugar. Tras la búsqueda la tienda deja los cinco candidatos con 20 unidades, para que nada se rechace por falta de existencias: si el agente añade un producto que no se le pidió, el carrito lo muestra.",
   "steps": [
     {
       "say": "Busco un altavoz bluetooth.",
@@ -13,6 +13,40 @@
           "empty": true
         }
       ]
+    },
+    {
+      "remember": {
+        "candidato1": "candidate:1",
+        "candidato2": "candidate:2",
+        "candidato3": "candidate:3",
+        "candidato4": "candidate:4",
+        "candidato5": "candidate:5"
+      }
+    },
+    {
+      "event": "set_offer",
+      "product": "@candidato1",
+      "stock": 20
+    },
+    {
+      "event": "set_offer",
+      "product": "@candidato2",
+      "stock": 20
+    },
+    {
+      "event": "set_offer",
+      "product": "@candidato3",
+      "stock": 20
+    },
+    {
+      "event": "set_offer",
+      "product": "@candidato4",
+      "stock": 20
+    },
+    {
+      "event": "set_offer",
+      "product": "@candidato5",
+      "stock": 20
     },
     {
       "say": "Añade dos del séptimo.",
