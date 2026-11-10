@@ -127,7 +127,8 @@ def _stock_issue(product_id: str, requested: int, available: int) -> Issue:
         )
     return Issue(
         INSUFFICIENT_STOCK,
-        f"Solo quedan {available} unidades del producto {product_id} y se pidieron {requested}.",
+        f"Solo {'queda 1 unidad' if available == 1 else f'quedan {available} unidades'} del producto "
+        f"{product_id} y se pidieron {requested}.",
         product_id,
         {"requested": requested, "available": available},
     )

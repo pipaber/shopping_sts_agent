@@ -72,6 +72,22 @@ Si `nvcc` no está en el `PATH`, se añade `CUDACXX=/usr/local/cuda/bin/nvcc` de
 
 El modelo (unos 4,7 GB) se descarga solo la primera vez en la caché de Hugging Face. Para usar otro, ver las variables `SHOPPING_AGENT_LLM_*` en [.env.example](.env.example).
 
+## Agente por texto
+
+Conversación por turnos con el agente (grafo de LangGraph, tienda en SQLite, LLM local). Antes de registrar un pedido repite productos, cantidades e importes y espera un sí.
+
+```bash
+uv run python -m shopping_agent.agent.chat
+```
+
+Con un guion (un mensaje de usuario por línea) se reproduce una conversación y se guarda la transcripción, con las operaciones ejecutadas y el estado final de la tienda:
+
+```bash
+uv run python -m shopping_agent.agent.chat --script scenarios/demo_compra.txt --restore --out results/chat_compra
+```
+
+`--restore` devuelve antes la tienda a su estado inicial y `--thread` reanuda una conversación guardada. En `results/` están las transcripciones de dos corridas: [chat_compra.md](results/chat_compra.md) y [chat_incidencias.md](results/chat_incidencias.md).
+
 ## Pruebas
 
 Las pruebas no necesitan GPU ni modelos: el grafo se prueba con un LLM guionizado. Las de Postgres se omiten si `SHOPPING_AGENT_PG_URL` no está definida o el servidor no responde.
