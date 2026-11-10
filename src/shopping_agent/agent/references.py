@@ -43,7 +43,7 @@ def _name(position: int) -> str:
     return _NAMES[position - 1] if position <= len(_NAMES) else f"número {position}"
 
 
-def _mentions_brand(text: str, candidate: Candidate) -> bool:
+def mentions_brand(text: str, candidate: Candidate) -> bool:
     """¿Nombra el mensaje la marca del producto? Es la otra forma de señalarlo."""
     brand = fold(candidate["brand"] or "").strip()
     return bool(brand) and re.search(rf"\b{re.escape(brand)}\b", fold(text)) is not None
@@ -69,7 +69,7 @@ def _other_product(text: str, candidates: Sequence[Candidate], named: list[int],
     """Rechazo si se quiere añadir un candidato que el mensaje no señala ni por posición ni por marca."""
     pointed = {candidates[position - 1]["product_id"] for position in named}
     listed = {candidate["product_id"]: candidate for candidate in candidates}
-    wrong = [pid for pid in product_ids if pid in listed and pid not in pointed and not _mentions_brand(text, listed[pid])]
+    wrong = [pid for pid in product_ids if pid in listed and pid not in pointed and not mentions_brand(text, listed[pid])]
     if not wrong:
         return None
     wanted = ", ".join(f"[{position}] id={candidates[position - 1]['product_id']}" for position in named)

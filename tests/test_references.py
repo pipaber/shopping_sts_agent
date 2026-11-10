@@ -123,3 +123,31 @@ def test_a_search_with_other_results_goes_through(searched):
     shop.sql("UPDATE inventory SET stock = 0 WHERE product_id = 'P5'")
     shop.llm.extend([call(tools.SEARCH, consulta="auriculares bluetooth"), say("Estos son.")])
     assert session.send("Vuelve a los auriculares").operations[0]["ok"]
+
+
+# --- Alternativas cuando un producto está agotado -----------------------------------------
+
+
+def test_when_the_llm_names_no_alternative_the_code_adds_the_ones_in_stock(searched):
+    shop, session, ids = searched
+    shop.sql("UPDATE inventory SET stock = 0 WHERE product_id = ?", ids[0])
+    shop.llm.extend([call(tools.ADD, product_id=ids[0], cantidad=1), say("Ese se ha agotado. ¿Te interesa otra opción?")])
+    turn = session.send("Ponme uno del primero.")
+    in_stock = [c for c in session.state["candidates"] if c["stock"] > 0 and c["product_id"] != ids[0]][:2]
+    assert turn.response.startswith("Ese se ha agotado. ¿Te interesa otra opción? Como alternativa tengo:")
+    assert all(candidate["title"][:20] in turn.response for candidate in in_stock) and cart_of(session) == {}
+
+
+def test_when_the_llm_already_names_one_nothing_is_added(searched):
+    shop, session, ids = searched
+    shop.sql("UPDATE inventory SET stock = 0 WHERE product_id = ?", ids[0])
+    other = next(c for c in session.state["candidates"] if c["product_id"] != ids[0] and c["brand"] and c["stock"] > 0)
+    shop.llm.extend([call(tools.ADD, product_id=ids[0], cantidad=1), say(f"Ese se ha agotado. ¿Te vale el de {other['brand']}?")])
+    turn = session.send("Ponme uno del primero.")
+    assert "Como alternativa" not in turn.response
+
+
+def test_other_rejections_do_not_get_alternatives(searched):
+    shop, session, ids = searched
+    shop.llm.extend([call(tools.ADD, product_id=ids[0], cantidad=500), say("No hay tantas unidades.")])
+    assert session.send("Ponme quinientos del primero.").response == "No hay tantas unidades."

@@ -13,10 +13,12 @@ from shopping_agent.agent import guards, prompt, references, texts, tools
 from shopping_agent.agent.deps import Deps, cart_id, user_id
 from shopping_agent.agent.llm import DecisionLLM, LLMError
 from shopping_agent.agent.nodes.steps import rejected, step
-from shopping_agent.agent.state import AgentState, Decision, Message, Step, Update, decision_args, new_turn
+from shopping_agent.agent.state import AgentState, Candidate, Decision, Message, Step, Update, decision_args, new_turn
+from shopping_agent.store import ops
 from shopping_agent.store.ops import Issue
 
 MAX_STEPS = 6  # decisiones del LLM por turno
+PROPOSED = 2  # alternativas que añade el código cuando un producto está agotado
 # Rechazos pensados para el LLM: no se le dicen al usuario en la respuesta de respaldo.
 NOT_FOR_USER = guards.INTERNAL_CODES | references.CODES | {tools.REPEATED_SEARCH}
 
@@ -148,13 +150,31 @@ def pedir_aclaracion(state: AgentState) -> Update:
     }
 
 
+def _in_stock_instead(state: AgentState) -> list[Candidate]:
+    """Si la tienda rechazó un producto por agotado y la respuesta del LLM no cita ningún
+    otro, los candidatos con existencias que el código propone en su lugar."""
+    sold_out = {issue["product_id"] for step in state.steps for issue in step["issues"] if issue["code"] == ops.OUT_OF_STOCK}
+    options = [c for c in state.candidates if c["product_id"] not in sold_out and c["stock"] > 0]
+    if not sold_out or any(_cites(state.response, option) for option in options):
+        return []
+    return options[:PROPOSED]
+
+
+def _cites(text: str, candidate: Candidate) -> bool:
+    """¿Nombra el texto ese producto, por su precio o por su marca?"""
+    return f"{candidate['price_cents'] / 100:g}" in guards.numbers_in(text) or references.mentions_brand(text, candidate)
+
+
 def responder(state: AgentState) -> Update:
-    """Cierra el turno. Si el carrito cambió, el código añade su contenido exacto."""
+    """Cierra el turno. Si el carrito cambió, el código añade su contenido exacto; si un
+    producto estaba agotado y el LLM no propone otro, añade los que sí tienen existencias."""
     text = state.response or texts.FALLBACK
     if state.cart_changed or (state.budget_changed and state.cart):
         text = f"{text} {texts.cart_summary(state.cart, state.budget_cents)}"
     elif state.budget_changed and state.budget_cents is not None:
         text = f"{text} {texts.budget_noted(state.budget_cents)}"
+    elif options := _in_stock_instead(state):
+        text = f"{text} {texts.alternatives(options)}"
     return {
         "response": text,
         "messages": [Message(role="assistant", content=text)],
