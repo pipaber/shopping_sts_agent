@@ -44,7 +44,7 @@ uv run python -m shopping_agent.eval.retrieval --split train
 
 ## Reranker (control sin grafo y GraphSAGE)
 
-Segunda etapa de la búsqueda: un modelo entrenado reordena los 50 primeros del híbrido. Hay dos versiones que solo se diferencian en el paso de mensajes: GraphSAGE (una GNN, con PyTorch Geometric, sobre un grafo de consultas y productos) y su control sin grafo. El GNN es el componente de la ablación: el agente se puede correr con uno, con otro o sin reranker. El diseño, las decisiones y las limitaciones están en [documentation/PLAN.md](documentation/PLAN.md) ("Diseño y resultados del reranker").
+Segunda etapa de la búsqueda: un modelo entrenado reordena los 50 primeros del híbrido. Hay dos versiones que solo se diferencian en el paso de mensajes: GraphSAGE (una GNN sobre un grafo heterogéneo de consultas y productos, hecho con `HeteroData` y `HeteroConv` de PyTorch Geometric) y su control sin grafo. El GNN es el componente de la ablación: el agente se puede correr con uno, con otro o sin reranker. El diseño, las decisiones y las limitaciones están en [documentation/PLAN.md](documentation/PLAN.md) ("Diseño y resultados del reranker").
 
 Las 1 500 consultas de `train` se reparten con semilla fija en 1 200 de ajuste y 300 de validación; las de `test` no se leen en ningún paso.
 
@@ -52,7 +52,7 @@ Las 1 500 consultas de `train` se reparten con semilla fija en 1 200 de ajuste y
 uv run python -m shopping_agent.retrieval.train --variant control --seed 0
 ```
 
-Entrena con las consultas de ajuste y guarda los pesos y el grafo en `datasets/processed/reranker_<variante>.pt` (13 MB, fuera de git; se regenera con este comando en unos 3 minutos). Imprime el nDCG@10 de validación del modelo guardado. La misma semilla lo reproduce con una diferencia de hasta ±0,0005, por operaciones de GPU que no son deterministas. `--variant` admite las variantes de la comparación: `control` (el mismo modelo sin grafo; es la que usa el agente por defecto), `sage` (GraphSAGE), `sage_exact` (con aristas de etiquetas de ajuste), `gatv2`… Para la ablación hay que entrenar también `--variant sage`.
+Entrena con las consultas de ajuste y guarda los pesos y el grafo en `datasets/processed/reranker_<variante>.v2.pt` (13 MB, fuera de git; se regenera con este comando en unos 3 minutos). Imprime el nDCG@10 de validación del modelo guardado. Con la misma semilla el control se reproduce exactamente; GraphSAGE varía hasta ±0,002 entre corridas, por operaciones de GPU que no son deterministas. `--variant` admite las variantes de la comparación: `control` (el mismo modelo sin grafo; es la que usa el agente por defecto), `sage` (GraphSAGE), `sage_exact` (con aristas de etiquetas de ajuste), `gatv2`… Para la ablación hay que entrenar también `--variant sage`.
 
 ```bash
 uv run python -m shopping_agent.eval.reranker --seeds 5
@@ -216,7 +216,7 @@ src/shopping_agent/
   data/        preparación de ESCI y de la tienda simulada
   retrieval/   BM25, denso, fusión RRF y métricas
     dev_data.py, first_stage.py   consultas de ajuste y validación; señales de la primera etapa
-    graph.py, gnn.py              grafo consulta–producto; modelo GraphSAGE y su pérdida
+    graph.py, gnn.py              grafo heterogéneo consulta–producto (HeteroData); modelo (HeteroConv) y su pérdida
     train.py, reranker.py         entrenamiento; reranker ya entrenado, para el agente
   store/       esquema SQLite, operaciones con validación y restauración
   agent/

@@ -144,19 +144,19 @@ Comparación a reportar con las mismas consultas de `test`: BM25 · denso · hí
 
 **Datos de desarrollo.** Las 1 500 consultas de `train` se reparten por `query_id`, con semilla 42, en 1 200 de ajuste y 300 de validación. Todo se entrena con las de ajuste y se elige con las de validación. El código de entrenamiento solo lee el catálogo y la partición de `train` (hay una prueba que lo comprueba); las consultas de `test` y sus qrels no se han cargado en ningún momento.
 
-**Grafo.** Nodos: las consultas y los 43 674 productos, con su embedding de texto (`multilingual-e5-small`) como características. Cada relación tiene un sentido, que es el del mensaje:
+**Grafo.** Es un grafo heterogéneo, un `HeteroData` de PyTorch Geometric, con dos tipos de nodo: `product` (los 43 674 productos) y `query` (las consultas), cada uno con su embedding de texto (`multilingual-e5-small`) como características. Tiene cuatro tipos de arista, que PyG nombra como (origen, relación, destino); el mensaje va del origen al destino:
 
-| Relación | Sentido | Qué une | Aristas | ¿Usa etiquetas? |
-|---|---|---|---|---|
-| `candidate` | producto → consulta | los 50 primeros del híbrido para esa consulta | 75 000 | no |
-| `similar` | producto → producto | los 10 vecinos más cercanos por coseno | 436 740 | no |
-| `brand` | producto → producto | hasta 5 productos de la misma marca, los más parecidos | 118 605 | no |
-| `exact` | consulta → producto | la consulta de ajuste tiene ese producto anotado como exacto | 13 301 | sí, de ajuste |
+| Tipo de arista | Qué une | Aristas | ¿Usa etiquetas? |
+|---|---|---|---|
+| `(product, candidate, query)` | los 50 primeros del híbrido para esa consulta | 75 000 | no |
+| `(product, similar, product)` | los 10 vecinos más cercanos por coseno | 436 740 | no |
+| `(product, brand, product)` | hasta 5 productos de la misma marca, los más parecidos | 118 605 | no |
+| `(query, exact, product)` | la consulta de ajuste tiene ese producto anotado como exacto | 13 301 | sí, de ajuste |
 
 - **Inductivo.** Una consulta nueva entra al grafo conectada solo a sus 50 candidatos, sin etiquetas, igual que las de validación. Los productos no reciben nada de ella, así que añadirla no cambia la puntuación de ninguna otra.
 - **Sin fuga de etiquetas.** Ninguna consulta recibe mensajes por `exact` (la relación solo va hacia el producto). Y al entrenar con un lote de consultas se quitan del grafo sus propias aristas `exact`: sus productos exactos no la tienen como vecina, como le pasará a una consulta nueva. Sus etiquetas solo son la supervisión. Una prueba cambia las etiquetas de una consulta de ajuste y comprueba que sus puntuaciones no se mueven (y que sin la máscara sí lo harían).
 
-**Modelo.** Dos capas; en cada una el estado de un nodo es su propia transformación lineal más lo que le llega por cada relación (`SAGEConv`, media de los vecinos; `GATv2Conv` en la variante con atención). La puntuación de un par es una combinación lineal de las tres señales de la primera etapa (coseno denso, BM25 relativo al máximo de la consulta y RRF) más una corrección que sale de los estados de la consulta y del producto. La corrección empieza en cero y la parte lineal en el coseno: sin entrenar, el modelo ordena igual que el recuperador denso. El **control sin grafo** es ese mismo modelo sin ninguna relación: mismas características, misma cabeza, misma pérdida y ningún paso de mensajes.
+**Modelo.** Dos capas. Cada una es un `HeteroConv` de PyG con una convolución por tipo de arista (`SAGEConv`, media de los vecinos; `GATv2Conv` en la variante con atención), cuyas salidas se suman en el nodo de destino; a eso se añade una transformación lineal propia de cada tipo de nodo. La capa se elige en la configuración (`conv`), de modo que otra capa heterogénea de PyG sería una variante más. La puntuación de un par es una combinación lineal de las tres señales de la primera etapa (coseno denso, BM25 relativo al máximo de la consulta y RRF) más una corrección que sale de los estados de la consulta y del producto. La corrección empieza en cero y la parte lineal en el coseno: sin entrenar, el modelo ordena igual que el recuperador denso. El **control sin grafo** es ese mismo modelo sin ninguna relación: mismas características, misma cabeza, misma pérdida y ningún paso de mensajes.
 
 **Pérdida.** Por pares dentro de cada consulta, logística (como RankNet) y ponderada por la diferencia de ganancia entre los dos candidatos: confundir un exacto con un irrelevante cuesta diez veces más que confundir un sustituto con un irrelevante, como en el nDCG. Cada consulta pesa lo mismo.
 
@@ -195,12 +195,20 @@ Lo que dicen los números:
 
 **Coste** ([control](../results/reranker_cost_control.json), [GraphSAGE](../results/reranker_cost_sage.json); RTX A2000, 200 consultas). La búsqueda híbrida tarda 15–16 ms por consulta. Con el control pasa a 18 ms en GPU (+2 ms; +89 ms si el reranker va en CPU) y el proceso ocupa 102 MiB más de VRAM (604 → 706 MiB con el recuperador denso). Con GraphSAGE, 27 ms (+12 ms; +127 ms en CPU) y 230 MiB más. Junto a los 9,5 GB del resto, cualquiera de los dos cabe de sobra en la T4. El comando de entrenamiento tardó 3 minutos, casi todo en leer el catálogo y cargar los modelos; el entrenamiento en sí son unos segundos en GPU. Los pesos de cada variante ocupan 13 MB.
 
+**Paridad tras pasar a `HeteroData` y `HeteroConv`.** La tabla de arriba se generó con la primera versión del código, que guardaba el grafo en una clase propia y sumaba las relaciones a mano. Al pasar a las clases heterogéneas de PyG se comprobó que el modelo es el mismo:
+
+- Con la misma semilla, los parámetros iniciales son idénticos bit a bit, y en CPU los estados de los nodos y las puntuaciones coinciden hasta 1e-7 (cambia el orden en que se suman los mensajes y, con él, el redondeo).
+- Reentrenando con las mismas 5 semillas, el control da exactamente los mismos nDCG@10 de validación (0,7578 / 0,7589 / 0,7583 / 0,7577 / 0,7583).
+- GraphSAGE da medias de 0,7625, 0,7622 y 0,7613 en tres repeticiones, frente al 0,7619 de la tabla. El código anterior, repetido dos veces, da 0,7619 y 0,7621: la diferencia es el ruido entre corridas en GPU, no el cambio.
+
+La tabla no se ha regenerado: hacerlo ocupa la GPU 15 minutos y 6,4 GB, y en ese momento la usaba la evaluación de escenarios. Los pesos sí son nuevos, porque el cambio renombra los parámetros de las capas: los archivos pasan a llamarse `reranker_<variante>.v2.pt` (control, semilla 0: 0,7578 en validación; GraphSAGE, semilla 0: 0,7634). El coste por consulta tampoco se ha vuelto a medir.
+
 **Limitaciones.**
 
 - 300 consultas de validación solo distinguen diferencias de más de ±0,004–0,008 en nDCG@10. Las diferencias entre variantes con grafo están por debajo.
 - La métrica de catálogo es pesimista: cerca del 40 % de los 10 primeros son productos sin anotar para esa consulta, y algunos son claramente relevantes (para "regleta sin cable usb" el GNN sube regletas sin cable que nadie anotó). Sirve para detectar fallos graves, no para afinar.
 - Los hiperparámetros y el número de épocas se eligieron en la misma validación con la que se comparan las variantes, así que las cifras de los rerankers son algo optimistas frente a las de los modelos base. La evaluación en `test` lo corregirá.
-- La misma semilla reproduce el nDCG@10 con una diferencia de hasta ±0,0005, porque algunas operaciones del paso de mensajes en GPU no son deterministas.
+- El control se reproduce exactamente con la misma semilla. GraphSAGE no: algunas operaciones del paso de mensajes en GPU no son deterministas y el entrenamiento amplifica esas diferencias de redondeo. En 25 corridas, la misma semilla se desvió hasta ±0,002 de nDCG@10 y la media de 5 semillas quedó entre 0,7613 y 0,7625. Es un ruido del mismo orden que la desviación entre semillas.
 - Los pesos se entrenan solo con las 1 200 consultas de ajuste. Reentrenar con las 1 500 antes de la evaluación final es posible, pero ese modelo ya no tendría validación propia.
 - Con solo 1 200 consultas de ajuste y el codificador de texto congelado, la corrección aprendida sobreajusta pronto (por eso 12 épocas y dropout alto). Más consultas de `train` (ESCI tiene más en español) probablemente ayudarían más que cambiar el grafo; no se ha hecho porque cambiaría la selección de consultas.
 
