@@ -65,6 +65,7 @@ RESULTS_DIR = Path("results/escenarios")
 RECORDINGS_DIR = voice_chat.SCENARIO_AUDIO_DIR  # grabaciones del usuario
 SYNTHETIC_DIR = Path("audio/sinteticos")  # audios de entrada de prueba
 RUNS_AUDIO_DIR = Path("audio/corridas")  # audios de cada corrida; carpeta sin versionar
+RESERVE_DIR = Path("scenarios/reserva")  # escenarios apartados para comprobar que un arreglo generaliza
 SCRIPT_FILE = "GUION_GRABACION.md"
 SOURCE_FILE = "fuente.json"
 USER_RECORDING = "grabaciones del usuario"

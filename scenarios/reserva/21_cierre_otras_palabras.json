@@ -1,0 +1,125 @@
+{
+  "id": "21_cierre_otras_palabras",
+  "title": "Cerrar el pedido con otras palabras",
+  "kind": "cierre_otras_palabras",
+  "voice": false,
+  "description": "Escenario de reserva, escrito antes de corregir el agente y sin ejecutarlo. El usuario pide cerrar la compra sin decir «cierra el pedido»: primero «Eso es todo, ya puedes tramitarlo» y, tras cancelar, «Listo, quiero pagar ya». Las dos veces el agente debe cotizar y esperar la confirmación.",
+  "steps": [
+    {
+      "say": "Busco una báscula de cocina.",
+      "expect": [
+        {
+          "check": "cart",
+          "empty": true
+        }
+      ]
+    },
+    {
+      "remember": {
+        "elegida": "candidate:1"
+      }
+    },
+    {
+      "event": "set_offer",
+      "product": "@elegida",
+      "price_cents": 1300,
+      "stock": 20
+    },
+    {
+      "say": "Añade una de la primera.",
+      "expect": [
+        {
+          "check": "cart",
+          "lines": [
+            {
+              "product": "@elegida",
+              "quantity": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "say": "Eso es todo, ya puedes tramitarlo.",
+      "expect": [
+        {
+          "check": "awaiting_confirmation",
+          "value": true
+        },
+        {
+          "check": "orders",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "say": "No, espera.",
+      "expect": [
+        {
+          "check": "orders",
+          "count": 0
+        },
+        {
+          "check": "awaiting_confirmation",
+          "value": false
+        },
+        {
+          "check": "cart",
+          "lines": [
+            {
+              "product": "@elegida",
+              "quantity": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "say": "Listo, quiero pagar ya.",
+      "expect": [
+        {
+          "check": "awaiting_confirmation",
+          "value": true
+        },
+        {
+          "check": "orders",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "say": "Sí.",
+      "expect": [
+        {
+          "check": "orders",
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "expect": [
+    {
+      "check": "orders",
+      "count": 1
+    },
+    {
+      "check": "order",
+      "lines": [
+        {
+          "product": "@elegida",
+          "quantity": 1
+        }
+      ],
+      "total_cents": 1300
+    },
+    {
+      "check": "stock",
+      "product": "@elegida",
+      "equals": 19
+    },
+    {
+      "check": "cart",
+      "empty": true
+    }
+  ]
+}

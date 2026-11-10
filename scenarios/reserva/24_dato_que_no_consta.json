@@ -1,0 +1,72 @@
+{
+  "id": "24_dato_que_no_consta",
+  "title": "Dato que el catálogo no trae",
+  "kind": "dato_que_no_consta",
+  "voice": false,
+  "description": "Escenario de reserva, escrito antes de corregir el agente y sin ejecutarlo. El usuario pregunta por la garantía del segundo candidato y por el plazo de entrega del primero. La comprobación mira el texto completo de cada producto en el catálogo: si no menciona el dato, la respuesta tiene que decir que no consta; si lo menciona, no puede decir que no consta. El carrito no debe cambiar.",
+  "steps": [
+    {
+      "say": "Busco una silla de oficina.",
+      "expect": [
+        {
+          "check": "cart",
+          "empty": true
+        }
+      ]
+    },
+    {
+      "remember": {
+        "primera": "candidate:1",
+        "segunda": "candidate:2"
+      }
+    },
+    {
+      "say": "¿Cuántos años de garantía tiene la segunda?",
+      "expect": [
+        {
+          "check": "declares_unknown",
+          "product": "@segunda",
+          "keywords": [
+            "garant"
+          ]
+        },
+        {
+          "check": "cart",
+          "empty": true
+        }
+      ]
+    },
+    {
+      "say": "¿Y en cuántos días llega la primera?",
+      "expect": [
+        {
+          "check": "declares_unknown",
+          "product": "@primera",
+          "keywords": [
+            "entrega",
+            "envío",
+            "envio",
+            "llega en",
+            "días laborables",
+            "24 horas",
+            "48 horas"
+          ]
+        },
+        {
+          "check": "cart",
+          "empty": true
+        }
+      ]
+    }
+  ],
+  "expect": [
+    {
+      "check": "orders",
+      "count": 0
+    },
+    {
+      "check": "cart",
+      "empty": true
+    }
+  ]
+}

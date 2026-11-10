@@ -1,0 +1,99 @@
+{
+  "id": "23_candidato_fuera_de_lista",
+  "title": "Referencia a un candidato que no está en la lista",
+  "kind": "candidato_fuera_de_lista",
+  "voice": false,
+  "description": "Escenario de reserva, escrito antes de corregir el agente y sin ejecutarlo. La lista tiene cinco candidatos, todos con 20 unidades. El usuario pide el sexto y pregunta por el octavo: el agente no debe añadir nada. Después pide el quinto, que sí existe, y debe añadirse ese y no otro.",
+  "steps": [
+    {
+      "say": "Busco un reloj de pared.",
+      "expect": [
+        {
+          "check": "cart",
+          "empty": true
+        }
+      ]
+    },
+    {
+      "remember": {
+        "candidato1": "candidate:1",
+        "candidato2": "candidate:2",
+        "candidato3": "candidate:3",
+        "candidato4": "candidate:4",
+        "candidato5": "candidate:5"
+      }
+    },
+    {
+      "event": "set_offer",
+      "product": "@candidato1",
+      "stock": 20
+    },
+    {
+      "event": "set_offer",
+      "product": "@candidato2",
+      "stock": 20
+    },
+    {
+      "event": "set_offer",
+      "product": "@candidato3",
+      "stock": 20
+    },
+    {
+      "event": "set_offer",
+      "product": "@candidato4",
+      "stock": 20
+    },
+    {
+      "event": "set_offer",
+      "product": "@candidato5",
+      "stock": 20
+    },
+    {
+      "say": "Ponme el sexto.",
+      "expect": [
+        {
+          "check": "cart",
+          "empty": true
+        }
+      ]
+    },
+    {
+      "say": "¿Y cuánto cuesta el octavo?",
+      "expect": [
+        {
+          "check": "cart",
+          "empty": true
+        }
+      ]
+    },
+    {
+      "say": "Entonces ponme uno del quinto.",
+      "expect": [
+        {
+          "check": "cart",
+          "lines": [
+            {
+              "product": "@candidato5",
+              "quantity": 1
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "expect": [
+    {
+      "check": "orders",
+      "count": 0
+    },
+    {
+      "check": "cart",
+      "lines": [
+        {
+          "product": "@candidato5",
+          "quantity": 1
+        }
+      ]
+    }
+  ]
+}

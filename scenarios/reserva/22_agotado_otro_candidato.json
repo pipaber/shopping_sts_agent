@@ -1,0 +1,117 @@
+{
+  "id": "22_agotado_otro_candidato",
+  "title": "Producto agotado que no es el primero",
+  "kind": "agotado_otro_candidato",
+  "voice": false,
+  "description": "Escenario de reserva, escrito antes de corregir el agente y sin ejecutarlo. Tras la búsqueda se agota el tercer candidato y el cuarto queda con 10 unidades a 9,00 €. El usuario pide dos del tercero: el agente no puede añadirlo, no debe añadir otro por su cuenta y debe ofrecer uno con existencias. Después el usuario pide dos del cuarto y compra.",
+  "steps": [
+    {
+      "say": "Quiero unos calcetines de deporte.",
+      "expect": [
+        {
+          "check": "cart",
+          "empty": true
+        }
+      ]
+    },
+    {
+      "remember": {
+        "agotado": "candidate:3",
+        "cuarto": "candidate:4"
+      }
+    },
+    {
+      "event": "set_offer",
+      "product": "@agotado",
+      "stock": 0
+    },
+    {
+      "event": "set_offer",
+      "product": "@cuarto",
+      "price_cents": 900,
+      "stock": 10
+    },
+    {
+      "say": "Quiero dos del tercero.",
+      "expect": [
+        {
+          "check": "cart",
+          "empty": true
+        },
+        {
+          "check": "offered_alternative",
+          "instead_of": "@agotado"
+        },
+        {
+          "check": "orders",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "remember": {
+        "elegido": "candidate:4"
+      }
+    },
+    {
+      "say": "Vale, pues dos del cuarto.",
+      "expect": [
+        {
+          "check": "cart",
+          "lines": [
+            {
+              "product": "@elegido",
+              "quantity": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "say": "Ya está, finaliza la compra.",
+      "expect": [
+        {
+          "check": "awaiting_confirmation",
+          "value": true
+        },
+        {
+          "check": "orders",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "say": "Sí, confirmo.",
+      "expect": [
+        {
+          "check": "orders",
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "expect": [
+    {
+      "check": "orders",
+      "count": 1
+    },
+    {
+      "check": "order",
+      "lines": [
+        {
+          "not": "@agotado",
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "check": "stock",
+      "product": "@agotado",
+      "equals": 0
+    },
+    {
+      "check": "cart",
+      "empty": true
+    }
+  ]
+}

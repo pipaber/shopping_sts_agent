@@ -115,6 +115,13 @@ def test_evaluation_scenarios_cover_the_assignment():
     assert all(scenario.expect for scenario in scenarios)
 
 
+def test_reserve_scenarios_are_well_formed_and_kept_apart():
+    """Los de reserva no entran en las corridas normales: están en otra carpeta."""
+    reserve = fmt.load_scenarios(command.RESERVE_DIR)
+    assert len(reserve) == 4 and not any(scenario.voice for scenario in reserve)
+    assert not {scenario.id for scenario in reserve} & {scenario.id for scenario in fmt.load_scenarios()}
+
+
 def test_recording_script_matches_the_scenarios():
     written = (fmt.DEFAULT_DIR / command.SCRIPT_FILE).read_text(encoding="utf-8")
     assert written == fmt.recording_script(fmt.load_scenarios(), str(command.RECORDINGS_DIR))
