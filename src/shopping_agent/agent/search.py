@@ -21,12 +21,14 @@ from shopping_agent.retrieval.text import ALL_FIELDS, SHORT_FIELDS, clean, produ
 
 DEFAULT_DATA_DIR = Path("datasets/processed")
 
-# Interruptor del reranker: "on" u "off". Sirve para la ablación con y sin GNN.
-# Activado por defecto: en validación mejora al híbrido en la métrica del enunciado
-# y en la lista sobre todo el catálogo (results/reranker_validation.md).
+# Qué reranker reordena los primeros del híbrido: "off" (ninguno) o una variante
+# entrenada, como "control" (sin grafo) o "sage" (GraphSAGE). Sirve para la
+# ablación con y sin GNN. Por defecto, el control sin grafo: en validación mejora
+# al híbrido tanto como GraphSAGE en la lista sobre todo el catálogo y es más
+# simple (results/reranker_validation.md).
 RERANKER_ENV = "SHOPPING_AGENT_RERANKER"
-RERANKER_DEFAULT = True
-SWITCH = {"on": True, "1": True, "off": False, "0": False}
+RERANKER_OFF = "off"
+RERANKER_DEFAULT = "control"
 
 # Campos del catálogo que forman la evidencia de un producto.
 EVIDENCE_FIELDS = {
@@ -55,19 +57,16 @@ class Scorer(Protocol):
 
 
 class Reranker(Protocol):
+    variant: str
+
     def rank(self, query: str, top: int) -> np.ndarray:
         """Filas del catálogo de los ``top`` primeros del híbrido, ya reordenadas."""
         ...
 
 
-def reranker_enabled() -> bool:
+def reranker_choice() -> str:
     """Lo que diga ``SHOPPING_AGENT_RERANKER``; sin la variable, el valor por defecto."""
-    value = os.environ.get(RERANKER_ENV, "").strip().lower()
-    if not value:
-        return RERANKER_DEFAULT
-    if value not in SWITCH:
-        raise ValueError(f"{RERANKER_ENV} debe ser 'on' u 'off', no {value!r}.")
-    return SWITCH[value]
+    return os.environ.get(RERANKER_ENV, "").strip().lower() or RERANKER_DEFAULT
 
 
 def _truncate(text: str, limit: int) -> str:
@@ -102,25 +101,36 @@ class CatalogSearch:
         cls,
         data_dir: Path = DEFAULT_DATA_DIR,
         model_name: str = DEFAULT_DENSE_MODEL,
-        rerank: bool | None = None,
+        reranker: str | None = None,
     ) -> CatalogSearch:
         """Misma configuración que la evaluación: BM25 con todo el texto y denso con
         los campos cortos, reutilizando los embeddings ya calculados.
 
-        ``rerank`` activa o desactiva el reranker; si no se indica, decide
+        ``reranker`` es "off" o la variante del reranker; si no se indica, decide
         ``SHOPPING_AGENT_RERANKER``. Sus pesos se leen de ``data_dir``.
         """
+        variant = reranker or reranker_choice()
+        if variant != RERANKER_OFF:
+            from shopping_agent.retrieval.train import VARIANTS
+
+            if variant not in VARIANTS:
+                options = ", ".join([RERANKER_OFF, *sorted(VARIANTS)])
+                raise ValueError(f"{RERANKER_ENV} debe ser una de estas: {options}; no {variant!r}.")
         catalog = pd.read_parquet(data_dir / "catalog.parquet")
         cache = data_dir / f"emb_{model_name.replace('/', '__')}.npy"
         dense = DenseRetriever(product_texts(catalog, SHORT_FIELDS), model_name, cache_path=cache)
         bm25 = BM25Retriever(product_texts(catalog, ALL_FIELDS))
-        if not (reranker_enabled() if rerank is None else rerank):
+        if variant == RERANKER_OFF:
             return cls(catalog, bm25, dense)
         from shopping_agent.retrieval.reranker import GraphReranker
-        from shopping_agent.retrieval.train import WEIGHTS_FILE, default_device
+        from shopping_agent.retrieval.train import default_device
 
-        reranker = GraphReranker.load(data_dir / WEIGHTS_FILE, bm25, dense, default_device())
-        return cls(catalog, bm25, dense, reranker)
+        return cls(catalog, bm25, dense, GraphReranker.load(data_dir, variant, bm25, dense, default_device()))
+
+    @property
+    def reranker_name(self) -> str | None:
+        """Variante del reranker en uso; ``None`` si la búsqueda es el híbrido solo."""
+        return None if self.reranker is None else self.reranker.variant
 
     def __contains__(self, product_id: object) -> bool:
         return product_id in self._row

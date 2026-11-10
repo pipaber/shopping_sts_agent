@@ -42,17 +42,17 @@ Compara BM25, denso e híbrido con nDCG@10 sobre los candidatos anotados. `test`
 uv run python -m shopping_agent.eval.retrieval --split train
 ```
 
-## Reranker (GraphSAGE)
+## Reranker (control sin grafo y GraphSAGE)
 
-Segunda etapa opcional de la búsqueda: una GNN (GraphSAGE, con PyTorch Geometric) reordena los 50 primeros del híbrido sobre un grafo de consultas y productos. Es el componente de la ablación: el agente se puede correr con y sin él. El diseño, las decisiones y las limitaciones están en [documentation/PLAN.md](documentation/PLAN.md) ("Diseño y resultados del reranker").
+Segunda etapa de la búsqueda: un modelo entrenado reordena los 50 primeros del híbrido. Hay dos versiones que solo se diferencian en el paso de mensajes: GraphSAGE (una GNN, con PyTorch Geometric, sobre un grafo de consultas y productos) y su control sin grafo. El GNN es el componente de la ablación: el agente se puede correr con uno, con otro o sin reranker. El diseño, las decisiones y las limitaciones están en [documentation/PLAN.md](documentation/PLAN.md) ("Diseño y resultados del reranker").
 
 Las 1 500 consultas de `train` se reparten con semilla fija en 1 200 de ajuste y 300 de validación; las de `test` no se leen en ningún paso.
 
 ```bash
-uv run python -m shopping_agent.retrieval.train --variant sage --seed 0
+uv run python -m shopping_agent.retrieval.train --variant control --seed 0
 ```
 
-Entrena con las consultas de ajuste y guarda los pesos y el grafo en `datasets/processed/reranker.pt` (13 MB, fuera de git; se regenera con este comando en unos 3 minutos). Imprime el nDCG@10 de validación del modelo guardado. La misma semilla lo reproduce con una diferencia de hasta ±0,0005, por operaciones de GPU que no son deterministas. `--variant` admite las variantes de la comparación: `sage` (la del agente), `control` (el mismo modelo sin grafo), `sage_exact` (con aristas de etiquetas de ajuste), `gatv2`…
+Entrena con las consultas de ajuste y guarda los pesos y el grafo en `datasets/processed/reranker_<variante>.pt` (13 MB, fuera de git; se regenera con este comando en unos 3 minutos). Imprime el nDCG@10 de validación del modelo guardado. La misma semilla lo reproduce con una diferencia de hasta ±0,0005, por operaciones de GPU que no son deterministas. `--variant` admite las variantes de la comparación: `control` (el mismo modelo sin grafo; es la que usa el agente por defecto), `sage` (GraphSAGE), `sage_exact` (con aristas de etiquetas de ajuste), `gatv2`… Para la ablación hay que entrenar también `--variant sage`.
 
 ```bash
 uv run python -m shopping_agent.eval.reranker --seeds 5
@@ -65,25 +65,25 @@ Compara en validación los modelos base, el control sin grafo y cada variante co
 | BM25 (base léxica) | 0,6750 |
 | Denso | 0,7535 |
 | Híbrido RRF | 0,7403 |
-| Control sin grafo (mismo modelo, sin paso de mensajes) | 0,7582 ± 0,0005 |
+| Control sin grafo (mismo modelo, sin paso de mensajes; el del agente por defecto) | 0,7582 ± 0,0005 |
 | GraphSAGE | 0,7619 ± 0,0009 |
 | GraphSAGE con aristas de etiquetas | 0,7631 ± 0,0015 |
 
-Reordenar mejora al híbrido en +0,022, pero casi toda la mejora la da ya el control sin grafo: el paso de mensajes añade +0,004 (IC 95 % [+0,0004; +0,0073]), una diferencia pequeña y sensible al número de épocas. Las aristas con etiquetas no aportan nada medible y el modelo del agente no las usa.
+Reordenar mejora al híbrido en +0,018 con el control y +0,022 con GraphSAGE: el paso de mensajes añade +0,004 (IC 95 % [+0,0004; +0,0073]), una diferencia pequeña y sensible al número de épocas, y en la lista sobre todo el catálogo los dos rinden igual. Las aristas con etiquetas no aportan nada medible y ninguno de los dos las usa.
 
 ```bash
-uv run python -m shopping_agent.eval.reranker_cost
+uv run python -m shopping_agent.eval.reranker_cost --variant control
 ```
 
-Mide el coste en la búsqueda ([results/reranker_cost.json](results/reranker_cost.json)): +10 ms por consulta en GPU (+124 ms en CPU) y 230 MiB más de VRAM.
+Mide el coste en la búsqueda. Con el [control](results/reranker_cost_control.json): +2 ms por consulta en GPU (+89 ms en CPU) y 102 MiB más de VRAM. Con [GraphSAGE](results/reranker_cost_sage.json) (`--variant sage`): +12 ms (+127 ms en CPU) y 230 MiB más.
 
-**Interruptor.** El agente usa el reranker por defecto. `SHOPPING_AGENT_RERANKER=off` (en el entorno o en el `.env`) deja la búsqueda en el híbrido; las transcripciones anotan cuál se usó. Con el reranker activado hacen falta los pesos: si no están, el agente se detiene con un mensaje que dice cómo generarlos.
+**Interruptor.** `SHOPPING_AGENT_RERANKER` (en el entorno o en el `.env`) elige qué reordena la búsqueda del agente: `control` (por defecto), `sage` (GraphSAGE), otra variante entrenada u `off` (el híbrido solo). Las transcripciones anotan cuál se usó. Hacen falta los pesos de la variante elegida: si no están, el agente se detiene con un mensaje que dice cómo generarlos. La ablación del GNN es `control` frente a `sage`:
 
 ```bash
-SHOPPING_AGENT_RERANKER=off uv run python -m shopping_agent.agent.chat --script scenarios/demo_compra.txt --restore --out results/chat_compra_sin_gnn
+SHOPPING_AGENT_RERANKER=sage uv run python -m shopping_agent.agent.chat --script scenarios/demo_compra.txt --restore --out results/chat_compra_gnn
 ```
 
-Las transcripciones que ya estaban en `results/` (`chat_*` y `voz_*`) se hicieron antes de que existiera el reranker, con la búsqueda híbrida sola.
+Las transcripciones que ya estaban en `results/` (`chat_*` y `voz_*`) se hicieron antes de que existiera el reranker, con la búsqueda híbrida sola; para repetirlas igual hay que poner `SHOPPING_AGENT_RERANKER=off`.
 
 ## Memoria del agente (Postgres)
 

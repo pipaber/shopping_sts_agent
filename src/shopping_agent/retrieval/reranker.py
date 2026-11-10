@@ -14,23 +14,26 @@ import torch
 from shopping_agent.retrieval.first_stage import Embedder, Lexical, first_stage
 from shopping_agent.retrieval.gnn import Reranker, RerankerConfig
 from shopping_agent.retrieval.graph import RerankGraph
+from shopping_agent.retrieval.train import weights_path
 
 
 class GraphReranker:
-    def __init__(self, model: Reranker, graph: RerankGraph, bm25: Lexical, dense: Embedder) -> None:
+    def __init__(self, variant: str, model: Reranker, graph: RerankGraph, bm25: Lexical, dense: Embedder) -> None:
+        self.variant = variant
         self.model = model.eval()
         self.graph = graph
         self.bm25 = bm25
         self.dense = dense
 
     @classmethod
-    def load(cls, path: Path, bm25: Lexical, dense: Embedder, device: str) -> GraphReranker:
+    def load(cls, data_dir: Path, variant: str, bm25: Lexical, dense: Embedder, device: str) -> GraphReranker:
         """Lee los pesos y el grafo que guardó ``shopping_agent.retrieval.train``."""
+        path = weights_path(data_dir, variant)
         if not path.exists():
             raise FileNotFoundError(
                 f"No están los pesos del reranker en {path}. Se generan con "
-                "`python -m shopping_agent.retrieval.train`; para buscar sin reranker, "
-                "define SHOPPING_AGENT_RERANKER=off."
+                f"`python -m shopping_agent.retrieval.train --variant {variant}`; para buscar "
+                "sin reranker, define SHOPPING_AGENT_RERANKER=off."
             )
         saved = torch.load(path, map_location=device, weights_only=True)
         if saved["products"] != len(dense.doc_embeddings):
@@ -38,7 +41,7 @@ class GraphReranker:
         model = Reranker(RerankerConfig(**saved["config"]))
         model.load_state_dict(saved["state"])
         graph = RerankGraph(torch.as_tensor(dense.doc_embeddings), saved["query_x"], saved["edges"])
-        return cls(model.to(device), graph.to(device), bm25, dense)
+        return cls(variant, model.to(device), graph.to(device), bm25, dense)
 
     @torch.no_grad()
     def rank(self, query: str, top: int) -> np.ndarray:

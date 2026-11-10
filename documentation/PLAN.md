@@ -44,7 +44,7 @@ pgvector no hace falta por ahora: el Store solo guarda las preferencias del usua
 
 `llama-cpp-python` en Colab: hay que instalarlo con CUDA (`CMAKE_ARGS="-DGGML_CUDA=on" pip install llama-cpp-python`). En la workstation la compilación tardó unos 20 minutos; en Colab conviene medirlo el día 7 y, si es demasiado, usar una rueda precompilada para la versión de CUDA de la sesión.
 
-VRAM con todo cargado en un solo proceso (medida en la workstation, sin el reranker, que añade 0,23 GB): 9,6 GB con el LLM, los embeddings, Whisper y XTTS-v2 cargados, y 10,4 GB al terminar una conversación de ocho turnos; cabe en los 15 GB utilizables de la T4. Por separado: LLM 5,2 GB, embeddings 0,6 GB, Whisper 2,2 GB y XTTS-v2 2,0 GB (cada medida suelta incluye el contexto de CUDA, que en un proceso se comparte). Si en Colab no cupiera, los embeddings de consulta pasan a CPU.
+VRAM con todo cargado en un solo proceso (medida en la workstation, sin el reranker, que añade 0,1 GB con el control y 0,23 GB con GraphSAGE): 9,6 GB con el LLM, los embeddings, Whisper y XTTS-v2 cargados, y 10,4 GB al terminar una conversación de ocho turnos; cabe en los 15 GB utilizables de la T4. Por separado: LLM 5,2 GB, embeddings 0,6 GB, Whisper 2,2 GB y XTTS-v2 2,0 GB (cada medida suelta incluye el contexto de CUDA, que en un proceso se comparte). Si en Colab no cupiera, los embeddings de consulta pasan a CPU.
 
 ## 3. Arquitectura
 
@@ -76,7 +76,7 @@ Comportamientos que el plan no fijaba; en cada caso se eligió la opción más s
 - **Una decisión por llamada al LLM.** La salida es un objeto JSON (`motivo`, `herramienta`, argumentos) restringido por gramática. Los `product_id` posibles se limitan a los candidatos y al carrito, así que el modelo no puede nombrar un producto inexistente. Máximo 6 decisiones por turno; si se agotan, el turno acaba con una respuesta de respaldo.
 - **Carrito por conversación.** El `cart_id` es el `thread_id`. El carrito vive en SQLite y el estado del grafo se sincroniza con la tienda al empezar cada turno.
 - **Presupuesto por compra, preferencias por usuario.** El presupuesto queda en el estado de la conversación; las preferencias se guardan además en el Store (`usuarios/<user_id>`) y se recuperan al abrir otra conversación.
-- **Orden de los candidatos.** La búsqueda es el híbrido BM25 + denso con RRF (top 50), que desde los días 8–9 reordena el reranker GraphSAGE salvo que se desactive (`SHOPPING_AGENT_RERANKER=off`). De los 20 primeros se muestran antes los que se pueden comprar (con existencias y dentro de lo que queda de presupuesto) y se enseñan 5 con sus campos del catálogo; los ausentes se muestran como "desconocido".
+- **Orden de los candidatos.** La búsqueda es el híbrido BM25 + denso con RRF (top 50), que desde los días 8–9 reordena un reranker entrenado: por defecto el control sin grafo, y GraphSAGE o ninguno según `SHOPPING_AGENT_RERANKER` (`sage`, `off`). De los 20 primeros se muestran antes los que se pueden comprar (con existencias y dentro de lo que queda de presupuesto) y se enseñan 5 con sus campos del catálogo; los ausentes se muestran como "desconocido".
 - **Respuestas.** El texto lo redacta el LLM, pero el contenido del carrito, la cotización, el pedido y las alternativas por falta de stock los escribe el código. Cuando el carrito o el presupuesto cambian, el código añade a la respuesta el carrito exacto y lo que queda de presupuesto.
 - **Validación de la respuesta.** Antes de enviarla, el código comprueba que toda cifra del texto del LLM aparece en los datos que tuvo delante y que no da por hecho un pedido inexistente; si falla, la respuesta vuelve al LLM con el motivo. Es una comprobación global: no detecta una cifra real atribuida al producto equivocado.
 - **Confirmación.** Solo cuenta como sí una respuesta que no dice nada más ("sí", "vale, confirmo"). "No" cancela sin tocar el carrito. Cualquier otra cosa ("sí, pero que sean tres") no compra y se atiende como un turno nuevo; cualquier cambio en el carrito o el presupuesto invalida la cotización.
@@ -171,12 +171,12 @@ Comparación a reportar con las mismas consultas de `test`: BM25 · denso · hí
 | BM25 (base léxica) | | 0,6750 | 0,4399 | |
 | Denso | | 0,7535 | 0,5114 | |
 | Híbrido RRF | | 0,7403 | 0,5236 | |
-| Control sin grafo | ninguna | 0,7582 ± 0,0005 | 0,5500 ± 0,0012 | |
+| **Control sin grafo** (el del agente por defecto) | ninguna | 0,7582 ± 0,0005 | 0,5500 ± 0,0012 | |
 | GraphSAGE | `candidate` | 0,7586 ± 0,0006 | 0,5502 ± 0,0007 | +0,0004 [−0,0003; +0,0011] |
 | GraphSAGE | `similar` | 0,7619 ± 0,0015 | 0,5488 ± 0,0024 | +0,0037 [+0,0007; +0,0068] |
 | GraphSAGE | `brand` | 0,7612 ± 0,0017 | 0,5470 ± 0,0052 | +0,0030 [−0,0007; +0,0068] |
 | GraphSAGE | `exact` | 0,7595 ± 0,0011 | 0,5423 ± 0,0022 | +0,0013 [−0,0004; +0,0031] |
-| **GraphSAGE** (el del agente) | `candidate`, `similar`, `brand` | 0,7619 ± 0,0009 | 0,5474 ± 0,0027 | +0,0038 [+0,0004; +0,0073] |
+| **GraphSAGE** (el de la ablación) | `candidate`, `similar`, `brand` | 0,7619 ± 0,0009 | 0,5474 ± 0,0027 | +0,0038 [+0,0004; +0,0073] |
 | GraphSAGE con etiquetas | las cuatro | 0,7631 ± 0,0015 | 0,5470 ± 0,0035 | +0,0049 [+0,0022; +0,0078] |
 | GATv2 | `candidate`, `similar`, `brand` | 0,7616 ± 0,0028 | 0,5491 ± 0,0026 | +0,0035 [+0,0012; +0,0058] |
 | GATv2 con etiquetas | las cuatro | 0,7632 ± 0,0009 | 0,5461 ± 0,0015 | +0,0051 [+0,0014; +0,0088] |
@@ -189,11 +189,11 @@ Lo que dicen los números:
 - **GATv2** queda igual que GraphSAGE (0,7616 frente a 0,7619) y tarda varias veces más en entrenar (unos 5 minutos las 5 semillas, frente a 1).
 - **Frente al denso.** GraphSAGE mejora al coseno denso en +0,008 (IC [+0,002; +0,015]); el control, en +0,005 con un intervalo que incluye el cero. Con embeddings congelados las señales de la primera etapa dejan poco margen: sumar BM25 al coseno con el mejor peso posible no mejora nada en ajuste.
 
-**Decisión sobre las aristas con etiquetas.** Usar `exact` mete etiquetas de `train` dentro del modelo en inferencia (los productos recuerdan para qué consultas de ajuste fueron exactos). Es defendible como parte del método ajustado, pero es una interpretación del enunciado, que prohíbe que las etiquetas sean información consultable por el agente. En validación añaden +0,001 sobre el GraphSAGE sin etiquetas (0,7631 frente a 0,7619), dentro del ruido entre semillas, y nada en la lista sobre el catálogo. **El modelo del agente no las usa**: no hay ganancia que justifique la duda. Queda disponible como `--variant sage_exact`. Tiene sentido que aporten poco: solo el 5 % de los pares de validación tienen un producto que sea exacto para otra consulta de ajuste, y esos productos no son más relevantes que el resto (ganancia media 0,42 frente a 0,44).
+**Decisión sobre las aristas con etiquetas.** Usar `exact` mete etiquetas de `train` dentro del modelo en inferencia (los productos recuerdan para qué consultas de ajuste fueron exactos). Es defendible como parte del método ajustado, pero es una interpretación del enunciado, que prohíbe que las etiquetas sean información consultable por el agente. En validación añaden +0,001 sobre el GraphSAGE sin etiquetas (0,7631 frente a 0,7619), dentro del ruido entre semillas, y nada en la lista sobre el catálogo. **Ni el reranker por defecto del agente ni el GraphSAGE de la ablación las usan**: no hay ganancia que justifique la duda. Queda disponible como variante `sage_exact`. Tiene sentido que aporten poco: solo el 5 % de los pares de validación tienen un producto que sea exacto para otra consulta de ajuste, y esos productos no son más relevantes que el resto (ganancia media 0,42 frente a 0,44).
 
-**Valor por defecto en el agente: activado.** El interruptor compara el híbrido con el híbrido + GraphSAGE, y en validación el segundo es mejor en las dos métricas con intervalos que excluyen el cero. Con matiz: la mejora viene de haber entrenado un reranker, no del grafo, y el control sin grafo daría lo mismo en el agente con menos piezas (`--variant control` entrena ese y el agente lo carga igual).
+**Reranker del agente: el control sin grafo, por defecto.** `SHOPPING_AGENT_RERANKER` elige qué reordena los 50 primeros del híbrido: `control` (por defecto), `sage` (GraphSAGE), cualquier otra variante entrenada u `off` (el híbrido solo). Reordenar se deja activado porque en validación mejora al híbrido en las dos métricas con intervalos que excluyen el cero. Entre los dos rerankers, el autor eligió el control (10 de noviembre de 2026): en la lista sobre el catálogo, que es lo que ve el usuario, rinde igual que GraphSAGE (0,5500 frente a 0,5474), la ventaja del grafo en la métrica del enunciado es de +0,004 y frágil, y el control es más simple y más barato. La ablación del GNN en el agente queda así limpia: `control` frente a `sage` cambia solo el paso de mensajes.
 
-**Coste** ([results/reranker_cost.json](../results/reranker_cost.json), RTX A2000): la búsqueda pasa de 15 a 25 ms por consulta en GPU (+10 ms; +124 ms si el reranker va en CPU) y el proceso ocupa 230 MiB más de VRAM (604 → 834 MiB con el recuperador denso). Junto a los 9,5 GB del resto cabe de sobra en la T4. El comando de entrenamiento tardó 3 minutos, casi todo en leer el catálogo y cargar los modelos; el entrenamiento en sí son unos 15 segundos en GPU. Los pesos ocupan 13 MB.
+**Coste** ([control](../results/reranker_cost_control.json), [GraphSAGE](../results/reranker_cost_sage.json); RTX A2000, 200 consultas). La búsqueda híbrida tarda 15–16 ms por consulta. Con el control pasa a 18 ms en GPU (+2 ms; +89 ms si el reranker va en CPU) y el proceso ocupa 102 MiB más de VRAM (604 → 706 MiB con el recuperador denso). Con GraphSAGE, 27 ms (+12 ms; +127 ms en CPU) y 230 MiB más. Junto a los 9,5 GB del resto, cualquiera de los dos cabe de sobra en la T4. El comando de entrenamiento tardó 3 minutos, casi todo en leer el catálogo y cargar los modelos; el entrenamiento en sí son unos segundos en GPU. Los pesos de cada variante ocupan 13 MB.
 
 **Limitaciones.**
 
@@ -201,7 +201,7 @@ Lo que dicen los números:
 - La métrica de catálogo es pesimista: cerca del 40 % de los 10 primeros son productos sin anotar para esa consulta, y algunos son claramente relevantes (para "regleta sin cable usb" el GNN sube regletas sin cable que nadie anotó). Sirve para detectar fallos graves, no para afinar.
 - Los hiperparámetros y el número de épocas se eligieron en la misma validación con la que se comparan las variantes, así que las cifras de los rerankers son algo optimistas frente a las de los modelos base. La evaluación en `test` lo corregirá.
 - La misma semilla reproduce el nDCG@10 con una diferencia de hasta ±0,0005, porque algunas operaciones del paso de mensajes en GPU no son deterministas.
-- Los pesos del agente se entrenan solo con las 1 200 consultas de ajuste. Reentrenar con las 1 500 antes de la evaluación final es posible, pero ese modelo ya no tendría validación propia.
+- Los pesos se entrenan solo con las 1 200 consultas de ajuste. Reentrenar con las 1 500 antes de la evaluación final es posible, pero ese modelo ya no tendría validación propia.
 - Con solo 1 200 consultas de ajuste y el codificador de texto congelado, la corrección aprendida sobreajusta pronto (por eso 12 épocas y dropout alto). Más consultas de `train` (ESCI tiene más en español) probablemente ayudarían más que cambiar el grafo; no se ha hecho porque cambiaría la selección de consultas.
 
 Riesgo que el plan anticipaba: que el GNN no superase al híbrido. Lo supera, pero por haber entrenado un reranker y no por el grafo; la ablación con el control sin grafo es la que lo muestra.
@@ -258,6 +258,5 @@ Dependencias a añadir: `langgraph-checkpoint-postgres`, `psycopg[binary,pool]`,
 - Las respuestas con el carrito completo dan audios de 25 a 47 s; valorar una versión hablada más breve.
 - Grabar los audios de los escenarios (`audio/escenarios/<escenario>/NN.wav`); el README dice cómo. La voz de referencia (`audio/referencia/referencia.wav`) ya está grabada. La voz debe ser propia o autorizada, y los textos sintetizados distintos de los de la grabación.
 - Evaluación final en `test` (una sola vez): BM25 · denso · híbrido · híbrido + GraphSAGE, con el control sin grafo al lado.
-- Decidir si el reranker del agente se queda en GraphSAGE o en el control sin grafo, que rinde igual en la lista sobre el catálogo.
-- Correr los escenarios con y sin reranker (`SHOPPING_AGENT_RERANKER=on|off`).
+- Correr los escenarios con y sin GNN (`SHOPPING_AGENT_RERANKER=control|sage`) y, como referencia, sin reranker (`off`).
 - Fecha oficial de entrega.

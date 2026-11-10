@@ -2,11 +2,11 @@
 
 Uso::
 
-    python -m shopping_agent.retrieval.train --variant sage --seed 0
+    python -m shopping_agent.retrieval.train --variant control --seed 0
 
 Entrena la variante con las 1 200 consultas de ajuste y guarda los pesos y el
-grafo en ``datasets/processed/reranker.pt`` (fuera de git; se regenera con este
-comando). La comparación entre variantes está en ``shopping_agent.eval.reranker``.
+grafo en ``datasets/processed/reranker_<variante>.pt`` (fuera de git; se regenera
+con este comando). La comparación entre variantes está en ``shopping_agent.eval.reranker``.
 """
 
 from __future__ import annotations
@@ -28,7 +28,7 @@ from shopping_agent.retrieval.retrievers import DEFAULT_DENSE_MODEL, BM25Retriev
 from shopping_agent.retrieval.text import ALL_FIELDS, SHORT_FIELDS, product_texts
 
 DEFAULT_DATA_DIR = Path("datasets/processed")
-WEIGHTS_FILE = "reranker.pt"
+DEFAULT_VARIANT = "control"  # la que usa el agente si no se le pide otra
 CANDIDATES = 50  # los mismos que el agente pide al híbrido
 NEIGHBOURS = 10
 BRAND_NEIGHBOURS = 5
@@ -246,6 +246,11 @@ def save_reranker(path: Path, model: Reranker, graph: RerankGraph) -> None:
     )
 
 
+def weights_path(data_dir: Path, variant: str) -> Path:
+    """Dónde se guardan los pesos de una variante."""
+    return data_dir / f"reranker_{variant}.pt"
+
+
 def prepare(data_dir: Path, dense: Embedder, validation: int, device: str) -> Development:
     """Carga los datos de desarrollo y calcula la primera etapa y el grafo."""
     data = load_dev_data(data_dir)
@@ -268,14 +273,14 @@ def load_dense(data_dir: Path, model_name: str = DEFAULT_DENSE_MODEL) -> DenseRe
 def main() -> None:
     parser = argparse.ArgumentParser(description="Entrena el reranker con las consultas de ajuste.")
     parser.add_argument("--data", type=Path, default=DEFAULT_DATA_DIR)
-    parser.add_argument("--variant", choices=sorted(VARIANTS), default="sage")
+    parser.add_argument("--variant", choices=sorted(VARIANTS), default=DEFAULT_VARIANT)
     parser.add_argument("--seed", type=int, default=0)
-    parser.add_argument("--out", type=Path, default=None, help=f"por defecto, <data>/{WEIGHTS_FILE}")
+    parser.add_argument("--out", type=Path, default=None, help="por defecto, <data>/reranker_<variante>.pt")
     args = parser.parse_args()
 
     development = prepare(args.data, load_dense(args.data), VALIDATION_QUERIES, default_device())
     model = train_reranker(VARIANTS[args.variant], TrainConfig(seed=args.seed), development.graph, development.fit)
-    out = args.out or args.data / WEIGHTS_FILE
+    out = args.out or weights_path(args.data, args.variant)
     save_reranker(out, model, development.graph)
     scores = annotated_scores(model, development.graph, development.validation)
     validation = ndcg_by_query(development.validation_qrels, scores).mean()

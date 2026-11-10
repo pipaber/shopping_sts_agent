@@ -1,0 +1,22 @@
+{
+  "variant": "control",
+  "queries": 200,
+  "top": 50,
+  "hybrid_ms": {
+    "mean": 15.97,
+    "median": 15.92
+  },
+  "reranked_ms_cuda": {
+    "mean": 18.02,
+    "median": 17.88
+  },
+  "vram_mib": {
+    "hybrid": 604,
+    "with_reranker": 706
+  },
+  "torch_peak_mib": 572,
+  "reranked_ms_cpu": {
+    "mean": 104.87,
+    "median": 98.19
+  }
+}

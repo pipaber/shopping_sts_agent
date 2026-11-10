@@ -132,7 +132,7 @@ def conversation_record(models: Models, n_ctx: int, session: ShoppingSession, tu
             "load_seconds": round(models.llm.load_seconds, 1),
         },
         "load": {
-            "reranker": models.search.reranker is not None,
+            "reranker": models.search.reranker_name,
             "search_seconds": round(models.search_seconds, 1),
             "vram_search_mib": models.vram_search_mib,
             "vram_total_mib": models.vram_total_mib,
@@ -150,7 +150,7 @@ def to_markdown(record: dict[str, Any]) -> str:
         "",
         f"- Fecha: {record['date']}",
         f"- Modelo: `{model['file']}` ({model['size_gb']} GB), contexto {model['n_ctx']} tokens",
-        f"- Búsqueda: híbrido BM25 + denso, {'con' if load['reranker'] else 'sin'} reranker",
+        f"- Búsqueda: híbrido BM25 + denso, {'con reranker `%s`' % load['reranker'] if load['reranker'] else 'sin reranker'}",
         f"- Carga: catálogo y recuperadores {load['search_seconds']} s, LLM {model['load_seconds']} s",
         f"- VRAM del proceso: {load['vram_search_mib']} MiB con el recuperador denso, "
         f"{load['vram_total_mib']} MiB con el LLM cargado",

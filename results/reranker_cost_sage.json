@@ -1,13 +1,14 @@
 {
+  "variant": "sage",
   "queries": 200,
   "top": 50,
   "hybrid_ms": {
-    "mean": 15.02,
-    "median": 15.16
+    "mean": 14.99,
+    "median": 15.13
   },
   "reranked_ms_cuda": {
-    "mean": 24.86,
-    "median": 24.32
+    "mean": 26.54,
+    "median": 26.69
   },
   "vram_mib": {
     "hybrid": 604,
@@ -15,7 +16,7 @@
   },
   "torch_peak_mib": 689,
   "reranked_ms_cpu": {
-    "mean": 139.0,
-    "median": 139.4
+    "mean": 141.98,
+    "median": 140.02
   }
 }
