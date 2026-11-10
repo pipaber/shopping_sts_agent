@@ -4,12 +4,13 @@ Uso::
 
     python -m shopping_agent.voice.tts --list-speakers
     python -m shopping_agent.voice.tts --text "Hola, ¿qué buscas hoy?" --out saludo.wav
-    python -m shopping_agent.voice.tts --script scenarios/demo_compra.txt --out-dir grabaciones/demo_compra
+    python -m shopping_agent.voice.tts --script scenarios/demo_compra.txt --out-dir audio/sinteticos/demo_compra
 
-La voz sale de la grabación indicada en ``SHOPPING_AGENT_VOICE_REF`` (o ``--reference``).
-Mientras no exista esa grabación se puede desarrollar con uno de los hablantes que
-trae XTTS-v2 (``--speaker`` o ``SHOPPING_AGENT_TTS_SPEAKER``); no se clona la voz de
-nadie que no la haya cedido.
+La voz sale de la grabación de referencia: ``--reference``, ``SHOPPING_AGENT_VOICE_REF``
+o, por defecto, ``audio/referencia/referencia.wav`` (mono o estéreo, a cualquier
+frecuencia de muestreo). Mientras no exista esa grabación se puede desarrollar con
+uno de los hablantes que trae XTTS-v2 (``--speaker`` o ``SHOPPING_AGENT_TTS_SPEAKER``);
+no se clona la voz de nadie que no la haya cedido.
 
 XTTS-v2 se publica con la licencia CPML de Coqui (uso no comercial). Este módulo
 no la acepta por nadie: si no consta aceptada, se detiene y explica cómo hacerlo.
@@ -34,6 +35,7 @@ from shopping_agent.voice.speech_text import split_for_tts, to_speech
 MODEL_NAME = "tts_models/multilingual/multi-dataset/xtts_v2"
 REFERENCE_ENV = "SHOPPING_AGENT_VOICE_REF"
 SPEAKER_ENV = "SHOPPING_AGENT_TTS_SPEAKER"
+DEFAULT_REFERENCE = Path("audio/referencia/referencia.wav")  # carpeta sin versionar
 LICENSE_URL = "https://tts-hub.github.io/cpml"  # la dirección que muestra el propio paquete
 SAMPLE_RATE = 24000  # salida de XTTS-v2
 MAX_CHARS = 200  # por debajo del límite de 239 caracteres de XTTS-v2 en español
@@ -80,12 +82,14 @@ def join_chunks(pieces: list[np.ndarray], sample_rate: int, pause_seconds: float
 
 
 def resolve_voice(reference: str | Path | None = None, speaker: str | None = None) -> tuple[Path | None, str | None]:
-    """Decide de dónde sale la voz: argumentos, luego variables de entorno.
+    """Decide de dónde sale la voz.
 
-    Una grabación de referencia tiene prioridad sobre un hablante incluido.
+    Los argumentos mandan. Sin ellos: la grabación de ``SHOPPING_AGENT_VOICE_REF``, la
+    grabación de la ruta por defecto si existe y, solo si no hay ninguna, el hablante
+    incluido de ``SHOPPING_AGENT_TTS_SPEAKER``.
     """
     if reference is None and speaker is None:
-        reference = os.environ.get(REFERENCE_ENV) or None
+        reference = os.environ.get(REFERENCE_ENV) or (DEFAULT_REFERENCE if DEFAULT_REFERENCE.is_file() else None)
         speaker = os.environ.get(SPEAKER_ENV) or None
     if reference:
         path = Path(reference).expanduser()
@@ -95,8 +99,9 @@ def resolve_voice(reference: str | Path | None = None, speaker: str | None = Non
     if speaker:
         return None, speaker
     raise VoiceNotConfigured(
-        f"Falta la voz: define {REFERENCE_ENV} con la ruta de tu grabación de referencia o, para "
-        f"pruebas, {SPEAKER_ENV} con uno de los hablantes incluidos en XTTS-v2 (--list-speakers)."
+        f"Falta la voz: deja tu grabación de referencia en {DEFAULT_REFERENCE} (o indica otra ruta en "
+        f"{REFERENCE_ENV}) o, para pruebas, elige en {SPEAKER_ENV} uno de los hablantes incluidos en "
+        "XTTS-v2 (--list-speakers)."
     )
 
 

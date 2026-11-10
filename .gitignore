@@ -26,7 +26,7 @@ documentation/*.pdf
 
 # Voz: la grabación de referencia y los audios de los turnos son datos personales
 # y no se suben. Los audios que generan las corridas tampoco.
-grabaciones/
+audio/
 *.wav
 *.flac
 *.mp3

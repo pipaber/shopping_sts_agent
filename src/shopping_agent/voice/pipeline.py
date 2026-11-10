@@ -2,15 +2,20 @@
 
 Uso::
 
-    python -m shopping_agent.voice.pipeline --audios grabaciones/demo_compra \\
-        --script scenarios/demo_compra.txt --restore --out results/voz_compra
+    python -m shopping_agent.voice.pipeline --scenario demo_compra --mode ambos --restore
 
-``--audios`` es una carpeta con un audio por turno (se recorren por orden de nombre:
-``01.wav``, ``02.wav``…). ``--script`` trae, una por línea, las transcripciones
-correctas de esos audios. Con ``--mode ambos`` la conversación se hace primero con
-los audios y después se repite desde cero con las transcripciones correctas, para
-separar los errores del ASR de los del agente. Sin ``--audios`` solo se hace la
-conversación con el texto.
+``--scenario NOMBRE`` reúne lo que hace falta para un escenario grabado:
+
+- ``scenarios/NOMBRE.txt``: lo que dice el usuario, un turno por línea;
+- ``audio/escenarios/NOMBRE/``: un audio por turno, en el mismo orden (``01.wav``,
+  ``02.wav``…; se recorren por orden de nombre);
+- ``scenarios/NOMBRE.terminos.json`` (opcional): nombres de producto esperados por turno;
+- la corrida se guarda en ``results/voz_NOMBRE/``.
+
+Cada parte se puede dar por separado con ``--script``, ``--audios``, ``--terms`` y
+``--out``. Con ``--mode ambos`` la conversación se hace primero con los audios y
+después se repite desde cero con el texto correcto, para separar los errores del
+ASR de los del agente. Sin audios solo se hace la conversación con el texto.
 
 La latencia de un turno va desde que termina la grabación (el audio ya está
 disponible) hasta que la respuesta puede reproducirse, y se desglosa en ASR,
@@ -41,6 +46,9 @@ from shopping_agent.voice.tts import SpeechSynthesizer
 ASR, TTS = "asr", "tts"
 STAGES = (ASR, RETRIEVAL, LLM, TOOLS, TTS)
 AUDIO_SUFFIXES = (".wav", ".flac", ".ogg", ".mp3", ".m4a", ".aac", ".opus", ".webm")
+SCENARIO_DIR = Path("scenarios")
+SCENARIO_AUDIO_DIR = Path("audio/escenarios")  # grabaciones del usuario; carpeta sin versionar
+RESULTS_DIR = Path("results")
 
 
 @dataclass
@@ -295,6 +303,18 @@ def _read_terms(path: Path | None, turns: int) -> list[list[str]]:
     return [list(terms.get(str(number), [])) for number in range(1, turns + 1)]
 
 
+def scenario_paths(args: argparse.Namespace) -> None:
+    """Rellena con la convención de ``--scenario`` lo que no se haya dado de forma explícita."""
+    if not args.scenario:
+        return
+    audio_dir = SCENARIO_AUDIO_DIR / args.scenario
+    terms = SCENARIO_DIR / f"{args.scenario}.terminos.json"
+    args.script = args.script or SCENARIO_DIR / f"{args.scenario}.txt"
+    args.audios = args.audios or (audio_dir if audio_dir.is_dir() else None)
+    args.terms = args.terms or (terms if terms.is_file() else None)
+    args.out = args.out or RESULTS_DIR / f"voz_{args.scenario}"
+
+
 def main() -> None:
     from shopping_agent.agent.chat import store_snapshot
     from shopping_agent.agent.graph import build_graph
@@ -308,11 +328,12 @@ def main() -> None:
     from shopping_agent.voice.tts import LicenseNotAccepted, VoiceNotConfigured, XttsTTS
 
     parser = argparse.ArgumentParser(description="Conversación por voz con el agente de compras.")
+    parser.add_argument("--scenario", default=None, help="nombre del escenario: fija --script, --audios, --terms y --out")
     parser.add_argument("--audios", type=Path, default=None, help="carpeta con un audio por turno, en orden de nombre")
     parser.add_argument("--script", type=Path, default=None, help="transcripciones correctas, una por línea")
     parser.add_argument("--terms", type=Path, default=None, help="JSON con los nombres de producto esperados por turno")
     parser.add_argument("--mode", choices=("audio", "texto", "ambos"), default=None)
-    parser.add_argument("--out", type=Path, required=True, help="carpeta de la corrida")
+    parser.add_argument("--out", type=Path, default=None, help="carpeta de la corrida")
     parser.add_argument("--reference", type=Path, default=None, help="grabación de referencia para la voz del agente")
     parser.add_argument("--speaker", default=None, help="hablante incluido en XTTS-v2 (solo para pruebas)")
     parser.add_argument("--no-tts", action="store_true", help="no sintetiza la respuesta")
@@ -323,6 +344,9 @@ def main() -> None:
     parser.add_argument("--restore", action="store_true", help="devuelve la tienda a su estado inicial antes de empezar")
     parser.add_argument("--n-ctx", type=int, default=8192)
     args = parser.parse_args()
+    scenario_paths(args)
+    if args.out is None:
+        parser.error("Falta --out (o --scenario)")
 
     expected = _read_lines(args.script)
     audios = sorted(path for path in args.audios.iterdir() if path.suffix.lower() in AUDIO_SUFFIXES) if args.audios else []

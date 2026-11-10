@@ -1,6 +1,8 @@
 """El turno por voz con ASR y TTS simulados: sin GPU ni modelos."""
 
+import argparse
 import json
+from pathlib import Path
 
 import numpy as np
 import pytest
@@ -9,8 +11,16 @@ from shopping_agent.agent import tools
 from shopping_agent.agent.session import LLM, RETRIEVAL, TOOLS
 from shopping_agent.voice.asr import Transcription
 from shopping_agent.voice.audio import read_audio, write_wav
-from shopping_agent.voice.pipeline import STAGES, VoicePipeline, compare_runs, summarize_timings, to_markdown
+from shopping_agent.voice.pipeline import (
+    STAGES,
+    VoicePipeline,
+    compare_runs,
+    scenario_paths,
+    summarize_timings,
+    to_markdown,
+)
 from shopping_agent.voice.tts import (
+    DEFAULT_REFERENCE,
     REFERENCE_ENV,
     SPEAKER_ENV,
     Synthesis,
@@ -191,6 +201,7 @@ def test_join_chunks_inserts_pauses():
 
 
 def test_resolve_voice_prefers_the_reference_recording(tmp_path, monkeypatch):
+    monkeypatch.chdir(tmp_path)  # aquí no hay grabación en la ruta por defecto
     monkeypatch.delenv(REFERENCE_ENV, raising=False)
     monkeypatch.delenv(SPEAKER_ENV, raising=False)
     with pytest.raises(VoiceNotConfigured):
@@ -203,3 +214,35 @@ def test_resolve_voice_prefers_the_reference_recording(tmp_path, monkeypatch):
     assert resolve_voice(speaker="Otro") == (None, "Otro")  # los argumentos mandan sobre el entorno
     with pytest.raises(VoiceNotConfigured):
         resolve_voice(reference=tmp_path / "no_existe.wav")
+
+
+def test_reference_recording_is_found_in_its_default_folder(tmp_path, monkeypatch):
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.delenv(REFERENCE_ENV, raising=False)
+    monkeypatch.setenv(SPEAKER_ENV, "Hablante de prueba")
+    write_wav(tmp_path / DEFAULT_REFERENCE, np.zeros(100, dtype=np.float32), 44100)
+    assert resolve_voice() == (DEFAULT_REFERENCE, None)  # la grabación propia gana al hablante de prueba
+
+
+def test_scenario_name_fills_in_the_paths(tmp_path, monkeypatch):
+    monkeypatch.chdir(tmp_path)
+    (tmp_path / "audio/escenarios/compra").mkdir(parents=True)
+    (tmp_path / "scenarios").mkdir()
+    (tmp_path / "scenarios/compra.terminos.json").write_text("{}", encoding="utf-8")
+    blank = dict(script=None, audios=None, terms=None, out=None)
+
+    args = argparse.Namespace(scenario="compra", **blank)
+    scenario_paths(args)
+    assert args.script == Path("scenarios/compra.txt")
+    assert args.audios == Path("audio/escenarios/compra")
+    assert args.terms == Path("scenarios/compra.terminos.json")
+    assert args.out == Path("results/voz_compra")
+
+    args = argparse.Namespace(scenario="sin_grabar", **{**blank, "out": Path("otra")})
+    scenario_paths(args)
+    assert args.audios is None and args.terms is None  # aún no hay audios: solo texto
+    assert args.out == Path("otra")  # lo explícito no se pisa
+
+    args = argparse.Namespace(scenario=None, **blank)
+    scenario_paths(args)
+    assert args.script is None and args.out is None
