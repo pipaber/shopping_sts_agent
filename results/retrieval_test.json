@@ -195,6 +195,6 @@
     "Denso (e5-small)": 0.7535410190271308,
     "Híbrido RRF": 0.7403499885269406,
     "Híbrido + control sin grafo": 0.7581798490319482,
-    "Híbrido + GraphSAGE": 0.7619351777232035
+    "Híbrido + GraphSAGE": 0.7617291556583179
   }
 }

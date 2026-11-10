@@ -66,10 +66,10 @@ Compara en validación los modelos base, el control sin grafo y cada variante co
 | Denso | 0,7535 |
 | Híbrido RRF | 0,7403 |
 | Control sin grafo (mismo modelo, sin paso de mensajes; el del agente por defecto) | 0,7582 ± 0,0005 |
-| GraphSAGE | 0,7619 ± 0,0009 |
-| GraphSAGE con aristas de etiquetas | 0,7631 ± 0,0015 |
+| GraphSAGE | 0,7617 ± 0,0006 |
+| GraphSAGE con aristas de etiquetas | 0,7628 ± 0,0017 |
 
-Reordenar mejora al híbrido en +0,018 con el control y +0,022 con GraphSAGE: el paso de mensajes añade +0,004 (IC 95 % [+0,0004; +0,0073]), una diferencia pequeña y sensible al número de épocas, y en la lista sobre todo el catálogo los dos rinden igual. Las aristas con etiquetas no aportan nada medible y ninguno de los dos las usa.
+Reordenar mejora al híbrido en +0,018 con el control y +0,021 con GraphSAGE: el paso de mensajes añade +0,0035 (IC 95 % [−0,0001; +0,0073]), una diferencia pequeña, en el límite del ruido y sensible al número de épocas, y en la lista sobre todo el catálogo los dos rinden igual. Las aristas con etiquetas no aportan nada medible y ninguno de los dos las usa.
 
 ```bash
 uv run python -m shopping_agent.eval.reranker_cost --variant control
