@@ -13,8 +13,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import os
-import subprocess
 import sys
 import time
 import uuid
@@ -27,24 +25,9 @@ from shopping_agent.agent.llm import LocalLLM
 from shopping_agent.agent.memory import open_memory
 from shopping_agent.agent.search import DEFAULT_DATA_DIR, CatalogSearch
 from shopping_agent.agent.session import ShoppingSession, TurnResult
+from shopping_agent.gpu import process_vram_mib
 from shopping_agent.store.db import connect, restore
 from shopping_agent.store.ops import format_eur
-
-
-def process_vram_mib() -> int | None:
-    """Memoria de GPU que ocupa este proceso según ``nvidia-smi`` (``None`` si no se puede saber)."""
-    try:
-        output = subprocess.run(
-            ["nvidia-smi", "--query-compute-apps=pid,used_memory", "--format=csv,noheader,nounits"],
-            capture_output=True, text=True, timeout=10, check=True,
-        ).stdout
-    except (OSError, subprocess.SubprocessError):
-        return None
-    for line in output.splitlines():
-        pid, _, used = line.partition(",")
-        if pid.strip() == str(os.getpid()):
-            return int(used.strip())
-    return None
 
 
 def store_snapshot(db_path: Path, seed_path: Path) -> dict[str, Any]:
