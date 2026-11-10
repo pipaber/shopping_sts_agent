@@ -289,12 +289,16 @@ def _comparison_table(rows: list[dict[str, Any]]) -> list[str]:
     return [*lines, ""]
 
 
+def _where(turn: int | str) -> str:
+    return "al final" if turn == "final" else f"turno {turn}"
+
+
 def _failure_lines(runs: dict[str, Any]) -> list[str]:
     lines = []
     for name, run in runs.items():
         for scenario, checks in run["failed_checks"].items():
             lines.append(f"- `{name}` / [{scenario}]({name}/{scenario}.md):")
-            lines += [f"  - turno {check['turn']}: `{check['check']}` — {check['detail']}" for check in checks]
+            lines += [f"  - {_where(check['turn'])}: `{check['check']}` — {check['detail']}" for check in checks]
     return [*(lines or ["- Ninguna."]), ""]
 
 

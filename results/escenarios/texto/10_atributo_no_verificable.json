@@ -1,0 +1,541 @@
+{
+  "id": "10_atributo_no_verificable",
+  "title": "Atributo no verificable",
+  "kind": "atributo_no_verificable",
+  "description": "El usuario pregunta por la valoración de los clientes, un dato que el catálogo no trae. El agente debe decir que no consta, sin inventarlo y sin tocar el carrito. La comprobación mira el texto completo del producto en el catálogo: si no menciona valoraciones, la respuesta tiene que decir que no consta.",
+  "voice": false,
+  "input": "texto",
+  "audio_source": null,
+  "user_id": "eval-d1aab68f-10_atributo_no_verificable",
+  "threads": [
+    "eval-d1aab68f-10_atributo_no_verificable-c1"
+  ],
+  "names": {
+    "elegida": "B08C73K4CV"
+  },
+  "steps": [
+    {
+      "kind": "turn",
+      "turn": 1,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Busco una sartén antiadherente.",
+      "agent_input": "Busco una sartén antiadherente.",
+      "response": "Tengo la sartén ilimiti de 20 cm por 83,75 euros, la Pensofal de 32 cm por 7,48 euros, la ilimiti verde de 3,82 euros, la Jessicadaphne negra por 2,09 euros y la Amazon Basics de 16,97 euros. ¿Te interesa alguna?",
+      "spoken_text": "Tengo la sartén ilimiti de veinte centímetros por ochenta y tres euros con setenta y cinco céntimos, la Pensofal de treinta y dos centímetros por siete euros con cuarenta y ocho céntimos, la ilimiti verde de tres euros con ochenta y dos céntimos, la Jessicadaphne negra por dos euros con nueve céntimos y la Amazon Basics de dieciséis euros con noventa y siete céntimos. ¿Te interesa alguna?",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "buscar_productos",
+          "args": {
+            "consulta": "sartén antiadherente"
+          },
+          "reason": "buscar la sartén antiadherente",
+          "ok": true,
+          "summary": "estos son ahora los CANDIDATOS, del más al menos relevante:\n[1] id=B08C73K4CV | ilimiti Sartenes Induccion Antiadherentes 20 cm, Sarten Piedra Aluminio Fundido, Libre de PFOA, Apta para Todo Tipo de Cocina | marca: ilimiti | color: desconocido | precio: 83,75 € | existencias: 46 | características (extracto): APTO PARA TODOS TIPOS DE COCINAS: La sartén antiadherente se puede utilizar para cocinar en todo tipo de cocinas. Compatible con la cocina de gas, eléctrica, vidroceramica y placas halógenas o de inducción. RECUBRIMIENTO NO TÓXICO DE 4… | descripción: desconocido\n[2] id=B072JWVC5Q | Pensofal Invictum Pen 5509 Sartén Honda Antiadherente 9 Capas, Efecto Piedra, 32 Cm de Diámetro, Vitrocerámica, Inducción, Libre de BPA, Aluminio | marca: Pensofal | color: Gris | precio: 7,48 € | existencias: 8 | características (extracto): Sartén honda antiadherente con 32 cm de diámetro y mango de acero inoxidable con tacto frío Exclusivo revestimiento antiadherente biostone pro de 9 capas efecto piedra, ultra resistente a arañazos y abrasiones para que te dure toda la vida… | descripción: desconocido\n[3] id=B08QYSQY9X | ilimiti 24CM Sartén con tapa set 3pcs, tapa para 24cm Cacerolas y 24cm sarten Antiadherente, Mango ergonómico, Apto para Inducción | marca: ilimiti | color: Verde | precio: 3,82 € | existencias: 16 | características (extracto): APTO PARA TODOS TIPOS DE COCINAS: La sartén antiadherente se puede utilizar para cocinar en todo tipo de cocinas. Compatible con la cocina de gas, eléctrica, vidroceramica y placas halógenas o de inducción. DISEÑO CON CLASE Y ELEGANTE… | descripción: desconocido\n[4] id=B07Z99CTFV | Jessicadaphne Sartén Antiadherente Sartén Redonda de PTFE Sartén Revestimiento Hoja Wok Almohadilla para sábanas Cocina Reutilizable Barbacoa Alfombrillas para Hornear | marca: Jessicadaphne | color: Negro | precio: 2,09 € | existencias: 40 | características (extracto): Sin olor, no tóxico, duradero, fácil de limpiar. Hojas de revestimiento de sartén redonda antiadherente perfectas para cocinar limpio, Ideal para forrar sartenes, moldes para hornear pasteles, bandejas para asar y más Se puede utilizar en… | descripción: Features: No smell, non-toxic,durable,easy to clean. None-stick Round Pan Liner Sheets perfect for clean cooking, Ideal for lining frying pans, cake baking tins, roasting trays and more can be used…\n[5] id=B07CWDLR6P | Amazon Basics Sartén Antiadherente de Inducción - Acero Inoxidable, con Mango Suave al Tacto - 20 cm | marca: Amazon Basics | color: desconocido | precio: 16,97 € | existencias: 23 | características (extracto): Sartén de 20 cm con base ancha y plana y lados acampanados para voltear o girar fácilmente los alimentos Hecho de acero inoxidable duradero con acabado exterior pulido de plata; recubrimiento interior antiadherente de teflón para liberar… | descripción: desconocido",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.048,
+        "llm": 8.612,
+        "tools": 0.029,
+        "tts": 0.0,
+        "total": 8.689
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-d1aab68f-10_atributo_no_verificable-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {}
+      },
+      "after": {
+        "cart_id": "eval-d1aab68f-10_atributo_no_verificable-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08C73K4CV",
+              "title": "ilimiti Sartenes Induccion Antiadherentes 20 cm, Sarten Piedra Aluminio Fundido, Libre de PFOA, Apta para Todo Tipo de Cocina",
+              "brand": "ilimiti",
+              "price_cents": 8375,
+              "stock": 46
+            },
+            {
+              "product_id": "B072JWVC5Q",
+              "title": "Pensofal Invictum Pen 5509 Sartén Honda Antiadherente 9 Capas, Efecto Piedra, 32 Cm de Diámetro, Vitrocerámica, Inducción, Libre de BPA, Aluminio",
+              "brand": "Pensofal",
+              "price_cents": 748,
+              "stock": 8
+            },
+            {
+              "product_id": "B08QYSQY9X",
+              "title": "ilimiti 24CM Sartén con tapa set 3pcs, tapa para 24cm Cacerolas y 24cm sarten Antiadherente, Mango ergonómico, Apto para Inducción",
+              "brand": "ilimiti",
+              "price_cents": 382,
+              "stock": 16
+            },
+            {
+              "product_id": "B07Z99CTFV",
+              "title": "Jessicadaphne Sartén Antiadherente Sartén Redonda de PTFE Sartén Revestimiento Hoja Wok Almohadilla para sábanas Cocina Reutilizable Barbacoa Alfombrillas para Hornear",
+              "brand": "Jessicadaphne",
+              "price_cents": 209,
+              "stock": 40
+            },
+            {
+              "product_id": "B07CWDLR6P",
+              "title": "Amazon Basics Sartén Antiadherente de Inducción - Acero Inoxidable, con Mango Suave al Tacto - 20 cm",
+              "brand": "Amazon Basics",
+              "price_cents": 1697,
+              "stock": 23
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {
+          "B072JWVC5Q": {
+            "price_cents": 748,
+            "stock": 8
+          },
+          "B07CWDLR6P": {
+            "price_cents": 1697,
+            "stock": 23
+          },
+          "B07Z99CTFV": {
+            "price_cents": 209,
+            "stock": 40
+          },
+          "B08C73K4CV": {
+            "price_cents": 8375,
+            "stock": 46
+          },
+          "B08QYSQY9X": {
+            "price_cents": 382,
+            "stock": 16
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        }
+      ]
+    },
+    {
+      "kind": "remember",
+      "name": "elegida",
+      "ref": "candidate:1",
+      "product_id": "B08C73K4CV",
+      "title": "ilimiti Sartenes Induccion Antiadherentes 20 cm, Sarten Piedra Aluminio Fundido, Libre de PFOA, Apta para Todo Tipo de Cocina"
+    },
+    {
+      "kind": "turn",
+      "turn": 2,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "¿Qué valoración le dan los clientes a la primera?",
+      "agent_input": "¿Qué valoración le dan los clientes a la primera?",
+      "response": "Tengo la sartén ilimiti de 20 cm por 83,75 euros, la Pensofal de 32 cm por 7,48 euros, la ilimiti verde de 3,82 euros, la Jessicadaphne negra por 2,09 euros y la Amazon Basics de 16,97 euros. ¿Te interesa alguna?",
+      "spoken_text": "Tengo la sartén ilimiti de veinte centímetros por ochenta y tres euros con setenta y cinco céntimos, la Pensofal de treinta y dos centímetros por siete euros con cuarenta y ocho céntimos, la ilimiti verde de tres euros con ochenta y dos céntimos, la Jessicadaphne negra por dos euros con nueve céntimos y la Amazon Basics de dieciséis euros con noventa y siete céntimos. ¿Te interesa alguna?",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "buscar_productos",
+          "args": {
+            "consulta": "sartén antiadherente"
+          },
+          "reason": "buscar la sartén antiadherente",
+          "ok": true,
+          "summary": "estos son ahora los CANDIDATOS, del más al menos relevante:\n[1] id=B08C73K4CV | ilimiti Sartenes Induccion Antiadherentes 20 cm, Sarten Piedra Aluminio Fundido, Libre de PFOA, Apta para Todo Tipo de Cocina | marca: ilimiti | color: desconocido | precio: 83,75 € | existencias: 46 | características (extracto): APTO PARA TODOS TIPOS DE COCINAS: La sartén antiadherente se puede utilizar para cocinar en todo tipo de cocinas. Compatible con la cocina de gas, eléctrica, vidroceramica y placas halógenas o de inducción. RECUBRIMIENTO NO TÓXICO DE 4… | descripción: desconocido\n[2] id=B072JWVC5Q | Pensofal Invictum Pen 5509 Sartén Honda Antiadherente 9 Capas, Efecto Piedra, 32 Cm de Diámetro, Vitrocerámica, Inducción, Libre de BPA, Aluminio | marca: Pensofal | color: Gris | precio: 7,48 € | existencias: 8 | características (extracto): Sartén honda antiadherente con 32 cm de diámetro y mango de acero inoxidable con tacto frío Exclusivo revestimiento antiadherente biostone pro de 9 capas efecto piedra, ultra resistente a arañazos y abrasiones para que te dure toda la vida… | descripción: desconocido\n[3] id=B08QYSQY9X | ilimiti 24CM Sartén con tapa set 3pcs, tapa para 24cm Cacerolas y 24cm sarten Antiadherente, Mango ergonómico, Apto para Inducción | marca: ilimiti | color: Verde | precio: 3,82 € | existencias: 16 | características (extracto): APTO PARA TODOS TIPOS DE COCINAS: La sartén antiadherente se puede utilizar para cocinar en todo tipo de cocinas. Compatible con la cocina de gas, eléctrica, vidroceramica y placas halógenas o de inducción. DISEÑO CON CLASE Y ELEGANTE… | descripción: desconocido\n[4] id=B07Z99CTFV | Jessicadaphne Sartén Antiadherente Sartén Redonda de PTFE Sartén Revestimiento Hoja Wok Almohadilla para sábanas Cocina Reutilizable Barbacoa Alfombrillas para Hornear | marca: Jessicadaphne | color: Negro | precio: 2,09 € | existencias: 40 | características (extracto): Sin olor, no tóxico, duradero, fácil de limpiar. Hojas de revestimiento de sartén redonda antiadherente perfectas para cocinar limpio, Ideal para forrar sartenes, moldes para hornear pasteles, bandejas para asar y más Se puede utilizar en… | descripción: Features: No smell, non-toxic,durable,easy to clean. None-stick Round Pan Liner Sheets perfect for clean cooking, Ideal for lining frying pans, cake baking tins, roasting trays and more can be used…\n[5] id=B07CWDLR6P | Amazon Basics Sartén Antiadherente de Inducción - Acero Inoxidable, con Mango Suave al Tacto - 20 cm | marca: Amazon Basics | color: desconocido | precio: 16,97 € | existencias: 23 | características (extracto): Sartén de 20 cm con base ancha y plana y lados acampanados para voltear o girar fácilmente los alimentos Hecho de acero inoxidable duradero con acabado exterior pulido de plata; recubrimiento interior antiadherente de teflón para liberar… | descripción: desconocido",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.042,
+        "llm": 9.65,
+        "tools": 0.032,
+        "tts": 0.0,
+        "total": 9.724
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-d1aab68f-10_atributo_no_verificable-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08C73K4CV",
+              "title": "ilimiti Sartenes Induccion Antiadherentes 20 cm, Sarten Piedra Aluminio Fundido, Libre de PFOA, Apta para Todo Tipo de Cocina",
+              "brand": "ilimiti",
+              "price_cents": 8375,
+              "stock": 46
+            },
+            {
+              "product_id": "B072JWVC5Q",
+              "title": "Pensofal Invictum Pen 5509 Sartén Honda Antiadherente 9 Capas, Efecto Piedra, 32 Cm de Diámetro, Vitrocerámica, Inducción, Libre de BPA, Aluminio",
+              "brand": "Pensofal",
+              "price_cents": 748,
+              "stock": 8
+            },
+            {
+              "product_id": "B08QYSQY9X",
+              "title": "ilimiti 24CM Sartén con tapa set 3pcs, tapa para 24cm Cacerolas y 24cm sarten Antiadherente, Mango ergonómico, Apto para Inducción",
+              "brand": "ilimiti",
+              "price_cents": 382,
+              "stock": 16
+            },
+            {
+              "product_id": "B07Z99CTFV",
+              "title": "Jessicadaphne Sartén Antiadherente Sartén Redonda de PTFE Sartén Revestimiento Hoja Wok Almohadilla para sábanas Cocina Reutilizable Barbacoa Alfombrillas para Hornear",
+              "brand": "Jessicadaphne",
+              "price_cents": 209,
+              "stock": 40
+            },
+            {
+              "product_id": "B07CWDLR6P",
+              "title": "Amazon Basics Sartén Antiadherente de Inducción - Acero Inoxidable, con Mango Suave al Tacto - 20 cm",
+              "brand": "Amazon Basics",
+              "price_cents": 1697,
+              "stock": 23
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {
+          "B072JWVC5Q": {
+            "price_cents": 748,
+            "stock": 8
+          },
+          "B07CWDLR6P": {
+            "price_cents": 1697,
+            "stock": 23
+          },
+          "B07Z99CTFV": {
+            "price_cents": 209,
+            "stock": 40
+          },
+          "B08C73K4CV": {
+            "price_cents": 8375,
+            "stock": 46
+          },
+          "B08QYSQY9X": {
+            "price_cents": 382,
+            "stock": 16
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-d1aab68f-10_atributo_no_verificable-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08C73K4CV",
+              "title": "ilimiti Sartenes Induccion Antiadherentes 20 cm, Sarten Piedra Aluminio Fundido, Libre de PFOA, Apta para Todo Tipo de Cocina",
+              "brand": "ilimiti",
+              "price_cents": 8375,
+              "stock": 46
+            },
+            {
+              "product_id": "B072JWVC5Q",
+              "title": "Pensofal Invictum Pen 5509 Sartén Honda Antiadherente 9 Capas, Efecto Piedra, 32 Cm de Diámetro, Vitrocerámica, Inducción, Libre de BPA, Aluminio",
+              "brand": "Pensofal",
+              "price_cents": 748,
+              "stock": 8
+            },
+            {
+              "product_id": "B08QYSQY9X",
+              "title": "ilimiti 24CM Sartén con tapa set 3pcs, tapa para 24cm Cacerolas y 24cm sarten Antiadherente, Mango ergonómico, Apto para Inducción",
+              "brand": "ilimiti",
+              "price_cents": 382,
+              "stock": 16
+            },
+            {
+              "product_id": "B07Z99CTFV",
+              "title": "Jessicadaphne Sartén Antiadherente Sartén Redonda de PTFE Sartén Revestimiento Hoja Wok Almohadilla para sábanas Cocina Reutilizable Barbacoa Alfombrillas para Hornear",
+              "brand": "Jessicadaphne",
+              "price_cents": 209,
+              "stock": 40
+            },
+            {
+              "product_id": "B07CWDLR6P",
+              "title": "Amazon Basics Sartén Antiadherente de Inducción - Acero Inoxidable, con Mango Suave al Tacto - 20 cm",
+              "brand": "Amazon Basics",
+              "price_cents": 1697,
+              "stock": 23
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {
+          "B072JWVC5Q": {
+            "price_cents": 748,
+            "stock": 8
+          },
+          "B07CWDLR6P": {
+            "price_cents": 1697,
+            "stock": 23
+          },
+          "B07Z99CTFV": {
+            "price_cents": 209,
+            "stock": 40
+          },
+          "B08C73K4CV": {
+            "price_cents": 8375,
+            "stock": 46
+          },
+          "B08QYSQY9X": {
+            "price_cents": 382,
+            "stock": 16
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "declares_unknown",
+          "params": {
+            "product": "@elegida",
+            "keywords": [
+              "valoraci",
+              "estrellas",
+              "reseñ",
+              "opiniones",
+              "puntuaci"
+            ]
+          },
+          "ok": false,
+          "detail": "dato en el catálogo: no; la respuesta dice que no consta: no"
+        },
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        }
+      ]
+    }
+  ],
+  "final": {
+    "snapshot": {
+      "cart_id": "eval-d1aab68f-10_atributo_no_verificable-c1",
+      "state": {
+        "budget_cents": null,
+        "preferences": [],
+        "pending_clarification": null,
+        "quote": null,
+        "order": null,
+        "candidates": [
+          {
+            "product_id": "B08C73K4CV",
+            "title": "ilimiti Sartenes Induccion Antiadherentes 20 cm, Sarten Piedra Aluminio Fundido, Libre de PFOA, Apta para Todo Tipo de Cocina",
+            "brand": "ilimiti",
+            "price_cents": 8375,
+            "stock": 46
+          },
+          {
+            "product_id": "B072JWVC5Q",
+            "title": "Pensofal Invictum Pen 5509 Sartén Honda Antiadherente 9 Capas, Efecto Piedra, 32 Cm de Diámetro, Vitrocerámica, Inducción, Libre de BPA, Aluminio",
+            "brand": "Pensofal",
+            "price_cents": 748,
+            "stock": 8
+          },
+          {
+            "product_id": "B08QYSQY9X",
+            "title": "ilimiti 24CM Sartén con tapa set 3pcs, tapa para 24cm Cacerolas y 24cm sarten Antiadherente, Mango ergonómico, Apto para Inducción",
+            "brand": "ilimiti",
+            "price_cents": 382,
+            "stock": 16
+          },
+          {
+            "product_id": "B07Z99CTFV",
+            "title": "Jessicadaphne Sartén Antiadherente Sartén Redonda de PTFE Sartén Revestimiento Hoja Wok Almohadilla para sábanas Cocina Reutilizable Barbacoa Alfombrillas para Hornear",
+            "brand": "Jessicadaphne",
+            "price_cents": 209,
+            "stock": 40
+          },
+          {
+            "product_id": "B07CWDLR6P",
+            "title": "Amazon Basics Sartén Antiadherente de Inducción - Acero Inoxidable, con Mango Suave al Tacto - 20 cm",
+            "brand": "Amazon Basics",
+            "price_cents": 1697,
+            "stock": 23
+          }
+        ],
+        "awaiting_confirmation": false
+      },
+      "store": {
+        "orders": [],
+        "order_items": [],
+        "cart_items": [],
+        "inventory_changes": []
+      },
+      "offers": {
+        "B072JWVC5Q": {
+          "price_cents": 748,
+          "stock": 8
+        },
+        "B07CWDLR6P": {
+          "price_cents": 1697,
+          "stock": 23
+        },
+        "B07Z99CTFV": {
+          "price_cents": 209,
+          "stock": 40
+        },
+        "B08C73K4CV": {
+          "price_cents": 8375,
+          "stock": 46
+        },
+        "B08QYSQY9X": {
+          "price_cents": 382,
+          "stock": 16
+        }
+      }
+    },
+    "checks": [
+      {
+        "check": "orders",
+        "params": {
+          "count": 0
+        },
+        "ok": true,
+        "detail": "pedidos registrados: 0"
+      },
+      {
+        "check": "cart",
+        "params": {
+          "empty": true
+        },
+        "ok": true,
+        "detail": "carrito: vacío"
+      }
+    ]
+  },
+  "violations": [],
+  "problems": [],
+  "passed": false,
+  "timings": {
+    "all": {
+      "turns": 2,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.04,
+        "max": 0.05
+      },
+      "llm": {
+        "mean": 9.13,
+        "max": 9.65
+      },
+      "tools": {
+        "mean": 0.03,
+        "max": 0.03
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 9.21,
+        "max": 9.72
+      }
+    },
+    "with_llm": {
+      "turns": 2,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.04,
+        "max": 0.05
+      },
+      "llm": {
+        "mean": 9.13,
+        "max": 9.65
+      },
+      "tools": {
+        "mean": 0.03,
+        "max": 0.03
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 9.21,
+        "max": 9.72
+      }
+    },
+    "without_llm": {
+      "turns": 0
+    }
+  }
+}

@@ -1,0 +1,845 @@
+{
+  "id": "07_presupuesto_excedido",
+  "title": "Presupuesto excedido al añadir",
+  "kind": "presupuesto_excedido",
+  "description": "Con 30 € de presupuesto y el producto a 12,00 €, tres unidades (36,00 €) no caben: el carrito no debe cambiar. Dos unidades sí caben.",
+  "voice": false,
+  "input": "texto",
+  "audio_source": null,
+  "user_id": "eval-d1aab68f-07_presupuesto_excedido",
+  "threads": [
+    "eval-d1aab68f-07_presupuesto_excedido-c1"
+  ],
+  "names": {
+    "elegida": "B091TXCPQQ"
+  },
+  "steps": [
+    {
+      "kind": "turn",
+      "turn": 1,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Busco una mochila para portátil. Como mucho quiero gastar 30 euros.",
+      "agent_input": "Busco una mochila para portátil. Como mucho quiero gastar 30 euros.",
+      "response": "Tengo la mochila SONAMBULO por 6,13 euros, la Lubardy por 17,46, la KTMOUW por 24,01, la HOMIEE por 16,35 y la Under Armour por 11,65. ¿Te interesa alguna? He anotado un presupuesto de 30,00 €.",
+      "spoken_text": "Tengo la mochila SONAMBULO por seis euros con trece céntimos, la Lubardy por diecisiete coma cuarenta y seis, la KTMOUW por veinticuatro coma cero uno, la HOMIEE por dieciséis coma treinta y cinco y la Under Armour por once coma sesenta y cinco. ¿Te interesa alguna? He anotado un presupuesto de treinta euros.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "fijar_presupuesto",
+          "args": {
+            "importe_eur": 30
+          },
+          "reason": "el usuario da su gasto máximo",
+          "ok": true,
+          "summary": "presupuesto fijado en 30,00 €.",
+          "issues": []
+        },
+        {
+          "tool": "buscar_productos",
+          "args": {
+            "consulta": "mochila para portátil"
+          },
+          "reason": "buscar lo que pide",
+          "ok": true,
+          "summary": "estos son ahora los CANDIDATOS, del más al menos relevante:\n[1] id=B091TXCPQQ | SONAMBULO Mochila para Portátil, Mochila Unisex Impermeable de hasta 15.6 Pulgadas,Mochila de Portatil con Puerto USB,Mochila Ordenador Portatil Para los Viajes,Escolares o Negocio | marca: SONAMBULO | color: Negro | precio: 6,13 € | existencias: 42 | características (extracto): DISEÑO DEL PUERTO DE CARGA USB:Mochila de portatil Incorpora un puerto USB exterior para cargar su teléfono móvil desde una cable de carga conectada en el interior(POWER BANK no incluida).Te permite cargar tu teléfono mientras caminas… | descripción: SONAMBULO Mochila de portatil de 15,6\" con cargador USB. Es el compañero ideal para sus viajes de negocios. Mochila de características principales: 1.Gran capacidad: El compartimento separado y…\n[2] id=B08F4X5LCX | Lubardy Mochila Portátil Hombre 17.3 Pulgadas Impermeable Mochilas Ordenador para Puerto USB 17 Pulgadas Trabajo Viaje Negocio Escolares Mochila Multifuncional Daypacks Azul | marca: Lubardy | color: Azul | precio: 17,46 € | existencias: 6 | características (extracto): MOCHILA PARA PORTÁTIL DE GRAN CAPACIDAD:Tamaño: 34 * 24 * 47 cm, Peso: 1,1kg. La mochila escolar tiene 3 compartimentos principales, 11 bolsillos interiores, 2 bolsillos laterales y 1 bolsillo trasero antirrobo, que puede mantener sus… | descripción: Mochila multifunción de bolsillo para computadora portátil (adecuada para computadora portátil de 17 pulgadas) 1 Un compartimento acolchado para computadora portátil puede contener computadoras…\n[3] id=B08TQX8SZY | KTMOUW Mochila Portatil 17.3 Pulgadas Hombre Impermeable Mochilas Puerto USB 17 Pulgadas Trabajo Ordenador Viaje Negocio Multifuncional Mochila Daypacks Negro-17.3inch | marca: KTMOUW | color: Negro - 17.3inch | precio: 24,01 € | existencias: 30 | características (extracto): ✈【GRAN CAPACIDAD】：13.1* 8.3*18.9 \"-33*21 *48cm (L*W*H) La mochila portatil tiene una capacidad de 45 litros.Los 4 compartimento principal grande puede acomodar muchas cosas.los bolsillos múltiples y los espacios ultra mantienen organizados… | descripción: KTMOUW La mochila de gran capacidad, con su excelente artesanía para crear un estilo clásico, se puede utilizar en cualquier ocasión. 1. El material de la mochila está hecho de fibra de poliéster de…\n[4] id=B07QTHKC4G | HOMIEE 15.6 Pulgadas Mochila de Viaje para Portátil con Puerto de Carga USB para Auriculares Bolsa antirrobo, Mochila Informal Delgada, para los Estudios, Trabajo, Negocios - Gris | marca: HOMIEE | color: Gris | precio: 16,35 € | existencias: 44 | características (extracto): ▶ 【GRAN CAPACIDAD】: HOMIEE mochila para portátil de 16,9 x 12,6 x 6,7 pulgadas （LxWxH) con un compartimento exclusivo para portátil de 15,6 pulgadas. El compartimento principal es lo suficientemente espacioso para libros, carpetas, ropa y… | descripción: HOMIEE se compromete a brindar a los clientes una feliz experiencia de compra en línea. Estamos comprometidos a crear productos duraderos con detalles únicos. Esta mochila portátil para negocios es…\n[5] id=B00ZUWDNNY | Under Armour UA Hustle Backpack LDWR Mochila Hombre Negro (Black/Black/Silver 001) Talla única | marca: Under Armour | color: Negro (Black/Black/Silver 001) | precio: 11,65 € | existencias: 38 | características (extracto): Practicidad – el moderno bolso para portátil es resistente e impermeable, por lo que también es adecuado como bolsa de transporte en el día a día Con bolsillo para portátil – esta mochila para bicicleta tiene un compartimento forrado para… | descripción: desconocido",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.031,
+        "llm": 8.313,
+        "tools": 0.029,
+        "tts": 0.0,
+        "total": 8.373
+      },
+      "llm_steps": 3,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-d1aab68f-07_presupuesto_excedido-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {}
+      },
+      "after": {
+        "cart_id": "eval-d1aab68f-07_presupuesto_excedido-c1",
+        "state": {
+          "budget_cents": 3000,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B091TXCPQQ",
+              "title": "SONAMBULO Mochila para Portátil, Mochila Unisex Impermeable de hasta 15.6 Pulgadas,Mochila de Portatil con Puerto USB,Mochila Ordenador Portatil Para los Viajes,Escolares o Negocio",
+              "brand": "SONAMBULO",
+              "price_cents": 613,
+              "stock": 42
+            },
+            {
+              "product_id": "B08F4X5LCX",
+              "title": "Lubardy Mochila Portátil Hombre 17.3 Pulgadas Impermeable Mochilas Ordenador para Puerto USB 17 Pulgadas Trabajo Viaje Negocio Escolares Mochila Multifuncional Daypacks Azul",
+              "brand": "Lubardy",
+              "price_cents": 1746,
+              "stock": 6
+            },
+            {
+              "product_id": "B08TQX8SZY",
+              "title": "KTMOUW Mochila Portatil 17.3 Pulgadas Hombre Impermeable Mochilas Puerto USB 17 Pulgadas Trabajo Ordenador Viaje Negocio Multifuncional Mochila Daypacks Negro-17.3inch",
+              "brand": "KTMOUW",
+              "price_cents": 2401,
+              "stock": 30
+            },
+            {
+              "product_id": "B07QTHKC4G",
+              "title": "HOMIEE 15.6 Pulgadas Mochila de Viaje para Portátil con Puerto de Carga USB para Auriculares Bolsa antirrobo, Mochila Informal Delgada, para los Estudios, Trabajo, Negocios - Gris",
+              "brand": "HOMIEE",
+              "price_cents": 1635,
+              "stock": 44
+            },
+            {
+              "product_id": "B00ZUWDNNY",
+              "title": "Under Armour UA Hustle Backpack LDWR Mochila Hombre Negro (Black/Black/Silver 001) Talla única",
+              "brand": "Under Armour",
+              "price_cents": 1165,
+              "stock": 38
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {
+          "B00ZUWDNNY": {
+            "price_cents": 1165,
+            "stock": 38
+          },
+          "B07QTHKC4G": {
+            "price_cents": 1635,
+            "stock": 44
+          },
+          "B08F4X5LCX": {
+            "price_cents": 1746,
+            "stock": 6
+          },
+          "B08TQX8SZY": {
+            "price_cents": 2401,
+            "stock": 30
+          },
+          "B091TXCPQQ": {
+            "price_cents": 613,
+            "stock": 42
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "budget",
+          "params": {
+            "cents": 3000
+          },
+          "ok": true,
+          "detail": "presupuesto en el estado: 3000"
+        },
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        }
+      ]
+    },
+    {
+      "kind": "remember",
+      "name": "elegida",
+      "ref": "candidate:1",
+      "product_id": "B091TXCPQQ",
+      "title": "SONAMBULO Mochila para Portátil, Mochila Unisex Impermeable de hasta 15.6 Pulgadas,Mochila de Portatil con Puerto USB,Mochila Ordenador Portatil Para los Viajes,Escolares o Negocio"
+    },
+    {
+      "kind": "event",
+      "event": "set_offer",
+      "product": "@elegida",
+      "product_id": "B091TXCPQQ",
+      "price_cents": 1200,
+      "stock": 20
+    },
+    {
+      "kind": "turn",
+      "turn": 2,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Añade tres de la primera.",
+      "agent_input": "Añade tres de la primera.",
+      "response": "Lo siento, con tres unidades el total supera tu presupuesto. ¿Te interesa añadir dos en su lugar?",
+      "spoken_text": "Lo siento, con tres unidades el total supera tu presupuesto. ¿Te interesa añadir dos en su lugar?",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "agregar_al_carrito",
+          "args": {
+            "product_id": "B091TXCPQQ",
+            "cantidad": 3
+          },
+          "reason": "añadir tres unidades del candidato 1",
+          "ok": false,
+          "summary": "[presupuesto_excedido] El total sería 36,00 € y supera el presupuesto de 30,00 € por 6,00 €. Dentro del presupuesto caben como máximo 2 unidades de este producto.",
+          "issues": [
+            {
+              "code": "presupuesto_excedido",
+              "message": "El total sería 36,00 € y supera el presupuesto de 30,00 € por 6,00 €.",
+              "product_id": null,
+              "details": {
+                "total_cents": 3600,
+                "budget_cents": 3000,
+                "excess_cents": 600,
+                "product_id": "B091TXCPQQ",
+                "unit_price_cents": 1200,
+                "max_quantity": 2
+              }
+            }
+          ]
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 5.984,
+        "tools": 0.031,
+        "tts": 0.0,
+        "total": 6.015
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-d1aab68f-07_presupuesto_excedido-c1",
+        "state": {
+          "budget_cents": 3000,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B091TXCPQQ",
+              "title": "SONAMBULO Mochila para Portátil, Mochila Unisex Impermeable de hasta 15.6 Pulgadas,Mochila de Portatil con Puerto USB,Mochila Ordenador Portatil Para los Viajes,Escolares o Negocio",
+              "brand": "SONAMBULO",
+              "price_cents": 613,
+              "stock": 42
+            },
+            {
+              "product_id": "B08F4X5LCX",
+              "title": "Lubardy Mochila Portátil Hombre 17.3 Pulgadas Impermeable Mochilas Ordenador para Puerto USB 17 Pulgadas Trabajo Viaje Negocio Escolares Mochila Multifuncional Daypacks Azul",
+              "brand": "Lubardy",
+              "price_cents": 1746,
+              "stock": 6
+            },
+            {
+              "product_id": "B08TQX8SZY",
+              "title": "KTMOUW Mochila Portatil 17.3 Pulgadas Hombre Impermeable Mochilas Puerto USB 17 Pulgadas Trabajo Ordenador Viaje Negocio Multifuncional Mochila Daypacks Negro-17.3inch",
+              "brand": "KTMOUW",
+              "price_cents": 2401,
+              "stock": 30
+            },
+            {
+              "product_id": "B07QTHKC4G",
+              "title": "HOMIEE 15.6 Pulgadas Mochila de Viaje para Portátil con Puerto de Carga USB para Auriculares Bolsa antirrobo, Mochila Informal Delgada, para los Estudios, Trabajo, Negocios - Gris",
+              "brand": "HOMIEE",
+              "price_cents": 1635,
+              "stock": 44
+            },
+            {
+              "product_id": "B00ZUWDNNY",
+              "title": "Under Armour UA Hustle Backpack LDWR Mochila Hombre Negro (Black/Black/Silver 001) Talla única",
+              "brand": "Under Armour",
+              "price_cents": 1165,
+              "stock": 38
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B091TXCPQQ",
+              "initial_stock": 42,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B00ZUWDNNY": {
+            "price_cents": 1165,
+            "stock": 38
+          },
+          "B07QTHKC4G": {
+            "price_cents": 1635,
+            "stock": 44
+          },
+          "B08F4X5LCX": {
+            "price_cents": 1746,
+            "stock": 6
+          },
+          "B08TQX8SZY": {
+            "price_cents": 2401,
+            "stock": 30
+          },
+          "B091TXCPQQ": {
+            "price_cents": 1200,
+            "stock": 20
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-d1aab68f-07_presupuesto_excedido-c1",
+        "state": {
+          "budget_cents": 3000,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B091TXCPQQ",
+              "title": "SONAMBULO Mochila para Portátil, Mochila Unisex Impermeable de hasta 15.6 Pulgadas,Mochila de Portatil con Puerto USB,Mochila Ordenador Portatil Para los Viajes,Escolares o Negocio",
+              "brand": "SONAMBULO",
+              "price_cents": 1200,
+              "stock": 20
+            },
+            {
+              "product_id": "B08F4X5LCX",
+              "title": "Lubardy Mochila Portátil Hombre 17.3 Pulgadas Impermeable Mochilas Ordenador para Puerto USB 17 Pulgadas Trabajo Viaje Negocio Escolares Mochila Multifuncional Daypacks Azul",
+              "brand": "Lubardy",
+              "price_cents": 1746,
+              "stock": 6
+            },
+            {
+              "product_id": "B08TQX8SZY",
+              "title": "KTMOUW Mochila Portatil 17.3 Pulgadas Hombre Impermeable Mochilas Puerto USB 17 Pulgadas Trabajo Ordenador Viaje Negocio Multifuncional Mochila Daypacks Negro-17.3inch",
+              "brand": "KTMOUW",
+              "price_cents": 2401,
+              "stock": 30
+            },
+            {
+              "product_id": "B07QTHKC4G",
+              "title": "HOMIEE 15.6 Pulgadas Mochila de Viaje para Portátil con Puerto de Carga USB para Auriculares Bolsa antirrobo, Mochila Informal Delgada, para los Estudios, Trabajo, Negocios - Gris",
+              "brand": "HOMIEE",
+              "price_cents": 1635,
+              "stock": 44
+            },
+            {
+              "product_id": "B00ZUWDNNY",
+              "title": "Under Armour UA Hustle Backpack LDWR Mochila Hombre Negro (Black/Black/Silver 001) Talla única",
+              "brand": "Under Armour",
+              "price_cents": 1165,
+              "stock": 38
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B091TXCPQQ",
+              "initial_stock": 42,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B00ZUWDNNY": {
+            "price_cents": 1165,
+            "stock": 38
+          },
+          "B07QTHKC4G": {
+            "price_cents": 1635,
+            "stock": 44
+          },
+          "B08F4X5LCX": {
+            "price_cents": 1746,
+            "stock": 6
+          },
+          "B08TQX8SZY": {
+            "price_cents": 2401,
+            "stock": 30
+          },
+          "B091TXCPQQ": {
+            "price_cents": 1200,
+            "stock": 20
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        },
+        {
+          "check": "orders",
+          "params": {
+            "count": 0
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 0"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 3,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Vale, pues ponme dos.",
+      "agent_input": "Vale, pues ponme dos.",
+      "response": "Hecho, añadidas dos unidades. El total es 24,00 €. En el carrito hay 2 unidades de «SONAMBULO Mochila para Portátil, Mochila Unisex Impermeable de hasta…» a 12,00 € cada una, 24,00 €. Total: 24,00 €. Tu presupuesto es de 30,00 € y te quedan 6,00 €.",
+      "spoken_text": "Hecho, añadidas dos unidades. El total es veinticuatro euros. En el carrito hay dos unidades de SONAMBULO Mochila para Portátil a doce euros cada una, veinticuatro euros. Total: veinticuatro euros. Tu presupuesto es de treinta euros y te quedan seis euros.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "agregar_al_carrito",
+          "args": {
+            "product_id": "B091TXCPQQ",
+            "cantidad": 2
+          },
+          "reason": "añadir dos unidades del candidato 1",
+          "ok": true,
+          "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B091TXCPQQ | SONAMBULO Mochila para Portátil, Mochila Unisex Impermeable de hasta… | 2 unidades × 12,00 € = 24,00 € | existencias: 20\nTotal del carrito: 24,00 €",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 5.319,
+        "tools": 0.054,
+        "tts": 0.0,
+        "total": 5.373
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-d1aab68f-07_presupuesto_excedido-c1",
+        "state": {
+          "budget_cents": 3000,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B091TXCPQQ",
+              "title": "SONAMBULO Mochila para Portátil, Mochila Unisex Impermeable de hasta 15.6 Pulgadas,Mochila de Portatil con Puerto USB,Mochila Ordenador Portatil Para los Viajes,Escolares o Negocio",
+              "brand": "SONAMBULO",
+              "price_cents": 1200,
+              "stock": 20
+            },
+            {
+              "product_id": "B08F4X5LCX",
+              "title": "Lubardy Mochila Portátil Hombre 17.3 Pulgadas Impermeable Mochilas Ordenador para Puerto USB 17 Pulgadas Trabajo Viaje Negocio Escolares Mochila Multifuncional Daypacks Azul",
+              "brand": "Lubardy",
+              "price_cents": 1746,
+              "stock": 6
+            },
+            {
+              "product_id": "B08TQX8SZY",
+              "title": "KTMOUW Mochila Portatil 17.3 Pulgadas Hombre Impermeable Mochilas Puerto USB 17 Pulgadas Trabajo Ordenador Viaje Negocio Multifuncional Mochila Daypacks Negro-17.3inch",
+              "brand": "KTMOUW",
+              "price_cents": 2401,
+              "stock": 30
+            },
+            {
+              "product_id": "B07QTHKC4G",
+              "title": "HOMIEE 15.6 Pulgadas Mochila de Viaje para Portátil con Puerto de Carga USB para Auriculares Bolsa antirrobo, Mochila Informal Delgada, para los Estudios, Trabajo, Negocios - Gris",
+              "brand": "HOMIEE",
+              "price_cents": 1635,
+              "stock": 44
+            },
+            {
+              "product_id": "B00ZUWDNNY",
+              "title": "Under Armour UA Hustle Backpack LDWR Mochila Hombre Negro (Black/Black/Silver 001) Talla única",
+              "brand": "Under Armour",
+              "price_cents": 1165,
+              "stock": 38
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B091TXCPQQ",
+              "initial_stock": 42,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B00ZUWDNNY": {
+            "price_cents": 1165,
+            "stock": 38
+          },
+          "B07QTHKC4G": {
+            "price_cents": 1635,
+            "stock": 44
+          },
+          "B08F4X5LCX": {
+            "price_cents": 1746,
+            "stock": 6
+          },
+          "B08TQX8SZY": {
+            "price_cents": 2401,
+            "stock": 30
+          },
+          "B091TXCPQQ": {
+            "price_cents": 1200,
+            "stock": 20
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-d1aab68f-07_presupuesto_excedido-c1",
+        "state": {
+          "budget_cents": 3000,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B091TXCPQQ",
+              "title": "SONAMBULO Mochila para Portátil, Mochila Unisex Impermeable de hasta 15.6 Pulgadas,Mochila de Portatil con Puerto USB,Mochila Ordenador Portatil Para los Viajes,Escolares o Negocio",
+              "brand": "SONAMBULO",
+              "price_cents": 1200,
+              "stock": 20
+            },
+            {
+              "product_id": "B08F4X5LCX",
+              "title": "Lubardy Mochila Portátil Hombre 17.3 Pulgadas Impermeable Mochilas Ordenador para Puerto USB 17 Pulgadas Trabajo Viaje Negocio Escolares Mochila Multifuncional Daypacks Azul",
+              "brand": "Lubardy",
+              "price_cents": 1746,
+              "stock": 6
+            },
+            {
+              "product_id": "B08TQX8SZY",
+              "title": "KTMOUW Mochila Portatil 17.3 Pulgadas Hombre Impermeable Mochilas Puerto USB 17 Pulgadas Trabajo Ordenador Viaje Negocio Multifuncional Mochila Daypacks Negro-17.3inch",
+              "brand": "KTMOUW",
+              "price_cents": 2401,
+              "stock": 30
+            },
+            {
+              "product_id": "B07QTHKC4G",
+              "title": "HOMIEE 15.6 Pulgadas Mochila de Viaje para Portátil con Puerto de Carga USB para Auriculares Bolsa antirrobo, Mochila Informal Delgada, para los Estudios, Trabajo, Negocios - Gris",
+              "brand": "HOMIEE",
+              "price_cents": 1635,
+              "stock": 44
+            },
+            {
+              "product_id": "B00ZUWDNNY",
+              "title": "Under Armour UA Hustle Backpack LDWR Mochila Hombre Negro (Black/Black/Silver 001) Talla única",
+              "brand": "Under Armour",
+              "price_cents": 1165,
+              "stock": 38
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-d1aab68f-07_presupuesto_excedido-c1",
+              "product_id": "B091TXCPQQ",
+              "quantity": 2
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B091TXCPQQ",
+              "initial_stock": 42,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B00ZUWDNNY": {
+            "price_cents": 1165,
+            "stock": 38
+          },
+          "B07QTHKC4G": {
+            "price_cents": 1635,
+            "stock": 44
+          },
+          "B08F4X5LCX": {
+            "price_cents": 1746,
+            "stock": 6
+          },
+          "B08TQX8SZY": {
+            "price_cents": 2401,
+            "stock": 30
+          },
+          "B091TXCPQQ": {
+            "price_cents": 1200,
+            "stock": 20
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "lines": [
+              {
+                "product": "@elegida",
+                "quantity": 2
+              }
+            ]
+          },
+          "ok": true,
+          "detail": "carrito: 2 × B091TXCPQQ"
+        }
+      ]
+    }
+  ],
+  "final": {
+    "snapshot": {
+      "cart_id": "eval-d1aab68f-07_presupuesto_excedido-c1",
+      "state": {
+        "budget_cents": 3000,
+        "preferences": [],
+        "pending_clarification": null,
+        "quote": null,
+        "order": null,
+        "candidates": [
+          {
+            "product_id": "B091TXCPQQ",
+            "title": "SONAMBULO Mochila para Portátil, Mochila Unisex Impermeable de hasta 15.6 Pulgadas,Mochila de Portatil con Puerto USB,Mochila Ordenador Portatil Para los Viajes,Escolares o Negocio",
+            "brand": "SONAMBULO",
+            "price_cents": 1200,
+            "stock": 20
+          },
+          {
+            "product_id": "B08F4X5LCX",
+            "title": "Lubardy Mochila Portátil Hombre 17.3 Pulgadas Impermeable Mochilas Ordenador para Puerto USB 17 Pulgadas Trabajo Viaje Negocio Escolares Mochila Multifuncional Daypacks Azul",
+            "brand": "Lubardy",
+            "price_cents": 1746,
+            "stock": 6
+          },
+          {
+            "product_id": "B08TQX8SZY",
+            "title": "KTMOUW Mochila Portatil 17.3 Pulgadas Hombre Impermeable Mochilas Puerto USB 17 Pulgadas Trabajo Ordenador Viaje Negocio Multifuncional Mochila Daypacks Negro-17.3inch",
+            "brand": "KTMOUW",
+            "price_cents": 2401,
+            "stock": 30
+          },
+          {
+            "product_id": "B07QTHKC4G",
+            "title": "HOMIEE 15.6 Pulgadas Mochila de Viaje para Portátil con Puerto de Carga USB para Auriculares Bolsa antirrobo, Mochila Informal Delgada, para los Estudios, Trabajo, Negocios - Gris",
+            "brand": "HOMIEE",
+            "price_cents": 1635,
+            "stock": 44
+          },
+          {
+            "product_id": "B00ZUWDNNY",
+            "title": "Under Armour UA Hustle Backpack LDWR Mochila Hombre Negro (Black/Black/Silver 001) Talla única",
+            "brand": "Under Armour",
+            "price_cents": 1165,
+            "stock": 38
+          }
+        ],
+        "awaiting_confirmation": false
+      },
+      "store": {
+        "orders": [],
+        "order_items": [],
+        "cart_items": [
+          {
+            "cart_id": "eval-d1aab68f-07_presupuesto_excedido-c1",
+            "product_id": "B091TXCPQQ",
+            "quantity": 2
+          }
+        ],
+        "inventory_changes": [
+          {
+            "product_id": "B091TXCPQQ",
+            "initial_stock": 42,
+            "stock": 20
+          }
+        ]
+      },
+      "offers": {
+        "B00ZUWDNNY": {
+          "price_cents": 1165,
+          "stock": 38
+        },
+        "B07QTHKC4G": {
+          "price_cents": 1635,
+          "stock": 44
+        },
+        "B08F4X5LCX": {
+          "price_cents": 1746,
+          "stock": 6
+        },
+        "B08TQX8SZY": {
+          "price_cents": 2401,
+          "stock": 30
+        },
+        "B091TXCPQQ": {
+          "price_cents": 1200,
+          "stock": 20
+        }
+      }
+    },
+    "checks": [
+      {
+        "check": "orders",
+        "params": {
+          "count": 0
+        },
+        "ok": true,
+        "detail": "pedidos registrados: 0"
+      },
+      {
+        "check": "cart",
+        "params": {
+          "lines": [
+            {
+              "product": "@elegida",
+              "quantity": 2
+            }
+          ]
+        },
+        "ok": true,
+        "detail": "carrito: 2 × B091TXCPQQ"
+      },
+      {
+        "check": "budget",
+        "params": {
+          "cents": 3000
+        },
+        "ok": true,
+        "detail": "presupuesto en el estado: 3000"
+      },
+      {
+        "check": "stock",
+        "params": {
+          "product": "@elegida",
+          "equals": 20
+        },
+        "ok": true,
+        "detail": "existencias de B091TXCPQQ: 20"
+      }
+    ]
+  },
+  "violations": [],
+  "problems": [],
+  "passed": true,
+  "timings": {
+    "all": {
+      "turns": 3,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.01,
+        "max": 0.03
+      },
+      "llm": {
+        "mean": 6.54,
+        "max": 8.31
+      },
+      "tools": {
+        "mean": 0.04,
+        "max": 0.05
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 6.59,
+        "max": 8.37
+      }
+    },
+    "with_llm": {
+      "turns": 3,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.01,
+        "max": 0.03
+      },
+      "llm": {
+        "mean": 6.54,
+        "max": 8.31
+      },
+      "tools": {
+        "mean": 0.04,
+        "max": 0.05
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 6.59,
+        "max": 8.37
+      }
+    },
+    "without_llm": {
+      "turns": 0
+    }
+  }
+}

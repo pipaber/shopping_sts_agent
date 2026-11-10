@@ -1,0 +1,1890 @@
+{
+  "id": "17_cambio_presupuesto",
+  "title": "Bajar el presupuesto con el carrito lleno",
+  "kind": "cambio_presupuesto",
+  "description": "Con tres unidades en el carrito (30,00 €) el usuario baja el presupuesto a 25 €. Cerrar el pedido debe rechazarse sin que el agente cambie el carrito por su cuenta. Con dos unidades (20,00 €) sí se puede comprar.",
+  "voice": false,
+  "input": "texto",
+  "audio_source": null,
+  "user_id": "eval-d1aab68f-17_cambio_presupuesto",
+  "threads": [
+    "eval-d1aab68f-17_cambio_presupuesto-c1"
+  ],
+  "names": {
+    "elegida": "B08ZLX5MXL"
+  },
+  "steps": [
+    {
+      "kind": "turn",
+      "turn": 1,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Busco una taza de desayuno. Tengo 40 euros.",
+      "agent_input": "Busco una taza de desayuno. Tengo 40 euros.",
+      "response": "Tengo una taza de desayuno de AN por 7,48 euros, una de MUGFFINS por 18,90 euros, una de HMB por 10,39 euros, una de Wistty por 5,05 euros y un pack de 2 tazas por 5,30 euros. ¿Te interesa alguna? He anotado un presupuesto de 40,00 €.",
+      "spoken_text": "Tengo una taza de desayuno de AN por siete euros con cuarenta y ocho céntimos, una de MUGFFINS por dieciocho euros con noventa céntimos, una de HMB por diez euros con treinta y nueve céntimos, una de Wistty por cinco euros con cinco céntimos y un pack de dos tazas por cinco euros con treinta céntimos. ¿Te interesa alguna? He anotado un presupuesto de cuarenta euros.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "fijar_presupuesto",
+          "args": {
+            "importe_eur": 40
+          },
+          "reason": "el usuario da su gasto máximo",
+          "ok": true,
+          "summary": "presupuesto fijado en 40,00 €.",
+          "issues": []
+        },
+        {
+          "tool": "buscar_productos",
+          "args": {
+            "consulta": "taza desayuno"
+          },
+          "reason": "buscar lo que pide",
+          "ok": true,
+          "summary": "estos son ahora los CANDIDATOS, del más al menos relevante:\n[1] id=B08ZLX5MXL | Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_ Taza café Infusiones o Decoración Hogar en Cerámica de Gran Calidad. | marca: AN | color: desconocido | precio: 7,48 € | existencias: 17 | características (extracto): TAZA DE ALTA CALIDAD. Taza de cerámica blanca de 350 ml. con ilustración creada por diseñadores e impresa con tinta sublime resistente a microondas y lavavajillas. REGALO IDEAL. Las tazas originales para regalar con frases motivadoras, de… | descripción: Consigue una de las tazas originales para regalar con mensajes ilustrados por diseñadores ¿Buscas un regalo especial? Sorprende con buen gusto regalando tazas originales de alta calidad impresas con…\n[2] id=B06VTCZH9T | MUGFFINS Taza Original -Que Todo lo Bueno te SIGA te encuentre y te abrace - 350 ml - Tazas con Frases motivacionales | marca: MUGFFINS | color: Modelo 1 | precio: 18,90 € | existencias: 11 | características (extracto): ☕ TAZA DE CERÁMICA DE CALIDAD: Las tazas cerámicas de alta calidad como esta, son el mejor regalo original para motivar o animar a alguien. El dibujo de la taza está hecho con una tinta sublime que la hace resistente a microondas y… | descripción: ¿QUÉ ES MUGFFINS? ¡Es una marca de tazas originales! Una grandísima colección de detalles para regalar. El nombre es una fusión entre \"MUG\" (taza en inglés) y Muffin (la magdalena de toda la vida)…\n[3] id=B071NSHVBP | HMB Tazon de Desayuno Street Fighter, 1 | marca: HMB | color: Color | precio: 10,39 € | existencias: 5 | características (extracto): Este tazón de street fighter es perfecto para cereales, snacks y sopa Cuenta con ryu en una serie de poses de lucha y el logotipo de street fighter Es un gran regalo a cualquier fan de street fighter Dimensiones: 14 x 9 x 14 cm Producto… | descripción: desconocido\n[4] id=B07YWQFYXQ | Wistty Jubilado He Trabajado Toda mi Vida por Esta Taza Taza Blanca Gran Regalo de jubilación como se ve en Las Camisetas | marca: Wistty | color: desconocido | precio: 5,05 € | existencias: 48 | características (extracto): Taza divertida impresa en ambos lados: haga una impresión de cualquier manera que sostenga la taza Taza de café de 11 onzas de cerámica de alta calidad con mango fácil Caja fuerte para microondas y lavavajillas. Resistente para uso en casa… | descripción: ¡Con esta taza 1 of A Kind harás que la gente se ría donde quiera que vayas! Regalo perfecto para cada ocasión: regalo perfecto para mamá, papá, abuelo, abuela, hermana, hermano, primo, empleado…\n[5] id=B099X9L5CY | Pack» 2 Tazas Para Té Con Filtro y Tapa (280 ml) Con Asa, Para Infusiones, Café, Desayuno + 2 Posavasos corcho ecológico(Vintage) | marca: Genérico | color: Vintage | precio: 5,30 € | existencias: 10 | características (extracto): ➤⭐⭐⭐⭐⭐Pack de 2 Tazas de té de cerámica con tapa y filtro de acero para hojas, flores, hierbas, infusiones o Café o desayuno + 2 Posavasos de corcho ecológico ➤🍵 La tisanera para Té tiene una capacidad de 280ml. Soporta el calor hasta… | descripción: odo lo que necesitas para tu momento relax con las 2 jarras con tapa y colador de té,para café, infusión o desayuno con este par de tazas Mugs para parejas de bonitos diseños + posa bolsitas de té…",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.043,
+        "llm": 8.42,
+        "tools": 0.03,
+        "tts": 0.0,
+        "total": 8.492
+      },
+      "llm_steps": 3,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {}
+      },
+      "after": {
+        "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+        "state": {
+          "budget_cents": 4000,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08ZLX5MXL",
+              "title": "Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_ Taza café Infusiones o Decoración Hogar en Cerámica de Gran Calidad.",
+              "brand": "AN",
+              "price_cents": 748,
+              "stock": 17
+            },
+            {
+              "product_id": "B06VTCZH9T",
+              "title": "MUGFFINS Taza Original -Que Todo lo Bueno te SIGA te encuentre y te abrace - 350 ml - Tazas con Frases motivacionales",
+              "brand": "MUGFFINS",
+              "price_cents": 1890,
+              "stock": 11
+            },
+            {
+              "product_id": "B071NSHVBP",
+              "title": "HMB Tazon de Desayuno Street Fighter, 1",
+              "brand": "HMB",
+              "price_cents": 1039,
+              "stock": 5
+            },
+            {
+              "product_id": "B07YWQFYXQ",
+              "title": "Wistty Jubilado He Trabajado Toda mi Vida por Esta Taza Taza Blanca Gran Regalo de jubilación como se ve en Las Camisetas",
+              "brand": "Wistty",
+              "price_cents": 505,
+              "stock": 48
+            },
+            {
+              "product_id": "B099X9L5CY",
+              "title": "Pack» 2 Tazas Para Té Con Filtro y Tapa (280 ml) Con Asa, Para Infusiones, Café, Desayuno + 2 Posavasos corcho ecológico(Vintage)",
+              "brand": "Genérico",
+              "price_cents": 530,
+              "stock": 10
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {
+          "B06VTCZH9T": {
+            "price_cents": 1890,
+            "stock": 11
+          },
+          "B071NSHVBP": {
+            "price_cents": 1039,
+            "stock": 5
+          },
+          "B07YWQFYXQ": {
+            "price_cents": 505,
+            "stock": 48
+          },
+          "B08ZLX5MXL": {
+            "price_cents": 748,
+            "stock": 17
+          },
+          "B099X9L5CY": {
+            "price_cents": 530,
+            "stock": 10
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "budget",
+          "params": {
+            "cents": 4000
+          },
+          "ok": true,
+          "detail": "presupuesto en el estado: 4000"
+        },
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        }
+      ]
+    },
+    {
+      "kind": "remember",
+      "name": "elegida",
+      "ref": "candidate:1",
+      "product_id": "B08ZLX5MXL",
+      "title": "Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_ Taza café Infusiones o Decoración Hogar en Cerámica de Gran Calidad."
+    },
+    {
+      "kind": "event",
+      "event": "set_offer",
+      "product": "@elegida",
+      "product_id": "B08ZLX5MXL",
+      "price_cents": 1000,
+      "stock": 20
+    },
+    {
+      "kind": "turn",
+      "turn": 2,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Añade tres de la primera.",
+      "agent_input": "Añade tres de la primera.",
+      "response": "Hecho, añadidas tres unidades. El total es 30,00 €. En el carrito hay 3 unidades de «Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_…» a 10,00 € cada una, 30,00 €. Total: 30,00 €. Tu presupuesto es de 40,00 € y te quedan 10,00 €.",
+      "spoken_text": "Hecho, añadidas tres unidades. El total es treinta euros. En el carrito hay tres unidades de Taza Desayuno con Mensaje Respira Regalos Originales a diez euros cada una, treinta euros. Total: treinta euros. Tu presupuesto es de cuarenta euros y te quedan diez euros.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "agregar_al_carrito",
+          "args": {
+            "product_id": "B08ZLX5MXL",
+            "cantidad": 3
+          },
+          "reason": "añadir tres unidades del candidato 1",
+          "ok": true,
+          "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B08ZLX5MXL | Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_… | 3 unidades × 10,00 € = 30,00 € | existencias: 20\nTotal del carrito: 30,00 €",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 5.037,
+        "tools": 0.052,
+        "tts": 0.0,
+        "total": 5.09
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+        "state": {
+          "budget_cents": 4000,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08ZLX5MXL",
+              "title": "Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_ Taza café Infusiones o Decoración Hogar en Cerámica de Gran Calidad.",
+              "brand": "AN",
+              "price_cents": 748,
+              "stock": 17
+            },
+            {
+              "product_id": "B06VTCZH9T",
+              "title": "MUGFFINS Taza Original -Que Todo lo Bueno te SIGA te encuentre y te abrace - 350 ml - Tazas con Frases motivacionales",
+              "brand": "MUGFFINS",
+              "price_cents": 1890,
+              "stock": 11
+            },
+            {
+              "product_id": "B071NSHVBP",
+              "title": "HMB Tazon de Desayuno Street Fighter, 1",
+              "brand": "HMB",
+              "price_cents": 1039,
+              "stock": 5
+            },
+            {
+              "product_id": "B07YWQFYXQ",
+              "title": "Wistty Jubilado He Trabajado Toda mi Vida por Esta Taza Taza Blanca Gran Regalo de jubilación como se ve en Las Camisetas",
+              "brand": "Wistty",
+              "price_cents": 505,
+              "stock": 48
+            },
+            {
+              "product_id": "B099X9L5CY",
+              "title": "Pack» 2 Tazas Para Té Con Filtro y Tapa (280 ml) Con Asa, Para Infusiones, Café, Desayuno + 2 Posavasos corcho ecológico(Vintage)",
+              "brand": "Genérico",
+              "price_cents": 530,
+              "stock": 10
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B08ZLX5MXL",
+              "initial_stock": 17,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B06VTCZH9T": {
+            "price_cents": 1890,
+            "stock": 11
+          },
+          "B071NSHVBP": {
+            "price_cents": 1039,
+            "stock": 5
+          },
+          "B07YWQFYXQ": {
+            "price_cents": 505,
+            "stock": 48
+          },
+          "B08ZLX5MXL": {
+            "price_cents": 1000,
+            "stock": 20
+          },
+          "B099X9L5CY": {
+            "price_cents": 530,
+            "stock": 10
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+        "state": {
+          "budget_cents": 4000,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08ZLX5MXL",
+              "title": "Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_ Taza café Infusiones o Decoración Hogar en Cerámica de Gran Calidad.",
+              "brand": "AN",
+              "price_cents": 1000,
+              "stock": 20
+            },
+            {
+              "product_id": "B06VTCZH9T",
+              "title": "MUGFFINS Taza Original -Que Todo lo Bueno te SIGA te encuentre y te abrace - 350 ml - Tazas con Frases motivacionales",
+              "brand": "MUGFFINS",
+              "price_cents": 1890,
+              "stock": 11
+            },
+            {
+              "product_id": "B071NSHVBP",
+              "title": "HMB Tazon de Desayuno Street Fighter, 1",
+              "brand": "HMB",
+              "price_cents": 1039,
+              "stock": 5
+            },
+            {
+              "product_id": "B07YWQFYXQ",
+              "title": "Wistty Jubilado He Trabajado Toda mi Vida por Esta Taza Taza Blanca Gran Regalo de jubilación como se ve en Las Camisetas",
+              "brand": "Wistty",
+              "price_cents": 505,
+              "stock": 48
+            },
+            {
+              "product_id": "B099X9L5CY",
+              "title": "Pack» 2 Tazas Para Té Con Filtro y Tapa (280 ml) Con Asa, Para Infusiones, Café, Desayuno + 2 Posavasos corcho ecológico(Vintage)",
+              "brand": "Genérico",
+              "price_cents": 530,
+              "stock": 10
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+              "product_id": "B08ZLX5MXL",
+              "quantity": 3
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B08ZLX5MXL",
+              "initial_stock": 17,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B06VTCZH9T": {
+            "price_cents": 1890,
+            "stock": 11
+          },
+          "B071NSHVBP": {
+            "price_cents": 1039,
+            "stock": 5
+          },
+          "B07YWQFYXQ": {
+            "price_cents": 505,
+            "stock": 48
+          },
+          "B08ZLX5MXL": {
+            "price_cents": 1000,
+            "stock": 20
+          },
+          "B099X9L5CY": {
+            "price_cents": 530,
+            "stock": 10
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "lines": [
+              {
+                "product": "@elegida",
+                "quantity": 3
+              }
+            ]
+          },
+          "ok": true,
+          "detail": "carrito: 3 × B08ZLX5MXL"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 3,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Mejor baja mi presupuesto a 25 euros.",
+      "agent_input": "Mejor baja mi presupuesto a 25 euros.",
+      "response": "El carrito supera tu presupuesto en 5,00 €. ¿Quieres seguir con los 30,00 € o bajar el presupuesto? En el carrito hay 3 unidades de «Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_…» a 10,00 € cada una, 30,00 €. Total: 30,00 €. Tu presupuesto es de 25,00 € y lo superas en 5,00 €.",
+      "spoken_text": "El carrito supera tu presupuesto en cinco euros. ¿Quieres seguir con los treinta euros o bajar el presupuesto? En el carrito hay tres unidades de Taza Desayuno con Mensaje Respira Regalos Originales a diez euros cada una, treinta euros. Total: treinta euros. Tu presupuesto es de veinticinco euros y lo superas en cinco euros.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "fijar_presupuesto",
+          "args": {
+            "importe_eur": 25
+          },
+          "reason": "bajar el presupuesto a 25 euros",
+          "ok": true,
+          "summary": "presupuesto fijado en 25,00 €. Aviso: el carrito suma 30,00 € y lo supera en 5,00 €.",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 5.852,
+        "tools": 0.032,
+        "tts": 0.0,
+        "total": 5.884
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+        "state": {
+          "budget_cents": 4000,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08ZLX5MXL",
+              "title": "Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_ Taza café Infusiones o Decoración Hogar en Cerámica de Gran Calidad.",
+              "brand": "AN",
+              "price_cents": 1000,
+              "stock": 20
+            },
+            {
+              "product_id": "B06VTCZH9T",
+              "title": "MUGFFINS Taza Original -Que Todo lo Bueno te SIGA te encuentre y te abrace - 350 ml - Tazas con Frases motivacionales",
+              "brand": "MUGFFINS",
+              "price_cents": 1890,
+              "stock": 11
+            },
+            {
+              "product_id": "B071NSHVBP",
+              "title": "HMB Tazon de Desayuno Street Fighter, 1",
+              "brand": "HMB",
+              "price_cents": 1039,
+              "stock": 5
+            },
+            {
+              "product_id": "B07YWQFYXQ",
+              "title": "Wistty Jubilado He Trabajado Toda mi Vida por Esta Taza Taza Blanca Gran Regalo de jubilación como se ve en Las Camisetas",
+              "brand": "Wistty",
+              "price_cents": 505,
+              "stock": 48
+            },
+            {
+              "product_id": "B099X9L5CY",
+              "title": "Pack» 2 Tazas Para Té Con Filtro y Tapa (280 ml) Con Asa, Para Infusiones, Café, Desayuno + 2 Posavasos corcho ecológico(Vintage)",
+              "brand": "Genérico",
+              "price_cents": 530,
+              "stock": 10
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+              "product_id": "B08ZLX5MXL",
+              "quantity": 3
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B08ZLX5MXL",
+              "initial_stock": 17,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B06VTCZH9T": {
+            "price_cents": 1890,
+            "stock": 11
+          },
+          "B071NSHVBP": {
+            "price_cents": 1039,
+            "stock": 5
+          },
+          "B07YWQFYXQ": {
+            "price_cents": 505,
+            "stock": 48
+          },
+          "B08ZLX5MXL": {
+            "price_cents": 1000,
+            "stock": 20
+          },
+          "B099X9L5CY": {
+            "price_cents": 530,
+            "stock": 10
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+        "state": {
+          "budget_cents": 2500,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08ZLX5MXL",
+              "title": "Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_ Taza café Infusiones o Decoración Hogar en Cerámica de Gran Calidad.",
+              "brand": "AN",
+              "price_cents": 1000,
+              "stock": 20
+            },
+            {
+              "product_id": "B06VTCZH9T",
+              "title": "MUGFFINS Taza Original -Que Todo lo Bueno te SIGA te encuentre y te abrace - 350 ml - Tazas con Frases motivacionales",
+              "brand": "MUGFFINS",
+              "price_cents": 1890,
+              "stock": 11
+            },
+            {
+              "product_id": "B071NSHVBP",
+              "title": "HMB Tazon de Desayuno Street Fighter, 1",
+              "brand": "HMB",
+              "price_cents": 1039,
+              "stock": 5
+            },
+            {
+              "product_id": "B07YWQFYXQ",
+              "title": "Wistty Jubilado He Trabajado Toda mi Vida por Esta Taza Taza Blanca Gran Regalo de jubilación como se ve en Las Camisetas",
+              "brand": "Wistty",
+              "price_cents": 505,
+              "stock": 48
+            },
+            {
+              "product_id": "B099X9L5CY",
+              "title": "Pack» 2 Tazas Para Té Con Filtro y Tapa (280 ml) Con Asa, Para Infusiones, Café, Desayuno + 2 Posavasos corcho ecológico(Vintage)",
+              "brand": "Genérico",
+              "price_cents": 530,
+              "stock": 10
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+              "product_id": "B08ZLX5MXL",
+              "quantity": 3
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B08ZLX5MXL",
+              "initial_stock": 17,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B06VTCZH9T": {
+            "price_cents": 1890,
+            "stock": 11
+          },
+          "B071NSHVBP": {
+            "price_cents": 1039,
+            "stock": 5
+          },
+          "B07YWQFYXQ": {
+            "price_cents": 505,
+            "stock": 48
+          },
+          "B08ZLX5MXL": {
+            "price_cents": 1000,
+            "stock": 20
+          },
+          "B099X9L5CY": {
+            "price_cents": 530,
+            "stock": 10
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "budget",
+          "params": {
+            "cents": 2500
+          },
+          "ok": true,
+          "detail": "presupuesto en el estado: 2500"
+        },
+        {
+          "check": "cart",
+          "params": {
+            "lines": [
+              {
+                "product": "@elegida",
+                "quantity": 3
+              }
+            ]
+          },
+          "ok": true,
+          "detail": "carrito: 3 × B08ZLX5MXL"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 4,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Cierra el pedido.",
+      "agent_input": "Cierra el pedido.",
+      "response": "El pedido supera tu presupuesto en 5,00 €. ¿Quieres seguir o ajustar el presupuesto?",
+      "spoken_text": "El pedido supera tu presupuesto en cinco euros. ¿Quieres seguir o ajustar el presupuesto?",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "cotizar",
+          "args": {},
+          "reason": "confirmar el pedido",
+          "ok": false,
+          "summary": "[presupuesto_excedido] El total sería 30,00 € y supera el presupuesto de 25,00 € por 5,00 €.",
+          "issues": [
+            {
+              "code": "presupuesto_excedido",
+              "message": "El total sería 30,00 € y supera el presupuesto de 25,00 € por 5,00 €.",
+              "product_id": null,
+              "details": {
+                "total_cents": 3000,
+                "budget_cents": 2500,
+                "excess_cents": 500
+              }
+            }
+          ]
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 4.622,
+        "tools": 0.019,
+        "tts": 0.0,
+        "total": 4.641
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+        "state": {
+          "budget_cents": 2500,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08ZLX5MXL",
+              "title": "Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_ Taza café Infusiones o Decoración Hogar en Cerámica de Gran Calidad.",
+              "brand": "AN",
+              "price_cents": 1000,
+              "stock": 20
+            },
+            {
+              "product_id": "B06VTCZH9T",
+              "title": "MUGFFINS Taza Original -Que Todo lo Bueno te SIGA te encuentre y te abrace - 350 ml - Tazas con Frases motivacionales",
+              "brand": "MUGFFINS",
+              "price_cents": 1890,
+              "stock": 11
+            },
+            {
+              "product_id": "B071NSHVBP",
+              "title": "HMB Tazon de Desayuno Street Fighter, 1",
+              "brand": "HMB",
+              "price_cents": 1039,
+              "stock": 5
+            },
+            {
+              "product_id": "B07YWQFYXQ",
+              "title": "Wistty Jubilado He Trabajado Toda mi Vida por Esta Taza Taza Blanca Gran Regalo de jubilación como se ve en Las Camisetas",
+              "brand": "Wistty",
+              "price_cents": 505,
+              "stock": 48
+            },
+            {
+              "product_id": "B099X9L5CY",
+              "title": "Pack» 2 Tazas Para Té Con Filtro y Tapa (280 ml) Con Asa, Para Infusiones, Café, Desayuno + 2 Posavasos corcho ecológico(Vintage)",
+              "brand": "Genérico",
+              "price_cents": 530,
+              "stock": 10
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+              "product_id": "B08ZLX5MXL",
+              "quantity": 3
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B08ZLX5MXL",
+              "initial_stock": 17,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B06VTCZH9T": {
+            "price_cents": 1890,
+            "stock": 11
+          },
+          "B071NSHVBP": {
+            "price_cents": 1039,
+            "stock": 5
+          },
+          "B07YWQFYXQ": {
+            "price_cents": 505,
+            "stock": 48
+          },
+          "B08ZLX5MXL": {
+            "price_cents": 1000,
+            "stock": 20
+          },
+          "B099X9L5CY": {
+            "price_cents": 530,
+            "stock": 10
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+        "state": {
+          "budget_cents": 2500,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08ZLX5MXL",
+              "title": "Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_ Taza café Infusiones o Decoración Hogar en Cerámica de Gran Calidad.",
+              "brand": "AN",
+              "price_cents": 1000,
+              "stock": 20
+            },
+            {
+              "product_id": "B06VTCZH9T",
+              "title": "MUGFFINS Taza Original -Que Todo lo Bueno te SIGA te encuentre y te abrace - 350 ml - Tazas con Frases motivacionales",
+              "brand": "MUGFFINS",
+              "price_cents": 1890,
+              "stock": 11
+            },
+            {
+              "product_id": "B071NSHVBP",
+              "title": "HMB Tazon de Desayuno Street Fighter, 1",
+              "brand": "HMB",
+              "price_cents": 1039,
+              "stock": 5
+            },
+            {
+              "product_id": "B07YWQFYXQ",
+              "title": "Wistty Jubilado He Trabajado Toda mi Vida por Esta Taza Taza Blanca Gran Regalo de jubilación como se ve en Las Camisetas",
+              "brand": "Wistty",
+              "price_cents": 505,
+              "stock": 48
+            },
+            {
+              "product_id": "B099X9L5CY",
+              "title": "Pack» 2 Tazas Para Té Con Filtro y Tapa (280 ml) Con Asa, Para Infusiones, Café, Desayuno + 2 Posavasos corcho ecológico(Vintage)",
+              "brand": "Genérico",
+              "price_cents": 530,
+              "stock": 10
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+              "product_id": "B08ZLX5MXL",
+              "quantity": 3
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B08ZLX5MXL",
+              "initial_stock": 17,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B06VTCZH9T": {
+            "price_cents": 1890,
+            "stock": 11
+          },
+          "B071NSHVBP": {
+            "price_cents": 1039,
+            "stock": 5
+          },
+          "B07YWQFYXQ": {
+            "price_cents": 505,
+            "stock": 48
+          },
+          "B08ZLX5MXL": {
+            "price_cents": 1000,
+            "stock": 20
+          },
+          "B099X9L5CY": {
+            "price_cents": 530,
+            "stock": 10
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "orders",
+          "params": {
+            "count": 0
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 0"
+        },
+        {
+          "check": "awaiting_confirmation",
+          "params": {
+            "value": false
+          },
+          "ok": true,
+          "detail": "esperando confirmación: no"
+        },
+        {
+          "check": "cart",
+          "params": {
+            "lines": [
+              {
+                "product": "@elegida",
+                "quantity": 3
+              }
+            ]
+          },
+          "ok": true,
+          "detail": "carrito: 3 × B08ZLX5MXL"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 5,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Entonces deja solo dos.",
+      "agent_input": "Entonces deja solo dos.",
+      "response": "Hecho, el carrito ahora tiene 2 unidades de taza desayuno. En el carrito hay 2 unidades de «Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_…» a 10,00 € cada una, 20,00 €. Total: 20,00 €. Tu presupuesto es de 25,00 € y te quedan 5,00 €.",
+      "spoken_text": "Hecho, el carrito ahora tiene dos unidades de taza desayuno. En el carrito hay dos unidades de Taza Desayuno con Mensaje Respira Regalos Originales a diez euros cada una, veinte euros. Total: veinte euros. Tu presupuesto es de veinticinco euros y te quedan cinco euros.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "cambiar_cantidad",
+          "args": {
+            "product_id": "B08ZLX5MXL",
+            "cantidad": 2
+          },
+          "reason": "reducir la cantidad del producto en el carrito",
+          "ok": true,
+          "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B08ZLX5MXL | Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_… | 2 unidades × 10,00 € = 20,00 € | existencias: 20\nTotal del carrito: 20,00 €",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 5.128,
+        "tools": 0.042,
+        "tts": 0.0,
+        "total": 5.17
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+        "state": {
+          "budget_cents": 2500,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08ZLX5MXL",
+              "title": "Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_ Taza café Infusiones o Decoración Hogar en Cerámica de Gran Calidad.",
+              "brand": "AN",
+              "price_cents": 1000,
+              "stock": 20
+            },
+            {
+              "product_id": "B06VTCZH9T",
+              "title": "MUGFFINS Taza Original -Que Todo lo Bueno te SIGA te encuentre y te abrace - 350 ml - Tazas con Frases motivacionales",
+              "brand": "MUGFFINS",
+              "price_cents": 1890,
+              "stock": 11
+            },
+            {
+              "product_id": "B071NSHVBP",
+              "title": "HMB Tazon de Desayuno Street Fighter, 1",
+              "brand": "HMB",
+              "price_cents": 1039,
+              "stock": 5
+            },
+            {
+              "product_id": "B07YWQFYXQ",
+              "title": "Wistty Jubilado He Trabajado Toda mi Vida por Esta Taza Taza Blanca Gran Regalo de jubilación como se ve en Las Camisetas",
+              "brand": "Wistty",
+              "price_cents": 505,
+              "stock": 48
+            },
+            {
+              "product_id": "B099X9L5CY",
+              "title": "Pack» 2 Tazas Para Té Con Filtro y Tapa (280 ml) Con Asa, Para Infusiones, Café, Desayuno + 2 Posavasos corcho ecológico(Vintage)",
+              "brand": "Genérico",
+              "price_cents": 530,
+              "stock": 10
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+              "product_id": "B08ZLX5MXL",
+              "quantity": 3
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B08ZLX5MXL",
+              "initial_stock": 17,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B06VTCZH9T": {
+            "price_cents": 1890,
+            "stock": 11
+          },
+          "B071NSHVBP": {
+            "price_cents": 1039,
+            "stock": 5
+          },
+          "B07YWQFYXQ": {
+            "price_cents": 505,
+            "stock": 48
+          },
+          "B08ZLX5MXL": {
+            "price_cents": 1000,
+            "stock": 20
+          },
+          "B099X9L5CY": {
+            "price_cents": 530,
+            "stock": 10
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+        "state": {
+          "budget_cents": 2500,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08ZLX5MXL",
+              "title": "Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_ Taza café Infusiones o Decoración Hogar en Cerámica de Gran Calidad.",
+              "brand": "AN",
+              "price_cents": 1000,
+              "stock": 20
+            },
+            {
+              "product_id": "B06VTCZH9T",
+              "title": "MUGFFINS Taza Original -Que Todo lo Bueno te SIGA te encuentre y te abrace - 350 ml - Tazas con Frases motivacionales",
+              "brand": "MUGFFINS",
+              "price_cents": 1890,
+              "stock": 11
+            },
+            {
+              "product_id": "B071NSHVBP",
+              "title": "HMB Tazon de Desayuno Street Fighter, 1",
+              "brand": "HMB",
+              "price_cents": 1039,
+              "stock": 5
+            },
+            {
+              "product_id": "B07YWQFYXQ",
+              "title": "Wistty Jubilado He Trabajado Toda mi Vida por Esta Taza Taza Blanca Gran Regalo de jubilación como se ve en Las Camisetas",
+              "brand": "Wistty",
+              "price_cents": 505,
+              "stock": 48
+            },
+            {
+              "product_id": "B099X9L5CY",
+              "title": "Pack» 2 Tazas Para Té Con Filtro y Tapa (280 ml) Con Asa, Para Infusiones, Café, Desayuno + 2 Posavasos corcho ecológico(Vintage)",
+              "brand": "Genérico",
+              "price_cents": 530,
+              "stock": 10
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+              "product_id": "B08ZLX5MXL",
+              "quantity": 2
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B08ZLX5MXL",
+              "initial_stock": 17,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B06VTCZH9T": {
+            "price_cents": 1890,
+            "stock": 11
+          },
+          "B071NSHVBP": {
+            "price_cents": 1039,
+            "stock": 5
+          },
+          "B07YWQFYXQ": {
+            "price_cents": 505,
+            "stock": 48
+          },
+          "B08ZLX5MXL": {
+            "price_cents": 1000,
+            "stock": 20
+          },
+          "B099X9L5CY": {
+            "price_cents": 530,
+            "stock": 10
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "lines": [
+              {
+                "product": "@elegida",
+                "quantity": 2
+              }
+            ]
+          },
+          "ok": true,
+          "detail": "carrito: 2 × B08ZLX5MXL"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 6,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Cierra el pedido.",
+      "agent_input": "Cierra el pedido.",
+      "response": "Te repito el pedido antes de registrarlo: 2 unidades de «Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_…» a 10,00 € cada una, 20,00 €. Total: 20,00 €. Tu presupuesto es de 25,00 € y te quedan 5,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "spoken_text": "Te repito el pedido antes de registrarlo: dos unidades de Taza Desayuno con Mensaje Respira Regalos Originales a diez euros cada una, veinte euros. Total: veinte euros. Tu presupuesto es de veinticinco euros y te quedan cinco euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": true,
+      "operations": [
+        {
+          "tool": "cotizar",
+          "args": {},
+          "reason": "cierra el pedido",
+          "ok": true,
+          "summary": "cotización creada; falta la confirmación del usuario.",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 2.417,
+        "tools": 0.041,
+        "tts": 0.0,
+        "total": 2.458
+      },
+      "llm_steps": 1,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+        "state": {
+          "budget_cents": 2500,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08ZLX5MXL",
+              "title": "Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_ Taza café Infusiones o Decoración Hogar en Cerámica de Gran Calidad.",
+              "brand": "AN",
+              "price_cents": 1000,
+              "stock": 20
+            },
+            {
+              "product_id": "B06VTCZH9T",
+              "title": "MUGFFINS Taza Original -Que Todo lo Bueno te SIGA te encuentre y te abrace - 350 ml - Tazas con Frases motivacionales",
+              "brand": "MUGFFINS",
+              "price_cents": 1890,
+              "stock": 11
+            },
+            {
+              "product_id": "B071NSHVBP",
+              "title": "HMB Tazon de Desayuno Street Fighter, 1",
+              "brand": "HMB",
+              "price_cents": 1039,
+              "stock": 5
+            },
+            {
+              "product_id": "B07YWQFYXQ",
+              "title": "Wistty Jubilado He Trabajado Toda mi Vida por Esta Taza Taza Blanca Gran Regalo de jubilación como se ve en Las Camisetas",
+              "brand": "Wistty",
+              "price_cents": 505,
+              "stock": 48
+            },
+            {
+              "product_id": "B099X9L5CY",
+              "title": "Pack» 2 Tazas Para Té Con Filtro y Tapa (280 ml) Con Asa, Para Infusiones, Café, Desayuno + 2 Posavasos corcho ecológico(Vintage)",
+              "brand": "Genérico",
+              "price_cents": 530,
+              "stock": 10
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+              "product_id": "B08ZLX5MXL",
+              "quantity": 2
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B08ZLX5MXL",
+              "initial_stock": 17,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B06VTCZH9T": {
+            "price_cents": 1890,
+            "stock": 11
+          },
+          "B071NSHVBP": {
+            "price_cents": 1039,
+            "stock": 5
+          },
+          "B07YWQFYXQ": {
+            "price_cents": 505,
+            "stock": 48
+          },
+          "B08ZLX5MXL": {
+            "price_cents": 1000,
+            "stock": 20
+          },
+          "B099X9L5CY": {
+            "price_cents": 530,
+            "stock": 10
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+        "state": {
+          "budget_cents": 2500,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": {
+            "quote_id": "3c195096d454426d892ffb7604136d49",
+            "items": [
+              {
+                "product_id": "B08ZLX5MXL",
+                "title": "Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_ Taza café Infusiones o Decoración Hogar en Cerámica de Gran Calidad.",
+                "quantity": 2,
+                "unit_price_cents": 1000,
+                "subtotal_cents": 2000,
+                "stock": 20
+              }
+            ],
+            "total_cents": 2000,
+            "budget_cents": 2500,
+            "message": "Te repito el pedido antes de registrarlo: 2 unidades de «Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_…» a 10,00 € cada una, 20,00 €. Total: 20,00 €. Tu presupuesto es de 25,00 € y te quedan 5,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+          },
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08ZLX5MXL",
+              "title": "Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_ Taza café Infusiones o Decoración Hogar en Cerámica de Gran Calidad.",
+              "brand": "AN",
+              "price_cents": 1000,
+              "stock": 20
+            },
+            {
+              "product_id": "B06VTCZH9T",
+              "title": "MUGFFINS Taza Original -Que Todo lo Bueno te SIGA te encuentre y te abrace - 350 ml - Tazas con Frases motivacionales",
+              "brand": "MUGFFINS",
+              "price_cents": 1890,
+              "stock": 11
+            },
+            {
+              "product_id": "B071NSHVBP",
+              "title": "HMB Tazon de Desayuno Street Fighter, 1",
+              "brand": "HMB",
+              "price_cents": 1039,
+              "stock": 5
+            },
+            {
+              "product_id": "B07YWQFYXQ",
+              "title": "Wistty Jubilado He Trabajado Toda mi Vida por Esta Taza Taza Blanca Gran Regalo de jubilación como se ve en Las Camisetas",
+              "brand": "Wistty",
+              "price_cents": 505,
+              "stock": 48
+            },
+            {
+              "product_id": "B099X9L5CY",
+              "title": "Pack» 2 Tazas Para Té Con Filtro y Tapa (280 ml) Con Asa, Para Infusiones, Café, Desayuno + 2 Posavasos corcho ecológico(Vintage)",
+              "brand": "Genérico",
+              "price_cents": 530,
+              "stock": 10
+            }
+          ],
+          "awaiting_confirmation": true
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+              "product_id": "B08ZLX5MXL",
+              "quantity": 2
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B08ZLX5MXL",
+              "initial_stock": 17,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B06VTCZH9T": {
+            "price_cents": 1890,
+            "stock": 11
+          },
+          "B071NSHVBP": {
+            "price_cents": 1039,
+            "stock": 5
+          },
+          "B07YWQFYXQ": {
+            "price_cents": 505,
+            "stock": 48
+          },
+          "B08ZLX5MXL": {
+            "price_cents": 1000,
+            "stock": 20
+          },
+          "B099X9L5CY": {
+            "price_cents": 530,
+            "stock": 10
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "awaiting_confirmation",
+          "params": {
+            "value": true
+          },
+          "ok": true,
+          "detail": "esperando confirmación: sí"
+        },
+        {
+          "check": "orders",
+          "params": {
+            "count": 0
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 0"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 7,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Sí.",
+      "agent_input": "Sí.",
+      "response": "Pedido número 1 registrado: 2 unidades de «Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_…» a 10,00 € cada una, 20,00 €. Total: 20,00 €. Gracias por tu compra.",
+      "spoken_text": "Pedido número uno registrado: dos unidades de Taza Desayuno con Mensaje Respira Regalos Originales a diez euros cada una, veinte euros. Total: veinte euros. Gracias por tu compra.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "confirmar_pedido",
+          "args": {
+            "quote_id": "3c195096d454426d892ffb7604136d49"
+          },
+          "reason": "el usuario confirmó la cotización",
+          "ok": true,
+          "summary": "pedido registrado",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 0.0,
+        "tools": 0.025,
+        "tts": 0.0,
+        "total": 0.025
+      },
+      "llm_steps": 0,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+        "state": {
+          "budget_cents": 2500,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": {
+            "quote_id": "3c195096d454426d892ffb7604136d49",
+            "items": [
+              {
+                "product_id": "B08ZLX5MXL",
+                "title": "Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_ Taza café Infusiones o Decoración Hogar en Cerámica de Gran Calidad.",
+                "quantity": 2,
+                "unit_price_cents": 1000,
+                "subtotal_cents": 2000,
+                "stock": 20
+              }
+            ],
+            "total_cents": 2000,
+            "budget_cents": 2500,
+            "message": "Te repito el pedido antes de registrarlo: 2 unidades de «Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_…» a 10,00 € cada una, 20,00 €. Total: 20,00 €. Tu presupuesto es de 25,00 € y te quedan 5,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+          },
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08ZLX5MXL",
+              "title": "Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_ Taza café Infusiones o Decoración Hogar en Cerámica de Gran Calidad.",
+              "brand": "AN",
+              "price_cents": 1000,
+              "stock": 20
+            },
+            {
+              "product_id": "B06VTCZH9T",
+              "title": "MUGFFINS Taza Original -Que Todo lo Bueno te SIGA te encuentre y te abrace - 350 ml - Tazas con Frases motivacionales",
+              "brand": "MUGFFINS",
+              "price_cents": 1890,
+              "stock": 11
+            },
+            {
+              "product_id": "B071NSHVBP",
+              "title": "HMB Tazon de Desayuno Street Fighter, 1",
+              "brand": "HMB",
+              "price_cents": 1039,
+              "stock": 5
+            },
+            {
+              "product_id": "B07YWQFYXQ",
+              "title": "Wistty Jubilado He Trabajado Toda mi Vida por Esta Taza Taza Blanca Gran Regalo de jubilación como se ve en Las Camisetas",
+              "brand": "Wistty",
+              "price_cents": 505,
+              "stock": 48
+            },
+            {
+              "product_id": "B099X9L5CY",
+              "title": "Pack» 2 Tazas Para Té Con Filtro y Tapa (280 ml) Con Asa, Para Infusiones, Café, Desayuno + 2 Posavasos corcho ecológico(Vintage)",
+              "brand": "Genérico",
+              "price_cents": 530,
+              "stock": 10
+            }
+          ],
+          "awaiting_confirmation": true
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+              "product_id": "B08ZLX5MXL",
+              "quantity": 2
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B08ZLX5MXL",
+              "initial_stock": 17,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B06VTCZH9T": {
+            "price_cents": 1890,
+            "stock": 11
+          },
+          "B071NSHVBP": {
+            "price_cents": 1039,
+            "stock": 5
+          },
+          "B07YWQFYXQ": {
+            "price_cents": 505,
+            "stock": 48
+          },
+          "B08ZLX5MXL": {
+            "price_cents": 1000,
+            "stock": 20
+          },
+          "B099X9L5CY": {
+            "price_cents": 530,
+            "stock": 10
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+        "state": {
+          "budget_cents": 2500,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": {
+            "order_id": 1,
+            "quote_id": "3c195096d454426d892ffb7604136d49",
+            "items": [
+              {
+                "product_id": "B08ZLX5MXL",
+                "title": "Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_ Taza café Infusiones o Decoración Hogar en Cerámica de Gran Calidad.",
+                "quantity": 2,
+                "unit_price_cents": 1000,
+                "subtotal_cents": 2000
+              }
+            ],
+            "total_cents": 2000,
+            "message": "Pedido número 1 registrado: 2 unidades de «Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_…» a 10,00 € cada una, 20,00 €. Total: 20,00 €. Gracias por tu compra."
+          },
+          "candidates": [
+            {
+              "product_id": "B08ZLX5MXL",
+              "title": "Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_ Taza café Infusiones o Decoración Hogar en Cerámica de Gran Calidad.",
+              "brand": "AN",
+              "price_cents": 1000,
+              "stock": 20
+            },
+            {
+              "product_id": "B06VTCZH9T",
+              "title": "MUGFFINS Taza Original -Que Todo lo Bueno te SIGA te encuentre y te abrace - 350 ml - Tazas con Frases motivacionales",
+              "brand": "MUGFFINS",
+              "price_cents": 1890,
+              "stock": 11
+            },
+            {
+              "product_id": "B071NSHVBP",
+              "title": "HMB Tazon de Desayuno Street Fighter, 1",
+              "brand": "HMB",
+              "price_cents": 1039,
+              "stock": 5
+            },
+            {
+              "product_id": "B07YWQFYXQ",
+              "title": "Wistty Jubilado He Trabajado Toda mi Vida por Esta Taza Taza Blanca Gran Regalo de jubilación como se ve en Las Camisetas",
+              "brand": "Wistty",
+              "price_cents": 505,
+              "stock": 48
+            },
+            {
+              "product_id": "B099X9L5CY",
+              "title": "Pack» 2 Tazas Para Té Con Filtro y Tapa (280 ml) Con Asa, Para Infusiones, Café, Desayuno + 2 Posavasos corcho ecológico(Vintage)",
+              "brand": "Genérico",
+              "price_cents": 530,
+              "stock": 10
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [
+            {
+              "order_id": 1,
+              "quote_id": "3c195096d454426d892ffb7604136d49",
+              "total_cents": 2000
+            }
+          ],
+          "order_items": [
+            {
+              "order_id": 1,
+              "product_id": "B08ZLX5MXL",
+              "quantity": 2,
+              "unit_price_cents": 1000
+            }
+          ],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B08ZLX5MXL",
+              "initial_stock": 17,
+              "stock": 18
+            }
+          ]
+        },
+        "offers": {
+          "B06VTCZH9T": {
+            "price_cents": 1890,
+            "stock": 11
+          },
+          "B071NSHVBP": {
+            "price_cents": 1039,
+            "stock": 5
+          },
+          "B07YWQFYXQ": {
+            "price_cents": 505,
+            "stock": 48
+          },
+          "B08ZLX5MXL": {
+            "price_cents": 1000,
+            "stock": 18
+          },
+          "B099X9L5CY": {
+            "price_cents": 530,
+            "stock": 10
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "orders",
+          "params": {
+            "count": 1
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 1"
+        }
+      ]
+    }
+  ],
+  "final": {
+    "snapshot": {
+      "cart_id": "eval-d1aab68f-17_cambio_presupuesto-c1",
+      "state": {
+        "budget_cents": 2500,
+        "preferences": [],
+        "pending_clarification": null,
+        "quote": null,
+        "order": {
+          "order_id": 1,
+          "quote_id": "3c195096d454426d892ffb7604136d49",
+          "items": [
+            {
+              "product_id": "B08ZLX5MXL",
+              "title": "Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_ Taza café Infusiones o Decoración Hogar en Cerámica de Gran Calidad.",
+              "quantity": 2,
+              "unit_price_cents": 1000,
+              "subtotal_cents": 2000
+            }
+          ],
+          "total_cents": 2000,
+          "message": "Pedido número 1 registrado: 2 unidades de «Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_…» a 10,00 € cada una, 20,00 €. Total: 20,00 €. Gracias por tu compra."
+        },
+        "candidates": [
+          {
+            "product_id": "B08ZLX5MXL",
+            "title": "Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_ Taza café Infusiones o Decoración Hogar en Cerámica de Gran Calidad.",
+            "brand": "AN",
+            "price_cents": 1000,
+            "stock": 20
+          },
+          {
+            "product_id": "B06VTCZH9T",
+            "title": "MUGFFINS Taza Original -Que Todo lo Bueno te SIGA te encuentre y te abrace - 350 ml - Tazas con Frases motivacionales",
+            "brand": "MUGFFINS",
+            "price_cents": 1890,
+            "stock": 11
+          },
+          {
+            "product_id": "B071NSHVBP",
+            "title": "HMB Tazon de Desayuno Street Fighter, 1",
+            "brand": "HMB",
+            "price_cents": 1039,
+            "stock": 5
+          },
+          {
+            "product_id": "B07YWQFYXQ",
+            "title": "Wistty Jubilado He Trabajado Toda mi Vida por Esta Taza Taza Blanca Gran Regalo de jubilación como se ve en Las Camisetas",
+            "brand": "Wistty",
+            "price_cents": 505,
+            "stock": 48
+          },
+          {
+            "product_id": "B099X9L5CY",
+            "title": "Pack» 2 Tazas Para Té Con Filtro y Tapa (280 ml) Con Asa, Para Infusiones, Café, Desayuno + 2 Posavasos corcho ecológico(Vintage)",
+            "brand": "Genérico",
+            "price_cents": 530,
+            "stock": 10
+          }
+        ],
+        "awaiting_confirmation": false
+      },
+      "store": {
+        "orders": [
+          {
+            "order_id": 1,
+            "quote_id": "3c195096d454426d892ffb7604136d49",
+            "total_cents": 2000
+          }
+        ],
+        "order_items": [
+          {
+            "order_id": 1,
+            "product_id": "B08ZLX5MXL",
+            "quantity": 2,
+            "unit_price_cents": 1000
+          }
+        ],
+        "cart_items": [],
+        "inventory_changes": [
+          {
+            "product_id": "B08ZLX5MXL",
+            "initial_stock": 17,
+            "stock": 18
+          }
+        ]
+      },
+      "offers": {
+        "B06VTCZH9T": {
+          "price_cents": 1890,
+          "stock": 11
+        },
+        "B071NSHVBP": {
+          "price_cents": 1039,
+          "stock": 5
+        },
+        "B07YWQFYXQ": {
+          "price_cents": 505,
+          "stock": 48
+        },
+        "B08ZLX5MXL": {
+          "price_cents": 1000,
+          "stock": 18
+        },
+        "B099X9L5CY": {
+          "price_cents": 530,
+          "stock": 10
+        }
+      }
+    },
+    "checks": [
+      {
+        "check": "orders",
+        "params": {
+          "count": 1
+        },
+        "ok": true,
+        "detail": "pedidos registrados: 1"
+      },
+      {
+        "check": "order",
+        "params": {
+          "lines": [
+            {
+              "product": "@elegida",
+              "quantity": 2
+            }
+          ],
+          "total_cents": 2000
+        },
+        "ok": true,
+        "detail": "pedido 1: 2 × B08ZLX5MXL; total 2000 céntimos"
+      },
+      {
+        "check": "budget",
+        "params": {
+          "cents": 2500
+        },
+        "ok": true,
+        "detail": "presupuesto en el estado: 2500"
+      },
+      {
+        "check": "stock",
+        "params": {
+          "product": "@elegida",
+          "equals": 18
+        },
+        "ok": true,
+        "detail": "existencias de B08ZLX5MXL: 18"
+      },
+      {
+        "check": "cart",
+        "params": {
+          "empty": true
+        },
+        "ok": true,
+        "detail": "carrito: vacío"
+      }
+    ]
+  },
+  "violations": [],
+  "problems": [],
+  "passed": true,
+  "timings": {
+    "all": {
+      "turns": 7,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.01,
+        "max": 0.04
+      },
+      "llm": {
+        "mean": 4.5,
+        "max": 8.42
+      },
+      "tools": {
+        "mean": 0.03,
+        "max": 0.05
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 4.54,
+        "max": 8.49
+      }
+    },
+    "with_llm": {
+      "turns": 6,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.01,
+        "max": 0.04
+      },
+      "llm": {
+        "mean": 5.25,
+        "max": 8.42
+      },
+      "tools": {
+        "mean": 0.04,
+        "max": 0.05
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 5.29,
+        "max": 8.49
+      }
+    },
+    "without_llm": {
+      "turns": 1,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "llm": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "tools": {
+        "mean": 0.03,
+        "max": 0.03
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 0.03,
+        "max": 0.03
+      }
+    }
+  }
+}

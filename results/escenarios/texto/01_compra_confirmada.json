@@ -1,0 +1,1181 @@
+{
+  "id": "01_compra_confirmada",
+  "title": "Compra confirmada",
+  "kind": "compra_confirmada",
+  "description": "El usuario busca con presupuesto, añade dos unidades, pide cerrar y confirma. Tras la búsqueda la tienda fija el primer candidato en 14,50 € y 20 unidades, para que el resultado no dependa de qué producto salga primero.",
+  "voice": true,
+  "input": "texto",
+  "audio_source": null,
+  "user_id": "eval-d1aab68f-01_compra_confirmada",
+  "threads": [
+    "eval-d1aab68f-01_compra_confirmada-c1"
+  ],
+  "names": {
+    "elegida": "B06WGTZ874"
+  },
+  "steps": [
+    {
+      "kind": "turn",
+      "turn": 1,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Hola, busco una cafetera italiana. Tengo un presupuesto de 60 euros.",
+      "agent_input": "Hola, busco una cafetera italiana. Tengo un presupuesto de 60 euros.",
+      "response": "Tengo la De'Longhi Dedica por 5,03 euros, la Gastroback por 46,24 euros, la De'Longhi ECOV por 44,50 euros, la CREATE Thera Classic por 5,05 euros y la CREATE Thera Stylance Pro por 5,23 euros. ¿Te interesa alguna? He anotado un presupuesto de 60,00 €.",
+      "spoken_text": "Tengo la De'Longhi Dedica por cinco euros con tres céntimos, la Gastroback por cuarenta y seis euros con veinticuatro céntimos, la De'Longhi ECOV por cuarenta y cuatro euros con cincuenta céntimos, la CREATE Thera Classic por cinco euros con cinco céntimos y la CREATE Thera Stylance Pro por cinco euros con veintitrés céntimos. ¿Te interesa alguna? He anotado un presupuesto de sesenta euros.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "fijar_presupuesto",
+          "args": {
+            "importe_eur": 60
+          },
+          "reason": "el usuario da su gasto máximo",
+          "ok": true,
+          "summary": "presupuesto fijado en 60,00 €.",
+          "issues": []
+        },
+        {
+          "tool": "buscar_productos",
+          "args": {
+            "consulta": "cafetera italiana"
+          },
+          "reason": "buscar una cafetera italiana dentro del presupuesto",
+          "ok": true,
+          "summary": "estos son ahora los CANDIDATOS, del más al menos relevante:\n[1] id=B06WGTZ874 | De'longhi Dedica - Cafetera de Bomba de Acero Inoxidable para Café Molido o Monodosis, Cafetera para Espresso y Cappuccino, Depósito de 1.3 Litros, Sistema Anti-goteo, EC685.M, Metal 30x33x15cm | marca: De'Longhi | color: Metal | precio: 5,03 € | existencias: 27 | características (extracto): La presión de 15 bares crea un espresso con un rico aroma y una espuma de color nuez en la parte superior La tecnología Thermoblock calienta el agua en 35 segundos a la temperatura exacta para preparar un espresso óptimo Capuccinatore con… | descripción: desconocido\n[2] id=B07V47R2Z2 | Gastroback 42619 Design Espresso Advanced Barista - Cafetera espresso (programable, con mecanismo cónico y bomba de espresso italiana, 15 bares, acero inoxidable) | marca: GASTROBACK | color: Acero Inoxidable. | precio: 46,24 € | existencias: 26 | características (extracto): Para granos de café recién molido, café en polvo o E. S E Pads Sistema de calefacción de bloque térmico: tiempo de calentamiento rápido (aprox. 1, 5 minutos) ULKA - Bomba de espresso profesional (15 bares) 11 niveles de molido y cantidad… | descripción: desconocido\n[3] id=B00S4U4W4I | De'Longhi ECOV 311.BG Cafetera Automática, 1100 W, 1.4 L, 15 Bares, 2 Tazas, Acero Inoxidable, Beige | marca: De'Longhi | color: Beige | precio: 44,50 € | existencias: 44 | características (extracto): Cafetera ECOV311 BG Delonghi Siguiendo la tendencia más actual de los conceptos clásicos y retro la Vintage Icona es una máquina de café espresso de bomba tradicional con estilo y con una tecnología avanzada que garantiza un espresso… | descripción: desconocido\n[4] id=B0819Y9TPK | CREATE Cafetera THERA Classic - Cafetera Espress Semiautomática para Espresso y Cappuccinos, Presión 20 Bares, Capacidad 1,25 L, 1100W, Vaporizador Orientable, Acero Inoxidable | marca: CREATE | color: Plateado | precio: 5,05 € | existencias: 28 | características (extracto): Para poder disfrutar con todos los sentidos de la experiencia de un buen café espresso, necesitas una máquina perfecta. Así es la nueva KAFFETA Espress de CREATE : 1100W de potencia para poder desarrollar 20 bares reales de presión que… | descripción: Descubre hasta dónde pueden llegar tus sentidos con la nueva cafetera espress eléctrica de CREATE . Cualquier momento del día será ideal para disfrutar de un buen café espresso o un cappuccino con el…\n[5] id=B083P4NPWQ | CREATE Cafetera Expresso Automática Thera Stylance Pro - Cafetera Espress para Espresso y Cappuccino, 20 Bares, 1100 W, 1,5 litros, Vaporizador Orientable, Doble Salida, Regulador de Presión | marca: CREATE | color: desconocido | precio: 5,23 € | existencias: 38 | características (extracto): Cafetera automática, con una bomba de presión de 20 bares y 1100 W de potencia, con doble sistema de seguridad que evita el sobrecalentamiento y la sobrepresión. Se calienta rápidamente, y prepara un café con mucha crema, sin apenas hacer… | descripción: Con 20 bares de presión, más potencia, un depósito de 1,5 litros, doble sistema de seguridad y acabados en acero inoxidable. Completamente automática, prepara café de cafetería en casa con café…",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.03,
+        "llm": 10.077,
+        "tools": 0.041,
+        "tts": 0.0,
+        "total": 10.148
+      },
+      "llm_steps": 3,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [
+        "cafetera italiana"
+      ],
+      "before": {
+        "cart_id": "eval-d1aab68f-01_compra_confirmada-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {}
+      },
+      "after": {
+        "cart_id": "eval-d1aab68f-01_compra_confirmada-c1",
+        "state": {
+          "budget_cents": 6000,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B06WGTZ874",
+              "title": "De'longhi Dedica - Cafetera de Bomba de Acero Inoxidable para Café Molido o Monodosis, Cafetera para Espresso y Cappuccino, Depósito de 1.3 Litros, Sistema Anti-goteo, EC685.M, Metal 30x33x15cm",
+              "brand": "De'Longhi",
+              "price_cents": 503,
+              "stock": 27
+            },
+            {
+              "product_id": "B07V47R2Z2",
+              "title": "Gastroback 42619 Design Espresso Advanced Barista - Cafetera espresso (programable, con mecanismo cónico y bomba de espresso italiana, 15 bares, acero inoxidable)",
+              "brand": "GASTROBACK",
+              "price_cents": 4624,
+              "stock": 26
+            },
+            {
+              "product_id": "B00S4U4W4I",
+              "title": "De'Longhi ECOV 311.BG Cafetera Automática, 1100 W, 1.4 L, 15 Bares, 2 Tazas, Acero Inoxidable, Beige",
+              "brand": "De'Longhi",
+              "price_cents": 4450,
+              "stock": 44
+            },
+            {
+              "product_id": "B0819Y9TPK",
+              "title": "CREATE Cafetera THERA Classic - Cafetera Espress Semiautomática para Espresso y Cappuccinos, Presión 20 Bares, Capacidad 1,25 L, 1100W, Vaporizador Orientable, Acero Inoxidable",
+              "brand": "CREATE",
+              "price_cents": 505,
+              "stock": 28
+            },
+            {
+              "product_id": "B083P4NPWQ",
+              "title": "CREATE Cafetera Expresso Automática Thera Stylance Pro - Cafetera Espress para Espresso y Cappuccino, 20 Bares, 1100 W, 1,5 litros, Vaporizador Orientable, Doble Salida, Regulador de Presión",
+              "brand": "CREATE",
+              "price_cents": 523,
+              "stock": 38
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {
+          "B00S4U4W4I": {
+            "price_cents": 4450,
+            "stock": 44
+          },
+          "B06WGTZ874": {
+            "price_cents": 503,
+            "stock": 27
+          },
+          "B07V47R2Z2": {
+            "price_cents": 4624,
+            "stock": 26
+          },
+          "B0819Y9TPK": {
+            "price_cents": 505,
+            "stock": 28
+          },
+          "B083P4NPWQ": {
+            "price_cents": 523,
+            "stock": 38
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "budget",
+          "params": {
+            "cents": 6000
+          },
+          "ok": true,
+          "detail": "presupuesto en el estado: 6000"
+        },
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        }
+      ]
+    },
+    {
+      "kind": "remember",
+      "name": "elegida",
+      "ref": "candidate:1",
+      "product_id": "B06WGTZ874",
+      "title": "De'longhi Dedica - Cafetera de Bomba de Acero Inoxidable para Café Molido o Monodosis, Cafetera para Espresso y Cappuccino, Depósito de 1.3 Litros, Sistema Anti-goteo, EC685.M, Metal 30x33x15cm"
+    },
+    {
+      "kind": "event",
+      "event": "set_offer",
+      "product": "@elegida",
+      "product_id": "B06WGTZ874",
+      "price_cents": 1450,
+      "stock": 20
+    },
+    {
+      "kind": "turn",
+      "turn": 2,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Añade dos de la primera al carrito.",
+      "agent_input": "Añade dos de la primera al carrito.",
+      "response": "Hecho, añadidas dos unidades. El total es 29,00 €. En el carrito hay 2 unidades de «De'longhi Dedica - Cafetera de Bomba de Acero Inoxidable para Café…» a 14,50 € cada una, 29,00 €. Total: 29,00 €. Tu presupuesto es de 60,00 € y te quedan 31,00 €.",
+      "spoken_text": "Hecho, añadidas dos unidades. El total es veintinueve euros. En el carrito hay dos unidades de De'longhi Dedica a catorce euros con cincuenta céntimos cada una, veintinueve euros. Total: veintinueve euros. Tu presupuesto es de sesenta euros y te quedan treinta y un euros.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "agregar_al_carrito",
+          "args": {
+            "product_id": "B06WGTZ874",
+            "cantidad": 2
+          },
+          "reason": "añadir dos unidades del candidato 1",
+          "ok": true,
+          "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B06WGTZ874 | De'longhi Dedica - Cafetera de Bomba de Acero Inoxidable para Café… | 2 unidades × 14,50 € = 29,00 € | existencias: 20\nTotal del carrito: 29,00 €",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 5.075,
+        "tools": 0.053,
+        "tts": 0.0,
+        "total": 5.127
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [
+        "primera"
+      ],
+      "before": {
+        "cart_id": "eval-d1aab68f-01_compra_confirmada-c1",
+        "state": {
+          "budget_cents": 6000,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B06WGTZ874",
+              "title": "De'longhi Dedica - Cafetera de Bomba de Acero Inoxidable para Café Molido o Monodosis, Cafetera para Espresso y Cappuccino, Depósito de 1.3 Litros, Sistema Anti-goteo, EC685.M, Metal 30x33x15cm",
+              "brand": "De'Longhi",
+              "price_cents": 503,
+              "stock": 27
+            },
+            {
+              "product_id": "B07V47R2Z2",
+              "title": "Gastroback 42619 Design Espresso Advanced Barista - Cafetera espresso (programable, con mecanismo cónico y bomba de espresso italiana, 15 bares, acero inoxidable)",
+              "brand": "GASTROBACK",
+              "price_cents": 4624,
+              "stock": 26
+            },
+            {
+              "product_id": "B00S4U4W4I",
+              "title": "De'Longhi ECOV 311.BG Cafetera Automática, 1100 W, 1.4 L, 15 Bares, 2 Tazas, Acero Inoxidable, Beige",
+              "brand": "De'Longhi",
+              "price_cents": 4450,
+              "stock": 44
+            },
+            {
+              "product_id": "B0819Y9TPK",
+              "title": "CREATE Cafetera THERA Classic - Cafetera Espress Semiautomática para Espresso y Cappuccinos, Presión 20 Bares, Capacidad 1,25 L, 1100W, Vaporizador Orientable, Acero Inoxidable",
+              "brand": "CREATE",
+              "price_cents": 505,
+              "stock": 28
+            },
+            {
+              "product_id": "B083P4NPWQ",
+              "title": "CREATE Cafetera Expresso Automática Thera Stylance Pro - Cafetera Espress para Espresso y Cappuccino, 20 Bares, 1100 W, 1,5 litros, Vaporizador Orientable, Doble Salida, Regulador de Presión",
+              "brand": "CREATE",
+              "price_cents": 523,
+              "stock": 38
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B06WGTZ874",
+              "initial_stock": 27,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B00S4U4W4I": {
+            "price_cents": 4450,
+            "stock": 44
+          },
+          "B06WGTZ874": {
+            "price_cents": 1450,
+            "stock": 20
+          },
+          "B07V47R2Z2": {
+            "price_cents": 4624,
+            "stock": 26
+          },
+          "B0819Y9TPK": {
+            "price_cents": 505,
+            "stock": 28
+          },
+          "B083P4NPWQ": {
+            "price_cents": 523,
+            "stock": 38
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-d1aab68f-01_compra_confirmada-c1",
+        "state": {
+          "budget_cents": 6000,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B06WGTZ874",
+              "title": "De'longhi Dedica - Cafetera de Bomba de Acero Inoxidable para Café Molido o Monodosis, Cafetera para Espresso y Cappuccino, Depósito de 1.3 Litros, Sistema Anti-goteo, EC685.M, Metal 30x33x15cm",
+              "brand": "De'Longhi",
+              "price_cents": 1450,
+              "stock": 20
+            },
+            {
+              "product_id": "B07V47R2Z2",
+              "title": "Gastroback 42619 Design Espresso Advanced Barista - Cafetera espresso (programable, con mecanismo cónico y bomba de espresso italiana, 15 bares, acero inoxidable)",
+              "brand": "GASTROBACK",
+              "price_cents": 4624,
+              "stock": 26
+            },
+            {
+              "product_id": "B00S4U4W4I",
+              "title": "De'Longhi ECOV 311.BG Cafetera Automática, 1100 W, 1.4 L, 15 Bares, 2 Tazas, Acero Inoxidable, Beige",
+              "brand": "De'Longhi",
+              "price_cents": 4450,
+              "stock": 44
+            },
+            {
+              "product_id": "B0819Y9TPK",
+              "title": "CREATE Cafetera THERA Classic - Cafetera Espress Semiautomática para Espresso y Cappuccinos, Presión 20 Bares, Capacidad 1,25 L, 1100W, Vaporizador Orientable, Acero Inoxidable",
+              "brand": "CREATE",
+              "price_cents": 505,
+              "stock": 28
+            },
+            {
+              "product_id": "B083P4NPWQ",
+              "title": "CREATE Cafetera Expresso Automática Thera Stylance Pro - Cafetera Espress para Espresso y Cappuccino, 20 Bares, 1100 W, 1,5 litros, Vaporizador Orientable, Doble Salida, Regulador de Presión",
+              "brand": "CREATE",
+              "price_cents": 523,
+              "stock": 38
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-d1aab68f-01_compra_confirmada-c1",
+              "product_id": "B06WGTZ874",
+              "quantity": 2
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B06WGTZ874",
+              "initial_stock": 27,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B00S4U4W4I": {
+            "price_cents": 4450,
+            "stock": 44
+          },
+          "B06WGTZ874": {
+            "price_cents": 1450,
+            "stock": 20
+          },
+          "B07V47R2Z2": {
+            "price_cents": 4624,
+            "stock": 26
+          },
+          "B0819Y9TPK": {
+            "price_cents": 505,
+            "stock": 28
+          },
+          "B083P4NPWQ": {
+            "price_cents": 523,
+            "stock": 38
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "lines": [
+              {
+                "product": "@elegida",
+                "quantity": 2
+              }
+            ]
+          },
+          "ok": true,
+          "detail": "carrito: 2 × B06WGTZ874"
+        },
+        {
+          "check": "orders",
+          "params": {
+            "count": 0
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 0"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 3,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Quiero cerrar el pedido.",
+      "agent_input": "Quiero cerrar el pedido.",
+      "response": "Te repito el pedido antes de registrarlo: 2 unidades de «De'longhi Dedica - Cafetera de Bomba de Acero Inoxidable para Café…» a 14,50 € cada una, 29,00 €. Total: 29,00 €. Tu presupuesto es de 60,00 € y te quedan 31,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "spoken_text": "Te repito el pedido antes de registrarlo: dos unidades de De'longhi Dedica a catorce euros con cincuenta céntimos cada una, veintinueve euros. Total: veintinueve euros. Tu presupuesto es de sesenta euros y te quedan treinta y un euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": true,
+      "operations": [
+        {
+          "tool": "cotizar",
+          "args": {},
+          "reason": "cotizar el carrito",
+          "ok": true,
+          "summary": "cotización creada; falta la confirmación del usuario.",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 2.168,
+        "tools": 0.036,
+        "tts": 0.0,
+        "total": 2.205
+      },
+      "llm_steps": 1,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-d1aab68f-01_compra_confirmada-c1",
+        "state": {
+          "budget_cents": 6000,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B06WGTZ874",
+              "title": "De'longhi Dedica - Cafetera de Bomba de Acero Inoxidable para Café Molido o Monodosis, Cafetera para Espresso y Cappuccino, Depósito de 1.3 Litros, Sistema Anti-goteo, EC685.M, Metal 30x33x15cm",
+              "brand": "De'Longhi",
+              "price_cents": 1450,
+              "stock": 20
+            },
+            {
+              "product_id": "B07V47R2Z2",
+              "title": "Gastroback 42619 Design Espresso Advanced Barista - Cafetera espresso (programable, con mecanismo cónico y bomba de espresso italiana, 15 bares, acero inoxidable)",
+              "brand": "GASTROBACK",
+              "price_cents": 4624,
+              "stock": 26
+            },
+            {
+              "product_id": "B00S4U4W4I",
+              "title": "De'Longhi ECOV 311.BG Cafetera Automática, 1100 W, 1.4 L, 15 Bares, 2 Tazas, Acero Inoxidable, Beige",
+              "brand": "De'Longhi",
+              "price_cents": 4450,
+              "stock": 44
+            },
+            {
+              "product_id": "B0819Y9TPK",
+              "title": "CREATE Cafetera THERA Classic - Cafetera Espress Semiautomática para Espresso y Cappuccinos, Presión 20 Bares, Capacidad 1,25 L, 1100W, Vaporizador Orientable, Acero Inoxidable",
+              "brand": "CREATE",
+              "price_cents": 505,
+              "stock": 28
+            },
+            {
+              "product_id": "B083P4NPWQ",
+              "title": "CREATE Cafetera Expresso Automática Thera Stylance Pro - Cafetera Espress para Espresso y Cappuccino, 20 Bares, 1100 W, 1,5 litros, Vaporizador Orientable, Doble Salida, Regulador de Presión",
+              "brand": "CREATE",
+              "price_cents": 523,
+              "stock": 38
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-d1aab68f-01_compra_confirmada-c1",
+              "product_id": "B06WGTZ874",
+              "quantity": 2
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B06WGTZ874",
+              "initial_stock": 27,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B00S4U4W4I": {
+            "price_cents": 4450,
+            "stock": 44
+          },
+          "B06WGTZ874": {
+            "price_cents": 1450,
+            "stock": 20
+          },
+          "B07V47R2Z2": {
+            "price_cents": 4624,
+            "stock": 26
+          },
+          "B0819Y9TPK": {
+            "price_cents": 505,
+            "stock": 28
+          },
+          "B083P4NPWQ": {
+            "price_cents": 523,
+            "stock": 38
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-d1aab68f-01_compra_confirmada-c1",
+        "state": {
+          "budget_cents": 6000,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": {
+            "quote_id": "36e16703b885433a8412c48e0e87bd25",
+            "items": [
+              {
+                "product_id": "B06WGTZ874",
+                "title": "De'longhi Dedica - Cafetera de Bomba de Acero Inoxidable para Café Molido o Monodosis, Cafetera para Espresso y Cappuccino, Depósito de 1.3 Litros, Sistema Anti-goteo, EC685.M, Metal 30x33x15cm",
+                "quantity": 2,
+                "unit_price_cents": 1450,
+                "subtotal_cents": 2900,
+                "stock": 20
+              }
+            ],
+            "total_cents": 2900,
+            "budget_cents": 6000,
+            "message": "Te repito el pedido antes de registrarlo: 2 unidades de «De'longhi Dedica - Cafetera de Bomba de Acero Inoxidable para Café…» a 14,50 € cada una, 29,00 €. Total: 29,00 €. Tu presupuesto es de 60,00 € y te quedan 31,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+          },
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B06WGTZ874",
+              "title": "De'longhi Dedica - Cafetera de Bomba de Acero Inoxidable para Café Molido o Monodosis, Cafetera para Espresso y Cappuccino, Depósito de 1.3 Litros, Sistema Anti-goteo, EC685.M, Metal 30x33x15cm",
+              "brand": "De'Longhi",
+              "price_cents": 1450,
+              "stock": 20
+            },
+            {
+              "product_id": "B07V47R2Z2",
+              "title": "Gastroback 42619 Design Espresso Advanced Barista - Cafetera espresso (programable, con mecanismo cónico y bomba de espresso italiana, 15 bares, acero inoxidable)",
+              "brand": "GASTROBACK",
+              "price_cents": 4624,
+              "stock": 26
+            },
+            {
+              "product_id": "B00S4U4W4I",
+              "title": "De'Longhi ECOV 311.BG Cafetera Automática, 1100 W, 1.4 L, 15 Bares, 2 Tazas, Acero Inoxidable, Beige",
+              "brand": "De'Longhi",
+              "price_cents": 4450,
+              "stock": 44
+            },
+            {
+              "product_id": "B0819Y9TPK",
+              "title": "CREATE Cafetera THERA Classic - Cafetera Espress Semiautomática para Espresso y Cappuccinos, Presión 20 Bares, Capacidad 1,25 L, 1100W, Vaporizador Orientable, Acero Inoxidable",
+              "brand": "CREATE",
+              "price_cents": 505,
+              "stock": 28
+            },
+            {
+              "product_id": "B083P4NPWQ",
+              "title": "CREATE Cafetera Expresso Automática Thera Stylance Pro - Cafetera Espress para Espresso y Cappuccino, 20 Bares, 1100 W, 1,5 litros, Vaporizador Orientable, Doble Salida, Regulador de Presión",
+              "brand": "CREATE",
+              "price_cents": 523,
+              "stock": 38
+            }
+          ],
+          "awaiting_confirmation": true
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-d1aab68f-01_compra_confirmada-c1",
+              "product_id": "B06WGTZ874",
+              "quantity": 2
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B06WGTZ874",
+              "initial_stock": 27,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B00S4U4W4I": {
+            "price_cents": 4450,
+            "stock": 44
+          },
+          "B06WGTZ874": {
+            "price_cents": 1450,
+            "stock": 20
+          },
+          "B07V47R2Z2": {
+            "price_cents": 4624,
+            "stock": 26
+          },
+          "B0819Y9TPK": {
+            "price_cents": 505,
+            "stock": 28
+          },
+          "B083P4NPWQ": {
+            "price_cents": 523,
+            "stock": 38
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "awaiting_confirmation",
+          "params": {
+            "value": true
+          },
+          "ok": true,
+          "detail": "esperando confirmación: sí"
+        },
+        {
+          "check": "orders",
+          "params": {
+            "count": 0
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 0"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 4,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Sí, confirmo.",
+      "agent_input": "Sí, confirmo.",
+      "response": "Pedido número 1 registrado: 2 unidades de «De'longhi Dedica - Cafetera de Bomba de Acero Inoxidable para Café…» a 14,50 € cada una, 29,00 €. Total: 29,00 €. Gracias por tu compra.",
+      "spoken_text": "Pedido número uno registrado: dos unidades de De'longhi Dedica a catorce euros con cincuenta céntimos cada una, veintinueve euros. Total: veintinueve euros. Gracias por tu compra.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "confirmar_pedido",
+          "args": {
+            "quote_id": "36e16703b885433a8412c48e0e87bd25"
+          },
+          "reason": "el usuario confirmó la cotización",
+          "ok": true,
+          "summary": "pedido registrado",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 0.0,
+        "tools": 0.023,
+        "tts": 0.0,
+        "total": 0.023
+      },
+      "llm_steps": 0,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-d1aab68f-01_compra_confirmada-c1",
+        "state": {
+          "budget_cents": 6000,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": {
+            "quote_id": "36e16703b885433a8412c48e0e87bd25",
+            "items": [
+              {
+                "product_id": "B06WGTZ874",
+                "title": "De'longhi Dedica - Cafetera de Bomba de Acero Inoxidable para Café Molido o Monodosis, Cafetera para Espresso y Cappuccino, Depósito de 1.3 Litros, Sistema Anti-goteo, EC685.M, Metal 30x33x15cm",
+                "quantity": 2,
+                "unit_price_cents": 1450,
+                "subtotal_cents": 2900,
+                "stock": 20
+              }
+            ],
+            "total_cents": 2900,
+            "budget_cents": 6000,
+            "message": "Te repito el pedido antes de registrarlo: 2 unidades de «De'longhi Dedica - Cafetera de Bomba de Acero Inoxidable para Café…» a 14,50 € cada una, 29,00 €. Total: 29,00 €. Tu presupuesto es de 60,00 € y te quedan 31,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+          },
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B06WGTZ874",
+              "title": "De'longhi Dedica - Cafetera de Bomba de Acero Inoxidable para Café Molido o Monodosis, Cafetera para Espresso y Cappuccino, Depósito de 1.3 Litros, Sistema Anti-goteo, EC685.M, Metal 30x33x15cm",
+              "brand": "De'Longhi",
+              "price_cents": 1450,
+              "stock": 20
+            },
+            {
+              "product_id": "B07V47R2Z2",
+              "title": "Gastroback 42619 Design Espresso Advanced Barista - Cafetera espresso (programable, con mecanismo cónico y bomba de espresso italiana, 15 bares, acero inoxidable)",
+              "brand": "GASTROBACK",
+              "price_cents": 4624,
+              "stock": 26
+            },
+            {
+              "product_id": "B00S4U4W4I",
+              "title": "De'Longhi ECOV 311.BG Cafetera Automática, 1100 W, 1.4 L, 15 Bares, 2 Tazas, Acero Inoxidable, Beige",
+              "brand": "De'Longhi",
+              "price_cents": 4450,
+              "stock": 44
+            },
+            {
+              "product_id": "B0819Y9TPK",
+              "title": "CREATE Cafetera THERA Classic - Cafetera Espress Semiautomática para Espresso y Cappuccinos, Presión 20 Bares, Capacidad 1,25 L, 1100W, Vaporizador Orientable, Acero Inoxidable",
+              "brand": "CREATE",
+              "price_cents": 505,
+              "stock": 28
+            },
+            {
+              "product_id": "B083P4NPWQ",
+              "title": "CREATE Cafetera Expresso Automática Thera Stylance Pro - Cafetera Espress para Espresso y Cappuccino, 20 Bares, 1100 W, 1,5 litros, Vaporizador Orientable, Doble Salida, Regulador de Presión",
+              "brand": "CREATE",
+              "price_cents": 523,
+              "stock": 38
+            }
+          ],
+          "awaiting_confirmation": true
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-d1aab68f-01_compra_confirmada-c1",
+              "product_id": "B06WGTZ874",
+              "quantity": 2
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B06WGTZ874",
+              "initial_stock": 27,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B00S4U4W4I": {
+            "price_cents": 4450,
+            "stock": 44
+          },
+          "B06WGTZ874": {
+            "price_cents": 1450,
+            "stock": 20
+          },
+          "B07V47R2Z2": {
+            "price_cents": 4624,
+            "stock": 26
+          },
+          "B0819Y9TPK": {
+            "price_cents": 505,
+            "stock": 28
+          },
+          "B083P4NPWQ": {
+            "price_cents": 523,
+            "stock": 38
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-d1aab68f-01_compra_confirmada-c1",
+        "state": {
+          "budget_cents": 6000,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": {
+            "order_id": 1,
+            "quote_id": "36e16703b885433a8412c48e0e87bd25",
+            "items": [
+              {
+                "product_id": "B06WGTZ874",
+                "title": "De'longhi Dedica - Cafetera de Bomba de Acero Inoxidable para Café Molido o Monodosis, Cafetera para Espresso y Cappuccino, Depósito de 1.3 Litros, Sistema Anti-goteo, EC685.M, Metal 30x33x15cm",
+                "quantity": 2,
+                "unit_price_cents": 1450,
+                "subtotal_cents": 2900
+              }
+            ],
+            "total_cents": 2900,
+            "message": "Pedido número 1 registrado: 2 unidades de «De'longhi Dedica - Cafetera de Bomba de Acero Inoxidable para Café…» a 14,50 € cada una, 29,00 €. Total: 29,00 €. Gracias por tu compra."
+          },
+          "candidates": [
+            {
+              "product_id": "B06WGTZ874",
+              "title": "De'longhi Dedica - Cafetera de Bomba de Acero Inoxidable para Café Molido o Monodosis, Cafetera para Espresso y Cappuccino, Depósito de 1.3 Litros, Sistema Anti-goteo, EC685.M, Metal 30x33x15cm",
+              "brand": "De'Longhi",
+              "price_cents": 1450,
+              "stock": 20
+            },
+            {
+              "product_id": "B07V47R2Z2",
+              "title": "Gastroback 42619 Design Espresso Advanced Barista - Cafetera espresso (programable, con mecanismo cónico y bomba de espresso italiana, 15 bares, acero inoxidable)",
+              "brand": "GASTROBACK",
+              "price_cents": 4624,
+              "stock": 26
+            },
+            {
+              "product_id": "B00S4U4W4I",
+              "title": "De'Longhi ECOV 311.BG Cafetera Automática, 1100 W, 1.4 L, 15 Bares, 2 Tazas, Acero Inoxidable, Beige",
+              "brand": "De'Longhi",
+              "price_cents": 4450,
+              "stock": 44
+            },
+            {
+              "product_id": "B0819Y9TPK",
+              "title": "CREATE Cafetera THERA Classic - Cafetera Espress Semiautomática para Espresso y Cappuccinos, Presión 20 Bares, Capacidad 1,25 L, 1100W, Vaporizador Orientable, Acero Inoxidable",
+              "brand": "CREATE",
+              "price_cents": 505,
+              "stock": 28
+            },
+            {
+              "product_id": "B083P4NPWQ",
+              "title": "CREATE Cafetera Expresso Automática Thera Stylance Pro - Cafetera Espress para Espresso y Cappuccino, 20 Bares, 1100 W, 1,5 litros, Vaporizador Orientable, Doble Salida, Regulador de Presión",
+              "brand": "CREATE",
+              "price_cents": 523,
+              "stock": 38
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [
+            {
+              "order_id": 1,
+              "quote_id": "36e16703b885433a8412c48e0e87bd25",
+              "total_cents": 2900
+            }
+          ],
+          "order_items": [
+            {
+              "order_id": 1,
+              "product_id": "B06WGTZ874",
+              "quantity": 2,
+              "unit_price_cents": 1450
+            }
+          ],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B06WGTZ874",
+              "initial_stock": 27,
+              "stock": 18
+            }
+          ]
+        },
+        "offers": {
+          "B00S4U4W4I": {
+            "price_cents": 4450,
+            "stock": 44
+          },
+          "B06WGTZ874": {
+            "price_cents": 1450,
+            "stock": 18
+          },
+          "B07V47R2Z2": {
+            "price_cents": 4624,
+            "stock": 26
+          },
+          "B0819Y9TPK": {
+            "price_cents": 505,
+            "stock": 28
+          },
+          "B083P4NPWQ": {
+            "price_cents": 523,
+            "stock": 38
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "orders",
+          "params": {
+            "count": 1
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 1"
+        }
+      ]
+    }
+  ],
+  "final": {
+    "snapshot": {
+      "cart_id": "eval-d1aab68f-01_compra_confirmada-c1",
+      "state": {
+        "budget_cents": 6000,
+        "preferences": [],
+        "pending_clarification": null,
+        "quote": null,
+        "order": {
+          "order_id": 1,
+          "quote_id": "36e16703b885433a8412c48e0e87bd25",
+          "items": [
+            {
+              "product_id": "B06WGTZ874",
+              "title": "De'longhi Dedica - Cafetera de Bomba de Acero Inoxidable para Café Molido o Monodosis, Cafetera para Espresso y Cappuccino, Depósito de 1.3 Litros, Sistema Anti-goteo, EC685.M, Metal 30x33x15cm",
+              "quantity": 2,
+              "unit_price_cents": 1450,
+              "subtotal_cents": 2900
+            }
+          ],
+          "total_cents": 2900,
+          "message": "Pedido número 1 registrado: 2 unidades de «De'longhi Dedica - Cafetera de Bomba de Acero Inoxidable para Café…» a 14,50 € cada una, 29,00 €. Total: 29,00 €. Gracias por tu compra."
+        },
+        "candidates": [
+          {
+            "product_id": "B06WGTZ874",
+            "title": "De'longhi Dedica - Cafetera de Bomba de Acero Inoxidable para Café Molido o Monodosis, Cafetera para Espresso y Cappuccino, Depósito de 1.3 Litros, Sistema Anti-goteo, EC685.M, Metal 30x33x15cm",
+            "brand": "De'Longhi",
+            "price_cents": 1450,
+            "stock": 20
+          },
+          {
+            "product_id": "B07V47R2Z2",
+            "title": "Gastroback 42619 Design Espresso Advanced Barista - Cafetera espresso (programable, con mecanismo cónico y bomba de espresso italiana, 15 bares, acero inoxidable)",
+            "brand": "GASTROBACK",
+            "price_cents": 4624,
+            "stock": 26
+          },
+          {
+            "product_id": "B00S4U4W4I",
+            "title": "De'Longhi ECOV 311.BG Cafetera Automática, 1100 W, 1.4 L, 15 Bares, 2 Tazas, Acero Inoxidable, Beige",
+            "brand": "De'Longhi",
+            "price_cents": 4450,
+            "stock": 44
+          },
+          {
+            "product_id": "B0819Y9TPK",
+            "title": "CREATE Cafetera THERA Classic - Cafetera Espress Semiautomática para Espresso y Cappuccinos, Presión 20 Bares, Capacidad 1,25 L, 1100W, Vaporizador Orientable, Acero Inoxidable",
+            "brand": "CREATE",
+            "price_cents": 505,
+            "stock": 28
+          },
+          {
+            "product_id": "B083P4NPWQ",
+            "title": "CREATE Cafetera Expresso Automática Thera Stylance Pro - Cafetera Espress para Espresso y Cappuccino, 20 Bares, 1100 W, 1,5 litros, Vaporizador Orientable, Doble Salida, Regulador de Presión",
+            "brand": "CREATE",
+            "price_cents": 523,
+            "stock": 38
+          }
+        ],
+        "awaiting_confirmation": false
+      },
+      "store": {
+        "orders": [
+          {
+            "order_id": 1,
+            "quote_id": "36e16703b885433a8412c48e0e87bd25",
+            "total_cents": 2900
+          }
+        ],
+        "order_items": [
+          {
+            "order_id": 1,
+            "product_id": "B06WGTZ874",
+            "quantity": 2,
+            "unit_price_cents": 1450
+          }
+        ],
+        "cart_items": [],
+        "inventory_changes": [
+          {
+            "product_id": "B06WGTZ874",
+            "initial_stock": 27,
+            "stock": 18
+          }
+        ]
+      },
+      "offers": {
+        "B00S4U4W4I": {
+          "price_cents": 4450,
+          "stock": 44
+        },
+        "B06WGTZ874": {
+          "price_cents": 1450,
+          "stock": 18
+        },
+        "B07V47R2Z2": {
+          "price_cents": 4624,
+          "stock": 26
+        },
+        "B0819Y9TPK": {
+          "price_cents": 505,
+          "stock": 28
+        },
+        "B083P4NPWQ": {
+          "price_cents": 523,
+          "stock": 38
+        }
+      }
+    },
+    "checks": [
+      {
+        "check": "orders",
+        "params": {
+          "count": 1
+        },
+        "ok": true,
+        "detail": "pedidos registrados: 1"
+      },
+      {
+        "check": "order",
+        "params": {
+          "lines": [
+            {
+              "product": "@elegida",
+              "quantity": 2
+            }
+          ],
+          "total_cents": 2900
+        },
+        "ok": true,
+        "detail": "pedido 1: 2 × B06WGTZ874; total 2900 céntimos"
+      },
+      {
+        "check": "stock",
+        "params": {
+          "product": "@elegida",
+          "equals": 18
+        },
+        "ok": true,
+        "detail": "existencias de B06WGTZ874: 18"
+      },
+      {
+        "check": "cart",
+        "params": {
+          "empty": true
+        },
+        "ok": true,
+        "detail": "carrito: vacío"
+      },
+      {
+        "check": "budget",
+        "params": {
+          "cents": 6000
+        },
+        "ok": true,
+        "detail": "presupuesto en el estado: 6000"
+      }
+    ]
+  },
+  "violations": [],
+  "problems": [],
+  "passed": true,
+  "timings": {
+    "all": {
+      "turns": 4,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.01,
+        "max": 0.03
+      },
+      "llm": {
+        "mean": 4.33,
+        "max": 10.08
+      },
+      "tools": {
+        "mean": 0.04,
+        "max": 0.05
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 4.38,
+        "max": 10.15
+      }
+    },
+    "with_llm": {
+      "turns": 3,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.01,
+        "max": 0.03
+      },
+      "llm": {
+        "mean": 5.77,
+        "max": 10.08
+      },
+      "tools": {
+        "mean": 0.04,
+        "max": 0.05
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 5.83,
+        "max": 10.15
+      }
+    },
+    "without_llm": {
+      "turns": 1,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "llm": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "tools": {
+        "mean": 0.02,
+        "max": 0.02
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 0.02,
+        "max": 0.02
+      }
+    }
+  }
+}
