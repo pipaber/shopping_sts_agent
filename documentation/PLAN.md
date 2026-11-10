@@ -151,14 +151,15 @@ Comparación con las mismas consultas de `test`: BM25 · denso · híbrido · h�
 | BM25 (base léxica) | 0,6797 [0,6515; 0,7066] | 0,6455 | −0,0316 [−0,0441; −0,0191] | | 0,6750 |
 | Denso | 0,7278 [0,7016; 0,7524] | 0,6501 | +0,0165 [+0,0042; +0,0291] | | 0,7535 |
 | Híbrido RRF | 0,7113 [0,6844; 0,7368] | 0,7194 | | | 0,7403 |
-| Híbrido + control sin grafo | 0,7292 [0,7031; 0,7536] (± 0,0006 entre semillas) | 0,7194 | +0,0179 [+0,0086; +0,0275] | | 0,7582 |
-| Híbrido + GraphSAGE | 0,7363 [0,7104; 0,7605] (± 0,0025 entre semillas) | 0,7194 | +0,0249 [+0,0152; +0,0351] | +0,0071 [+0,0028; +0,0117] | 0,7619 |
+| Híbrido + control sin grafo (la configuración del agente) | 0,7292 [0,7031; 0,7536] (± 0,0006 entre semillas) | 0,7194 | +0,0179 [+0,0086; +0,0275] | | 0,7582 |
+| Híbrido + GraphSAGE (la variante del GNN) | 0,7363 [0,7104; 0,7605] (± 0,0025 entre semillas) | 0,7194 | +0,0249 [+0,0152; +0,0351] | +0,0071 [+0,0028; +0,0117] | 0,7619 |
 
 - **Reordenar ayuda también en test.** El control mejora al híbrido en +0,018 y GraphSAGE en +0,025, con intervalos que excluyen el cero. Es lo mismo que se vio en validación (+0,018 y +0,022).
 - **El grafo aporta más que en validación.** GraphSAGE supera al control en +0,0071, con un intervalo que excluye el cero; en validación eran +0,0038. Sigue siendo una diferencia pequeña (un 1 % relativo) frente a intervalos de ±0,025 en el valor de cada sistema, pero en test no queda dentro del ruido. El agente usa por defecto el control, decisión tomada con la validación y antes de esta medida; **no se ha cambiado a raíz de test**. Si se cambia, es una decisión del autor y debe decirse que se tomó después de ver test.
 - **Test es más difícil que validación para todos los sistemas menos BM25.** El denso, el híbrido y los rerankers bajan entre 0,026 y 0,029; BM25 sube 0,005. Como también bajan los modelos sin entrenar, la mayor parte de la caída es de la muestra de consultas, no de haber elegido hiperparámetros con la validación.
 - **El híbrido ordena peor los candidatos anotados que el denso** (0,7113 frente a 0,7278), igual que en validación, pero recupera más productos exactos entre los 50 primeros (0,719 frente a 0,650 del denso y 0,646 de BM25). Por eso es la primera etapa: lo que el reranker reordena son esos 50. Los rerankers comparten el recall@50 del híbrido.
 - **Qué mide y qué no.** El nDCG@10 es sobre los candidatos anotados de cada consulta, la métrica del enunciado; no mide la lista sobre todo el catálogo. Las cinco semillas son de entrenamiento: la de la semilla 0 es la configuración con la que se generan los pesos del agente. Entre la validación y esta medida el reranker se reescribió sobre `HeteroData` y `HeteroConv` sin cambiar el modelo (mismos parámetros iniciales y puntuaciones iguales hasta 1e-7); la medida en test se hizo ya con esa versión.
+- **Orden de los hechos.** La evaluación se lanzó a las 15:04, al terminar las corridas de escenarios y de voz y con la GPU libre. El aviso de esperar a que el modelo estuviera cerrado, y la confirmación posterior, llegaron a esa sesión cuando ya había terminado. Lo que se midió coincide con lo que quedó cerrado: embeddings `multilingual-e5-small`, las variantes `control` y `sage` sin ninguna más, y el código sobre `HeteroData` (commits `c5f422b` y `e58dc43` incluidos). No se ha repetido. La columna de validación de la tabla sale de `results/reranker_validation.json`; si esa tabla se regenera, `--render` la actualiza sin volver a leer test.
 
 ### Diseño y resultados del reranker (días 8–9)
 

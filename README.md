@@ -272,15 +272,15 @@ No hubo ninguna violación de restricciones en ninguna corrida: todos los fallos
 uv run python -m shopping_agent.eval.retrieval_test
 ```
 
-Evaluación única con las 300 consultas de test: entrena los rerankers como en la validación (las mismas consultas de ajuste y las mismas cinco semillas) y escribe [results/retrieval_test.md](results/retrieval_test.md) y su `.json`, con la fecha y el commit. El comando se niega a repetirse si el resultado ya existe; nada se ajustó después de ver los números.
+Evaluación única con las 300 consultas de test: entrena los rerankers como en la validación (las mismas consultas de ajuste y las mismas cinco semillas) y escribe [results/retrieval_test.md](results/retrieval_test.md) y su `.json`, con la fecha y el commit. El comando se niega a repetirse si el resultado ya existe; nada se ajustó después de ver los números. Con `--render` solo vuelve a escribir la tabla a partir del resultado guardado, sin leer test (sirve para actualizar la columna de validación si esa tabla se regenera).
 
 | Sistema | nDCG@10 en test [IC 95 %] | recall@50 | Dif. con el híbrido |
 |---|---|---|---|
 | BM25 (base léxica) | 0,6797 [0,6515; 0,7066] | 0,6455 | −0,0316 |
 | Denso | 0,7278 [0,7016; 0,7524] | 0,6501 | +0,0165 |
 | Híbrido RRF | 0,7113 [0,6844; 0,7368] | 0,7194 | |
-| Híbrido + control sin grafo | 0,7292 [0,7031; 0,7536] | 0,7194 | +0,0179 [+0,0086; +0,0275] |
-| Híbrido + GraphSAGE | 0,7363 [0,7104; 0,7605] | 0,7194 | +0,0249 [+0,0152; +0,0351] |
+| Híbrido + control sin grafo (la configuración del agente) | 0,7292 [0,7031; 0,7536] | 0,7194 | +0,0179 [+0,0086; +0,0275] |
+| Híbrido + GraphSAGE (la variante del GNN) | 0,7363 [0,7104; 0,7605] | 0,7194 | +0,0249 [+0,0152; +0,0351] |
 
 GraphSAGE supera al control sin grafo en +0,0071 (IC 95 % [+0,0028; +0,0117]). Los rerankers reordenan los 50 primeros del híbrido, así que comparten su recall@50.
 

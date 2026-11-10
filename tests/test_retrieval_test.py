@@ -82,7 +82,8 @@ def test_summary_compares_every_system_with_hybrid_and_control():
         "protocol": {"fit_queries": 4, "seeds": [0, 1]}, "validation_ndcg@10": {final.HYBRID: 0.7403},
     }
     table = final.to_markdown(record)
-    assert "| Híbrido + GraphSAGE |" in table and "0,7403" in table and "commit `abc`" in table
+    assert "| Híbrido + GraphSAGE (la variante del GNN) |" in table and "0,7403" in table and "commit `abc`" in table
+    assert "| Híbrido + control sin grafo (la configuración del agente) |" in table
 
 
 def test_it_refuses_to_run_twice(tmp_path, monkeypatch):
@@ -90,3 +91,19 @@ def test_it_refuses_to_run_twice(tmp_path, monkeypatch):
     monkeypatch.setattr(sys, "argv", ["retrieval_test", "--out", str(tmp_path)])
     with pytest.raises(SystemExit, match="una sola vez"):
         final.main()
+
+
+def test_render_rewrites_the_table_without_running_anything(tmp_path, monkeypatch):
+    systems = {final.HYBRID: {final.NDCG: {"mean": 0.7, "ci95": [0.6, 0.8]}, final.RECALL: {"mean": 0.7, "ci95": [0.6, 0.8]}, "vs_hybrid": None}}
+    record = {
+        "date": "2026-11-10", "commit": "abc", "test_queries": 3, "systems": systems,
+        "protocol": {"fit_queries": 4, "seeds": [0]}, "validation_ndcg@10": {},
+    }
+    (tmp_path / f"{final.OUT_NAME}.json").write_text(json.dumps(record), encoding="utf-8")
+    validation = {"baselines": {final.HYBRID: {final.NDCG: 0.7403}}, "rerankers": {name: {final.NDCG: {"mean": 0.76}} for name in final.RERANKERS}}
+    (tmp_path / final.VALIDATION_FILE).write_text(json.dumps(validation), encoding="utf-8")
+    monkeypatch.setattr(final, "evaluate", lambda *args: pytest.fail("no debe evaluar"))
+    monkeypatch.setattr(sys, "argv", ["retrieval_test", "--out", str(tmp_path), "--render"])
+    final.main()
+    assert "0,7403" in (tmp_path / f"{final.OUT_NAME}.md").read_text(encoding="utf-8")
+    assert json.loads((tmp_path / f"{final.OUT_NAME}.json").read_text(encoding="utf-8"))["commit"] == "abc"

@@ -21,7 +21,9 @@ medir. Los intervalos son del 95 %, por bootstrap de consultas.
 
 Es el único módulo que lee las consultas de test. Para que no se use para ajustar
 nada, se niega a repetirse si el resultado ya existe (``--force`` lo permite, para
-el caso de que una corrida fallara a medias).
+el caso de que una corrida fallara a medias). ``--render`` vuelve a escribir la
+tabla a partir del resultado guardado, sin leer test: sirve para actualizar la
+columna de validación si esa tabla se regenera.
 """
 
 from __future__ import annotations
@@ -65,6 +67,8 @@ from shopping_agent.retrieval.train import (
 
 NDCG, RECALL = "ndcg@10", "recall@50"
 RERANKERS = {"control": "Híbrido + control sin grafo", "sage": "Híbrido + GraphSAGE"}
+# Papel de cada reranker en el agente; se muestra junto a su nombre en la tabla.
+ROLES = {"control": "la configuración del agente", "sage": "la variante del GNN"}
 HYBRID = "Híbrido RRF"
 OUT_NAME = "retrieval_test"
 VALIDATION_FILE = "reranker_validation.json"
@@ -220,7 +224,8 @@ def to_markdown(record: dict[str, Any]) -> str:
     ]
     for name, found in record["systems"].items():
         spread = f"± {_number(found['std'])}" if "std" in found else ""
-        cells = [name, _with_interval(found[NDCG]), spread, _with_interval(found[RECALL])]
+        role = f" ({ROLES[found['variant']]})" if found.get("variant") in ROLES else ""
+        cells = [name + role, _with_interval(found[NDCG]), spread, _with_interval(found[RECALL])]
         cells += [_difference(found["vs_hybrid"]), _difference(found.get("vs_control"))]
         cells.append(_number(validation[name]) if name in validation else "")
         lines.append("| " + " | ".join(cells) + " |")
@@ -249,13 +254,25 @@ def evaluate(data_dir: Path, seeds: int, device: str) -> dict[str, Any]:
     }
 
 
+def render(out_dir: Path) -> None:
+    """Reescribe la tabla desde el resultado guardado, con la validación que haya ahora. No lee test."""
+    record = json.loads((out_dir / f"{OUT_NAME}.json").read_text(encoding="utf-8"))
+    record["validation_ndcg@10"] = validation_ndcg(out_dir)
+    (out_dir / f"{OUT_NAME}.json").write_text(json.dumps(record, indent=2, ensure_ascii=False), encoding="utf-8")
+    (out_dir / f"{OUT_NAME}.md").write_text(to_markdown(record), encoding="utf-8")
+    print(to_markdown(record))
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Evaluación final de la recuperación en test (una sola vez).")
     parser.add_argument("--data", type=Path, default=DEFAULT_DATA_DIR)
     parser.add_argument("--seeds", type=int, default=5, help="semillas de entrenamiento, como en validación")
     parser.add_argument("--out", type=Path, default=Path("results"))
     parser.add_argument("--force", action="store_true", help="repite la evaluación aunque ya exista el resultado")
+    parser.add_argument("--render", action="store_true", help="solo reescribe la tabla desde el resultado guardado")
     args = parser.parse_args()
+    if args.render:
+        return render(args.out)
     target = args.out / f"{OUT_NAME}.json"
     if target.exists() and not args.force:
         sys.exit(f"{target} ya existe: la evaluación en test se hace una sola vez. Con --force se repite.")
