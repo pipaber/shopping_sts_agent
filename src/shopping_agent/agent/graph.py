@@ -21,9 +21,10 @@ datos, qué se le repite al usuario antes de comprar y cuándo se registra el pe
 from __future__ import annotations
 
 import sqlite3
-from collections.abc import Callable, Iterator
+from collections.abc import Callable, Iterable, Iterator
 from contextlib import contextmanager
 from pathlib import Path
+from dataclasses import replace
 from typing import Any
 
 from langchain_core.runnables import RunnableConfig
@@ -35,10 +36,24 @@ from langgraph.types import interrupt
 from shopping_agent.agent import render, tools
 from shopping_agent.agent.llm import DecisionLLM, LLMError
 from shopping_agent.agent.search import CatalogSearch
-from shopping_agent.agent.state import AgentState, Candidate, CartLine, Step
+from shopping_agent.agent.state import (
+    AgentState,
+    Candidate,
+    CartLine,
+    Decision,
+    Order,
+    PricedLine,
+    Quote,
+    Step,
+    Update,
+    cart_total,
+    decision_args,
+    issue_record,
+    new_turn,
+)
 from shopping_agent.store import ops
 from shopping_agent.store.db import connect
-from shopping_agent.store.ops import format_eur
+from shopping_agent.store.ops import Issue, format_eur
 
 MAX_STEPS = 6  # decisiones del LLM por turno
 SHOWN_CANDIDATES = 5
@@ -54,7 +69,7 @@ CANCELLED = "De acuerdo, no registro el pedido. Tu carrito sigue como estaba; di
 
 
 def _by_route(state: AgentState) -> str:
-    return state["route"]
+    return state.route
 
 
 def build_graph(
@@ -80,38 +95,49 @@ def build_graph(
     def user_id(config: RunnableConfig) -> str:
         return str(config.get("configurable", {}).get("user_id", "anonimo"))
 
+    def priced_line(item: dict[str, Any]) -> PricedLine:
+        return PricedLine(
+            product_id=item["product_id"],
+            title=search.title(item["product_id"]),
+            quantity=item["quantity"],
+            unit_price_cents=item["unit_price_cents"],
+            subtotal_cents=item["subtotal_cents"],
+        )
+
+    def cart_line(item: dict[str, Any]) -> CartLine:
+        return CartLine(**priced_line(item), stock=item["stock"])
+
     def read_cart(conn: sqlite3.Connection, config: RunnableConfig) -> list[CartLine]:
-        cart = ops.get_cart(conn, cart_id(config)).data
-        return [{**item, "title": search.title(item["product_id"])} for item in cart["items"]]  # type: ignore[misc]
+        return [cart_line(item) for item in ops.get_cart(conn, cart_id(config)).data["items"]]
+
+    def priced(conn: sqlite3.Connection, product_id: str, *chars: int) -> Candidate:
+        """Evidencia del catálogo con el precio y las existencias de ahora."""
+        offer = ops.price_and_stock(conn, product_id).data
+        return Candidate(**search.evidence(product_id, *chars), price_cents=offer["price_cents"], stock=offer["stock"])
 
     def candidate(conn: sqlite3.Connection, product_id: str) -> Candidate | None:
-        offer = ops.price_and_stock(conn, product_id)
-        if not offer.ok or product_id not in search:
+        if product_id not in search or not ops.price_and_stock(conn, product_id).ok:
             return None
-        return {  # type: ignore[return-value]
-            **search.evidence(product_id),
-            "price_cents": offer.data["price_cents"],
-            "stock": offer.data["stock"],
-        }
+        return priced(conn, product_id)
 
-    def step(state: AgentState, ok: bool, summary: str, result: Any = None, issues: Any = ()) -> Step:
-        decision = state.get("decision") or {}
-        return {
-            "turn": state.get("turn", 0),
-            "tool": str(decision.get("herramienta")),
-            "args": tools.decision_args(decision),
-            "reason": str(decision.get("motivo", "")),
-            "ok": ok,
-            "summary": summary,
-            "result": result,
-            "issues": [issue.to_dict() for issue in issues],
-        }
+    def step(state: AgentState, ok: bool, summary: str, result: Any = None, issues: Iterable[Issue] = ()) -> Step:
+        decision = state.decision
+        return Step(
+            turn=state.turn,
+            tool=str(decision.get("herramienta")),
+            args=decision_args(decision),
+            reason=str(decision.get("motivo", "")),
+            ok=ok,
+            summary=summary,
+            result=result,
+            issues=[issue_record(issue) for issue in issues],
+        )
 
-    def record(state: AgentState, entry: Step, **update: Any) -> dict[str, Any]:
+    def record(state: AgentState, entry: Step, **update: Any) -> Update:
         """Añade el paso a los del turno y al registro de operaciones."""
-        return {"steps": [*(state.get("steps") or []), entry], "ops_log": [entry], **update}
+        return {"steps": [*state.steps, entry], "ops_log": [entry], **update}
 
-    def rejection(issues: Any) -> str:
+    def rejection(issues: Iterable[Issue]) -> str:
         parts = []
         for issue in issues:
             extra = ""
@@ -125,44 +151,34 @@ def build_graph(
 
     # --- Nodos ---------------------------------------------------------------------
 
-    def iniciar_turno(state: AgentState, config: RunnableConfig) -> dict[str, Any]:
+    def iniciar_turno(state: AgentState, config: RunnableConfig) -> Update:
         """Anota el mensaje, sincroniza el estado con la tienda y reinicia el trabajo del turno."""
-        text = (state.get("user_input") or "").strip()
-        update: dict[str, Any] = {
-            "messages": [{"role": "user", "content": text}],
-            "turn": state.get("turn", 0) + 1,
-            "steps": [],
-            "decision": None,
-            "cart_changed": False,
-            "budget_changed": False,
-            "confirm_issues": [],
-            "response": "",
-            "route": "interpretar",
-        }
+        text = state.user_input.strip()
+        update = {**new_turn(state, text), "route": "interpretar"}
         with shop() as conn:
-            update["cart"] = read_cart(conn, config)
-            refreshed = [candidate(conn, c["product_id"]) for c in state.get("candidates") or []]
-            update["candidates"] = [c for c in refreshed if c is not None]
-
-        if not state.get("messages") and store is not None:
+            cart = read_cart(conn, config)
+            refreshed = [candidate(conn, c["product_id"]) for c in state.candidates]
+        candidates = [c for c in refreshed if c is not None]
+        preferences = state.preferences
+        if not state.messages and store is not None:
             # Primera vez en este hilo: recupera las preferencias guardadas del usuario.
             profile = store.get((PROFILE_NAMESPACE, user_id(config)), "perfil")
             if profile is not None:
-                update["preferences"] = list(profile.value.get("preferencias", []))
+                preferences = list(profile.value.get("preferencias", []))
+        update.update(cart=cart, candidates=candidates, preferences=preferences)
 
         if not text:
             update.update(response=EMPTY_INPUT, route="responder")
             return update
         # El LLM ve el estado tal como está al empezar el turno; lo que cambie después
         # le llega en el resultado de cada herramienta.
-        context = render.render_state({**state, **update})  # type: ignore[typeddict-item]
+        context = render.render_state(replace(state, cart=cart, candidates=candidates, preferences=preferences))
         hint = render.amount_hint(text)
         update["turn_context"] = f"{context}\n{hint}" if hint else context
 
         # Repetir la confirmación justo después de registrar el pedido no pasa por el
         # LLM: se vuelve a confirmar la misma cotización, que es idempotente.
-        order = state.get("order")
-        history = state.get("messages") or []
+        order, history = state.order, state.messages
         if (
             order
             and history
@@ -172,10 +188,10 @@ def build_graph(
             update["route"] = "registrar_pedido"
         return update
 
-    def interpretar(state: AgentState) -> dict[str, Any]:
+    def interpretar(state: AgentState) -> Update:
         """El LLM propone el siguiente paso; el código decide a qué nodo va."""
-        steps = state.get("steps") or []
-        decision: dict[str, Any] | None = None
+        steps = state.steps
+        decision: Decision | None = None
         if len(steps) < MAX_STEPS:
             schema = tools.decision_schema(tools.known_product_ids(state))
             try:
@@ -184,14 +200,14 @@ def build_graph(
                 decision = None
             if decision is not None and steps:
                 last = steps[-1]
-                if decision.get("herramienta") == last.get("tool") and tools.decision_args(decision) == last.get("args"):
+                if decision.get("herramienta") == last["tool"] and decision_args(decision) == last["args"]:
                     decision = None  # repetir el mismo paso no aporta nada
 
         if decision is None:
             # Respuesta de respaldo: el último rechazo de la tienda, que sí es para el usuario.
             text = FALLBACK
             for previous in reversed(steps):
-                reasons = [i["message"] for i in previous.get("issues", []) if i["code"] not in tools.INTERNAL_CODES]
+                reasons = [i["message"] for i in previous["issues"] if i["code"] not in tools.INTERNAL_CODES]
                 if reasons:
                     text = "No he podido completar la operación. " + " ".join(reasons)
                     break
@@ -199,7 +215,7 @@ def build_graph(
             return {"decision": decision, "response": text, "route": "responder"}
 
         tool = decision.get("herramienta")
-        update: dict[str, Any] = {"decision": decision}
+        update: Update = {"decision": decision}
         if tool == tools.RESPOND:
             text = decision.get("texto")
             # Una sola línea: la respuesta se leerá en voz alta.
@@ -215,23 +231,23 @@ def build_graph(
             update["route"] = "validar"
         return update
 
-    def validar_respuesta(state: AgentState) -> dict[str, Any]:
+    def validar_respuesta(state: AgentState) -> Update:
         """Comprueba la respuesta del LLM contra lo que tuvo delante; si no se sostiene, se la devuelve."""
-        history = list(state.get("messages") or [])
+        history = state.messages
         evidence = "\n".join(
             [
-                state.get("turn_context", ""),
+                state.turn_context,
                 *(message["content"] for message in history[-render.HISTORY_MESSAGES - 1 :]),
-                *(str(previous.get("summary", "")) for previous in state.get("steps") or []),
+                *(previous["summary"] for previous in state.steps),
             ]
         )
-        issues = tools.check_response(state.get("response", ""), evidence, has_order=bool(state.get("order")))
+        issues = tools.check_response(state.response, evidence, has_order=state.order is not None)
         if issues:
             return record(state, step(state, False, rejection(issues), issues=issues), route="interpretar")
         return {"route": "responder"}
 
-    def pedir_aclaracion(state: AgentState) -> dict[str, Any]:
-        question = (state.get("decision") or {}).get("pregunta")
+    def pedir_aclaracion(state: AgentState) -> Update:
+        question = state.decision.get("pregunta")
         question = " ".join(question.split()) if isinstance(question, str) else ""
         question = question or EMPTY_INPUT
         entry = step(state, True, "pregunta enviada al usuario")
@@ -242,15 +258,15 @@ def build_graph(
             "ops_log": [entry],
         }
 
-    def recuperar(state: AgentState) -> dict[str, Any]:
+    def recuperar(state: AgentState) -> Update:
         """Búsqueda híbrida en el catálogo; guarda los candidatos con su evidencia."""
-        query = (state.get("decision") or {}).get("consulta")
+        query = state.decision.get("consulta")
         if not isinstance(query, str) or not query.strip():
-            issue = ops.Issue(tools.INVALID_ARGS, "La consulta de búsqueda está vacía.")
+            issue = Issue(tools.INVALID_ARGS, "La consulta de búsqueda está vacía.")
             return record(state, step(state, False, rejection([issue]), issues=[issue]))
 
-        budget = state.get("budget_cents")
-        remaining = None if budget is None else budget - render.cart_total(state.get("cart") or [])
+        budget = state.budget_cents
+        remaining = None if budget is None else budget - cart_total(state.cart)
         with shop() as conn:
             found = [candidate(conn, product_id) for product_id in search.rank(query, top=50)]
         ranked = [c for c in found if c is not None]
@@ -265,37 +281,38 @@ def build_graph(
         shown = ordered[:SHOWN_CANDIDATES]
         summary = "la búsqueda no devolvió ningún producto."
         if shown:
-            rows = "\n".join(render.candidate_line(i, c) for i, c in enumerate(shown, 1))  # type: ignore[arg-type]
+            rows = "\n".join(render.candidate_line(i, c) for i, c in enumerate(shown, 1))
             summary = f"estos son ahora los CANDIDATOS, del más al menos relevante:\n{rows}"
         entry = step(state, True, summary, result=[c["product_id"] for c in shown])
         return record(state, entry, candidates=shown, last_query=query.strip())
 
-    def validar(state: AgentState) -> dict[str, Any]:
+    def validar(state: AgentState) -> Update:
         """Comprueba la llamada antes de tocar la tienda; si no vale, vuelve al LLM con el motivo."""
-        decision = state.get("decision") or {}
-        issues = tools.validate_call(decision.get("herramienta"), tools.decision_args(decision), state)
+        decision = state.decision
+        issues = tools.validate_call(decision.get("herramienta"), decision_args(decision), state)
         if issues:
             return record(state, step(state, False, rejection(issues), issues=issues), route="interpretar")
         return {"route": "ejecutar_herramienta"}
 
-    def ejecutar_herramienta(state: AgentState, config: RunnableConfig) -> dict[str, Any]:
+    def ejecutar_herramienta(state: AgentState, config: RunnableConfig) -> Update:
         """Ejecuta una herramienta ya validada. Stock y presupuesto los decide ``store.ops``."""
-        decision = state.get("decision") or {}
-        tool, args = decision["herramienta"], tools.decision_args(decision)
-        budget = state.get("budget_cents")
+        decision = state.decision
+        tool, args = decision["herramienta"], decision_args(decision)
+        budget = state.budget_cents
 
         if tool == tools.SET_BUDGET:
             cents = tools.budget_to_cents(args["importe_eur"])
-            total = render.cart_total(state.get("cart") or [])
-            summary = f"presupuesto fijado en {format_eur(cents)}."  # type: ignore[arg-type]
-            if cents is not None and total > cents:
+            assert cents is not None  # lo garantiza la validación previa
+            total = cart_total(state.cart)
+            summary = f"presupuesto fijado en {format_eur(cents)}."
+            if total > cents:
                 summary += f" Aviso: el carrito suma {format_eur(total)} y lo supera en {format_eur(total - cents)}."
             entry = step(state, True, summary, result={"budget_cents": cents})
             return record(state, entry, budget_cents=cents, quote=None, budget_changed=True)
 
         if tool == tools.SAVE_PREFERENCE:
             preference = args["preferencia"].strip()
-            preferences = list(dict.fromkeys([*(state.get("preferences") or []), preference]))
+            preferences = list(dict.fromkeys([*state.preferences, preference]))
             if store is not None:
                 store.put((PROFILE_NAMESPACE, user_id(config)), "perfil", {"preferencias": preferences})
             return record(state, step(state, True, "preferencia guardada.", result=preferences), preferences=preferences)
@@ -303,11 +320,8 @@ def build_graph(
         with shop() as conn:
             if tool in (tools.DETAIL, tools.COMPARE):
                 ids = [args["product_id"]] if tool == tools.DETAIL else list(dict.fromkeys(args["product_ids"]))
-                rows = []
-                for product_id in ids:
-                    offer = ops.price_and_stock(conn, product_id).data
-                    evidence = search.evidence(product_id, *(DETAIL_CHARS if tool == tools.DETAIL else COMPARE_CHARS))
-                    rows.append({**evidence, "price_cents": offer["price_cents"], "stock": offer["stock"]})
+                chars = DETAIL_CHARS if tool == tools.DETAIL else COMPARE_CHARS
+                rows = [priced(conn, product_id, *chars) for product_id in ids]
                 summary = "\n" + "\n".join(render.candidate_line(i, row) for i, row in enumerate(rows, 1))
                 return record(state, step(state, True, summary, result=[row["product_id"] for row in rows]))
 
@@ -335,28 +349,28 @@ def build_graph(
         if not result.ok:
             return record(state, step(state, False, rejection(result.issues), issues=result.issues), cart=cart)
         summary = f"hecho. Así queda el carrito.\n{render.render_cart(cart)}"
-        entry = step(state, True, summary, result={"total_cents": render.cart_total(cart)})
+        entry = step(state, True, summary, result={"total_cents": cart_total(cart)})
         # Cualquier cambio en el carrito invalida la cotización anterior.
         return record(state, entry, cart=cart, quote=None, cart_changed=True)
 
-    def cotizar(state: AgentState, config: RunnableConfig) -> dict[str, Any]:
+    def cotizar(state: AgentState, config: RunnableConfig) -> Update:
         """Congela el carrito en una cotización y redacta lo que se repite al usuario."""
         with shop() as conn:
-            result = ops.create_quote(conn, cart_id(config), state.get("budget_cents"))
+            result = ops.create_quote(conn, cart_id(config), state.budget_cents)
             cart = read_cart(conn, config)
         if not result.ok:
             entry = step(state, False, rejection(result.issues), issues=result.issues)
             return record(state, entry, cart=cart, route="interpretar")
         data = result.data
-        items = [{**item, "title": search.title(item["product_id"])} for item in data["items"]]
-        message = render.quote_message(items, data["total_cents"], data["budget_cents"])  # type: ignore[arg-type]
-        quote = {
-            "quote_id": data["quote_id"],
-            "items": items,
-            "total_cents": data["total_cents"],
-            "budget_cents": data["budget_cents"],
-            "message": message,
-        }
+        items = [cart_line(item) for item in data["items"]]
+        message = render.quote_message(items, data["total_cents"], data["budget_cents"])
+        quote = Quote(
+            quote_id=data["quote_id"],
+            items=items,
+            total_cents=data["total_cents"],
+            budget_cents=data["budget_cents"],
+            message=message,
+        )
         entry = step(state, True, "cotización creada; falta la confirmación del usuario.", result=quote["quote_id"])
         return record(
             state,
@@ -369,10 +383,10 @@ def build_graph(
             route="confirmar",
         )
 
-    def confirmar(state: AgentState) -> dict[str, Any]:
+    def confirmar(state: AgentState) -> Update:
         """Pausa hasta que el usuario conteste a la cotización. Sin efectos antes del ``interrupt``."""
-        quote = state["quote"]
-        assert quote is not None
+        quote = state.quote
+        assert quote is not None  # a este nodo solo se llega desde cotizar
         answer = interrupt(
             {
                 "tipo": "confirmacion_pedido",
@@ -386,35 +400,29 @@ def build_graph(
         if verdict == "otro":
             # No es un sí ni un no: no se compra nada y el mensaje se atiende como turno nuevo.
             return {"user_input": text, "route": "iniciar_turno"}
-        update: dict[str, Any] = {
-            "messages": [{"role": "user", "content": text}],
-            "turn": state.get("turn", 0) + 1,
-            "steps": [],
-            "decision": None,
-            "cart_changed": False,
-            "budget_changed": False,
-        }
+        update = new_turn(state, text)
         if verdict == "si":
             return {**update, "route": "registrar_pedido"}
         return {**update, "quote": None, "response": CANCELLED, "route": "responder"}
 
-    def registrar_pedido(state: AgentState, config: RunnableConfig) -> dict[str, Any]:
+    def registrar_pedido(state: AgentState, config: RunnableConfig) -> Update:
         """Confirma la cotización en una transacción que vuelve a comprobarlo todo."""
-        quote, previous = state.get("quote"), state.get("order")
-        quote_id = quote["quote_id"] if quote else previous["quote_id"]  # type: ignore[index]
+        pending = state.quote or state.order  # la cotización a confirmar o, si se repite el sí, la ya confirmada
+        assert pending is not None
+        quote_id = pending["quote_id"]
         with shop() as conn:
             result = ops.confirm_quote(conn, quote_id)
             cart = read_cart(conn, config)
-        entry: Step = {
-            "turn": state.get("turn", 0),
-            "tool": "confirmar_pedido",
-            "args": {"quote_id": quote_id},
-            "reason": "el usuario confirmó la cotización",
-            "ok": result.ok,
-            "summary": "pedido registrado" if result.ok else rejection(result.issues),
-            "result": result.data or None,
-            "issues": [issue.to_dict() for issue in result.issues],
-        }
+        entry = Step(
+            turn=state.turn,
+            tool="confirmar_pedido",
+            args={"quote_id": quote_id},
+            reason="el usuario confirmó la cotización",
+            ok=result.ok,
+            summary="pedido registrado" if result.ok else rejection(result.issues),
+            result=result.data or None,
+            issues=[issue_record(issue) for issue in result.issues],
+        )
         if not result.ok:
             return {
                 "ops_log": [entry],
@@ -424,7 +432,7 @@ def build_graph(
                 "route": "proponer_alternativa",
             }
         data = result.data
-        items = [{**item, "title": search.title(item["product_id"])} for item in data["items"]]
+        items = [priced_line(item) for item in data["items"]]
         if data["already_confirmed"]:
             entry["summary"] = "el pedido ya estaba registrado; no se duplicó"
             message = (
@@ -433,28 +441,28 @@ def build_graph(
             )
         else:
             message = render.order_message(data["order_id"], items, data["total_cents"])
-        order = {
-            "order_id": data["order_id"],
-            "quote_id": data["quote_id"],
-            "items": items,
-            "total_cents": data["total_cents"],
-            "message": message,
-        }
+        order = Order(
+            order_id=data["order_id"],
+            quote_id=data["quote_id"],
+            items=items,
+            total_cents=data["total_cents"],
+            message=message,
+        )
         return {"ops_log": [entry], "cart": cart, "quote": None, "order": order, "response": message, "route": "responder"}
 
-    def proponer_alternativa(state: AgentState, config: RunnableConfig) -> dict[str, Any]:
+    def proponer_alternativa(state: AgentState, config: RunnableConfig) -> Update:
         """La confirmación falló: explica qué cambió y propone una salida, sin LLM."""
-        issues = state.get("confirm_issues") or []
-        cart = state.get("cart") or []
-        budget = state.get("budget_cents")
-        total = render.cart_total(cart)
+        issues = state.confirm_issues
+        cart = state.cart
+        budget = state.budget_cents
+        total = cart_total(cart)
         parts = ["No he registrado el pedido porque la tienda cambió después de la cotización."]
         alternatives: list[Candidate] = []
 
         with shop() as conn:
             for issue in issues:
-                code, product_id = issue["code"], issue.get("product_id")
-                if code not in (ops.OUT_OF_STOCK, ops.INSUFFICIENT_STOCK):
+                code, product_id = issue["code"], issue["product_id"]
+                if product_id is None or code not in (ops.OUT_OF_STOCK, ops.INSUFFICIENT_STOCK):
                     parts.append(issue["message"])
                     continue
                 line = next((item for item in cart if item["product_id"] == product_id), None)
@@ -490,18 +498,18 @@ def build_graph(
         if any(issue["code"] in (ops.PRICE_CHANGED, ops.STALE_QUOTE, ops.BUDGET_EXCEEDED) for issue in issues):
             parts.append("Puedo preparar una cotización nueva con los datos actuales.")
         parts.append("¿Qué prefieres?")
-        update: dict[str, Any] = {"response": " ".join(parts), "route": "responder"}
+        update: Update = {"response": " ".join(parts), "route": "responder"}
         if alternatives:
             update.update(candidates=alternatives, last_query=None)
         return update
 
-    def responder(state: AgentState) -> dict[str, Any]:
+    def responder(state: AgentState) -> Update:
         """Cierra el turno. Si el carrito cambió, el código añade su contenido exacto."""
-        text = state.get("response") or FALLBACK
-        if state.get("cart_changed") or (state.get("budget_changed") and state.get("cart")):
+        text = state.response or FALLBACK
+        if state.cart_changed or (state.budget_changed and state.cart):
             text = f"{text} {render.cart_summary(state)}"
-        elif state.get("budget_changed"):
-            text = f"{text} He anotado un presupuesto de {format_eur(state['budget_cents'])}."  # type: ignore[arg-type]
+        elif state.budget_changed and state.budget_cents is not None:
+            text = f"{text} He anotado un presupuesto de {format_eur(state.budget_cents)}."
         return {
             "response": text,
             "messages": [{"role": "assistant", "content": text}],
@@ -510,7 +518,7 @@ def build_graph(
 
     # --- Grafo -----------------------------------------------------------------------
 
-    nodes: dict[str, Callable[..., dict[str, Any]]] = {
+    nodes: dict[str, Callable[..., Update]] = {
         "iniciar_turno": iniciar_turno,
         "interpretar": interpretar,
         "validar_respuesta": validar_respuesta,
@@ -528,8 +536,8 @@ def build_graph(
     for name, node in nodes.items():
         builder.add_node(name, node)
 
-    def routes(*names: str) -> dict[str, str]:
-        return {name: name for name in names}
+    def routes(*names: str) -> list[str]:
+        return list(names)
 
     builder.add_edge(START, "iniciar_turno")
     builder.add_conditional_edges("iniciar_turno", _by_route, routes("interpretar", "registrar_pedido", "responder"))

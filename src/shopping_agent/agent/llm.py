@@ -15,7 +15,7 @@ import re
 import time
 from collections.abc import Callable
 from pathlib import Path
-from typing import Any, Protocol
+from typing import Any, Protocol, cast
 
 # Modelo por defecto (ver documentation/PLAN.md). Se cambia con variables de entorno.
 DEFAULT_REPO = "Qwen/Qwen2.5-7B-Instruct-GGUF"
@@ -89,15 +89,20 @@ class LocalLLM:
 
     def decide(self, messages: Messages, schema: dict[str, Any]) -> dict[str, Any]:
         start = time.perf_counter()
-        output = self.llm.create_chat_completion(
-            messages=messages,  # type: ignore[arg-type]
-            response_format={"type": "json_object", "schema": schema},
-            temperature=0.0,
-            max_tokens=self.max_tokens,
+        # llama-cpp tipa los mensajes y la respuesta con sus propias clases; aquí se
+        # usan como los diccionarios que son (sin ``stream`` la respuesta es una sola).
+        output = cast(
+            dict[str, Any],
+            self.llm.create_chat_completion(
+                messages=cast(Any, messages),
+                response_format={"type": "json_object", "schema": schema},
+                temperature=0.0,
+                max_tokens=self.max_tokens,
+            ),
         )
         elapsed = time.perf_counter() - start
-        choice = output["choices"][0]  # type: ignore[index]
-        usage = output.get("usage", {})  # type: ignore[union-attr]
+        choice = output["choices"][0]
+        usage = output.get("usage", {})
         self.calls.append(
             {
                 "seconds": elapsed,

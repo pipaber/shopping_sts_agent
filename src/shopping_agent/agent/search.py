@@ -8,7 +8,7 @@ módulo del agente.
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Any, Protocol
+from typing import Protocol, TypedDict
 
 import numpy as np
 import pandas as pd
@@ -26,6 +26,18 @@ EVIDENCE_FIELDS = {
     "bullets": "product_bullet_point",
     "description": "product_description",
 }
+
+
+class Evidence(TypedDict):
+    """Texto del catálogo para un producto. ``None`` significa que el catálogo no
+    trae ese dato (desconocido)."""
+
+    product_id: str
+    title: str
+    brand: str | None
+    color: str | None
+    bullets: str | None
+    description: str | None
 
 
 class Scorer(Protocol):
@@ -78,18 +90,22 @@ class CatalogSearch:
         fused = rrf([lexical, self.dense.score([query])])[0]
         return [self.product_ids[row] for row in np.argsort(-fused, kind="stable")[:top]]
 
-    def evidence(self, product_id: str, bullets_chars: int = 240, description_chars: int = 200) -> dict[str, Any]:
+    def evidence(self, product_id: str, bullets_chars: int = 240, description_chars: int = 200) -> Evidence:
         """Texto del catálogo para un producto, recortado para caber en el contexto.
 
         Los campos que el catálogo no trae quedan en ``None`` (desconocidos).
         """
         record = self.catalog.iloc[self._row[product_id]]
         fields = {name: clean(record[column]) or None for name, column in EVIDENCE_FIELDS.items()}
-        if fields["bullets"]:
-            fields["bullets"] = _truncate(fields["bullets"], bullets_chars)
-        if fields["description"]:
-            fields["description"] = _truncate(fields["description"], description_chars)
-        return {"product_id": product_id, **fields, "title": fields["title"] or product_id}
+        bullets, description = fields["bullets"], fields["description"]
+        return Evidence(
+            product_id=product_id,
+            title=fields["title"] or product_id,
+            brand=fields["brand"],
+            color=fields["color"],
+            bullets=_truncate(bullets, bullets_chars) if bullets else None,
+            description=_truncate(description, description_chars) if description else None,
+        )
 
     def title(self, product_id: str) -> str:
         if product_id not in self._row:

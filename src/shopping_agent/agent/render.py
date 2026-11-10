@@ -9,9 +9,9 @@ from __future__ import annotations
 
 import json
 import re
-from typing import Any
+from collections.abc import Sequence
 
-from shopping_agent.agent.state import AgentState, CartLine, Step
+from shopping_agent.agent.state import AgentState, Candidate, CartLine, PricedLine, Step, cart_total
 from shopping_agent.agent.tools import TOOL_DOCS
 from shopping_agent.store.ops import format_eur
 
@@ -78,7 +78,7 @@ def _field(value: object) -> str:
     return str(value) if value not in (None, "") else UNKNOWN
 
 
-def candidate_line(index: int, candidate: dict[str, Any]) -> str:
+def candidate_line(index: int, candidate: Candidate) -> str:
     stock = candidate["stock"]
     return (
         f"[{index}] id={candidate['product_id']} | {candidate['title']} | marca: {_field(candidate['brand'])}"
@@ -89,16 +89,12 @@ def candidate_line(index: int, candidate: dict[str, Any]) -> str:
     )
 
 
-def cart_lines_text(lines: list[CartLine]) -> str:
+def cart_lines_text(lines: Sequence[PricedLine]) -> str:
     return "; ".join(
         f"{units(line['quantity'])} de «{short_title(line['title'])}» a {format_eur(line['unit_price_cents'])}"
         f" cada una, {format_eur(line['subtotal_cents'])}"
         for line in lines
     )
-
-
-def cart_total(lines: list[CartLine]) -> int:
-    return sum(line["subtotal_cents"] for line in lines)
 
 
 def budget_text(total_cents: int, budget_cents: int | None) -> str:
@@ -111,15 +107,15 @@ def budget_text(total_cents: int, budget_cents: int | None) -> str:
 
 def cart_summary(state: AgentState) -> str:
     """Resumen del carrito que el código añade a la respuesta cuando cambia."""
-    lines = state.get("cart") or []
-    budget = state.get("budget_cents")
+    lines = state.cart
+    budget = state.budget_cents
     if not lines:
         return "El carrito está vacío."
     total = cart_total(lines)
     return f"En el carrito hay {cart_lines_text(lines)}. Total: {format_eur(total)}.{budget_text(total, budget)}"
 
 
-def quote_message(lines: list[CartLine], total_cents: int, budget_cents: int | None) -> str:
+def quote_message(lines: Sequence[PricedLine], total_cents: int, budget_cents: int | None) -> str:
     """Lo que se repite al usuario antes de registrar nada."""
     return (
         f"Te repito el pedido antes de registrarlo: {cart_lines_text(lines)}. "
@@ -128,9 +124,9 @@ def quote_message(lines: list[CartLine], total_cents: int, budget_cents: int | N
     )
 
 
-def order_message(order_id: int, items: list[dict[str, Any]], total_cents: int) -> str:
+def order_message(order_id: int, items: Sequence[PricedLine], total_cents: int) -> str:
     return (
-        f"Pedido número {order_id} registrado: {cart_lines_text(items)}. "  # type: ignore[arg-type]
+        f"Pedido número {order_id} registrado: {cart_lines_text(items)}. "
         f"Total: {format_eur(total_cents)}. Gracias por tu compra."
     )
 
@@ -164,25 +160,25 @@ def amount_hint(text: str) -> str:
 
 
 def render_state(state: AgentState) -> str:
-    budget = state.get("budget_cents")
-    cart = state.get("cart") or []
-    candidates = state.get("candidates") or []
+    budget = state.budget_cents
+    cart = state.cart
+    candidates = state.candidates
     parts = [f"PRESUPUESTO: {format_eur(budget) if budget is not None else 'sin fijar'}"]
-    parts.append("PREFERENCIAS: " + ("; ".join(state.get("preferences") or []) or "ninguna"))
+    parts.append("PREFERENCIAS: " + ("; ".join(state.preferences) or "ninguna"))
     parts.append(render_cart(cart))
     if candidates:
-        query = state.get("last_query")
+        query = state.last_query
         header = f'CANDIDATOS (última búsqueda: "{query}"):' if query else "CANDIDATOS:"
-        parts.append(header + "\n" + "\n".join(candidate_line(i, c) for i, c in enumerate(candidates, 1)))  # type: ignore[arg-type]
+        parts.append(header + "\n" + "\n".join(candidate_line(i, c) for i, c in enumerate(candidates, 1)))
     else:
         parts.append("CANDIDATOS: ninguno (todavía no se ha buscado)")
-    quote = state.get("quote")
+    quote = state.quote
     if quote:
         parts.append(f"COTIZACIÓN PENDIENTE DE CONFIRMAR: total {format_eur(quote['total_cents'])}")
-    order = state.get("order")
+    order = state.order
     if order:
         parts.append(f"PEDIDO REGISTRADO: número {order['order_id']}, total {format_eur(order['total_cents'])}")
-    pending = state.get("pending_clarification")
+    pending = state.pending_clarification
     if pending:
         parts.append(f'ACLARACIÓN PENDIENTE: preguntaste "{pending}"; el mensaje del usuario es su respuesta.')
     return "\n".join(parts)
@@ -190,14 +186,14 @@ def render_state(state: AgentState) -> str:
 
 def decision_json(step: Step) -> str:
     """La decisión del LLM tal como la emitió, para devolvérsela como turno suyo."""
-    decision = {"motivo": step.get("reason", ""), "herramienta": step.get("tool"), **step.get("args", {})}
+    decision = {"motivo": step["reason"], "herramienta": step["tool"], **step["args"]}
     return json.dumps(decision, ensure_ascii=False)
 
 
 def result_message(step: Step) -> str:
-    status = "OK" if step.get("ok") else "RECHAZADO"
+    status = "OK" if step["ok"] else "RECHAZADO"
     return (
-        f"RESULTADO de {step.get('tool')} ({status}): {step.get('summary', '')}\n\n"
+        f"RESULTADO de {step['tool']} ({status}): {step['summary']}\n\n"
         "Elige el siguiente paso. Si ya puedes contestar al usuario, usa responder."
     )
 
@@ -209,19 +205,19 @@ def build_messages(state: AgentState) -> list[dict[str, str]]:
     Dentro de un turno la lista solo crece por el final, así que llama.cpp reutiliza
     todo el prefijo ya evaluado y cada paso cuesta solo los tokens nuevos.
     """
-    history = list(state.get("messages") or [])
-    current = history.pop()["content"] if history and history[-1]["role"] == "user" else state.get("user_input", "")
+    history = list(state.messages)
+    current = history.pop()["content"] if history and history[-1]["role"] == "user" else state.user_input
     messages = [{"role": "system", "content": SYSTEM_PROMPT}]
     for message in history[-HISTORY_MESSAGES:]:
         content = message["content"]
         if len(content) > HISTORY_CHARS:
             content = content[:HISTORY_CHARS] + "…"
         messages.append({"role": message["role"], "content": content})
-    context = state.get("turn_context") or render_state(state)
+    context = state.turn_context or render_state(state)
     messages.append(
         {"role": "user", "content": f"{context}\n\nMENSAJE DEL USUARIO: {current}\n\nElige el primer paso."}
     )
-    for step in state.get("steps") or []:
+    for step in state.steps:
         messages.append({"role": "assistant", "content": decision_json(step)})
         messages.append({"role": "user", "content": result_message(step)})
     return messages

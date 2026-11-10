@@ -69,11 +69,12 @@ def open_memory(url: str | None = None, *, volatile: bool = False, pool_size: in
 
     from langgraph.checkpoint.postgres import PostgresSaver
     from langgraph.store.postgres import PostgresStore
-    from psycopg.rows import dict_row
+    from psycopg import Connection
+    from psycopg.rows import DictRow, dict_row
     from psycopg_pool import ConnectionPool
 
     # Los parámetros de conexión son los que piden PostgresSaver y PostgresStore.
-    pool = ConnectionPool(
+    pool: ConnectionPool[Connection[DictRow]] = ConnectionPool(
         url,
         min_size=1,
         max_size=pool_size,

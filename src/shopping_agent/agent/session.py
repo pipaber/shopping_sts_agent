@@ -13,7 +13,7 @@ from typing import Any
 
 from langgraph.types import Command
 
-from shopping_agent.agent.state import AgentState, Step
+from shopping_agent.agent.state import Step
 
 RECURSION_LIMIT = 80  # cada decisión del LLM son hasta tres nodos
 
@@ -44,7 +44,8 @@ class ShoppingSession:
         }
 
     @property
-    def state(self) -> AgentState:
+    def state(self) -> dict[str, Any]:
+        """Valores guardados del estado. Solo trae los campos ya escritos por algún nodo."""
         return self.graph.get_state(self.config).values
 
     @property

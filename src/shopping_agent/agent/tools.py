@@ -62,13 +62,9 @@ TOOL_DOCS = {
 
 def known_product_ids(state: AgentState) -> list[str]:
     """Productos a los que el LLM puede referirse: candidatos y carrito, sin repetir."""
-    ids = [candidate["product_id"] for candidate in state.get("candidates") or []]
-    ids += [line["product_id"] for line in state.get("cart") or []]
+    ids = [candidate["product_id"] for candidate in state.candidates]
+    ids += [line["product_id"] for line in state.cart]
     return list(dict.fromkeys(ids))
-
-
-def decision_args(decision: dict[str, Any]) -> dict[str, Any]:
-    return {key: value for key, value in decision.items() if key not in ("motivo", "herramienta")}
 
 
 def _tool_schema(name: str, **properties: dict[str, Any]) -> dict[str, Any]:
