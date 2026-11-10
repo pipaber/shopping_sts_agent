@@ -26,6 +26,7 @@ from shopping_agent.voice.pipeline import STAGES, TOTAL, VoiceTurn, comparable_s
 from shopping_agent.voice.report import STAGE_LABELS, timing_lines, turn_lines
 
 DEFAULT_DIR = Path("results/escenarios")
+BASELINE_DIR = Path("results/escenarios_base")  # corridas de antes de corregir el agente
 RUN_FILE, SUMMARY_NAME, VOICE_METRICS_FILE = "corrida.json", "resumen", "metricas_voz.json"
 AUDIO_RUN, TEXT_REPEAT_RUN = "voz", "voz_texto_correcto"
 RUN_ORDER = ("texto", "texto_sage", "texto_sin_reranker", AUDIO_RUN, TEXT_REPEAT_RUN)
@@ -206,6 +207,25 @@ def summarize(runs: list[dict[str, Any]]) -> dict[str, Any]:
     }
 
 
+def before_after(current: dict[str, Any], baseline: dict[str, Any]) -> list[dict[str, Any]]:
+    """Por cada corrida que está en los dos resúmenes: aciertos antes y después, qué
+    escenarios se arreglaron y cuáles se rompieron."""
+    rows = []
+    for name in (name for name in current["runs"] if name in baseline["runs"]):
+        old, new = baseline["runs"][name]["verdicts"], current["runs"][name]["verdicts"]
+        shared = [scenario for scenario in new if scenario in old]
+        rows.append({
+            "run": name,
+            "scenarios": len(shared),
+            "before": sum(old[scenario] for scenario in shared),
+            "after": sum(new[scenario] for scenario in shared),
+            "fixed": [scenario for scenario in shared if new[scenario] and not old[scenario]],
+            "regressions": [scenario for scenario in shared if old[scenario] and not new[scenario]],
+            "verdicts": {scenario: [old[scenario], new[scenario]] for scenario in shared},
+        })
+    return rows
+
+
 # --- Markdown del resumen -----------------------------------------------------------------
 
 
@@ -302,10 +322,27 @@ def _failure_lines(runs: dict[str, Any]) -> list[str]:
     return [*(lines or ["- Ninguna."]), ""]
 
 
+def _before_after_lines(rows: list[dict[str, Any]]) -> list[str]:
+    """Aciertos por corrida antes y después, y el veredicto de cada escenario en las dos."""
+    lines = ["| Corrida | Antes | Después | Arreglados | Regresiones |", "|---|---|---|---|---|"]
+    for row in rows:
+        fixed, broken = (", ".join(name[:2] for name in row[key]) or "ninguno" for key in ("fixed", "regressions"))
+        lines.append(f"| `{row['run']}` | {row['before']} de {row['scenarios']} | {row['after']} de {row['scenarios']} | {fixed} | {broken} |")
+    scenarios = sorted({scenario for row in rows for scenario in row["verdicts"]})
+    lines += ["", "| Escenario (antes → después) | " + " | ".join(f"`{row['run']}`" for row in rows) + " |", "|---" * (len(rows) + 1) + "|"]
+    for scenario in scenarios:
+        cells = [" → ".join(_MARK[verdict] for verdict in row["verdicts"][scenario]) if scenario in row["verdicts"] else "" for row in rows]
+        lines.append(f"| `{scenario}` | " + " | ".join(cells) + " |")
+    return [*lines, ""]
+
+
 def to_markdown(summary: dict[str, Any]) -> str:
     runs = summary["runs"]
     lines = ["# Evaluación con escenarios: resumen", "", "Cada corrida tiene una ficha por escenario en su carpeta.", ""]
     lines += ["## Escenarios correctos por corrida", "", *_runs_table(runs), *_verdict_table(runs)]
+    if summary.get("before_after"):
+        lines += ["## Antes y después de corregir el agente", "", f"Línea base: `{summary['baseline']}`.", ""]
+        lines += _before_after_lines(summary["before_after"])
     lines += ["## Violaciones de restricciones", "", *_violation_table(runs)]
     if AUDIO_RUN in runs:
         lines += ["## Voz", "", *_voice_lines(runs[AUDIO_RUN])]
@@ -320,8 +357,11 @@ def to_markdown(summary: dict[str, Any]) -> str:
 def main() -> None:
     parser = argparse.ArgumentParser(description="Resume las corridas de escenarios guardadas.")
     parser.add_argument("--dir", type=Path, default=DEFAULT_DIR)
+    parser.add_argument("--baseline", type=Path, default=BASELINE_DIR, help="corridas anteriores con las que comparar")
     args = parser.parse_args()
     summary = summarize(load_runs(args.dir))
+    if args.baseline.is_dir():
+        summary.update(baseline=str(args.baseline), before_after=before_after(summary, summarize(load_runs(args.baseline))))
     (args.dir / f"{SUMMARY_NAME}.json").write_text(json.dumps(summary, indent=2, ensure_ascii=False), encoding="utf-8")
     (args.dir / f"{SUMMARY_NAME}.md").write_text(to_markdown(summary), encoding="utf-8")
     print(to_markdown(summary))

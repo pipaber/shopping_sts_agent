@@ -16,7 +16,7 @@ from shopping_agent.eval import scenario_format as fmt
 from shopping_agent.eval import scenario_violations as violations
 from shopping_agent.eval import scenarios as command
 from shopping_agent.eval.scenario_checks import View, match_lines, resolve, run_check
-from shopping_agent.eval.scenario_report import compare_with_text, failed_checks, ficha, run_summary, summarize, to_markdown
+from shopping_agent.eval.scenario_report import before_after, compare_with_text, failed_checks, ficha, run_summary, summarize, to_markdown
 from shopping_agent.eval.scenario_runner import AUDIO, TEXT, AudioInputs, Bench, ScenarioRun
 from shopping_agent.voice.audio import write_wav
 from test_agent import Shop, call, say
@@ -404,3 +404,18 @@ def test_recordings_are_preferred_over_synthetic_audio(tmp_path):
     assert command.audio_inputs(scenario, recordings, synthetic).source == command.USER_RECORDING
     with pytest.raises(SystemExit):
         command.audio_inputs(scenario, tmp_path / "nada", tmp_path / "nada")
+
+
+def test_before_and_after_lists_what_was_fixed_and_what_broke():
+    def runs(**verdicts):
+        return {"runs": {"texto": {"verdicts": verdicts}}}
+
+    current = runs(a=True, b=True, c=False, nuevo=True)
+    current["runs"]["solo_ahora"] = {"verdicts": {"a": True}}
+    rows = before_after(current, runs(a=True, b=False, c=True))
+    assert len(rows) == 1  # solo las corridas que están en los dos
+    row = rows[0]
+    assert (row["before"], row["after"], row["scenarios"]) == (2, 2, 3)
+    assert row["fixed"] == ["b"] and row["regressions"] == ["c"]
+    text = to_markdown({"runs": {}, "audio_vs_correct_text": [], "baseline": "base", "before_after": rows})
+    assert "| `texto` | 2 de 3 | 2 de 3 | b | c |" in text and "| `b` | ✘ → ✔ |" in text
