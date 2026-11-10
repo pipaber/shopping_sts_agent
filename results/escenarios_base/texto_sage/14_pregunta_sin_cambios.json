@@ -1,0 +1,723 @@
+{
+  "id": "14_pregunta_sin_cambios",
+  "title": "Una pregunta no cambia el carrito",
+  "kind": "pregunta_sin_cambios",
+  "description": "El usuario pregunta por disponibilidad y por precio sin pedir nada. El carrito debe seguir vacío y la respuesta sobre el precio debe dar el de la tienda.",
+  "voice": false,
+  "input": "texto",
+  "audio_source": null,
+  "user_id": "eval-a557491f-14_pregunta_sin_cambios",
+  "threads": [
+    "eval-a557491f-14_pregunta_sin_cambios-c1"
+  ],
+  "names": {
+    "primera": "B091HXTM73"
+  },
+  "steps": [
+    {
+      "kind": "turn",
+      "turn": 1,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Busco una funda para móvil.",
+      "agent_input": "Busco una funda para móvil.",
+      "response": "Tengo la funda KEELYY por 18,23 euros, la Cocoda por 21,73, la MOBESV por 17,62 y la BeCool por 15,43. ¿Te interesa alguna?",
+      "spoken_text": "Tengo la funda KEELYY por dieciocho euros con veintitrés céntimos, la Cocoda por veintiuno coma setenta y tres, la MOBESV por diecisiete coma sesenta y dos y la BeCool por quince coma cuarenta y tres. ¿Te interesa alguna?",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "buscar_productos",
+          "args": {
+            "consulta": "funda móvil"
+          },
+          "reason": "buscar la funda para móvil",
+          "ok": true,
+          "summary": "estos son ahora los CANDIDATOS, del más al menos relevante:\n[1] id=B091HXTM73 | KEELYY Funda Impermeable Móvil IPX8 Universal 4 Unidades, Bolsa para Móvil Estanca a Prueba de Agua para iPhone 12 11 XR X 8 7 Galaxy Note 20 S20 Xiaomi Huawei Mate40 Pro hasta 6.7'' | marca: KEELYY | color: 4Colors | precio: 18,23 € | existencias: 15 | características (extracto): ☔【Certificado IPX8】 La funda impermeable para móvil tiene una excelente resistencia al agua, ofrece protección impermeable de alta calidad hasta 30 m (98 pies) y protege su teléfono móvil en entornos acuáticos. Realice una prueba de… | descripción: KEELYY funda impermeable IPX8 impermeable que ofrece una protección impermeable / antinieve / polvo para tu teléfono. Es ideal para la playa, natación, rafting, surf, pesca, vela, buceo, barco…\n[2] id=B098NQLJKX | Cocoda Funda Impermeable Móvil, [2 Unidades] IPX8 Funda Acuatica Movil, Bolsa Estanca Compatible con iPhone 13/13 Pro Max/12/11, Galaxy S21 Ultra/S20/S10 hasta 7'' para Playa, Viajes, Piscina | marca: Cocoda | color: Trans | precio: 21,73 € | existencias: 10 | características (extracto): Resistente Agua Certificación IPX8: Funda acuatica movil protección impermeable hasta 30 metros/100 pies de profundidad del agua. Puede disfrutar de la emoción del compañero de verano con los teléfonos móviles alrededor. Real Touch: El… | descripción: Cocoda Funda Movil Impermeable, Superior y Fácil de Usar, Que Permite Disfrutar de Verano Maravilloso. Tranquilidad y Seguridad Con certificación IPX8 resistente al agua hasta 100 pies/30 metros…\n[3] id=B08H2DTJZK | MOBESV Funda para Motorola Moto G9 Play, Funda Libro Motorola Moto G9 Play, Funda Móvil Motorola Moto G9 Play Magnético Carcasa para Motorola Moto G9 Play Funda con Tapa, Azul | marca: MOBESV | color: Azul/Aqua | precio: 17,62 € | existencias: 32 | características (extracto): MOBESV funda para Motorola Moto G9 Play 6.5 Pulgadas Smartphone, Compruebe por favor su modelo del movil de la celular antes de comprar. Funda libro Motorola Moto G9 Play está hecha del cuero sintético de alta calidad y TPU silicona… | descripción: MOBESV funda Motorola Moto G9 Play Smartphone(6.5 Pulgadas) es una práctica carcasa de protección con ranuras de tarjetas de crédito, clip de efectivo, función de soporte y broche magnético. El…\n[4] id=B071X9BRP9 | BeCool Funda Libro para Xiaomi Mi6 Plus- Carcasa con función Soporte, Ranuras para tarjetes y Billetes, Diseño Amor de la Familia | marca: BeCool | color: Multicolor | precio: 15,43 € | existencias: 46 | características (extracto): Fundas para móviles con formato libro Protege tu Smartphone de golpes, caídas y arañazos Además, protege tu pantalla con la tapa de esta funda de libro Lleva un diseño original en tu funda Con todos los accesos para usar tu móvil con la… | descripción: desconocido\n[5] id=B07T8YKTY9 | kwmobile Carcasa para móvil tamaño L - 6,5\" - Funda Universal con Cremallera - Estuche de Neopreno - Don't Touch my Phone | marca: kwmobile | color: blanco / negro | precio: 81,81 € | existencias: 10 | características (extracto): COMPATIBILIDAD: Compatible con L - 6,5\". PROTECCIÓN COMPLETA: El protector universal cuenta con un cierre de cremallera que mantendrá tu teléfono totalmente protegido. Además, esta cubierta protectora está hecha de un material flexible y… | descripción: kwmobile forma parte de una empresa alemana que ofrece accesorios originales para diferentes tipos de dispositivos electrónicos. Entre su gama de productos encontrarás justo lo que estabas buscando…",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.059,
+        "llm": 5.987,
+        "tools": 0.028,
+        "tts": 0.0,
+        "total": 6.074
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-a557491f-14_pregunta_sin_cambios-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {}
+      },
+      "after": {
+        "cart_id": "eval-a557491f-14_pregunta_sin_cambios-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B091HXTM73",
+              "title": "KEELYY Funda Impermeable Móvil IPX8 Universal 4 Unidades, Bolsa para Móvil Estanca a Prueba de Agua para iPhone 12 11 XR X 8 7 Galaxy Note 20 S20 Xiaomi Huawei Mate40 Pro hasta 6.7''",
+              "brand": "KEELYY",
+              "price_cents": 1823,
+              "stock": 15
+            },
+            {
+              "product_id": "B098NQLJKX",
+              "title": "Cocoda Funda Impermeable Móvil, [2 Unidades] IPX8 Funda Acuatica Movil, Bolsa Estanca Compatible con iPhone 13/13 Pro Max/12/11, Galaxy S21 Ultra/S20/S10 hasta 7'' para Playa, Viajes, Piscina",
+              "brand": "Cocoda",
+              "price_cents": 2173,
+              "stock": 10
+            },
+            {
+              "product_id": "B08H2DTJZK",
+              "title": "MOBESV Funda para Motorola Moto G9 Play, Funda Libro Motorola Moto G9 Play, Funda Móvil Motorola Moto G9 Play Magnético Carcasa para Motorola Moto G9 Play Funda con Tapa, Azul",
+              "brand": "MOBESV",
+              "price_cents": 1762,
+              "stock": 32
+            },
+            {
+              "product_id": "B071X9BRP9",
+              "title": "BeCool Funda Libro para Xiaomi Mi6 Plus- Carcasa con función Soporte, Ranuras para tarjetes y Billetes, Diseño Amor de la Familia",
+              "brand": "BeCool",
+              "price_cents": 1543,
+              "stock": 46
+            },
+            {
+              "product_id": "B07T8YKTY9",
+              "title": "kwmobile Carcasa para móvil tamaño L - 6,5\" - Funda Universal con Cremallera - Estuche de Neopreno - Don't Touch my Phone",
+              "brand": "kwmobile",
+              "price_cents": 8181,
+              "stock": 10
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {
+          "B071X9BRP9": {
+            "price_cents": 1543,
+            "stock": 46
+          },
+          "B07T8YKTY9": {
+            "price_cents": 8181,
+            "stock": 10
+          },
+          "B08H2DTJZK": {
+            "price_cents": 1762,
+            "stock": 32
+          },
+          "B091HXTM73": {
+            "price_cents": 1823,
+            "stock": 15
+          },
+          "B098NQLJKX": {
+            "price_cents": 2173,
+            "stock": 10
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        }
+      ]
+    },
+    {
+      "kind": "remember",
+      "name": "primera",
+      "ref": "candidate:1",
+      "product_id": "B091HXTM73",
+      "title": "KEELYY Funda Impermeable Móvil IPX8 Universal 4 Unidades, Bolsa para Móvil Estanca a Prueba de Agua para iPhone 12 11 XR X 8 7 Galaxy Note 20 S20 Xiaomi Huawei Mate40 Pro hasta 6.7''"
+    },
+    {
+      "kind": "turn",
+      "turn": 2,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "¿La segunda está disponible?",
+      "agent_input": "¿La segunda está disponible?",
+      "response": "Sí, la funda Cocoda está disponible, quedan 10 unidades.",
+      "spoken_text": "Sí, la funda Cocoda está disponible, quedan diez unidades.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "consultar_precio_stock",
+          "args": {
+            "product_id": "B098NQLJKX"
+          },
+          "reason": "consultar existencias de la segunda opción",
+          "ok": true,
+          "summary": "precio 21,73 €; quedan 10 unidades. Esta herramienta no da características: para color, batería, medidas u otros datos del producto usa detalle_producto.",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 4.746,
+        "tools": 0.032,
+        "tts": 0.0,
+        "total": 4.778
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-a557491f-14_pregunta_sin_cambios-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B091HXTM73",
+              "title": "KEELYY Funda Impermeable Móvil IPX8 Universal 4 Unidades, Bolsa para Móvil Estanca a Prueba de Agua para iPhone 12 11 XR X 8 7 Galaxy Note 20 S20 Xiaomi Huawei Mate40 Pro hasta 6.7''",
+              "brand": "KEELYY",
+              "price_cents": 1823,
+              "stock": 15
+            },
+            {
+              "product_id": "B098NQLJKX",
+              "title": "Cocoda Funda Impermeable Móvil, [2 Unidades] IPX8 Funda Acuatica Movil, Bolsa Estanca Compatible con iPhone 13/13 Pro Max/12/11, Galaxy S21 Ultra/S20/S10 hasta 7'' para Playa, Viajes, Piscina",
+              "brand": "Cocoda",
+              "price_cents": 2173,
+              "stock": 10
+            },
+            {
+              "product_id": "B08H2DTJZK",
+              "title": "MOBESV Funda para Motorola Moto G9 Play, Funda Libro Motorola Moto G9 Play, Funda Móvil Motorola Moto G9 Play Magnético Carcasa para Motorola Moto G9 Play Funda con Tapa, Azul",
+              "brand": "MOBESV",
+              "price_cents": 1762,
+              "stock": 32
+            },
+            {
+              "product_id": "B071X9BRP9",
+              "title": "BeCool Funda Libro para Xiaomi Mi6 Plus- Carcasa con función Soporte, Ranuras para tarjetes y Billetes, Diseño Amor de la Familia",
+              "brand": "BeCool",
+              "price_cents": 1543,
+              "stock": 46
+            },
+            {
+              "product_id": "B07T8YKTY9",
+              "title": "kwmobile Carcasa para móvil tamaño L - 6,5\" - Funda Universal con Cremallera - Estuche de Neopreno - Don't Touch my Phone",
+              "brand": "kwmobile",
+              "price_cents": 8181,
+              "stock": 10
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {
+          "B071X9BRP9": {
+            "price_cents": 1543,
+            "stock": 46
+          },
+          "B07T8YKTY9": {
+            "price_cents": 8181,
+            "stock": 10
+          },
+          "B08H2DTJZK": {
+            "price_cents": 1762,
+            "stock": 32
+          },
+          "B091HXTM73": {
+            "price_cents": 1823,
+            "stock": 15
+          },
+          "B098NQLJKX": {
+            "price_cents": 2173,
+            "stock": 10
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-a557491f-14_pregunta_sin_cambios-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B091HXTM73",
+              "title": "KEELYY Funda Impermeable Móvil IPX8 Universal 4 Unidades, Bolsa para Móvil Estanca a Prueba de Agua para iPhone 12 11 XR X 8 7 Galaxy Note 20 S20 Xiaomi Huawei Mate40 Pro hasta 6.7''",
+              "brand": "KEELYY",
+              "price_cents": 1823,
+              "stock": 15
+            },
+            {
+              "product_id": "B098NQLJKX",
+              "title": "Cocoda Funda Impermeable Móvil, [2 Unidades] IPX8 Funda Acuatica Movil, Bolsa Estanca Compatible con iPhone 13/13 Pro Max/12/11, Galaxy S21 Ultra/S20/S10 hasta 7'' para Playa, Viajes, Piscina",
+              "brand": "Cocoda",
+              "price_cents": 2173,
+              "stock": 10
+            },
+            {
+              "product_id": "B08H2DTJZK",
+              "title": "MOBESV Funda para Motorola Moto G9 Play, Funda Libro Motorola Moto G9 Play, Funda Móvil Motorola Moto G9 Play Magnético Carcasa para Motorola Moto G9 Play Funda con Tapa, Azul",
+              "brand": "MOBESV",
+              "price_cents": 1762,
+              "stock": 32
+            },
+            {
+              "product_id": "B071X9BRP9",
+              "title": "BeCool Funda Libro para Xiaomi Mi6 Plus- Carcasa con función Soporte, Ranuras para tarjetes y Billetes, Diseño Amor de la Familia",
+              "brand": "BeCool",
+              "price_cents": 1543,
+              "stock": 46
+            },
+            {
+              "product_id": "B07T8YKTY9",
+              "title": "kwmobile Carcasa para móvil tamaño L - 6,5\" - Funda Universal con Cremallera - Estuche de Neopreno - Don't Touch my Phone",
+              "brand": "kwmobile",
+              "price_cents": 8181,
+              "stock": 10
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {
+          "B071X9BRP9": {
+            "price_cents": 1543,
+            "stock": 46
+          },
+          "B07T8YKTY9": {
+            "price_cents": 8181,
+            "stock": 10
+          },
+          "B08H2DTJZK": {
+            "price_cents": 1762,
+            "stock": 32
+          },
+          "B091HXTM73": {
+            "price_cents": 1823,
+            "stock": 15
+          },
+          "B098NQLJKX": {
+            "price_cents": 2173,
+            "stock": 10
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 3,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "¿Cuánto cuesta la primera?",
+      "agent_input": "¿Cuánto cuesta la primera?",
+      "response": "La funda KEELYY cuesta 18,23 euros.",
+      "spoken_text": "La funda KEELYY cuesta dieciocho euros con veintitrés céntimos.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 3.502,
+        "tools": 0.022,
+        "tts": 0.0,
+        "total": 3.524
+      },
+      "llm_steps": 1,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-a557491f-14_pregunta_sin_cambios-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B091HXTM73",
+              "title": "KEELYY Funda Impermeable Móvil IPX8 Universal 4 Unidades, Bolsa para Móvil Estanca a Prueba de Agua para iPhone 12 11 XR X 8 7 Galaxy Note 20 S20 Xiaomi Huawei Mate40 Pro hasta 6.7''",
+              "brand": "KEELYY",
+              "price_cents": 1823,
+              "stock": 15
+            },
+            {
+              "product_id": "B098NQLJKX",
+              "title": "Cocoda Funda Impermeable Móvil, [2 Unidades] IPX8 Funda Acuatica Movil, Bolsa Estanca Compatible con iPhone 13/13 Pro Max/12/11, Galaxy S21 Ultra/S20/S10 hasta 7'' para Playa, Viajes, Piscina",
+              "brand": "Cocoda",
+              "price_cents": 2173,
+              "stock": 10
+            },
+            {
+              "product_id": "B08H2DTJZK",
+              "title": "MOBESV Funda para Motorola Moto G9 Play, Funda Libro Motorola Moto G9 Play, Funda Móvil Motorola Moto G9 Play Magnético Carcasa para Motorola Moto G9 Play Funda con Tapa, Azul",
+              "brand": "MOBESV",
+              "price_cents": 1762,
+              "stock": 32
+            },
+            {
+              "product_id": "B071X9BRP9",
+              "title": "BeCool Funda Libro para Xiaomi Mi6 Plus- Carcasa con función Soporte, Ranuras para tarjetes y Billetes, Diseño Amor de la Familia",
+              "brand": "BeCool",
+              "price_cents": 1543,
+              "stock": 46
+            },
+            {
+              "product_id": "B07T8YKTY9",
+              "title": "kwmobile Carcasa para móvil tamaño L - 6,5\" - Funda Universal con Cremallera - Estuche de Neopreno - Don't Touch my Phone",
+              "brand": "kwmobile",
+              "price_cents": 8181,
+              "stock": 10
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {
+          "B071X9BRP9": {
+            "price_cents": 1543,
+            "stock": 46
+          },
+          "B07T8YKTY9": {
+            "price_cents": 8181,
+            "stock": 10
+          },
+          "B08H2DTJZK": {
+            "price_cents": 1762,
+            "stock": 32
+          },
+          "B091HXTM73": {
+            "price_cents": 1823,
+            "stock": 15
+          },
+          "B098NQLJKX": {
+            "price_cents": 2173,
+            "stock": 10
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-a557491f-14_pregunta_sin_cambios-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B091HXTM73",
+              "title": "KEELYY Funda Impermeable Móvil IPX8 Universal 4 Unidades, Bolsa para Móvil Estanca a Prueba de Agua para iPhone 12 11 XR X 8 7 Galaxy Note 20 S20 Xiaomi Huawei Mate40 Pro hasta 6.7''",
+              "brand": "KEELYY",
+              "price_cents": 1823,
+              "stock": 15
+            },
+            {
+              "product_id": "B098NQLJKX",
+              "title": "Cocoda Funda Impermeable Móvil, [2 Unidades] IPX8 Funda Acuatica Movil, Bolsa Estanca Compatible con iPhone 13/13 Pro Max/12/11, Galaxy S21 Ultra/S20/S10 hasta 7'' para Playa, Viajes, Piscina",
+              "brand": "Cocoda",
+              "price_cents": 2173,
+              "stock": 10
+            },
+            {
+              "product_id": "B08H2DTJZK",
+              "title": "MOBESV Funda para Motorola Moto G9 Play, Funda Libro Motorola Moto G9 Play, Funda Móvil Motorola Moto G9 Play Magnético Carcasa para Motorola Moto G9 Play Funda con Tapa, Azul",
+              "brand": "MOBESV",
+              "price_cents": 1762,
+              "stock": 32
+            },
+            {
+              "product_id": "B071X9BRP9",
+              "title": "BeCool Funda Libro para Xiaomi Mi6 Plus- Carcasa con función Soporte, Ranuras para tarjetes y Billetes, Diseño Amor de la Familia",
+              "brand": "BeCool",
+              "price_cents": 1543,
+              "stock": 46
+            },
+            {
+              "product_id": "B07T8YKTY9",
+              "title": "kwmobile Carcasa para móvil tamaño L - 6,5\" - Funda Universal con Cremallera - Estuche de Neopreno - Don't Touch my Phone",
+              "brand": "kwmobile",
+              "price_cents": 8181,
+              "stock": 10
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {
+          "B071X9BRP9": {
+            "price_cents": 1543,
+            "stock": 46
+          },
+          "B07T8YKTY9": {
+            "price_cents": 8181,
+            "stock": 10
+          },
+          "B08H2DTJZK": {
+            "price_cents": 1762,
+            "stock": 32
+          },
+          "B091HXTM73": {
+            "price_cents": 1823,
+            "stock": 15
+          },
+          "B098NQLJKX": {
+            "price_cents": 2173,
+            "stock": 10
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        },
+        {
+          "check": "mentions_price",
+          "params": {
+            "product": "@primera"
+          },
+          "ok": true,
+          "detail": "precio en la tienda: 18.23 €"
+        }
+      ]
+    }
+  ],
+  "final": {
+    "snapshot": {
+      "cart_id": "eval-a557491f-14_pregunta_sin_cambios-c1",
+      "state": {
+        "budget_cents": null,
+        "preferences": [],
+        "pending_clarification": null,
+        "quote": null,
+        "order": null,
+        "candidates": [
+          {
+            "product_id": "B091HXTM73",
+            "title": "KEELYY Funda Impermeable Móvil IPX8 Universal 4 Unidades, Bolsa para Móvil Estanca a Prueba de Agua para iPhone 12 11 XR X 8 7 Galaxy Note 20 S20 Xiaomi Huawei Mate40 Pro hasta 6.7''",
+            "brand": "KEELYY",
+            "price_cents": 1823,
+            "stock": 15
+          },
+          {
+            "product_id": "B098NQLJKX",
+            "title": "Cocoda Funda Impermeable Móvil, [2 Unidades] IPX8 Funda Acuatica Movil, Bolsa Estanca Compatible con iPhone 13/13 Pro Max/12/11, Galaxy S21 Ultra/S20/S10 hasta 7'' para Playa, Viajes, Piscina",
+            "brand": "Cocoda",
+            "price_cents": 2173,
+            "stock": 10
+          },
+          {
+            "product_id": "B08H2DTJZK",
+            "title": "MOBESV Funda para Motorola Moto G9 Play, Funda Libro Motorola Moto G9 Play, Funda Móvil Motorola Moto G9 Play Magnético Carcasa para Motorola Moto G9 Play Funda con Tapa, Azul",
+            "brand": "MOBESV",
+            "price_cents": 1762,
+            "stock": 32
+          },
+          {
+            "product_id": "B071X9BRP9",
+            "title": "BeCool Funda Libro para Xiaomi Mi6 Plus- Carcasa con función Soporte, Ranuras para tarjetes y Billetes, Diseño Amor de la Familia",
+            "brand": "BeCool",
+            "price_cents": 1543,
+            "stock": 46
+          },
+          {
+            "product_id": "B07T8YKTY9",
+            "title": "kwmobile Carcasa para móvil tamaño L - 6,5\" - Funda Universal con Cremallera - Estuche de Neopreno - Don't Touch my Phone",
+            "brand": "kwmobile",
+            "price_cents": 8181,
+            "stock": 10
+          }
+        ],
+        "awaiting_confirmation": false
+      },
+      "store": {
+        "orders": [],
+        "order_items": [],
+        "cart_items": [],
+        "inventory_changes": []
+      },
+      "offers": {
+        "B071X9BRP9": {
+          "price_cents": 1543,
+          "stock": 46
+        },
+        "B07T8YKTY9": {
+          "price_cents": 8181,
+          "stock": 10
+        },
+        "B08H2DTJZK": {
+          "price_cents": 1762,
+          "stock": 32
+        },
+        "B091HXTM73": {
+          "price_cents": 1823,
+          "stock": 15
+        },
+        "B098NQLJKX": {
+          "price_cents": 2173,
+          "stock": 10
+        }
+      }
+    },
+    "checks": [
+      {
+        "check": "orders",
+        "params": {
+          "count": 0
+        },
+        "ok": true,
+        "detail": "pedidos registrados: 0"
+      },
+      {
+        "check": "cart",
+        "params": {
+          "empty": true
+        },
+        "ok": true,
+        "detail": "carrito: vacío"
+      }
+    ]
+  },
+  "violations": [],
+  "problems": [],
+  "passed": true,
+  "timings": {
+    "all": {
+      "turns": 3,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.02,
+        "max": 0.06
+      },
+      "llm": {
+        "mean": 4.75,
+        "max": 5.99
+      },
+      "tools": {
+        "mean": 0.03,
+        "max": 0.03
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 4.79,
+        "max": 6.07
+      }
+    },
+    "with_llm": {
+      "turns": 3,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.02,
+        "max": 0.06
+      },
+      "llm": {
+        "mean": 4.75,
+        "max": 5.99
+      },
+      "tools": {
+        "mean": 0.03,
+        "max": 0.03
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 4.79,
+        "max": 6.07
+      }
+    },
+    "without_llm": {
+      "turns": 0
+    }
+  }
+}

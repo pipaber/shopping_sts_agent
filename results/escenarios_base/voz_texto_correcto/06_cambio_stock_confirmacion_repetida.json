@@ -1,0 +1,2153 @@
+{
+  "id": "06_cambio_stock_confirmacion_repetida",
+  "title": "Cambio de stock entre cotización y confirmación, y confirmación repetida",
+  "kind": "cambio_stock_confirmacion_repetida",
+  "description": "Con la cotización de tres unidades pendiente, la tienda se queda con una sola. La confirmación debe rechazarse sin tocar nada y ofrecer una salida. El usuario lo deja en una unidad, confirma y repite el sí: debe haber un único pedido.",
+  "voice": true,
+  "input": "texto",
+  "audio_source": null,
+  "user_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida",
+  "threads": [
+    "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1"
+  ],
+  "names": {
+    "elegida": "B085CHJ9BD"
+  },
+  "steps": [
+    {
+      "kind": "turn",
+      "turn": 1,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Busco una lámpara de escritorio LED.",
+      "agent_input": "Busco una lámpara de escritorio LED.",
+      "response": "Tengo la lámpara de escritorio LED SLATOR por 44,20 €, la SENXINGYAN por 36,61 €, la SOFIL por 38,74 €, la Prtukyt por 23,86 € y la HyAdierTech por 11,87 €. ¿Te interesa alguna?",
+      "spoken_text": "Tengo la lámpara de escritorio LED SLATOR por cuarenta y cuatro euros con veinte céntimos, la SENXINGYAN por treinta y seis euros con sesenta y un céntimos, la SOFIL por treinta y ocho euros con setenta y cuatro céntimos, la Prtukyt por veintitrés euros con ochenta y seis céntimos y la HyAdierTech por once euros con ochenta y siete céntimos. ¿Te interesa alguna?",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "buscar_productos",
+          "args": {
+            "consulta": "lámpara escritorio LED"
+          },
+          "reason": "buscar la lámpara de escritorio LED",
+          "ok": true,
+          "summary": "estos son ahora los CANDIDATOS, del más al menos relevante:\n[1] id=B085CHJ9BD | Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege los ojos, Lampara led Escritorio regulable con puerto de carga USB, 5 Modos, 10 Niveles de Brillo,Temporizador de 30/60min | marca: SLATOR | color: Negro | precio: 44,20 € | existencias: 34 | características (extracto): Lámpara de mesa respetuosa con su visión: Lámpara de escritorio LED tiene 10 niveles de brillo y 5 modos de iluminación seleccionables; modo de luz natural, sin parpadeo, evitando la fatiga visual tras un tiempo prolongado de uso… | descripción: SLATOR Lámpara Escritorio LED Luz de escritorio ideal y sin parpadeos Luz LED que cuida su vista, ofrecen una luz suave y cómoda, sin parpadeos, sin mareos, sin sombras, lo que evita la fatiga ocular…\n[2] id=B08GWGJR9S | Lámpara Escritorio LED, La lamparas de escritorio tiene cuentas de lámpara 60LED, 5 niveles de brillo, 3 modos de colo, USB para cargar, Batería 4000mAh, Temporizador de 45min, [Clase energética A++] | marca: SENXINGYAN | color: Blanco | precio: 36,61 € | existencias: 8 | características (extracto): 📖【LED de alta calidad】 La lámpara de mesa tiene 60 cuentas de lámpara LED, la lámpara de mesa LED crea una luz cómoda y suave, sin parpadeo, sin luz mareada, sin sombra, sin luz azul, lo que evita la tensión ocular causada por la luz… | descripción: Lámparas de escritorio que cuidan los ojos. La lámpara de escritorio de corona blanca proporciona una luz suave y natural que protege tus ojos. Nueva versión mejorada de lámpara de escritorio LED…\n[3] id=B08P3H32KL | SOFIL Lámpara de Escritorio,Brazo Tipo Cuello de Cisne,Flexo LED Regulable,lámpara de Mesa Ajustable de Madera para Oficina,Sala,Estudio y Dormitorio,Blanco E27 | marca: SOFIL | color: Blanco | precio: 38,74 € | existencias: 9 | características (extracto): ★ FLEXIBLE Y RESISTENTE: ilumina tu escritorio en el ángulo perfecto con el cuello de cisne flexible de la lámpara de escritorio y la base de madera resistente con fondo antideslizante. ★ DISEÑO MODERNO SENCILLO: agregue un poco de estilo… | descripción: Descripción del producto - La mejor lámpara de escritorio para la universidad, el trabajo, el hogar y más allá - Si está buscando una lámpara LED de escritorio que sea práctica pero elegante, la - La…\n[4] id=B08NNZ6NC2 | Lámpara de escritorio LED Lámpara de lectura de brazo Eye-Care Architect USB Lámpara regulable con 3 modos de color 10 niveles Adecuado Para Oficina, Lectura, Estudios … (negro) | marca: Prtukyt | color: Negro | precio: 23,86 € | existencias: 34 | características (extracto): 【Cuidado de los ojos】 Nuestra luz de escritorio adopta tecnología de protección ocular, tiene tres modos de iluminación, luz cálida, luz natural y luz fría para satisfacer sus diferentes necesidades, hay 10 niveles de ajuste de brillo… | descripción: desconocido\n[5] id=B07TWH1Z6C | HyAdierTech Lámpara de Escritorio LED, Regulable Lámpara de Mesa Protección para los Ojos, 3 Niveles de Dimmer, Panel Táctil y 360 ° Flexible USB Portátil para Lectores, Estudio y Trabajo | marca: HyAdierTech | color: White | precio: 11,87 € | existencias: 28 | características (extracto): ☆ ★ CARGA MUILT: Lámpara de escritorio LED de diseño portátil plegable, simple y elegante. Se puede cargar con un banco de energía o una computadora portátil a través del puerto USB. Conveniente para ser usado o recargado cuando acampa o… | descripción: Función: 3 niveles de brillo, para que pueda atenuar la luz y encontrar el nivel de brillo perfecto para su situación. El primer modo puede durar aproximadamente 8 horas ; El segundo modo puede durar…",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.032,
+        "llm": 8.137,
+        "tools": 0.026,
+        "tts": 0.0,
+        "total": 8.195
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [
+        "lámpara de escritorio LED"
+      ],
+      "before": {
+        "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {}
+      },
+      "after": {
+        "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B085CHJ9BD",
+              "title": "Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege los ojos, Lampara led Escritorio regulable con puerto de carga USB, 5 Modos, 10 Niveles de Brillo,Temporizador de 30/60min",
+              "brand": "SLATOR",
+              "price_cents": 4420,
+              "stock": 34
+            },
+            {
+              "product_id": "B08GWGJR9S",
+              "title": "Lámpara Escritorio LED, La lamparas de escritorio tiene cuentas de lámpara 60LED, 5 niveles de brillo, 3 modos de colo, USB para cargar, Batería 4000mAh, Temporizador de 45min, [Clase energética A++]",
+              "brand": "SENXINGYAN",
+              "price_cents": 3661,
+              "stock": 8
+            },
+            {
+              "product_id": "B08P3H32KL",
+              "title": "SOFIL Lámpara de Escritorio,Brazo Tipo Cuello de Cisne,Flexo LED Regulable,lámpara de Mesa Ajustable de Madera para Oficina,Sala,Estudio y Dormitorio,Blanco E27",
+              "brand": "SOFIL",
+              "price_cents": 3874,
+              "stock": 9
+            },
+            {
+              "product_id": "B08NNZ6NC2",
+              "title": "Lámpara de escritorio LED Lámpara de lectura de brazo Eye-Care Architect USB Lámpara regulable con 3 modos de color 10 niveles Adecuado Para Oficina, Lectura, Estudios … (negro)",
+              "brand": "Prtukyt",
+              "price_cents": 2386,
+              "stock": 34
+            },
+            {
+              "product_id": "B07TWH1Z6C",
+              "title": "HyAdierTech Lámpara de Escritorio LED, Regulable Lámpara de Mesa Protección para los Ojos, 3 Niveles de Dimmer, Panel Táctil y 360 ° Flexible USB Portátil para Lectores, Estudio y Trabajo",
+              "brand": "HyAdierTech",
+              "price_cents": 1187,
+              "stock": 28
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {
+          "B07TWH1Z6C": {
+            "price_cents": 1187,
+            "stock": 28
+          },
+          "B085CHJ9BD": {
+            "price_cents": 4420,
+            "stock": 34
+          },
+          "B08GWGJR9S": {
+            "price_cents": 3661,
+            "stock": 8
+          },
+          "B08NNZ6NC2": {
+            "price_cents": 2386,
+            "stock": 34
+          },
+          "B08P3H32KL": {
+            "price_cents": 3874,
+            "stock": 9
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        }
+      ]
+    },
+    {
+      "kind": "remember",
+      "name": "elegida",
+      "ref": "candidate:1",
+      "product_id": "B085CHJ9BD",
+      "title": "Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege los ojos, Lampara led Escritorio regulable con puerto de carga USB, 5 Modos, 10 Niveles de Brillo,Temporizador de 30/60min"
+    },
+    {
+      "kind": "event",
+      "event": "set_offer",
+      "product": "@elegida",
+      "product_id": "B085CHJ9BD",
+      "price_cents": 1500,
+      "stock": 10
+    },
+    {
+      "kind": "turn",
+      "turn": 2,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Añade tres de la primera.",
+      "agent_input": "Añade tres de la primera.",
+      "response": "Hecho, añadidas tres unidades. El total es 45,00 €. En el carrito hay 3 unidades de «Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege…» a 15,00 € cada una, 45,00 €. Total: 45,00 €.",
+      "spoken_text": "Hecho, añadidas tres unidades. El total es cuarenta y cinco euros. En el carrito hay tres unidades de Lámpara Escritorio LED a quince euros cada una, cuarenta y cinco euros. Total: cuarenta y cinco euros.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "agregar_al_carrito",
+          "args": {
+            "product_id": "B085CHJ9BD",
+            "cantidad": 3
+          },
+          "reason": "añadir tres unidades del candidato 1",
+          "ok": true,
+          "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B085CHJ9BD | Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege… | 3 unidades × 15,00 € = 45,00 € | existencias: 10\nTotal del carrito: 45,00 €",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 5.679,
+        "tools": 0.046,
+        "tts": 0.0,
+        "total": 5.725
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [
+        "primera"
+      ],
+      "before": {
+        "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B085CHJ9BD",
+              "title": "Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege los ojos, Lampara led Escritorio regulable con puerto de carga USB, 5 Modos, 10 Niveles de Brillo,Temporizador de 30/60min",
+              "brand": "SLATOR",
+              "price_cents": 4420,
+              "stock": 34
+            },
+            {
+              "product_id": "B08GWGJR9S",
+              "title": "Lámpara Escritorio LED, La lamparas de escritorio tiene cuentas de lámpara 60LED, 5 niveles de brillo, 3 modos de colo, USB para cargar, Batería 4000mAh, Temporizador de 45min, [Clase energética A++]",
+              "brand": "SENXINGYAN",
+              "price_cents": 3661,
+              "stock": 8
+            },
+            {
+              "product_id": "B08P3H32KL",
+              "title": "SOFIL Lámpara de Escritorio,Brazo Tipo Cuello de Cisne,Flexo LED Regulable,lámpara de Mesa Ajustable de Madera para Oficina,Sala,Estudio y Dormitorio,Blanco E27",
+              "brand": "SOFIL",
+              "price_cents": 3874,
+              "stock": 9
+            },
+            {
+              "product_id": "B08NNZ6NC2",
+              "title": "Lámpara de escritorio LED Lámpara de lectura de brazo Eye-Care Architect USB Lámpara regulable con 3 modos de color 10 niveles Adecuado Para Oficina, Lectura, Estudios … (negro)",
+              "brand": "Prtukyt",
+              "price_cents": 2386,
+              "stock": 34
+            },
+            {
+              "product_id": "B07TWH1Z6C",
+              "title": "HyAdierTech Lámpara de Escritorio LED, Regulable Lámpara de Mesa Protección para los Ojos, 3 Niveles de Dimmer, Panel Táctil y 360 ° Flexible USB Portátil para Lectores, Estudio y Trabajo",
+              "brand": "HyAdierTech",
+              "price_cents": 1187,
+              "stock": 28
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B085CHJ9BD",
+              "initial_stock": 34,
+              "stock": 10
+            }
+          ]
+        },
+        "offers": {
+          "B07TWH1Z6C": {
+            "price_cents": 1187,
+            "stock": 28
+          },
+          "B085CHJ9BD": {
+            "price_cents": 1500,
+            "stock": 10
+          },
+          "B08GWGJR9S": {
+            "price_cents": 3661,
+            "stock": 8
+          },
+          "B08NNZ6NC2": {
+            "price_cents": 2386,
+            "stock": 34
+          },
+          "B08P3H32KL": {
+            "price_cents": 3874,
+            "stock": 9
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B085CHJ9BD",
+              "title": "Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege los ojos, Lampara led Escritorio regulable con puerto de carga USB, 5 Modos, 10 Niveles de Brillo,Temporizador de 30/60min",
+              "brand": "SLATOR",
+              "price_cents": 1500,
+              "stock": 10
+            },
+            {
+              "product_id": "B08GWGJR9S",
+              "title": "Lámpara Escritorio LED, La lamparas de escritorio tiene cuentas de lámpara 60LED, 5 niveles de brillo, 3 modos de colo, USB para cargar, Batería 4000mAh, Temporizador de 45min, [Clase energética A++]",
+              "brand": "SENXINGYAN",
+              "price_cents": 3661,
+              "stock": 8
+            },
+            {
+              "product_id": "B08P3H32KL",
+              "title": "SOFIL Lámpara de Escritorio,Brazo Tipo Cuello de Cisne,Flexo LED Regulable,lámpara de Mesa Ajustable de Madera para Oficina,Sala,Estudio y Dormitorio,Blanco E27",
+              "brand": "SOFIL",
+              "price_cents": 3874,
+              "stock": 9
+            },
+            {
+              "product_id": "B08NNZ6NC2",
+              "title": "Lámpara de escritorio LED Lámpara de lectura de brazo Eye-Care Architect USB Lámpara regulable con 3 modos de color 10 niveles Adecuado Para Oficina, Lectura, Estudios … (negro)",
+              "brand": "Prtukyt",
+              "price_cents": 2386,
+              "stock": 34
+            },
+            {
+              "product_id": "B07TWH1Z6C",
+              "title": "HyAdierTech Lámpara de Escritorio LED, Regulable Lámpara de Mesa Protección para los Ojos, 3 Niveles de Dimmer, Panel Táctil y 360 ° Flexible USB Portátil para Lectores, Estudio y Trabajo",
+              "brand": "HyAdierTech",
+              "price_cents": 1187,
+              "stock": 28
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+              "product_id": "B085CHJ9BD",
+              "quantity": 3
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B085CHJ9BD",
+              "initial_stock": 34,
+              "stock": 10
+            }
+          ]
+        },
+        "offers": {
+          "B07TWH1Z6C": {
+            "price_cents": 1187,
+            "stock": 28
+          },
+          "B085CHJ9BD": {
+            "price_cents": 1500,
+            "stock": 10
+          },
+          "B08GWGJR9S": {
+            "price_cents": 3661,
+            "stock": 8
+          },
+          "B08NNZ6NC2": {
+            "price_cents": 2386,
+            "stock": 34
+          },
+          "B08P3H32KL": {
+            "price_cents": 3874,
+            "stock": 9
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "lines": [
+              {
+                "product": "@elegida",
+                "quantity": 3
+              }
+            ]
+          },
+          "ok": true,
+          "detail": "carrito: 3 × B085CHJ9BD"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 3,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Quiero cerrar el pedido.",
+      "agent_input": "Quiero cerrar el pedido.",
+      "response": "Te repito el pedido antes de registrarlo: 3 unidades de «Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege…» a 15,00 € cada una, 45,00 €. Total: 45,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "spoken_text": "Te repito el pedido antes de registrarlo: tres unidades de Lámpara Escritorio LED a quince euros cada una, cuarenta y cinco euros. Total: cuarenta y cinco euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": true,
+      "operations": [
+        {
+          "tool": "cotizar",
+          "args": {},
+          "reason": "cotizar el carrito",
+          "ok": true,
+          "summary": "cotización creada; falta la confirmación del usuario.",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 2.357,
+        "tools": 0.026,
+        "tts": 0.0,
+        "total": 2.383
+      },
+      "llm_steps": 1,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B085CHJ9BD",
+              "title": "Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege los ojos, Lampara led Escritorio regulable con puerto de carga USB, 5 Modos, 10 Niveles de Brillo,Temporizador de 30/60min",
+              "brand": "SLATOR",
+              "price_cents": 1500,
+              "stock": 10
+            },
+            {
+              "product_id": "B08GWGJR9S",
+              "title": "Lámpara Escritorio LED, La lamparas de escritorio tiene cuentas de lámpara 60LED, 5 niveles de brillo, 3 modos de colo, USB para cargar, Batería 4000mAh, Temporizador de 45min, [Clase energética A++]",
+              "brand": "SENXINGYAN",
+              "price_cents": 3661,
+              "stock": 8
+            },
+            {
+              "product_id": "B08P3H32KL",
+              "title": "SOFIL Lámpara de Escritorio,Brazo Tipo Cuello de Cisne,Flexo LED Regulable,lámpara de Mesa Ajustable de Madera para Oficina,Sala,Estudio y Dormitorio,Blanco E27",
+              "brand": "SOFIL",
+              "price_cents": 3874,
+              "stock": 9
+            },
+            {
+              "product_id": "B08NNZ6NC2",
+              "title": "Lámpara de escritorio LED Lámpara de lectura de brazo Eye-Care Architect USB Lámpara regulable con 3 modos de color 10 niveles Adecuado Para Oficina, Lectura, Estudios … (negro)",
+              "brand": "Prtukyt",
+              "price_cents": 2386,
+              "stock": 34
+            },
+            {
+              "product_id": "B07TWH1Z6C",
+              "title": "HyAdierTech Lámpara de Escritorio LED, Regulable Lámpara de Mesa Protección para los Ojos, 3 Niveles de Dimmer, Panel Táctil y 360 ° Flexible USB Portátil para Lectores, Estudio y Trabajo",
+              "brand": "HyAdierTech",
+              "price_cents": 1187,
+              "stock": 28
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+              "product_id": "B085CHJ9BD",
+              "quantity": 3
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B085CHJ9BD",
+              "initial_stock": 34,
+              "stock": 10
+            }
+          ]
+        },
+        "offers": {
+          "B07TWH1Z6C": {
+            "price_cents": 1187,
+            "stock": 28
+          },
+          "B085CHJ9BD": {
+            "price_cents": 1500,
+            "stock": 10
+          },
+          "B08GWGJR9S": {
+            "price_cents": 3661,
+            "stock": 8
+          },
+          "B08NNZ6NC2": {
+            "price_cents": 2386,
+            "stock": 34
+          },
+          "B08P3H32KL": {
+            "price_cents": 3874,
+            "stock": 9
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": {
+            "quote_id": "148d50cd9348408bbe76d53c46e2fdc8",
+            "items": [
+              {
+                "product_id": "B085CHJ9BD",
+                "title": "Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege los ojos, Lampara led Escritorio regulable con puerto de carga USB, 5 Modos, 10 Niveles de Brillo,Temporizador de 30/60min",
+                "quantity": 3,
+                "unit_price_cents": 1500,
+                "subtotal_cents": 4500,
+                "stock": 10
+              }
+            ],
+            "total_cents": 4500,
+            "budget_cents": null,
+            "message": "Te repito el pedido antes de registrarlo: 3 unidades de «Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege…» a 15,00 € cada una, 45,00 €. Total: 45,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+          },
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B085CHJ9BD",
+              "title": "Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege los ojos, Lampara led Escritorio regulable con puerto de carga USB, 5 Modos, 10 Niveles de Brillo,Temporizador de 30/60min",
+              "brand": "SLATOR",
+              "price_cents": 1500,
+              "stock": 10
+            },
+            {
+              "product_id": "B08GWGJR9S",
+              "title": "Lámpara Escritorio LED, La lamparas de escritorio tiene cuentas de lámpara 60LED, 5 niveles de brillo, 3 modos de colo, USB para cargar, Batería 4000mAh, Temporizador de 45min, [Clase energética A++]",
+              "brand": "SENXINGYAN",
+              "price_cents": 3661,
+              "stock": 8
+            },
+            {
+              "product_id": "B08P3H32KL",
+              "title": "SOFIL Lámpara de Escritorio,Brazo Tipo Cuello de Cisne,Flexo LED Regulable,lámpara de Mesa Ajustable de Madera para Oficina,Sala,Estudio y Dormitorio,Blanco E27",
+              "brand": "SOFIL",
+              "price_cents": 3874,
+              "stock": 9
+            },
+            {
+              "product_id": "B08NNZ6NC2",
+              "title": "Lámpara de escritorio LED Lámpara de lectura de brazo Eye-Care Architect USB Lámpara regulable con 3 modos de color 10 niveles Adecuado Para Oficina, Lectura, Estudios … (negro)",
+              "brand": "Prtukyt",
+              "price_cents": 2386,
+              "stock": 34
+            },
+            {
+              "product_id": "B07TWH1Z6C",
+              "title": "HyAdierTech Lámpara de Escritorio LED, Regulable Lámpara de Mesa Protección para los Ojos, 3 Niveles de Dimmer, Panel Táctil y 360 ° Flexible USB Portátil para Lectores, Estudio y Trabajo",
+              "brand": "HyAdierTech",
+              "price_cents": 1187,
+              "stock": 28
+            }
+          ],
+          "awaiting_confirmation": true
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+              "product_id": "B085CHJ9BD",
+              "quantity": 3
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B085CHJ9BD",
+              "initial_stock": 34,
+              "stock": 10
+            }
+          ]
+        },
+        "offers": {
+          "B07TWH1Z6C": {
+            "price_cents": 1187,
+            "stock": 28
+          },
+          "B085CHJ9BD": {
+            "price_cents": 1500,
+            "stock": 10
+          },
+          "B08GWGJR9S": {
+            "price_cents": 3661,
+            "stock": 8
+          },
+          "B08NNZ6NC2": {
+            "price_cents": 2386,
+            "stock": 34
+          },
+          "B08P3H32KL": {
+            "price_cents": 3874,
+            "stock": 9
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "awaiting_confirmation",
+          "params": {
+            "value": true
+          },
+          "ok": true,
+          "detail": "esperando confirmación: sí"
+        },
+        {
+          "check": "orders",
+          "params": {
+            "count": 0
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 0"
+        }
+      ]
+    },
+    {
+      "kind": "event",
+      "event": "set_offer",
+      "product": "@elegida",
+      "product_id": "B085CHJ9BD",
+      "price_cents": null,
+      "stock": 1
+    },
+    {
+      "kind": "turn",
+      "turn": 4,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Sí.",
+      "agent_input": "Sí.",
+      "response": "No he registrado el pedido porque la tienda cambió después de la cotización. De «Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege…» solo queda 1 unidad y habías pedido 3. Puedo dejarlo en 1. Como alternativa tengo: «Lámpara Escritorio LED, Flexo de Escritorio (Cuidado Ocular, Puerto…» a 23,23 €, con 16 en existencias; «Lámpara Escritorio LED,JUKSTG 5 Modos 10 Niveles de Brillo Lámpara de…» a 34,86 €, con 25 en existencias; «Lámpara de escritorio LED Lámpara de lectura de brazo Eye-Care…» a 23,86 €, con 34 en existencias. ¿Qué prefieres?",
+      "spoken_text": "No he registrado el pedido porque la tienda cambió después de la cotización. De Lámpara Escritorio LED solo queda una unidad y habías pedido tres. Puedo dejarlo en uno. Como alternativa tengo: Lámpara Escritorio LED a veintitrés euros con veintitrés céntimos, con dieciséis en existencias, Lámpara Escritorio LED a treinta y cuatro euros con ochenta y seis céntimos, con veinticinco en existencias, Lámpara de escritorio LED Lámpara de lectura a veintitrés euros con ochenta y seis céntimos, con treinta y cuatro en existencias. ¿Qué prefieres?",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "confirmar_pedido",
+          "args": {
+            "quote_id": "148d50cd9348408bbe76d53c46e2fdc8"
+          },
+          "reason": "el usuario confirmó la cotización",
+          "ok": false,
+          "summary": "[stock_insuficiente] Solo queda 1 unidad del producto B085CHJ9BD y se pidieron 3.",
+          "issues": [
+            {
+              "code": "stock_insuficiente",
+              "message": "Solo queda 1 unidad del producto B085CHJ9BD y se pidieron 3.",
+              "product_id": "B085CHJ9BD",
+              "details": {
+                "requested": 3,
+                "available": 1
+              }
+            }
+          ]
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.025,
+        "llm": 0.0,
+        "tools": 0.012,
+        "tts": 0.0,
+        "total": 0.037
+      },
+      "llm_steps": 0,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": {
+            "quote_id": "148d50cd9348408bbe76d53c46e2fdc8",
+            "items": [
+              {
+                "product_id": "B085CHJ9BD",
+                "title": "Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege los ojos, Lampara led Escritorio regulable con puerto de carga USB, 5 Modos, 10 Niveles de Brillo,Temporizador de 30/60min",
+                "quantity": 3,
+                "unit_price_cents": 1500,
+                "subtotal_cents": 4500,
+                "stock": 10
+              }
+            ],
+            "total_cents": 4500,
+            "budget_cents": null,
+            "message": "Te repito el pedido antes de registrarlo: 3 unidades de «Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege…» a 15,00 € cada una, 45,00 €. Total: 45,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+          },
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B085CHJ9BD",
+              "title": "Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege los ojos, Lampara led Escritorio regulable con puerto de carga USB, 5 Modos, 10 Niveles de Brillo,Temporizador de 30/60min",
+              "brand": "SLATOR",
+              "price_cents": 1500,
+              "stock": 10
+            },
+            {
+              "product_id": "B08GWGJR9S",
+              "title": "Lámpara Escritorio LED, La lamparas de escritorio tiene cuentas de lámpara 60LED, 5 niveles de brillo, 3 modos de colo, USB para cargar, Batería 4000mAh, Temporizador de 45min, [Clase energética A++]",
+              "brand": "SENXINGYAN",
+              "price_cents": 3661,
+              "stock": 8
+            },
+            {
+              "product_id": "B08P3H32KL",
+              "title": "SOFIL Lámpara de Escritorio,Brazo Tipo Cuello de Cisne,Flexo LED Regulable,lámpara de Mesa Ajustable de Madera para Oficina,Sala,Estudio y Dormitorio,Blanco E27",
+              "brand": "SOFIL",
+              "price_cents": 3874,
+              "stock": 9
+            },
+            {
+              "product_id": "B08NNZ6NC2",
+              "title": "Lámpara de escritorio LED Lámpara de lectura de brazo Eye-Care Architect USB Lámpara regulable con 3 modos de color 10 niveles Adecuado Para Oficina, Lectura, Estudios … (negro)",
+              "brand": "Prtukyt",
+              "price_cents": 2386,
+              "stock": 34
+            },
+            {
+              "product_id": "B07TWH1Z6C",
+              "title": "HyAdierTech Lámpara de Escritorio LED, Regulable Lámpara de Mesa Protección para los Ojos, 3 Niveles de Dimmer, Panel Táctil y 360 ° Flexible USB Portátil para Lectores, Estudio y Trabajo",
+              "brand": "HyAdierTech",
+              "price_cents": 1187,
+              "stock": 28
+            }
+          ],
+          "awaiting_confirmation": true
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+              "product_id": "B085CHJ9BD",
+              "quantity": 3
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B085CHJ9BD",
+              "initial_stock": 34,
+              "stock": 1
+            }
+          ]
+        },
+        "offers": {
+          "B07TWH1Z6C": {
+            "price_cents": 1187,
+            "stock": 28
+          },
+          "B085CHJ9BD": {
+            "price_cents": 1500,
+            "stock": 1
+          },
+          "B08GWGJR9S": {
+            "price_cents": 3661,
+            "stock": 8
+          },
+          "B08NNZ6NC2": {
+            "price_cents": 2386,
+            "stock": 34
+          },
+          "B08P3H32KL": {
+            "price_cents": 3874,
+            "stock": 9
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07ZCY9XZ9",
+              "title": "Lámpara Escritorio LED, Flexo de Escritorio (Cuidado Ocular, Puerto USB, 5 Modos,10 Niveles de Brillo,Temporizador de 30/60min, Función de Memoria)",
+              "brand": "SLATOR",
+              "price_cents": 2323,
+              "stock": 16
+            },
+            {
+              "product_id": "B083QFQM98",
+              "title": "Lámpara Escritorio LED,JUKSTG 5 Modos 10 Niveles de Brillo Lámpara de Oficina,Regulable Control Tácti Protege a Ojos lámpara de mesa para Lectura Estudio（Blanco）",
+              "brand": "JUKSTG",
+              "price_cents": 3486,
+              "stock": 25
+            },
+            {
+              "product_id": "B08NNZ6NC2",
+              "title": "Lámpara de escritorio LED Lámpara de lectura de brazo Eye-Care Architect USB Lámpara regulable con 3 modos de color 10 niveles Adecuado Para Oficina, Lectura, Estudios … (negro)",
+              "brand": "Prtukyt",
+              "price_cents": 2386,
+              "stock": 34
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+              "product_id": "B085CHJ9BD",
+              "quantity": 3
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B085CHJ9BD",
+              "initial_stock": 34,
+              "stock": 1
+            }
+          ]
+        },
+        "offers": {
+          "B07TWH1Z6C": {
+            "price_cents": 1187,
+            "stock": 28
+          },
+          "B07ZCY9XZ9": {
+            "price_cents": 2323,
+            "stock": 16
+          },
+          "B083QFQM98": {
+            "price_cents": 3486,
+            "stock": 25
+          },
+          "B085CHJ9BD": {
+            "price_cents": 1500,
+            "stock": 1
+          },
+          "B08GWGJR9S": {
+            "price_cents": 3661,
+            "stock": 8
+          },
+          "B08NNZ6NC2": {
+            "price_cents": 2386,
+            "stock": 34
+          },
+          "B08P3H32KL": {
+            "price_cents": 3874,
+            "stock": 9
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "orders",
+          "params": {
+            "count": 0
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 0"
+        },
+        {
+          "check": "rejected",
+          "params": {
+            "code": "stock_insuficiente"
+          },
+          "ok": true,
+          "detail": "rechazos del turno: ['stock_insuficiente']"
+        },
+        {
+          "check": "cart",
+          "params": {
+            "lines": [
+              {
+                "product": "@elegida",
+                "quantity": 3
+              }
+            ]
+          },
+          "ok": true,
+          "detail": "carrito: 3 × B085CHJ9BD"
+        },
+        {
+          "check": "stock",
+          "params": {
+            "product": "@elegida",
+            "equals": 1
+          },
+          "ok": true,
+          "detail": "existencias de B085CHJ9BD: 1"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 5,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Vale, déjalo en una.",
+      "agent_input": "Vale, déjalo en una.",
+      "response": "Hecho, añadida una unidad. En el carrito hay 1 unidad de «Lámpara Escritorio LED, Flexo de Escritorio (Cuidado Ocular, Puerto…» a 23,23 € cada una, 23,23 €. Total: 23,23 €.",
+      "spoken_text": "Hecho, añadida una unidad. En el carrito hay una unidad de Lámpara Escritorio LED a veintitrés euros con veintitrés céntimos cada una, veintitrés euros con veintitrés céntimos. Total: veintitrés euros con veintitrés céntimos.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "quitar_del_carrito",
+          "args": {
+            "product_id": "B085CHJ9BD"
+          },
+          "reason": "quitar la lámpara que no cumple",
+          "ok": true,
+          "summary": "hecho. Así queda el carrito.\nCARRITO: vacío",
+          "issues": []
+        },
+        {
+          "tool": "agregar_al_carrito",
+          "args": {
+            "product_id": "B07ZCY9XZ9",
+            "cantidad": 1
+          },
+          "reason": "añadir una lámpara del primer candidato",
+          "ok": true,
+          "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B07ZCY9XZ9 | Lámpara Escritorio LED, Flexo de Escritorio (Cuidado Ocular, Puerto… | 1 unidad × 23,23 € = 23,23 € | existencias: 16\nTotal del carrito: 23,23 €",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 6.4,
+        "tools": 0.065,
+        "tts": 0.0,
+        "total": 6.465
+      },
+      "llm_steps": 3,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07ZCY9XZ9",
+              "title": "Lámpara Escritorio LED, Flexo de Escritorio (Cuidado Ocular, Puerto USB, 5 Modos,10 Niveles de Brillo,Temporizador de 30/60min, Función de Memoria)",
+              "brand": "SLATOR",
+              "price_cents": 2323,
+              "stock": 16
+            },
+            {
+              "product_id": "B083QFQM98",
+              "title": "Lámpara Escritorio LED,JUKSTG 5 Modos 10 Niveles de Brillo Lámpara de Oficina,Regulable Control Tácti Protege a Ojos lámpara de mesa para Lectura Estudio（Blanco）",
+              "brand": "JUKSTG",
+              "price_cents": 3486,
+              "stock": 25
+            },
+            {
+              "product_id": "B08NNZ6NC2",
+              "title": "Lámpara de escritorio LED Lámpara de lectura de brazo Eye-Care Architect USB Lámpara regulable con 3 modos de color 10 niveles Adecuado Para Oficina, Lectura, Estudios … (negro)",
+              "brand": "Prtukyt",
+              "price_cents": 2386,
+              "stock": 34
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+              "product_id": "B085CHJ9BD",
+              "quantity": 3
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B085CHJ9BD",
+              "initial_stock": 34,
+              "stock": 1
+            }
+          ]
+        },
+        "offers": {
+          "B07TWH1Z6C": {
+            "price_cents": 1187,
+            "stock": 28
+          },
+          "B07ZCY9XZ9": {
+            "price_cents": 2323,
+            "stock": 16
+          },
+          "B083QFQM98": {
+            "price_cents": 3486,
+            "stock": 25
+          },
+          "B085CHJ9BD": {
+            "price_cents": 1500,
+            "stock": 1
+          },
+          "B08GWGJR9S": {
+            "price_cents": 3661,
+            "stock": 8
+          },
+          "B08NNZ6NC2": {
+            "price_cents": 2386,
+            "stock": 34
+          },
+          "B08P3H32KL": {
+            "price_cents": 3874,
+            "stock": 9
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07ZCY9XZ9",
+              "title": "Lámpara Escritorio LED, Flexo de Escritorio (Cuidado Ocular, Puerto USB, 5 Modos,10 Niveles de Brillo,Temporizador de 30/60min, Función de Memoria)",
+              "brand": "SLATOR",
+              "price_cents": 2323,
+              "stock": 16
+            },
+            {
+              "product_id": "B083QFQM98",
+              "title": "Lámpara Escritorio LED,JUKSTG 5 Modos 10 Niveles de Brillo Lámpara de Oficina,Regulable Control Tácti Protege a Ojos lámpara de mesa para Lectura Estudio（Blanco）",
+              "brand": "JUKSTG",
+              "price_cents": 3486,
+              "stock": 25
+            },
+            {
+              "product_id": "B08NNZ6NC2",
+              "title": "Lámpara de escritorio LED Lámpara de lectura de brazo Eye-Care Architect USB Lámpara regulable con 3 modos de color 10 niveles Adecuado Para Oficina, Lectura, Estudios … (negro)",
+              "brand": "Prtukyt",
+              "price_cents": 2386,
+              "stock": 34
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+              "product_id": "B07ZCY9XZ9",
+              "quantity": 1
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B085CHJ9BD",
+              "initial_stock": 34,
+              "stock": 1
+            }
+          ]
+        },
+        "offers": {
+          "B07TWH1Z6C": {
+            "price_cents": 1187,
+            "stock": 28
+          },
+          "B07ZCY9XZ9": {
+            "price_cents": 2323,
+            "stock": 16
+          },
+          "B083QFQM98": {
+            "price_cents": 3486,
+            "stock": 25
+          },
+          "B085CHJ9BD": {
+            "price_cents": 1500,
+            "stock": 1
+          },
+          "B08GWGJR9S": {
+            "price_cents": 3661,
+            "stock": 8
+          },
+          "B08NNZ6NC2": {
+            "price_cents": 2386,
+            "stock": 34
+          },
+          "B08P3H32KL": {
+            "price_cents": 3874,
+            "stock": 9
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "lines": [
+              {
+                "product": "@elegida",
+                "quantity": 1
+              }
+            ]
+          },
+          "ok": false,
+          "detail": "carrito: 1 × B07ZCY9XZ9"
+        },
+        {
+          "check": "orders",
+          "params": {
+            "count": 0
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 0"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 6,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Cierra el pedido.",
+      "agent_input": "Cierra el pedido.",
+      "response": "Te repito el pedido antes de registrarlo: 1 unidad de «Lámpara Escritorio LED, Flexo de Escritorio (Cuidado Ocular, Puerto…» a 23,23 € cada una, 23,23 €. Total: 23,23 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "spoken_text": "Te repito el pedido antes de registrarlo: una unidad de Lámpara Escritorio LED a veintitrés euros con veintitrés céntimos cada una, veintitrés euros con veintitrés céntimos. Total: veintitrés euros con veintitrés céntimos. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": true,
+      "operations": [
+        {
+          "tool": "cotizar",
+          "args": {},
+          "reason": "cerrar el pedido",
+          "ok": true,
+          "summary": "cotización creada; falta la confirmación del usuario.",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 2.064,
+        "tools": 0.04,
+        "tts": 0.0,
+        "total": 2.104
+      },
+      "llm_steps": 1,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07ZCY9XZ9",
+              "title": "Lámpara Escritorio LED, Flexo de Escritorio (Cuidado Ocular, Puerto USB, 5 Modos,10 Niveles de Brillo,Temporizador de 30/60min, Función de Memoria)",
+              "brand": "SLATOR",
+              "price_cents": 2323,
+              "stock": 16
+            },
+            {
+              "product_id": "B083QFQM98",
+              "title": "Lámpara Escritorio LED,JUKSTG 5 Modos 10 Niveles de Brillo Lámpara de Oficina,Regulable Control Tácti Protege a Ojos lámpara de mesa para Lectura Estudio（Blanco）",
+              "brand": "JUKSTG",
+              "price_cents": 3486,
+              "stock": 25
+            },
+            {
+              "product_id": "B08NNZ6NC2",
+              "title": "Lámpara de escritorio LED Lámpara de lectura de brazo Eye-Care Architect USB Lámpara regulable con 3 modos de color 10 niveles Adecuado Para Oficina, Lectura, Estudios … (negro)",
+              "brand": "Prtukyt",
+              "price_cents": 2386,
+              "stock": 34
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+              "product_id": "B07ZCY9XZ9",
+              "quantity": 1
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B085CHJ9BD",
+              "initial_stock": 34,
+              "stock": 1
+            }
+          ]
+        },
+        "offers": {
+          "B07TWH1Z6C": {
+            "price_cents": 1187,
+            "stock": 28
+          },
+          "B07ZCY9XZ9": {
+            "price_cents": 2323,
+            "stock": 16
+          },
+          "B083QFQM98": {
+            "price_cents": 3486,
+            "stock": 25
+          },
+          "B085CHJ9BD": {
+            "price_cents": 1500,
+            "stock": 1
+          },
+          "B08GWGJR9S": {
+            "price_cents": 3661,
+            "stock": 8
+          },
+          "B08NNZ6NC2": {
+            "price_cents": 2386,
+            "stock": 34
+          },
+          "B08P3H32KL": {
+            "price_cents": 3874,
+            "stock": 9
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": {
+            "quote_id": "f9df5d52f5674745b5ffdb88f91fa785",
+            "items": [
+              {
+                "product_id": "B07ZCY9XZ9",
+                "title": "Lámpara Escritorio LED, Flexo de Escritorio (Cuidado Ocular, Puerto USB, 5 Modos,10 Niveles de Brillo,Temporizador de 30/60min, Función de Memoria)",
+                "quantity": 1,
+                "unit_price_cents": 2323,
+                "subtotal_cents": 2323,
+                "stock": 16
+              }
+            ],
+            "total_cents": 2323,
+            "budget_cents": null,
+            "message": "Te repito el pedido antes de registrarlo: 1 unidad de «Lámpara Escritorio LED, Flexo de Escritorio (Cuidado Ocular, Puerto…» a 23,23 € cada una, 23,23 €. Total: 23,23 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+          },
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07ZCY9XZ9",
+              "title": "Lámpara Escritorio LED, Flexo de Escritorio (Cuidado Ocular, Puerto USB, 5 Modos,10 Niveles de Brillo,Temporizador de 30/60min, Función de Memoria)",
+              "brand": "SLATOR",
+              "price_cents": 2323,
+              "stock": 16
+            },
+            {
+              "product_id": "B083QFQM98",
+              "title": "Lámpara Escritorio LED,JUKSTG 5 Modos 10 Niveles de Brillo Lámpara de Oficina,Regulable Control Tácti Protege a Ojos lámpara de mesa para Lectura Estudio（Blanco）",
+              "brand": "JUKSTG",
+              "price_cents": 3486,
+              "stock": 25
+            },
+            {
+              "product_id": "B08NNZ6NC2",
+              "title": "Lámpara de escritorio LED Lámpara de lectura de brazo Eye-Care Architect USB Lámpara regulable con 3 modos de color 10 niveles Adecuado Para Oficina, Lectura, Estudios … (negro)",
+              "brand": "Prtukyt",
+              "price_cents": 2386,
+              "stock": 34
+            }
+          ],
+          "awaiting_confirmation": true
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+              "product_id": "B07ZCY9XZ9",
+              "quantity": 1
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B085CHJ9BD",
+              "initial_stock": 34,
+              "stock": 1
+            }
+          ]
+        },
+        "offers": {
+          "B07TWH1Z6C": {
+            "price_cents": 1187,
+            "stock": 28
+          },
+          "B07ZCY9XZ9": {
+            "price_cents": 2323,
+            "stock": 16
+          },
+          "B083QFQM98": {
+            "price_cents": 3486,
+            "stock": 25
+          },
+          "B085CHJ9BD": {
+            "price_cents": 1500,
+            "stock": 1
+          },
+          "B08GWGJR9S": {
+            "price_cents": 3661,
+            "stock": 8
+          },
+          "B08NNZ6NC2": {
+            "price_cents": 2386,
+            "stock": 34
+          },
+          "B08P3H32KL": {
+            "price_cents": 3874,
+            "stock": 9
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "awaiting_confirmation",
+          "params": {
+            "value": true
+          },
+          "ok": true,
+          "detail": "esperando confirmación: sí"
+        },
+        {
+          "check": "orders",
+          "params": {
+            "count": 0
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 0"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 7,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Sí.",
+      "agent_input": "Sí.",
+      "response": "Pedido número 1 registrado: 1 unidad de «Lámpara Escritorio LED, Flexo de Escritorio (Cuidado Ocular, Puerto…» a 23,23 € cada una, 23,23 €. Total: 23,23 €. Gracias por tu compra.",
+      "spoken_text": "Pedido número uno registrado: una unidad de Lámpara Escritorio LED a veintitrés euros con veintitrés céntimos cada una, veintitrés euros con veintitrés céntimos. Total: veintitrés euros con veintitrés céntimos. Gracias por tu compra.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "confirmar_pedido",
+          "args": {
+            "quote_id": "f9df5d52f5674745b5ffdb88f91fa785"
+          },
+          "reason": "el usuario confirmó la cotización",
+          "ok": true,
+          "summary": "pedido registrado",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 0.0,
+        "tools": 0.028,
+        "tts": 0.0,
+        "total": 0.028
+      },
+      "llm_steps": 0,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": {
+            "quote_id": "f9df5d52f5674745b5ffdb88f91fa785",
+            "items": [
+              {
+                "product_id": "B07ZCY9XZ9",
+                "title": "Lámpara Escritorio LED, Flexo de Escritorio (Cuidado Ocular, Puerto USB, 5 Modos,10 Niveles de Brillo,Temporizador de 30/60min, Función de Memoria)",
+                "quantity": 1,
+                "unit_price_cents": 2323,
+                "subtotal_cents": 2323,
+                "stock": 16
+              }
+            ],
+            "total_cents": 2323,
+            "budget_cents": null,
+            "message": "Te repito el pedido antes de registrarlo: 1 unidad de «Lámpara Escritorio LED, Flexo de Escritorio (Cuidado Ocular, Puerto…» a 23,23 € cada una, 23,23 €. Total: 23,23 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+          },
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07ZCY9XZ9",
+              "title": "Lámpara Escritorio LED, Flexo de Escritorio (Cuidado Ocular, Puerto USB, 5 Modos,10 Niveles de Brillo,Temporizador de 30/60min, Función de Memoria)",
+              "brand": "SLATOR",
+              "price_cents": 2323,
+              "stock": 16
+            },
+            {
+              "product_id": "B083QFQM98",
+              "title": "Lámpara Escritorio LED,JUKSTG 5 Modos 10 Niveles de Brillo Lámpara de Oficina,Regulable Control Tácti Protege a Ojos lámpara de mesa para Lectura Estudio（Blanco）",
+              "brand": "JUKSTG",
+              "price_cents": 3486,
+              "stock": 25
+            },
+            {
+              "product_id": "B08NNZ6NC2",
+              "title": "Lámpara de escritorio LED Lámpara de lectura de brazo Eye-Care Architect USB Lámpara regulable con 3 modos de color 10 niveles Adecuado Para Oficina, Lectura, Estudios … (negro)",
+              "brand": "Prtukyt",
+              "price_cents": 2386,
+              "stock": 34
+            }
+          ],
+          "awaiting_confirmation": true
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+              "product_id": "B07ZCY9XZ9",
+              "quantity": 1
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B085CHJ9BD",
+              "initial_stock": 34,
+              "stock": 1
+            }
+          ]
+        },
+        "offers": {
+          "B07TWH1Z6C": {
+            "price_cents": 1187,
+            "stock": 28
+          },
+          "B07ZCY9XZ9": {
+            "price_cents": 2323,
+            "stock": 16
+          },
+          "B083QFQM98": {
+            "price_cents": 3486,
+            "stock": 25
+          },
+          "B085CHJ9BD": {
+            "price_cents": 1500,
+            "stock": 1
+          },
+          "B08GWGJR9S": {
+            "price_cents": 3661,
+            "stock": 8
+          },
+          "B08NNZ6NC2": {
+            "price_cents": 2386,
+            "stock": 34
+          },
+          "B08P3H32KL": {
+            "price_cents": 3874,
+            "stock": 9
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": {
+            "order_id": 1,
+            "quote_id": "f9df5d52f5674745b5ffdb88f91fa785",
+            "items": [
+              {
+                "product_id": "B07ZCY9XZ9",
+                "title": "Lámpara Escritorio LED, Flexo de Escritorio (Cuidado Ocular, Puerto USB, 5 Modos,10 Niveles de Brillo,Temporizador de 30/60min, Función de Memoria)",
+                "quantity": 1,
+                "unit_price_cents": 2323,
+                "subtotal_cents": 2323
+              }
+            ],
+            "total_cents": 2323,
+            "message": "Pedido número 1 registrado: 1 unidad de «Lámpara Escritorio LED, Flexo de Escritorio (Cuidado Ocular, Puerto…» a 23,23 € cada una, 23,23 €. Total: 23,23 €. Gracias por tu compra."
+          },
+          "candidates": [
+            {
+              "product_id": "B07ZCY9XZ9",
+              "title": "Lámpara Escritorio LED, Flexo de Escritorio (Cuidado Ocular, Puerto USB, 5 Modos,10 Niveles de Brillo,Temporizador de 30/60min, Función de Memoria)",
+              "brand": "SLATOR",
+              "price_cents": 2323,
+              "stock": 16
+            },
+            {
+              "product_id": "B083QFQM98",
+              "title": "Lámpara Escritorio LED,JUKSTG 5 Modos 10 Niveles de Brillo Lámpara de Oficina,Regulable Control Tácti Protege a Ojos lámpara de mesa para Lectura Estudio（Blanco）",
+              "brand": "JUKSTG",
+              "price_cents": 3486,
+              "stock": 25
+            },
+            {
+              "product_id": "B08NNZ6NC2",
+              "title": "Lámpara de escritorio LED Lámpara de lectura de brazo Eye-Care Architect USB Lámpara regulable con 3 modos de color 10 niveles Adecuado Para Oficina, Lectura, Estudios … (negro)",
+              "brand": "Prtukyt",
+              "price_cents": 2386,
+              "stock": 34
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [
+            {
+              "order_id": 1,
+              "quote_id": "f9df5d52f5674745b5ffdb88f91fa785",
+              "total_cents": 2323
+            }
+          ],
+          "order_items": [
+            {
+              "order_id": 1,
+              "product_id": "B07ZCY9XZ9",
+              "quantity": 1,
+              "unit_price_cents": 2323
+            }
+          ],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B07ZCY9XZ9",
+              "initial_stock": 16,
+              "stock": 15
+            },
+            {
+              "product_id": "B085CHJ9BD",
+              "initial_stock": 34,
+              "stock": 1
+            }
+          ]
+        },
+        "offers": {
+          "B07TWH1Z6C": {
+            "price_cents": 1187,
+            "stock": 28
+          },
+          "B07ZCY9XZ9": {
+            "price_cents": 2323,
+            "stock": 15
+          },
+          "B083QFQM98": {
+            "price_cents": 3486,
+            "stock": 25
+          },
+          "B085CHJ9BD": {
+            "price_cents": 1500,
+            "stock": 1
+          },
+          "B08GWGJR9S": {
+            "price_cents": 3661,
+            "stock": 8
+          },
+          "B08NNZ6NC2": {
+            "price_cents": 2386,
+            "stock": 34
+          },
+          "B08P3H32KL": {
+            "price_cents": 3874,
+            "stock": 9
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "orders",
+          "params": {
+            "count": 1
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 1"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 8,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Sí.",
+      "agent_input": "Sí.",
+      "response": "Ese pedido ya estaba registrado con el número 1, así que no lo he duplicado. Total: 23,23 €.",
+      "spoken_text": "Ese pedido ya estaba registrado con el número uno, así que no lo he duplicado. Total: veintitrés euros con veintitrés céntimos.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "confirmar_pedido",
+          "args": {
+            "quote_id": "f9df5d52f5674745b5ffdb88f91fa785"
+          },
+          "reason": "el usuario confirmó la cotización",
+          "ok": true,
+          "summary": "el pedido ya estaba registrado; no se duplicó",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 0.0,
+        "tools": 0.02,
+        "tts": 0.0,
+        "total": 0.02
+      },
+      "llm_steps": 0,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": {
+            "order_id": 1,
+            "quote_id": "f9df5d52f5674745b5ffdb88f91fa785",
+            "items": [
+              {
+                "product_id": "B07ZCY9XZ9",
+                "title": "Lámpara Escritorio LED, Flexo de Escritorio (Cuidado Ocular, Puerto USB, 5 Modos,10 Niveles de Brillo,Temporizador de 30/60min, Función de Memoria)",
+                "quantity": 1,
+                "unit_price_cents": 2323,
+                "subtotal_cents": 2323
+              }
+            ],
+            "total_cents": 2323,
+            "message": "Pedido número 1 registrado: 1 unidad de «Lámpara Escritorio LED, Flexo de Escritorio (Cuidado Ocular, Puerto…» a 23,23 € cada una, 23,23 €. Total: 23,23 €. Gracias por tu compra."
+          },
+          "candidates": [
+            {
+              "product_id": "B07ZCY9XZ9",
+              "title": "Lámpara Escritorio LED, Flexo de Escritorio (Cuidado Ocular, Puerto USB, 5 Modos,10 Niveles de Brillo,Temporizador de 30/60min, Función de Memoria)",
+              "brand": "SLATOR",
+              "price_cents": 2323,
+              "stock": 16
+            },
+            {
+              "product_id": "B083QFQM98",
+              "title": "Lámpara Escritorio LED,JUKSTG 5 Modos 10 Niveles de Brillo Lámpara de Oficina,Regulable Control Tácti Protege a Ojos lámpara de mesa para Lectura Estudio（Blanco）",
+              "brand": "JUKSTG",
+              "price_cents": 3486,
+              "stock": 25
+            },
+            {
+              "product_id": "B08NNZ6NC2",
+              "title": "Lámpara de escritorio LED Lámpara de lectura de brazo Eye-Care Architect USB Lámpara regulable con 3 modos de color 10 niveles Adecuado Para Oficina, Lectura, Estudios … (negro)",
+              "brand": "Prtukyt",
+              "price_cents": 2386,
+              "stock": 34
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [
+            {
+              "order_id": 1,
+              "quote_id": "f9df5d52f5674745b5ffdb88f91fa785",
+              "total_cents": 2323
+            }
+          ],
+          "order_items": [
+            {
+              "order_id": 1,
+              "product_id": "B07ZCY9XZ9",
+              "quantity": 1,
+              "unit_price_cents": 2323
+            }
+          ],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B07ZCY9XZ9",
+              "initial_stock": 16,
+              "stock": 15
+            },
+            {
+              "product_id": "B085CHJ9BD",
+              "initial_stock": 34,
+              "stock": 1
+            }
+          ]
+        },
+        "offers": {
+          "B07TWH1Z6C": {
+            "price_cents": 1187,
+            "stock": 28
+          },
+          "B07ZCY9XZ9": {
+            "price_cents": 2323,
+            "stock": 15
+          },
+          "B083QFQM98": {
+            "price_cents": 3486,
+            "stock": 25
+          },
+          "B085CHJ9BD": {
+            "price_cents": 1500,
+            "stock": 1
+          },
+          "B08GWGJR9S": {
+            "price_cents": 3661,
+            "stock": 8
+          },
+          "B08NNZ6NC2": {
+            "price_cents": 2386,
+            "stock": 34
+          },
+          "B08P3H32KL": {
+            "price_cents": 3874,
+            "stock": 9
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": {
+            "order_id": 1,
+            "quote_id": "f9df5d52f5674745b5ffdb88f91fa785",
+            "items": [
+              {
+                "product_id": "B07ZCY9XZ9",
+                "title": "Lámpara Escritorio LED, Flexo de Escritorio (Cuidado Ocular, Puerto USB, 5 Modos,10 Niveles de Brillo,Temporizador de 30/60min, Función de Memoria)",
+                "quantity": 1,
+                "unit_price_cents": 2323,
+                "subtotal_cents": 2323
+              }
+            ],
+            "total_cents": 2323,
+            "message": "Ese pedido ya estaba registrado con el número 1, así que no lo he duplicado. Total: 23,23 €."
+          },
+          "candidates": [
+            {
+              "product_id": "B07ZCY9XZ9",
+              "title": "Lámpara Escritorio LED, Flexo de Escritorio (Cuidado Ocular, Puerto USB, 5 Modos,10 Niveles de Brillo,Temporizador de 30/60min, Función de Memoria)",
+              "brand": "SLATOR",
+              "price_cents": 2323,
+              "stock": 15
+            },
+            {
+              "product_id": "B083QFQM98",
+              "title": "Lámpara Escritorio LED,JUKSTG 5 Modos 10 Niveles de Brillo Lámpara de Oficina,Regulable Control Tácti Protege a Ojos lámpara de mesa para Lectura Estudio（Blanco）",
+              "brand": "JUKSTG",
+              "price_cents": 3486,
+              "stock": 25
+            },
+            {
+              "product_id": "B08NNZ6NC2",
+              "title": "Lámpara de escritorio LED Lámpara de lectura de brazo Eye-Care Architect USB Lámpara regulable con 3 modos de color 10 niveles Adecuado Para Oficina, Lectura, Estudios … (negro)",
+              "brand": "Prtukyt",
+              "price_cents": 2386,
+              "stock": 34
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [
+            {
+              "order_id": 1,
+              "quote_id": "f9df5d52f5674745b5ffdb88f91fa785",
+              "total_cents": 2323
+            }
+          ],
+          "order_items": [
+            {
+              "order_id": 1,
+              "product_id": "B07ZCY9XZ9",
+              "quantity": 1,
+              "unit_price_cents": 2323
+            }
+          ],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B07ZCY9XZ9",
+              "initial_stock": 16,
+              "stock": 15
+            },
+            {
+              "product_id": "B085CHJ9BD",
+              "initial_stock": 34,
+              "stock": 1
+            }
+          ]
+        },
+        "offers": {
+          "B07TWH1Z6C": {
+            "price_cents": 1187,
+            "stock": 28
+          },
+          "B07ZCY9XZ9": {
+            "price_cents": 2323,
+            "stock": 15
+          },
+          "B083QFQM98": {
+            "price_cents": 3486,
+            "stock": 25
+          },
+          "B085CHJ9BD": {
+            "price_cents": 1500,
+            "stock": 1
+          },
+          "B08GWGJR9S": {
+            "price_cents": 3661,
+            "stock": 8
+          },
+          "B08NNZ6NC2": {
+            "price_cents": 2386,
+            "stock": 34
+          },
+          "B08P3H32KL": {
+            "price_cents": 3874,
+            "stock": 9
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "orders",
+          "params": {
+            "count": 1
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 1"
+        }
+      ]
+    }
+  ],
+  "final": {
+    "snapshot": {
+      "cart_id": "eval-b9a61af9-texto-06_cambio_stock_confirmacion_repetida-c1",
+      "state": {
+        "budget_cents": null,
+        "preferences": [],
+        "pending_clarification": null,
+        "quote": null,
+        "order": {
+          "order_id": 1,
+          "quote_id": "f9df5d52f5674745b5ffdb88f91fa785",
+          "items": [
+            {
+              "product_id": "B07ZCY9XZ9",
+              "title": "Lámpara Escritorio LED, Flexo de Escritorio (Cuidado Ocular, Puerto USB, 5 Modos,10 Niveles de Brillo,Temporizador de 30/60min, Función de Memoria)",
+              "quantity": 1,
+              "unit_price_cents": 2323,
+              "subtotal_cents": 2323
+            }
+          ],
+          "total_cents": 2323,
+          "message": "Ese pedido ya estaba registrado con el número 1, así que no lo he duplicado. Total: 23,23 €."
+        },
+        "candidates": [
+          {
+            "product_id": "B07ZCY9XZ9",
+            "title": "Lámpara Escritorio LED, Flexo de Escritorio (Cuidado Ocular, Puerto USB, 5 Modos,10 Niveles de Brillo,Temporizador de 30/60min, Función de Memoria)",
+            "brand": "SLATOR",
+            "price_cents": 2323,
+            "stock": 15
+          },
+          {
+            "product_id": "B083QFQM98",
+            "title": "Lámpara Escritorio LED,JUKSTG 5 Modos 10 Niveles de Brillo Lámpara de Oficina,Regulable Control Tácti Protege a Ojos lámpara de mesa para Lectura Estudio（Blanco）",
+            "brand": "JUKSTG",
+            "price_cents": 3486,
+            "stock": 25
+          },
+          {
+            "product_id": "B08NNZ6NC2",
+            "title": "Lámpara de escritorio LED Lámpara de lectura de brazo Eye-Care Architect USB Lámpara regulable con 3 modos de color 10 niveles Adecuado Para Oficina, Lectura, Estudios … (negro)",
+            "brand": "Prtukyt",
+            "price_cents": 2386,
+            "stock": 34
+          }
+        ],
+        "awaiting_confirmation": false
+      },
+      "store": {
+        "orders": [
+          {
+            "order_id": 1,
+            "quote_id": "f9df5d52f5674745b5ffdb88f91fa785",
+            "total_cents": 2323
+          }
+        ],
+        "order_items": [
+          {
+            "order_id": 1,
+            "product_id": "B07ZCY9XZ9",
+            "quantity": 1,
+            "unit_price_cents": 2323
+          }
+        ],
+        "cart_items": [],
+        "inventory_changes": [
+          {
+            "product_id": "B07ZCY9XZ9",
+            "initial_stock": 16,
+            "stock": 15
+          },
+          {
+            "product_id": "B085CHJ9BD",
+            "initial_stock": 34,
+            "stock": 1
+          }
+        ]
+      },
+      "offers": {
+        "B07TWH1Z6C": {
+          "price_cents": 1187,
+          "stock": 28
+        },
+        "B07ZCY9XZ9": {
+          "price_cents": 2323,
+          "stock": 15
+        },
+        "B083QFQM98": {
+          "price_cents": 3486,
+          "stock": 25
+        },
+        "B085CHJ9BD": {
+          "price_cents": 1500,
+          "stock": 1
+        },
+        "B08GWGJR9S": {
+          "price_cents": 3661,
+          "stock": 8
+        },
+        "B08NNZ6NC2": {
+          "price_cents": 2386,
+          "stock": 34
+        },
+        "B08P3H32KL": {
+          "price_cents": 3874,
+          "stock": 9
+        }
+      }
+    },
+    "checks": [
+      {
+        "check": "orders",
+        "params": {
+          "count": 1
+        },
+        "ok": true,
+        "detail": "pedidos registrados: 1"
+      },
+      {
+        "check": "order",
+        "params": {
+          "lines": [
+            {
+              "product": "@elegida",
+              "quantity": 1
+            }
+          ],
+          "total_cents": 1500
+        },
+        "ok": false,
+        "detail": "pedido 1: 1 × B07ZCY9XZ9; total 2323 céntimos"
+      },
+      {
+        "check": "stock",
+        "params": {
+          "product": "@elegida",
+          "equals": 0
+        },
+        "ok": false,
+        "detail": "existencias de B085CHJ9BD: 1"
+      },
+      {
+        "check": "cart",
+        "params": {
+          "empty": true
+        },
+        "ok": true,
+        "detail": "carrito: vacío"
+      }
+    ]
+  },
+  "violations": [],
+  "problems": [],
+  "passed": false,
+  "timings": {
+    "all": {
+      "turns": 8,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.01,
+        "max": 0.03
+      },
+      "llm": {
+        "mean": 3.08,
+        "max": 8.14
+      },
+      "tools": {
+        "mean": 0.03,
+        "max": 0.07
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 3.12,
+        "max": 8.2
+      }
+    },
+    "with_llm": {
+      "turns": 5,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.01,
+        "max": 0.03
+      },
+      "llm": {
+        "mean": 4.93,
+        "max": 8.14
+      },
+      "tools": {
+        "mean": 0.04,
+        "max": 0.07
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 4.97,
+        "max": 8.2
+      }
+    },
+    "without_llm": {
+      "turns": 3,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.01,
+        "max": 0.03
+      },
+      "llm": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "tools": {
+        "mean": 0.02,
+        "max": 0.03
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 0.03,
+        "max": 0.04
+      }
+    }
+  }
+}

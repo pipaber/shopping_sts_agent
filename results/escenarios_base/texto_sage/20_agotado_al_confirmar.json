@@ -1,0 +1,1915 @@
+{
+  "id": "20_agotado_al_confirmar",
+  "title": "Producto agotado entre la cotización y la confirmación",
+  "kind": "agotado_al_confirmar",
+  "description": "Con la cotización pendiente, el producto se agota. La confirmación debe rechazarse sin cambios y el agente debe proponer alternativas con existencias. El usuario cambia el producto por la primera alternativa y compra.",
+  "voice": false,
+  "input": "texto",
+  "audio_source": null,
+  "user_id": "eval-a557491f-20_agotado_al_confirmar",
+  "threads": [
+    "eval-a557491f-20_agotado_al_confirmar-c1"
+  ],
+  "names": {
+    "elegido": "B0112S7DTY",
+    "alternativa": "B076BCD81R"
+  },
+  "steps": [
+    {
+      "kind": "turn",
+      "turn": 1,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Busco un cuaderno de tapa dura.",
+      "agent_input": "Busco un cuaderno de tapa dura.",
+      "response": "Tengo el Moleskine QP060BKEVER por 7,01 € y el Arteza de Azul cobalto y gris por 10,95 €. ¿Te interesa alguno?",
+      "spoken_text": "Tengo el Moleskine por siete euros con un céntimo y el Arteza de Azul cobalto y gris por diez euros con noventa y cinco céntimos. ¿Te interesa alguno?",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "buscar_productos",
+          "args": {
+            "consulta": "cuaderno tapa dura"
+          },
+          "reason": "buscar el cuaderno",
+          "ok": true,
+          "summary": "estos son ahora los CANDIDATOS, del más al menos relevante:\n[1] id=B0112S7DTY | Moleskine QP060BKEVER - Cuaderno digital Evernote (CARNETS CONNECTES), Negro | marca: Moleskine | color: Negro | precio: 7,01 € | existencias: 50 | características (extracto): Cuaderno evernote de tapa dura compatible con soportes digitales para traspasar todas tus anotaciones a tu ordenador, teléfono y tablet para hacer tus manuscritos digitalizados más accesibles, consultables y fáciles de compartir. las… | descripción: desconocido\n[2] id=B08VMR6YL7 | Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 2, Azul Cobalto y Gris], Pack Cuadernos de Dibujo, Diarios de Tapa Dura con Papel de Escribir en Blanco [96 Hojas] | marca: ARTEZA | color: Azul cobalto y gris | precio: 10,95 € | existencias: 4 | características (extracto): Juego de 2 Cuadernos Tapa Dura (15 x 20 cm) - Con cubiertas sólidas y encuadernación resistente, sirven como cuaderno de viaje. Vienen con banda elástica, cinta marcapáginas y bolsillo interior. 96 Hojas de Papel Grueso de 128 gsm -… | descripción: Cuaderno con Hojas en Blanco para Escribir tu Diario Con un excelente papel de 128 g / m2 y una encuadernación de confianza, nuestro cuaderno para apuntes sirve para las listas de tareas pendientes…\n[3] id=B08VMTLR4V | Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 3: Rosa Claro, Rosa Oscuro, Granate], Pack Cuadernos de Dibujo, Diarios de Tapa Dura, con Rayas, en Blanco y con Puntos [96 Hojas] | marca: ARTEZA | color: desconocido | precio: 10,16 € | existencias: 39 | características (extracto): Juego de 3 Cuadernos Tapa Dura (15 x 20 cm) - Con cubiertas sólidas y encuadernación resistente, sirven como cuaderno de viaje. Vienen con banda elástica, cinta marcapáginas y bolsillo interior. 96 Hojas de Papel Grueso de 128 gsm -… | descripción: Cuaderno con Hojas en Blanco para Escribir tu Diario Con un excelente papel de 128 g / m2 y una encuadernación de confianza, nuestro cuaderno para apuntes sirve para las listas de tareas pendientes…\n[4] id=B07DL4T68P | Eachgoo Espiral Encuadernación Cuaderno, Tapa Dura Cuaderno Dibujo (A5) | marca: Eachgoo | color: negro | precio: 43,88 € | existencias: 33 | características (extracto): MÁS OPCIONES: Tres tamaños de cuaderno de espiral para elegir (A5, A4, A3). BUENA CALIDAD: El hojas dibujo es 120gsm, 60 caras (30 hojas) de papel de dibujo de buena calidad. MEJOR REGALO: Hojas Dibujo es perfecto para dibujar y pintar… | descripción: 1. Bloc de dibujo reciclado con cubiertas de tableros duros naturales y anillo negro encuadernado,60 caras (30 páginas) de papel reciclado de 120gsm. 2. El cuaderno de bocetos en espiral de tapa dura…\n[5] id=B00SHL2X86 | Enri, Cuadernos A5, Pack de 5 Libretas Tapa Dura, 80 Hojas, Cuadrícula 4x4, Surtido Colores Aleatorio | marca: Enri | color: aleatorios | precio: 78,89 € | existencias: 3 | características (extracto): Formato Cuarto (A5): 21,5 x 15,5 cm Tapa dura, resistente y ligera Espiral simple negra, gira las páginas 360º cómodamente 80 hojas de 60 gr/m² con cuadrícula 4mm x 4mm y margen Paquete de 5 cuadernos con color de tapa aleatorio: rojo… | descripción: desconocido",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.036,
+        "llm": 5.704,
+        "tools": 0.027,
+        "tts": 0.0,
+        "total": 5.766
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-a557491f-20_agotado_al_confirmar-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {}
+      },
+      "after": {
+        "cart_id": "eval-a557491f-20_agotado_al_confirmar-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B0112S7DTY",
+              "title": "Moleskine QP060BKEVER - Cuaderno digital Evernote (CARNETS CONNECTES), Negro",
+              "brand": "Moleskine",
+              "price_cents": 701,
+              "stock": 50
+            },
+            {
+              "product_id": "B08VMR6YL7",
+              "title": "Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 2, Azul Cobalto y Gris], Pack Cuadernos de Dibujo, Diarios de Tapa Dura con Papel de Escribir en Blanco [96 Hojas]",
+              "brand": "ARTEZA",
+              "price_cents": 1095,
+              "stock": 4
+            },
+            {
+              "product_id": "B08VMTLR4V",
+              "title": "Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 3: Rosa Claro, Rosa Oscuro, Granate], Pack Cuadernos de Dibujo, Diarios de Tapa Dura, con Rayas, en Blanco y con Puntos [96 Hojas]",
+              "brand": "ARTEZA",
+              "price_cents": 1016,
+              "stock": 39
+            },
+            {
+              "product_id": "B07DL4T68P",
+              "title": "Eachgoo Espiral Encuadernación Cuaderno, Tapa Dura Cuaderno Dibujo (A5)",
+              "brand": "Eachgoo",
+              "price_cents": 4388,
+              "stock": 33
+            },
+            {
+              "product_id": "B00SHL2X86",
+              "title": "Enri, Cuadernos A5, Pack de 5 Libretas Tapa Dura, 80 Hojas, Cuadrícula 4x4, Surtido Colores Aleatorio",
+              "brand": "Enri",
+              "price_cents": 7889,
+              "stock": 3
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {
+          "B00SHL2X86": {
+            "price_cents": 7889,
+            "stock": 3
+          },
+          "B0112S7DTY": {
+            "price_cents": 701,
+            "stock": 50
+          },
+          "B07DL4T68P": {
+            "price_cents": 4388,
+            "stock": 33
+          },
+          "B08VMR6YL7": {
+            "price_cents": 1095,
+            "stock": 4
+          },
+          "B08VMTLR4V": {
+            "price_cents": 1016,
+            "stock": 39
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        }
+      ]
+    },
+    {
+      "kind": "remember",
+      "name": "elegido",
+      "ref": "candidate:1",
+      "product_id": "B0112S7DTY",
+      "title": "Moleskine QP060BKEVER - Cuaderno digital Evernote (CARNETS CONNECTES), Negro"
+    },
+    {
+      "kind": "event",
+      "event": "set_offer",
+      "product": "@elegido",
+      "product_id": "B0112S7DTY",
+      "price_cents": 600,
+      "stock": 5
+    },
+    {
+      "kind": "turn",
+      "turn": 2,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Añade dos del primero.",
+      "agent_input": "Añade dos del primero.",
+      "response": "Hecho, añadidas dos unidades. En el carrito hay 2 unidades de «Moleskine QP060BKEVER - Cuaderno digital Evernote (CARNETS…» a 6,00 € cada una, 12,00 €. Total: 12,00 €.",
+      "spoken_text": "Hecho, añadidas dos unidades. En el carrito hay dos unidades de Moleskine a seis euros cada una, doce euros. Total: doce euros.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "agregar_al_carrito",
+          "args": {
+            "product_id": "B0112S7DTY",
+            "cantidad": 2
+          },
+          "reason": "añadir dos unidades del candidato 1",
+          "ok": true,
+          "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B0112S7DTY | Moleskine QP060BKEVER - Cuaderno digital Evernote (CARNETS… | 2 unidades × 6,00 € = 12,00 € | existencias: 5\nTotal del carrito: 12,00 €",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 4.609,
+        "tools": 0.054,
+        "tts": 0.0,
+        "total": 4.663
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-a557491f-20_agotado_al_confirmar-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B0112S7DTY",
+              "title": "Moleskine QP060BKEVER - Cuaderno digital Evernote (CARNETS CONNECTES), Negro",
+              "brand": "Moleskine",
+              "price_cents": 701,
+              "stock": 50
+            },
+            {
+              "product_id": "B08VMR6YL7",
+              "title": "Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 2, Azul Cobalto y Gris], Pack Cuadernos de Dibujo, Diarios de Tapa Dura con Papel de Escribir en Blanco [96 Hojas]",
+              "brand": "ARTEZA",
+              "price_cents": 1095,
+              "stock": 4
+            },
+            {
+              "product_id": "B08VMTLR4V",
+              "title": "Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 3: Rosa Claro, Rosa Oscuro, Granate], Pack Cuadernos de Dibujo, Diarios de Tapa Dura, con Rayas, en Blanco y con Puntos [96 Hojas]",
+              "brand": "ARTEZA",
+              "price_cents": 1016,
+              "stock": 39
+            },
+            {
+              "product_id": "B07DL4T68P",
+              "title": "Eachgoo Espiral Encuadernación Cuaderno, Tapa Dura Cuaderno Dibujo (A5)",
+              "brand": "Eachgoo",
+              "price_cents": 4388,
+              "stock": 33
+            },
+            {
+              "product_id": "B00SHL2X86",
+              "title": "Enri, Cuadernos A5, Pack de 5 Libretas Tapa Dura, 80 Hojas, Cuadrícula 4x4, Surtido Colores Aleatorio",
+              "brand": "Enri",
+              "price_cents": 7889,
+              "stock": 3
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B0112S7DTY",
+              "initial_stock": 50,
+              "stock": 5
+            }
+          ]
+        },
+        "offers": {
+          "B00SHL2X86": {
+            "price_cents": 7889,
+            "stock": 3
+          },
+          "B0112S7DTY": {
+            "price_cents": 600,
+            "stock": 5
+          },
+          "B07DL4T68P": {
+            "price_cents": 4388,
+            "stock": 33
+          },
+          "B08VMR6YL7": {
+            "price_cents": 1095,
+            "stock": 4
+          },
+          "B08VMTLR4V": {
+            "price_cents": 1016,
+            "stock": 39
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-a557491f-20_agotado_al_confirmar-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B0112S7DTY",
+              "title": "Moleskine QP060BKEVER - Cuaderno digital Evernote (CARNETS CONNECTES), Negro",
+              "brand": "Moleskine",
+              "price_cents": 600,
+              "stock": 5
+            },
+            {
+              "product_id": "B08VMR6YL7",
+              "title": "Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 2, Azul Cobalto y Gris], Pack Cuadernos de Dibujo, Diarios de Tapa Dura con Papel de Escribir en Blanco [96 Hojas]",
+              "brand": "ARTEZA",
+              "price_cents": 1095,
+              "stock": 4
+            },
+            {
+              "product_id": "B08VMTLR4V",
+              "title": "Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 3: Rosa Claro, Rosa Oscuro, Granate], Pack Cuadernos de Dibujo, Diarios de Tapa Dura, con Rayas, en Blanco y con Puntos [96 Hojas]",
+              "brand": "ARTEZA",
+              "price_cents": 1016,
+              "stock": 39
+            },
+            {
+              "product_id": "B07DL4T68P",
+              "title": "Eachgoo Espiral Encuadernación Cuaderno, Tapa Dura Cuaderno Dibujo (A5)",
+              "brand": "Eachgoo",
+              "price_cents": 4388,
+              "stock": 33
+            },
+            {
+              "product_id": "B00SHL2X86",
+              "title": "Enri, Cuadernos A5, Pack de 5 Libretas Tapa Dura, 80 Hojas, Cuadrícula 4x4, Surtido Colores Aleatorio",
+              "brand": "Enri",
+              "price_cents": 7889,
+              "stock": 3
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-a557491f-20_agotado_al_confirmar-c1",
+              "product_id": "B0112S7DTY",
+              "quantity": 2
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B0112S7DTY",
+              "initial_stock": 50,
+              "stock": 5
+            }
+          ]
+        },
+        "offers": {
+          "B00SHL2X86": {
+            "price_cents": 7889,
+            "stock": 3
+          },
+          "B0112S7DTY": {
+            "price_cents": 600,
+            "stock": 5
+          },
+          "B07DL4T68P": {
+            "price_cents": 4388,
+            "stock": 33
+          },
+          "B08VMR6YL7": {
+            "price_cents": 1095,
+            "stock": 4
+          },
+          "B08VMTLR4V": {
+            "price_cents": 1016,
+            "stock": 39
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "lines": [
+              {
+                "product": "@elegido",
+                "quantity": 2
+              }
+            ]
+          },
+          "ok": true,
+          "detail": "carrito: 2 × B0112S7DTY"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 3,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Cierra el pedido.",
+      "agent_input": "Cierra el pedido.",
+      "response": "Te repito el pedido antes de registrarlo: 2 unidades de «Moleskine QP060BKEVER - Cuaderno digital Evernote (CARNETS…» a 6,00 € cada una, 12,00 €. Total: 12,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "spoken_text": "Te repito el pedido antes de registrarlo: dos unidades de Moleskine a seis euros cada una, doce euros. Total: doce euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": true,
+      "operations": [
+        {
+          "tool": "cotizar",
+          "args": {},
+          "reason": "cotizar el pedido",
+          "ok": true,
+          "summary": "cotización creada; falta la confirmación del usuario.",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 2.174,
+        "tools": 0.039,
+        "tts": 0.0,
+        "total": 2.213
+      },
+      "llm_steps": 1,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-a557491f-20_agotado_al_confirmar-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B0112S7DTY",
+              "title": "Moleskine QP060BKEVER - Cuaderno digital Evernote (CARNETS CONNECTES), Negro",
+              "brand": "Moleskine",
+              "price_cents": 600,
+              "stock": 5
+            },
+            {
+              "product_id": "B08VMR6YL7",
+              "title": "Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 2, Azul Cobalto y Gris], Pack Cuadernos de Dibujo, Diarios de Tapa Dura con Papel de Escribir en Blanco [96 Hojas]",
+              "brand": "ARTEZA",
+              "price_cents": 1095,
+              "stock": 4
+            },
+            {
+              "product_id": "B08VMTLR4V",
+              "title": "Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 3: Rosa Claro, Rosa Oscuro, Granate], Pack Cuadernos de Dibujo, Diarios de Tapa Dura, con Rayas, en Blanco y con Puntos [96 Hojas]",
+              "brand": "ARTEZA",
+              "price_cents": 1016,
+              "stock": 39
+            },
+            {
+              "product_id": "B07DL4T68P",
+              "title": "Eachgoo Espiral Encuadernación Cuaderno, Tapa Dura Cuaderno Dibujo (A5)",
+              "brand": "Eachgoo",
+              "price_cents": 4388,
+              "stock": 33
+            },
+            {
+              "product_id": "B00SHL2X86",
+              "title": "Enri, Cuadernos A5, Pack de 5 Libretas Tapa Dura, 80 Hojas, Cuadrícula 4x4, Surtido Colores Aleatorio",
+              "brand": "Enri",
+              "price_cents": 7889,
+              "stock": 3
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-a557491f-20_agotado_al_confirmar-c1",
+              "product_id": "B0112S7DTY",
+              "quantity": 2
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B0112S7DTY",
+              "initial_stock": 50,
+              "stock": 5
+            }
+          ]
+        },
+        "offers": {
+          "B00SHL2X86": {
+            "price_cents": 7889,
+            "stock": 3
+          },
+          "B0112S7DTY": {
+            "price_cents": 600,
+            "stock": 5
+          },
+          "B07DL4T68P": {
+            "price_cents": 4388,
+            "stock": 33
+          },
+          "B08VMR6YL7": {
+            "price_cents": 1095,
+            "stock": 4
+          },
+          "B08VMTLR4V": {
+            "price_cents": 1016,
+            "stock": 39
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-a557491f-20_agotado_al_confirmar-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": {
+            "quote_id": "64bff7e7770443f4a88153a51bab9891",
+            "items": [
+              {
+                "product_id": "B0112S7DTY",
+                "title": "Moleskine QP060BKEVER - Cuaderno digital Evernote (CARNETS CONNECTES), Negro",
+                "quantity": 2,
+                "unit_price_cents": 600,
+                "subtotal_cents": 1200,
+                "stock": 5
+              }
+            ],
+            "total_cents": 1200,
+            "budget_cents": null,
+            "message": "Te repito el pedido antes de registrarlo: 2 unidades de «Moleskine QP060BKEVER - Cuaderno digital Evernote (CARNETS…» a 6,00 € cada una, 12,00 €. Total: 12,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+          },
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B0112S7DTY",
+              "title": "Moleskine QP060BKEVER - Cuaderno digital Evernote (CARNETS CONNECTES), Negro",
+              "brand": "Moleskine",
+              "price_cents": 600,
+              "stock": 5
+            },
+            {
+              "product_id": "B08VMR6YL7",
+              "title": "Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 2, Azul Cobalto y Gris], Pack Cuadernos de Dibujo, Diarios de Tapa Dura con Papel de Escribir en Blanco [96 Hojas]",
+              "brand": "ARTEZA",
+              "price_cents": 1095,
+              "stock": 4
+            },
+            {
+              "product_id": "B08VMTLR4V",
+              "title": "Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 3: Rosa Claro, Rosa Oscuro, Granate], Pack Cuadernos de Dibujo, Diarios de Tapa Dura, con Rayas, en Blanco y con Puntos [96 Hojas]",
+              "brand": "ARTEZA",
+              "price_cents": 1016,
+              "stock": 39
+            },
+            {
+              "product_id": "B07DL4T68P",
+              "title": "Eachgoo Espiral Encuadernación Cuaderno, Tapa Dura Cuaderno Dibujo (A5)",
+              "brand": "Eachgoo",
+              "price_cents": 4388,
+              "stock": 33
+            },
+            {
+              "product_id": "B00SHL2X86",
+              "title": "Enri, Cuadernos A5, Pack de 5 Libretas Tapa Dura, 80 Hojas, Cuadrícula 4x4, Surtido Colores Aleatorio",
+              "brand": "Enri",
+              "price_cents": 7889,
+              "stock": 3
+            }
+          ],
+          "awaiting_confirmation": true
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-a557491f-20_agotado_al_confirmar-c1",
+              "product_id": "B0112S7DTY",
+              "quantity": 2
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B0112S7DTY",
+              "initial_stock": 50,
+              "stock": 5
+            }
+          ]
+        },
+        "offers": {
+          "B00SHL2X86": {
+            "price_cents": 7889,
+            "stock": 3
+          },
+          "B0112S7DTY": {
+            "price_cents": 600,
+            "stock": 5
+          },
+          "B07DL4T68P": {
+            "price_cents": 4388,
+            "stock": 33
+          },
+          "B08VMR6YL7": {
+            "price_cents": 1095,
+            "stock": 4
+          },
+          "B08VMTLR4V": {
+            "price_cents": 1016,
+            "stock": 39
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "awaiting_confirmation",
+          "params": {
+            "value": true
+          },
+          "ok": true,
+          "detail": "esperando confirmación: sí"
+        },
+        {
+          "check": "orders",
+          "params": {
+            "count": 0
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 0"
+        }
+      ]
+    },
+    {
+      "kind": "event",
+      "event": "set_offer",
+      "product": "@elegido",
+      "product_id": "B0112S7DTY",
+      "price_cents": null,
+      "stock": 0
+    },
+    {
+      "kind": "turn",
+      "turn": 4,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Sí.",
+      "agent_input": "Sí.",
+      "response": "No he registrado el pedido porque la tienda cambió después de la cotización. «Moleskine QP060BKEVER - Cuaderno digital Evernote (CARNETS…» se ha agotado. Como alternativa tengo: «Moleskine - Cuaderno Digital con Páginas Rayadas y Tapa Dura, Apto…» a 23,03 €, con 44 en existencias; «Moleskine Smart Writing Set - Set de Escritura Inteligente, Cuaderno…» a 9,54 €, con 41 en existencias; «Moleskine - Set de Escritura Inteligente, Cuaderno Digital y…» a 19,42 €, con 12 en existencias. ¿Qué prefieres?",
+      "spoken_text": "No he registrado el pedido porque la tienda cambió después de la cotización. Moleskine se ha agotado. Como alternativa tengo: Moleskine a veintitrés euros con tres céntimos, con cuarenta y cuatro en existencias, Moleskine Smart Writing Set a nueve euros con cincuenta y cuatro céntimos, con cuarenta y uno en existencias, Moleskine a diecinueve euros con cuarenta y dos céntimos, con doce en existencias. ¿Qué prefieres?",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "confirmar_pedido",
+          "args": {
+            "quote_id": "64bff7e7770443f4a88153a51bab9891"
+          },
+          "reason": "el usuario confirmó la cotización",
+          "ok": false,
+          "summary": "[agotado] El producto B0112S7DTY está agotado.",
+          "issues": [
+            {
+              "code": "agotado",
+              "message": "El producto B0112S7DTY está agotado.",
+              "product_id": "B0112S7DTY",
+              "details": {
+                "requested": 2,
+                "available": 0
+              }
+            }
+          ]
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.028,
+        "llm": 0.0,
+        "tools": 0.012,
+        "tts": 0.0,
+        "total": 0.04
+      },
+      "llm_steps": 0,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-a557491f-20_agotado_al_confirmar-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": {
+            "quote_id": "64bff7e7770443f4a88153a51bab9891",
+            "items": [
+              {
+                "product_id": "B0112S7DTY",
+                "title": "Moleskine QP060BKEVER - Cuaderno digital Evernote (CARNETS CONNECTES), Negro",
+                "quantity": 2,
+                "unit_price_cents": 600,
+                "subtotal_cents": 1200,
+                "stock": 5
+              }
+            ],
+            "total_cents": 1200,
+            "budget_cents": null,
+            "message": "Te repito el pedido antes de registrarlo: 2 unidades de «Moleskine QP060BKEVER - Cuaderno digital Evernote (CARNETS…» a 6,00 € cada una, 12,00 €. Total: 12,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+          },
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B0112S7DTY",
+              "title": "Moleskine QP060BKEVER - Cuaderno digital Evernote (CARNETS CONNECTES), Negro",
+              "brand": "Moleskine",
+              "price_cents": 600,
+              "stock": 5
+            },
+            {
+              "product_id": "B08VMR6YL7",
+              "title": "Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 2, Azul Cobalto y Gris], Pack Cuadernos de Dibujo, Diarios de Tapa Dura con Papel de Escribir en Blanco [96 Hojas]",
+              "brand": "ARTEZA",
+              "price_cents": 1095,
+              "stock": 4
+            },
+            {
+              "product_id": "B08VMTLR4V",
+              "title": "Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 3: Rosa Claro, Rosa Oscuro, Granate], Pack Cuadernos de Dibujo, Diarios de Tapa Dura, con Rayas, en Blanco y con Puntos [96 Hojas]",
+              "brand": "ARTEZA",
+              "price_cents": 1016,
+              "stock": 39
+            },
+            {
+              "product_id": "B07DL4T68P",
+              "title": "Eachgoo Espiral Encuadernación Cuaderno, Tapa Dura Cuaderno Dibujo (A5)",
+              "brand": "Eachgoo",
+              "price_cents": 4388,
+              "stock": 33
+            },
+            {
+              "product_id": "B00SHL2X86",
+              "title": "Enri, Cuadernos A5, Pack de 5 Libretas Tapa Dura, 80 Hojas, Cuadrícula 4x4, Surtido Colores Aleatorio",
+              "brand": "Enri",
+              "price_cents": 7889,
+              "stock": 3
+            }
+          ],
+          "awaiting_confirmation": true
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-a557491f-20_agotado_al_confirmar-c1",
+              "product_id": "B0112S7DTY",
+              "quantity": 2
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B0112S7DTY",
+              "initial_stock": 50,
+              "stock": 0
+            }
+          ]
+        },
+        "offers": {
+          "B00SHL2X86": {
+            "price_cents": 7889,
+            "stock": 3
+          },
+          "B0112S7DTY": {
+            "price_cents": 600,
+            "stock": 0
+          },
+          "B07DL4T68P": {
+            "price_cents": 4388,
+            "stock": 33
+          },
+          "B08VMR6YL7": {
+            "price_cents": 1095,
+            "stock": 4
+          },
+          "B08VMTLR4V": {
+            "price_cents": 1016,
+            "stock": 39
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-a557491f-20_agotado_al_confirmar-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B076BCD81R",
+              "title": "Moleskine - Cuaderno Digital con Páginas Rayadas y Tapa Dura, Apto para Uso con Bolígrafo Moleskine+, Tamaño Extra Grande 19 x 25 cm, Color Negro",
+              "brand": "Moleskine",
+              "price_cents": 2303,
+              "stock": 44
+            },
+            {
+              "product_id": "B01EJKCWMU",
+              "title": "Moleskine Smart Writing Set - Set de Escritura Inteligente, Cuaderno Digital y Bolígrafo, Hojas Punteadas, Color Negro",
+              "brand": "Moleskine",
+              "price_cents": 954,
+              "stock": 41
+            },
+            {
+              "product_id": "B08RJ81R4D",
+              "title": "Moleskine - Set de Escritura Inteligente, Cuaderno Digital y Bolígrafo, Ellipse Smart Bolígrafo, Cuaderno con Tapa Dura Negra Apto para Uso con Bolígrafo Moleskine, Hojas Rayadas, Negro",
+              "brand": "Moleskine",
+              "price_cents": 1942,
+              "stock": 12
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-a557491f-20_agotado_al_confirmar-c1",
+              "product_id": "B0112S7DTY",
+              "quantity": 2
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B0112S7DTY",
+              "initial_stock": 50,
+              "stock": 0
+            }
+          ]
+        },
+        "offers": {
+          "B00SHL2X86": {
+            "price_cents": 7889,
+            "stock": 3
+          },
+          "B0112S7DTY": {
+            "price_cents": 600,
+            "stock": 0
+          },
+          "B01EJKCWMU": {
+            "price_cents": 954,
+            "stock": 41
+          },
+          "B076BCD81R": {
+            "price_cents": 2303,
+            "stock": 44
+          },
+          "B07DL4T68P": {
+            "price_cents": 4388,
+            "stock": 33
+          },
+          "B08RJ81R4D": {
+            "price_cents": 1942,
+            "stock": 12
+          },
+          "B08VMR6YL7": {
+            "price_cents": 1095,
+            "stock": 4
+          },
+          "B08VMTLR4V": {
+            "price_cents": 1016,
+            "stock": 39
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "orders",
+          "params": {
+            "count": 0
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 0"
+        },
+        {
+          "check": "rejected",
+          "params": {
+            "code": "agotado"
+          },
+          "ok": true,
+          "detail": "rechazos del turno: ['agotado']"
+        },
+        {
+          "check": "offered_alternative",
+          "params": {
+            "instead_of": "@elegido"
+          },
+          "ok": true,
+          "detail": "alternativas con existencias citadas: ['B076BCD81R', 'B01EJKCWMU', 'B08RJ81R4D']"
+        },
+        {
+          "check": "cart",
+          "params": {
+            "lines": [
+              {
+                "product": "@elegido",
+                "quantity": 2
+              }
+            ]
+          },
+          "ok": true,
+          "detail": "carrito: 2 × B0112S7DTY"
+        }
+      ]
+    },
+    {
+      "kind": "remember",
+      "name": "alternativa",
+      "ref": "candidate:1",
+      "product_id": "B076BCD81R",
+      "title": "Moleskine - Cuaderno Digital con Páginas Rayadas y Tapa Dura, Apto para Uso con Bolígrafo Moleskine+, Tamaño Extra Grande 19 x 25 cm, Color Negro"
+    },
+    {
+      "kind": "turn",
+      "turn": 5,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Quita ese cuaderno y ponme dos de la primera alternativa.",
+      "agent_input": "Quita ese cuaderno y ponme dos de la primera alternativa.",
+      "response": "Hecho, añadidas dos unidades del Moleskine - Cuaderno Digital con Páginas Rayadas y Tapa Dura. En el carrito hay 2 unidades de «Moleskine - Cuaderno Digital con Páginas Rayadas y Tapa Dura, Apto…» a 23,03 € cada una, 46,06 €. Total: 46,06 €.",
+      "spoken_text": "Hecho, añadidas dos unidades del Moleskine, Cuaderno Digital con Páginas Rayadas y Tapa Dura. En el carrito hay dos unidades de Moleskine a veintitrés euros con tres céntimos cada una, cuarenta y seis euros con seis céntimos. Total: cuarenta y seis euros con seis céntimos.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "quitar_del_carrito",
+          "args": {
+            "product_id": "B0112S7DTY"
+          },
+          "reason": "quitar el cuaderno del carrito",
+          "ok": true,
+          "summary": "hecho. Así queda el carrito.\nCARRITO: vacío",
+          "issues": []
+        },
+        {
+          "tool": "agregar_al_carrito",
+          "args": {
+            "product_id": "B076BCD81R",
+            "cantidad": 2
+          },
+          "reason": "añadir dos unidades del primer candidato",
+          "ok": true,
+          "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B076BCD81R | Moleskine - Cuaderno Digital con Páginas Rayadas y Tapa Dura, Apto… | 2 unidades × 23,03 € = 46,06 € | existencias: 44\nTotal del carrito: 46,06 €",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 6.913,
+        "tools": 0.075,
+        "tts": 0.0,
+        "total": 6.988
+      },
+      "llm_steps": 3,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-a557491f-20_agotado_al_confirmar-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B076BCD81R",
+              "title": "Moleskine - Cuaderno Digital con Páginas Rayadas y Tapa Dura, Apto para Uso con Bolígrafo Moleskine+, Tamaño Extra Grande 19 x 25 cm, Color Negro",
+              "brand": "Moleskine",
+              "price_cents": 2303,
+              "stock": 44
+            },
+            {
+              "product_id": "B01EJKCWMU",
+              "title": "Moleskine Smart Writing Set - Set de Escritura Inteligente, Cuaderno Digital y Bolígrafo, Hojas Punteadas, Color Negro",
+              "brand": "Moleskine",
+              "price_cents": 954,
+              "stock": 41
+            },
+            {
+              "product_id": "B08RJ81R4D",
+              "title": "Moleskine - Set de Escritura Inteligente, Cuaderno Digital y Bolígrafo, Ellipse Smart Bolígrafo, Cuaderno con Tapa Dura Negra Apto para Uso con Bolígrafo Moleskine, Hojas Rayadas, Negro",
+              "brand": "Moleskine",
+              "price_cents": 1942,
+              "stock": 12
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-a557491f-20_agotado_al_confirmar-c1",
+              "product_id": "B0112S7DTY",
+              "quantity": 2
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B0112S7DTY",
+              "initial_stock": 50,
+              "stock": 0
+            }
+          ]
+        },
+        "offers": {
+          "B00SHL2X86": {
+            "price_cents": 7889,
+            "stock": 3
+          },
+          "B0112S7DTY": {
+            "price_cents": 600,
+            "stock": 0
+          },
+          "B01EJKCWMU": {
+            "price_cents": 954,
+            "stock": 41
+          },
+          "B076BCD81R": {
+            "price_cents": 2303,
+            "stock": 44
+          },
+          "B07DL4T68P": {
+            "price_cents": 4388,
+            "stock": 33
+          },
+          "B08RJ81R4D": {
+            "price_cents": 1942,
+            "stock": 12
+          },
+          "B08VMR6YL7": {
+            "price_cents": 1095,
+            "stock": 4
+          },
+          "B08VMTLR4V": {
+            "price_cents": 1016,
+            "stock": 39
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-a557491f-20_agotado_al_confirmar-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B076BCD81R",
+              "title": "Moleskine - Cuaderno Digital con Páginas Rayadas y Tapa Dura, Apto para Uso con Bolígrafo Moleskine+, Tamaño Extra Grande 19 x 25 cm, Color Negro",
+              "brand": "Moleskine",
+              "price_cents": 2303,
+              "stock": 44
+            },
+            {
+              "product_id": "B01EJKCWMU",
+              "title": "Moleskine Smart Writing Set - Set de Escritura Inteligente, Cuaderno Digital y Bolígrafo, Hojas Punteadas, Color Negro",
+              "brand": "Moleskine",
+              "price_cents": 954,
+              "stock": 41
+            },
+            {
+              "product_id": "B08RJ81R4D",
+              "title": "Moleskine - Set de Escritura Inteligente, Cuaderno Digital y Bolígrafo, Ellipse Smart Bolígrafo, Cuaderno con Tapa Dura Negra Apto para Uso con Bolígrafo Moleskine, Hojas Rayadas, Negro",
+              "brand": "Moleskine",
+              "price_cents": 1942,
+              "stock": 12
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-a557491f-20_agotado_al_confirmar-c1",
+              "product_id": "B076BCD81R",
+              "quantity": 2
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B0112S7DTY",
+              "initial_stock": 50,
+              "stock": 0
+            }
+          ]
+        },
+        "offers": {
+          "B00SHL2X86": {
+            "price_cents": 7889,
+            "stock": 3
+          },
+          "B0112S7DTY": {
+            "price_cents": 600,
+            "stock": 0
+          },
+          "B01EJKCWMU": {
+            "price_cents": 954,
+            "stock": 41
+          },
+          "B076BCD81R": {
+            "price_cents": 2303,
+            "stock": 44
+          },
+          "B07DL4T68P": {
+            "price_cents": 4388,
+            "stock": 33
+          },
+          "B08RJ81R4D": {
+            "price_cents": 1942,
+            "stock": 12
+          },
+          "B08VMR6YL7": {
+            "price_cents": 1095,
+            "stock": 4
+          },
+          "B08VMTLR4V": {
+            "price_cents": 1016,
+            "stock": 39
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "lines": [
+              {
+                "product": "@alternativa",
+                "quantity": 2
+              }
+            ]
+          },
+          "ok": true,
+          "detail": "carrito: 2 × B076BCD81R"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 6,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Cierra el pedido.",
+      "agent_input": "Cierra el pedido.",
+      "response": "Te repito el pedido antes de registrarlo: 2 unidades de «Moleskine - Cuaderno Digital con Páginas Rayadas y Tapa Dura, Apto…» a 23,03 € cada una, 46,06 €. Total: 46,06 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "spoken_text": "Te repito el pedido antes de registrarlo: dos unidades de Moleskine a veintitrés euros con tres céntimos cada una, cuarenta y seis euros con seis céntimos. Total: cuarenta y seis euros con seis céntimos. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": true,
+      "operations": [
+        {
+          "tool": "cotizar",
+          "args": {},
+          "reason": "cerrar el pedido",
+          "ok": true,
+          "summary": "cotización creada; falta la confirmación del usuario.",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 1.915,
+        "tools": 0.041,
+        "tts": 0.0,
+        "total": 1.956
+      },
+      "llm_steps": 1,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-a557491f-20_agotado_al_confirmar-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B076BCD81R",
+              "title": "Moleskine - Cuaderno Digital con Páginas Rayadas y Tapa Dura, Apto para Uso con Bolígrafo Moleskine+, Tamaño Extra Grande 19 x 25 cm, Color Negro",
+              "brand": "Moleskine",
+              "price_cents": 2303,
+              "stock": 44
+            },
+            {
+              "product_id": "B01EJKCWMU",
+              "title": "Moleskine Smart Writing Set - Set de Escritura Inteligente, Cuaderno Digital y Bolígrafo, Hojas Punteadas, Color Negro",
+              "brand": "Moleskine",
+              "price_cents": 954,
+              "stock": 41
+            },
+            {
+              "product_id": "B08RJ81R4D",
+              "title": "Moleskine - Set de Escritura Inteligente, Cuaderno Digital y Bolígrafo, Ellipse Smart Bolígrafo, Cuaderno con Tapa Dura Negra Apto para Uso con Bolígrafo Moleskine, Hojas Rayadas, Negro",
+              "brand": "Moleskine",
+              "price_cents": 1942,
+              "stock": 12
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-a557491f-20_agotado_al_confirmar-c1",
+              "product_id": "B076BCD81R",
+              "quantity": 2
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B0112S7DTY",
+              "initial_stock": 50,
+              "stock": 0
+            }
+          ]
+        },
+        "offers": {
+          "B00SHL2X86": {
+            "price_cents": 7889,
+            "stock": 3
+          },
+          "B0112S7DTY": {
+            "price_cents": 600,
+            "stock": 0
+          },
+          "B01EJKCWMU": {
+            "price_cents": 954,
+            "stock": 41
+          },
+          "B076BCD81R": {
+            "price_cents": 2303,
+            "stock": 44
+          },
+          "B07DL4T68P": {
+            "price_cents": 4388,
+            "stock": 33
+          },
+          "B08RJ81R4D": {
+            "price_cents": 1942,
+            "stock": 12
+          },
+          "B08VMR6YL7": {
+            "price_cents": 1095,
+            "stock": 4
+          },
+          "B08VMTLR4V": {
+            "price_cents": 1016,
+            "stock": 39
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-a557491f-20_agotado_al_confirmar-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": {
+            "quote_id": "ce9756d29ab64225acd72173ddc56b8c",
+            "items": [
+              {
+                "product_id": "B076BCD81R",
+                "title": "Moleskine - Cuaderno Digital con Páginas Rayadas y Tapa Dura, Apto para Uso con Bolígrafo Moleskine+, Tamaño Extra Grande 19 x 25 cm, Color Negro",
+                "quantity": 2,
+                "unit_price_cents": 2303,
+                "subtotal_cents": 4606,
+                "stock": 44
+              }
+            ],
+            "total_cents": 4606,
+            "budget_cents": null,
+            "message": "Te repito el pedido antes de registrarlo: 2 unidades de «Moleskine - Cuaderno Digital con Páginas Rayadas y Tapa Dura, Apto…» a 23,03 € cada una, 46,06 €. Total: 46,06 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+          },
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B076BCD81R",
+              "title": "Moleskine - Cuaderno Digital con Páginas Rayadas y Tapa Dura, Apto para Uso con Bolígrafo Moleskine+, Tamaño Extra Grande 19 x 25 cm, Color Negro",
+              "brand": "Moleskine",
+              "price_cents": 2303,
+              "stock": 44
+            },
+            {
+              "product_id": "B01EJKCWMU",
+              "title": "Moleskine Smart Writing Set - Set de Escritura Inteligente, Cuaderno Digital y Bolígrafo, Hojas Punteadas, Color Negro",
+              "brand": "Moleskine",
+              "price_cents": 954,
+              "stock": 41
+            },
+            {
+              "product_id": "B08RJ81R4D",
+              "title": "Moleskine - Set de Escritura Inteligente, Cuaderno Digital y Bolígrafo, Ellipse Smart Bolígrafo, Cuaderno con Tapa Dura Negra Apto para Uso con Bolígrafo Moleskine, Hojas Rayadas, Negro",
+              "brand": "Moleskine",
+              "price_cents": 1942,
+              "stock": 12
+            }
+          ],
+          "awaiting_confirmation": true
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-a557491f-20_agotado_al_confirmar-c1",
+              "product_id": "B076BCD81R",
+              "quantity": 2
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B0112S7DTY",
+              "initial_stock": 50,
+              "stock": 0
+            }
+          ]
+        },
+        "offers": {
+          "B00SHL2X86": {
+            "price_cents": 7889,
+            "stock": 3
+          },
+          "B0112S7DTY": {
+            "price_cents": 600,
+            "stock": 0
+          },
+          "B01EJKCWMU": {
+            "price_cents": 954,
+            "stock": 41
+          },
+          "B076BCD81R": {
+            "price_cents": 2303,
+            "stock": 44
+          },
+          "B07DL4T68P": {
+            "price_cents": 4388,
+            "stock": 33
+          },
+          "B08RJ81R4D": {
+            "price_cents": 1942,
+            "stock": 12
+          },
+          "B08VMR6YL7": {
+            "price_cents": 1095,
+            "stock": 4
+          },
+          "B08VMTLR4V": {
+            "price_cents": 1016,
+            "stock": 39
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "awaiting_confirmation",
+          "params": {
+            "value": true
+          },
+          "ok": true,
+          "detail": "esperando confirmación: sí"
+        },
+        {
+          "check": "orders",
+          "params": {
+            "count": 0
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 0"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 7,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Sí.",
+      "agent_input": "Sí.",
+      "response": "Pedido número 1 registrado: 2 unidades de «Moleskine - Cuaderno Digital con Páginas Rayadas y Tapa Dura, Apto…» a 23,03 € cada una, 46,06 €. Total: 46,06 €. Gracias por tu compra.",
+      "spoken_text": "Pedido número uno registrado: dos unidades de Moleskine a veintitrés euros con tres céntimos cada una, cuarenta y seis euros con seis céntimos. Total: cuarenta y seis euros con seis céntimos. Gracias por tu compra.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "confirmar_pedido",
+          "args": {
+            "quote_id": "ce9756d29ab64225acd72173ddc56b8c"
+          },
+          "reason": "el usuario confirmó la cotización",
+          "ok": true,
+          "summary": "pedido registrado",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 0.0,
+        "tools": 0.029,
+        "tts": 0.0,
+        "total": 0.029
+      },
+      "llm_steps": 0,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-a557491f-20_agotado_al_confirmar-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": {
+            "quote_id": "ce9756d29ab64225acd72173ddc56b8c",
+            "items": [
+              {
+                "product_id": "B076BCD81R",
+                "title": "Moleskine - Cuaderno Digital con Páginas Rayadas y Tapa Dura, Apto para Uso con Bolígrafo Moleskine+, Tamaño Extra Grande 19 x 25 cm, Color Negro",
+                "quantity": 2,
+                "unit_price_cents": 2303,
+                "subtotal_cents": 4606,
+                "stock": 44
+              }
+            ],
+            "total_cents": 4606,
+            "budget_cents": null,
+            "message": "Te repito el pedido antes de registrarlo: 2 unidades de «Moleskine - Cuaderno Digital con Páginas Rayadas y Tapa Dura, Apto…» a 23,03 € cada una, 46,06 €. Total: 46,06 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+          },
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B076BCD81R",
+              "title": "Moleskine - Cuaderno Digital con Páginas Rayadas y Tapa Dura, Apto para Uso con Bolígrafo Moleskine+, Tamaño Extra Grande 19 x 25 cm, Color Negro",
+              "brand": "Moleskine",
+              "price_cents": 2303,
+              "stock": 44
+            },
+            {
+              "product_id": "B01EJKCWMU",
+              "title": "Moleskine Smart Writing Set - Set de Escritura Inteligente, Cuaderno Digital y Bolígrafo, Hojas Punteadas, Color Negro",
+              "brand": "Moleskine",
+              "price_cents": 954,
+              "stock": 41
+            },
+            {
+              "product_id": "B08RJ81R4D",
+              "title": "Moleskine - Set de Escritura Inteligente, Cuaderno Digital y Bolígrafo, Ellipse Smart Bolígrafo, Cuaderno con Tapa Dura Negra Apto para Uso con Bolígrafo Moleskine, Hojas Rayadas, Negro",
+              "brand": "Moleskine",
+              "price_cents": 1942,
+              "stock": 12
+            }
+          ],
+          "awaiting_confirmation": true
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-a557491f-20_agotado_al_confirmar-c1",
+              "product_id": "B076BCD81R",
+              "quantity": 2
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B0112S7DTY",
+              "initial_stock": 50,
+              "stock": 0
+            }
+          ]
+        },
+        "offers": {
+          "B00SHL2X86": {
+            "price_cents": 7889,
+            "stock": 3
+          },
+          "B0112S7DTY": {
+            "price_cents": 600,
+            "stock": 0
+          },
+          "B01EJKCWMU": {
+            "price_cents": 954,
+            "stock": 41
+          },
+          "B076BCD81R": {
+            "price_cents": 2303,
+            "stock": 44
+          },
+          "B07DL4T68P": {
+            "price_cents": 4388,
+            "stock": 33
+          },
+          "B08RJ81R4D": {
+            "price_cents": 1942,
+            "stock": 12
+          },
+          "B08VMR6YL7": {
+            "price_cents": 1095,
+            "stock": 4
+          },
+          "B08VMTLR4V": {
+            "price_cents": 1016,
+            "stock": 39
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-a557491f-20_agotado_al_confirmar-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": {
+            "order_id": 1,
+            "quote_id": "ce9756d29ab64225acd72173ddc56b8c",
+            "items": [
+              {
+                "product_id": "B076BCD81R",
+                "title": "Moleskine - Cuaderno Digital con Páginas Rayadas y Tapa Dura, Apto para Uso con Bolígrafo Moleskine+, Tamaño Extra Grande 19 x 25 cm, Color Negro",
+                "quantity": 2,
+                "unit_price_cents": 2303,
+                "subtotal_cents": 4606
+              }
+            ],
+            "total_cents": 4606,
+            "message": "Pedido número 1 registrado: 2 unidades de «Moleskine - Cuaderno Digital con Páginas Rayadas y Tapa Dura, Apto…» a 23,03 € cada una, 46,06 €. Total: 46,06 €. Gracias por tu compra."
+          },
+          "candidates": [
+            {
+              "product_id": "B076BCD81R",
+              "title": "Moleskine - Cuaderno Digital con Páginas Rayadas y Tapa Dura, Apto para Uso con Bolígrafo Moleskine+, Tamaño Extra Grande 19 x 25 cm, Color Negro",
+              "brand": "Moleskine",
+              "price_cents": 2303,
+              "stock": 44
+            },
+            {
+              "product_id": "B01EJKCWMU",
+              "title": "Moleskine Smart Writing Set - Set de Escritura Inteligente, Cuaderno Digital y Bolígrafo, Hojas Punteadas, Color Negro",
+              "brand": "Moleskine",
+              "price_cents": 954,
+              "stock": 41
+            },
+            {
+              "product_id": "B08RJ81R4D",
+              "title": "Moleskine - Set de Escritura Inteligente, Cuaderno Digital y Bolígrafo, Ellipse Smart Bolígrafo, Cuaderno con Tapa Dura Negra Apto para Uso con Bolígrafo Moleskine, Hojas Rayadas, Negro",
+              "brand": "Moleskine",
+              "price_cents": 1942,
+              "stock": 12
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [
+            {
+              "order_id": 1,
+              "quote_id": "ce9756d29ab64225acd72173ddc56b8c",
+              "total_cents": 4606
+            }
+          ],
+          "order_items": [
+            {
+              "order_id": 1,
+              "product_id": "B076BCD81R",
+              "quantity": 2,
+              "unit_price_cents": 2303
+            }
+          ],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B0112S7DTY",
+              "initial_stock": 50,
+              "stock": 0
+            },
+            {
+              "product_id": "B076BCD81R",
+              "initial_stock": 44,
+              "stock": 42
+            }
+          ]
+        },
+        "offers": {
+          "B00SHL2X86": {
+            "price_cents": 7889,
+            "stock": 3
+          },
+          "B0112S7DTY": {
+            "price_cents": 600,
+            "stock": 0
+          },
+          "B01EJKCWMU": {
+            "price_cents": 954,
+            "stock": 41
+          },
+          "B076BCD81R": {
+            "price_cents": 2303,
+            "stock": 42
+          },
+          "B07DL4T68P": {
+            "price_cents": 4388,
+            "stock": 33
+          },
+          "B08RJ81R4D": {
+            "price_cents": 1942,
+            "stock": 12
+          },
+          "B08VMR6YL7": {
+            "price_cents": 1095,
+            "stock": 4
+          },
+          "B08VMTLR4V": {
+            "price_cents": 1016,
+            "stock": 39
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "orders",
+          "params": {
+            "count": 1
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 1"
+        }
+      ]
+    }
+  ],
+  "final": {
+    "snapshot": {
+      "cart_id": "eval-a557491f-20_agotado_al_confirmar-c1",
+      "state": {
+        "budget_cents": null,
+        "preferences": [],
+        "pending_clarification": null,
+        "quote": null,
+        "order": {
+          "order_id": 1,
+          "quote_id": "ce9756d29ab64225acd72173ddc56b8c",
+          "items": [
+            {
+              "product_id": "B076BCD81R",
+              "title": "Moleskine - Cuaderno Digital con Páginas Rayadas y Tapa Dura, Apto para Uso con Bolígrafo Moleskine+, Tamaño Extra Grande 19 x 25 cm, Color Negro",
+              "quantity": 2,
+              "unit_price_cents": 2303,
+              "subtotal_cents": 4606
+            }
+          ],
+          "total_cents": 4606,
+          "message": "Pedido número 1 registrado: 2 unidades de «Moleskine - Cuaderno Digital con Páginas Rayadas y Tapa Dura, Apto…» a 23,03 € cada una, 46,06 €. Total: 46,06 €. Gracias por tu compra."
+        },
+        "candidates": [
+          {
+            "product_id": "B076BCD81R",
+            "title": "Moleskine - Cuaderno Digital con Páginas Rayadas y Tapa Dura, Apto para Uso con Bolígrafo Moleskine+, Tamaño Extra Grande 19 x 25 cm, Color Negro",
+            "brand": "Moleskine",
+            "price_cents": 2303,
+            "stock": 44
+          },
+          {
+            "product_id": "B01EJKCWMU",
+            "title": "Moleskine Smart Writing Set - Set de Escritura Inteligente, Cuaderno Digital y Bolígrafo, Hojas Punteadas, Color Negro",
+            "brand": "Moleskine",
+            "price_cents": 954,
+            "stock": 41
+          },
+          {
+            "product_id": "B08RJ81R4D",
+            "title": "Moleskine - Set de Escritura Inteligente, Cuaderno Digital y Bolígrafo, Ellipse Smart Bolígrafo, Cuaderno con Tapa Dura Negra Apto para Uso con Bolígrafo Moleskine, Hojas Rayadas, Negro",
+            "brand": "Moleskine",
+            "price_cents": 1942,
+            "stock": 12
+          }
+        ],
+        "awaiting_confirmation": false
+      },
+      "store": {
+        "orders": [
+          {
+            "order_id": 1,
+            "quote_id": "ce9756d29ab64225acd72173ddc56b8c",
+            "total_cents": 4606
+          }
+        ],
+        "order_items": [
+          {
+            "order_id": 1,
+            "product_id": "B076BCD81R",
+            "quantity": 2,
+            "unit_price_cents": 2303
+          }
+        ],
+        "cart_items": [],
+        "inventory_changes": [
+          {
+            "product_id": "B0112S7DTY",
+            "initial_stock": 50,
+            "stock": 0
+          },
+          {
+            "product_id": "B076BCD81R",
+            "initial_stock": 44,
+            "stock": 42
+          }
+        ]
+      },
+      "offers": {
+        "B00SHL2X86": {
+          "price_cents": 7889,
+          "stock": 3
+        },
+        "B0112S7DTY": {
+          "price_cents": 600,
+          "stock": 0
+        },
+        "B01EJKCWMU": {
+          "price_cents": 954,
+          "stock": 41
+        },
+        "B076BCD81R": {
+          "price_cents": 2303,
+          "stock": 42
+        },
+        "B07DL4T68P": {
+          "price_cents": 4388,
+          "stock": 33
+        },
+        "B08RJ81R4D": {
+          "price_cents": 1942,
+          "stock": 12
+        },
+        "B08VMR6YL7": {
+          "price_cents": 1095,
+          "stock": 4
+        },
+        "B08VMTLR4V": {
+          "price_cents": 1016,
+          "stock": 39
+        }
+      }
+    },
+    "checks": [
+      {
+        "check": "orders",
+        "params": {
+          "count": 1
+        },
+        "ok": true,
+        "detail": "pedidos registrados: 1"
+      },
+      {
+        "check": "order",
+        "params": {
+          "lines": [
+            {
+              "not": "@elegido",
+              "quantity": 2
+            }
+          ]
+        },
+        "ok": true,
+        "detail": "pedido 1: 2 × B076BCD81R; total 4606 céntimos"
+      },
+      {
+        "check": "stock",
+        "params": {
+          "product": "@elegido",
+          "equals": 0
+        },
+        "ok": true,
+        "detail": "existencias de B0112S7DTY: 0"
+      },
+      {
+        "check": "cart",
+        "params": {
+          "empty": true
+        },
+        "ok": true,
+        "detail": "carrito: vacío"
+      }
+    ]
+  },
+  "violations": [],
+  "problems": [],
+  "passed": true,
+  "timings": {
+    "all": {
+      "turns": 7,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.01,
+        "max": 0.04
+      },
+      "llm": {
+        "mean": 3.04,
+        "max": 6.91
+      },
+      "tools": {
+        "mean": 0.04,
+        "max": 0.07
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 3.09,
+        "max": 6.99
+      }
+    },
+    "with_llm": {
+      "turns": 5,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.01,
+        "max": 0.04
+      },
+      "llm": {
+        "mean": 4.26,
+        "max": 6.91
+      },
+      "tools": {
+        "mean": 0.05,
+        "max": 0.07
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 4.32,
+        "max": 6.99
+      }
+    },
+    "without_llm": {
+      "turns": 2,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.01,
+        "max": 0.03
+      },
+      "llm": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "tools": {
+        "mean": 0.02,
+        "max": 0.03
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 0.03,
+        "max": 0.04
+      }
+    }
+  }
+}

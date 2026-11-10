@@ -1,0 +1,178 @@
+{
+  "date": "2026-11-10T14:34:29",
+  "commit": "8711c79+cambios",
+  "memory_backend": "postgres",
+  "models": {
+    "llm": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+    "asr": "large-v3-turbo",
+    "tts": "XTTS-v2",
+    "embeddings": "intfloat/multilingual-e5-small",
+    "reranker": "control"
+  },
+  "voice": {
+    "reference": "audio/referencia/referencia.wav",
+    "speaker": null
+  },
+  "load": {
+    "search_seconds": 16.2,
+    "llm_seconds": 0.8,
+    "asr_seconds": 1.0,
+    "tts_seconds": 8.8,
+    "total_seconds": 27.4,
+    "vram_mib": {
+      "search": 706,
+      "llm": 5820,
+      "asr": 7772,
+      "loaded": 9532
+    }
+  },
+  "input": "audio",
+  "audio_sources": {
+    "01_compra_confirmada": "sintéticos, hablante de prueba «Luis Moray» de XTTS-v2 (no es la voz del usuario)",
+    "02_pedido_ambiguo": "sintéticos, hablante de prueba «Luis Moray» de XTTS-v2 (no es la voz del usuario)",
+    "03_cambio_cantidad": "sintéticos, hablante de prueba «Luis Moray» de XTTS-v2 (no es la voz del usuario)",
+    "04_sin_existencias": "sintéticos, hablante de prueba «Luis Moray» de XTTS-v2 (no es la voz del usuario)",
+    "05_correccion_transcripcion": "sintéticos, hablante de prueba «Luis Moray» de XTTS-v2 (no es la voz del usuario)",
+    "06_cambio_stock_confirmacion_repetida": "sintéticos, hablante de prueba «Luis Moray» de XTTS-v2 (no es la voz del usuario)"
+  },
+  "audio_dir": "audio/corridas/voz",
+  "scenarios": [
+    {
+      "id": "01_compra_confirmada",
+      "title": "Compra confirmada",
+      "kind": "compra_confirmada",
+      "passed": true
+    },
+    {
+      "id": "02_pedido_ambiguo",
+      "title": "Pedido ambiguo que requiere aclaración",
+      "kind": "pedido_ambiguo",
+      "passed": true
+    },
+    {
+      "id": "03_cambio_cantidad",
+      "title": "Cambio de cantidad manteniendo las demás restricciones",
+      "kind": "cambio_cantidad",
+      "passed": false
+    },
+    {
+      "id": "04_sin_existencias",
+      "title": "Producto sin existencias que requiere alternativa",
+      "kind": "sin_existencias",
+      "passed": false
+    },
+    {
+      "id": "05_correccion_transcripcion",
+      "title": "Corrección de una transcripción antes de comprar",
+      "kind": "correccion_transcripcion",
+      "passed": true
+    },
+    {
+      "id": "06_cambio_stock_confirmacion_repetida",
+      "title": "Cambio de stock entre cotización y confirmación, y confirmación repetida",
+      "kind": "cambio_stock_confirmacion_repetida",
+      "passed": false
+    }
+  ],
+  "summary": {
+    "scenarios": 6,
+    "passed": 3,
+    "pass_rate": 0.5,
+    "failed": [
+      "03_cambio_cantidad",
+      "04_sin_existencias",
+      "06_cambio_stock_confirmacion_repetida"
+    ],
+    "turns": 31,
+    "violations": {
+      "cantidad": 0,
+      "presupuesto": 0,
+      "existencias": 0,
+      "pedido_duplicado": 0,
+      "cambio_parcial": 0
+    },
+    "timings": {
+      "all": {
+        "turns": 31,
+        "asr": {
+          "mean": 0.34,
+          "max": 0.54
+        },
+        "retrieval": {
+          "mean": 0.01,
+          "max": 0.03
+        },
+        "llm": {
+          "mean": 4.15,
+          "max": 9.76
+        },
+        "tools": {
+          "mean": 0.04,
+          "max": 0.09
+        },
+        "tts": {
+          "mean": 6.19,
+          "max": 17.33
+        },
+        "total": {
+          "mean": 10.73,
+          "max": 25.57
+        }
+      },
+      "with_llm": {
+        "turns": 25,
+        "asr": {
+          "mean": 0.35,
+          "max": 0.54
+        },
+        "retrieval": {
+          "mean": 0.01,
+          "max": 0.03
+        },
+        "llm": {
+          "mean": 5.14,
+          "max": 9.76
+        },
+        "tools": {
+          "mean": 0.04,
+          "max": 0.09
+        },
+        "tts": {
+          "mean": 6.42,
+          "max": 17.33
+        },
+        "total": {
+          "mean": 11.96,
+          "max": 25.57
+        }
+      },
+      "without_llm": {
+        "turns": 6,
+        "asr": {
+          "mean": 0.33,
+          "max": 0.36
+        },
+        "retrieval": {
+          "mean": 0.0,
+          "max": 0.03
+        },
+        "llm": {
+          "mean": 0.0,
+          "max": 0.0
+        },
+        "tools": {
+          "mean": 0.03,
+          "max": 0.04
+        },
+        "tts": {
+          "mean": 5.22,
+          "max": 10.69
+        },
+        "total": {
+          "mean": 5.59,
+          "max": 11.05
+        }
+      }
+    }
+  }
+}

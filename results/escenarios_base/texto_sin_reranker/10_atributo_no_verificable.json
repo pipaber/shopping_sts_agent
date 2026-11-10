@@ -1,0 +1,541 @@
+{
+  "id": "10_atributo_no_verificable",
+  "title": "Atributo no verificable",
+  "kind": "atributo_no_verificable",
+  "description": "El usuario pregunta por la valoración de los clientes, un dato que el catálogo no trae. El agente debe decir que no consta, sin inventarlo y sin tocar el carrito. La comprobación mira el texto completo del producto en el catálogo: si no menciona valoraciones, la respuesta tiene que decir que no consta.",
+  "voice": false,
+  "input": "texto",
+  "audio_source": null,
+  "user_id": "eval-c2e8c796-10_atributo_no_verificable",
+  "threads": [
+    "eval-c2e8c796-10_atributo_no_verificable-c1"
+  ],
+  "names": {
+    "elegida": "B08C73K4CV"
+  },
+  "steps": [
+    {
+      "kind": "turn",
+      "turn": 1,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Busco una sartén antiadherente.",
+      "agent_input": "Busco una sartén antiadherente.",
+      "response": "Tengo la sartén ilimiti de 20 cm por 83,75 euros, la ilimiti de 24 cm con tapa por 3,82 euros, la ilimiti de 24 cm con tapa hondita por 20,45 euros, la Pensofal de 32 cm por 7,48 euros y la Fesha de 24 cm por 10,40 euros. ¿Te interesa alguna?",
+      "spoken_text": "Tengo la sartén ilimiti de veinte centímetros por ochenta y tres euros con setenta y cinco céntimos, la ilimiti de veinticuatro centímetros con tapa por tres euros con ochenta y dos céntimos, la ilimiti de veinticuatro centímetros con tapa hondita por veinte euros con cuarenta y cinco céntimos, la Pensofal de treinta y dos centímetros por siete euros con cuarenta y ocho céntimos y la Fesha de veinticuatro centímetros por diez euros con cuarenta céntimos. ¿Te interesa alguna?",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "buscar_productos",
+          "args": {
+            "consulta": "sartén antiadherente"
+          },
+          "reason": "buscar la sartén antiadherente",
+          "ok": true,
+          "summary": "estos son ahora los CANDIDATOS, del más al menos relevante:\n[1] id=B08C73K4CV | ilimiti Sartenes Induccion Antiadherentes 20 cm, Sarten Piedra Aluminio Fundido, Libre de PFOA, Apta para Todo Tipo de Cocina | marca: ilimiti | color: desconocido | precio: 83,75 € | existencias: 46 | características (extracto): APTO PARA TODOS TIPOS DE COCINAS: La sartén antiadherente se puede utilizar para cocinar en todo tipo de cocinas. Compatible con la cocina de gas, eléctrica, vidroceramica y placas halógenas o de inducción. RECUBRIMIENTO NO TÓXICO DE 4… | descripción: desconocido\n[2] id=B08QYSQY9X | ilimiti 24CM Sartén con tapa set 3pcs, tapa para 24cm Cacerolas y 24cm sarten Antiadherente, Mango ergonómico, Apto para Inducción | marca: ilimiti | color: Verde | precio: 3,82 € | existencias: 16 | características (extracto): APTO PARA TODOS TIPOS DE COCINAS: La sartén antiadherente se puede utilizar para cocinar en todo tipo de cocinas. Compatible con la cocina de gas, eléctrica, vidroceramica y placas halógenas o de inducción. DISEÑO CON CLASE Y ELEGANTE… | descripción: desconocido\n[3] id=B08QHSY7T1 | ilimiti 24cm con tapa Sartén honda, Sartén antiadherente 24cm con tapa , Apta para todo tipo de cocinas incluida inducción | marca: ilimiti | color: desconocido | precio: 20,45 € | existencias: 12 | características (extracto): TAMAÑO: Diámetro de 24 cm con tapa, la profundidad, es decir, la altura de la sartén es de 8.5 cm. Puede freír/asar/guisar/freír libremente, satisfacer todas sus necesidades diarias en nuestra sartén. APTO PARA TODOS TIPOS DE COCINAS: La… | descripción: desconocido\n[4] id=B072JWVC5Q | Pensofal Invictum Pen 5509 Sartén Honda Antiadherente 9 Capas, Efecto Piedra, 32 Cm de Diámetro, Vitrocerámica, Inducción, Libre de BPA, Aluminio | marca: Pensofal | color: Gris | precio: 7,48 € | existencias: 8 | características (extracto): Sartén honda antiadherente con 32 cm de diámetro y mango de acero inoxidable con tacto frío Exclusivo revestimiento antiadherente biostone pro de 9 capas efecto piedra, ultra resistente a arañazos y abrasiones para que te dure toda la vida… | descripción: desconocido\n[5] id=B08QMTC477 | Fesha Sartén antiadherente de 24 cm, sartén de piedra de granito antiadherente de 9,5 pulgadas, sartén de aluminio para utensilios de cocina con 100% libre de PFOA para placa de inducción | marca: FESHA | color: Gris | precio: 10,40 € | existencias: 42 | características (extracto): 【SUPER ANTIADHERENTE & RESISTENTE A LOS ARAÑAZOS】 Esta sartén de aluminio tiene 5 capas de estructura de refuerzo con un diseño de revestimiento de piedra de granito. Ofrece un rendimiento antiadherente sin precedentes y resistente a los… | descripción: La sartén de granito Fesha 100% libre de PFOA evita que los alimentos se peguen incluso con menos aceite y es muy fácil de limpiar. La caja contiene: 1 x Sartén de piedra Fesha Características: La…",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.026,
+        "llm": 8.303,
+        "tools": 0.016,
+        "tts": 0.0,
+        "total": 8.346
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-c2e8c796-10_atributo_no_verificable-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {}
+      },
+      "after": {
+        "cart_id": "eval-c2e8c796-10_atributo_no_verificable-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08C73K4CV",
+              "title": "ilimiti Sartenes Induccion Antiadherentes 20 cm, Sarten Piedra Aluminio Fundido, Libre de PFOA, Apta para Todo Tipo de Cocina",
+              "brand": "ilimiti",
+              "price_cents": 8375,
+              "stock": 46
+            },
+            {
+              "product_id": "B08QYSQY9X",
+              "title": "ilimiti 24CM Sartén con tapa set 3pcs, tapa para 24cm Cacerolas y 24cm sarten Antiadherente, Mango ergonómico, Apto para Inducción",
+              "brand": "ilimiti",
+              "price_cents": 382,
+              "stock": 16
+            },
+            {
+              "product_id": "B08QHSY7T1",
+              "title": "ilimiti 24cm con tapa Sartén honda, Sartén antiadherente 24cm con tapa , Apta para todo tipo de cocinas incluida inducción",
+              "brand": "ilimiti",
+              "price_cents": 2045,
+              "stock": 12
+            },
+            {
+              "product_id": "B072JWVC5Q",
+              "title": "Pensofal Invictum Pen 5509 Sartén Honda Antiadherente 9 Capas, Efecto Piedra, 32 Cm de Diámetro, Vitrocerámica, Inducción, Libre de BPA, Aluminio",
+              "brand": "Pensofal",
+              "price_cents": 748,
+              "stock": 8
+            },
+            {
+              "product_id": "B08QMTC477",
+              "title": "Fesha Sartén antiadherente de 24 cm, sartén de piedra de granito antiadherente de 9,5 pulgadas, sartén de aluminio para utensilios de cocina con 100% libre de PFOA para placa de inducción",
+              "brand": "FESHA",
+              "price_cents": 1040,
+              "stock": 42
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {
+          "B072JWVC5Q": {
+            "price_cents": 748,
+            "stock": 8
+          },
+          "B08C73K4CV": {
+            "price_cents": 8375,
+            "stock": 46
+          },
+          "B08QHSY7T1": {
+            "price_cents": 2045,
+            "stock": 12
+          },
+          "B08QMTC477": {
+            "price_cents": 1040,
+            "stock": 42
+          },
+          "B08QYSQY9X": {
+            "price_cents": 382,
+            "stock": 16
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        }
+      ]
+    },
+    {
+      "kind": "remember",
+      "name": "elegida",
+      "ref": "candidate:1",
+      "product_id": "B08C73K4CV",
+      "title": "ilimiti Sartenes Induccion Antiadherentes 20 cm, Sarten Piedra Aluminio Fundido, Libre de PFOA, Apta para Todo Tipo de Cocina"
+    },
+    {
+      "kind": "turn",
+      "turn": 2,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "¿Qué valoración le dan los clientes a la primera?",
+      "agent_input": "¿Qué valoración le dan los clientes a la primera?",
+      "response": "Los clientes no han valorado esta sartén en el catálogo.",
+      "spoken_text": "Los clientes no han valorado esta sartén en el catálogo.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "detalle_producto",
+          "args": {
+            "product_id": "B08C73K4CV"
+          },
+          "reason": "el usuario quiere información sobre un candidato",
+          "ok": true,
+          "summary": "\n[1] id=B08C73K4CV | ilimiti Sartenes Induccion Antiadherentes 20 cm, Sarten Piedra Aluminio Fundido, Libre de PFOA, Apta para Todo Tipo de Cocina | marca: ilimiti | color: desconocido | precio: 83,75 € | existencias: 46 | características (extracto): APTO PARA TODOS TIPOS DE COCINAS: La sartén antiadherente se puede utilizar para cocinar en todo tipo de cocinas. Compatible con la cocina de gas, eléctrica, vidroceramica y placas halógenas o de inducción. RECUBRIMIENTO NO TÓXICO DE 4 CAPAS: sartenes antiadherentes hecha de metal de aluminio de grado premium 99.5% y recubierta con 4 capas antiadherentes. VERSÁTIL Y FÁCIL DE LIMPIAR: Nuestra sartén de inducción es 100% sin PFOA. Use la sartén antiadherente como sartén para hacer crepes, freír beicon, saltear verduras, guisados de carne y mucho más. CALENTAMIENTO RÁPIDO Y EFICIENTE：ilimiti sartén antiadherente de piedra que conduce el calor de forma rápida y uniforme con un control preciso de la temperatura para un rendimiento consistente y profesional. MANGO RESISTENTE AL CALOR: Nuestras asas de la sartén son resistentes al calor y se mantienen frías al tacto todo el tiempo para evitar quemaduras. | descripción: desconocido",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 5.022,
+        "tools": 0.03,
+        "tts": 0.0,
+        "total": 5.052
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-c2e8c796-10_atributo_no_verificable-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08C73K4CV",
+              "title": "ilimiti Sartenes Induccion Antiadherentes 20 cm, Sarten Piedra Aluminio Fundido, Libre de PFOA, Apta para Todo Tipo de Cocina",
+              "brand": "ilimiti",
+              "price_cents": 8375,
+              "stock": 46
+            },
+            {
+              "product_id": "B08QYSQY9X",
+              "title": "ilimiti 24CM Sartén con tapa set 3pcs, tapa para 24cm Cacerolas y 24cm sarten Antiadherente, Mango ergonómico, Apto para Inducción",
+              "brand": "ilimiti",
+              "price_cents": 382,
+              "stock": 16
+            },
+            {
+              "product_id": "B08QHSY7T1",
+              "title": "ilimiti 24cm con tapa Sartén honda, Sartén antiadherente 24cm con tapa , Apta para todo tipo de cocinas incluida inducción",
+              "brand": "ilimiti",
+              "price_cents": 2045,
+              "stock": 12
+            },
+            {
+              "product_id": "B072JWVC5Q",
+              "title": "Pensofal Invictum Pen 5509 Sartén Honda Antiadherente 9 Capas, Efecto Piedra, 32 Cm de Diámetro, Vitrocerámica, Inducción, Libre de BPA, Aluminio",
+              "brand": "Pensofal",
+              "price_cents": 748,
+              "stock": 8
+            },
+            {
+              "product_id": "B08QMTC477",
+              "title": "Fesha Sartén antiadherente de 24 cm, sartén de piedra de granito antiadherente de 9,5 pulgadas, sartén de aluminio para utensilios de cocina con 100% libre de PFOA para placa de inducción",
+              "brand": "FESHA",
+              "price_cents": 1040,
+              "stock": 42
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {
+          "B072JWVC5Q": {
+            "price_cents": 748,
+            "stock": 8
+          },
+          "B08C73K4CV": {
+            "price_cents": 8375,
+            "stock": 46
+          },
+          "B08QHSY7T1": {
+            "price_cents": 2045,
+            "stock": 12
+          },
+          "B08QMTC477": {
+            "price_cents": 1040,
+            "stock": 42
+          },
+          "B08QYSQY9X": {
+            "price_cents": 382,
+            "stock": 16
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-c2e8c796-10_atributo_no_verificable-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08C73K4CV",
+              "title": "ilimiti Sartenes Induccion Antiadherentes 20 cm, Sarten Piedra Aluminio Fundido, Libre de PFOA, Apta para Todo Tipo de Cocina",
+              "brand": "ilimiti",
+              "price_cents": 8375,
+              "stock": 46
+            },
+            {
+              "product_id": "B08QYSQY9X",
+              "title": "ilimiti 24CM Sartén con tapa set 3pcs, tapa para 24cm Cacerolas y 24cm sarten Antiadherente, Mango ergonómico, Apto para Inducción",
+              "brand": "ilimiti",
+              "price_cents": 382,
+              "stock": 16
+            },
+            {
+              "product_id": "B08QHSY7T1",
+              "title": "ilimiti 24cm con tapa Sartén honda, Sartén antiadherente 24cm con tapa , Apta para todo tipo de cocinas incluida inducción",
+              "brand": "ilimiti",
+              "price_cents": 2045,
+              "stock": 12
+            },
+            {
+              "product_id": "B072JWVC5Q",
+              "title": "Pensofal Invictum Pen 5509 Sartén Honda Antiadherente 9 Capas, Efecto Piedra, 32 Cm de Diámetro, Vitrocerámica, Inducción, Libre de BPA, Aluminio",
+              "brand": "Pensofal",
+              "price_cents": 748,
+              "stock": 8
+            },
+            {
+              "product_id": "B08QMTC477",
+              "title": "Fesha Sartén antiadherente de 24 cm, sartén de piedra de granito antiadherente de 9,5 pulgadas, sartén de aluminio para utensilios de cocina con 100% libre de PFOA para placa de inducción",
+              "brand": "FESHA",
+              "price_cents": 1040,
+              "stock": 42
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {
+          "B072JWVC5Q": {
+            "price_cents": 748,
+            "stock": 8
+          },
+          "B08C73K4CV": {
+            "price_cents": 8375,
+            "stock": 46
+          },
+          "B08QHSY7T1": {
+            "price_cents": 2045,
+            "stock": 12
+          },
+          "B08QMTC477": {
+            "price_cents": 1040,
+            "stock": 42
+          },
+          "B08QYSQY9X": {
+            "price_cents": 382,
+            "stock": 16
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "declares_unknown",
+          "params": {
+            "product": "@elegida",
+            "keywords": [
+              "valoraci",
+              "estrellas",
+              "reseñ",
+              "opiniones",
+              "puntuaci"
+            ]
+          },
+          "ok": false,
+          "detail": "dato en el catálogo: no; la respuesta dice que no consta: no"
+        },
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        }
+      ]
+    }
+  ],
+  "final": {
+    "snapshot": {
+      "cart_id": "eval-c2e8c796-10_atributo_no_verificable-c1",
+      "state": {
+        "budget_cents": null,
+        "preferences": [],
+        "pending_clarification": null,
+        "quote": null,
+        "order": null,
+        "candidates": [
+          {
+            "product_id": "B08C73K4CV",
+            "title": "ilimiti Sartenes Induccion Antiadherentes 20 cm, Sarten Piedra Aluminio Fundido, Libre de PFOA, Apta para Todo Tipo de Cocina",
+            "brand": "ilimiti",
+            "price_cents": 8375,
+            "stock": 46
+          },
+          {
+            "product_id": "B08QYSQY9X",
+            "title": "ilimiti 24CM Sartén con tapa set 3pcs, tapa para 24cm Cacerolas y 24cm sarten Antiadherente, Mango ergonómico, Apto para Inducción",
+            "brand": "ilimiti",
+            "price_cents": 382,
+            "stock": 16
+          },
+          {
+            "product_id": "B08QHSY7T1",
+            "title": "ilimiti 24cm con tapa Sartén honda, Sartén antiadherente 24cm con tapa , Apta para todo tipo de cocinas incluida inducción",
+            "brand": "ilimiti",
+            "price_cents": 2045,
+            "stock": 12
+          },
+          {
+            "product_id": "B072JWVC5Q",
+            "title": "Pensofal Invictum Pen 5509 Sartén Honda Antiadherente 9 Capas, Efecto Piedra, 32 Cm de Diámetro, Vitrocerámica, Inducción, Libre de BPA, Aluminio",
+            "brand": "Pensofal",
+            "price_cents": 748,
+            "stock": 8
+          },
+          {
+            "product_id": "B08QMTC477",
+            "title": "Fesha Sartén antiadherente de 24 cm, sartén de piedra de granito antiadherente de 9,5 pulgadas, sartén de aluminio para utensilios de cocina con 100% libre de PFOA para placa de inducción",
+            "brand": "FESHA",
+            "price_cents": 1040,
+            "stock": 42
+          }
+        ],
+        "awaiting_confirmation": false
+      },
+      "store": {
+        "orders": [],
+        "order_items": [],
+        "cart_items": [],
+        "inventory_changes": []
+      },
+      "offers": {
+        "B072JWVC5Q": {
+          "price_cents": 748,
+          "stock": 8
+        },
+        "B08C73K4CV": {
+          "price_cents": 8375,
+          "stock": 46
+        },
+        "B08QHSY7T1": {
+          "price_cents": 2045,
+          "stock": 12
+        },
+        "B08QMTC477": {
+          "price_cents": 1040,
+          "stock": 42
+        },
+        "B08QYSQY9X": {
+          "price_cents": 382,
+          "stock": 16
+        }
+      }
+    },
+    "checks": [
+      {
+        "check": "orders",
+        "params": {
+          "count": 0
+        },
+        "ok": true,
+        "detail": "pedidos registrados: 0"
+      },
+      {
+        "check": "cart",
+        "params": {
+          "empty": true
+        },
+        "ok": true,
+        "detail": "carrito: vacío"
+      }
+    ]
+  },
+  "violations": [],
+  "problems": [],
+  "passed": false,
+  "timings": {
+    "all": {
+      "turns": 2,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.01,
+        "max": 0.03
+      },
+      "llm": {
+        "mean": 6.66,
+        "max": 8.3
+      },
+      "tools": {
+        "mean": 0.02,
+        "max": 0.03
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 6.7,
+        "max": 8.35
+      }
+    },
+    "with_llm": {
+      "turns": 2,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.01,
+        "max": 0.03
+      },
+      "llm": {
+        "mean": 6.66,
+        "max": 8.3
+      },
+      "tools": {
+        "mean": 0.02,
+        "max": 0.03
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 6.7,
+        "max": 8.35
+      }
+    },
+    "without_llm": {
+      "turns": 0
+    }
+  }
+}

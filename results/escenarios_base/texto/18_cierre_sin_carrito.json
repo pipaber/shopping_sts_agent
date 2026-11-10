@@ -1,0 +1,291 @@
+{
+  "id": "18_cierre_sin_carrito",
+  "title": "Cerrar y confirmar sin nada en el carrito",
+  "kind": "cierre_sin_carrito",
+  "description": "El usuario pide cerrar el pedido con el carrito vacío y después dice que sí. No hay cotización que confirmar: no debe registrarse nada.",
+  "voice": false,
+  "input": "texto",
+  "audio_source": null,
+  "user_id": "eval-6b9dd32e-18_cierre_sin_carrito",
+  "threads": [
+    "eval-6b9dd32e-18_cierre_sin_carrito-c1"
+  ],
+  "names": {},
+  "steps": [
+    {
+      "kind": "turn",
+      "turn": 1,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Quiero cerrar el pedido.",
+      "agent_input": "Quiero cerrar el pedido.",
+      "response": "Tu carrito está vacío. ¿Quieres añadir algo antes de cerrar el pedido?",
+      "spoken_text": "Tu carrito está vacío. ¿Quieres añadir algo antes de cerrar el pedido?",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "cotizar",
+          "args": {},
+          "reason": "el usuario quiere cerrar el pedido",
+          "ok": false,
+          "summary": "[carrito_vacio] El carrito está vacío; no hay nada que cotizar.",
+          "issues": [
+            {
+              "code": "carrito_vacio",
+              "message": "El carrito está vacío; no hay nada que cotizar.",
+              "product_id": null,
+              "details": {}
+            }
+          ]
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 2.978,
+        "tools": 0.026,
+        "tts": 0.0,
+        "total": 3.004
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-6b9dd32e-18_cierre_sin_carrito-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {}
+      },
+      "after": {
+        "cart_id": "eval-6b9dd32e-18_cierre_sin_carrito-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {}
+      },
+      "checks": [
+        {
+          "check": "orders",
+          "params": {
+            "count": 0
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 0"
+        },
+        {
+          "check": "awaiting_confirmation",
+          "params": {
+            "value": false
+          },
+          "ok": true,
+          "detail": "esperando confirmación: no"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 2,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Sí, confirmo.",
+      "agent_input": "Sí, confirmo.",
+      "response": "Tu carrito está vacío. ¿Quieres buscar algún producto para cotizar?",
+      "spoken_text": "Tu carrito está vacío. ¿Quieres buscar algún producto para cotizar?",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 2.063,
+        "tools": 0.028,
+        "tts": 0.0,
+        "total": 2.09
+      },
+      "llm_steps": 1,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-6b9dd32e-18_cierre_sin_carrito-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {}
+      },
+      "after": {
+        "cart_id": "eval-6b9dd32e-18_cierre_sin_carrito-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {}
+      },
+      "checks": [
+        {
+          "check": "orders",
+          "params": {
+            "count": 0
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 0"
+        }
+      ]
+    }
+  ],
+  "final": {
+    "snapshot": {
+      "cart_id": "eval-6b9dd32e-18_cierre_sin_carrito-c1",
+      "state": {
+        "budget_cents": null,
+        "preferences": [],
+        "pending_clarification": null,
+        "quote": null,
+        "order": null,
+        "candidates": [],
+        "awaiting_confirmation": false
+      },
+      "store": {
+        "orders": [],
+        "order_items": [],
+        "cart_items": [],
+        "inventory_changes": []
+      },
+      "offers": {}
+    },
+    "checks": [
+      {
+        "check": "orders",
+        "params": {
+          "count": 0
+        },
+        "ok": true,
+        "detail": "pedidos registrados: 0"
+      },
+      {
+        "check": "cart",
+        "params": {
+          "empty": true
+        },
+        "ok": true,
+        "detail": "carrito: vacío"
+      }
+    ]
+  },
+  "violations": [],
+  "problems": [],
+  "passed": true,
+  "timings": {
+    "all": {
+      "turns": 2,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "llm": {
+        "mean": 2.52,
+        "max": 2.98
+      },
+      "tools": {
+        "mean": 0.03,
+        "max": 0.03
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 2.55,
+        "max": 3.0
+      }
+    },
+    "with_llm": {
+      "turns": 2,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "llm": {
+        "mean": 2.52,
+        "max": 2.98
+      },
+      "tools": {
+        "mean": 0.03,
+        "max": 0.03
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 2.55,
+        "max": 3.0
+      }
+    },
+    "without_llm": {
+      "turns": 0
+    }
+  }
+}

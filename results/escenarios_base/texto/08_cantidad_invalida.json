@@ -1,0 +1,788 @@
+{
+  "id": "08_cantidad_invalida",
+  "title": "Cantidad inválida",
+  "kind": "cantidad_invalida",
+  "description": "El usuario pide cero unidades y después una cantidad negativa. Ninguna de las dos debe llegar al carrito.",
+  "voice": false,
+  "input": "texto",
+  "audio_source": null,
+  "user_id": "eval-6b9dd32e-08_cantidad_invalida",
+  "threads": [
+    "eval-6b9dd32e-08_cantidad_invalida-c1"
+  ],
+  "names": {
+    "elegido": "B07MBYH3F7"
+  },
+  "steps": [
+    {
+      "kind": "turn",
+      "turn": 1,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Busco un cargador USB C.",
+      "agent_input": "Busco un cargador USB C.",
+      "response": "Tengo el Cable USB Tipo C [3 Pack 1M] de Yosou por 13,65 €, el cargador JOOMFEEN Negro por 9,96 €, el JOOMFEEN Plata por 25,13 €, el cargador Avolare Negro por 35,15 € y el cargador Samsung Negro por 12,72 €. ¿Te interesa alguno?",
+      "spoken_text": "Tengo el Cable USB Tipo C, tres Pack 1M, de Yosou por trece euros con sesenta y cinco céntimos, el cargador JOOMFEEN Negro por nueve euros con noventa y seis céntimos, el JOOMFEEN Plata por veinticinco euros con trece céntimos, el cargador Avolare Negro por treinta y cinco euros con quince céntimos y el cargador Samsung Negro por doce euros con setenta y dos céntimos. ¿Te interesa alguno?",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "buscar_productos",
+          "args": {
+            "consulta": "cargador USB C"
+          },
+          "reason": "buscar el cargador USB C",
+          "ok": true,
+          "summary": "estos son ahora los CANDIDATOS, del más al menos relevante:\n[1] id=B07MBYH3F7 | Cable USB Tipo C [3 Pack 1M] Cable Cargador Tipo C De Nylon Carga Rápida Movil Tipo C USB Cargador para Samsung Galaxy S10/S9/S8/A20/A40/A50/A70, Huawei P9/P10/P20/P30, Nintendo Switch, Sony Xperia | marca: Yosou | color: cable usb c 3 colors | precio: 13,65 € | existencias: 11 | características (extracto): 【Conector Reversible】：Conector USB Type-C Reversible es un nuevo transformación de cables antiguos USB a cables nuevos cargados.Tienen un puerto circular que facilita la inserción de teléfonos móviles sin tener que examinar los conectores… | descripción: desconocido\n[2] id=B07VPJ81BF | JOOMFEEN USB Tipo C Cargador de Coche,Quick Charge 3.0+2.4A 30W Carga Rapida Doble Puertos USB Adaptador cargador de coche con Cable USB C para Samsung Galaxy S10E/S9/S8/Note 8,LG G6,Huawei P20/Mate10 | marca: JOOMFEEN | color: Negro | precio: 9,96 € | existencias: 10 | características (extracto): Carga rápida: Qualcomm Quick Charge 3.0 + 2.4A Doble Puertos USB adaptador cargador coche con 1Metro cable tipo c carga rápida para el conductor y el pasajero, salida del puerto 2.4: DC 5v / 3a, 9v / 2a, 12v / 1.5a, salida del puerto… | descripción: JOOMFEEN Cargador de Coche Tipo C, 30W, Doble Puertos USB con Cable 1meter USB-A a USB-C Cargador de Coche:Quick Charge 3.0 Technología Es una tecnología de carga de la energía que ahorra hasta un…\n[3] id=B07XB73LVF | JOOMFEEN USB Tipo C Cargador de Coche,Quick Charge 3.0+2.4A 30W Carga Rapida Doble Puertos USB Adaptador cargador de coche con Cable USB C para Samsung Galaxy S10E/S9/S8/Note 8,LG G6,Huawei P20/Mate10 | marca: JOOMFEEN | color: Plata | precio: 25,13 € | existencias: 50 | características (extracto): Carga rápida: Qualcomm Quick Charge 3.0 + 2.4A Doble Puertos USB adaptador cargador coche con 1Metro cable tipo c carga rápida para el conductor y el pasajero, salida del puerto 2.4: DC 5v / 3a, 9v / 2a, 12v / 1.5a, salida del puerto… | descripción: JOOMFEEN Cargador de Coche Tipo C, 30W, Doble Puertos USB con Cable 1meter USB-A a USB-C Cargador de Coche:Quick Charge 3.0 Technología Es una tecnología de carga de la energía que ahorra hasta un…\n[4] id=B07YV4V315 | 45W Cargador de Coche Carga Rapida, Avolare Quick Charge 3.0(Puerto USB A 18W)+PD 3.0(Puerto USB C 27W) Cargador Movil Coche para Samsung, iPhone, iPad, Google, LG, HTC con Cable Tipo C 0,8M Negro | marca: Avolare | color: desconocido | precio: 35,15 € | existencias: 45 | características (extracto): ⚡️【Doble Puertos Indepediente de Carga Rápida】Somos diferentes, ¿por qué? Avolare usb cargador coche cuenta con 2 puertos que soportan carga rápida y trabajan independientemente. El puerto type c de PD 3.0 ofrece 27W carga, y el puerto usb… | descripción: desconocido\n[5] id=B01M3XQ2KL | Samsung EP-LN920CBEGWW, Cargador de coche Dual con Carga rápida y cable USB-C incluído, color negro | marca: SAMSUNG | color: negro | precio: 12,72 € | existencias: 6 | características (extracto): Diseño elegante y creativo Calidad óptima para los requisitos del cliente Hecho de material resistente para un uso prolongado Producto útil y práctico | descripción: desconocido",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.03,
+        "llm": 7.751,
+        "tools": 0.031,
+        "tts": 0.0,
+        "total": 7.812
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-6b9dd32e-08_cantidad_invalida-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {}
+      },
+      "after": {
+        "cart_id": "eval-6b9dd32e-08_cantidad_invalida-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07MBYH3F7",
+              "title": "Cable USB Tipo C [3 Pack 1M] Cable Cargador Tipo C De Nylon Carga Rápida Movil Tipo C USB Cargador para Samsung Galaxy S10/S9/S8/A20/A40/A50/A70, Huawei P9/P10/P20/P30, Nintendo Switch, Sony Xperia",
+              "brand": "Yosou",
+              "price_cents": 1365,
+              "stock": 11
+            },
+            {
+              "product_id": "B07VPJ81BF",
+              "title": "JOOMFEEN USB Tipo C Cargador de Coche,Quick Charge 3.0+2.4A 30W Carga Rapida Doble Puertos USB Adaptador cargador de coche con Cable USB C para Samsung Galaxy S10E/S9/S8/Note 8,LG G6,Huawei P20/Mate10",
+              "brand": "JOOMFEEN",
+              "price_cents": 996,
+              "stock": 10
+            },
+            {
+              "product_id": "B07XB73LVF",
+              "title": "JOOMFEEN USB Tipo C Cargador de Coche,Quick Charge 3.0+2.4A 30W Carga Rapida Doble Puertos USB Adaptador cargador de coche con Cable USB C para Samsung Galaxy S10E/S9/S8/Note 8,LG G6,Huawei P20/Mate10",
+              "brand": "JOOMFEEN",
+              "price_cents": 2513,
+              "stock": 50
+            },
+            {
+              "product_id": "B07YV4V315",
+              "title": "45W Cargador de Coche Carga Rapida, Avolare Quick Charge 3.0(Puerto USB A 18W)+PD 3.0(Puerto USB C 27W) Cargador Movil Coche para Samsung, iPhone, iPad, Google, LG, HTC con Cable Tipo C 0,8M Negro",
+              "brand": "Avolare",
+              "price_cents": 3515,
+              "stock": 45
+            },
+            {
+              "product_id": "B01M3XQ2KL",
+              "title": "Samsung EP-LN920CBEGWW, Cargador de coche Dual con Carga rápida y cable USB-C incluído, color negro",
+              "brand": "SAMSUNG",
+              "price_cents": 1272,
+              "stock": 6
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {
+          "B01M3XQ2KL": {
+            "price_cents": 1272,
+            "stock": 6
+          },
+          "B07MBYH3F7": {
+            "price_cents": 1365,
+            "stock": 11
+          },
+          "B07VPJ81BF": {
+            "price_cents": 996,
+            "stock": 10
+          },
+          "B07XB73LVF": {
+            "price_cents": 2513,
+            "stock": 50
+          },
+          "B07YV4V315": {
+            "price_cents": 3515,
+            "stock": 45
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        }
+      ]
+    },
+    {
+      "kind": "remember",
+      "name": "elegido",
+      "ref": "candidate:1",
+      "product_id": "B07MBYH3F7",
+      "title": "Cable USB Tipo C [3 Pack 1M] Cable Cargador Tipo C De Nylon Carga Rápida Movil Tipo C USB Cargador para Samsung Galaxy S10/S9/S8/A20/A40/A50/A70, Huawei P9/P10/P20/P30, Nintendo Switch, Sony Xperia"
+    },
+    {
+      "kind": "event",
+      "event": "set_offer",
+      "product": "@elegido",
+      "product_id": "B07MBYH3F7",
+      "price_cents": 800,
+      "stock": 20
+    },
+    {
+      "kind": "turn",
+      "turn": 2,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Añade cero unidades del primero.",
+      "agent_input": "Añade cero unidades del primero.",
+      "response": "El producto que buscabas no estaba en el carrito.",
+      "spoken_text": "El producto que buscabas no estaba en el carrito.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "quitar_del_carrito",
+          "args": {
+            "product_id": "B07MBYH3F7"
+          },
+          "reason": "quitar el producto del carrito",
+          "ok": false,
+          "summary": "[no_esta_en_el_carrito] El producto B07MBYH3F7 no está en el carrito.",
+          "issues": [
+            {
+              "code": "no_esta_en_el_carrito",
+              "message": "El producto B07MBYH3F7 no está en el carrito.",
+              "product_id": "B07MBYH3F7",
+              "details": {}
+            }
+          ]
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 4.592,
+        "tools": 0.031,
+        "tts": 0.0,
+        "total": 4.624
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-6b9dd32e-08_cantidad_invalida-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07MBYH3F7",
+              "title": "Cable USB Tipo C [3 Pack 1M] Cable Cargador Tipo C De Nylon Carga Rápida Movil Tipo C USB Cargador para Samsung Galaxy S10/S9/S8/A20/A40/A50/A70, Huawei P9/P10/P20/P30, Nintendo Switch, Sony Xperia",
+              "brand": "Yosou",
+              "price_cents": 1365,
+              "stock": 11
+            },
+            {
+              "product_id": "B07VPJ81BF",
+              "title": "JOOMFEEN USB Tipo C Cargador de Coche,Quick Charge 3.0+2.4A 30W Carga Rapida Doble Puertos USB Adaptador cargador de coche con Cable USB C para Samsung Galaxy S10E/S9/S8/Note 8,LG G6,Huawei P20/Mate10",
+              "brand": "JOOMFEEN",
+              "price_cents": 996,
+              "stock": 10
+            },
+            {
+              "product_id": "B07XB73LVF",
+              "title": "JOOMFEEN USB Tipo C Cargador de Coche,Quick Charge 3.0+2.4A 30W Carga Rapida Doble Puertos USB Adaptador cargador de coche con Cable USB C para Samsung Galaxy S10E/S9/S8/Note 8,LG G6,Huawei P20/Mate10",
+              "brand": "JOOMFEEN",
+              "price_cents": 2513,
+              "stock": 50
+            },
+            {
+              "product_id": "B07YV4V315",
+              "title": "45W Cargador de Coche Carga Rapida, Avolare Quick Charge 3.0(Puerto USB A 18W)+PD 3.0(Puerto USB C 27W) Cargador Movil Coche para Samsung, iPhone, iPad, Google, LG, HTC con Cable Tipo C 0,8M Negro",
+              "brand": "Avolare",
+              "price_cents": 3515,
+              "stock": 45
+            },
+            {
+              "product_id": "B01M3XQ2KL",
+              "title": "Samsung EP-LN920CBEGWW, Cargador de coche Dual con Carga rápida y cable USB-C incluído, color negro",
+              "brand": "SAMSUNG",
+              "price_cents": 1272,
+              "stock": 6
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B07MBYH3F7",
+              "initial_stock": 11,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B01M3XQ2KL": {
+            "price_cents": 1272,
+            "stock": 6
+          },
+          "B07MBYH3F7": {
+            "price_cents": 800,
+            "stock": 20
+          },
+          "B07VPJ81BF": {
+            "price_cents": 996,
+            "stock": 10
+          },
+          "B07XB73LVF": {
+            "price_cents": 2513,
+            "stock": 50
+          },
+          "B07YV4V315": {
+            "price_cents": 3515,
+            "stock": 45
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-6b9dd32e-08_cantidad_invalida-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07MBYH3F7",
+              "title": "Cable USB Tipo C [3 Pack 1M] Cable Cargador Tipo C De Nylon Carga Rápida Movil Tipo C USB Cargador para Samsung Galaxy S10/S9/S8/A20/A40/A50/A70, Huawei P9/P10/P20/P30, Nintendo Switch, Sony Xperia",
+              "brand": "Yosou",
+              "price_cents": 800,
+              "stock": 20
+            },
+            {
+              "product_id": "B07VPJ81BF",
+              "title": "JOOMFEEN USB Tipo C Cargador de Coche,Quick Charge 3.0+2.4A 30W Carga Rapida Doble Puertos USB Adaptador cargador de coche con Cable USB C para Samsung Galaxy S10E/S9/S8/Note 8,LG G6,Huawei P20/Mate10",
+              "brand": "JOOMFEEN",
+              "price_cents": 996,
+              "stock": 10
+            },
+            {
+              "product_id": "B07XB73LVF",
+              "title": "JOOMFEEN USB Tipo C Cargador de Coche,Quick Charge 3.0+2.4A 30W Carga Rapida Doble Puertos USB Adaptador cargador de coche con Cable USB C para Samsung Galaxy S10E/S9/S8/Note 8,LG G6,Huawei P20/Mate10",
+              "brand": "JOOMFEEN",
+              "price_cents": 2513,
+              "stock": 50
+            },
+            {
+              "product_id": "B07YV4V315",
+              "title": "45W Cargador de Coche Carga Rapida, Avolare Quick Charge 3.0(Puerto USB A 18W)+PD 3.0(Puerto USB C 27W) Cargador Movil Coche para Samsung, iPhone, iPad, Google, LG, HTC con Cable Tipo C 0,8M Negro",
+              "brand": "Avolare",
+              "price_cents": 3515,
+              "stock": 45
+            },
+            {
+              "product_id": "B01M3XQ2KL",
+              "title": "Samsung EP-LN920CBEGWW, Cargador de coche Dual con Carga rápida y cable USB-C incluído, color negro",
+              "brand": "SAMSUNG",
+              "price_cents": 1272,
+              "stock": 6
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B07MBYH3F7",
+              "initial_stock": 11,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B01M3XQ2KL": {
+            "price_cents": 1272,
+            "stock": 6
+          },
+          "B07MBYH3F7": {
+            "price_cents": 800,
+            "stock": 20
+          },
+          "B07VPJ81BF": {
+            "price_cents": 996,
+            "stock": 10
+          },
+          "B07XB73LVF": {
+            "price_cents": 2513,
+            "stock": 50
+          },
+          "B07YV4V315": {
+            "price_cents": 3515,
+            "stock": 45
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 3,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Añade menos dos unidades del primero.",
+      "agent_input": "Añade menos dos unidades del primero.",
+      "response": "El producto que buscabas no está en el carrito. ¿Quieres añadirlo?",
+      "spoken_text": "El producto que buscabas no está en el carrito. ¿Quieres añadirlo?",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "cambiar_cantidad",
+          "args": {
+            "product_id": "B07MBYH3F7",
+            "cantidad": 1
+          },
+          "reason": "reducir la cantidad del producto 1",
+          "ok": false,
+          "summary": "[no_esta_en_el_carrito] El producto B07MBYH3F7 no está en el carrito.",
+          "issues": [
+            {
+              "code": "no_esta_en_el_carrito",
+              "message": "El producto B07MBYH3F7 no está en el carrito.",
+              "product_id": "B07MBYH3F7",
+              "details": {}
+            }
+          ]
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 5.397,
+        "tools": 0.034,
+        "tts": 0.0,
+        "total": 5.43
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-6b9dd32e-08_cantidad_invalida-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07MBYH3F7",
+              "title": "Cable USB Tipo C [3 Pack 1M] Cable Cargador Tipo C De Nylon Carga Rápida Movil Tipo C USB Cargador para Samsung Galaxy S10/S9/S8/A20/A40/A50/A70, Huawei P9/P10/P20/P30, Nintendo Switch, Sony Xperia",
+              "brand": "Yosou",
+              "price_cents": 800,
+              "stock": 20
+            },
+            {
+              "product_id": "B07VPJ81BF",
+              "title": "JOOMFEEN USB Tipo C Cargador de Coche,Quick Charge 3.0+2.4A 30W Carga Rapida Doble Puertos USB Adaptador cargador de coche con Cable USB C para Samsung Galaxy S10E/S9/S8/Note 8,LG G6,Huawei P20/Mate10",
+              "brand": "JOOMFEEN",
+              "price_cents": 996,
+              "stock": 10
+            },
+            {
+              "product_id": "B07XB73LVF",
+              "title": "JOOMFEEN USB Tipo C Cargador de Coche,Quick Charge 3.0+2.4A 30W Carga Rapida Doble Puertos USB Adaptador cargador de coche con Cable USB C para Samsung Galaxy S10E/S9/S8/Note 8,LG G6,Huawei P20/Mate10",
+              "brand": "JOOMFEEN",
+              "price_cents": 2513,
+              "stock": 50
+            },
+            {
+              "product_id": "B07YV4V315",
+              "title": "45W Cargador de Coche Carga Rapida, Avolare Quick Charge 3.0(Puerto USB A 18W)+PD 3.0(Puerto USB C 27W) Cargador Movil Coche para Samsung, iPhone, iPad, Google, LG, HTC con Cable Tipo C 0,8M Negro",
+              "brand": "Avolare",
+              "price_cents": 3515,
+              "stock": 45
+            },
+            {
+              "product_id": "B01M3XQ2KL",
+              "title": "Samsung EP-LN920CBEGWW, Cargador de coche Dual con Carga rápida y cable USB-C incluído, color negro",
+              "brand": "SAMSUNG",
+              "price_cents": 1272,
+              "stock": 6
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B07MBYH3F7",
+              "initial_stock": 11,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B01M3XQ2KL": {
+            "price_cents": 1272,
+            "stock": 6
+          },
+          "B07MBYH3F7": {
+            "price_cents": 800,
+            "stock": 20
+          },
+          "B07VPJ81BF": {
+            "price_cents": 996,
+            "stock": 10
+          },
+          "B07XB73LVF": {
+            "price_cents": 2513,
+            "stock": 50
+          },
+          "B07YV4V315": {
+            "price_cents": 3515,
+            "stock": 45
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-6b9dd32e-08_cantidad_invalida-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07MBYH3F7",
+              "title": "Cable USB Tipo C [3 Pack 1M] Cable Cargador Tipo C De Nylon Carga Rápida Movil Tipo C USB Cargador para Samsung Galaxy S10/S9/S8/A20/A40/A50/A70, Huawei P9/P10/P20/P30, Nintendo Switch, Sony Xperia",
+              "brand": "Yosou",
+              "price_cents": 800,
+              "stock": 20
+            },
+            {
+              "product_id": "B07VPJ81BF",
+              "title": "JOOMFEEN USB Tipo C Cargador de Coche,Quick Charge 3.0+2.4A 30W Carga Rapida Doble Puertos USB Adaptador cargador de coche con Cable USB C para Samsung Galaxy S10E/S9/S8/Note 8,LG G6,Huawei P20/Mate10",
+              "brand": "JOOMFEEN",
+              "price_cents": 996,
+              "stock": 10
+            },
+            {
+              "product_id": "B07XB73LVF",
+              "title": "JOOMFEEN USB Tipo C Cargador de Coche,Quick Charge 3.0+2.4A 30W Carga Rapida Doble Puertos USB Adaptador cargador de coche con Cable USB C para Samsung Galaxy S10E/S9/S8/Note 8,LG G6,Huawei P20/Mate10",
+              "brand": "JOOMFEEN",
+              "price_cents": 2513,
+              "stock": 50
+            },
+            {
+              "product_id": "B07YV4V315",
+              "title": "45W Cargador de Coche Carga Rapida, Avolare Quick Charge 3.0(Puerto USB A 18W)+PD 3.0(Puerto USB C 27W) Cargador Movil Coche para Samsung, iPhone, iPad, Google, LG, HTC con Cable Tipo C 0,8M Negro",
+              "brand": "Avolare",
+              "price_cents": 3515,
+              "stock": 45
+            },
+            {
+              "product_id": "B01M3XQ2KL",
+              "title": "Samsung EP-LN920CBEGWW, Cargador de coche Dual con Carga rápida y cable USB-C incluído, color negro",
+              "brand": "SAMSUNG",
+              "price_cents": 1272,
+              "stock": 6
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B07MBYH3F7",
+              "initial_stock": 11,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B01M3XQ2KL": {
+            "price_cents": 1272,
+            "stock": 6
+          },
+          "B07MBYH3F7": {
+            "price_cents": 800,
+            "stock": 20
+          },
+          "B07VPJ81BF": {
+            "price_cents": 996,
+            "stock": 10
+          },
+          "B07XB73LVF": {
+            "price_cents": 2513,
+            "stock": 50
+          },
+          "B07YV4V315": {
+            "price_cents": 3515,
+            "stock": 45
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        }
+      ]
+    }
+  ],
+  "final": {
+    "snapshot": {
+      "cart_id": "eval-6b9dd32e-08_cantidad_invalida-c1",
+      "state": {
+        "budget_cents": null,
+        "preferences": [],
+        "pending_clarification": null,
+        "quote": null,
+        "order": null,
+        "candidates": [
+          {
+            "product_id": "B07MBYH3F7",
+            "title": "Cable USB Tipo C [3 Pack 1M] Cable Cargador Tipo C De Nylon Carga Rápida Movil Tipo C USB Cargador para Samsung Galaxy S10/S9/S8/A20/A40/A50/A70, Huawei P9/P10/P20/P30, Nintendo Switch, Sony Xperia",
+            "brand": "Yosou",
+            "price_cents": 800,
+            "stock": 20
+          },
+          {
+            "product_id": "B07VPJ81BF",
+            "title": "JOOMFEEN USB Tipo C Cargador de Coche,Quick Charge 3.0+2.4A 30W Carga Rapida Doble Puertos USB Adaptador cargador de coche con Cable USB C para Samsung Galaxy S10E/S9/S8/Note 8,LG G6,Huawei P20/Mate10",
+            "brand": "JOOMFEEN",
+            "price_cents": 996,
+            "stock": 10
+          },
+          {
+            "product_id": "B07XB73LVF",
+            "title": "JOOMFEEN USB Tipo C Cargador de Coche,Quick Charge 3.0+2.4A 30W Carga Rapida Doble Puertos USB Adaptador cargador de coche con Cable USB C para Samsung Galaxy S10E/S9/S8/Note 8,LG G6,Huawei P20/Mate10",
+            "brand": "JOOMFEEN",
+            "price_cents": 2513,
+            "stock": 50
+          },
+          {
+            "product_id": "B07YV4V315",
+            "title": "45W Cargador de Coche Carga Rapida, Avolare Quick Charge 3.0(Puerto USB A 18W)+PD 3.0(Puerto USB C 27W) Cargador Movil Coche para Samsung, iPhone, iPad, Google, LG, HTC con Cable Tipo C 0,8M Negro",
+            "brand": "Avolare",
+            "price_cents": 3515,
+            "stock": 45
+          },
+          {
+            "product_id": "B01M3XQ2KL",
+            "title": "Samsung EP-LN920CBEGWW, Cargador de coche Dual con Carga rápida y cable USB-C incluído, color negro",
+            "brand": "SAMSUNG",
+            "price_cents": 1272,
+            "stock": 6
+          }
+        ],
+        "awaiting_confirmation": false
+      },
+      "store": {
+        "orders": [],
+        "order_items": [],
+        "cart_items": [],
+        "inventory_changes": [
+          {
+            "product_id": "B07MBYH3F7",
+            "initial_stock": 11,
+            "stock": 20
+          }
+        ]
+      },
+      "offers": {
+        "B01M3XQ2KL": {
+          "price_cents": 1272,
+          "stock": 6
+        },
+        "B07MBYH3F7": {
+          "price_cents": 800,
+          "stock": 20
+        },
+        "B07VPJ81BF": {
+          "price_cents": 996,
+          "stock": 10
+        },
+        "B07XB73LVF": {
+          "price_cents": 2513,
+          "stock": 50
+        },
+        "B07YV4V315": {
+          "price_cents": 3515,
+          "stock": 45
+        }
+      }
+    },
+    "checks": [
+      {
+        "check": "orders",
+        "params": {
+          "count": 0
+        },
+        "ok": true,
+        "detail": "pedidos registrados: 0"
+      },
+      {
+        "check": "cart",
+        "params": {
+          "empty": true
+        },
+        "ok": true,
+        "detail": "carrito: vacío"
+      },
+      {
+        "check": "stock",
+        "params": {
+          "product": "@elegido",
+          "equals": 20
+        },
+        "ok": true,
+        "detail": "existencias de B07MBYH3F7: 20"
+      }
+    ]
+  },
+  "violations": [],
+  "problems": [],
+  "passed": true,
+  "timings": {
+    "all": {
+      "turns": 3,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.01,
+        "max": 0.03
+      },
+      "llm": {
+        "mean": 5.91,
+        "max": 7.75
+      },
+      "tools": {
+        "mean": 0.03,
+        "max": 0.03
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 5.96,
+        "max": 7.81
+      }
+    },
+    "with_llm": {
+      "turns": 3,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.01,
+        "max": 0.03
+      },
+      "llm": {
+        "mean": 5.91,
+        "max": 7.75
+      },
+      "tools": {
+        "mean": 0.03,
+        "max": 0.03
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 5.96,
+        "max": 7.81
+      }
+    },
+    "without_llm": {
+      "turns": 0
+    }
+  }
+}

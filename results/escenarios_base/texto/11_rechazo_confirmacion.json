@@ -1,0 +1,1102 @@
+{
+  "id": "11_rechazo_confirmacion",
+  "title": "Rechazo en la confirmación",
+  "kind": "rechazo_confirmacion",
+  "description": "El usuario llega a la cotización y contesta que no. No debe registrarse ningún pedido y el carrito debe quedar como estaba.",
+  "voice": false,
+  "input": "texto",
+  "audio_source": null,
+  "user_id": "eval-6b9dd32e-11_rechazo_confirmacion",
+  "threads": [
+    "eval-6b9dd32e-11_rechazo_confirmacion-c1"
+  ],
+  "names": {
+    "elegidas": "B01KHILJ5O"
+  },
+  "steps": [
+    {
+      "kind": "turn",
+      "turn": 1,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Busco unas bombillas LED.",
+      "agent_input": "Busco unas bombillas LED.",
+      "response": "Tengo estas opciones: bombillas LED de Philips por 14,22 euros, bombillas LED de Global Fortune por 17,01 euros, bombillas LED portátil por 10,83 euros, bombillas LED para coches por 63,71 euros y bombillas LED menta por 24,96 euros. ¿Cuál te interesa?",
+      "spoken_text": "Tengo estas opciones: bombillas LED de Philips por catorce euros con veintidós céntimos, bombillas LED de Global Fortune por diecisiete euros con un céntimo, bombillas LED portátil por diez euros con ochenta y tres céntimos, bombillas LED para coches por sesenta y tres euros con setenta y un céntimos y bombillas LED menta por veinticuatro euros con noventa y seis céntimos. ¿Cuál te interesa?",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "buscar_productos",
+          "args": {
+            "consulta": "bombillas LED"
+          },
+          "reason": "buscar las bombillas LED",
+          "ok": true,
+          "summary": "estos son ahora los CANDIDATOS, del más al menos relevante:\n[1] id=B01KHILJ5O | Philips - Bombilla LED cristal 50W, GU10, luz blanca cálida, transparente, no regulable, pack 6 | marca: Philips | color: Blanco Cálido | precio: 14,22 € | existencias: 22 | características (extracto): Con una vida útil de la bombilla de hasta 15.000 horas, evitarás las complicaciones de sustitución de las bombillas y disfrutarás de una solución de iluminación adecuada hasta 15 años Ahora puedes iluminar suavemente tu mundo con… | descripción: desconocido\n[2] id=B072BG3H7Y | 1 bombilla LED de xenón blanco con halo | marca: Global Fortune | color: desconocido | precio: 17,01 € | existencias: 4 | características (extracto): 1 par de bombillas para faros LED para BMW con halo de alta potencia, 2 bombillas de 6 W de potencia cada una (12 W en total). Color:Xenon blanco (6000 K).Voltaje:12 V, LED Canbus y puede adaptarse para BMW 3 Series E90 y E91. 100%… | descripción: Descripción:Bombillas LED de 6 W para BMW, con ahorro de energía, respetuosas con el medio ambiente y con chips LED de alta calidad, buena resistencia a las vibraciones, estable y con poca generación…\n[3] id=B01LZAEPKB | Bombillas LED portátil con panel solar de 0,8 W para acampada y senderismo | marca: Amazingdeal365 | color: desconocido | precio: 10,83 € | existencias: 4 | características (extracto): Alta potencia: 150 lúmenes (equivalente a una bombilla de 20 W). Batería de litio integrada de 750 mA, puede permanecer encendida más de 4 horas. Con un práctico gancho de alambre para colgarla en cualquier parte. Se puede cargar mediante… | descripción: Características: Producto de alta calidad. Para familias, oficinas, actividades al aire libre, sobre todo para iluminación o carga de teléfono móviles y otros dispositivos electrónicos. En caso de…\n[4] id=B07YZD3NDW | H1 LED 12000LM Bombillas Faros Delanteros para Coches, Kits de Conversión LED 12V, 6000K | marca: CAR WORK BOX | color: desconocido | precio: 63,71 € | existencias: 46 | características (extracto): 12000LM H1 CSP LED: Estas bombillas de faros LED h1 que utilizan chips LED CSP de doble cara, el flujo luminoso alcanza los 6000lm por bombilla (12000lm por par), que producen 6000k luz blanca de xenón HID, 3 veces más brillante que… | descripción: Nota importante: NO INCLUYE RESISTENCIA CAN-BUS La kits de conversión LED no tiene canbus listo! Antes de la compra, asegúrese de que su automóvil no tenga sistema canbus. De lo contrario, se…\n[5] id=B08HZH49CB | 10 Unidades MENTA Bombillas Vela de Filamento LED E27 Casquillo Gordo 4W (Equivalente a 40W) Blanco Frío 6500K 400LM Casquillos Para Bombillas E27 Bombillas Retro Vintage Vidrio Mate No Regulable | marca: MENTA | color: Blanco Frío 6500k | precio: 24,96 € | existencias: 7 | características (extracto): 【 Menos energía 】Reemplace la bombilla halógena de 40W por una bombilla led 4W, ahorre más del 85% en sus facturas de electricidad. 【 Larga duración 】 30000 horas de vida útil. lo que le ahorra el costo y la molestia de reemplazar las… | descripción: MENTA Bombillas Vela de Filamento LED E27 4W 【 Especificación 】: - Marca: MENTA - Enchufe: E27 - Temperatura de color: Blanco Frío 6500K - Intensidad luminosa: 400 lúmenes - Potencia: 4 W -…",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.03,
+        "llm": 7.253,
+        "tools": 0.027,
+        "tts": 0.0,
+        "total": 7.31
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-6b9dd32e-11_rechazo_confirmacion-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {}
+      },
+      "after": {
+        "cart_id": "eval-6b9dd32e-11_rechazo_confirmacion-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B01KHILJ5O",
+              "title": "Philips - Bombilla LED cristal 50W, GU10, luz blanca cálida, transparente, no regulable, pack 6",
+              "brand": "Philips",
+              "price_cents": 1422,
+              "stock": 22
+            },
+            {
+              "product_id": "B072BG3H7Y",
+              "title": "1 bombilla LED de xenón blanco con halo",
+              "brand": "Global Fortune",
+              "price_cents": 1701,
+              "stock": 4
+            },
+            {
+              "product_id": "B01LZAEPKB",
+              "title": "Bombillas LED portátil con panel solar de 0,8 W para acampada y senderismo",
+              "brand": "Amazingdeal365",
+              "price_cents": 1083,
+              "stock": 4
+            },
+            {
+              "product_id": "B07YZD3NDW",
+              "title": "H1 LED 12000LM Bombillas Faros Delanteros para Coches, Kits de Conversión LED 12V, 6000K",
+              "brand": "CAR WORK BOX",
+              "price_cents": 6371,
+              "stock": 46
+            },
+            {
+              "product_id": "B08HZH49CB",
+              "title": "10 Unidades MENTA Bombillas Vela de Filamento LED E27 Casquillo Gordo 4W (Equivalente a 40W) Blanco Frío 6500K 400LM Casquillos Para Bombillas E27 Bombillas Retro Vintage Vidrio Mate No Regulable",
+              "brand": "MENTA",
+              "price_cents": 2496,
+              "stock": 7
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {
+          "B01KHILJ5O": {
+            "price_cents": 1422,
+            "stock": 22
+          },
+          "B01LZAEPKB": {
+            "price_cents": 1083,
+            "stock": 4
+          },
+          "B072BG3H7Y": {
+            "price_cents": 1701,
+            "stock": 4
+          },
+          "B07YZD3NDW": {
+            "price_cents": 6371,
+            "stock": 46
+          },
+          "B08HZH49CB": {
+            "price_cents": 2496,
+            "stock": 7
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        }
+      ]
+    },
+    {
+      "kind": "remember",
+      "name": "elegidas",
+      "ref": "candidate:1",
+      "product_id": "B01KHILJ5O",
+      "title": "Philips - Bombilla LED cristal 50W, GU10, luz blanca cálida, transparente, no regulable, pack 6"
+    },
+    {
+      "kind": "event",
+      "event": "set_offer",
+      "product": "@elegidas",
+      "product_id": "B01KHILJ5O",
+      "price_cents": 600,
+      "stock": 20
+    },
+    {
+      "kind": "turn",
+      "turn": 2,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Añade dos de la primera opción.",
+      "agent_input": "Añade dos de la primera opción.",
+      "response": "Hecho, añadidas dos unidades. Ahora el total es 12,00 euros. En el carrito hay 2 unidades de «Philips - Bombilla LED cristal 50W, GU10, luz blanca cálida…» a 6,00 € cada una, 12,00 €. Total: 12,00 €.",
+      "spoken_text": "Hecho, añadidas dos unidades. Ahora el total es doce euros. En el carrito hay dos unidades de Philips a seis euros cada una, doce euros. Total: doce euros.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "agregar_al_carrito",
+          "args": {
+            "product_id": "B01KHILJ5O",
+            "cantidad": 2
+          },
+          "reason": "añadir dos unidades del candidato 1",
+          "ok": true,
+          "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B01KHILJ5O | Philips - Bombilla LED cristal 50W, GU10, luz blanca cálida… | 2 unidades × 6,00 € = 12,00 € | existencias: 20\nTotal del carrito: 12,00 €",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 5.151,
+        "tools": 0.051,
+        "tts": 0.0,
+        "total": 5.202
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-6b9dd32e-11_rechazo_confirmacion-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B01KHILJ5O",
+              "title": "Philips - Bombilla LED cristal 50W, GU10, luz blanca cálida, transparente, no regulable, pack 6",
+              "brand": "Philips",
+              "price_cents": 1422,
+              "stock": 22
+            },
+            {
+              "product_id": "B072BG3H7Y",
+              "title": "1 bombilla LED de xenón blanco con halo",
+              "brand": "Global Fortune",
+              "price_cents": 1701,
+              "stock": 4
+            },
+            {
+              "product_id": "B01LZAEPKB",
+              "title": "Bombillas LED portátil con panel solar de 0,8 W para acampada y senderismo",
+              "brand": "Amazingdeal365",
+              "price_cents": 1083,
+              "stock": 4
+            },
+            {
+              "product_id": "B07YZD3NDW",
+              "title": "H1 LED 12000LM Bombillas Faros Delanteros para Coches, Kits de Conversión LED 12V, 6000K",
+              "brand": "CAR WORK BOX",
+              "price_cents": 6371,
+              "stock": 46
+            },
+            {
+              "product_id": "B08HZH49CB",
+              "title": "10 Unidades MENTA Bombillas Vela de Filamento LED E27 Casquillo Gordo 4W (Equivalente a 40W) Blanco Frío 6500K 400LM Casquillos Para Bombillas E27 Bombillas Retro Vintage Vidrio Mate No Regulable",
+              "brand": "MENTA",
+              "price_cents": 2496,
+              "stock": 7
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B01KHILJ5O",
+              "initial_stock": 22,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B01KHILJ5O": {
+            "price_cents": 600,
+            "stock": 20
+          },
+          "B01LZAEPKB": {
+            "price_cents": 1083,
+            "stock": 4
+          },
+          "B072BG3H7Y": {
+            "price_cents": 1701,
+            "stock": 4
+          },
+          "B07YZD3NDW": {
+            "price_cents": 6371,
+            "stock": 46
+          },
+          "B08HZH49CB": {
+            "price_cents": 2496,
+            "stock": 7
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-6b9dd32e-11_rechazo_confirmacion-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B01KHILJ5O",
+              "title": "Philips - Bombilla LED cristal 50W, GU10, luz blanca cálida, transparente, no regulable, pack 6",
+              "brand": "Philips",
+              "price_cents": 600,
+              "stock": 20
+            },
+            {
+              "product_id": "B072BG3H7Y",
+              "title": "1 bombilla LED de xenón blanco con halo",
+              "brand": "Global Fortune",
+              "price_cents": 1701,
+              "stock": 4
+            },
+            {
+              "product_id": "B01LZAEPKB",
+              "title": "Bombillas LED portátil con panel solar de 0,8 W para acampada y senderismo",
+              "brand": "Amazingdeal365",
+              "price_cents": 1083,
+              "stock": 4
+            },
+            {
+              "product_id": "B07YZD3NDW",
+              "title": "H1 LED 12000LM Bombillas Faros Delanteros para Coches, Kits de Conversión LED 12V, 6000K",
+              "brand": "CAR WORK BOX",
+              "price_cents": 6371,
+              "stock": 46
+            },
+            {
+              "product_id": "B08HZH49CB",
+              "title": "10 Unidades MENTA Bombillas Vela de Filamento LED E27 Casquillo Gordo 4W (Equivalente a 40W) Blanco Frío 6500K 400LM Casquillos Para Bombillas E27 Bombillas Retro Vintage Vidrio Mate No Regulable",
+              "brand": "MENTA",
+              "price_cents": 2496,
+              "stock": 7
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-6b9dd32e-11_rechazo_confirmacion-c1",
+              "product_id": "B01KHILJ5O",
+              "quantity": 2
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B01KHILJ5O",
+              "initial_stock": 22,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B01KHILJ5O": {
+            "price_cents": 600,
+            "stock": 20
+          },
+          "B01LZAEPKB": {
+            "price_cents": 1083,
+            "stock": 4
+          },
+          "B072BG3H7Y": {
+            "price_cents": 1701,
+            "stock": 4
+          },
+          "B07YZD3NDW": {
+            "price_cents": 6371,
+            "stock": 46
+          },
+          "B08HZH49CB": {
+            "price_cents": 2496,
+            "stock": 7
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "lines": [
+              {
+                "product": "@elegidas",
+                "quantity": 2
+              }
+            ]
+          },
+          "ok": true,
+          "detail": "carrito: 2 × B01KHILJ5O"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 3,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Cierra el pedido.",
+      "agent_input": "Cierra el pedido.",
+      "response": "Te repito el pedido antes de registrarlo: 2 unidades de «Philips - Bombilla LED cristal 50W, GU10, luz blanca cálida…» a 6,00 € cada una, 12,00 €. Total: 12,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "spoken_text": "Te repito el pedido antes de registrarlo: dos unidades de Philips a seis euros cada una, doce euros. Total: doce euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": true,
+      "operations": [
+        {
+          "tool": "cotizar",
+          "args": {},
+          "reason": "cotizar el pedido",
+          "ok": true,
+          "summary": "cotización creada; falta la confirmación del usuario.",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 2.241,
+        "tools": 0.039,
+        "tts": 0.0,
+        "total": 2.279
+      },
+      "llm_steps": 1,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-6b9dd32e-11_rechazo_confirmacion-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B01KHILJ5O",
+              "title": "Philips - Bombilla LED cristal 50W, GU10, luz blanca cálida, transparente, no regulable, pack 6",
+              "brand": "Philips",
+              "price_cents": 600,
+              "stock": 20
+            },
+            {
+              "product_id": "B072BG3H7Y",
+              "title": "1 bombilla LED de xenón blanco con halo",
+              "brand": "Global Fortune",
+              "price_cents": 1701,
+              "stock": 4
+            },
+            {
+              "product_id": "B01LZAEPKB",
+              "title": "Bombillas LED portátil con panel solar de 0,8 W para acampada y senderismo",
+              "brand": "Amazingdeal365",
+              "price_cents": 1083,
+              "stock": 4
+            },
+            {
+              "product_id": "B07YZD3NDW",
+              "title": "H1 LED 12000LM Bombillas Faros Delanteros para Coches, Kits de Conversión LED 12V, 6000K",
+              "brand": "CAR WORK BOX",
+              "price_cents": 6371,
+              "stock": 46
+            },
+            {
+              "product_id": "B08HZH49CB",
+              "title": "10 Unidades MENTA Bombillas Vela de Filamento LED E27 Casquillo Gordo 4W (Equivalente a 40W) Blanco Frío 6500K 400LM Casquillos Para Bombillas E27 Bombillas Retro Vintage Vidrio Mate No Regulable",
+              "brand": "MENTA",
+              "price_cents": 2496,
+              "stock": 7
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-6b9dd32e-11_rechazo_confirmacion-c1",
+              "product_id": "B01KHILJ5O",
+              "quantity": 2
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B01KHILJ5O",
+              "initial_stock": 22,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B01KHILJ5O": {
+            "price_cents": 600,
+            "stock": 20
+          },
+          "B01LZAEPKB": {
+            "price_cents": 1083,
+            "stock": 4
+          },
+          "B072BG3H7Y": {
+            "price_cents": 1701,
+            "stock": 4
+          },
+          "B07YZD3NDW": {
+            "price_cents": 6371,
+            "stock": 46
+          },
+          "B08HZH49CB": {
+            "price_cents": 2496,
+            "stock": 7
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-6b9dd32e-11_rechazo_confirmacion-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": {
+            "quote_id": "c67f453d55a54c0db9a5f302e7de8bc0",
+            "items": [
+              {
+                "product_id": "B01KHILJ5O",
+                "title": "Philips - Bombilla LED cristal 50W, GU10, luz blanca cálida, transparente, no regulable, pack 6",
+                "quantity": 2,
+                "unit_price_cents": 600,
+                "subtotal_cents": 1200,
+                "stock": 20
+              }
+            ],
+            "total_cents": 1200,
+            "budget_cents": null,
+            "message": "Te repito el pedido antes de registrarlo: 2 unidades de «Philips - Bombilla LED cristal 50W, GU10, luz blanca cálida…» a 6,00 € cada una, 12,00 €. Total: 12,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+          },
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B01KHILJ5O",
+              "title": "Philips - Bombilla LED cristal 50W, GU10, luz blanca cálida, transparente, no regulable, pack 6",
+              "brand": "Philips",
+              "price_cents": 600,
+              "stock": 20
+            },
+            {
+              "product_id": "B072BG3H7Y",
+              "title": "1 bombilla LED de xenón blanco con halo",
+              "brand": "Global Fortune",
+              "price_cents": 1701,
+              "stock": 4
+            },
+            {
+              "product_id": "B01LZAEPKB",
+              "title": "Bombillas LED portátil con panel solar de 0,8 W para acampada y senderismo",
+              "brand": "Amazingdeal365",
+              "price_cents": 1083,
+              "stock": 4
+            },
+            {
+              "product_id": "B07YZD3NDW",
+              "title": "H1 LED 12000LM Bombillas Faros Delanteros para Coches, Kits de Conversión LED 12V, 6000K",
+              "brand": "CAR WORK BOX",
+              "price_cents": 6371,
+              "stock": 46
+            },
+            {
+              "product_id": "B08HZH49CB",
+              "title": "10 Unidades MENTA Bombillas Vela de Filamento LED E27 Casquillo Gordo 4W (Equivalente a 40W) Blanco Frío 6500K 400LM Casquillos Para Bombillas E27 Bombillas Retro Vintage Vidrio Mate No Regulable",
+              "brand": "MENTA",
+              "price_cents": 2496,
+              "stock": 7
+            }
+          ],
+          "awaiting_confirmation": true
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-6b9dd32e-11_rechazo_confirmacion-c1",
+              "product_id": "B01KHILJ5O",
+              "quantity": 2
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B01KHILJ5O",
+              "initial_stock": 22,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B01KHILJ5O": {
+            "price_cents": 600,
+            "stock": 20
+          },
+          "B01LZAEPKB": {
+            "price_cents": 1083,
+            "stock": 4
+          },
+          "B072BG3H7Y": {
+            "price_cents": 1701,
+            "stock": 4
+          },
+          "B07YZD3NDW": {
+            "price_cents": 6371,
+            "stock": 46
+          },
+          "B08HZH49CB": {
+            "price_cents": 2496,
+            "stock": 7
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "awaiting_confirmation",
+          "params": {
+            "value": true
+          },
+          "ok": true,
+          "detail": "esperando confirmación: sí"
+        },
+        {
+          "check": "orders",
+          "params": {
+            "count": 0
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 0"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 4,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "No, cancélalo.",
+      "agent_input": "No, cancélalo.",
+      "response": "De acuerdo, no registro el pedido. Tu carrito sigue como estaba; dime si quieres cambiar algo.",
+      "spoken_text": "De acuerdo, no registro el pedido. Tu carrito sigue como estaba, dime si quieres cambiar algo.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 0.0,
+        "tools": 0.012,
+        "tts": 0.0,
+        "total": 0.012
+      },
+      "llm_steps": 0,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-6b9dd32e-11_rechazo_confirmacion-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": {
+            "quote_id": "c67f453d55a54c0db9a5f302e7de8bc0",
+            "items": [
+              {
+                "product_id": "B01KHILJ5O",
+                "title": "Philips - Bombilla LED cristal 50W, GU10, luz blanca cálida, transparente, no regulable, pack 6",
+                "quantity": 2,
+                "unit_price_cents": 600,
+                "subtotal_cents": 1200,
+                "stock": 20
+              }
+            ],
+            "total_cents": 1200,
+            "budget_cents": null,
+            "message": "Te repito el pedido antes de registrarlo: 2 unidades de «Philips - Bombilla LED cristal 50W, GU10, luz blanca cálida…» a 6,00 € cada una, 12,00 €. Total: 12,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+          },
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B01KHILJ5O",
+              "title": "Philips - Bombilla LED cristal 50W, GU10, luz blanca cálida, transparente, no regulable, pack 6",
+              "brand": "Philips",
+              "price_cents": 600,
+              "stock": 20
+            },
+            {
+              "product_id": "B072BG3H7Y",
+              "title": "1 bombilla LED de xenón blanco con halo",
+              "brand": "Global Fortune",
+              "price_cents": 1701,
+              "stock": 4
+            },
+            {
+              "product_id": "B01LZAEPKB",
+              "title": "Bombillas LED portátil con panel solar de 0,8 W para acampada y senderismo",
+              "brand": "Amazingdeal365",
+              "price_cents": 1083,
+              "stock": 4
+            },
+            {
+              "product_id": "B07YZD3NDW",
+              "title": "H1 LED 12000LM Bombillas Faros Delanteros para Coches, Kits de Conversión LED 12V, 6000K",
+              "brand": "CAR WORK BOX",
+              "price_cents": 6371,
+              "stock": 46
+            },
+            {
+              "product_id": "B08HZH49CB",
+              "title": "10 Unidades MENTA Bombillas Vela de Filamento LED E27 Casquillo Gordo 4W (Equivalente a 40W) Blanco Frío 6500K 400LM Casquillos Para Bombillas E27 Bombillas Retro Vintage Vidrio Mate No Regulable",
+              "brand": "MENTA",
+              "price_cents": 2496,
+              "stock": 7
+            }
+          ],
+          "awaiting_confirmation": true
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-6b9dd32e-11_rechazo_confirmacion-c1",
+              "product_id": "B01KHILJ5O",
+              "quantity": 2
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B01KHILJ5O",
+              "initial_stock": 22,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B01KHILJ5O": {
+            "price_cents": 600,
+            "stock": 20
+          },
+          "B01LZAEPKB": {
+            "price_cents": 1083,
+            "stock": 4
+          },
+          "B072BG3H7Y": {
+            "price_cents": 1701,
+            "stock": 4
+          },
+          "B07YZD3NDW": {
+            "price_cents": 6371,
+            "stock": 46
+          },
+          "B08HZH49CB": {
+            "price_cents": 2496,
+            "stock": 7
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-6b9dd32e-11_rechazo_confirmacion-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B01KHILJ5O",
+              "title": "Philips - Bombilla LED cristal 50W, GU10, luz blanca cálida, transparente, no regulable, pack 6",
+              "brand": "Philips",
+              "price_cents": 600,
+              "stock": 20
+            },
+            {
+              "product_id": "B072BG3H7Y",
+              "title": "1 bombilla LED de xenón blanco con halo",
+              "brand": "Global Fortune",
+              "price_cents": 1701,
+              "stock": 4
+            },
+            {
+              "product_id": "B01LZAEPKB",
+              "title": "Bombillas LED portátil con panel solar de 0,8 W para acampada y senderismo",
+              "brand": "Amazingdeal365",
+              "price_cents": 1083,
+              "stock": 4
+            },
+            {
+              "product_id": "B07YZD3NDW",
+              "title": "H1 LED 12000LM Bombillas Faros Delanteros para Coches, Kits de Conversión LED 12V, 6000K",
+              "brand": "CAR WORK BOX",
+              "price_cents": 6371,
+              "stock": 46
+            },
+            {
+              "product_id": "B08HZH49CB",
+              "title": "10 Unidades MENTA Bombillas Vela de Filamento LED E27 Casquillo Gordo 4W (Equivalente a 40W) Blanco Frío 6500K 400LM Casquillos Para Bombillas E27 Bombillas Retro Vintage Vidrio Mate No Regulable",
+              "brand": "MENTA",
+              "price_cents": 2496,
+              "stock": 7
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-6b9dd32e-11_rechazo_confirmacion-c1",
+              "product_id": "B01KHILJ5O",
+              "quantity": 2
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B01KHILJ5O",
+              "initial_stock": 22,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B01KHILJ5O": {
+            "price_cents": 600,
+            "stock": 20
+          },
+          "B01LZAEPKB": {
+            "price_cents": 1083,
+            "stock": 4
+          },
+          "B072BG3H7Y": {
+            "price_cents": 1701,
+            "stock": 4
+          },
+          "B07YZD3NDW": {
+            "price_cents": 6371,
+            "stock": 46
+          },
+          "B08HZH49CB": {
+            "price_cents": 2496,
+            "stock": 7
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "orders",
+          "params": {
+            "count": 0
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 0"
+        },
+        {
+          "check": "awaiting_confirmation",
+          "params": {
+            "value": false
+          },
+          "ok": true,
+          "detail": "esperando confirmación: no"
+        },
+        {
+          "check": "cart",
+          "params": {
+            "lines": [
+              {
+                "product": "@elegidas",
+                "quantity": 2
+              }
+            ]
+          },
+          "ok": true,
+          "detail": "carrito: 2 × B01KHILJ5O"
+        }
+      ]
+    }
+  ],
+  "final": {
+    "snapshot": {
+      "cart_id": "eval-6b9dd32e-11_rechazo_confirmacion-c1",
+      "state": {
+        "budget_cents": null,
+        "preferences": [],
+        "pending_clarification": null,
+        "quote": null,
+        "order": null,
+        "candidates": [
+          {
+            "product_id": "B01KHILJ5O",
+            "title": "Philips - Bombilla LED cristal 50W, GU10, luz blanca cálida, transparente, no regulable, pack 6",
+            "brand": "Philips",
+            "price_cents": 600,
+            "stock": 20
+          },
+          {
+            "product_id": "B072BG3H7Y",
+            "title": "1 bombilla LED de xenón blanco con halo",
+            "brand": "Global Fortune",
+            "price_cents": 1701,
+            "stock": 4
+          },
+          {
+            "product_id": "B01LZAEPKB",
+            "title": "Bombillas LED portátil con panel solar de 0,8 W para acampada y senderismo",
+            "brand": "Amazingdeal365",
+            "price_cents": 1083,
+            "stock": 4
+          },
+          {
+            "product_id": "B07YZD3NDW",
+            "title": "H1 LED 12000LM Bombillas Faros Delanteros para Coches, Kits de Conversión LED 12V, 6000K",
+            "brand": "CAR WORK BOX",
+            "price_cents": 6371,
+            "stock": 46
+          },
+          {
+            "product_id": "B08HZH49CB",
+            "title": "10 Unidades MENTA Bombillas Vela de Filamento LED E27 Casquillo Gordo 4W (Equivalente a 40W) Blanco Frío 6500K 400LM Casquillos Para Bombillas E27 Bombillas Retro Vintage Vidrio Mate No Regulable",
+            "brand": "MENTA",
+            "price_cents": 2496,
+            "stock": 7
+          }
+        ],
+        "awaiting_confirmation": false
+      },
+      "store": {
+        "orders": [],
+        "order_items": [],
+        "cart_items": [
+          {
+            "cart_id": "eval-6b9dd32e-11_rechazo_confirmacion-c1",
+            "product_id": "B01KHILJ5O",
+            "quantity": 2
+          }
+        ],
+        "inventory_changes": [
+          {
+            "product_id": "B01KHILJ5O",
+            "initial_stock": 22,
+            "stock": 20
+          }
+        ]
+      },
+      "offers": {
+        "B01KHILJ5O": {
+          "price_cents": 600,
+          "stock": 20
+        },
+        "B01LZAEPKB": {
+          "price_cents": 1083,
+          "stock": 4
+        },
+        "B072BG3H7Y": {
+          "price_cents": 1701,
+          "stock": 4
+        },
+        "B07YZD3NDW": {
+          "price_cents": 6371,
+          "stock": 46
+        },
+        "B08HZH49CB": {
+          "price_cents": 2496,
+          "stock": 7
+        }
+      }
+    },
+    "checks": [
+      {
+        "check": "orders",
+        "params": {
+          "count": 0
+        },
+        "ok": true,
+        "detail": "pedidos registrados: 0"
+      },
+      {
+        "check": "cart",
+        "params": {
+          "lines": [
+            {
+              "product": "@elegidas",
+              "quantity": 2
+            }
+          ]
+        },
+        "ok": true,
+        "detail": "carrito: 2 × B01KHILJ5O"
+      },
+      {
+        "check": "stock",
+        "params": {
+          "product": "@elegidas",
+          "equals": 20
+        },
+        "ok": true,
+        "detail": "existencias de B01KHILJ5O: 20"
+      }
+    ]
+  },
+  "violations": [],
+  "problems": [],
+  "passed": true,
+  "timings": {
+    "all": {
+      "turns": 4,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.01,
+        "max": 0.03
+      },
+      "llm": {
+        "mean": 3.66,
+        "max": 7.25
+      },
+      "tools": {
+        "mean": 0.03,
+        "max": 0.05
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 3.7,
+        "max": 7.31
+      }
+    },
+    "with_llm": {
+      "turns": 3,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.01,
+        "max": 0.03
+      },
+      "llm": {
+        "mean": 4.88,
+        "max": 7.25
+      },
+      "tools": {
+        "mean": 0.04,
+        "max": 0.05
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 4.93,
+        "max": 7.31
+      }
+    },
+    "without_llm": {
+      "turns": 1,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "llm": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "tools": {
+        "mean": 0.01,
+        "max": 0.01
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 0.01,
+        "max": 0.01
+      }
+    }
+  }
+}
