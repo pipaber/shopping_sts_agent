@@ -14,7 +14,7 @@ from __future__ import annotations
 import math
 import sqlite3
 from collections.abc import Callable
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from typing import Any, Literal
 
 from shopping_agent.agent import prompt
@@ -46,6 +46,12 @@ RESPOND = "responder"
 CANDIDATE_TOOLS = (DETAIL, COMPARE, PRICE_STOCK, ADD)
 
 DETAIL_CHARS = (1600, 800)  # viñetas y descripción de un producto
+# Sin este recordatorio, el LLM a veces contesta a una pregunta sobre un dato que no
+# está contando otras características del producto, como si respondieran a lo preguntado.
+DETAIL_REMINDER = (
+    "\nEste es todo el texto del catálogo sobre ese producto. Si no habla de lo que pregunta el usuario, di "
+    "que el catálogo no lo indica; no contestes con otras características."
+)
 COMPARE_CHARS = (600, 300)  # por producto al comparar varios
 
 Args = dict[str, Any]
@@ -182,7 +188,8 @@ def _shown(products: list[Candidate]) -> ToolOutcome:
 
 
 def _detail(call: ToolCall) -> ToolOutcome:
-    return _shown([call.deps.priced(call.conn, call.args["product_id"], *DETAIL_CHARS)])
+    shown = _shown([call.deps.priced(call.conn, call.args["product_id"], *DETAIL_CHARS)])
+    return replace(shown, summary=shown.summary + DETAIL_REMINDER)
 
 
 def _compare(call: ToolCall) -> ToolOutcome:

@@ -151,3 +151,10 @@ def test_other_rejections_do_not_get_alternatives(searched):
     shop, session, ids = searched
     shop.llm.extend([call(tools.ADD, product_id=ids[0], cantidad=500), say("No hay tantas unidades.")])
     assert session.send("Ponme quinientos del primero.").response == "No hay tantas unidades."
+
+
+def test_product_detail_reminds_the_llm_not_to_answer_with_something_else(searched):
+    shop, session, ids = searched
+    shop.llm.extend([call(tools.DETAIL, product_id=ids[0]), say("El catálogo no lo indica.")])
+    turn = session.send("¿Qué garantía tiene el primero?")
+    assert turn.operations[0]["ok"] and turn.operations[0]["summary"].endswith(tools.DETAIL_REMINDER)
