@@ -1,0 +1,22 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Datos: se descargan (ESCI) o se regeneran con semilla
+datasets/*.parquet
+datasets/*.csv
+datasets/*.crdownload
+datasets/processed/
+
+# Enunciado del curso (material de terceros; no se publica)
+documentation/*.pdf
+
+# Configuración local
+.claude/

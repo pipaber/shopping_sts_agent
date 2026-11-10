@@ -1,0 +1,47 @@
+[project]
+name = "shopping-sts-agent"
+version = "0.1.0"
+description = "Asistente de compras por voz en español: ASR, RAG sobre ESCI, agente LangGraph y TTS con voz clonada."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "bm25s>=0.3.16",
+    "langgraph>=1.2.20",
+    "numpy>=2.4.6",
+    "pandas>=3.1.1",
+    "pyarrow>=26.0.1",
+    "scikit-learn>=1.9.1",
+    "sentence-transformers>=6.2.0",
+    "torch>=2.14.1",
+    "transformers>=5.22.2",
+]
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.3.0",
+    "pytest>=9.1.1",
+]
+
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu126" }
+torchvision = { index = "pytorch-cu126" }
+
+[[tool.uv.index]]
+name = "pytorch-cu126"
+url = "https://download.pytorch.org/whl/cu126"
+explicit = true
+
+[tool.ty.environment]
+python = ".venv"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/shopping_agent"]
