@@ -114,7 +114,6 @@ class AgentState:
     budget_changed: bool = False
     confirm_issues: list[IssueRecord] = field(default_factory=list)
     response: str = ""
-    route: str = ""
 
 
 def new_turn(state: AgentState, text: str) -> Update:

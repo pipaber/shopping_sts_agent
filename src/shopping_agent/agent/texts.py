@@ -27,6 +27,11 @@ def short_title(title: str, limit: int = 70) -> str:
     return title[:limit].rsplit(" ", 1)[0].rstrip(" ,.;:-") + "…"
 
 
+def one_line(text: object) -> str:
+    """Texto en una sola línea, como se leerá en voz alta; vacío si no es texto."""
+    return " ".join(text.split()) if isinstance(text, str) else ""
+
+
 def units(quantity: int) -> str:
     return "1 unidad" if quantity == 1 else f"{quantity} unidades"
 

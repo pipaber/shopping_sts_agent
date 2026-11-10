@@ -15,7 +15,7 @@ import math
 import sqlite3
 from collections.abc import Callable
 from dataclasses import dataclass, field
-from typing import Any
+from typing import Any, Literal
 
 from shopping_agent.agent import prompt
 from shopping_agent.agent.deps import Deps
@@ -46,6 +46,8 @@ COMPARE_CHARS = (600, 300)  # por producto al comparar varios
 
 Args = dict[str, Any]
 Schema = dict[str, Any]
+# Nodos del grafo a los que puede ir una decisión del LLM.
+Node = Literal["recuperar", "validar", "cotizar", "pedir_aclaracion", "responder"]
 
 
 @dataclass(frozen=True)
@@ -73,7 +75,7 @@ class ToolOutcome:
 class Tool:
     name: str
     doc: str  # lo que el LLM lee sobre ella en sus instrucciones
-    node: str  # nodo del grafo que atiende la decisión
+    node: Node  # nodo del grafo que atiende la decisión
     params: Callable[[list[str]], Schema]  # esquema de los argumentos, dados los productos conocidos
     min_products: int = 0  # productos conocidos que hacen falta para ofrecerla
     validate: Callable[[Args, set[str]], list[Issue]] | None = None
@@ -244,7 +246,7 @@ def _save_preference(call: ToolCall) -> ToolOutcome:
 # --- Registro -------------------------------------------------------------------------
 # El orden es el de las instrucciones del LLM.
 
-_VALIDATED = "validar"  # las que pasan por validar → ejecutar_herramienta
+_VALIDATED: Node = "validar"  # las que pasan por validar → ejecutar_herramienta
 
 _ALL = (
     Tool(

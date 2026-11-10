@@ -13,6 +13,7 @@ from shopping_agent.agent import guards, texts, tools
 from shopping_agent.agent.graph import build_graph
 from shopping_agent.agent.llm import LLMError, ScriptedLLM
 from shopping_agent.agent.memory import open_memory
+from shopping_agent.agent.nodes import turn as turn_nodes
 from shopping_agent.agent.search import CatalogSearch
 from shopping_agent.agent.session import ShoppingSession
 from shopping_agent.store import ops
@@ -59,9 +60,8 @@ class Shop:
             conn.close()
         self.llm = ScriptedLLM([])
         self.store = store if store is not None else InMemoryStore()
-        self.graph = build_graph(
-            self.llm, CatalogSearch.from_catalog(CATALOG), self.db_path, checkpointer or InMemorySaver(), self.store
-        )
+        self.search = CatalogSearch.from_catalog(CATALOG)
+        self.graph = build_graph(self.llm, self.search, self.db_path, checkpointer or InMemorySaver(), self.store)
 
     def session(self, thread_id="hilo-1", user_id="ana") -> ShoppingSession:
         return ShoppingSession(self.graph, thread_id, user_id)
@@ -420,10 +420,10 @@ def test_quote_with_empty_cart_is_rejected(shop):
 
 def test_turn_ends_after_step_limit_or_llm_failure(shop):
     session = shop.session()
-    shop.llm.extend([call(tools.SEARCH, consulta=f"auriculares {n}") for n in range(agent_graph.MAX_STEPS + 3)])
+    shop.llm.extend([call(tools.SEARCH, consulta=f"auriculares {n}") for n in range(turn_nodes.MAX_STEPS + 3)])
     turn = session.send("Busca sin parar")
     assert turn.response == texts.FALLBACK
-    assert len(shop.llm.calls) == agent_graph.MAX_STEPS
+    assert len(shop.llm.calls) == turn_nodes.MAX_STEPS
 
     def broken(messages, schema):
         raise LLMError("JSON incompleto")
@@ -470,7 +470,7 @@ def test_classify_confirmation(text, expected):
 
 
 def test_agent_never_reads_relevance_labels():
-    sources = Path(agent_graph.__file__).parent.glob("*.py")
+    sources = Path(agent_graph.__file__).parent.rglob("*.py")
     assert not [path.name for path in sources if "qrels" in path.read_text(encoding="utf-8")]
 
 

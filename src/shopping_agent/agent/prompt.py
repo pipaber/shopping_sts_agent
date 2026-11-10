@@ -128,6 +128,12 @@ def amount_hint(text: str) -> str:
     )
 
 
+def turn_context(state: AgentState, text: str) -> str:
+    """Lo que el LLM ve del estado durante todo el turno, con el aviso de importe si procede."""
+    context, hint = render_state(state), amount_hint(text)
+    return f"{context}\n{hint}" if hint else context
+
+
 def render_state(state: AgentState) -> str:
     budget = state.budget_cents
     cart = state.cart
