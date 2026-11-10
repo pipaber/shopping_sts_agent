@@ -100,6 +100,7 @@ class AgentState:
     candidates: list[Candidate] = field(default_factory=list)
     last_query: str | None = None
     pending_clarification: str | None = None
+    pending_offer: str | None = None  # lo ofrecido tras rechazarse una confirmación; vale para el turno siguiente
     quote: Quote | None = None
     order: Order | None = None
     ops_log: Annotated[list[Step], operator.add] = field(default_factory=list)  # todo lo ejecutado o rechazado
@@ -122,6 +123,7 @@ def new_turn(state: AgentState, text: str) -> Update:
     return {
         "messages": [Message(role="user", content=text)],
         "turn": state.turn + 1,
+        "pending_offer": None,
         "steps": [],
         "decision": {},
         "cart_changed": False,

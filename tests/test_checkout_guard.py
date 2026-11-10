@@ -72,3 +72,34 @@ def test_hint_only_when_there_is_something_to_close():
     line = {"product_id": "P1", "title": "x", "quantity": 1, "unit_price_cents": 100, "subtotal_cents": 100, "stock": 3}
     assert prompt.checkout_hint("Ciérralo.", [line]) and not prompt.checkout_hint("Ciérralo.", [])
     assert not prompt.checkout_hint("Quiero comprar un regalo", [line])
+
+
+# --- Oferta pendiente tras rechazarse la confirmación -----------------------------------
+
+
+def context_seen(shop):
+    return next(m["content"] for m in shop.llm.calls[-1][0] if "MENSAJE DEL USUARIO" in m["content"])
+
+
+def test_after_a_rejected_confirmation_the_llm_sees_what_was_offered(with_cart):
+    shop, session = with_cart
+    shop.llm.extend([call(tools.QUOTE)])
+    session.send("Cierra el pedido")
+    shop.sql("UPDATE inventory SET stock = 1 WHERE product_id = 'P1'")
+    turn = session.send("Sí")
+    assert "Puedo dejarlo en 1" in turn.response and shop.orders() == 0
+
+    shop.llm.extend([call(tools.SET_QUANTITY, product_id="P1", cantidad=1), say()])
+    session.send("Vale, déjalo en una")
+    offer = context_seen(shop)
+    assert "OFERTA PENDIENTE" in offer and "cambiar_cantidad" in offer and "id=P1 en 1 unidad" in offer
+    assert "alternativas, que ahora son los CANDIDATOS" in offer
+    assert cart_of(session) == {"P1": 1}
+
+    shop.llm.extend([say("Dime.")])
+    session.send("Una cosa más")
+    assert "OFERTA PENDIENTE" not in context_seen(shop)  # solo vale para el turno siguiente
+
+
+def test_sold_out_offer_says_the_product_is_still_in_the_cart():
+    assert prompt.pending_offer([("P1", 0)], alternatives=False) == "id=P1 está agotado y sigue en el carrito."

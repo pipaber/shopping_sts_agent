@@ -104,6 +104,27 @@ def rejection(issues: Iterable[Issue]) -> str:
     return " ".join(parts)
 
 
+def pending_offer(short: Sequence[tuple[str, int]], alternatives: bool) -> str:
+    """Lo que se le ofreció al usuario al rechazarse la confirmación, dicho en herramientas.
+
+    ``short`` son los productos del carrito que faltan, con las unidades que quedan."""
+    parts = []
+    for product_id, available in short:
+        if available:
+            parts.append(
+                f"si acepta dejar id={product_id} en {units(available)}, usa cambiar_cantidad con ese product_id y "
+                f"cantidad {available}; no lo quites del carrito"
+            )
+        else:
+            parts.append(f"id={product_id} está agotado y sigue en el carrito")
+    if alternatives:
+        parts.append(
+            "si prefiere una de las alternativas, que ahora son los CANDIDATOS, quita del carrito el producto "
+            "que falta y añade la que elija"
+        )
+    return "; ".join(parts) + "."
+
+
 def render_cart(cart: Sequence[CartLine]) -> str:
     if not cart:
         return "CARRITO: vacío"
@@ -162,6 +183,8 @@ def render_state(state: AgentState) -> str:
     order = state.order
     if order:
         parts.append(f"PEDIDO REGISTRADO: número {order['order_id']}, total {format_eur(order['total_cents'])}")
+    if state.pending_offer:
+        parts.append(f"OFERTA PENDIENTE (se la hiciste al usuario en tu último mensaje; su mensaje es la respuesta): {state.pending_offer}")
     pending = state.pending_clarification
     if pending:
         parts.append(f'ACLARACIÓN PENDIENTE: preguntaste "{pending}"; el mensaje del usuario es su respuesta.')

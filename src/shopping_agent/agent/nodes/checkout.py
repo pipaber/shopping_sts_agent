@@ -151,7 +151,10 @@ def proponer_alternativa(state: AgentState, *, deps: Deps) -> Update:
         parts.append(texts.NEW_QUOTE_OFFER)
     parts.append(texts.WHAT_NEXT)
 
+    short = [(str(issue["product_id"]), issue["details"]["available"]) for issue in filter(_is_stock_issue, issues)]
     update: Update = {"response": " ".join(parts)}
+    if short:
+        update["pending_offer"] = prompt.pending_offer(short, alternatives=bool(options))
     if options:
         update.update(candidates=options, last_query=None)
     return update
