@@ -7,6 +7,8 @@ Uso::
 
 ``--script`` lee un mensaje de usuario por línea; ``--out`` guarda la transcripción
 (``.json`` y ``.md``) con las operaciones ejecutadas y el estado final de la tienda.
+La memoria del agente va en Postgres (``SHOPPING_AGENT_PG_URL``); ``--memoria-volatil``
+la sustituye a propósito por una que se pierde al terminar.
 """
 
 from __future__ import annotations
@@ -22,7 +24,7 @@ from typing import Any
 
 from shopping_agent.agent.graph import build_graph
 from shopping_agent.agent.llm import LocalLLM
-from shopping_agent.agent.memory import open_memory
+from shopping_agent.agent.memory import MemoryNotConfigured, open_memory
 from shopping_agent.agent.search import DEFAULT_DATA_DIR, CatalogSearch
 from shopping_agent.agent.session import ShoppingSession, TurnResult
 from shopping_agent.gpu import process_vram_mib
@@ -62,6 +64,15 @@ def store_snapshot(db_path: Path, seed_path: Path) -> dict[str, Any]:
         return snapshot
     finally:
         conn.close()
+
+
+def check_memory(volatile: bool) -> None:
+    """Termina con el mensaje de error si falta Postgres, antes de cargar ningún modelo."""
+    try:
+        with open_memory(volatile=volatile):
+            pass
+    except MemoryNotConfigured as error:
+        sys.exit(str(error))
 
 
 def _turn_record(turn: TurnResult, llm_calls: list[dict[str, Any]]) -> dict[str, Any]:
@@ -132,7 +143,12 @@ def main() -> None:
     parser.add_argument("--out", type=Path, default=None, help="prefijo de la transcripción (.json y .md)")
     parser.add_argument("--restore", action="store_true", help="devuelve la tienda a su estado inicial antes de empezar")
     parser.add_argument("--n-ctx", type=int, default=8192)
+    parser.add_argument(
+        "--memoria-volatil", action="store_true",
+        help="no usa Postgres: los checkpoints y el Store se pierden al terminar",
+    )
     args = parser.parse_args()
+    check_memory(args.memoria_volatil)
 
     db_path = args.db or args.data / "store.sqlite"
     seed_path = args.data / "store_seed.sqlite"
@@ -157,7 +173,7 @@ def main() -> None:
         scripted = [line.strip() for line in args.script.read_text(encoding="utf-8").splitlines() if line.strip()]
 
     turns: list[dict[str, Any]] = []
-    with open_memory() as memory:
+    with open_memory(volatile=args.memoria_volatil) as memory:
         graph = build_graph(llm, search, db_path, memory.checkpointer, memory.store)
         session = ShoppingSession(graph, thread_id, args.user)
         print(f"[hilo {thread_id}; memoria: {memory.backend}; escribe 'salir' para terminar]", file=sys.stderr)

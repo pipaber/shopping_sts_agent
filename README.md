@@ -44,7 +44,7 @@ uv run python -m shopping_agent.eval.retrieval --split train
 
 ## Memoria del agente (Postgres)
 
-Los checkpoints de la conversación (`PostgresSaver`) y la memoria entre conversaciones (`PostgresStore`) se guardan en Postgres. La conexión se lee de `SHOPPING_AGENT_PG_URL` y las tablas se crean solas la primera vez. Sin esa variable el agente funciona igual, pero con memoria volátil.
+Los checkpoints de la conversación (`PostgresSaver`) y la memoria entre conversaciones (`PostgresStore`) se guardan en Postgres. La conexión se lee de `SHOPPING_AGENT_PG_URL` y las tablas se crean solas la primera vez. Postgres es obligatorio: sin esa variable los comandos se detienen con un error que lo explica, para no quedarse sin persistencia sin notarlo. Para trabajar a propósito sin Postgres hay que pedirlo con la opción `--memoria-volatil` (en código, `open_memory(volatile=True)`); la transcripción deja anotado qué memoria se usó.
 
 Lo más sencillo es un contenedor, que no necesita permisos de administrador ni toca otros Postgres de la máquina:
 
@@ -168,7 +168,7 @@ Calcula, sobre una corrida guardada: la inteligibilidad (WER de Whisper sobre el
 
 ## Pruebas
 
-Las pruebas no necesitan GPU, modelos ni grabaciones: el grafo se prueba con un LLM guionizado y el canal de voz con un ASR y un TTS simulados. Las de Postgres se omiten si `SHOPPING_AGENT_PG_URL` no está definida o el servidor no responde.
+Las pruebas no necesitan GPU, modelos ni grabaciones: el grafo se prueba con un LLM guionizado y el canal de voz con un ASR y un TTS simulados. Las que no tratan de Postgres usan memoria volátil pedida de forma explícita; las de Postgres se omiten si `SHOPPING_AGENT_PG_URL` no está definida o el servidor no responde.
 
 ```bash
 uv run pytest

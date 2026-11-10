@@ -6,7 +6,7 @@ from langgraph.checkpoint.memory import InMemorySaver
 from langgraph.graph import END, START, StateGraph
 from langgraph.store.memory import InMemoryStore
 
-from shopping_agent.agent.memory import PG_URL_ENV, open_memory
+from shopping_agent.agent.memory import MISSING_URL_MESSAGE, PG_URL_ENV, VOLATILE, MemoryNotConfigured, open_memory
 
 
 class Counter(TypedDict):
@@ -21,16 +21,43 @@ def counter_graph(memory):
     return builder.compile(checkpointer=memory.checkpointer, store=memory.store)
 
 
-def test_without_url_memory_is_volatile(monkeypatch):
+def test_without_url_and_without_asking_for_volatile_memory_it_fails(monkeypatch):
     monkeypatch.delenv(PG_URL_ENV, raising=False)
-    with open_memory() as memory:
-        assert memory.backend == "memoria"
+    with pytest.raises(MemoryNotConfigured) as error:
+        with open_memory():
+            pass
+    message = str(error.value)
+    assert message == MISSING_URL_MESSAGE
+    assert PG_URL_ENV in message and "README" in message
+    assert "--memoria-volatil" in message and "volatile=True" in message
+
+
+def test_volatile_memory_only_when_asked_for(monkeypatch):
+    monkeypatch.delenv(PG_URL_ENV, raising=False)
+    with open_memory(volatile=True) as memory:
+        assert memory.backend == VOLATILE == "memoria volátil"
         assert isinstance(memory.checkpointer, InMemorySaver)
         assert isinstance(memory.store, InMemoryStore)
         config = {"configurable": {"thread_id": "t"}}
         graph = counter_graph(memory)
         graph.invoke({}, config)
         assert graph.invoke({}, config)["count"] == 2
+
+
+def test_asking_for_volatile_memory_wins_over_a_configured_url(monkeypatch):
+    monkeypatch.setenv(PG_URL_ENV, "postgresql://nadie:nada@127.0.0.1:9/nada?connect_timeout=1")
+    with open_memory(volatile=True) as memory:  # no intenta conectar
+        assert memory.backend == VOLATILE
+
+
+def test_commands_stop_with_the_message_before_loading_models(monkeypatch):
+    from shopping_agent.agent.chat import check_memory
+
+    monkeypatch.delenv(PG_URL_ENV, raising=False)
+    with pytest.raises(SystemExit) as stop:
+        check_memory(volatile=False)
+    assert stop.value.code == MISSING_URL_MESSAGE
+    check_memory(volatile=True)  # pedida a propósito, no hay error
 
 
 def test_postgres_checkpoints_survive_reopening(pg_url):

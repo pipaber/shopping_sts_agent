@@ -40,7 +40,7 @@ sudo -u postgres createdb -O shopping_agent shopping_agent
 # SHOPPING_AGENT_PG_URL=postgresql://shopping_agent:colab@localhost:5432/shopping_agent
 ```
 
-pgvector no hace falta por ahora: el Store solo guarda las preferencias del usuario por clave, sin búsqueda semántica. En local se usa un contenedor `postgres:16-alpine` (ver README). Sin `SHOPPING_AGENT_PG_URL` el agente funciona con memoria volátil.
+pgvector no hace falta por ahora: el Store solo guarda las preferencias del usuario por clave, sin búsqueda semántica. En local se usa un contenedor `postgres:16-alpine` (ver README). Postgres es obligatorio: sin `SHOPPING_AGENT_PG_URL` los comandos se detienen con un error, para no perder la persistencia sin notarlo (por ejemplo en Colab). La memoria volátil solo se usa si se pide de forma explícita (`--memoria-volatil` u `open_memory(volatile=True)`) y queda anotada en la transcripción.
 
 `llama-cpp-python` en Colab: hay que instalarlo con CUDA (`CMAKE_ARGS="-DGGML_CUDA=on" pip install llama-cpp-python`). En la workstation la compilación tardó unos 20 minutos; en Colab conviene medirlo el día 7 y, si es demasiado, usar una rueda precompilada para la versión de CUDA de la sesión.
 

@@ -316,7 +316,7 @@ def scenario_paths(args: argparse.Namespace) -> None:
 
 
 def main() -> None:
-    from shopping_agent.agent.chat import store_snapshot
+    from shopping_agent.agent.chat import check_memory, store_snapshot
     from shopping_agent.agent.graph import build_graph
     from shopping_agent.agent.llm import LocalLLM
     from shopping_agent.agent.memory import open_memory
@@ -343,7 +343,12 @@ def main() -> None:
     parser.add_argument("--user", default="anonimo")
     parser.add_argument("--restore", action="store_true", help="devuelve la tienda a su estado inicial antes de empezar")
     parser.add_argument("--n-ctx", type=int, default=8192)
+    parser.add_argument(
+        "--memoria-volatil", action="store_true",
+        help="no usa Postgres: los checkpoints y el Store se pierden al terminar",
+    )
     args = parser.parse_args()
+    check_memory(args.memoria_volatil)
     scenario_paths(args)
     if args.out is None:
         parser.error("Falta --out (o --scenario)")
@@ -397,7 +402,7 @@ def main() -> None:
             print(f"agente> {turn.response}\n   [{turn.timings['total']:.1f} s: {parts}]")
         return pipeline
 
-    with open_memory() as memory:
+    with open_memory(volatile=args.memoria_volatil) as memory:
         graph = build_graph(llm, search, db_path, memory.checkpointer, memory.store)
         thread_id = f"voz-{uuid.uuid4().hex[:8]}"
         main_run = converse(ShoppingSession(graph, thread_id, args.user), args.out, use_audio=mode != "texto")
