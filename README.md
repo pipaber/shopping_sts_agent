@@ -254,17 +254,23 @@ Qué queda de cada corrida:
 | `results/escenarios/resumen.md` y `.json` | Tablas de todas las corridas |
 | `audio/corridas/voz/<escenario>/` | Audios de entrada y de respuesta (fuera de git) |
 
-Resultados ([results/escenarios/resumen.md](results/escenarios/resumen.md)):
+Resultados ([results/escenarios/resumen.md](results/escenarios/resumen.md)). «Antes» es la línea base, guardada en [results/escenarios_base/](results/escenarios_base/resumen.md); «después», con las guardas añadidas al agente tras diagnosticar los fallos ([documentation/DIAGNOSTICO_FALLOS.md](documentation/DIAGNOSTICO_FALLOS.md)):
 
-| Corrida | Entrada | Reranker | Escenarios correctos |
-|---|---|---|---|
-| `texto` | texto | control (por defecto) | 14 de 20 (70 %) |
-| `texto_sage` | texto | GraphSAGE | 16 de 20 (80 %) |
-| `texto_sin_reranker` | texto | ninguno | 16 de 20 (80 %) |
-| `voz` | audio sintético de prueba | control | 3 de 6 (50 %) |
-| `voz_texto_correcto` | transcripción correcta | control | 3 de 6 (50 %) |
+| Corrida | Entrada | Reranker | Antes | Después |
+|---|---|---|---|---|
+| `texto` | texto | control (por defecto) | 14 de 20 | 20 de 20 |
+| `texto_sage` | texto | GraphSAGE | 16 de 20 | 20 de 20 |
+| `texto_sin_reranker` | texto | ninguno | 16 de 20 | 20 de 20 |
+| `voz` | audio sintético de prueba | control | 3 de 6 | 6 de 6 |
+| `voz_texto_correcto` | transcripción correcta | control | 3 de 6 | 6 de 6 |
 
-No hubo ninguna violación de restricciones en ninguna corrida: todos los fallos son decisiones del LLM en el diálogo (no cotiza, añade o cambia un producto que no se le pidió, no contesta una pregunta). Con audio fallan los mismos tres escenarios que con la transcripción correcta, así que no son errores del ASR. Los audios de entrada de la corrida por voz son **sintéticos**: sirven para comprobar el circuito, no para medir el ASR con una voz real. Falta repetirla con las grabaciones del usuario.
+No hubo ninguna violación de restricciones, ni antes ni después. Los fallos de la línea base eran decisiones del LLM en el diálogo (no cotizaba, añadía o cambiaba un producto que no se le pidió, no contestaba una pregunta). Los 20 escenarios son ahora el conjunto con el que se ajustó el agente: el 100 % no es una tasa de aciertos general. Los audios de entrada de la corrida por voz son **sintéticos**: sirven para comprobar el circuito, no para medir el ASR con una voz real. Falta repetirla con las grabaciones del usuario.
+
+Para comprobar que las correcciones no dependen de la redacción de esos 20 hay cuatro escenarios de reserva en [scenarios/reserva/](scenarios/reserva/), escritos antes de tocar el agente y corridos una sola vez al final: 3 de 4 con el control, 4 de 4 con GraphSAGE y 3 de 4 sin reranker (el que falla, por una expectativa mal planteada; ver el diagnóstico).
+
+```bash
+uv run python -m shopping_agent.eval.scenarios --mode text --scenarios scenarios/reserva --name reserva
+```
 
 ### Recuperación en test
 

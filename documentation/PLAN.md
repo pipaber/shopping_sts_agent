@@ -265,7 +265,7 @@ Riesgo que el plan anticipaba: que el GNN no superase al híbrido. Lo supera, pe
 - **Violaciones.** Se calculan aparte, comparando la tienda antes y después de cada turno: `cantidad` (línea con menos de una unidad, o pedido distinto de lo cotizado), `presupuesto` (pedido o carrito recién modificado por encima del presupuesto), `existencias` (existencias negativas o pedido con más unidades de las que había), `pedido_duplicado` (más de un pedido en un turno, o un pedido sin cotización esperando) y `cambio_parcial` (confirmación rechazada que cambió algo, o pedido que no descontó lo comprado o no vació el carrito).
 - **Voz.** Los turnos por voz pasan por el mismo `VoicePipeline` que una conversación normal. La corrida por voz se repite entera con la transcripción correcta, desde la misma tienda, y se comparan veredicto, operaciones y tienda final.
 
-**Resultados** ([results/escenarios/resumen.md](../results/escenarios/resumen.md); cada corrida tiene una ficha por escenario). Workstation, RTX A2000 de 12 GB, 10 de noviembre de 2026.
+**Resultados de la línea base**, antes de corregir el agente ([results/escenarios_base/resumen.md](../results/escenarios_base/resumen.md); cada corrida tiene una ficha por escenario). Workstation, RTX A2000 de 12 GB, 10 de noviembre de 2026. Los resultados con el agente corregido están más abajo, en «Corrección de los fallos».
 
 | Corrida | Entrada | Reranker | Correctos | Fallan |
 |---|---|---|---|---|
@@ -333,6 +333,25 @@ Riesgo que el plan anticipaba: que el GNN no superase al híbrido. Lo supera, pe
 - **La calidad de las explicaciones.** Las comprobaciones miran lo que el agente hace con la tienda; salvo las cuatro que buscan algo concreto en el texto, no juzgan si la respuesta explica bien un rechazo (el acierto con matices de 08 es un ejemplo).
 - Las corridas de escenarios se hicieron en el commit `8711c79`, antes de que el reranker se reescribiera sobre `HeteroData` (mismo modelo); llevan la marca `+cambios` porque el README se estaba editando, sin cambios de código.
 
+### Corrección de los fallos (día 11)
+
+Los seis escenarios que fallaban se diagnosticaron uno a uno ([DIAGNOSTICO_FALLOS.md](DIAGNOSTICO_FALLOS.md)) y se corrigieron sin cambiar de modelo, de recuperación ni de diseño: primero con guardas por código donde la regla se puede comprobar sin LLM, y después con contexto y prompt. Las guardas están descritas en la sección 3. Las corridas se repitieron enteras ([results/escenarios/resumen.md](../results/escenarios/resumen.md)).
+
+| Corrida | Antes | Después | Arreglados |
+|---|---|---|---|
+| `texto` (control, por defecto) | 14 de 20 | 20 de 20 | 03, 04, 06, 09, 10, 20 |
+| `texto_sage` | 16 de 20 | 20 de 20 | 03, 04, 06, 09 |
+| `texto_sin_reranker` | 16 de 20 | 20 de 20 | 03, 04, 09, 10 |
+| `voz` (audio sintético) | 3 de 6 | 6 de 6 | 03, 04, 06 |
+| `voz_texto_correcto` | 3 de 6 | 6 de 6 | 03, 04, 06 |
+
+- **Sin regresiones al final y sin violaciones de restricciones.** Por el camino hubo dos regresiones, las dos por cambios en lo que ve el LLM y no por una guarda: el escenario 10 con GraphSAGE (presentó la descripción del vendedor como opinión de los clientes) y el 15 sin reranker (leyó «las tres que quedan» como tres productos). Cada una se corrigió con un cambio más y se repitió todo.
+- **Estos 20 escenarios son ahora el conjunto con el que se ajustó el agente.** El 100 % dice que las correcciones funcionan en los casos para los que se hicieron, no cuánto acierta el agente en general.
+- **Escenarios de reserva.** Cuatro escenarios escritos antes de tocar el agente, con otros productos y otra redacción ([scenarios/reserva/](../scenarios/reserva/)), corridos una sola vez al final: 3 de 4 con el control, 4 de 4 con GraphSAGE y 3 de 4 sin reranker. Cerrar el pedido con otras palabras, el producto agotado que no es el primero y el candidato que no está en la lista pasan en las tres configuraciones. El cuarto, el del dato que no consta, falla dos veces por una expectativa mal planteada: sus palabras clave casan con frases del catálogo que no hablan de lo preguntado («garantiza la comodidad», «dentro de las 24 horas»); el agente contestó que el catálogo no lo indica, que es lo correcto. La expectativa no se ha cambiado.
+- **Voz tras la corrección** (31 turnos, audios de entrada sintéticos): WER del ASR 2,1 %, sin errores en importes (0 de 3), cantidades (0 de 8) ni nombres de producto (0 de 13); inteligibilidad de la voz generada 3,9 % de WER; semejanza con la referencia 0,741 de media y 0,501 de mínima. Con audio y con la transcripción correcta el agente hace las mismas operaciones y deja la misma tienda en los seis escenarios.
+- **Latencia tras la corrección** (corrida `voz`, media por turno y máximo): con LLM (24 turnos), ASR 0,35 s, recuperación 0,01 s, LLM 5,05 s, herramientas 0,04 s, TTS 6,30 s; total 11,75 s (20,62). Sin LLM (7 turnos), 4,82 s (11,01). Por texto, 5,08 s por turno con LLM. Las guardas no añaden tiempo apreciable: son comprobaciones de texto, y los rechazos que provocan cuestan una decisión más del LLM en el turno. Carga inicial: 28,8 s con el disco en caliente.
+- **Lo que sigue flojo** y lo que no se ha verificado está al final del diagnóstico: la calidad de las explicaciones, lo que las guardas no reconocen, las grabaciones reales, Colab y el juicio de oído.
+
 ## 7. Cronograma
 
 | Días | Trabajo | Entregable |
@@ -377,5 +396,5 @@ Dependencias a añadir: `langgraph-checkpoint-postgres`, `psycopg[binary,pool]`,
 - Decidir, a la vista de test, si el reranker por defecto sigue siendo el control: allí GraphSAGE lo supera en +0,0071 de nDCG@10 (IC [+0,0028; +0,0117]). Es una decisión posterior a ver test y hay que decirlo si se toma.
 - La evaluación en test y las corridas de escenarios están hechas con `multilingual-e5-small`. Cambiar el modelo de embeddings obligaría a repetirlas, y la de test dejaría de ser una evaluación única.
 - Repetir en Colab las corridas de escenarios (latencia y memoria en la T4).
-- Análisis escrito de al menos cinco aciertos y cinco fallos; el material está en las fichas de `results/escenarios/` y en la tabla de fallos de la sección 6.
+- Análisis escrito de al menos cinco aciertos y cinco fallos; el material está en `documentation/DIAGNOSTICO_FALLOS.md`, en las fichas de la línea base (`results/escenarios_base/`) y en las de las corridas corregidas (`results/escenarios/`).
 - Fecha oficial de entrega.

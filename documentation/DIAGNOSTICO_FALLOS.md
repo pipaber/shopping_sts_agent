@@ -21,4 +21,60 @@ De aquí salen los arreglos, por orden de preferencia: primero lo que se puede c
 4. **Oferta pendiente** (06). El contexto del LLM debe decir qué se le ofreció al usuario tras un rechazo y con qué herramienta se ejecuta cada salida.
 5. **Prompt** (04 y 10). Tras un rechazo, proponer no es ejecutar; y un dato que no aparece se dice como «el catálogo no lo indica», no como un hecho sobre el producto.
 
-Los resultados de cada arreglo, las regresiones y lo que siga fallando se añaden al final, cuando se repitan las corridas.
+## Arreglos y resultados
+
+Corridas repetidas el 10 de noviembre de 2026 con el agente corregido ([results/escenarios/resumen.md](../results/escenarios/resumen.md)); la línea base está en [results/escenarios_base/](../results/escenarios_base/resumen.md).
+
+| Corrida | Antes | Después | Arreglados | Regresiones al final |
+|---|---|---|---|---|
+| `texto` (control, por defecto) | 14 de 20 | 20 de 20 | 03, 04, 06, 09, 10, 20 | ninguna |
+| `texto_sage` (GraphSAGE) | 16 de 20 | 20 de 20 | 03, 04, 06, 09 | ninguna |
+| `texto_sin_reranker` | 16 de 20 | 20 de 20 | 03, 04, 09, 10 | ninguna |
+| `voz` (audio sintético) | 3 de 6 | 6 de 6 | 03, 04, 06 | ninguna |
+| `voz_texto_correcto` | 3 de 6 | 6 de 6 | 03, 04, 06 | ninguna |
+
+Sigue sin haber ninguna violación de restricciones.
+
+Qué arreglo corrigió qué:
+
+| Arreglo | Tipo | Escenarios |
+|---|---|---|
+| Lo que el usuario señala por su posición es lo que se añade; una posición que no existe acaba en una pregunta | guarda por código y aviso al LLM | 09, 20 y, en 04, que ya no añade otro producto por su cuenta |
+| Si el usuario pide cerrar la compra, el turno no acaba sin cotizar | guarda por código y aviso al LLM | 03 |
+| Una búsqueda que devuelve los mismos candidatos se rechaza | guarda por código | 10 con el control |
+| Tras rechazarse la confirmación, el LLM ve qué se ofreció y con qué herramienta se hace | contexto escrito por código | 06 |
+| Ante un producto agotado, si el LLM no cita otro, el código añade dos con existencias | texto escrito por código | 04, la parte de proponer una alternativa |
+| Tras un rechazo, proponer no es hacer; un dato ausente no es un hecho | prompt | apoyo a 04 y 10 |
+| Recordatorio al final del detalle de un producto | resultado escrito por código | regresión de 10 (ver abajo) |
+| Tras rechazarse una cantidad, el LLM ve cuántas unidades caben | contexto escrito por código | regresión de 15 (ver abajo) |
+
+No se midió cada arreglo por separado: se aplicaron juntos y se repitieron las corridas. Lo que sí se vio por el camino:
+
+- **Con los cinco primeros**, el control pasó de 14 a 19: quedaba 04, que ya no tocaba el carrito pero contestaba «¿te interesa alguna de las demás opciones?» sin nombrar ninguna. De ahí el arreglo de las alternativas.
+- **Regresión en 10 con GraphSAGE.** Con el prompt nuevo el LLM mira el detalle antes de contestar, como se le pide, y después presentó la descripción del vendedor como la opinión de los clientes («los clientes valoran positivamente la versatilidad…»). Antes, con GraphSAGE, contestaba bien sin mirar el detalle. Con el control la comprobación pasaba solo porque la respuesta terminaba con «el catálogo no indica valoraciones». El recordatorio al final del detalle lo corrigió en las tres configuraciones.
+- **Regresión en 15 sin reranker.** Ante «Pues ponme las tres que quedan» el LLM comparó tres productos en vez de añadir tres unidades. No intervino ninguna guarda: con el prompt nuevo su respuesta anterior quedó redactada de otra forma y leyó «las tres» de otra manera. Se corrigió dándole en el contexto la cantidad que la tienda dijo que cabía.
+
+Estas dos regresiones enseñan el límite del método: cada cambio en lo que ve el LLM mueve otras respuestas, y solo se detecta lo que algún escenario comprueba.
+
+## Escenarios de reserva
+
+Cuatro escenarios escritos antes de tocar el agente ([scenarios/reserva/](../scenarios/reserva/)), con otros productos y otra redacción, y corridos una sola vez al final, en las tres configuraciones:
+
+| Escenario | control | GraphSAGE | sin reranker |
+|---|---|---|---|
+| 21 cerrar el pedido con otras palabras («Eso es todo, ya puedes tramitarlo», «Listo, quiero pagar ya») | ✔ | ✔ | ✔ |
+| 22 producto agotado que no es el primero | ✔ | ✔ | ✔ |
+| 23 candidato que no está en la lista («el sexto», «el octavo») y después uno que sí | ✔ | ✔ | ✔ |
+| 24 dato que el catálogo no trae (garantía, plazo de entrega) | ✘ | ✔ | ✘ |
+
+Los dos fallos de 24 son de la comprobación y no del agente. La comprobación decide si el catálogo trae el dato buscando palabras clave en el texto del producto, y las que se eligieron casan con frases que no hablan de lo preguntado: «garant» con «garantiza la comodidad» y «24 horas» con «resolveremos el problema por usted dentro de las 24 horas». El catálogo no dice ni los años de garantía ni el plazo de entrega, y el agente contestó en los dos casos que el catálogo no lo indica, que es lo correcto. La expectativa se deja como está, mal planteada, y el resultado se reporta así: 3 de 4, 4 de 4 y 3 de 4.
+
+Dos matices sobre esta comprobación de generalidad. Los escenarios de reserva los escribió la misma sesión que hizo los arreglos: no se ejecutaron antes, pero su redacción era conocida al escribir las guardas. Y son cuatro: dicen que las guardas no dependen de la redacción exacta de los 20, no que el agente acierte en general.
+
+## Lo que sigue flojo
+
+- **Las explicaciones.** En 08 el carrito queda vacío, como debe, pero ante «añade cero unidades» el agente sigue contestando cosas como «ese producto no está en el carrito» o «hecho». Las comprobaciones miran la tienda, no si la explicación es buena.
+- **Preguntas poco útiles.** Ante «ponme el sexto» de cinco, a veces pregunta «¿cuál es el sexto de la lista que te interesa?» sin decir que solo hay cinco. No añade nada, pero no aclara.
+- **Mirar el detalle antes de decir que no consta.** En el escenario 24 con el control contestó que el catálogo no indica la garantía sin consultar el detalle del producto. Acertó, pero sin comprobarlo.
+- **Lo que las guardas no reconocen.** Solo los ordinales con artículo («el segundo») y una lista corta de formas de cerrar la compra. Con «el número dos» o «ya lo tengo todo» decide el LLM, como antes.
+- **Sin verificar:** las grabaciones reales del usuario (aún no están en `audio/escenarios/`), Colab y el juicio de oído. La evaluación de recuperación en test no se ha vuelto a correr.
