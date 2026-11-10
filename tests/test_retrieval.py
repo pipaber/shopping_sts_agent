@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from shopping_agent.retrieval.metrics import evaluate, ndcg
+from shopping_agent.retrieval.metrics import evaluate, ndcg, ndcg_of_rankings
 from shopping_agent.retrieval.retrievers import BM25Retriever, rrf
 from shopping_agent.retrieval.text import clean, product_texts, tokenize
 
@@ -61,3 +61,15 @@ def test_evaluate_uses_only_annotated_candidates():
     result = evaluate(scores, [7], product_ids, qrels, recall_depth=2)
     assert result["ndcg@10"] == pytest.approx(1.0)
     assert result["recall@2"] == 0.0  # el exacto queda tercero en el catálogo completo
+
+
+def test_ndcg_of_rankings_counts_unannotated_products_as_irrelevant():
+    gains = np.array([[1.0, 0.0, 0.1, 0.0], [0.0, 0.0, 0.0, 0.0]])
+    ranked = np.array([[0, 2, 1], [1, 2, 3]])
+    assert ndcg_of_rankings(ranked, gains, k=3).tolist() == pytest.approx([1.0, 0.0])
+    # El exacto queda segundo, detrás de un producto sin anotar.
+    second = ndcg_of_rankings(np.array([[3, 0, 2]]), gains[:1], k=3)
+    ideal = 1.0 + 0.1 / np.log2(3)
+    assert second[0] == pytest.approx((1.0 / np.log2(3) + 0.1 / 2) / ideal)
+    # Solo cuentan las k primeras posiciones.
+    assert ndcg_of_rankings(np.array([[1, 3, 0]]), gains[:1], k=2)[0] == 0.0

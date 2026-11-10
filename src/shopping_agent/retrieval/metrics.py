@@ -30,6 +30,20 @@ def ndcg_by_query(qrels: pd.DataFrame, scores: np.ndarray, k: int = 10) -> pd.Se
     return ranked.groupby("query_id", sort=True)["gain"].agg(lambda gains: ndcg(gains.to_numpy(), k))
 
 
+def ndcg_of_rankings(ranked: np.ndarray, gains: np.ndarray, k: int = 10) -> np.ndarray:
+    """nDCG@k de cada consulta para una lista ordenada sobre todo el catálogo.
+
+    ``ranked`` trae, por consulta, las columnas de ``gains`` en el orden del sistema;
+    ``gains`` es ``(n_consultas, n_productos)`` con cero en los productos sin anotar.
+    A diferencia de la métrica del enunciado, aquí un producto sin anotar cuenta como
+    irrelevante: mide la lista que vería el usuario, no solo los candidatos anotados.
+    """
+    discounts = 1.0 / np.log2(np.arange(2, k + 2))
+    achieved = np.take_along_axis(gains, ranked[:, :k], axis=1) @ discounts[: ranked.shape[1]]
+    ideal = -np.sort(-gains, axis=1)[:, :k] @ discounts[: gains.shape[1]]
+    return np.divide(achieved, ideal, out=np.zeros_like(achieved, dtype=float), where=ideal > 0)
+
+
 def evaluate(
     scores: np.ndarray,
     query_ids: list[int],
