@@ -153,6 +153,7 @@ def run_record(args: argparse.Namespace, inputs: Inputs, loaded: Loaded, main_ru
             "asr": asr.model_name if asr else None,
             "tts": "XTTS-v2" if tts else None,
             "embeddings": DEFAULT_DENSE_MODEL,
+            "reranker": models.search.reranker is not None,
         },
         "voice": tts.voice if tts else {},
         "load": {
