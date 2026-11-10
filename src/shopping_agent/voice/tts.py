@@ -40,6 +40,7 @@ LICENSE_URL = "https://tts-hub.github.io/cpml"  # la dirección que muestra el p
 SAMPLE_RATE = 24000  # salida de XTTS-v2
 MAX_CHARS = 200  # por debajo del límite de 239 caracteres de XTTS-v2 en español
 PAUSE_SECONDS = 0.25  # silencio entre fragmentos
+MAX_ATTEMPTS = 3  # síntesis de un fragmento antes de quedarse con la más corta
 
 
 class LicenseNotAccepted(RuntimeError):
@@ -58,6 +59,7 @@ class Synthesis:
     first_chunk_seconds: float  # cuándo podría empezar a sonar el primer fragmento
     audio_seconds: float
     chunks: list[str] = field(default_factory=list)
+    retries: int = 0  # fragmentos que hubo que volver a sintetizar por salir demasiado largos
 
 
 class SpeechSynthesizer(Protocol):
@@ -66,6 +68,17 @@ class SpeechSynthesizer(Protocol):
     sample_rate: int
 
     def synthesize(self, text: str) -> Synthesis: ...
+
+
+def too_long(audio_seconds: float, characters: int) -> bool:
+    """¿Dura el audio más de lo razonable para su texto?
+
+    XTTS-v2 a veces sigue "hablando" después del texto, sobre todo con frases muy
+    cortas ("Sí." puede salir con cinco segundos de balbuceo). El habla normal medida
+    con este modelo va de 0,05 a 0,10 s por carácter; por encima de 0,09 s por
+    carácter más un margen fijo, se considera que sobra audio.
+    """
+    return audio_seconds > 1.5 + 0.09 * characters
 
 
 def join_chunks(pieces: list[np.ndarray], sample_rate: int, pause_seconds: float = PAUSE_SECONDS) -> np.ndarray:
@@ -218,16 +231,31 @@ class XttsTTS:
             wav = wav.cpu().numpy()
         return np.asarray(wav, dtype=np.float32).reshape(-1)
 
-    def synthesize(self, text: str) -> Synthesis:
-        """Sintetiza un texto ya preparado para voz (véase ``speech_text.to_speech``)."""
+    def _generate_checked(self, chunk: str) -> tuple[np.ndarray, int]:
+        """Sintetiza un fragmento; si sale demasiado largo lo reintenta con otra semilla
+        y se queda con el intento más corto. Devuelve el audio y los reintentos."""
         import torch
 
+        best: np.ndarray | None = None
+        for attempt in range(MAX_ATTEMPTS):
+            torch.manual_seed(self.seed + attempt)  # muestreo aleatorio: misma entrada, misma salida
+            audio = self._generate(chunk)
+            if best is None or len(audio) < len(best):
+                best = audio
+            if not too_long(len(audio) / self.sample_rate, len(chunk)):
+                return audio, attempt
+        assert best is not None
+        return best, MAX_ATTEMPTS - 1
+
+    def synthesize(self, text: str) -> Synthesis:
+        """Sintetiza un texto ya preparado para voz (véase ``speech_text.to_speech``)."""
         chunks = split_for_tts(text, self.max_chars)
-        torch.manual_seed(self.seed)  # el muestreo de XTTS es aleatorio: misma entrada, misma salida
         start = time.perf_counter()
-        pieces, first = [], 0.0
+        pieces, first, retries = [], 0.0, 0
         for index, chunk in enumerate(chunks):
-            pieces.append(self._generate(chunk))
+            audio, attempts = self._generate_checked(chunk)
+            pieces.append(audio)
+            retries += attempts
             if index == 0:
                 first = time.perf_counter() - start
         audio = join_chunks(pieces, self.sample_rate)
@@ -238,6 +266,7 @@ class XttsTTS:
             first_chunk_seconds=first,
             audio_seconds=len(audio) / self.sample_rate,
             chunks=chunks,
+            retries=retries,
         )
 
 
@@ -275,7 +304,8 @@ def main() -> None:
     for text, path in jobs:
         result = tts.synthesize(to_speech(text))
         write_wav(path, result.audio, result.sample_rate)
-        print(f"{path} ({result.audio_seconds:.1f} s de audio en {result.seconds:.1f} s): {text}")
+        retried = f", {result.retries} reintentos" if result.retries else ""
+        print(f"{path} ({result.audio_seconds:.1f} s de audio en {result.seconds:.1f} s{retried}): {text}")
 
 
 if __name__ == "__main__":

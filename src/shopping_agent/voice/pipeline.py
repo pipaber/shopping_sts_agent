@@ -134,6 +134,7 @@ class VoicePipeline:
             synthesis = self.tts.synthesize(spoken)
             timings[TTS] = synthesis.seconds
             timings["tts_primer_fragmento"] = synthesis.first_chunk_seconds
+            timings["tts_reintentos"] = float(synthesis.retries)
         timings["total"] = sum(timings[stage] for stage in STAGES)
 
         # A partir de aquí la respuesta ya puede sonar: guardar no cuenta como latencia.
@@ -186,19 +187,38 @@ def summarize_timings(turns: Sequence[VoiceTurn]) -> dict[str, Any]:
     return {"all": stats(turns), "with_llm": stats(with_llm), "without_llm": stats(without_llm)}
 
 
+VOLATILE_KEYS = ("quote_id",)  # identificadores aleatorios: distintos en cada corrida
+
+
 def _actions(turn: VoiceTurn) -> list[tuple[Any, ...]]:
-    return [
-        (operation["tool"], json.dumps(operation["args"], sort_keys=True, ensure_ascii=False), operation["ok"])
-        for operation in turn.operations
-    ]
+    actions = []
+    for operation in turn.operations:
+        args = {key: value for key, value in operation["args"].items() if key not in VOLATILE_KEYS}
+        actions.append((operation["tool"], json.dumps(args, sort_keys=True, ensure_ascii=False), operation["ok"]))
+    return actions
+
+
+def comparable_store(store: dict[str, Any]) -> dict[str, Any]:
+    """Estado de la tienda sin los identificadores que cambian de una corrida a otra."""
+    return {
+        key: [{field: value for field, value in row.items() if field not in VOLATILE_KEYS} for row in rows]
+        for key, rows in store.items()
+    }
 
 
 def compare_runs(audio_turns: Sequence[VoiceTurn], text_turns: Sequence[VoiceTurn]) -> list[dict[str, Any]]:
-    """Turno a turno: ¿hizo el agente lo mismo con el audio que con el texto correcto?"""
+    """Turno a turno: ¿hizo el agente lo mismo con el audio que con el texto correcto?
+
+    ``same_input`` es la igualdad literal; ``same_words`` ignora mayúsculas, tildes,
+    puntuación y la forma de escribir las cifras, que el ASR decide por su cuenta.
+    """
+    from shopping_agent.eval.voice import normalize
+
     return [
         {
             "turn": spoken.turn,
             "same_input": " ".join(spoken.agent_input.split()) == " ".join(written.agent_input.split()),
+            "same_words": normalize(spoken.agent_input) == normalize(written.agent_input),
             "same_operations": _actions(spoken) == _actions(written),
             "same_response": spoken.response == written.response,
         }
@@ -279,7 +299,9 @@ def to_markdown(record: dict[str, Any]) -> str:
             "",
             "## Misma conversación con las transcripciones correctas",
             "",
-            f"- Turnos en los que el ASR cambió el texto: {[row['turn'] for row in comparison if not row['same_input']] or 'ninguno'}",
+            f"- Turnos en los que el ASR cambió alguna palabra: {[row['turn'] for row in comparison if not row['same_words']] or 'ninguno'}",
+            "- Turnos en los que solo cambió la forma de escribirlo (mayúsculas, puntuación, cifras): "
+            f"{[row['turn'] for row in comparison if row['same_words'] and not row['same_input']] or 'ninguno'}",
             f"- Turnos en los que el agente hizo operaciones distintas: {different or 'ninguno'}",
             f"- Estado final de la tienda igual que con audio: {'sí' if record['text_run']['same_store'] else 'no'}",
         ]
@@ -388,7 +410,7 @@ def main() -> None:
     load_seconds = time.perf_counter() - load_start
     print(f"[modelos cargados en {load_seconds:.1f} s; VRAM del proceso: {vram['loaded']} MiB]", file=sys.stderr)
 
-    def converse(session: ShoppingSession, out_dir: Path, use_audio: bool, speak: bool = True) -> VoicePipeline:
+    def converse(session: ShoppingSession, out_dir: Path | None, use_audio: bool, speak: bool = True) -> VoicePipeline:
         pipeline = VoicePipeline(session, asr, tts if speak else None, out_dir)
         for index in range(turns):
             text = expected[index] if expected else None
@@ -413,7 +435,7 @@ def main() -> None:
         text_run = None
         if mode == "ambos":
             restore(seed_path, db_path)  # la repetición parte de la misma tienda
-            repeat = converse(ShoppingSession(graph, f"{thread_id}-texto", args.user), args.out / "texto", use_audio=False, speak=False)
+            repeat = converse(ShoppingSession(graph, f"{thread_id}-texto", args.user), None, use_audio=False, speak=False)
             repeat_store = store_snapshot(db_path, seed_path)
             text_run = {
                 "thread_id": f"{thread_id}-texto",
@@ -421,7 +443,7 @@ def main() -> None:
                 "timings": summarize_timings(repeat.turns),
                 "store": repeat_store,
                 "comparison": compare_runs(main_run.turns, repeat.turns),
-                "same_store": repeat_store == store,
+                "same_store": comparable_store(repeat_store) == comparable_store(store),
             }
 
         record = {

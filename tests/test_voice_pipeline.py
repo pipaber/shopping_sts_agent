@@ -14,6 +14,7 @@ from shopping_agent.voice.audio import read_audio, write_wav
 from shopping_agent.voice.pipeline import (
     STAGES,
     VoicePipeline,
+    comparable_store,
     compare_runs,
     scenario_paths,
     summarize_timings,
@@ -27,6 +28,7 @@ from shopping_agent.voice.tts import (
     VoiceNotConfigured,
     join_chunks,
     resolve_voice,
+    too_long,
 )
 from test_agent import Shop, call, say
 
@@ -144,10 +146,39 @@ def test_same_turn_can_be_repeated_with_the_correct_text(shop, tmp_path):
     assert by_text.turns[1].transcript is None and by_text.turns[1].timings["asr"] == 0.0
     assert by_text.turns[1].input_audio is None and by_text.turns[1].output_audio is None
     comparison = compare_runs(by_voice.turns, by_text.turns)
-    assert comparison[0] == {"turn": 1, "same_input": True, "same_operations": True, "same_response": True}
-    assert comparison[1]["same_input"] is False and comparison[1]["same_operations"] is False
+    assert comparison[0] == {
+        "turn": 1, "same_input": True, "same_words": True, "same_operations": True, "same_response": True,
+    }
+    assert comparison[1]["same_words"] is False and comparison[1]["same_operations"] is False
     assert written_shop.sql("SELECT quantity FROM cart_items") == [(2,)]
     assert spoken_shop.sql("SELECT quantity FROM cart_items") == []  # doce no caben: rechazado por código
+
+
+def test_comparison_ignores_spelling_and_random_identifiers(shop, tmp_path):
+    """El ASR escribe "Bluetooth" y "50 €"; los identificadores de cotización cambian en cada corrida."""
+    other = new_shop(tmp_path / "otra")
+    for target in (shop, other):
+        target.llm.extend(purchase_script())
+    heard = ["Busco auriculares Bluetooth y tengo 50 €.", "Añade 2 del primero", "Quiero cerrar el pedido", "Sí, confirmo."]
+    correct = ["Busco auriculares bluetooth y tengo cincuenta euros", "Añade dos del primero", "Quiero cerrar el pedido", "Sí, confirmo."]
+    by_voice = VoicePipeline(shop.session(), FakeASR(heard), None)
+    by_text = VoicePipeline(other.session(), None, None)
+    for text in correct:
+        by_voice.run_turn(np.zeros(8000, dtype=np.float32), expected_text=text)
+        by_text.run_turn(text=text, expected_text=text)
+
+    comparison = compare_runs(by_voice.turns, by_text.turns)
+    assert [row["same_input"] for row in comparison] == [False, False, True, True]
+    assert all(row["same_words"] and row["same_operations"] for row in comparison)
+    quotes = [turn.operations[0]["args"]["quote_id"] for turn in (by_voice.turns[3], by_text.turns[3])]
+    assert quotes[0] != quotes[1]  # distintos, y aun así la confirmación cuenta como la misma operación
+
+    def snapshot(target):
+        orders = target.sql("SELECT order_id, quote_id, total_cents FROM orders")
+        return {"orders": [{"order_id": o, "quote_id": q, "total_cents": t} for o, q, t in orders]}
+
+    assert snapshot(shop) != snapshot(other)
+    assert comparable_store(snapshot(shop)) == comparable_store(snapshot(other))
 
 
 def test_turn_needs_exactly_one_input(shop):
@@ -191,6 +222,13 @@ def test_summary_and_report(shop, tmp_path):
     assert "**Usuario (transcripción del ASR):** Sí" in report
     assert "**Enviado al TTS:**" in report and "Pedido 1: total 40,00 €" in report
     assert "audios sintéticos" in report
+
+
+def test_too_long_flags_audio_that_outlasts_its_text():
+    assert too_long(5.5, len("Sí."))  # el balbuceo observado con XTTS-v2
+    assert not too_long(0.9, len("Sí."))
+    assert not too_long(8.5, 84) and not too_long(12.9, 153)  # habla normal, aunque lenta
+    assert too_long(20.0, 84)
 
 
 def test_join_chunks_inserts_pauses():
