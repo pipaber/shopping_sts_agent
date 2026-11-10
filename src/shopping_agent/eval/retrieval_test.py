@@ -27,6 +27,7 @@ el caso de que una corrida fallara a medias).
 from __future__ import annotations
 
 import argparse
+import copy
 import json
 import sys
 from dataclasses import dataclass, replace
@@ -37,12 +38,13 @@ from typing import Any
 import numpy as np
 import pandas as pd
 import torch
+from torch_geometric.data import HeteroData
 
 from shopping_agent.eval.provenance import current_commit
 from shopping_agent.eval.reranker import BASELINES, paired_difference, protocol
 from shopping_agent.retrieval.dev_data import VALIDATION_QUERIES, load_dev_data
 from shopping_agent.retrieval.first_stage import FirstStage, first_stage
-from shopping_agent.retrieval.graph import RerankGraph, candidate_edges
+from shopping_agent.retrieval.graph import EDGE_TYPES, PRODUCT, QUERY, candidate_edges
 from shopping_agent.retrieval.metrics import ndcg_by_query
 from shopping_agent.retrieval.retrievers import BM25Retriever
 from shopping_agent.retrieval.text import ALL_FIELDS, product_texts
@@ -113,15 +115,17 @@ def baseline_scores(test: EvalSet, depth: int = CANDIDATES) -> dict[str, Scores]
     return results
 
 
-def with_new_queries(graph: RerankGraph, stage: FirstStage) -> tuple[RerankGraph, int]:
+def with_new_queries(graph: HeteroData, stage: FirstStage) -> tuple[HeteroData, int]:
     """El grafo con las consultas de ``stage`` añadidas como las añade el agente: cada
     una conectada solo a sus candidatos. Devuelve también el índice de la primera."""
-    offset, device = len(graph.query_x), graph.product_x.device
+    offset, device = graph[QUERY].num_nodes, graph[PRODUCT].x.device
     new_edges = candidate_edges(stage.top(CANDIDATES)).to(device)
     new_edges[1] += offset
-    edges = {**graph.edges, "candidate": torch.cat([graph.edges["candidate"], new_edges], dim=1)}
-    query_x = torch.cat([graph.query_x, torch.as_tensor(stage.query_embeddings, device=device)])
-    return RerankGraph(graph.product_x, query_x, edges), offset
+    candidate = EDGE_TYPES["candidate"]
+    extended = copy.copy(graph)
+    extended[candidate].edge_index = torch.cat([graph[candidate].edge_index, new_edges], dim=1)
+    extended[QUERY].x = torch.cat([graph[QUERY].x, torch.as_tensor(stage.query_embeddings, device=device)])
+    return extended, offset
 
 
 def lists_for(test: EvalSet, offset: int, device: str) -> RankingLists:
@@ -133,7 +137,7 @@ def lists_for(test: EvalSet, offset: int, device: str) -> RankingLists:
 def reranker_ndcg(variant: str, seeds: int, development: Development, test: EvalSet) -> list[np.ndarray]:
     """nDCG@10 por consulta de test de una variante, una lista por semilla de entrenamiento."""
     graph, offset = with_new_queries(development.graph, test.stage)
-    lists = lists_for(test, offset, str(graph.product_x.device))
+    lists = lists_for(test, offset, str(graph[PRODUCT].x.device))
     per_seed = []
     for seed in range(seeds):
         model = train_reranker(VARIANTS[variant], TrainConfig(seed=seed), development.graph, development.fit)

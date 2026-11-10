@@ -11,6 +11,7 @@ from synthetic_graph import ALL, CONTROL, DOC_EMBEDDINGS, GAIN, PRODUCTS, make_d
 
 from shopping_agent.eval import retrieval_test as final
 from shopping_agent.retrieval.first_stage import FirstStage
+from shopping_agent.retrieval.graph import with_query
 from shopping_agent.retrieval.train import annotated_scores
 
 NEW_QUERIES = 3
@@ -41,13 +42,13 @@ def test_new_queries_are_scored_as_the_agent_scores_one():
     one_by_one = []
     for row in sorted(set(query_rows), key=lambda row: test.qrels["query_id"][query_rows == row].iloc[0]):
         candidates = torch.as_tensor(test.stage.top(final.CANDIDATES)[row])
-        alone, node = development.graph.with_query(torch.as_tensor(test.stage.query_embeddings[row]), candidates)
+        alone, node = with_query(development.graph, torch.as_tensor(test.stage.query_embeddings[row]), candidates)
         products = torch.as_tensor(product_rows[query_rows == row])
         features = torch.as_tensor(test.stage.features(np.full(len(products), row), products.numpy()))
         with torch.no_grad():
             one_by_one += model.score(model.encode(alone), torch.full_like(products, node), products, features).tolist()
     assert together == pytest.approx(one_by_one, abs=1e-5)
-    assert len(graph.query_x) == len(development.graph.query_x) + NEW_QUERIES
+    assert graph["query"].num_nodes == development.graph["query"].num_nodes + NEW_QUERIES
 
 
 def test_recall_counts_exact_products_in_the_top():

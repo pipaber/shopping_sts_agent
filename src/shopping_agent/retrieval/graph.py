@@ -1,66 +1,80 @@
-"""Grafo consulta–producto sobre el que trabaja el reranker.
+"""Grafo heterogéneo consulta–producto sobre el que trabaja el reranker.
 
-Nodos: consultas y productos, con su embedding de texto como características.
-Cada relación es un tensor ``(2, n_aristas)`` con el origen en la primera fila y
-el destino en la segunda; el mensaje viaja del origen al destino.
+Es un ``HeteroData`` de PyTorch Geometric con dos tipos de nodo, ``product`` y
+``query``, cuyas características son los embeddings de texto, y cuatro tipos de
+arista. Cada ``edge_index`` es ``(2, n_aristas)`` con el origen en la primera fila
+y el destino en la segunda; el mensaje viaja del origen al destino.
 
-- ``candidate`` (producto → consulta): los primeros del híbrido para esa consulta.
+- ``(product, candidate, query)``: los primeros del híbrido para esa consulta.
   No usa etiquetas, así que una consulta nueva entra al grafo igual que las demás.
-- ``similar`` (producto → producto): vecinos más cercanos en el espacio de embeddings.
-- ``brand`` (producto → producto): productos de la misma marca.
-- ``exact`` (consulta → producto): la consulta de ajuste tiene ese producto anotado
+- ``(product, similar, product)``: vecinos más cercanos en el espacio de embeddings.
+- ``(product, brand, product)``: productos de la misma marca.
+- ``(query, exact, product)``: la consulta de ajuste tiene ese producto anotado
   como exacto. Es la única relación que lleva etiquetas, y solo va hacia el
   producto: ninguna consulta recibe mensajes por ella.
 """
 
 from __future__ import annotations
 
+import copy
 from collections.abc import Sequence
-from dataclasses import dataclass, replace
 
 import numpy as np
 import pandas as pd
 import torch
+from torch_geometric.data import HeteroData
 
 from shopping_agent.retrieval.text import clean
 
-# Tipo de nodo de origen y de destino de cada relación.
-ENDPOINTS = {
-    "candidate": ("product", "query"),
-    "similar": ("product", "product"),
-    "brand": ("product", "product"),
-    "exact": ("query", "product"),
+PRODUCT, QUERY = "product", "query"
+NODE_TYPES = (PRODUCT, QUERY)
+# Tipo de arista de cada relación: (nodo de origen, relación, nodo de destino).
+EDGE_TYPES = {
+    "candidate": (PRODUCT, "candidate", QUERY),
+    "similar": (PRODUCT, "similar", PRODUCT),
+    "brand": (PRODUCT, "brand", PRODUCT),
+    "exact": (QUERY, "exact", PRODUCT),
 }
-RELATIONS = tuple(ENDPOINTS)
+RELATIONS = tuple(EDGE_TYPES)
 
 
-@dataclass(frozen=True)
-class RerankGraph:
-    product_x: torch.Tensor
-    query_x: torch.Tensor
-    edges: dict[str, torch.Tensor]
+def hetero_graph(product_x: torch.Tensor, query_x: torch.Tensor, edges: dict[str, torch.Tensor]) -> HeteroData:
+    """El grafo a partir de las características de los nodos y las aristas de cada relación."""
+    graph = HeteroData()
+    graph[PRODUCT].x = product_x
+    graph[QUERY].x = query_x
+    for relation, edge_index in edges.items():
+        graph[EDGE_TYPES[relation]].edge_index = edge_index
+    return graph
 
-    def to(self, device: torch.device | str) -> RerankGraph:
-        edges = {relation: index.to(device) for relation, index in self.edges.items()}
-        return RerankGraph(self.product_x.to(device), self.query_x.to(device), edges)
 
-    def without_labels_of(self, queries: torch.Tensor) -> RerankGraph:
-        """El mismo grafo sin las aristas ``exact`` que salen de ``queries``.
+def edges_by_relation(graph: HeteroData) -> dict[str, torch.Tensor]:
+    return {relation: graph[edge_type].edge_index for relation, edge_type in EDGE_TYPES.items()}
 
-        Es lo que impide que una consulta de ajuste vea sus propias etiquetas: al
-        entrenar con ella, sus productos exactos no la tienen como vecina, igual
-        que le pasará a una consulta nueva.
-        """
-        exact = self.edges["exact"]
-        keep = ~torch.isin(exact[0], queries)
-        return replace(self, edges={**self.edges, "exact": exact[:, keep]})
 
-    def with_query(self, embedding: torch.Tensor, candidates: torch.Tensor) -> tuple[RerankGraph, int]:
-        """Añade una consulta nueva conectada solo a sus candidatos. Devuelve su índice."""
-        index = len(self.query_x)
-        new_edges = torch.stack([candidates, torch.full_like(candidates, index)])
-        edges = {**self.edges, "candidate": torch.cat([self.edges["candidate"], new_edges], dim=1)}
-        return RerankGraph(self.product_x, torch.cat([self.query_x, embedding.unsqueeze(0)]), edges), index
+def without_labels_of(graph: HeteroData, queries: torch.Tensor) -> HeteroData:
+    """El mismo grafo sin las aristas ``exact`` que salen de ``queries``.
+
+    Es lo que impide que una consulta de ajuste vea sus propias etiquetas: al
+    entrenar con ella, sus productos exactos no la tienen como vecina, igual
+    que le pasará a una consulta nueva.
+    """
+    exact = graph[EDGE_TYPES["exact"]].edge_index
+    masked = copy.copy(graph)
+    masked[EDGE_TYPES["exact"]].edge_index = exact[:, ~torch.isin(exact[0], queries)]
+    return masked
+
+
+def with_query(graph: HeteroData, embedding: torch.Tensor, candidates: torch.Tensor) -> tuple[HeteroData, int]:
+    """Añade una consulta nueva conectada solo a sus candidatos. Devuelve el grafo
+    ampliado y el índice de la consulta; el grafo original no cambia."""
+    index = graph[QUERY].num_nodes
+    new_edges = torch.stack([candidates, torch.full_like(candidates, index)])
+    extended = copy.copy(graph)
+    extended[QUERY].x = torch.cat([graph[QUERY].x, embedding.unsqueeze(0)])
+    candidate = EDGE_TYPES["candidate"]
+    extended[candidate].edge_index = torch.cat([graph[candidate].edge_index, new_edges], dim=1)
+    return extended, index
 
 
 def similar_edges(embeddings: torch.Tensor, k: int, chunk: int = 4096) -> torch.Tensor:

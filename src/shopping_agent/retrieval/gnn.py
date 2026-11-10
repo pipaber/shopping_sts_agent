@@ -1,28 +1,30 @@
-"""Reranker sobre el grafo consulta–producto (GraphSAGE o GATv2) y su pérdida.
+"""Reranker sobre el grafo heterogéneo consulta–producto (GraphSAGE o GATv2) y su pérdida.
 
-Con ``relations=()`` no hay paso de mensajes y el modelo se queda en una red por
-nodo con la misma cabeza de puntuación: es el control sin grafo de la ablación.
+Cada capa es un ``HeteroConv`` de PyTorch Geometric con una convolución por tipo
+de arista. Con ``relations=()`` no hay paso de mensajes y el modelo se queda en
+una red por nodo con la misma cabeza de puntuación: es el control sin grafo de la
+ablación.
 """
 
 from __future__ import annotations
 
+import warnings
 from dataclasses import dataclass
 
 import torch
 import torch.nn.functional as F
 from torch import nn
-from torch_geometric.nn import GATv2Conv, MessagePassing, SAGEConv
+from torch_geometric.data import HeteroData
+from torch_geometric.nn import GATv2Conv, HeteroConv, MessagePassing, SAGEConv
 
 from shopping_agent.retrieval.first_stage import FEATURES
-from shopping_agent.retrieval.graph import ENDPOINTS, RerankGraph
-
-NODE_TYPES = ("product", "query")
+from shopping_agent.retrieval.graph import EDGE_TYPES, NODE_TYPES, PRODUCT, QUERY
 
 
 @dataclass(frozen=True)
 class RerankerConfig:
     relations: tuple[str, ...]
-    conv: str = "sage"
+    conv: str = "sage"  # capa de paso de mensajes; ver ``message_passing``
     input_dim: int = 384
     hidden: int = 64
     layers: int = 2
@@ -38,20 +40,35 @@ def make_conv(kind: str, hidden: int) -> MessagePassing:
     raise ValueError(f"Capa desconocida: {kind}")
 
 
+def message_passing(config: RerankerConfig) -> HeteroConv:
+    """Paso de mensajes de una capa: una convolución por cada relación de la
+    variante; lo que llega a un nodo por varias relaciones se suma.
+
+    ``config.conv`` elige la capa. Otra capa heterogénea de PyG que se llame igual,
+    ``capa(x_dict, edge_index_dict)``, entraría aquí como un valor más.
+    """
+    convs = {EDGE_TYPES[relation]: make_conv(config.conv, config.hidden) for relation in config.relations}
+    with warnings.catch_warnings():
+        # HeteroConv avisa de los tipos de nodo que no reciben mensajes. Aquí no es un
+        # problema: cada nodo se actualiza además con su propia transformación.
+        warnings.simplefilter("ignore", UserWarning)
+        return HeteroConv(convs, aggr="sum")
+
+
 class RerankLayer(nn.Module):
     """Estado nuevo de cada nodo: su propia transformación más lo que recibe por cada relación."""
 
     def __init__(self, config: RerankerConfig) -> None:
         super().__init__()
-        self.own = nn.ModuleDict({kind: nn.Linear(config.hidden, config.hidden) for kind in NODE_TYPES})
-        self.convs = nn.ModuleDict({relation: make_conv(config.conv, config.hidden) for relation in config.relations})
+        self.own = nn.ModuleDict({node: nn.Linear(config.hidden, config.hidden) for node in NODE_TYPES})
+        self.messages = message_passing(config)
 
-    def forward(self, states: dict[str, torch.Tensor], edges: dict[str, torch.Tensor]) -> dict[str, torch.Tensor]:
-        new = {kind: self.own[kind](state) for kind, state in states.items()}
-        for relation, conv in self.convs.items():
-            source, target = ENDPOINTS[relation]
-            new[target] = new[target] + conv((states[source], states[target]), edges[relation])
-        return {kind: F.relu(state) for kind, state in new.items()}
+    def forward(
+        self, x_dict: dict[str, torch.Tensor], edge_index_dict: dict[tuple[str, str, str], torch.Tensor]
+    ) -> dict[str, torch.Tensor]:
+        received = self.messages(x_dict, edge_index_dict)
+        new = {node: self.own[node](x) for node, x in x_dict.items()}
+        return {node: F.relu(x + received[node] if node in received else x) for node, x in new.items()}
 
 
 class Reranker(nn.Module):
@@ -66,7 +83,7 @@ class Reranker(nn.Module):
     def __init__(self, config: RerankerConfig) -> None:
         super().__init__()
         self.config = config
-        self.inputs = nn.ModuleDict({kind: nn.Linear(config.input_dim, config.hidden) for kind in NODE_TYPES})
+        self.inputs = nn.ModuleDict({node: nn.Linear(config.input_dim, config.hidden) for node in NODE_TYPES})
         self.layers = nn.ModuleList(RerankLayer(config) for _ in range(config.layers))
         self.dropout = nn.Dropout(config.dropout)
         self.base = nn.Linear(len(FEATURES), 1, bias=False)
@@ -93,12 +110,11 @@ class Reranker(nn.Module):
         self.feature_mean.copy_(features.mean(dim=0))
         self.feature_std.copy_(features.std(dim=0).clamp(min=1e-6))
 
-    def encode(self, graph: RerankGraph) -> dict[str, torch.Tensor]:
-        """Estado final de todos los nodos tras el paso de mensajes."""
-        features = {"product": graph.product_x, "query": graph.query_x}
-        states = {kind: self.dropout(F.relu(self.inputs[kind](x))) for kind, x in features.items()}
+    def encode(self, graph: HeteroData) -> dict[str, torch.Tensor]:
+        """Estado final de todos los nodos, por tipo, tras el paso de mensajes."""
+        states = {node: self.dropout(F.relu(self.inputs[node](x))) for node, x in graph.x_dict.items()}
         for layer in self.layers:
-            states = {kind: self.dropout(state) for kind, state in layer(states, graph.edges).items()}
+            states = {node: self.dropout(state) for node, state in layer(states, graph.edge_index_dict).items()}
         return states
 
     def score(
@@ -110,7 +126,7 @@ class Reranker(nn.Module):
     ) -> torch.Tensor:
         """Puntuación de cada par. ``queries`` y ``products`` son índices de nodo y
         ``features`` las señales de la primera etapa de cada par."""
-        query, product = states["query"][queries], states["product"][products]
+        query, product = states[QUERY][queries], states[PRODUCT][products]
         scaled = (features - self.feature_mean) / self.feature_std
         correction = self.correction(torch.cat([query, product, query * product, scaled], dim=-1))
         return (self.base(scaled) + correction).squeeze(-1)

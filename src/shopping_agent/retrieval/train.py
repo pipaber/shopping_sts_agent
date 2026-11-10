@@ -5,8 +5,8 @@ Uso::
     python -m shopping_agent.retrieval.train --variant control --seed 0
 
 Entrena la variante con las 1 200 consultas de ajuste y guarda los pesos y el
-grafo en ``datasets/processed/reranker_<variante>.pt`` (fuera de git; se regenera
-con este comando). La comparación entre variantes está en ``shopping_agent.eval.reranker``.
+grafo en ``datasets/processed/reranker_<variante>.v2.pt`` (fuera de git; se
+regenera con este comando). La comparación entre variantes está en ``shopping_agent.eval.reranker``.
 """
 
 from __future__ import annotations
@@ -18,17 +18,31 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 import torch
+from torch_geometric.data import HeteroData
 
 from shopping_agent.retrieval.dev_data import SPLIT_SEED, VALIDATION_QUERIES, DevData, load_dev_data, split_queries
 from shopping_agent.retrieval.first_stage import Embedder, FirstStage, first_stage
 from shopping_agent.retrieval.gnn import Reranker, RerankerConfig, pairwise_gain_loss
-from shopping_agent.retrieval.graph import RerankGraph, brand_edges, candidate_edges, exact_edges, similar_edges
+from shopping_agent.retrieval.graph import (
+    PRODUCT,
+    QUERY,
+    brand_edges,
+    candidate_edges,
+    edges_by_relation,
+    exact_edges,
+    hetero_graph,
+    similar_edges,
+    without_labels_of,
+)
 from shopping_agent.retrieval.metrics import ndcg_by_query
 from shopping_agent.retrieval.retrievers import DEFAULT_DENSE_MODEL, BM25Retriever, DenseRetriever
 from shopping_agent.retrieval.text import ALL_FIELDS, SHORT_FIELDS, product_texts
 
 DEFAULT_DATA_DIR = Path("datasets/processed")
 DEFAULT_VARIANT = "control"  # la que usa el agente si no se le pide otra
+# Va en el nombre del archivo de pesos. La 2 es la de las capas con HeteroConv, que
+# cambiaron los nombres de los parámetros: unos pesos anteriores no se pueden cargar.
+WEIGHTS_VERSION = 2
 CANDIDATES = 50  # los mismos que el agente pide al híbrido
 NEIGHBOURS = 10
 BRAND_NEIGHBOURS = 5
@@ -92,7 +106,7 @@ class Development:
     primeros del híbrido para las de validación (lo que el agente le daría a
     reordenar al reranker)."""
 
-    graph: RerankGraph
+    graph: HeteroData
     fit: RankingLists
     validation: RankingLists
     validation_top: RankingLists
@@ -160,7 +174,7 @@ def candidate_lists(stage: FirstStage, top: np.ndarray, query_rows: np.ndarray) 
 
 def build_graph(
     data: DevData, stage: FirstStage, top: np.ndarray, doc_embeddings: np.ndarray, exact: torch.Tensor, device: str
-) -> RerankGraph:
+) -> HeteroData:
     """Grafo con todas las consultas de desarrollo. ``exact`` son las aristas con
     etiqueta, que solo deben salir de consultas de ajuste."""
     product_x = torch.as_tensor(doc_embeddings, device=device)
@@ -170,7 +184,7 @@ def build_graph(
         "brand": brand_edges(data.catalog["product_brand"].tolist(), product_x, BRAND_NEIGHBOURS),
         "exact": exact,
     }
-    return RerankGraph(product_x, torch.as_tensor(stage.query_embeddings), edges).to(device)
+    return hetero_graph(product_x, torch.as_tensor(stage.query_embeddings), edges).to(device)
 
 
 def build_development(
@@ -194,17 +208,17 @@ def build_development(
     )
 
 
-def score_lists(model: Reranker, graph: RerankGraph, lists: RankingLists) -> torch.Tensor:
+def score_lists(model: Reranker, graph: HeteroData, lists: RankingLists) -> torch.Tensor:
     """Puntuación de cada candidato de cada lista, ``(consultas, candidatos)``."""
     states = model.encode(graph)
     queries = lists.queries.unsqueeze(1).expand_as(lists.products)
     return model.score(states, queries, lists.products, lists.features)
 
 
-def train_step(model: Reranker, optimizer: torch.optim.Optimizer, graph: RerankGraph, batch: RankingLists) -> float:
+def train_step(model: Reranker, optimizer: torch.optim.Optimizer, graph: HeteroData, batch: RankingLists) -> float:
     """Un paso con un lote de consultas, que no ven sus propias etiquetas en el grafo."""
     model.train()
-    scores = score_lists(model, graph.without_labels_of(batch.queries), batch)
+    scores = score_lists(model, without_labels_of(graph, batch.queries), batch)
     loss = pairwise_gain_loss(scores, batch.gains, batch.mask)
     optimizer.zero_grad()
     loss.backward()
@@ -212,8 +226,8 @@ def train_step(model: Reranker, optimizer: torch.optim.Optimizer, graph: RerankG
     return loss.item()
 
 
-def train_reranker(config: RerankerConfig, training: TrainConfig, graph: RerankGraph, lists: RankingLists) -> Reranker:
-    device = graph.product_x.device
+def train_reranker(config: RerankerConfig, training: TrainConfig, graph: HeteroData, lists: RankingLists) -> Reranker:
+    device = graph[PRODUCT].x.device
     torch.manual_seed(training.seed)
     model = Reranker(config).to(device)
     model.set_feature_scale(lists.features[lists.mask])
@@ -225,12 +239,12 @@ def train_reranker(config: RerankerConfig, training: TrainConfig, graph: RerankG
 
 
 @torch.no_grad()
-def annotated_scores(model: Reranker, graph: RerankGraph, lists: RankingLists) -> np.ndarray:
+def annotated_scores(model: Reranker, graph: HeteroData, lists: RankingLists) -> np.ndarray:
     """Una puntuación por fila de las qrels con las que se hicieron las listas."""
     return score_lists(model, graph, lists)[lists.mask].cpu().numpy()
 
 
-def save_reranker(path: Path, model: Reranker, graph: RerankGraph) -> None:
+def save_reranker(path: Path, model: Reranker, graph: HeteroData) -> None:
     """Pesos, configuración y grafo. Los embeddings de los productos no se guardan:
     son los del catálogo, que el agente ya tiene."""
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -238,9 +252,9 @@ def save_reranker(path: Path, model: Reranker, graph: RerankGraph) -> None:
         {
             "config": asdict(model.config),
             "state": {name: value.cpu() for name, value in model.state_dict().items()},
-            "query_x": graph.query_x.cpu(),
-            "edges": {relation: index.cpu() for relation, index in graph.edges.items()},
-            "products": len(graph.product_x),
+            "query_x": graph[QUERY].x.cpu(),
+            "edges": {relation: index.cpu() for relation, index in edges_by_relation(graph).items()},
+            "products": graph[PRODUCT].num_nodes,
         },
         path,
     )
@@ -248,7 +262,7 @@ def save_reranker(path: Path, model: Reranker, graph: RerankGraph) -> None:
 
 def weights_path(data_dir: Path, variant: str) -> Path:
     """Dónde se guardan los pesos de una variante."""
-    return data_dir / f"reranker_{variant}.pt"
+    return data_dir / f"reranker_{variant}.v{WEIGHTS_VERSION}.pt"
 
 
 def prepare(data_dir: Path, dense: Embedder, validation: int, device: str) -> Development:
@@ -275,7 +289,7 @@ def main() -> None:
     parser.add_argument("--data", type=Path, default=DEFAULT_DATA_DIR)
     parser.add_argument("--variant", choices=sorted(VARIANTS), default=DEFAULT_VARIANT)
     parser.add_argument("--seed", type=int, default=0)
-    parser.add_argument("--out", type=Path, default=None, help="por defecto, <data>/reranker_<variante>.pt")
+    parser.add_argument("--out", type=Path, default=None, help="por defecto, <data>/reranker_<variante>.v2.pt")
     args = parser.parse_args()
 
     development = prepare(args.data, load_dense(args.data), VALIDATION_QUERIES, default_device())

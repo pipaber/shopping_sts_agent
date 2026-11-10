@@ -10,15 +10,16 @@ from pathlib import Path
 
 import numpy as np
 import torch
+from torch_geometric.data import HeteroData
 
 from shopping_agent.retrieval.first_stage import Embedder, Lexical, first_stage
 from shopping_agent.retrieval.gnn import Reranker, RerankerConfig
-from shopping_agent.retrieval.graph import RerankGraph
+from shopping_agent.retrieval.graph import PRODUCT, hetero_graph, with_query
 from shopping_agent.retrieval.train import weights_path
 
 
 class GraphReranker:
-    def __init__(self, variant: str, model: Reranker, graph: RerankGraph, bm25: Lexical, dense: Embedder) -> None:
+    def __init__(self, variant: str, model: Reranker, graph: HeteroData, bm25: Lexical, dense: Embedder) -> None:
         self.variant = variant
         self.model = model.eval()
         self.graph = graph
@@ -40,7 +41,7 @@ class GraphReranker:
             raise ValueError(f"{path} se entrenó con otro catálogo; vuelve a entrenar el reranker.")
         model = Reranker(RerankerConfig(**saved["config"]))
         model.load_state_dict(saved["state"])
-        graph = RerankGraph(torch.as_tensor(dense.doc_embeddings), saved["query_x"], saved["edges"])
+        graph = hetero_graph(torch.as_tensor(dense.doc_embeddings), saved["query_x"], saved["edges"])
         return cls(variant, model.to(device), graph.to(device), bm25, dense)
 
     @torch.no_grad()
@@ -48,10 +49,10 @@ class GraphReranker:
         """Filas del catálogo de los ``top`` primeros del híbrido, reordenadas."""
         stage = first_stage([query], self.bm25, self.dense)
         rows = stage.top(top)[0]
-        device = self.graph.product_x.device
+        device = self.graph[PRODUCT].x.device
         candidates = torch.as_tensor(rows, device=device)
         embedding = torch.as_tensor(stage.query_embeddings[0], device=device)
-        graph, node = self.graph.with_query(embedding, candidates)
+        graph, node = with_query(self.graph, embedding, candidates)
         features = torch.as_tensor(stage.features(np.zeros_like(rows), rows), device=device)
         scores = self.model.score(self.model.encode(graph), torch.full_like(candidates, node), candidates, features)
         return rows[scores.argsort(descending=True, stable=True).cpu().numpy()]

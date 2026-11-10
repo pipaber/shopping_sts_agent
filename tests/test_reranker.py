@@ -6,6 +6,8 @@ import numpy as np
 import pandas as pd
 import pytest
 import torch
+from torch_geometric.data import HeteroData
+from torch_geometric.nn import HeteroConv
 from synthetic_graph import (
     ALL,
     BRANDS,
@@ -28,13 +30,23 @@ from shopping_agent.retrieval import train
 from shopping_agent.retrieval.dev_data import split_queries
 from shopping_agent.retrieval.gnn import Reranker, pairwise_gain_loss
 from shopping_agent.retrieval.graph import (
-    ENDPOINTS,
+    EDGE_TYPES,
+    PRODUCT,
+    QUERY,
     RELATIONS,
     brand_edges,
     candidate_edges,
+    edges_by_relation,
     exact_edges,
+    hetero_graph,
     similar_edges,
+    with_query,
+    without_labels_of,
 )
+
+
+def edges(graph: HeteroData, relation: str) -> torch.Tensor:
+    return graph[EDGE_TYPES[relation]].edge_index
 
 
 # --- Construcción del grafo --------------------------------------------------------
@@ -79,11 +91,13 @@ def test_graph_has_every_dev_query_but_labels_only_from_fit_queries():
     graph = make_development(data).graph
     fit, validation = fit_and_validation_nodes(data)
 
-    assert graph.query_x.shape == (QUERIES, DIM) and graph.product_x.shape == (PRODUCTS, DIM)
-    assert set(graph.edges) == set(RELATIONS)
-    assert set(graph.edges["candidate"][1].tolist()) == fit | validation
-    assert set(graph.edges["exact"][0].tolist()) == fit
-    assert graph.edges["exact"].shape[1] == 2 * len(fit)  # dos exactos por consulta de ajuste
+    assert isinstance(graph, HeteroData) and graph.node_types == [PRODUCT, QUERY]
+    assert graph[QUERY].x.shape == (QUERIES, DIM) and graph[PRODUCT].x.shape == (PRODUCTS, DIM)
+    assert set(graph.edge_types) == set(EDGE_TYPES.values())
+    graph.validate()  # los índices de las aristas caben en sus tipos de nodo
+    assert set(edges(graph, "candidate")[1].tolist()) == fit | validation
+    assert set(edges(graph, "exact")[0].tolist()) == fit
+    assert edges(graph, "exact").shape[1] == 2 * len(fit)  # dos exactos por consulta de ajuste
 
 
 def test_validation_labels_do_not_reach_the_graph():
@@ -95,12 +109,12 @@ def test_validation_labels_do_not_reach_the_graph():
     changed = replace(data, qrels=pd.concat([data.qrels[~is_validation], other.qrels[is_validation]]).sort_index())
 
     graph, changed_graph = make_development(data).graph, make_development(changed).graph
-    assert all(torch.equal(graph.edges[relation], changed_graph.edges[relation]) for relation in RELATIONS)
+    assert all(torch.equal(edges(graph, relation), edges(changed_graph, relation)) for relation in RELATIONS)
 
 
 def test_no_query_receives_messages_through_labels():
-    labelled = [relation for relation in RELATIONS if relation == "exact"]
-    assert [ENDPOINTS[relation] for relation in labelled] == [("query", "product")]
+    assert EDGE_TYPES["exact"] == (QUERY, "exact", PRODUCT)  # las etiquetas solo van hacia el producto
+    assert [relation for relation, (_, _, target) in EDGE_TYPES.items() if target == QUERY] == ["candidate"]
 
 
 # --- Fuga de etiquetas -------------------------------------------------------------
@@ -108,13 +122,13 @@ def test_no_query_receives_messages_through_labels():
 
 def test_without_labels_of_removes_only_the_edges_of_those_queries():
     graph = make_development().graph
-    query = graph.edges["exact"][0, 0]
-    masked = graph.without_labels_of(query.unsqueeze(0))
+    query = edges(graph, "exact")[0, 0]
+    masked = without_labels_of(graph, query.unsqueeze(0))
 
-    assert query not in masked.edges["exact"][0]
-    assert masked.edges["exact"].shape[1] == graph.edges["exact"].shape[1] - 2
-    assert all(torch.equal(masked.edges[relation], graph.edges[relation]) for relation in RELATIONS if relation != "exact")
-    assert query in graph.edges["exact"][0]  # el grafo original no se modifica
+    assert query not in edges(masked, "exact")[0]
+    assert edges(masked, "exact").shape[1] == edges(graph, "exact").shape[1] - 2
+    assert all(torch.equal(edges(masked, relation), edges(graph, relation)) for relation in RELATIONS if relation != "exact")
+    assert query in edges(graph, "exact")[0]  # el grafo original no se modifica
 
 
 def test_a_fit_query_does_not_see_its_own_labels_when_training():
@@ -133,7 +147,7 @@ def test_a_fit_query_does_not_see_its_own_labels_when_training():
     for name, development in (("original", make_development(data)), ("changed", make_development(changed))):
         batch = development.fit.batch((development.fit.queries == node).nonzero().squeeze(1))
         with torch.no_grad():
-            scores[name, "masked"] = train.score_lists(model, development.graph.without_labels_of(batch.queries), batch)
+            scores[name, "masked"] = train.score_lists(model, without_labels_of(development.graph, batch.queries), batch)
             scores[name, "leaky"] = train.score_lists(model, development.graph, batch)
 
     assert torch.equal(scores["original", "masked"], scores["changed", "masked"])
@@ -157,8 +171,8 @@ def test_train_step_hides_the_labels_of_the_queries_in_the_batch(monkeypatch):
 
     (graph, lists), = seen
     assert np.isfinite(loss) and lists is batch
-    assert not torch.isin(graph.edges["exact"][0], batch.queries).any()
-    assert graph.edges["exact"].shape[1] == development.graph.edges["exact"].shape[1] - 4
+    assert not torch.isin(edges(graph, "exact")[0], batch.queries).any()
+    assert edges(graph, "exact").shape[1] == edges(development.graph, "exact").shape[1] - 4
 
 
 # --- Modelo ------------------------------------------------------------------------
@@ -190,7 +204,8 @@ def test_untrained_model_ranks_like_the_dense_retriever():
 def test_control_has_no_message_passing():
     development = make_development()
     graph = development.graph
-    no_edges = replace(graph, edges={relation: index[:, :0] for relation, index in graph.edges.items()})
+    empty = {relation: index[:, :0] for relation, index in edges_by_relation(graph).items()}
+    no_edges = hetero_graph(graph[PRODUCT].x, graph[QUERY].x, empty)
     control, sage = trained_like(CONTROL), trained_like(ALL)
     with torch.no_grad():
         assert torch.equal(
@@ -199,7 +214,14 @@ def test_control_has_no_message_passing():
         assert not torch.allclose(
             train.score_lists(sage, graph, development.fit), train.score_lists(sage, no_edges, development.fit)
         )
-    assert not any("convs" in name for name, _ in control.named_parameters())
+    assert not any("messages" in name for name, _ in control.named_parameters())
+
+
+def test_each_layer_is_a_hetero_conv_over_the_relations_of_the_variant():
+    layer = Reranker(ALL).layers[0]
+    assert isinstance(layer.messages, HeteroConv) and layer.messages.aggr == "sum"
+    assert list(layer.messages.convs.keys()) == [EDGE_TYPES[relation] for relation in RELATIONS]
+    assert len(Reranker(CONTROL).layers[0].messages.convs) == 0
 
 
 def test_new_query_joins_the_graph_through_its_candidates_only():
@@ -207,12 +229,13 @@ def test_new_query_joins_the_graph_through_its_candidates_only():
     graph, lists = development.graph, development.fit
     model = trained_like(ALL)
     candidates = torch.tensor([3, 7, 9])
-    extended, node = graph.with_query(torch.as_tensor(unit(1, seed=9)[0]), candidates)
+    extended, node = with_query(graph, torch.as_tensor(unit(1, seed=9)[0]), candidates)
 
-    assert node == QUERIES and len(extended.query_x) == QUERIES + 1 and len(graph.query_x) == QUERIES
-    new_edges = extended.edges["candidate"][:, extended.edges["candidate"][1] == node]
+    assert node == QUERIES and extended[QUERY].num_nodes == QUERIES + 1 and graph[QUERY].num_nodes == QUERIES
+    assert edges(graph, "candidate").shape[1] == edges(extended, "candidate").shape[1] - 3  # el original no cambia
+    new_edges = edges(extended, "candidate")[:, edges(extended, "candidate")[1] == node]
     assert new_edges[0].tolist() == [3, 7, 9]
-    assert all(extended.edges[relation] is graph.edges[relation] for relation in ("similar", "brand", "exact"))
+    assert all(edges(extended, relation) is edges(graph, relation) for relation in ("similar", "brand", "exact"))
     with torch.no_grad():
         states = model.encode(extended)
         scores = model.score(states, torch.full((3,), node), candidates, torch.zeros(3, 3))
@@ -317,4 +340,4 @@ def test_random_negatives_only_reach_the_fit_lists():
 
     assert development.fit.mask.sum() > annotated  # anotados más los irrelevantes al azar
     assert development.validation.mask.sum() == len(development.validation_qrels) == 5 * VALIDATION
-    assert development.graph.edges["exact"].shape[1] == 2 * len(fit)  # no añaden aristas
+    assert edges(development.graph, "exact").shape[1] == 2 * len(fit)  # no añaden aristas

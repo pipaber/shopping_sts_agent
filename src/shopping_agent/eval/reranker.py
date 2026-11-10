@@ -23,6 +23,7 @@ import torch
 from shopping_agent.retrieval.dev_data import SPLIT_SEED, VALIDATION_QUERIES, DevData, load_dev_data
 from shopping_agent.retrieval.first_stage import FirstStage, first_stage
 from shopping_agent.retrieval.gnn import Reranker
+from shopping_agent.retrieval.graph import edges_by_relation
 from shopping_agent.retrieval.metrics import ndcg_by_query, ndcg_of_rankings
 from shopping_agent.retrieval.retrievers import BM25Retriever
 from shopping_agent.retrieval.text import ALL_FIELDS, product_texts
@@ -160,7 +161,7 @@ def compare(
 
 
 def protocol(development: Development, seeds: int, epochs: int) -> dict[str, object]:
-    edges = {relation: int(index.shape[1]) for relation, index in development.graph.edges.items()}
+    edges = {relation: int(index.shape[1]) for relation, index in edges_by_relation(development.graph).items()}
     return {
         "fit_queries": len(development.fit.queries),
         "validation_queries": len(development.validation.queries),

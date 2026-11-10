@@ -43,7 +43,7 @@ def test_saved_reranker_reorders_the_hybrid_candidates(tmp_path):
     save_weights(tmp_path, trained_like(ALL))
     trained = load_reranker(tmp_path, bm25, dense)
     assert sorted(trained.rank("producto azul", top=6)) == sorted(hybrid)
-    assert len(trained.graph.query_x) == QUERIES  # la consulta no se queda en el grafo
+    assert trained.graph["query"].num_nodes == QUERIES  # la consulta no se queda en el grafo
 
 
 def test_reranker_load_explains_what_is_missing(tmp_path):
