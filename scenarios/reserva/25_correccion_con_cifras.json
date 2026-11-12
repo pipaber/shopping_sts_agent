@@ -1,0 +1,121 @@
+{
+  "id": "25_correccion_con_cifras",
+  "title": "Corregir una cantidad con cifras antes de confirmar",
+  "kind": "correccion_con_cifras",
+  "voice": false,
+  "description": "Escenario de reserva, escrito antes de corregir el agente y sin ejecutarlo. Con la cotización pendiente, el usuario corrige la cantidad escribiendo los números con cifras («Perdona, eran 14, no 4.»), como los escribe a veces el ASR. El agente debe cambiar la cantidad, no fijar un presupuesto; el pedido final lleva catorce.",
+  "steps": [
+    {
+      "say": "Necesito unas pilas recargables.",
+      "expect": [
+        {
+          "check": "cart",
+          "empty": true
+        }
+      ]
+    },
+    {
+      "remember": {
+        "elegidas": "candidate:1"
+      }
+    },
+    {
+      "event": "set_offer",
+      "product": "@elegidas",
+      "price_cents": 300,
+      "stock": 30
+    },
+    {
+      "say": "Ponme cuatro de la primera.",
+      "expect": [
+        {
+          "check": "cart",
+          "lines": [
+            {
+              "product": "@elegidas",
+              "quantity": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "say": "Quiero pagar.",
+      "expect": [
+        {
+          "check": "awaiting_confirmation",
+          "value": true
+        },
+        {
+          "check": "orders",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "say": "Perdona, eran 14, no 4.",
+      "expect": [
+        {
+          "check": "orders",
+          "count": 0
+        },
+        {
+          "check": "cart",
+          "lines": [
+            {
+              "product": "@elegidas",
+              "quantity": 14
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "say": "Ya está, tramítalo.",
+      "expect": [
+        {
+          "check": "awaiting_confirmation",
+          "value": true
+        },
+        {
+          "check": "orders",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "say": "Sí.",
+      "expect": [
+        {
+          "check": "orders",
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "expect": [
+    {
+      "check": "orders",
+      "count": 1
+    },
+    {
+      "check": "order",
+      "lines": [
+        {
+          "product": "@elegidas",
+          "quantity": 14
+        }
+      ],
+      "total_cents": 4200
+    },
+    {
+      "check": "stock",
+      "product": "@elegidas",
+      "equals": 16
+    },
+    {
+      "check": "cart",
+      "empty": true
+    }
+  ]
+}

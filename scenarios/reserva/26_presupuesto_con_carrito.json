@@ -1,0 +1,130 @@
+{
+  "id": "26_presupuesto_con_carrito",
+  "title": "Presupuesto dicho con el carrito lleno y cantidad con cifras",
+  "kind": "presupuesto_con_carrito",
+  "voice": false,
+  "description": "Escenario de reserva, escrito antes de corregir el agente y sin ejecutarlo. Con productos en el carrito el usuario dice su gasto máximo en euros, y el agente debe fijarlo. Después cambia la cantidad con una cifra suelta («Entonces que sean 4.»): debe cambiar la cantidad y dejar el presupuesto como estaba.",
+  "steps": [
+    {
+      "say": "Busco un cuaderno de tapa dura.",
+      "expect": [
+        {
+          "check": "cart",
+          "empty": true
+        }
+      ]
+    },
+    {
+      "remember": {
+        "elegido": "candidate:1"
+      }
+    },
+    {
+      "event": "set_offer",
+      "product": "@elegido",
+      "price_cents": 600,
+      "stock": 20
+    },
+    {
+      "say": "Añade dos del primero.",
+      "expect": [
+        {
+          "check": "cart",
+          "lines": [
+            {
+              "product": "@elegido",
+              "quantity": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "say": "Por cierto, no quiero gastar más de 30 euros.",
+      "expect": [
+        {
+          "check": "budget",
+          "cents": 3000
+        },
+        {
+          "check": "cart",
+          "lines": [
+            {
+              "product": "@elegido",
+              "quantity": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "say": "Entonces que sean 4.",
+      "expect": [
+        {
+          "check": "budget",
+          "cents": 3000
+        },
+        {
+          "check": "cart",
+          "lines": [
+            {
+              "product": "@elegido",
+              "quantity": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "say": "Cierra el pedido.",
+      "expect": [
+        {
+          "check": "awaiting_confirmation",
+          "value": true
+        },
+        {
+          "check": "orders",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "say": "Sí, confirmo.",
+      "expect": [
+        {
+          "check": "orders",
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "expect": [
+    {
+      "check": "orders",
+      "count": 1
+    },
+    {
+      "check": "order",
+      "lines": [
+        {
+          "product": "@elegido",
+          "quantity": 4
+        }
+      ],
+      "total_cents": 2400
+    },
+    {
+      "check": "budget",
+      "cents": 3000
+    },
+    {
+      "check": "stock",
+      "product": "@elegido",
+      "equals": 16
+    },
+    {
+      "check": "cart",
+      "empty": true
+    }
+  ]
+}
