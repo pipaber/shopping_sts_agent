@@ -1,0 +1,1403 @@
+{
+  "id": "03_cambio_cantidad",
+  "title": "Cambio de cantidad manteniendo las demás restricciones",
+  "kind": "cambio_cantidad",
+  "description": "El usuario añade dos unidades y después corrige a cuatro. El producto y el presupuesto deben seguir siendo los mismos y el pedido final debe llevar cuatro unidades (38,00 € de un presupuesto de 45 €).",
+  "voice": true,
+  "input": "audio",
+  "audio_source": "grabaciones del usuario",
+  "user_id": "eval-0d1624fe-03_cambio_cantidad",
+  "threads": [
+    "eval-0d1624fe-03_cambio_cantidad-c1"
+  ],
+  "names": {
+    "elegida": "B07VQNY8PK"
+  },
+  "steps": [
+    {
+      "kind": "turn",
+      "turn": 1,
+      "input_audio": "entrada_01.wav",
+      "input_seconds": 5.97125,
+      "transcript": "Busco una botella de agua de acero inoxidable. Mi presupuesto es de 45 euros.",
+      "expected_text": "Busco una botella de agua de acero inoxidable. Mi presupuesto es de 45 euros.",
+      "agent_input": "Busco una botella de agua de acero inoxidable. Mi presupuesto es de 45 euros.",
+      "response": "Tengo la botella de agua de Newdora por 6,72 euros, la de KOSAD por 12,37, la de KOUAJ por 18,29 y las de ion8 por 4,97 y 10,79 euros. ¿Te interesa alguna? He anotado un presupuesto de 45,00 €.",
+      "spoken_text": "Tengo la botella de agua de Newdora por seis euros con setenta y dos céntimos, la de KOSAD por doce coma treinta y siete, la de KOUAJ por dieciocho coma veintinueve y las de ion8 por cuatro coma noventa y siete y diez euros con setenta y nueve céntimos. ¿Te interesa alguna? He anotado un presupuesto de cuarenta y cinco euros.",
+      "output_audio": "respuesta_01.wav",
+      "output_seconds": 23.102666666666668,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "fijar_presupuesto",
+          "args": {
+            "importe_eur": 45
+          },
+          "reason": "el usuario da su gasto máximo",
+          "ok": true,
+          "summary": "presupuesto fijado en 45,00 €.",
+          "issues": []
+        },
+        {
+          "tool": "buscar_productos",
+          "args": {
+            "consulta": "botella de agua acero inoxidable"
+          },
+          "reason": "buscar lo que pide",
+          "ok": true,
+          "summary": "estos son ahora los CANDIDATOS, del más al menos relevante:\n[1] id=B07VQNY8PK | Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío de Doble Pared, Botellas de Frío/Caliente, con 1 un Cepillo de Limpieza, para Niños, Deporte, Oficina, Gimnasio, Ciclismo, Negro | marca: Newdora | color: Negro | precio: 6,72 € | existencias: 46 | características (extracto): ➤Saludable y Seguro: las capas internas y externas están hechas de acero inoxidable 18/304 no tóxico de calidad alimentaria, que es seguro, saludable y libre de BPA. Puede beber agua o bebidas con confianza con esta botella, es adecuada… | descripción: desconocido\n[2] id=B0819WJQFX | KOSAD Copa Juego De Tronos Tazas Dragón Fuego Y Sangre Acero Inoxidable Resina Cerveza Tankard Taza De Vino Tazas Fan Navidad | marca: KOSAD | color: 1 | precio: 12,37 € | existencias: 21 | características (extracto): La botella de acero inoxidable es ideal para su uso en casa, en el trabajo, en los deportes, en el coche, en la playa e incluso durante el camping o senderismo. Ideal para agua, té, café, bebidas carbonatadas, vino y cerveza. Ya sea que… | descripción: Material: Acero inoxidable Tipo de bebida:Mugs Accesorios:Sin ninguno Tipo:Tazas de cerveza Estilo:Europa Forma: Empuñadura Número de modelo:Taza de café\n[3] id=B07TP2BG7B | KOUAJ Botella de Agua Taza De Acero Inoxidable Vaso Delgado Vacío Vacío Tazas Rectas Tazas De Café De Cerveza Taza con Pajas Tapa 600ml Plata | marca: KOUAJ | color: Plata | precio: 18,29 € | existencias: 21 | características (extracto): * A prueba de fugas, muy buen manejo, libre de BPA. * Disfruta de bebidas, té, leche o café personalizados con esta botella de agua que no dañará tu salud. * Es simple y conveniente, y el diseño práctico le da más tiempo de uso, para que… | descripción: Material: Acero Inoxidable Con tapa o no: Sí 600ml\n[4] id=B08HQTFYDR | Ion8 Niños Botella Agua, Sin Fugas, Tren de Animales, 400ml | marca: ion8 | color: Tren de Animales | precio: 4,97 € | existencias: 15 | características (extracto): 100% a prueba de fugas botella agua la tapa de la boquilla higiénica se abre con un dedo y se puede bloquear de forma segura flujo de líquido suave y ventilado para una hidratación sin derrames del ancho de una lata de bebida, cabe en… | descripción: desconocido\n[5] id=B08HQM29RB | Ion8 Niños Botella Agua, Sin Fugas, Espacio, 400ml | marca: ion8 | color: Espacio | precio: 10,79 € | existencias: 32 | características (extracto): 100% a prueba de fugas botella agua la tapa de la boquilla higiénica se abre con un dedo y se puede bloquear de forma segura flujo de líquido suave y ventilado para una hidratación sin derrames del ancho de una lata de bebida, cabe en… | descripción: desconocido",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.477,
+        "retrieval": 0.067,
+        "llm": 12.469,
+        "tools": 0.029,
+        "tts": 13.162,
+        "total": 26.203
+      },
+      "llm_steps": 3,
+      "tts_first_chunk_seconds": 4.915,
+      "tts_retries": 0,
+      "product_terms": [
+        "botella de agua de acero inoxidable"
+      ],
+      "before": {
+        "cart_id": "eval-0d1624fe-03_cambio_cantidad-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {}
+      },
+      "after": {
+        "cart_id": "eval-0d1624fe-03_cambio_cantidad-c1",
+        "state": {
+          "budget_cents": 4500,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07VQNY8PK",
+              "title": "Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío de Doble Pared, Botellas de Frío/Caliente, con 1 un Cepillo de Limpieza, para Niños, Deporte, Oficina, Gimnasio, Ciclismo, Negro",
+              "brand": "Newdora",
+              "price_cents": 672,
+              "stock": 46
+            },
+            {
+              "product_id": "B0819WJQFX",
+              "title": "KOSAD Copa Juego De Tronos Tazas Dragón Fuego Y Sangre Acero Inoxidable Resina Cerveza Tankard Taza De Vino Tazas Fan Navidad",
+              "brand": "KOSAD",
+              "price_cents": 1237,
+              "stock": 21
+            },
+            {
+              "product_id": "B07TP2BG7B",
+              "title": "KOUAJ Botella de Agua Taza De Acero Inoxidable Vaso Delgado Vacío Vacío Tazas Rectas Tazas De Café De Cerveza Taza con Pajas Tapa 600ml Plata",
+              "brand": "KOUAJ",
+              "price_cents": 1829,
+              "stock": 21
+            },
+            {
+              "product_id": "B08HQTFYDR",
+              "title": "Ion8 Niños Botella Agua, Sin Fugas, Tren de Animales, 400ml",
+              "brand": "ion8",
+              "price_cents": 497,
+              "stock": 15
+            },
+            {
+              "product_id": "B08HQM29RB",
+              "title": "Ion8 Niños Botella Agua, Sin Fugas, Espacio, 400ml",
+              "brand": "ion8",
+              "price_cents": 1079,
+              "stock": 32
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {
+          "B07TP2BG7B": {
+            "price_cents": 1829,
+            "stock": 21
+          },
+          "B07VQNY8PK": {
+            "price_cents": 672,
+            "stock": 46
+          },
+          "B0819WJQFX": {
+            "price_cents": 1237,
+            "stock": 21
+          },
+          "B08HQM29RB": {
+            "price_cents": 1079,
+            "stock": 32
+          },
+          "B08HQTFYDR": {
+            "price_cents": 497,
+            "stock": 15
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "budget",
+          "params": {
+            "cents": 4500
+          },
+          "ok": true,
+          "detail": "presupuesto en el estado: 4500"
+        }
+      ]
+    },
+    {
+      "kind": "remember",
+      "name": "elegida",
+      "ref": "candidate:1",
+      "product_id": "B07VQNY8PK",
+      "title": "Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío de Doble Pared, Botellas de Frío/Caliente, con 1 un Cepillo de Limpieza, para Niños, Deporte, Oficina, Gimnasio, Ciclismo, Negro"
+    },
+    {
+      "kind": "event",
+      "event": "set_offer",
+      "product": "@elegida",
+      "product_id": "B07VQNY8PK",
+      "price_cents": 950,
+      "stock": 20
+    },
+    {
+      "kind": "turn",
+      "turn": 2,
+      "input_audio": "entrada_02.wav",
+      "input_seconds": 2.53,
+      "transcript": "Añade dos de la primera.",
+      "expected_text": "Añade dos de la primera.",
+      "agent_input": "Añade dos de la primera.",
+      "response": "Hecho, añadidas dos unidades. El total es 19,00 €. En el carrito hay 2 unidades de «Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío…» a 9,50 € cada una, 19,00 €. Total: 19,00 €. Tu presupuesto es de 45,00 € y te quedan 26,00 €.",
+      "spoken_text": "Hecho, añadidas dos unidades. El total es diecinueve euros. En el carrito hay dos unidades de Newdora Botella de Agua Acero Inoxidable quinientos mililitros a nueve euros con cincuenta céntimos cada una, diecinueve euros. Total: diecinueve euros. Tu presupuesto es de cuarenta y cinco euros y te quedan veintiséis euros.",
+      "output_audio": "respuesta_02.wav",
+      "output_seconds": 29.278666666666666,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "agregar_al_carrito",
+          "args": {
+            "product_id": "B07VQNY8PK",
+            "cantidad": 2
+          },
+          "reason": "añadir dos unidades del candidato 1",
+          "ok": true,
+          "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B07VQNY8PK | Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío… | 2 unidades × 9,50 € = 19,00 € | existencias: 20\nTotal del carrito: 19,00 €",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.384,
+        "retrieval": 0.0,
+        "llm": 7.446,
+        "tools": 0.044,
+        "tts": 16.595,
+        "total": 24.469
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": 3.454,
+      "tts_retries": 0,
+      "product_terms": [
+        "primera"
+      ],
+      "before": {
+        "cart_id": "eval-0d1624fe-03_cambio_cantidad-c1",
+        "state": {
+          "budget_cents": 4500,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07VQNY8PK",
+              "title": "Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío de Doble Pared, Botellas de Frío/Caliente, con 1 un Cepillo de Limpieza, para Niños, Deporte, Oficina, Gimnasio, Ciclismo, Negro",
+              "brand": "Newdora",
+              "price_cents": 672,
+              "stock": 46
+            },
+            {
+              "product_id": "B0819WJQFX",
+              "title": "KOSAD Copa Juego De Tronos Tazas Dragón Fuego Y Sangre Acero Inoxidable Resina Cerveza Tankard Taza De Vino Tazas Fan Navidad",
+              "brand": "KOSAD",
+              "price_cents": 1237,
+              "stock": 21
+            },
+            {
+              "product_id": "B07TP2BG7B",
+              "title": "KOUAJ Botella de Agua Taza De Acero Inoxidable Vaso Delgado Vacío Vacío Tazas Rectas Tazas De Café De Cerveza Taza con Pajas Tapa 600ml Plata",
+              "brand": "KOUAJ",
+              "price_cents": 1829,
+              "stock": 21
+            },
+            {
+              "product_id": "B08HQTFYDR",
+              "title": "Ion8 Niños Botella Agua, Sin Fugas, Tren de Animales, 400ml",
+              "brand": "ion8",
+              "price_cents": 497,
+              "stock": 15
+            },
+            {
+              "product_id": "B08HQM29RB",
+              "title": "Ion8 Niños Botella Agua, Sin Fugas, Espacio, 400ml",
+              "brand": "ion8",
+              "price_cents": 1079,
+              "stock": 32
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B07VQNY8PK",
+              "initial_stock": 46,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B07TP2BG7B": {
+            "price_cents": 1829,
+            "stock": 21
+          },
+          "B07VQNY8PK": {
+            "price_cents": 950,
+            "stock": 20
+          },
+          "B0819WJQFX": {
+            "price_cents": 1237,
+            "stock": 21
+          },
+          "B08HQM29RB": {
+            "price_cents": 1079,
+            "stock": 32
+          },
+          "B08HQTFYDR": {
+            "price_cents": 497,
+            "stock": 15
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-0d1624fe-03_cambio_cantidad-c1",
+        "state": {
+          "budget_cents": 4500,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07VQNY8PK",
+              "title": "Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío de Doble Pared, Botellas de Frío/Caliente, con 1 un Cepillo de Limpieza, para Niños, Deporte, Oficina, Gimnasio, Ciclismo, Negro",
+              "brand": "Newdora",
+              "price_cents": 950,
+              "stock": 20
+            },
+            {
+              "product_id": "B0819WJQFX",
+              "title": "KOSAD Copa Juego De Tronos Tazas Dragón Fuego Y Sangre Acero Inoxidable Resina Cerveza Tankard Taza De Vino Tazas Fan Navidad",
+              "brand": "KOSAD",
+              "price_cents": 1237,
+              "stock": 21
+            },
+            {
+              "product_id": "B07TP2BG7B",
+              "title": "KOUAJ Botella de Agua Taza De Acero Inoxidable Vaso Delgado Vacío Vacío Tazas Rectas Tazas De Café De Cerveza Taza con Pajas Tapa 600ml Plata",
+              "brand": "KOUAJ",
+              "price_cents": 1829,
+              "stock": 21
+            },
+            {
+              "product_id": "B08HQTFYDR",
+              "title": "Ion8 Niños Botella Agua, Sin Fugas, Tren de Animales, 400ml",
+              "brand": "ion8",
+              "price_cents": 497,
+              "stock": 15
+            },
+            {
+              "product_id": "B08HQM29RB",
+              "title": "Ion8 Niños Botella Agua, Sin Fugas, Espacio, 400ml",
+              "brand": "ion8",
+              "price_cents": 1079,
+              "stock": 32
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-0d1624fe-03_cambio_cantidad-c1",
+              "product_id": "B07VQNY8PK",
+              "quantity": 2
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B07VQNY8PK",
+              "initial_stock": 46,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B07TP2BG7B": {
+            "price_cents": 1829,
+            "stock": 21
+          },
+          "B07VQNY8PK": {
+            "price_cents": 950,
+            "stock": 20
+          },
+          "B0819WJQFX": {
+            "price_cents": 1237,
+            "stock": 21
+          },
+          "B08HQM29RB": {
+            "price_cents": 1079,
+            "stock": 32
+          },
+          "B08HQTFYDR": {
+            "price_cents": 497,
+            "stock": 15
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "lines": [
+              {
+                "product": "@elegida",
+                "quantity": 2
+              }
+            ]
+          },
+          "ok": true,
+          "detail": "carrito: 2 × B07VQNY8PK"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 3,
+      "input_audio": "entrada_03.wav",
+      "input_seconds": 2.75,
+      "transcript": "Mejor que sean cuatro.",
+      "expected_text": "Mejor que sean cuatro.",
+      "agent_input": "Mejor que sean cuatro.",
+      "response": "Hecho, el total es 38,00 €. En el carrito hay 4 unidades de «Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío…» a 9,50 € cada una, 38,00 €. Total: 38,00 €. Tu presupuesto es de 45,00 € y te quedan 7,00 €.",
+      "spoken_text": "Hecho, el total es treinta y ocho euros. En el carrito hay cuatro unidades de Newdora Botella de Agua Acero Inoxidable quinientos mililitros a nueve euros con cincuenta céntimos cada una, treinta y ocho euros. Total: treinta y ocho euros. Tu presupuesto es de cuarenta y cinco euros y te quedan siete euros.",
+      "output_audio": "respuesta_03.wav",
+      "output_seconds": 27.977333333333334,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "cambiar_cantidad",
+          "args": {
+            "product_id": "B07VQNY8PK",
+            "cantidad": 4
+          },
+          "reason": "cambiar la cantidad del producto en el carrito",
+          "ok": true,
+          "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B07VQNY8PK | Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío… | 4 unidades × 9,50 € = 38,00 € | existencias: 20\nTotal del carrito: 38,00 €",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.353,
+        "retrieval": 0.0,
+        "llm": 8.1,
+        "tools": 0.049,
+        "tts": 15.676,
+        "total": 24.177
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": 2.47,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-0d1624fe-03_cambio_cantidad-c1",
+        "state": {
+          "budget_cents": 4500,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07VQNY8PK",
+              "title": "Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío de Doble Pared, Botellas de Frío/Caliente, con 1 un Cepillo de Limpieza, para Niños, Deporte, Oficina, Gimnasio, Ciclismo, Negro",
+              "brand": "Newdora",
+              "price_cents": 950,
+              "stock": 20
+            },
+            {
+              "product_id": "B0819WJQFX",
+              "title": "KOSAD Copa Juego De Tronos Tazas Dragón Fuego Y Sangre Acero Inoxidable Resina Cerveza Tankard Taza De Vino Tazas Fan Navidad",
+              "brand": "KOSAD",
+              "price_cents": 1237,
+              "stock": 21
+            },
+            {
+              "product_id": "B07TP2BG7B",
+              "title": "KOUAJ Botella de Agua Taza De Acero Inoxidable Vaso Delgado Vacío Vacío Tazas Rectas Tazas De Café De Cerveza Taza con Pajas Tapa 600ml Plata",
+              "brand": "KOUAJ",
+              "price_cents": 1829,
+              "stock": 21
+            },
+            {
+              "product_id": "B08HQTFYDR",
+              "title": "Ion8 Niños Botella Agua, Sin Fugas, Tren de Animales, 400ml",
+              "brand": "ion8",
+              "price_cents": 497,
+              "stock": 15
+            },
+            {
+              "product_id": "B08HQM29RB",
+              "title": "Ion8 Niños Botella Agua, Sin Fugas, Espacio, 400ml",
+              "brand": "ion8",
+              "price_cents": 1079,
+              "stock": 32
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-0d1624fe-03_cambio_cantidad-c1",
+              "product_id": "B07VQNY8PK",
+              "quantity": 2
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B07VQNY8PK",
+              "initial_stock": 46,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B07TP2BG7B": {
+            "price_cents": 1829,
+            "stock": 21
+          },
+          "B07VQNY8PK": {
+            "price_cents": 950,
+            "stock": 20
+          },
+          "B0819WJQFX": {
+            "price_cents": 1237,
+            "stock": 21
+          },
+          "B08HQM29RB": {
+            "price_cents": 1079,
+            "stock": 32
+          },
+          "B08HQTFYDR": {
+            "price_cents": 497,
+            "stock": 15
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-0d1624fe-03_cambio_cantidad-c1",
+        "state": {
+          "budget_cents": 4500,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07VQNY8PK",
+              "title": "Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío de Doble Pared, Botellas de Frío/Caliente, con 1 un Cepillo de Limpieza, para Niños, Deporte, Oficina, Gimnasio, Ciclismo, Negro",
+              "brand": "Newdora",
+              "price_cents": 950,
+              "stock": 20
+            },
+            {
+              "product_id": "B0819WJQFX",
+              "title": "KOSAD Copa Juego De Tronos Tazas Dragón Fuego Y Sangre Acero Inoxidable Resina Cerveza Tankard Taza De Vino Tazas Fan Navidad",
+              "brand": "KOSAD",
+              "price_cents": 1237,
+              "stock": 21
+            },
+            {
+              "product_id": "B07TP2BG7B",
+              "title": "KOUAJ Botella de Agua Taza De Acero Inoxidable Vaso Delgado Vacío Vacío Tazas Rectas Tazas De Café De Cerveza Taza con Pajas Tapa 600ml Plata",
+              "brand": "KOUAJ",
+              "price_cents": 1829,
+              "stock": 21
+            },
+            {
+              "product_id": "B08HQTFYDR",
+              "title": "Ion8 Niños Botella Agua, Sin Fugas, Tren de Animales, 400ml",
+              "brand": "ion8",
+              "price_cents": 497,
+              "stock": 15
+            },
+            {
+              "product_id": "B08HQM29RB",
+              "title": "Ion8 Niños Botella Agua, Sin Fugas, Espacio, 400ml",
+              "brand": "ion8",
+              "price_cents": 1079,
+              "stock": 32
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-0d1624fe-03_cambio_cantidad-c1",
+              "product_id": "B07VQNY8PK",
+              "quantity": 4
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B07VQNY8PK",
+              "initial_stock": 46,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B07TP2BG7B": {
+            "price_cents": 1829,
+            "stock": 21
+          },
+          "B07VQNY8PK": {
+            "price_cents": 950,
+            "stock": 20
+          },
+          "B0819WJQFX": {
+            "price_cents": 1237,
+            "stock": 21
+          },
+          "B08HQM29RB": {
+            "price_cents": 1079,
+            "stock": 32
+          },
+          "B08HQTFYDR": {
+            "price_cents": 497,
+            "stock": 15
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "lines": [
+              {
+                "product": "@elegida",
+                "quantity": 4
+              }
+            ]
+          },
+          "ok": true,
+          "detail": "carrito: 4 × B07VQNY8PK"
+        },
+        {
+          "check": "budget",
+          "params": {
+            "cents": 4500
+          },
+          "ok": true,
+          "detail": "presupuesto en el estado: 4500"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 4,
+      "input_audio": "entrada_04.wav",
+      "input_seconds": 2.06,
+      "transcript": "Cierralo.",
+      "expected_text": "Ciérralo.",
+      "agent_input": "Cierralo.",
+      "response": "Te repito el pedido antes de registrarlo: 4 unidades de «Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío…» a 9,50 € cada una, 38,00 €. Total: 38,00 €. Tu presupuesto es de 45,00 € y te quedan 7,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "spoken_text": "Te repito el pedido antes de registrarlo: cuatro unidades de Newdora Botella de Agua Acero Inoxidable quinientos mililitros a nueve euros con cincuenta céntimos cada una, treinta y ocho euros. Total: treinta y ocho euros. Tu presupuesto es de cuarenta y cinco euros y te quedan siete euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "output_audio": "respuesta_04.wav",
+      "output_seconds": 29.967333333333332,
+      "awaiting_confirmation": true,
+      "operations": [
+        {
+          "tool": "cotizar",
+          "args": {},
+          "reason": "cotizar el carrito",
+          "ok": true,
+          "summary": "cotización creada; falta la confirmación del usuario.",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.345,
+        "retrieval": 0.0,
+        "llm": 2.939,
+        "tools": 0.034,
+        "tts": 17.413,
+        "total": 20.731
+      },
+      "llm_steps": 1,
+      "tts_first_chunk_seconds": 7.87,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-0d1624fe-03_cambio_cantidad-c1",
+        "state": {
+          "budget_cents": 4500,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07VQNY8PK",
+              "title": "Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío de Doble Pared, Botellas de Frío/Caliente, con 1 un Cepillo de Limpieza, para Niños, Deporte, Oficina, Gimnasio, Ciclismo, Negro",
+              "brand": "Newdora",
+              "price_cents": 950,
+              "stock": 20
+            },
+            {
+              "product_id": "B0819WJQFX",
+              "title": "KOSAD Copa Juego De Tronos Tazas Dragón Fuego Y Sangre Acero Inoxidable Resina Cerveza Tankard Taza De Vino Tazas Fan Navidad",
+              "brand": "KOSAD",
+              "price_cents": 1237,
+              "stock": 21
+            },
+            {
+              "product_id": "B07TP2BG7B",
+              "title": "KOUAJ Botella de Agua Taza De Acero Inoxidable Vaso Delgado Vacío Vacío Tazas Rectas Tazas De Café De Cerveza Taza con Pajas Tapa 600ml Plata",
+              "brand": "KOUAJ",
+              "price_cents": 1829,
+              "stock": 21
+            },
+            {
+              "product_id": "B08HQTFYDR",
+              "title": "Ion8 Niños Botella Agua, Sin Fugas, Tren de Animales, 400ml",
+              "brand": "ion8",
+              "price_cents": 497,
+              "stock": 15
+            },
+            {
+              "product_id": "B08HQM29RB",
+              "title": "Ion8 Niños Botella Agua, Sin Fugas, Espacio, 400ml",
+              "brand": "ion8",
+              "price_cents": 1079,
+              "stock": 32
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-0d1624fe-03_cambio_cantidad-c1",
+              "product_id": "B07VQNY8PK",
+              "quantity": 4
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B07VQNY8PK",
+              "initial_stock": 46,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B07TP2BG7B": {
+            "price_cents": 1829,
+            "stock": 21
+          },
+          "B07VQNY8PK": {
+            "price_cents": 950,
+            "stock": 20
+          },
+          "B0819WJQFX": {
+            "price_cents": 1237,
+            "stock": 21
+          },
+          "B08HQM29RB": {
+            "price_cents": 1079,
+            "stock": 32
+          },
+          "B08HQTFYDR": {
+            "price_cents": 497,
+            "stock": 15
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-0d1624fe-03_cambio_cantidad-c1",
+        "state": {
+          "budget_cents": 4500,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": {
+            "quote_id": "ddbb7f4c2dd042b38f1564150c35982b",
+            "items": [
+              {
+                "product_id": "B07VQNY8PK",
+                "title": "Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío de Doble Pared, Botellas de Frío/Caliente, con 1 un Cepillo de Limpieza, para Niños, Deporte, Oficina, Gimnasio, Ciclismo, Negro",
+                "quantity": 4,
+                "unit_price_cents": 950,
+                "subtotal_cents": 3800,
+                "stock": 20
+              }
+            ],
+            "total_cents": 3800,
+            "budget_cents": 4500,
+            "message": "Te repito el pedido antes de registrarlo: 4 unidades de «Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío…» a 9,50 € cada una, 38,00 €. Total: 38,00 €. Tu presupuesto es de 45,00 € y te quedan 7,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+          },
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07VQNY8PK",
+              "title": "Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío de Doble Pared, Botellas de Frío/Caliente, con 1 un Cepillo de Limpieza, para Niños, Deporte, Oficina, Gimnasio, Ciclismo, Negro",
+              "brand": "Newdora",
+              "price_cents": 950,
+              "stock": 20
+            },
+            {
+              "product_id": "B0819WJQFX",
+              "title": "KOSAD Copa Juego De Tronos Tazas Dragón Fuego Y Sangre Acero Inoxidable Resina Cerveza Tankard Taza De Vino Tazas Fan Navidad",
+              "brand": "KOSAD",
+              "price_cents": 1237,
+              "stock": 21
+            },
+            {
+              "product_id": "B07TP2BG7B",
+              "title": "KOUAJ Botella de Agua Taza De Acero Inoxidable Vaso Delgado Vacío Vacío Tazas Rectas Tazas De Café De Cerveza Taza con Pajas Tapa 600ml Plata",
+              "brand": "KOUAJ",
+              "price_cents": 1829,
+              "stock": 21
+            },
+            {
+              "product_id": "B08HQTFYDR",
+              "title": "Ion8 Niños Botella Agua, Sin Fugas, Tren de Animales, 400ml",
+              "brand": "ion8",
+              "price_cents": 497,
+              "stock": 15
+            },
+            {
+              "product_id": "B08HQM29RB",
+              "title": "Ion8 Niños Botella Agua, Sin Fugas, Espacio, 400ml",
+              "brand": "ion8",
+              "price_cents": 1079,
+              "stock": 32
+            }
+          ],
+          "awaiting_confirmation": true
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-0d1624fe-03_cambio_cantidad-c1",
+              "product_id": "B07VQNY8PK",
+              "quantity": 4
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B07VQNY8PK",
+              "initial_stock": 46,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B07TP2BG7B": {
+            "price_cents": 1829,
+            "stock": 21
+          },
+          "B07VQNY8PK": {
+            "price_cents": 950,
+            "stock": 20
+          },
+          "B0819WJQFX": {
+            "price_cents": 1237,
+            "stock": 21
+          },
+          "B08HQM29RB": {
+            "price_cents": 1079,
+            "stock": 32
+          },
+          "B08HQTFYDR": {
+            "price_cents": 497,
+            "stock": 15
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "awaiting_confirmation",
+          "params": {
+            "value": true
+          },
+          "ok": true,
+          "detail": "esperando confirmación: sí"
+        },
+        {
+          "check": "orders",
+          "params": {
+            "count": 0
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 0"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 5,
+      "input_audio": "entrada_05.wav",
+      "input_seconds": 1.98,
+      "transcript": "Sí.",
+      "expected_text": "Sí.",
+      "agent_input": "Sí.",
+      "response": "Pedido número 1 registrado: 4 unidades de «Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío…» a 9,50 € cada una, 38,00 €. Total: 38,00 €. Gracias por tu compra.",
+      "spoken_text": "Pedido número uno registrado: cuatro unidades de Newdora Botella de Agua Acero Inoxidable quinientos mililitros a nueve euros con cincuenta céntimos cada una, treinta y ocho euros. Total: treinta y ocho euros. Gracias por tu compra.",
+      "output_audio": "respuesta_05.wav",
+      "output_seconds": 18.682,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "confirmar_pedido",
+          "args": {
+            "quote_id": "ddbb7f4c2dd042b38f1564150c35982b"
+          },
+          "reason": "el usuario confirmó la cotización",
+          "ok": true,
+          "summary": "pedido registrado",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.358,
+        "retrieval": 0.0,
+        "llm": 0.0,
+        "tools": 0.039,
+        "tts": 10.698,
+        "total": 11.094
+      },
+      "llm_steps": 0,
+      "tts_first_chunk_seconds": 8.251,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-0d1624fe-03_cambio_cantidad-c1",
+        "state": {
+          "budget_cents": 4500,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": {
+            "quote_id": "ddbb7f4c2dd042b38f1564150c35982b",
+            "items": [
+              {
+                "product_id": "B07VQNY8PK",
+                "title": "Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío de Doble Pared, Botellas de Frío/Caliente, con 1 un Cepillo de Limpieza, para Niños, Deporte, Oficina, Gimnasio, Ciclismo, Negro",
+                "quantity": 4,
+                "unit_price_cents": 950,
+                "subtotal_cents": 3800,
+                "stock": 20
+              }
+            ],
+            "total_cents": 3800,
+            "budget_cents": 4500,
+            "message": "Te repito el pedido antes de registrarlo: 4 unidades de «Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío…» a 9,50 € cada una, 38,00 €. Total: 38,00 €. Tu presupuesto es de 45,00 € y te quedan 7,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+          },
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07VQNY8PK",
+              "title": "Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío de Doble Pared, Botellas de Frío/Caliente, con 1 un Cepillo de Limpieza, para Niños, Deporte, Oficina, Gimnasio, Ciclismo, Negro",
+              "brand": "Newdora",
+              "price_cents": 950,
+              "stock": 20
+            },
+            {
+              "product_id": "B0819WJQFX",
+              "title": "KOSAD Copa Juego De Tronos Tazas Dragón Fuego Y Sangre Acero Inoxidable Resina Cerveza Tankard Taza De Vino Tazas Fan Navidad",
+              "brand": "KOSAD",
+              "price_cents": 1237,
+              "stock": 21
+            },
+            {
+              "product_id": "B07TP2BG7B",
+              "title": "KOUAJ Botella de Agua Taza De Acero Inoxidable Vaso Delgado Vacío Vacío Tazas Rectas Tazas De Café De Cerveza Taza con Pajas Tapa 600ml Plata",
+              "brand": "KOUAJ",
+              "price_cents": 1829,
+              "stock": 21
+            },
+            {
+              "product_id": "B08HQTFYDR",
+              "title": "Ion8 Niños Botella Agua, Sin Fugas, Tren de Animales, 400ml",
+              "brand": "ion8",
+              "price_cents": 497,
+              "stock": 15
+            },
+            {
+              "product_id": "B08HQM29RB",
+              "title": "Ion8 Niños Botella Agua, Sin Fugas, Espacio, 400ml",
+              "brand": "ion8",
+              "price_cents": 1079,
+              "stock": 32
+            }
+          ],
+          "awaiting_confirmation": true
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-0d1624fe-03_cambio_cantidad-c1",
+              "product_id": "B07VQNY8PK",
+              "quantity": 4
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B07VQNY8PK",
+              "initial_stock": 46,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B07TP2BG7B": {
+            "price_cents": 1829,
+            "stock": 21
+          },
+          "B07VQNY8PK": {
+            "price_cents": 950,
+            "stock": 20
+          },
+          "B0819WJQFX": {
+            "price_cents": 1237,
+            "stock": 21
+          },
+          "B08HQM29RB": {
+            "price_cents": 1079,
+            "stock": 32
+          },
+          "B08HQTFYDR": {
+            "price_cents": 497,
+            "stock": 15
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-0d1624fe-03_cambio_cantidad-c1",
+        "state": {
+          "budget_cents": 4500,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": {
+            "order_id": 1,
+            "quote_id": "ddbb7f4c2dd042b38f1564150c35982b",
+            "items": [
+              {
+                "product_id": "B07VQNY8PK",
+                "title": "Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío de Doble Pared, Botellas de Frío/Caliente, con 1 un Cepillo de Limpieza, para Niños, Deporte, Oficina, Gimnasio, Ciclismo, Negro",
+                "quantity": 4,
+                "unit_price_cents": 950,
+                "subtotal_cents": 3800
+              }
+            ],
+            "total_cents": 3800,
+            "message": "Pedido número 1 registrado: 4 unidades de «Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío…» a 9,50 € cada una, 38,00 €. Total: 38,00 €. Gracias por tu compra."
+          },
+          "candidates": [
+            {
+              "product_id": "B07VQNY8PK",
+              "title": "Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío de Doble Pared, Botellas de Frío/Caliente, con 1 un Cepillo de Limpieza, para Niños, Deporte, Oficina, Gimnasio, Ciclismo, Negro",
+              "brand": "Newdora",
+              "price_cents": 950,
+              "stock": 20
+            },
+            {
+              "product_id": "B0819WJQFX",
+              "title": "KOSAD Copa Juego De Tronos Tazas Dragón Fuego Y Sangre Acero Inoxidable Resina Cerveza Tankard Taza De Vino Tazas Fan Navidad",
+              "brand": "KOSAD",
+              "price_cents": 1237,
+              "stock": 21
+            },
+            {
+              "product_id": "B07TP2BG7B",
+              "title": "KOUAJ Botella de Agua Taza De Acero Inoxidable Vaso Delgado Vacío Vacío Tazas Rectas Tazas De Café De Cerveza Taza con Pajas Tapa 600ml Plata",
+              "brand": "KOUAJ",
+              "price_cents": 1829,
+              "stock": 21
+            },
+            {
+              "product_id": "B08HQTFYDR",
+              "title": "Ion8 Niños Botella Agua, Sin Fugas, Tren de Animales, 400ml",
+              "brand": "ion8",
+              "price_cents": 497,
+              "stock": 15
+            },
+            {
+              "product_id": "B08HQM29RB",
+              "title": "Ion8 Niños Botella Agua, Sin Fugas, Espacio, 400ml",
+              "brand": "ion8",
+              "price_cents": 1079,
+              "stock": 32
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [
+            {
+              "order_id": 1,
+              "quote_id": "ddbb7f4c2dd042b38f1564150c35982b",
+              "total_cents": 3800
+            }
+          ],
+          "order_items": [
+            {
+              "order_id": 1,
+              "product_id": "B07VQNY8PK",
+              "quantity": 4,
+              "unit_price_cents": 950
+            }
+          ],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B07VQNY8PK",
+              "initial_stock": 46,
+              "stock": 16
+            }
+          ]
+        },
+        "offers": {
+          "B07TP2BG7B": {
+            "price_cents": 1829,
+            "stock": 21
+          },
+          "B07VQNY8PK": {
+            "price_cents": 950,
+            "stock": 16
+          },
+          "B0819WJQFX": {
+            "price_cents": 1237,
+            "stock": 21
+          },
+          "B08HQM29RB": {
+            "price_cents": 1079,
+            "stock": 32
+          },
+          "B08HQTFYDR": {
+            "price_cents": 497,
+            "stock": 15
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "orders",
+          "params": {
+            "count": 1
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 1"
+        }
+      ]
+    }
+  ],
+  "final": {
+    "snapshot": {
+      "cart_id": "eval-0d1624fe-03_cambio_cantidad-c1",
+      "state": {
+        "budget_cents": 4500,
+        "preferences": [],
+        "pending_clarification": null,
+        "quote": null,
+        "order": {
+          "order_id": 1,
+          "quote_id": "ddbb7f4c2dd042b38f1564150c35982b",
+          "items": [
+            {
+              "product_id": "B07VQNY8PK",
+              "title": "Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío de Doble Pared, Botellas de Frío/Caliente, con 1 un Cepillo de Limpieza, para Niños, Deporte, Oficina, Gimnasio, Ciclismo, Negro",
+              "quantity": 4,
+              "unit_price_cents": 950,
+              "subtotal_cents": 3800
+            }
+          ],
+          "total_cents": 3800,
+          "message": "Pedido número 1 registrado: 4 unidades de «Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío…» a 9,50 € cada una, 38,00 €. Total: 38,00 €. Gracias por tu compra."
+        },
+        "candidates": [
+          {
+            "product_id": "B07VQNY8PK",
+            "title": "Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío de Doble Pared, Botellas de Frío/Caliente, con 1 un Cepillo de Limpieza, para Niños, Deporte, Oficina, Gimnasio, Ciclismo, Negro",
+            "brand": "Newdora",
+            "price_cents": 950,
+            "stock": 20
+          },
+          {
+            "product_id": "B0819WJQFX",
+            "title": "KOSAD Copa Juego De Tronos Tazas Dragón Fuego Y Sangre Acero Inoxidable Resina Cerveza Tankard Taza De Vino Tazas Fan Navidad",
+            "brand": "KOSAD",
+            "price_cents": 1237,
+            "stock": 21
+          },
+          {
+            "product_id": "B07TP2BG7B",
+            "title": "KOUAJ Botella de Agua Taza De Acero Inoxidable Vaso Delgado Vacío Vacío Tazas Rectas Tazas De Café De Cerveza Taza con Pajas Tapa 600ml Plata",
+            "brand": "KOUAJ",
+            "price_cents": 1829,
+            "stock": 21
+          },
+          {
+            "product_id": "B08HQTFYDR",
+            "title": "Ion8 Niños Botella Agua, Sin Fugas, Tren de Animales, 400ml",
+            "brand": "ion8",
+            "price_cents": 497,
+            "stock": 15
+          },
+          {
+            "product_id": "B08HQM29RB",
+            "title": "Ion8 Niños Botella Agua, Sin Fugas, Espacio, 400ml",
+            "brand": "ion8",
+            "price_cents": 1079,
+            "stock": 32
+          }
+        ],
+        "awaiting_confirmation": false
+      },
+      "store": {
+        "orders": [
+          {
+            "order_id": 1,
+            "quote_id": "ddbb7f4c2dd042b38f1564150c35982b",
+            "total_cents": 3800
+          }
+        ],
+        "order_items": [
+          {
+            "order_id": 1,
+            "product_id": "B07VQNY8PK",
+            "quantity": 4,
+            "unit_price_cents": 950
+          }
+        ],
+        "cart_items": [],
+        "inventory_changes": [
+          {
+            "product_id": "B07VQNY8PK",
+            "initial_stock": 46,
+            "stock": 16
+          }
+        ]
+      },
+      "offers": {
+        "B07TP2BG7B": {
+          "price_cents": 1829,
+          "stock": 21
+        },
+        "B07VQNY8PK": {
+          "price_cents": 950,
+          "stock": 16
+        },
+        "B0819WJQFX": {
+          "price_cents": 1237,
+          "stock": 21
+        },
+        "B08HQM29RB": {
+          "price_cents": 1079,
+          "stock": 32
+        },
+        "B08HQTFYDR": {
+          "price_cents": 497,
+          "stock": 15
+        }
+      }
+    },
+    "checks": [
+      {
+        "check": "orders",
+        "params": {
+          "count": 1
+        },
+        "ok": true,
+        "detail": "pedidos registrados: 1"
+      },
+      {
+        "check": "order",
+        "params": {
+          "lines": [
+            {
+              "product": "@elegida",
+              "quantity": 4
+            }
+          ],
+          "total_cents": 3800
+        },
+        "ok": true,
+        "detail": "pedido 1: 4 × B07VQNY8PK; total 3800 céntimos"
+      },
+      {
+        "check": "stock",
+        "params": {
+          "product": "@elegida",
+          "equals": 16
+        },
+        "ok": true,
+        "detail": "existencias de B07VQNY8PK: 16"
+      },
+      {
+        "check": "cart",
+        "params": {
+          "empty": true
+        },
+        "ok": true,
+        "detail": "carrito: vacío"
+      },
+      {
+        "check": "budget",
+        "params": {
+          "cents": 4500
+        },
+        "ok": true,
+        "detail": "presupuesto en el estado: 4500"
+      }
+    ]
+  },
+  "violations": [],
+  "problems": [],
+  "passed": true,
+  "timings": {
+    "all": {
+      "turns": 5,
+      "asr": {
+        "mean": 0.38,
+        "max": 0.48
+      },
+      "retrieval": {
+        "mean": 0.01,
+        "max": 0.07
+      },
+      "llm": {
+        "mean": 6.19,
+        "max": 12.47
+      },
+      "tools": {
+        "mean": 0.04,
+        "max": 0.05
+      },
+      "tts": {
+        "mean": 14.71,
+        "max": 17.41
+      },
+      "total": {
+        "mean": 21.33,
+        "max": 26.2
+      }
+    },
+    "with_llm": {
+      "turns": 4,
+      "asr": {
+        "mean": 0.39,
+        "max": 0.48
+      },
+      "retrieval": {
+        "mean": 0.02,
+        "max": 0.07
+      },
+      "llm": {
+        "mean": 7.74,
+        "max": 12.47
+      },
+      "tools": {
+        "mean": 0.04,
+        "max": 0.05
+      },
+      "tts": {
+        "mean": 15.71,
+        "max": 17.41
+      },
+      "total": {
+        "mean": 23.89,
+        "max": 26.2
+      }
+    },
+    "without_llm": {
+      "turns": 1,
+      "asr": {
+        "mean": 0.36,
+        "max": 0.36
+      },
+      "retrieval": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "llm": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "tools": {
+        "mean": 0.04,
+        "max": 0.04
+      },
+      "tts": {
+        "mean": 10.7,
+        "max": 10.7
+      },
+      "total": {
+        "mean": 11.09,
+        "max": 11.09
+      }
+    }
+  }
+}

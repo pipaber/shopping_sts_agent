@@ -450,7 +450,7 @@ GraphSAGE supera al control sin grafo en +0,0071 (IC 95 % [+0,0028; +0,0117]). L
 - **Voz propia.** Las grabaciones se suben a la sesión y se borran al cerrarla; no entran en el repositorio. Sin ellas, el agente habla con un hablante de prueba de XTTS-v2 y los escenarios usan audios sintéticos.
 - **Conversación en vivo.** Una celda arranca `shopping_agent.voice.live` en segundo plano y otra graba un turno con el micrófono, lo envía y reproduce la respuesta. No es tiempo real: es una conversación por turnos.
 
-**Corrida final** (12 de noviembre de 2026, commit `d81bc00`; T4 con 2 CPU, Ubuntu 24.04, CUDA 13.0), con la voz del autor clonada de la referencia nueva a velocidad 1,10 y sus 31 grabaciones. Las cifras de Colab se leyeron en la sesión del notebook, que es temporal: sus archivos no están en el repositorio, y `results/` guarda las corridas de la workstation, que son las de la otra columna.
+**Corrida final** (12 de noviembre de 2026, commit `d81bc00`; T4 con 2 CPU, Ubuntu 24.04, CUDA 13.0), con la voz del autor clonada de la referencia nueva a velocidad 1,10 y sus 31 grabaciones. Los archivos de esa corrida están en [results/colab_t4/](results/colab_t4/LEEME.md), descargados de la sesión de Colab; el resto de `results/` guarda las corridas de la workstation, que son las de la otra columna.
 
 | Medida | Workstation (RTX A2000, 12 GB) | Colab (T4, 2 CPU) |
 |---|---|---|

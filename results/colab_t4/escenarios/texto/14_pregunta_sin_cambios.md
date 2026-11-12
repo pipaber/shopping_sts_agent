@@ -1,0 +1,66 @@
+# 14_pregunta_sin_cambios — Una pregunta no cambia el carrito
+
+- Veredicto: **correcto**
+- Entrada: texto
+- Tipo: `pregunta_sin_cambios`
+- Qué se prueba: El usuario pregunta por disponibilidad y por precio sin pedir nada. El carrito debe seguir vacío y la respuesta sobre el precio debe dar el de la tienda.
+
+## Turno 1 (10.1 s)
+
+**Usuario (texto):** Busco una funda para móvil.
+
+- `buscar_productos(consulta="funda móvil")` → OK: estos son ahora los CANDIDATOS, del más al menos relevante: [1] id=B091HXTM73 | KEELYY Funda Impermeable Móvil IPX8 Universal 4 Unidades, Bolsa para Móvil Estanca a Prueba de Agua para iPhone 12 11 XR X 8 7 Galaxy Note 20 S20 Xiaomi Huawei Mate40 Pro hasta 6.7'' | marca: KEELYY | color: 4Colors | pr…
+
+**Agente:** Tengo la funda KEELYY por 18,23 euros, la MOBESV por 17,62 euros, la Cocoda por 21,73 euros y la kwmobile por 81,81 euros. ¿Te interesa alguna?
+
+**Enviado al TTS:** Tengo la funda KEELYY por dieciocho euros con veintitrés céntimos, la MOBESV por diecisiete euros con sesenta y dos céntimos, la Cocoda por veintiún euros con setenta y tres céntimos y la kwmobile por ochenta y un euros con ochenta y un céntimos. ¿Te interesa alguna?
+
+- ✔ `cart(empty=true)` — carrito: vacío
+
+> `@primera` = `B091HXTM73` (candidate:1): KEELYY Funda Impermeable Móvil IPX8 Universal 4 Unidades, Bolsa para Móvil Estanca a Prueba de Agua para iPhone 12 11 XR X 8 7 Galaxy Note 20 S20 Xiaomi Huawei Mate40 Pro hasta 6.7''
+
+## Turno 2 (7.0 s)
+
+**Usuario (texto):** ¿La segunda está disponible?
+
+- `consultar_precio_stock(product_id="B08H2DTJZK")` → OK: precio 17,62 €; quedan 32 unidades. Esta herramienta no da características: para color, batería, medidas u otros datos del producto usa detalle_producto.
+
+**Agente:** Sí, la funda MOBESV está disponible. Quedan 32 unidades.
+
+**Enviado al TTS:** Sí, la funda MOBESV está disponible. Quedan treinta y dos unidades.
+
+- ✔ `cart(empty=true)` — carrito: vacío
+
+## Turno 3 (5.2 s)
+
+**Usuario (texto):** ¿Cuánto cuesta la primera?
+
+**Agente:** La funda KEELYY cuesta 18,23 euros.
+
+**Enviado al TTS:** La funda KEELYY cuesta dieciocho euros con veintitrés céntimos.
+
+- ✔ `cart(empty=true)` — carrito: vacío
+- ✔ `mentions_price(product="@primera")` — precio en la tienda: 18.23 €
+
+## Comprobaciones finales
+
+- ✔ `orders(count=0)` — pedidos registrados: 0
+- ✔ `cart(empty=true)` — carrito: vacío
+
+## Violaciones de restricciones
+
+- Ninguna.
+
+## Estado final de la tienda
+
+- Líneas de carrito pendientes: 0
+
+## Latencia por turno (segundos)
+
+| Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
+|---|---|---|---|---|---|---|---|
+| 1 | 0.00 | 0.06 | 10.03 | 0.02 | 0.00 | 10.12 | 0.0 s |
+| 2 | 0.00 | 0.00 | 6.95 | 0.04 | 0.00 | 6.99 | 0.0 s |
+| 3 | 0.00 | 0.00 | 5.16 | 0.03 | 0.00 | 5.19 | 0.0 s |
+| **Media de los turnos con LLM (3)** | 0.00 | 0.02 | 7.38 | 0.03 | 0.00 | 7.43 | |
+

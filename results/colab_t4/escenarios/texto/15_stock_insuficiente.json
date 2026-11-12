@@ -1,0 +1,815 @@
+{
+  "id": "15_stock_insuficiente",
+  "title": "Stock insuficiente al añadir",
+  "kind": "stock_insuficiente",
+  "description": "Del primer candidato quedan tres unidades y el usuario pide cinco: el carrito no debe cambiar. Después pide las tres que quedan.",
+  "voice": false,
+  "input": "texto",
+  "audio_source": null,
+  "user_id": "eval-2258b5f4-15_stock_insuficiente",
+  "threads": [
+    "eval-2258b5f4-15_stock_insuficiente-c1"
+  ],
+  "names": {
+    "elegida": "B096M7FCYF"
+  },
+  "steps": [
+    {
+      "kind": "turn",
+      "turn": 1,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Busco una linterna LED.",
+      "agent_input": "Busco una linterna LED.",
+      "response": "Tengo la linterna LED recargable de HCTAW por 22,83 €, la linterna LED profesional de GS1 por 9,84 €, la linterna de mano de Lumpur por 34,33 €, la linterna mini portátil de Simpeak por 21,12 € y la linterna LED iTimo por 15,73 €. ¿Te interesa alguna?",
+      "spoken_text": "Tengo la linterna LED recargable de HCTAW por veintidós euros con ochenta y tres céntimos, la linterna LED profesional de GS1 por nueve euros con ochenta y cuatro céntimos, la linterna de mano de Lumpur por treinta y cuatro euros con treinta y tres céntimos, la linterna mini portátil de Simpeak por veintiún euros con doce céntimos y la linterna LED iTimo por quince euros con setenta y tres céntimos. ¿Te interesa alguna?",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "buscar_productos",
+          "args": {
+            "consulta": "linterna LED"
+          },
+          "reason": "buscar la linterna LED",
+          "ok": true,
+          "summary": "estos son ahora los CANDIDATOS, del más al menos relevante:\n[1] id=B096M7FCYF | Linterna led recargable, 4 modos de luz, carga solar, IPX4 resistente al agua, apto para luces de emergencia domésticas, luces de camping al aire libre, luces de trabajo | marca: hctaw | color: desconocido | precio: 22,83 € | existencias: 24 | características (extracto): [Linternas led de alta potencia] Linterna led, pulsador de interruptor de una tecla, dispone de cuatro modos de iluminación: luz fuerte, luz tenue, flash (SOS) y luz lateral. Esta función puede satisfacer la mayoría de sus necesidades… | descripción: Linterna portátil led recargable, cuatro modos de iluminación, carga solar, rendimiento a prueba de agua IPX4, se puede utilizar como luz de emergencia familiar, luz para acampar al aire libre, luz…\n[2] id=B07WVDZ4DY | Linterna de bolsillo con funda y batería incluidas, profesional, LED Lenser P4, 25 lúmenes, médico, enfermeras, vigilancia policial, art. 8404 | marca: GS1 | color: desconocido | precio: 9,84 € | existencias: 2 | características (extracto): Original LED Lenser Profesional. Batería y funda incluidas. 25 lúmenes. | descripción: Linterna de bolsillo funda y batería incluidas profesional LED Lenser P4 25 lúmenes médico enfermera vigilancia policía Art. 8404 La linterna LED LENSER P4 AFS es una interesante linterna LED con…\n[3] id=B07T62JYN5 | Linterna de mano con dinamo, funciona sin batería, 3 ledes, linterna de emergencia recargable, para deportes al aire libre, camping, rojo | marca: Lumpur | color: Rosso | precio: 34,33 € | existencias: 36 | características (extracto): No hay necesidad de pilas o electricidad. Distancia visible de hasta 20 metros, luz blanca superbrillante. Viene con correa de mano para fácil transporte. Linterna LED de tecnología avanzada de nivel de emisores de LED de 3 tubos de… | descripción: Manivela de mano sin batería que funciona con una dinamo, color blanco, 3 ledes. Material: Carcasa de plástico ABS. Práctica linterna de manivela. No necesita batería. Tipo de emisor: LED. Total de…\n[4] id=B01A87YR0I | Simpeak Linterna LED Linterna Mini Portátil, LED Linterna de Mano Resistente al Agua con Cargador Solar Linterna Dinamo para Ciclismo,Camping, Montasmo - Verde del ejército | marca: Simpeak | color: Verde【black Friday Off】 | precio: 21,12 € | existencias: 3 | características (extracto): 🔦Recargable Modo: Nuestra Linterna Led tiene la batería recargable incorporada, genera energía de forma conveniente para más de 10 minutos de iluminación con una manivela de 1 minuto (basando una velocidad de dos rondas por segundo)… | descripción: Descripción del producto Una solución perfecta para la iluminación mano que no termina los poderosos. Manivela y la energía solar La manivela que permite la iluminación durante 8 minutos desde el…\n[5] id=B07B2PGWPQ | Linterna LED iTimo, con carga solar y manual, luz de emergencia para exteriores, linternas portátiles para campamentos, con gancho a presión para colgarlas, verde y negro | marca: iTimo | color: Verde Y Negro. | precio: 15,73 € | existencias: 44 | características (extracto): (1) La linterna funciona con luz solar y tiene una función de carga manual con manivela. Con la batería recargable incorporada, almacena energía durante mucho tiempo, no necesita batería externa. (2) Alta eficiencia de conversión, 6… | descripción: Especificaciones: Artículo: linterna LED. Material: plástico. Color de la carcasa: verde. Color de la luz: blanco. Tipo de batería: Ni-MH. Capacidad de la batería: 40 mAh Vida útil del LED: 100.000…",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.067,
+        "llm": 12.531,
+        "tools": 0.022,
+        "tts": 0.0,
+        "total": 12.619
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-2258b5f4-15_stock_insuficiente-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {}
+      },
+      "after": {
+        "cart_id": "eval-2258b5f4-15_stock_insuficiente-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B096M7FCYF",
+              "title": "Linterna led recargable, 4 modos de luz, carga solar, IPX4 resistente al agua, apto para luces de emergencia domésticas, luces de camping al aire libre, luces de trabajo",
+              "brand": "hctaw",
+              "price_cents": 2283,
+              "stock": 24
+            },
+            {
+              "product_id": "B07WVDZ4DY",
+              "title": "Linterna de bolsillo con funda y batería incluidas, profesional, LED Lenser P4, 25 lúmenes, médico, enfermeras, vigilancia policial, art. 8404",
+              "brand": "GS1",
+              "price_cents": 984,
+              "stock": 2
+            },
+            {
+              "product_id": "B07T62JYN5",
+              "title": "Linterna de mano con dinamo, funciona sin batería, 3 ledes, linterna de emergencia recargable, para deportes al aire libre, camping, rojo",
+              "brand": "Lumpur",
+              "price_cents": 3433,
+              "stock": 36
+            },
+            {
+              "product_id": "B01A87YR0I",
+              "title": "Simpeak Linterna LED Linterna Mini Portátil, LED Linterna de Mano Resistente al Agua con Cargador Solar Linterna Dinamo para Ciclismo,Camping, Montasmo - Verde del ejército",
+              "brand": "Simpeak",
+              "price_cents": 2112,
+              "stock": 3
+            },
+            {
+              "product_id": "B07B2PGWPQ",
+              "title": "Linterna LED iTimo, con carga solar y manual, luz de emergencia para exteriores, linternas portátiles para campamentos, con gancho a presión para colgarlas, verde y negro",
+              "brand": "iTimo",
+              "price_cents": 1573,
+              "stock": 44
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {
+          "B01A87YR0I": {
+            "price_cents": 2112,
+            "stock": 3
+          },
+          "B07B2PGWPQ": {
+            "price_cents": 1573,
+            "stock": 44
+          },
+          "B07T62JYN5": {
+            "price_cents": 3433,
+            "stock": 36
+          },
+          "B07WVDZ4DY": {
+            "price_cents": 984,
+            "stock": 2
+          },
+          "B096M7FCYF": {
+            "price_cents": 2283,
+            "stock": 24
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        }
+      ]
+    },
+    {
+      "kind": "remember",
+      "name": "elegida",
+      "ref": "candidate:1",
+      "product_id": "B096M7FCYF",
+      "title": "Linterna led recargable, 4 modos de luz, carga solar, IPX4 resistente al agua, apto para luces de emergencia domésticas, luces de camping al aire libre, luces de trabajo"
+    },
+    {
+      "kind": "event",
+      "event": "set_offer",
+      "product": "@elegida",
+      "product_id": "B096M7FCYF",
+      "price_cents": 700,
+      "stock": 3
+    },
+    {
+      "kind": "turn",
+      "turn": 2,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Añade cinco de la primera.",
+      "agent_input": "Añade cinco de la primera.",
+      "response": "Lo siento, solo quedan 3 unidades disponibles. ¿Te interesa 3 unidades en lugar de 5?",
+      "spoken_text": "Lo siento, solo quedan tres unidades disponibles. ¿Te interesa tres unidades en lugar de cinco?",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "agregar_al_carrito",
+          "args": {
+            "product_id": "B096M7FCYF",
+            "cantidad": 5
+          },
+          "reason": "añadir cinco unidades del candidato 1",
+          "ok": false,
+          "summary": "[stock_insuficiente] Solo quedan 3 unidades del producto B096M7FCYF y se pidieron 5.",
+          "issues": [
+            {
+              "code": "stock_insuficiente",
+              "message": "Solo quedan 3 unidades del producto B096M7FCYF y se pidieron 5.",
+              "product_id": "B096M7FCYF",
+              "details": {
+                "requested": 5,
+                "available": 3
+              }
+            }
+          ]
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 8.223,
+        "tools": 0.03,
+        "tts": 0.0,
+        "total": 8.253
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-2258b5f4-15_stock_insuficiente-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B096M7FCYF",
+              "title": "Linterna led recargable, 4 modos de luz, carga solar, IPX4 resistente al agua, apto para luces de emergencia domésticas, luces de camping al aire libre, luces de trabajo",
+              "brand": "hctaw",
+              "price_cents": 2283,
+              "stock": 24
+            },
+            {
+              "product_id": "B07WVDZ4DY",
+              "title": "Linterna de bolsillo con funda y batería incluidas, profesional, LED Lenser P4, 25 lúmenes, médico, enfermeras, vigilancia policial, art. 8404",
+              "brand": "GS1",
+              "price_cents": 984,
+              "stock": 2
+            },
+            {
+              "product_id": "B07T62JYN5",
+              "title": "Linterna de mano con dinamo, funciona sin batería, 3 ledes, linterna de emergencia recargable, para deportes al aire libre, camping, rojo",
+              "brand": "Lumpur",
+              "price_cents": 3433,
+              "stock": 36
+            },
+            {
+              "product_id": "B01A87YR0I",
+              "title": "Simpeak Linterna LED Linterna Mini Portátil, LED Linterna de Mano Resistente al Agua con Cargador Solar Linterna Dinamo para Ciclismo,Camping, Montasmo - Verde del ejército",
+              "brand": "Simpeak",
+              "price_cents": 2112,
+              "stock": 3
+            },
+            {
+              "product_id": "B07B2PGWPQ",
+              "title": "Linterna LED iTimo, con carga solar y manual, luz de emergencia para exteriores, linternas portátiles para campamentos, con gancho a presión para colgarlas, verde y negro",
+              "brand": "iTimo",
+              "price_cents": 1573,
+              "stock": 44
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B096M7FCYF",
+              "initial_stock": 24,
+              "stock": 3
+            }
+          ]
+        },
+        "offers": {
+          "B01A87YR0I": {
+            "price_cents": 2112,
+            "stock": 3
+          },
+          "B07B2PGWPQ": {
+            "price_cents": 1573,
+            "stock": 44
+          },
+          "B07T62JYN5": {
+            "price_cents": 3433,
+            "stock": 36
+          },
+          "B07WVDZ4DY": {
+            "price_cents": 984,
+            "stock": 2
+          },
+          "B096M7FCYF": {
+            "price_cents": 700,
+            "stock": 3
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-2258b5f4-15_stock_insuficiente-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B096M7FCYF",
+              "title": "Linterna led recargable, 4 modos de luz, carga solar, IPX4 resistente al agua, apto para luces de emergencia domésticas, luces de camping al aire libre, luces de trabajo",
+              "brand": "hctaw",
+              "price_cents": 700,
+              "stock": 3
+            },
+            {
+              "product_id": "B07WVDZ4DY",
+              "title": "Linterna de bolsillo con funda y batería incluidas, profesional, LED Lenser P4, 25 lúmenes, médico, enfermeras, vigilancia policial, art. 8404",
+              "brand": "GS1",
+              "price_cents": 984,
+              "stock": 2
+            },
+            {
+              "product_id": "B07T62JYN5",
+              "title": "Linterna de mano con dinamo, funciona sin batería, 3 ledes, linterna de emergencia recargable, para deportes al aire libre, camping, rojo",
+              "brand": "Lumpur",
+              "price_cents": 3433,
+              "stock": 36
+            },
+            {
+              "product_id": "B01A87YR0I",
+              "title": "Simpeak Linterna LED Linterna Mini Portátil, LED Linterna de Mano Resistente al Agua con Cargador Solar Linterna Dinamo para Ciclismo,Camping, Montasmo - Verde del ejército",
+              "brand": "Simpeak",
+              "price_cents": 2112,
+              "stock": 3
+            },
+            {
+              "product_id": "B07B2PGWPQ",
+              "title": "Linterna LED iTimo, con carga solar y manual, luz de emergencia para exteriores, linternas portátiles para campamentos, con gancho a presión para colgarlas, verde y negro",
+              "brand": "iTimo",
+              "price_cents": 1573,
+              "stock": 44
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B096M7FCYF",
+              "initial_stock": 24,
+              "stock": 3
+            }
+          ]
+        },
+        "offers": {
+          "B01A87YR0I": {
+            "price_cents": 2112,
+            "stock": 3
+          },
+          "B07B2PGWPQ": {
+            "price_cents": 1573,
+            "stock": 44
+          },
+          "B07T62JYN5": {
+            "price_cents": 3433,
+            "stock": 36
+          },
+          "B07WVDZ4DY": {
+            "price_cents": 984,
+            "stock": 2
+          },
+          "B096M7FCYF": {
+            "price_cents": 700,
+            "stock": 3
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        },
+        {
+          "check": "orders",
+          "params": {
+            "count": 0
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 0"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 3,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Pues ponme las tres que quedan.",
+      "agent_input": "Pues ponme las tres que quedan.",
+      "response": "Hecho, añadidas tres unidades. En el carrito hay 3 unidades de «Linterna led recargable, 4 modos de luz, carga solar, IPX4 resistente…» a 7,00 € cada una, 21,00 €. Total: 21,00 €.",
+      "spoken_text": "Hecho, añadidas tres unidades. En el carrito hay tres unidades de Linterna led recargable a siete euros cada una, veintiún euros. Total: veintiún euros.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "agregar_al_carrito",
+          "args": {
+            "product_id": "B096M7FCYF",
+            "cantidad": 3
+          },
+          "reason": "añadir las tres unidades disponibles",
+          "ok": true,
+          "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B096M7FCYF | Linterna led recargable, 4 modos de luz, carga solar, IPX4 resistente… | 3 unidades × 7,00 € = 21,00 € | existencias: 3\nTotal del carrito: 21,00 €",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 7.781,
+        "tools": 0.052,
+        "tts": 0.0,
+        "total": 7.833
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-2258b5f4-15_stock_insuficiente-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B096M7FCYF",
+              "title": "Linterna led recargable, 4 modos de luz, carga solar, IPX4 resistente al agua, apto para luces de emergencia domésticas, luces de camping al aire libre, luces de trabajo",
+              "brand": "hctaw",
+              "price_cents": 700,
+              "stock": 3
+            },
+            {
+              "product_id": "B07WVDZ4DY",
+              "title": "Linterna de bolsillo con funda y batería incluidas, profesional, LED Lenser P4, 25 lúmenes, médico, enfermeras, vigilancia policial, art. 8404",
+              "brand": "GS1",
+              "price_cents": 984,
+              "stock": 2
+            },
+            {
+              "product_id": "B07T62JYN5",
+              "title": "Linterna de mano con dinamo, funciona sin batería, 3 ledes, linterna de emergencia recargable, para deportes al aire libre, camping, rojo",
+              "brand": "Lumpur",
+              "price_cents": 3433,
+              "stock": 36
+            },
+            {
+              "product_id": "B01A87YR0I",
+              "title": "Simpeak Linterna LED Linterna Mini Portátil, LED Linterna de Mano Resistente al Agua con Cargador Solar Linterna Dinamo para Ciclismo,Camping, Montasmo - Verde del ejército",
+              "brand": "Simpeak",
+              "price_cents": 2112,
+              "stock": 3
+            },
+            {
+              "product_id": "B07B2PGWPQ",
+              "title": "Linterna LED iTimo, con carga solar y manual, luz de emergencia para exteriores, linternas portátiles para campamentos, con gancho a presión para colgarlas, verde y negro",
+              "brand": "iTimo",
+              "price_cents": 1573,
+              "stock": 44
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B096M7FCYF",
+              "initial_stock": 24,
+              "stock": 3
+            }
+          ]
+        },
+        "offers": {
+          "B01A87YR0I": {
+            "price_cents": 2112,
+            "stock": 3
+          },
+          "B07B2PGWPQ": {
+            "price_cents": 1573,
+            "stock": 44
+          },
+          "B07T62JYN5": {
+            "price_cents": 3433,
+            "stock": 36
+          },
+          "B07WVDZ4DY": {
+            "price_cents": 984,
+            "stock": 2
+          },
+          "B096M7FCYF": {
+            "price_cents": 700,
+            "stock": 3
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-2258b5f4-15_stock_insuficiente-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B096M7FCYF",
+              "title": "Linterna led recargable, 4 modos de luz, carga solar, IPX4 resistente al agua, apto para luces de emergencia domésticas, luces de camping al aire libre, luces de trabajo",
+              "brand": "hctaw",
+              "price_cents": 700,
+              "stock": 3
+            },
+            {
+              "product_id": "B07WVDZ4DY",
+              "title": "Linterna de bolsillo con funda y batería incluidas, profesional, LED Lenser P4, 25 lúmenes, médico, enfermeras, vigilancia policial, art. 8404",
+              "brand": "GS1",
+              "price_cents": 984,
+              "stock": 2
+            },
+            {
+              "product_id": "B07T62JYN5",
+              "title": "Linterna de mano con dinamo, funciona sin batería, 3 ledes, linterna de emergencia recargable, para deportes al aire libre, camping, rojo",
+              "brand": "Lumpur",
+              "price_cents": 3433,
+              "stock": 36
+            },
+            {
+              "product_id": "B01A87YR0I",
+              "title": "Simpeak Linterna LED Linterna Mini Portátil, LED Linterna de Mano Resistente al Agua con Cargador Solar Linterna Dinamo para Ciclismo,Camping, Montasmo - Verde del ejército",
+              "brand": "Simpeak",
+              "price_cents": 2112,
+              "stock": 3
+            },
+            {
+              "product_id": "B07B2PGWPQ",
+              "title": "Linterna LED iTimo, con carga solar y manual, luz de emergencia para exteriores, linternas portátiles para campamentos, con gancho a presión para colgarlas, verde y negro",
+              "brand": "iTimo",
+              "price_cents": 1573,
+              "stock": 44
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-2258b5f4-15_stock_insuficiente-c1",
+              "product_id": "B096M7FCYF",
+              "quantity": 3
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B096M7FCYF",
+              "initial_stock": 24,
+              "stock": 3
+            }
+          ]
+        },
+        "offers": {
+          "B01A87YR0I": {
+            "price_cents": 2112,
+            "stock": 3
+          },
+          "B07B2PGWPQ": {
+            "price_cents": 1573,
+            "stock": 44
+          },
+          "B07T62JYN5": {
+            "price_cents": 3433,
+            "stock": 36
+          },
+          "B07WVDZ4DY": {
+            "price_cents": 984,
+            "stock": 2
+          },
+          "B096M7FCYF": {
+            "price_cents": 700,
+            "stock": 3
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "lines": [
+              {
+                "product": "@elegida",
+                "quantity": 3
+              }
+            ]
+          },
+          "ok": true,
+          "detail": "carrito: 3 × B096M7FCYF"
+        }
+      ]
+    }
+  ],
+  "final": {
+    "snapshot": {
+      "cart_id": "eval-2258b5f4-15_stock_insuficiente-c1",
+      "state": {
+        "budget_cents": null,
+        "preferences": [],
+        "pending_clarification": null,
+        "quote": null,
+        "order": null,
+        "candidates": [
+          {
+            "product_id": "B096M7FCYF",
+            "title": "Linterna led recargable, 4 modos de luz, carga solar, IPX4 resistente al agua, apto para luces de emergencia domésticas, luces de camping al aire libre, luces de trabajo",
+            "brand": "hctaw",
+            "price_cents": 700,
+            "stock": 3
+          },
+          {
+            "product_id": "B07WVDZ4DY",
+            "title": "Linterna de bolsillo con funda y batería incluidas, profesional, LED Lenser P4, 25 lúmenes, médico, enfermeras, vigilancia policial, art. 8404",
+            "brand": "GS1",
+            "price_cents": 984,
+            "stock": 2
+          },
+          {
+            "product_id": "B07T62JYN5",
+            "title": "Linterna de mano con dinamo, funciona sin batería, 3 ledes, linterna de emergencia recargable, para deportes al aire libre, camping, rojo",
+            "brand": "Lumpur",
+            "price_cents": 3433,
+            "stock": 36
+          },
+          {
+            "product_id": "B01A87YR0I",
+            "title": "Simpeak Linterna LED Linterna Mini Portátil, LED Linterna de Mano Resistente al Agua con Cargador Solar Linterna Dinamo para Ciclismo,Camping, Montasmo - Verde del ejército",
+            "brand": "Simpeak",
+            "price_cents": 2112,
+            "stock": 3
+          },
+          {
+            "product_id": "B07B2PGWPQ",
+            "title": "Linterna LED iTimo, con carga solar y manual, luz de emergencia para exteriores, linternas portátiles para campamentos, con gancho a presión para colgarlas, verde y negro",
+            "brand": "iTimo",
+            "price_cents": 1573,
+            "stock": 44
+          }
+        ],
+        "awaiting_confirmation": false
+      },
+      "store": {
+        "orders": [],
+        "order_items": [],
+        "cart_items": [
+          {
+            "cart_id": "eval-2258b5f4-15_stock_insuficiente-c1",
+            "product_id": "B096M7FCYF",
+            "quantity": 3
+          }
+        ],
+        "inventory_changes": [
+          {
+            "product_id": "B096M7FCYF",
+            "initial_stock": 24,
+            "stock": 3
+          }
+        ]
+      },
+      "offers": {
+        "B01A87YR0I": {
+          "price_cents": 2112,
+          "stock": 3
+        },
+        "B07B2PGWPQ": {
+          "price_cents": 1573,
+          "stock": 44
+        },
+        "B07T62JYN5": {
+          "price_cents": 3433,
+          "stock": 36
+        },
+        "B07WVDZ4DY": {
+          "price_cents": 984,
+          "stock": 2
+        },
+        "B096M7FCYF": {
+          "price_cents": 700,
+          "stock": 3
+        }
+      }
+    },
+    "checks": [
+      {
+        "check": "orders",
+        "params": {
+          "count": 0
+        },
+        "ok": true,
+        "detail": "pedidos registrados: 0"
+      },
+      {
+        "check": "cart",
+        "params": {
+          "lines": [
+            {
+              "product": "@elegida",
+              "quantity": 3
+            }
+          ]
+        },
+        "ok": true,
+        "detail": "carrito: 3 × B096M7FCYF"
+      },
+      {
+        "check": "stock",
+        "params": {
+          "product": "@elegida",
+          "equals": 3
+        },
+        "ok": true,
+        "detail": "existencias de B096M7FCYF: 3"
+      }
+    ]
+  },
+  "violations": [],
+  "problems": [],
+  "passed": true,
+  "timings": {
+    "all": {
+      "turns": 3,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.02,
+        "max": 0.07
+      },
+      "llm": {
+        "mean": 9.51,
+        "max": 12.53
+      },
+      "tools": {
+        "mean": 0.03,
+        "max": 0.05
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 9.57,
+        "max": 12.62
+      }
+    },
+    "with_llm": {
+      "turns": 3,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.02,
+        "max": 0.07
+      },
+      "llm": {
+        "mean": 9.51,
+        "max": 12.53
+      },
+      "tools": {
+        "mean": 0.03,
+        "max": 0.05
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 9.57,
+        "max": 12.62
+      }
+    },
+    "without_llm": {
+      "turns": 0
+    }
+  }
+}

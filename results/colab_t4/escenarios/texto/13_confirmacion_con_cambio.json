@@ -1,0 +1,1641 @@
+{
+  "id": "13_confirmacion_con_cambio",
+  "title": "Un sí con cambios no compra",
+  "kind": "confirmacion_con_cambio",
+  "description": "A la cotización de una unidad el usuario contesta «sí, pero que sean tres». No es una confirmación limpia: no debe registrarse el pedido de una unidad. El pedido final lleva tres.",
+  "voice": false,
+  "input": "texto",
+  "audio_source": null,
+  "user_id": "eval-2258b5f4-13_confirmacion_con_cambio",
+  "threads": [
+    "eval-2258b5f4-13_confirmacion_con_cambio-c1"
+  ],
+  "names": {
+    "elegido": "B08ZC4844X"
+  },
+  "steps": [
+    {
+      "kind": "turn",
+      "turn": 1,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Busco un paraguas plegable.",
+      "agent_input": "Busco un paraguas plegable.",
+      "response": "Tengo el paraguas Gonex Negro por 6,52 euros, el sombrero xj Camuflaje por 16,30 euros, el paraguas LJGYX Blue por 49,59 euros, el paraguas Jooayou Night Sky por 30,33 euros y el sombrero Yosoo Health Gear plata por 16,34 euros. ¿Te interesa alguno?",
+      "spoken_text": "Tengo el paraguas Gonex Negro por seis euros con cincuenta y dos céntimos, el sombrero xj Camuflaje por dieciséis euros con treinta céntimos, el paraguas LJGYX Blue por cuarenta y nueve euros con cincuenta y nueve céntimos, el paraguas Jooayou Night Sky por treinta euros con treinta y tres céntimos y el sombrero Yosoo Health Gear plata por dieciséis euros con treinta y cuatro céntimos. ¿Te interesa alguno?",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "buscar_productos",
+          "args": {
+            "consulta": "paraguas plegable"
+          },
+          "reason": "buscar el paraguas plegable",
+          "ok": true,
+          "summary": "estos son ahora los CANDIDATOS, del más al menos relevante:\n[1] id=B08ZC4844X | Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a Prueba de Viento de Toldo Doble, Paraguas Compacto de 54 Pulgadas, Ventilado y a Prueba de Lluvia para Deportes, Negocios y Viajes | marca: Gonex | color: Negro con capa de tierra plateada | precio: 6,52 € | existencias: 7 | características (extracto): 10 Varillas y Toldo Doble Mejorados: con las 10 varillas de fibra de vidrio, nuestro paraguas tiene un mejor efecto a prueba de viento que otros paraguas con 8 o 9 varillas. Gracias a la estructura del techo ventilado, el viento puede… | descripción: desconocido\n[2] id=B07C1R3G3Y | Sombrero Plegable Paraguas de Sol al Aire Libre Golf Pesca Camping Sombreros Cap Cabeza Hat (1pcs). | marca: xj | color: Camuflaje | precio: 16,30 € | existencias: 42 | características (extracto): Manténgase seco y haga una declaración de moda audaz con este elegante y colorido sombrero para paraguas. Perfecto para mantener la cabeza seca en días lluviosos o para mantenerla a la sombra en días soleados Elegante y funcional. El… | descripción: Patrón de camuflaje Sun Rain Paraguas Sombrero Gorra para la Pesca Senderismo Acampar en la Playa Actividades al aire libre Diadema Elástico Patrón de camuflaje Sun Rain Paraguas Gorra para la pesca…\n[3] id=B096K7N7ST | LJGYX Impermeable Mujeres Plegables Paraguas Lluvia Mujeres Sol sombrilla Anti UV pequeño Bolsillo Paraguas niños Guarda- ombrello Impermeable y Resistente al Desgaste, fácil de LIM (Color : Blue) | marca: LJGYX | color: Blue | precio: 49,59 € | existencias: 26 | características (extracto): Mujeres plegables paraguas lluvia parasol anti pequeño bolsillo paraguas niños Guarda Ombrello ¡A estrenar, alta calidad! | descripción: Mujeres plegables paraguas lluvia parasol anti pequeño bolsillo paraguas niños Guarda Ombrello ¡A estrenar, alta calidad! \"** Notas de compra ** * Debido a que es una medición manual, permita un…\n[4] id=B0791CNJX6 | Jooayou Paraguas Invertido de Doble Capa,Paraguas Plegable de Manos Libres Autoportante,Paraguas a Prueba de Viento Anti-UV para la Lluvia del Coche al Aire Iibre (Night Sky) | marca: Jooayou | color: Night Sky | precio: 30,33 € | existencias: 40 | características (extracto): Mango con forma de C: te da la libertad de usar el teléfono, leer un libro o incluso agarrar a tu hijo mientras usas este paraguas. El mango con forma de C te permite sujetar sin hacer fuerza, te felicitarán mucho por este mango y funciona… | descripción: - - - - - Características: Tamaño abierto: 80 cm de alto. 110 cm de ancho. Peso: 0,5 kg. Material de la tela: Tejido repelente al agua de alta densidad y doble capa. Material del esqueleto: Esqueleto…\n[5] id=B08CRRQ1VP | Yosoo Health Gear Sombrero de Paraguas de Manos Libres, Sombrero de Pesca de protección UV a Prueba de Agua, Paraguas Plegable Ajustable para la Pesca, jardinería de Playa, Campamento de Playa | marca: Yosoo Health Gear | color: plata | precio: 16,34 € | existencias: 29 | características (extracto): [Función]: Nuestro sombrero de sombrilla como una gran cabeza para el sol y la lluvia usa un paraguas manos libres, es una buena sombrilla para refrescarse y protegerse de los rayos UV cuando pesca o trabaja en el jardín, lleva cosas… | descripción: Características : - Construido con material de calidad confiable, resistente, antioxidante y duradero. - Diseño manos libres, se puede usar en la cabeza con una diadema ajustable. - Portátil para…",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.098,
+        "llm": 12.488,
+        "tools": 0.024,
+        "tts": 0.0,
+        "total": 12.61
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-2258b5f4-13_confirmacion_con_cambio-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {}
+      },
+      "after": {
+        "cart_id": "eval-2258b5f4-13_confirmacion_con_cambio-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08ZC4844X",
+              "title": "Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a Prueba de Viento de Toldo Doble, Paraguas Compacto de 54 Pulgadas, Ventilado y a Prueba de Lluvia para Deportes, Negocios y Viajes",
+              "brand": "Gonex",
+              "price_cents": 652,
+              "stock": 7
+            },
+            {
+              "product_id": "B07C1R3G3Y",
+              "title": "Sombrero Plegable Paraguas de Sol al Aire Libre Golf Pesca Camping Sombreros Cap Cabeza Hat (1pcs).",
+              "brand": "xj",
+              "price_cents": 1630,
+              "stock": 42
+            },
+            {
+              "product_id": "B096K7N7ST",
+              "title": "LJGYX Impermeable Mujeres Plegables Paraguas Lluvia Mujeres Sol sombrilla Anti UV pequeño Bolsillo Paraguas niños Guarda- ombrello Impermeable y Resistente al Desgaste, fácil de LIM (Color : Blue)",
+              "brand": "LJGYX",
+              "price_cents": 4959,
+              "stock": 26
+            },
+            {
+              "product_id": "B0791CNJX6",
+              "title": "Jooayou Paraguas Invertido de Doble Capa,Paraguas Plegable de Manos Libres Autoportante,Paraguas a Prueba de Viento Anti-UV para la Lluvia del Coche al Aire Iibre (Night Sky)",
+              "brand": "Jooayou",
+              "price_cents": 3033,
+              "stock": 40
+            },
+            {
+              "product_id": "B08CRRQ1VP",
+              "title": "Yosoo Health Gear Sombrero de Paraguas de Manos Libres, Sombrero de Pesca de protección UV a Prueba de Agua, Paraguas Plegable Ajustable para la Pesca, jardinería de Playa, Campamento de Playa",
+              "brand": "Yosoo Health Gear",
+              "price_cents": 1634,
+              "stock": 29
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {
+          "B0791CNJX6": {
+            "price_cents": 3033,
+            "stock": 40
+          },
+          "B07C1R3G3Y": {
+            "price_cents": 1630,
+            "stock": 42
+          },
+          "B08CRRQ1VP": {
+            "price_cents": 1634,
+            "stock": 29
+          },
+          "B08ZC4844X": {
+            "price_cents": 652,
+            "stock": 7
+          },
+          "B096K7N7ST": {
+            "price_cents": 4959,
+            "stock": 26
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        }
+      ]
+    },
+    {
+      "kind": "remember",
+      "name": "elegido",
+      "ref": "candidate:1",
+      "product_id": "B08ZC4844X",
+      "title": "Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a Prueba de Viento de Toldo Doble, Paraguas Compacto de 54 Pulgadas, Ventilado y a Prueba de Lluvia para Deportes, Negocios y Viajes"
+    },
+    {
+      "kind": "event",
+      "event": "set_offer",
+      "product": "@elegido",
+      "product_id": "B08ZC4844X",
+      "price_cents": 900,
+      "stock": 20
+    },
+    {
+      "kind": "turn",
+      "turn": 2,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Añade uno del primero.",
+      "agent_input": "Añade uno del primero.",
+      "response": "Hecho, añadido uno del paraguas Gonex Negro. En el carrito hay 1 unidad de «Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a…» a 9,00 € cada una, 9,00 €. Total: 9,00 €.",
+      "spoken_text": "Hecho, añadido uno del paraguas Gonex Negro. En el carrito hay una unidad de Gonex Paraguas de Golf Plegable de diez a nueve euros cada una, nueve euros. Total: nueve euros.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "agregar_al_carrito",
+          "args": {
+            "product_id": "B08ZC4844X",
+            "cantidad": 1
+          },
+          "reason": "añadir uno del candidato 1",
+          "ok": true,
+          "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B08ZC4844X | Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a… | 1 unidad × 9,00 € = 9,00 € | existencias: 20\nTotal del carrito: 9,00 €",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 8.22,
+        "tools": 0.049,
+        "tts": 0.0,
+        "total": 8.27
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-2258b5f4-13_confirmacion_con_cambio-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08ZC4844X",
+              "title": "Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a Prueba de Viento de Toldo Doble, Paraguas Compacto de 54 Pulgadas, Ventilado y a Prueba de Lluvia para Deportes, Negocios y Viajes",
+              "brand": "Gonex",
+              "price_cents": 652,
+              "stock": 7
+            },
+            {
+              "product_id": "B07C1R3G3Y",
+              "title": "Sombrero Plegable Paraguas de Sol al Aire Libre Golf Pesca Camping Sombreros Cap Cabeza Hat (1pcs).",
+              "brand": "xj",
+              "price_cents": 1630,
+              "stock": 42
+            },
+            {
+              "product_id": "B096K7N7ST",
+              "title": "LJGYX Impermeable Mujeres Plegables Paraguas Lluvia Mujeres Sol sombrilla Anti UV pequeño Bolsillo Paraguas niños Guarda- ombrello Impermeable y Resistente al Desgaste, fácil de LIM (Color : Blue)",
+              "brand": "LJGYX",
+              "price_cents": 4959,
+              "stock": 26
+            },
+            {
+              "product_id": "B0791CNJX6",
+              "title": "Jooayou Paraguas Invertido de Doble Capa,Paraguas Plegable de Manos Libres Autoportante,Paraguas a Prueba de Viento Anti-UV para la Lluvia del Coche al Aire Iibre (Night Sky)",
+              "brand": "Jooayou",
+              "price_cents": 3033,
+              "stock": 40
+            },
+            {
+              "product_id": "B08CRRQ1VP",
+              "title": "Yosoo Health Gear Sombrero de Paraguas de Manos Libres, Sombrero de Pesca de protección UV a Prueba de Agua, Paraguas Plegable Ajustable para la Pesca, jardinería de Playa, Campamento de Playa",
+              "brand": "Yosoo Health Gear",
+              "price_cents": 1634,
+              "stock": 29
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B08ZC4844X",
+              "initial_stock": 7,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B0791CNJX6": {
+            "price_cents": 3033,
+            "stock": 40
+          },
+          "B07C1R3G3Y": {
+            "price_cents": 1630,
+            "stock": 42
+          },
+          "B08CRRQ1VP": {
+            "price_cents": 1634,
+            "stock": 29
+          },
+          "B08ZC4844X": {
+            "price_cents": 900,
+            "stock": 20
+          },
+          "B096K7N7ST": {
+            "price_cents": 4959,
+            "stock": 26
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-2258b5f4-13_confirmacion_con_cambio-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08ZC4844X",
+              "title": "Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a Prueba de Viento de Toldo Doble, Paraguas Compacto de 54 Pulgadas, Ventilado y a Prueba de Lluvia para Deportes, Negocios y Viajes",
+              "brand": "Gonex",
+              "price_cents": 900,
+              "stock": 20
+            },
+            {
+              "product_id": "B07C1R3G3Y",
+              "title": "Sombrero Plegable Paraguas de Sol al Aire Libre Golf Pesca Camping Sombreros Cap Cabeza Hat (1pcs).",
+              "brand": "xj",
+              "price_cents": 1630,
+              "stock": 42
+            },
+            {
+              "product_id": "B096K7N7ST",
+              "title": "LJGYX Impermeable Mujeres Plegables Paraguas Lluvia Mujeres Sol sombrilla Anti UV pequeño Bolsillo Paraguas niños Guarda- ombrello Impermeable y Resistente al Desgaste, fácil de LIM (Color : Blue)",
+              "brand": "LJGYX",
+              "price_cents": 4959,
+              "stock": 26
+            },
+            {
+              "product_id": "B0791CNJX6",
+              "title": "Jooayou Paraguas Invertido de Doble Capa,Paraguas Plegable de Manos Libres Autoportante,Paraguas a Prueba de Viento Anti-UV para la Lluvia del Coche al Aire Iibre (Night Sky)",
+              "brand": "Jooayou",
+              "price_cents": 3033,
+              "stock": 40
+            },
+            {
+              "product_id": "B08CRRQ1VP",
+              "title": "Yosoo Health Gear Sombrero de Paraguas de Manos Libres, Sombrero de Pesca de protección UV a Prueba de Agua, Paraguas Plegable Ajustable para la Pesca, jardinería de Playa, Campamento de Playa",
+              "brand": "Yosoo Health Gear",
+              "price_cents": 1634,
+              "stock": 29
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-2258b5f4-13_confirmacion_con_cambio-c1",
+              "product_id": "B08ZC4844X",
+              "quantity": 1
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B08ZC4844X",
+              "initial_stock": 7,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B0791CNJX6": {
+            "price_cents": 3033,
+            "stock": 40
+          },
+          "B07C1R3G3Y": {
+            "price_cents": 1630,
+            "stock": 42
+          },
+          "B08CRRQ1VP": {
+            "price_cents": 1634,
+            "stock": 29
+          },
+          "B08ZC4844X": {
+            "price_cents": 900,
+            "stock": 20
+          },
+          "B096K7N7ST": {
+            "price_cents": 4959,
+            "stock": 26
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "lines": [
+              {
+                "product": "@elegido",
+                "quantity": 1
+              }
+            ]
+          },
+          "ok": true,
+          "detail": "carrito: 1 × B08ZC4844X"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 3,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Cierra el pedido.",
+      "agent_input": "Cierra el pedido.",
+      "response": "Te repito el pedido antes de registrarlo: 1 unidad de «Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a…» a 9,00 € cada una, 9,00 €. Total: 9,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "spoken_text": "Te repito el pedido antes de registrarlo: una unidad de Gonex Paraguas de Golf Plegable de diez a nueve euros cada una, nueve euros. Total: nueve euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": true,
+      "operations": [
+        {
+          "tool": "cotizar",
+          "args": {},
+          "reason": "cotizar el carrito",
+          "ok": true,
+          "summary": "cotización creada; falta la confirmación del usuario.",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 3.083,
+        "tools": 0.034,
+        "tts": 0.0,
+        "total": 3.118
+      },
+      "llm_steps": 1,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-2258b5f4-13_confirmacion_con_cambio-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08ZC4844X",
+              "title": "Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a Prueba de Viento de Toldo Doble, Paraguas Compacto de 54 Pulgadas, Ventilado y a Prueba de Lluvia para Deportes, Negocios y Viajes",
+              "brand": "Gonex",
+              "price_cents": 900,
+              "stock": 20
+            },
+            {
+              "product_id": "B07C1R3G3Y",
+              "title": "Sombrero Plegable Paraguas de Sol al Aire Libre Golf Pesca Camping Sombreros Cap Cabeza Hat (1pcs).",
+              "brand": "xj",
+              "price_cents": 1630,
+              "stock": 42
+            },
+            {
+              "product_id": "B096K7N7ST",
+              "title": "LJGYX Impermeable Mujeres Plegables Paraguas Lluvia Mujeres Sol sombrilla Anti UV pequeño Bolsillo Paraguas niños Guarda- ombrello Impermeable y Resistente al Desgaste, fácil de LIM (Color : Blue)",
+              "brand": "LJGYX",
+              "price_cents": 4959,
+              "stock": 26
+            },
+            {
+              "product_id": "B0791CNJX6",
+              "title": "Jooayou Paraguas Invertido de Doble Capa,Paraguas Plegable de Manos Libres Autoportante,Paraguas a Prueba de Viento Anti-UV para la Lluvia del Coche al Aire Iibre (Night Sky)",
+              "brand": "Jooayou",
+              "price_cents": 3033,
+              "stock": 40
+            },
+            {
+              "product_id": "B08CRRQ1VP",
+              "title": "Yosoo Health Gear Sombrero de Paraguas de Manos Libres, Sombrero de Pesca de protección UV a Prueba de Agua, Paraguas Plegable Ajustable para la Pesca, jardinería de Playa, Campamento de Playa",
+              "brand": "Yosoo Health Gear",
+              "price_cents": 1634,
+              "stock": 29
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-2258b5f4-13_confirmacion_con_cambio-c1",
+              "product_id": "B08ZC4844X",
+              "quantity": 1
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B08ZC4844X",
+              "initial_stock": 7,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B0791CNJX6": {
+            "price_cents": 3033,
+            "stock": 40
+          },
+          "B07C1R3G3Y": {
+            "price_cents": 1630,
+            "stock": 42
+          },
+          "B08CRRQ1VP": {
+            "price_cents": 1634,
+            "stock": 29
+          },
+          "B08ZC4844X": {
+            "price_cents": 900,
+            "stock": 20
+          },
+          "B096K7N7ST": {
+            "price_cents": 4959,
+            "stock": 26
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-2258b5f4-13_confirmacion_con_cambio-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": {
+            "quote_id": "7ca1e54fed154b54b7520b4ecd5fae1b",
+            "items": [
+              {
+                "product_id": "B08ZC4844X",
+                "title": "Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a Prueba de Viento de Toldo Doble, Paraguas Compacto de 54 Pulgadas, Ventilado y a Prueba de Lluvia para Deportes, Negocios y Viajes",
+                "quantity": 1,
+                "unit_price_cents": 900,
+                "subtotal_cents": 900,
+                "stock": 20
+              }
+            ],
+            "total_cents": 900,
+            "budget_cents": null,
+            "message": "Te repito el pedido antes de registrarlo: 1 unidad de «Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a…» a 9,00 € cada una, 9,00 €. Total: 9,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+          },
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08ZC4844X",
+              "title": "Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a Prueba de Viento de Toldo Doble, Paraguas Compacto de 54 Pulgadas, Ventilado y a Prueba de Lluvia para Deportes, Negocios y Viajes",
+              "brand": "Gonex",
+              "price_cents": 900,
+              "stock": 20
+            },
+            {
+              "product_id": "B07C1R3G3Y",
+              "title": "Sombrero Plegable Paraguas de Sol al Aire Libre Golf Pesca Camping Sombreros Cap Cabeza Hat (1pcs).",
+              "brand": "xj",
+              "price_cents": 1630,
+              "stock": 42
+            },
+            {
+              "product_id": "B096K7N7ST",
+              "title": "LJGYX Impermeable Mujeres Plegables Paraguas Lluvia Mujeres Sol sombrilla Anti UV pequeño Bolsillo Paraguas niños Guarda- ombrello Impermeable y Resistente al Desgaste, fácil de LIM (Color : Blue)",
+              "brand": "LJGYX",
+              "price_cents": 4959,
+              "stock": 26
+            },
+            {
+              "product_id": "B0791CNJX6",
+              "title": "Jooayou Paraguas Invertido de Doble Capa,Paraguas Plegable de Manos Libres Autoportante,Paraguas a Prueba de Viento Anti-UV para la Lluvia del Coche al Aire Iibre (Night Sky)",
+              "brand": "Jooayou",
+              "price_cents": 3033,
+              "stock": 40
+            },
+            {
+              "product_id": "B08CRRQ1VP",
+              "title": "Yosoo Health Gear Sombrero de Paraguas de Manos Libres, Sombrero de Pesca de protección UV a Prueba de Agua, Paraguas Plegable Ajustable para la Pesca, jardinería de Playa, Campamento de Playa",
+              "brand": "Yosoo Health Gear",
+              "price_cents": 1634,
+              "stock": 29
+            }
+          ],
+          "awaiting_confirmation": true
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-2258b5f4-13_confirmacion_con_cambio-c1",
+              "product_id": "B08ZC4844X",
+              "quantity": 1
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B08ZC4844X",
+              "initial_stock": 7,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B0791CNJX6": {
+            "price_cents": 3033,
+            "stock": 40
+          },
+          "B07C1R3G3Y": {
+            "price_cents": 1630,
+            "stock": 42
+          },
+          "B08CRRQ1VP": {
+            "price_cents": 1634,
+            "stock": 29
+          },
+          "B08ZC4844X": {
+            "price_cents": 900,
+            "stock": 20
+          },
+          "B096K7N7ST": {
+            "price_cents": 4959,
+            "stock": 26
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "awaiting_confirmation",
+          "params": {
+            "value": true
+          },
+          "ok": true,
+          "detail": "esperando confirmación: sí"
+        },
+        {
+          "check": "orders",
+          "params": {
+            "count": 0
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 0"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 4,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Sí, pero que sean tres.",
+      "agent_input": "Sí, pero que sean tres.",
+      "response": "Hecho, añadidas dos unidades más. Ahora el carrito incluye 3 unidades de «Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a…» a 9,00 € cada una, 27,00 €. Total: 27,00 €. En el carrito hay 3 unidades de «Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a…» a 9,00 € cada una, 27,00 €. Total: 27,00 €.",
+      "spoken_text": "Hecho, añadidas dos unidades más. Ahora el carrito incluye tres unidades de Gonex Paraguas de Golf Plegable de diez a nueve euros cada una, veintisiete euros. Total: veintisiete euros. En el carrito hay tres unidades de Gonex Paraguas de Golf Plegable de diez a nueve euros cada una, veintisiete euros. Total: veintisiete euros.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "cambiar_cantidad",
+          "args": {
+            "product_id": "B08ZC4844X",
+            "cantidad": 3
+          },
+          "reason": "cambiar la cantidad a tres",
+          "ok": true,
+          "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B08ZC4844X | Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a… | 3 unidades × 9,00 € = 27,00 € | existencias: 20\nTotal del carrito: 27,00 €",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 12.357,
+        "tools": 0.048,
+        "tts": 0.0,
+        "total": 12.405
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-2258b5f4-13_confirmacion_con_cambio-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": {
+            "quote_id": "7ca1e54fed154b54b7520b4ecd5fae1b",
+            "items": [
+              {
+                "product_id": "B08ZC4844X",
+                "title": "Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a Prueba de Viento de Toldo Doble, Paraguas Compacto de 54 Pulgadas, Ventilado y a Prueba de Lluvia para Deportes, Negocios y Viajes",
+                "quantity": 1,
+                "unit_price_cents": 900,
+                "subtotal_cents": 900,
+                "stock": 20
+              }
+            ],
+            "total_cents": 900,
+            "budget_cents": null,
+            "message": "Te repito el pedido antes de registrarlo: 1 unidad de «Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a…» a 9,00 € cada una, 9,00 €. Total: 9,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+          },
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08ZC4844X",
+              "title": "Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a Prueba de Viento de Toldo Doble, Paraguas Compacto de 54 Pulgadas, Ventilado y a Prueba de Lluvia para Deportes, Negocios y Viajes",
+              "brand": "Gonex",
+              "price_cents": 900,
+              "stock": 20
+            },
+            {
+              "product_id": "B07C1R3G3Y",
+              "title": "Sombrero Plegable Paraguas de Sol al Aire Libre Golf Pesca Camping Sombreros Cap Cabeza Hat (1pcs).",
+              "brand": "xj",
+              "price_cents": 1630,
+              "stock": 42
+            },
+            {
+              "product_id": "B096K7N7ST",
+              "title": "LJGYX Impermeable Mujeres Plegables Paraguas Lluvia Mujeres Sol sombrilla Anti UV pequeño Bolsillo Paraguas niños Guarda- ombrello Impermeable y Resistente al Desgaste, fácil de LIM (Color : Blue)",
+              "brand": "LJGYX",
+              "price_cents": 4959,
+              "stock": 26
+            },
+            {
+              "product_id": "B0791CNJX6",
+              "title": "Jooayou Paraguas Invertido de Doble Capa,Paraguas Plegable de Manos Libres Autoportante,Paraguas a Prueba de Viento Anti-UV para la Lluvia del Coche al Aire Iibre (Night Sky)",
+              "brand": "Jooayou",
+              "price_cents": 3033,
+              "stock": 40
+            },
+            {
+              "product_id": "B08CRRQ1VP",
+              "title": "Yosoo Health Gear Sombrero de Paraguas de Manos Libres, Sombrero de Pesca de protección UV a Prueba de Agua, Paraguas Plegable Ajustable para la Pesca, jardinería de Playa, Campamento de Playa",
+              "brand": "Yosoo Health Gear",
+              "price_cents": 1634,
+              "stock": 29
+            }
+          ],
+          "awaiting_confirmation": true
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-2258b5f4-13_confirmacion_con_cambio-c1",
+              "product_id": "B08ZC4844X",
+              "quantity": 1
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B08ZC4844X",
+              "initial_stock": 7,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B0791CNJX6": {
+            "price_cents": 3033,
+            "stock": 40
+          },
+          "B07C1R3G3Y": {
+            "price_cents": 1630,
+            "stock": 42
+          },
+          "B08CRRQ1VP": {
+            "price_cents": 1634,
+            "stock": 29
+          },
+          "B08ZC4844X": {
+            "price_cents": 900,
+            "stock": 20
+          },
+          "B096K7N7ST": {
+            "price_cents": 4959,
+            "stock": 26
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-2258b5f4-13_confirmacion_con_cambio-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08ZC4844X",
+              "title": "Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a Prueba de Viento de Toldo Doble, Paraguas Compacto de 54 Pulgadas, Ventilado y a Prueba de Lluvia para Deportes, Negocios y Viajes",
+              "brand": "Gonex",
+              "price_cents": 900,
+              "stock": 20
+            },
+            {
+              "product_id": "B07C1R3G3Y",
+              "title": "Sombrero Plegable Paraguas de Sol al Aire Libre Golf Pesca Camping Sombreros Cap Cabeza Hat (1pcs).",
+              "brand": "xj",
+              "price_cents": 1630,
+              "stock": 42
+            },
+            {
+              "product_id": "B096K7N7ST",
+              "title": "LJGYX Impermeable Mujeres Plegables Paraguas Lluvia Mujeres Sol sombrilla Anti UV pequeño Bolsillo Paraguas niños Guarda- ombrello Impermeable y Resistente al Desgaste, fácil de LIM (Color : Blue)",
+              "brand": "LJGYX",
+              "price_cents": 4959,
+              "stock": 26
+            },
+            {
+              "product_id": "B0791CNJX6",
+              "title": "Jooayou Paraguas Invertido de Doble Capa,Paraguas Plegable de Manos Libres Autoportante,Paraguas a Prueba de Viento Anti-UV para la Lluvia del Coche al Aire Iibre (Night Sky)",
+              "brand": "Jooayou",
+              "price_cents": 3033,
+              "stock": 40
+            },
+            {
+              "product_id": "B08CRRQ1VP",
+              "title": "Yosoo Health Gear Sombrero de Paraguas de Manos Libres, Sombrero de Pesca de protección UV a Prueba de Agua, Paraguas Plegable Ajustable para la Pesca, jardinería de Playa, Campamento de Playa",
+              "brand": "Yosoo Health Gear",
+              "price_cents": 1634,
+              "stock": 29
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-2258b5f4-13_confirmacion_con_cambio-c1",
+              "product_id": "B08ZC4844X",
+              "quantity": 3
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B08ZC4844X",
+              "initial_stock": 7,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B0791CNJX6": {
+            "price_cents": 3033,
+            "stock": 40
+          },
+          "B07C1R3G3Y": {
+            "price_cents": 1630,
+            "stock": 42
+          },
+          "B08CRRQ1VP": {
+            "price_cents": 1634,
+            "stock": 29
+          },
+          "B08ZC4844X": {
+            "price_cents": 900,
+            "stock": 20
+          },
+          "B096K7N7ST": {
+            "price_cents": 4959,
+            "stock": 26
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "orders",
+          "params": {
+            "count": 0
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 0"
+        },
+        {
+          "check": "cart",
+          "params": {
+            "lines": [
+              {
+                "product": "@elegido",
+                "quantity": 3
+              }
+            ]
+          },
+          "ok": true,
+          "detail": "carrito: 3 × B08ZC4844X"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 5,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Cierra el pedido.",
+      "agent_input": "Cierra el pedido.",
+      "response": "Te repito el pedido antes de registrarlo: 3 unidades de «Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a…» a 9,00 € cada una, 27,00 €. Total: 27,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "spoken_text": "Te repito el pedido antes de registrarlo: tres unidades de Gonex Paraguas de Golf Plegable de diez a nueve euros cada una, veintisiete euros. Total: veintisiete euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": true,
+      "operations": [
+        {
+          "tool": "cotizar",
+          "args": {},
+          "reason": "cotizar el pedido",
+          "ok": true,
+          "summary": "cotización creada; falta la confirmación del usuario.",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 3.214,
+        "tools": 0.033,
+        "tts": 0.0,
+        "total": 3.247
+      },
+      "llm_steps": 1,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-2258b5f4-13_confirmacion_con_cambio-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08ZC4844X",
+              "title": "Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a Prueba de Viento de Toldo Doble, Paraguas Compacto de 54 Pulgadas, Ventilado y a Prueba de Lluvia para Deportes, Negocios y Viajes",
+              "brand": "Gonex",
+              "price_cents": 900,
+              "stock": 20
+            },
+            {
+              "product_id": "B07C1R3G3Y",
+              "title": "Sombrero Plegable Paraguas de Sol al Aire Libre Golf Pesca Camping Sombreros Cap Cabeza Hat (1pcs).",
+              "brand": "xj",
+              "price_cents": 1630,
+              "stock": 42
+            },
+            {
+              "product_id": "B096K7N7ST",
+              "title": "LJGYX Impermeable Mujeres Plegables Paraguas Lluvia Mujeres Sol sombrilla Anti UV pequeño Bolsillo Paraguas niños Guarda- ombrello Impermeable y Resistente al Desgaste, fácil de LIM (Color : Blue)",
+              "brand": "LJGYX",
+              "price_cents": 4959,
+              "stock": 26
+            },
+            {
+              "product_id": "B0791CNJX6",
+              "title": "Jooayou Paraguas Invertido de Doble Capa,Paraguas Plegable de Manos Libres Autoportante,Paraguas a Prueba de Viento Anti-UV para la Lluvia del Coche al Aire Iibre (Night Sky)",
+              "brand": "Jooayou",
+              "price_cents": 3033,
+              "stock": 40
+            },
+            {
+              "product_id": "B08CRRQ1VP",
+              "title": "Yosoo Health Gear Sombrero de Paraguas de Manos Libres, Sombrero de Pesca de protección UV a Prueba de Agua, Paraguas Plegable Ajustable para la Pesca, jardinería de Playa, Campamento de Playa",
+              "brand": "Yosoo Health Gear",
+              "price_cents": 1634,
+              "stock": 29
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-2258b5f4-13_confirmacion_con_cambio-c1",
+              "product_id": "B08ZC4844X",
+              "quantity": 3
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B08ZC4844X",
+              "initial_stock": 7,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B0791CNJX6": {
+            "price_cents": 3033,
+            "stock": 40
+          },
+          "B07C1R3G3Y": {
+            "price_cents": 1630,
+            "stock": 42
+          },
+          "B08CRRQ1VP": {
+            "price_cents": 1634,
+            "stock": 29
+          },
+          "B08ZC4844X": {
+            "price_cents": 900,
+            "stock": 20
+          },
+          "B096K7N7ST": {
+            "price_cents": 4959,
+            "stock": 26
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-2258b5f4-13_confirmacion_con_cambio-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": {
+            "quote_id": "1d3fbd8aeeea475794af4a2d7b82f036",
+            "items": [
+              {
+                "product_id": "B08ZC4844X",
+                "title": "Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a Prueba de Viento de Toldo Doble, Paraguas Compacto de 54 Pulgadas, Ventilado y a Prueba de Lluvia para Deportes, Negocios y Viajes",
+                "quantity": 3,
+                "unit_price_cents": 900,
+                "subtotal_cents": 2700,
+                "stock": 20
+              }
+            ],
+            "total_cents": 2700,
+            "budget_cents": null,
+            "message": "Te repito el pedido antes de registrarlo: 3 unidades de «Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a…» a 9,00 € cada una, 27,00 €. Total: 27,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+          },
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08ZC4844X",
+              "title": "Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a Prueba de Viento de Toldo Doble, Paraguas Compacto de 54 Pulgadas, Ventilado y a Prueba de Lluvia para Deportes, Negocios y Viajes",
+              "brand": "Gonex",
+              "price_cents": 900,
+              "stock": 20
+            },
+            {
+              "product_id": "B07C1R3G3Y",
+              "title": "Sombrero Plegable Paraguas de Sol al Aire Libre Golf Pesca Camping Sombreros Cap Cabeza Hat (1pcs).",
+              "brand": "xj",
+              "price_cents": 1630,
+              "stock": 42
+            },
+            {
+              "product_id": "B096K7N7ST",
+              "title": "LJGYX Impermeable Mujeres Plegables Paraguas Lluvia Mujeres Sol sombrilla Anti UV pequeño Bolsillo Paraguas niños Guarda- ombrello Impermeable y Resistente al Desgaste, fácil de LIM (Color : Blue)",
+              "brand": "LJGYX",
+              "price_cents": 4959,
+              "stock": 26
+            },
+            {
+              "product_id": "B0791CNJX6",
+              "title": "Jooayou Paraguas Invertido de Doble Capa,Paraguas Plegable de Manos Libres Autoportante,Paraguas a Prueba de Viento Anti-UV para la Lluvia del Coche al Aire Iibre (Night Sky)",
+              "brand": "Jooayou",
+              "price_cents": 3033,
+              "stock": 40
+            },
+            {
+              "product_id": "B08CRRQ1VP",
+              "title": "Yosoo Health Gear Sombrero de Paraguas de Manos Libres, Sombrero de Pesca de protección UV a Prueba de Agua, Paraguas Plegable Ajustable para la Pesca, jardinería de Playa, Campamento de Playa",
+              "brand": "Yosoo Health Gear",
+              "price_cents": 1634,
+              "stock": 29
+            }
+          ],
+          "awaiting_confirmation": true
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-2258b5f4-13_confirmacion_con_cambio-c1",
+              "product_id": "B08ZC4844X",
+              "quantity": 3
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B08ZC4844X",
+              "initial_stock": 7,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B0791CNJX6": {
+            "price_cents": 3033,
+            "stock": 40
+          },
+          "B07C1R3G3Y": {
+            "price_cents": 1630,
+            "stock": 42
+          },
+          "B08CRRQ1VP": {
+            "price_cents": 1634,
+            "stock": 29
+          },
+          "B08ZC4844X": {
+            "price_cents": 900,
+            "stock": 20
+          },
+          "B096K7N7ST": {
+            "price_cents": 4959,
+            "stock": 26
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "awaiting_confirmation",
+          "params": {
+            "value": true
+          },
+          "ok": true,
+          "detail": "esperando confirmación: sí"
+        },
+        {
+          "check": "orders",
+          "params": {
+            "count": 0
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 0"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 6,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Sí.",
+      "agent_input": "Sí.",
+      "response": "Pedido número 1 registrado: 3 unidades de «Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a…» a 9,00 € cada una, 27,00 €. Total: 27,00 €. Gracias por tu compra.",
+      "spoken_text": "Pedido número uno registrado: tres unidades de Gonex Paraguas de Golf Plegable de diez a nueve euros cada una, veintisiete euros. Total: veintisiete euros. Gracias por tu compra.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "confirmar_pedido",
+          "args": {
+            "quote_id": "1d3fbd8aeeea475794af4a2d7b82f036"
+          },
+          "reason": "el usuario confirmó la cotización",
+          "ok": true,
+          "summary": "pedido registrado",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 0.0,
+        "tools": 0.028,
+        "tts": 0.0,
+        "total": 0.028
+      },
+      "llm_steps": 0,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-2258b5f4-13_confirmacion_con_cambio-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": {
+            "quote_id": "1d3fbd8aeeea475794af4a2d7b82f036",
+            "items": [
+              {
+                "product_id": "B08ZC4844X",
+                "title": "Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a Prueba de Viento de Toldo Doble, Paraguas Compacto de 54 Pulgadas, Ventilado y a Prueba de Lluvia para Deportes, Negocios y Viajes",
+                "quantity": 3,
+                "unit_price_cents": 900,
+                "subtotal_cents": 2700,
+                "stock": 20
+              }
+            ],
+            "total_cents": 2700,
+            "budget_cents": null,
+            "message": "Te repito el pedido antes de registrarlo: 3 unidades de «Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a…» a 9,00 € cada una, 27,00 €. Total: 27,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+          },
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08ZC4844X",
+              "title": "Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a Prueba de Viento de Toldo Doble, Paraguas Compacto de 54 Pulgadas, Ventilado y a Prueba de Lluvia para Deportes, Negocios y Viajes",
+              "brand": "Gonex",
+              "price_cents": 900,
+              "stock": 20
+            },
+            {
+              "product_id": "B07C1R3G3Y",
+              "title": "Sombrero Plegable Paraguas de Sol al Aire Libre Golf Pesca Camping Sombreros Cap Cabeza Hat (1pcs).",
+              "brand": "xj",
+              "price_cents": 1630,
+              "stock": 42
+            },
+            {
+              "product_id": "B096K7N7ST",
+              "title": "LJGYX Impermeable Mujeres Plegables Paraguas Lluvia Mujeres Sol sombrilla Anti UV pequeño Bolsillo Paraguas niños Guarda- ombrello Impermeable y Resistente al Desgaste, fácil de LIM (Color : Blue)",
+              "brand": "LJGYX",
+              "price_cents": 4959,
+              "stock": 26
+            },
+            {
+              "product_id": "B0791CNJX6",
+              "title": "Jooayou Paraguas Invertido de Doble Capa,Paraguas Plegable de Manos Libres Autoportante,Paraguas a Prueba de Viento Anti-UV para la Lluvia del Coche al Aire Iibre (Night Sky)",
+              "brand": "Jooayou",
+              "price_cents": 3033,
+              "stock": 40
+            },
+            {
+              "product_id": "B08CRRQ1VP",
+              "title": "Yosoo Health Gear Sombrero de Paraguas de Manos Libres, Sombrero de Pesca de protección UV a Prueba de Agua, Paraguas Plegable Ajustable para la Pesca, jardinería de Playa, Campamento de Playa",
+              "brand": "Yosoo Health Gear",
+              "price_cents": 1634,
+              "stock": 29
+            }
+          ],
+          "awaiting_confirmation": true
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-2258b5f4-13_confirmacion_con_cambio-c1",
+              "product_id": "B08ZC4844X",
+              "quantity": 3
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B08ZC4844X",
+              "initial_stock": 7,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B0791CNJX6": {
+            "price_cents": 3033,
+            "stock": 40
+          },
+          "B07C1R3G3Y": {
+            "price_cents": 1630,
+            "stock": 42
+          },
+          "B08CRRQ1VP": {
+            "price_cents": 1634,
+            "stock": 29
+          },
+          "B08ZC4844X": {
+            "price_cents": 900,
+            "stock": 20
+          },
+          "B096K7N7ST": {
+            "price_cents": 4959,
+            "stock": 26
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-2258b5f4-13_confirmacion_con_cambio-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": {
+            "order_id": 1,
+            "quote_id": "1d3fbd8aeeea475794af4a2d7b82f036",
+            "items": [
+              {
+                "product_id": "B08ZC4844X",
+                "title": "Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a Prueba de Viento de Toldo Doble, Paraguas Compacto de 54 Pulgadas, Ventilado y a Prueba de Lluvia para Deportes, Negocios y Viajes",
+                "quantity": 3,
+                "unit_price_cents": 900,
+                "subtotal_cents": 2700
+              }
+            ],
+            "total_cents": 2700,
+            "message": "Pedido número 1 registrado: 3 unidades de «Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a…» a 9,00 € cada una, 27,00 €. Total: 27,00 €. Gracias por tu compra."
+          },
+          "candidates": [
+            {
+              "product_id": "B08ZC4844X",
+              "title": "Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a Prueba de Viento de Toldo Doble, Paraguas Compacto de 54 Pulgadas, Ventilado y a Prueba de Lluvia para Deportes, Negocios y Viajes",
+              "brand": "Gonex",
+              "price_cents": 900,
+              "stock": 20
+            },
+            {
+              "product_id": "B07C1R3G3Y",
+              "title": "Sombrero Plegable Paraguas de Sol al Aire Libre Golf Pesca Camping Sombreros Cap Cabeza Hat (1pcs).",
+              "brand": "xj",
+              "price_cents": 1630,
+              "stock": 42
+            },
+            {
+              "product_id": "B096K7N7ST",
+              "title": "LJGYX Impermeable Mujeres Plegables Paraguas Lluvia Mujeres Sol sombrilla Anti UV pequeño Bolsillo Paraguas niños Guarda- ombrello Impermeable y Resistente al Desgaste, fácil de LIM (Color : Blue)",
+              "brand": "LJGYX",
+              "price_cents": 4959,
+              "stock": 26
+            },
+            {
+              "product_id": "B0791CNJX6",
+              "title": "Jooayou Paraguas Invertido de Doble Capa,Paraguas Plegable de Manos Libres Autoportante,Paraguas a Prueba de Viento Anti-UV para la Lluvia del Coche al Aire Iibre (Night Sky)",
+              "brand": "Jooayou",
+              "price_cents": 3033,
+              "stock": 40
+            },
+            {
+              "product_id": "B08CRRQ1VP",
+              "title": "Yosoo Health Gear Sombrero de Paraguas de Manos Libres, Sombrero de Pesca de protección UV a Prueba de Agua, Paraguas Plegable Ajustable para la Pesca, jardinería de Playa, Campamento de Playa",
+              "brand": "Yosoo Health Gear",
+              "price_cents": 1634,
+              "stock": 29
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [
+            {
+              "order_id": 1,
+              "quote_id": "1d3fbd8aeeea475794af4a2d7b82f036",
+              "total_cents": 2700
+            }
+          ],
+          "order_items": [
+            {
+              "order_id": 1,
+              "product_id": "B08ZC4844X",
+              "quantity": 3,
+              "unit_price_cents": 900
+            }
+          ],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B08ZC4844X",
+              "initial_stock": 7,
+              "stock": 17
+            }
+          ]
+        },
+        "offers": {
+          "B0791CNJX6": {
+            "price_cents": 3033,
+            "stock": 40
+          },
+          "B07C1R3G3Y": {
+            "price_cents": 1630,
+            "stock": 42
+          },
+          "B08CRRQ1VP": {
+            "price_cents": 1634,
+            "stock": 29
+          },
+          "B08ZC4844X": {
+            "price_cents": 900,
+            "stock": 17
+          },
+          "B096K7N7ST": {
+            "price_cents": 4959,
+            "stock": 26
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "orders",
+          "params": {
+            "count": 1
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 1"
+        }
+      ]
+    }
+  ],
+  "final": {
+    "snapshot": {
+      "cart_id": "eval-2258b5f4-13_confirmacion_con_cambio-c1",
+      "state": {
+        "budget_cents": null,
+        "preferences": [],
+        "pending_clarification": null,
+        "quote": null,
+        "order": {
+          "order_id": 1,
+          "quote_id": "1d3fbd8aeeea475794af4a2d7b82f036",
+          "items": [
+            {
+              "product_id": "B08ZC4844X",
+              "title": "Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a Prueba de Viento de Toldo Doble, Paraguas Compacto de 54 Pulgadas, Ventilado y a Prueba de Lluvia para Deportes, Negocios y Viajes",
+              "quantity": 3,
+              "unit_price_cents": 900,
+              "subtotal_cents": 2700
+            }
+          ],
+          "total_cents": 2700,
+          "message": "Pedido número 1 registrado: 3 unidades de «Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a…» a 9,00 € cada una, 27,00 €. Total: 27,00 €. Gracias por tu compra."
+        },
+        "candidates": [
+          {
+            "product_id": "B08ZC4844X",
+            "title": "Gonex Paraguas de Golf Plegable de 10 Varillas, Paraguas Grande a Prueba de Viento de Toldo Doble, Paraguas Compacto de 54 Pulgadas, Ventilado y a Prueba de Lluvia para Deportes, Negocios y Viajes",
+            "brand": "Gonex",
+            "price_cents": 900,
+            "stock": 20
+          },
+          {
+            "product_id": "B07C1R3G3Y",
+            "title": "Sombrero Plegable Paraguas de Sol al Aire Libre Golf Pesca Camping Sombreros Cap Cabeza Hat (1pcs).",
+            "brand": "xj",
+            "price_cents": 1630,
+            "stock": 42
+          },
+          {
+            "product_id": "B096K7N7ST",
+            "title": "LJGYX Impermeable Mujeres Plegables Paraguas Lluvia Mujeres Sol sombrilla Anti UV pequeño Bolsillo Paraguas niños Guarda- ombrello Impermeable y Resistente al Desgaste, fácil de LIM (Color : Blue)",
+            "brand": "LJGYX",
+            "price_cents": 4959,
+            "stock": 26
+          },
+          {
+            "product_id": "B0791CNJX6",
+            "title": "Jooayou Paraguas Invertido de Doble Capa,Paraguas Plegable de Manos Libres Autoportante,Paraguas a Prueba de Viento Anti-UV para la Lluvia del Coche al Aire Iibre (Night Sky)",
+            "brand": "Jooayou",
+            "price_cents": 3033,
+            "stock": 40
+          },
+          {
+            "product_id": "B08CRRQ1VP",
+            "title": "Yosoo Health Gear Sombrero de Paraguas de Manos Libres, Sombrero de Pesca de protección UV a Prueba de Agua, Paraguas Plegable Ajustable para la Pesca, jardinería de Playa, Campamento de Playa",
+            "brand": "Yosoo Health Gear",
+            "price_cents": 1634,
+            "stock": 29
+          }
+        ],
+        "awaiting_confirmation": false
+      },
+      "store": {
+        "orders": [
+          {
+            "order_id": 1,
+            "quote_id": "1d3fbd8aeeea475794af4a2d7b82f036",
+            "total_cents": 2700
+          }
+        ],
+        "order_items": [
+          {
+            "order_id": 1,
+            "product_id": "B08ZC4844X",
+            "quantity": 3,
+            "unit_price_cents": 900
+          }
+        ],
+        "cart_items": [],
+        "inventory_changes": [
+          {
+            "product_id": "B08ZC4844X",
+            "initial_stock": 7,
+            "stock": 17
+          }
+        ]
+      },
+      "offers": {
+        "B0791CNJX6": {
+          "price_cents": 3033,
+          "stock": 40
+        },
+        "B07C1R3G3Y": {
+          "price_cents": 1630,
+          "stock": 42
+        },
+        "B08CRRQ1VP": {
+          "price_cents": 1634,
+          "stock": 29
+        },
+        "B08ZC4844X": {
+          "price_cents": 900,
+          "stock": 17
+        },
+        "B096K7N7ST": {
+          "price_cents": 4959,
+          "stock": 26
+        }
+      }
+    },
+    "checks": [
+      {
+        "check": "orders",
+        "params": {
+          "count": 1
+        },
+        "ok": true,
+        "detail": "pedidos registrados: 1"
+      },
+      {
+        "check": "order",
+        "params": {
+          "lines": [
+            {
+              "product": "@elegido",
+              "quantity": 3
+            }
+          ],
+          "total_cents": 2700
+        },
+        "ok": true,
+        "detail": "pedido 1: 3 × B08ZC4844X; total 2700 céntimos"
+      },
+      {
+        "check": "stock",
+        "params": {
+          "product": "@elegido",
+          "equals": 17
+        },
+        "ok": true,
+        "detail": "existencias de B08ZC4844X: 17"
+      },
+      {
+        "check": "cart",
+        "params": {
+          "empty": true
+        },
+        "ok": true,
+        "detail": "carrito: vacío"
+      }
+    ]
+  },
+  "violations": [],
+  "problems": [],
+  "passed": true,
+  "timings": {
+    "all": {
+      "turns": 6,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.02,
+        "max": 0.1
+      },
+      "llm": {
+        "mean": 6.56,
+        "max": 12.49
+      },
+      "tools": {
+        "mean": 0.04,
+        "max": 0.05
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 6.61,
+        "max": 12.61
+      }
+    },
+    "with_llm": {
+      "turns": 5,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.02,
+        "max": 0.1
+      },
+      "llm": {
+        "mean": 7.87,
+        "max": 12.49
+      },
+      "tools": {
+        "mean": 0.04,
+        "max": 0.05
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 7.93,
+        "max": 12.61
+      }
+    },
+    "without_llm": {
+      "turns": 1,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "llm": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "tools": {
+        "mean": 0.03,
+        "max": 0.03
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 0.03,
+        "max": 0.03
+      }
+    }
+  }
+}

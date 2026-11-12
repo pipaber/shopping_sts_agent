@@ -1,0 +1,1775 @@
+{
+  "id": "19_presupuesto_compartido",
+  "title": "Presupuesto compartido entre dos productos",
+  "kind": "presupuesto_compartido",
+  "description": "Con 50 € de presupuesto, dos unidades del primero (28,00 €) caben, pero otras dos del segundo (32,00 €) ya no: solo cabe una (16,00 €). El pedido final suma 44,00 €.",
+  "voice": false,
+  "input": "texto",
+  "audio_source": null,
+  "user_id": "eval-2258b5f4-19_presupuesto_compartido",
+  "threads": [
+    "eval-2258b5f4-19_presupuesto_compartido-c1"
+  ],
+  "names": {
+    "primeras": "B01M0TJMI7",
+    "segundas": "B07P67N2J1"
+  },
+  "steps": [
+    {
+      "kind": "turn",
+      "turn": 1,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Busco unas toallas de baño. Mi presupuesto es de 50 euros.",
+      "agent_input": "Busco unas toallas de baño. Mi presupuesto es de 50 euros.",
+      "response": "Tengo estas opciones para ti: las toallas de baño Amazon Basics por 11,93 €, las de Chantarole por 35,15 €, las de Utopia Towels por 48,03 € y las de Utopia Towels en gris por 9,24 €. ¿Te interesa alguna? He anotado un presupuesto de 50,00 €.",
+      "spoken_text": "Tengo estas opciones para ti: las toallas de baño Amazon Basics por once euros con noventa y tres céntimos, las de Chantarole por treinta y cinco euros con quince céntimos, las de Utopia Towels por cuarenta y ocho euros con tres céntimos y las de Utopia Towels en gris por nueve euros con veinticuatro céntimos. ¿Te interesa alguna? He anotado un presupuesto de cincuenta euros.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "fijar_presupuesto",
+          "args": {
+            "importe_eur": 50
+          },
+          "reason": "el usuario da su gasto máximo",
+          "ok": true,
+          "summary": "presupuesto fijado en 50,00 €.",
+          "issues": []
+        },
+        {
+          "tool": "buscar_productos",
+          "args": {
+            "consulta": "toallas de baño"
+          },
+          "reason": "buscar toallas de baño dentro del presupuesto",
+          "ok": true,
+          "summary": "estos son ahora los CANDIDATOS, del más al menos relevante:\n[1] id=B01M0TJMI7 | Amazon Basics - Juego de toallas (colores resistentes, 2 toallas de baño, 2 de manos y 2 para bidé), color blanco | marca: Amazon Basics | color: Blanco | precio: 11,93 € | existencias: 39 | características (extracto): Incluye 2 toallas de baño, 2 toallas de manos y 2 toallas pequeñas para bidé. Tamaño: 140 x 70 cm (toalla de baño), 50 x 100 cm (toalla de manos) y 30 x 30 (toalla para bidé). Fabricada en 100% algodón. Lavables en lavadora a 60 °C; se… | descripción: desconocido\n[2] id=B07P67N2J1 | Chantarole - Juego de Toallas baño Grandes: 1 Toalla de baño + 1 Toalla Manos + 1 Toalla Pelo + 1 Alfombra baño; Toallas Blancas Algodon; Toallas Hotel (Blanco, 4) | marca: Chantarole | color: Blanco | precio: 35,15 € | existencias: 38 | características (extracto): Toallas de baño grandes: nuestro juego de baño incluye 4 toallas grandes de baño: 1 toalla de baño de 150 x 100 cm; 1 toallas de mano de 100 x 50 cm; 1 toalla secado rapido pelo de 23 x 67 cm y 1 alfombra bañera antideslizante extra-gruesa… | descripción: Consigue unas toallas de baño y lavabo con las que poder taparte completamente. ¡Compra toallas de tamaño adecuado y cúbrete!La calidad de su algodon y altísimo gramaje confiere al conjunto gran…\n[3] id=B009SZ2P4C | Utopia Towels - Toalla de baño Grande, Paquete de 1 (90 x 180 cm, Blanco) | marca: Utopia Towels | color: Blanco | precio: 48,03 € | existencias: 30 | características (extracto): NO UTILICE Lejía, suavizantes de telas ni plancha, ya que puede dañar su calidad; siempre lave las toallas por separado para minimizar la pelusa. Toalla de baño de algodón medidas 90 x 180 cm Lave las toallas a máquina en agua tibia con un… | descripción: Esta lujosa toalla de baño suave ofrece una sensación suave a la piel y una alta absorción. Con 2 capas, hilado en anillo, construcción de algodón peinado, la toalla es duradera y de tamaño generoso…\n[4] id=B01N2VYEFS | Utopia Towels - Conjunto de Toallas de baño (Paquete de 4, 69 x 137 cm) Toallas de algodón 100 por ciento Ring-Spun para Hotel y SPA, máxima suavidad y Altamente Absorbente (Gris) | marca: Utopia Towels | color: Gris | precio: 9,24 € | existencias: 28 | características (extracto): No use blanqueador, suavizante de telas ni plancha, ya que puede dañar su calidad; lave siempre las toallas por separado para minimizar la pelusa. El juego incluye cuatro toallas de baño de algodón de lujo en color gris de 69 x 137 cm cada… | descripción: ¡Obtenga el mayor valor por su dinero con nuestra toalla de baño de mayor calidad y tamaño premium! Consiéntete con la toalla de baño 100% algodón hecha de suave y duradera toalla de filtro de…\n[5] id=B01N0SVK1K | Utopia Towels - 700 gsm Toallas de baño de algodón (90 x 180 cm) Hoja de baño de Lujo hogar, los baños, la Piscina y el Gimnasio Algodón de Anillos (Blanco) | marca: Utopia Towels | color: Blanco | precio: 45,75 € | existencias: 42 | características (extracto): No use blanqueador, suavizante de telas ni plancha, ya que puede dañar su calidad; lave siempre las toallas por separado para minimizar la pelusa. 700 GSM toalla de baño de algodón de lujo medidas 90 x 180 cm Tejido con 100% algodón hilado… | descripción: Obtener el máximo valor por su dinero con nuestra toalla de baño Toprated! Consiéntete con el algodón 700 GSM toalla de baño 100% hecha de tela de toalla suave y duradero. Cada toalla de baño ofrece…",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.064,
+        "llm": 13.829,
+        "tools": 0.026,
+        "tts": 0.0,
+        "total": 13.919
+      },
+      "llm_steps": 3,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-2258b5f4-19_presupuesto_compartido-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {}
+      },
+      "after": {
+        "cart_id": "eval-2258b5f4-19_presupuesto_compartido-c1",
+        "state": {
+          "budget_cents": 5000,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B01M0TJMI7",
+              "title": "Amazon Basics - Juego de toallas (colores resistentes, 2 toallas de baño, 2 de manos y 2 para bidé), color blanco",
+              "brand": "Amazon Basics",
+              "price_cents": 1193,
+              "stock": 39
+            },
+            {
+              "product_id": "B07P67N2J1",
+              "title": "Chantarole - Juego de Toallas baño Grandes: 1 Toalla de baño + 1 Toalla Manos + 1 Toalla Pelo + 1 Alfombra baño; Toallas Blancas Algodon; Toallas Hotel (Blanco, 4)",
+              "brand": "Chantarole",
+              "price_cents": 3515,
+              "stock": 38
+            },
+            {
+              "product_id": "B009SZ2P4C",
+              "title": "Utopia Towels - Toalla de baño Grande, Paquete de 1 (90 x 180 cm, Blanco)",
+              "brand": "Utopia Towels",
+              "price_cents": 4803,
+              "stock": 30
+            },
+            {
+              "product_id": "B01N2VYEFS",
+              "title": "Utopia Towels - Conjunto de Toallas de baño (Paquete de 4, 69 x 137 cm) Toallas de algodón 100 por ciento Ring-Spun para Hotel y SPA, máxima suavidad y Altamente Absorbente (Gris)",
+              "brand": "Utopia Towels",
+              "price_cents": 924,
+              "stock": 28
+            },
+            {
+              "product_id": "B01N0SVK1K",
+              "title": "Utopia Towels - 700 gsm Toallas de baño de algodón (90 x 180 cm) Hoja de baño de Lujo hogar, los baños, la Piscina y el Gimnasio Algodón de Anillos (Blanco)",
+              "brand": "Utopia Towels",
+              "price_cents": 4575,
+              "stock": 42
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {
+          "B009SZ2P4C": {
+            "price_cents": 4803,
+            "stock": 30
+          },
+          "B01M0TJMI7": {
+            "price_cents": 1193,
+            "stock": 39
+          },
+          "B01N0SVK1K": {
+            "price_cents": 4575,
+            "stock": 42
+          },
+          "B01N2VYEFS": {
+            "price_cents": 924,
+            "stock": 28
+          },
+          "B07P67N2J1": {
+            "price_cents": 3515,
+            "stock": 38
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "budget",
+          "params": {
+            "cents": 5000
+          },
+          "ok": true,
+          "detail": "presupuesto en el estado: 5000"
+        },
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        }
+      ]
+    },
+    {
+      "kind": "remember",
+      "name": "primeras",
+      "ref": "candidate:1",
+      "product_id": "B01M0TJMI7",
+      "title": "Amazon Basics - Juego de toallas (colores resistentes, 2 toallas de baño, 2 de manos y 2 para bidé), color blanco"
+    },
+    {
+      "kind": "remember",
+      "name": "segundas",
+      "ref": "candidate:2",
+      "product_id": "B07P67N2J1",
+      "title": "Chantarole - Juego de Toallas baño Grandes: 1 Toalla de baño + 1 Toalla Manos + 1 Toalla Pelo + 1 Alfombra baño; Toallas Blancas Algodon; Toallas Hotel (Blanco, 4)"
+    },
+    {
+      "kind": "event",
+      "event": "set_offer",
+      "product": "@primeras",
+      "product_id": "B01M0TJMI7",
+      "price_cents": 1400,
+      "stock": 20
+    },
+    {
+      "kind": "event",
+      "event": "set_offer",
+      "product": "@segundas",
+      "product_id": "B07P67N2J1",
+      "price_cents": 1600,
+      "stock": 20
+    },
+    {
+      "kind": "turn",
+      "turn": 2,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Añade dos de la primera opción.",
+      "agent_input": "Añade dos de la primera opción.",
+      "response": "Hecho, añadidas dos unidades. En el carrito hay 2 unidades de «Amazon Basics - Juego de toallas (colores resistentes, 2 toallas de…» a 14,00 € cada una, 28,00 €. Total: 28,00 €. Tu presupuesto es de 50,00 € y te quedan 22,00 €.",
+      "spoken_text": "Hecho, añadidas dos unidades. En el carrito hay dos unidades de Amazon Basics a catorce euros cada una, veintiocho euros. Total: veintiocho euros. Tu presupuesto es de cincuenta euros y te quedan veintidós euros.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "agregar_al_carrito",
+          "args": {
+            "product_id": "B01M0TJMI7",
+            "cantidad": 2
+          },
+          "reason": "añadir dos unidades del candidato 1",
+          "ok": true,
+          "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B01M0TJMI7 | Amazon Basics - Juego de toallas (colores resistentes, 2 toallas de… | 2 unidades × 14,00 € = 28,00 € | existencias: 20\nTotal del carrito: 28,00 €",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 6.912,
+        "tools": 0.042,
+        "tts": 0.0,
+        "total": 6.955
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-2258b5f4-19_presupuesto_compartido-c1",
+        "state": {
+          "budget_cents": 5000,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B01M0TJMI7",
+              "title": "Amazon Basics - Juego de toallas (colores resistentes, 2 toallas de baño, 2 de manos y 2 para bidé), color blanco",
+              "brand": "Amazon Basics",
+              "price_cents": 1193,
+              "stock": 39
+            },
+            {
+              "product_id": "B07P67N2J1",
+              "title": "Chantarole - Juego de Toallas baño Grandes: 1 Toalla de baño + 1 Toalla Manos + 1 Toalla Pelo + 1 Alfombra baño; Toallas Blancas Algodon; Toallas Hotel (Blanco, 4)",
+              "brand": "Chantarole",
+              "price_cents": 3515,
+              "stock": 38
+            },
+            {
+              "product_id": "B009SZ2P4C",
+              "title": "Utopia Towels - Toalla de baño Grande, Paquete de 1 (90 x 180 cm, Blanco)",
+              "brand": "Utopia Towels",
+              "price_cents": 4803,
+              "stock": 30
+            },
+            {
+              "product_id": "B01N2VYEFS",
+              "title": "Utopia Towels - Conjunto de Toallas de baño (Paquete de 4, 69 x 137 cm) Toallas de algodón 100 por ciento Ring-Spun para Hotel y SPA, máxima suavidad y Altamente Absorbente (Gris)",
+              "brand": "Utopia Towels",
+              "price_cents": 924,
+              "stock": 28
+            },
+            {
+              "product_id": "B01N0SVK1K",
+              "title": "Utopia Towels - 700 gsm Toallas de baño de algodón (90 x 180 cm) Hoja de baño de Lujo hogar, los baños, la Piscina y el Gimnasio Algodón de Anillos (Blanco)",
+              "brand": "Utopia Towels",
+              "price_cents": 4575,
+              "stock": 42
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B01M0TJMI7",
+              "initial_stock": 39,
+              "stock": 20
+            },
+            {
+              "product_id": "B07P67N2J1",
+              "initial_stock": 38,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B009SZ2P4C": {
+            "price_cents": 4803,
+            "stock": 30
+          },
+          "B01M0TJMI7": {
+            "price_cents": 1400,
+            "stock": 20
+          },
+          "B01N0SVK1K": {
+            "price_cents": 4575,
+            "stock": 42
+          },
+          "B01N2VYEFS": {
+            "price_cents": 924,
+            "stock": 28
+          },
+          "B07P67N2J1": {
+            "price_cents": 1600,
+            "stock": 20
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-2258b5f4-19_presupuesto_compartido-c1",
+        "state": {
+          "budget_cents": 5000,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B01M0TJMI7",
+              "title": "Amazon Basics - Juego de toallas (colores resistentes, 2 toallas de baño, 2 de manos y 2 para bidé), color blanco",
+              "brand": "Amazon Basics",
+              "price_cents": 1400,
+              "stock": 20
+            },
+            {
+              "product_id": "B07P67N2J1",
+              "title": "Chantarole - Juego de Toallas baño Grandes: 1 Toalla de baño + 1 Toalla Manos + 1 Toalla Pelo + 1 Alfombra baño; Toallas Blancas Algodon; Toallas Hotel (Blanco, 4)",
+              "brand": "Chantarole",
+              "price_cents": 1600,
+              "stock": 20
+            },
+            {
+              "product_id": "B009SZ2P4C",
+              "title": "Utopia Towels - Toalla de baño Grande, Paquete de 1 (90 x 180 cm, Blanco)",
+              "brand": "Utopia Towels",
+              "price_cents": 4803,
+              "stock": 30
+            },
+            {
+              "product_id": "B01N2VYEFS",
+              "title": "Utopia Towels - Conjunto de Toallas de baño (Paquete de 4, 69 x 137 cm) Toallas de algodón 100 por ciento Ring-Spun para Hotel y SPA, máxima suavidad y Altamente Absorbente (Gris)",
+              "brand": "Utopia Towels",
+              "price_cents": 924,
+              "stock": 28
+            },
+            {
+              "product_id": "B01N0SVK1K",
+              "title": "Utopia Towels - 700 gsm Toallas de baño de algodón (90 x 180 cm) Hoja de baño de Lujo hogar, los baños, la Piscina y el Gimnasio Algodón de Anillos (Blanco)",
+              "brand": "Utopia Towels",
+              "price_cents": 4575,
+              "stock": 42
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-2258b5f4-19_presupuesto_compartido-c1",
+              "product_id": "B01M0TJMI7",
+              "quantity": 2
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B01M0TJMI7",
+              "initial_stock": 39,
+              "stock": 20
+            },
+            {
+              "product_id": "B07P67N2J1",
+              "initial_stock": 38,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B009SZ2P4C": {
+            "price_cents": 4803,
+            "stock": 30
+          },
+          "B01M0TJMI7": {
+            "price_cents": 1400,
+            "stock": 20
+          },
+          "B01N0SVK1K": {
+            "price_cents": 4575,
+            "stock": 42
+          },
+          "B01N2VYEFS": {
+            "price_cents": 924,
+            "stock": 28
+          },
+          "B07P67N2J1": {
+            "price_cents": 1600,
+            "stock": 20
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "lines": [
+              {
+                "product": "@primeras",
+                "quantity": 2
+              }
+            ]
+          },
+          "ok": true,
+          "detail": "carrito: 2 × B01M0TJMI7"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 3,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Añade también dos de la segunda opción.",
+      "agent_input": "Añade también dos de la segunda opción.",
+      "response": "Ese producto supera tu presupuesto. ¿Quieres añadirlo de todas formas o prefieres otro?",
+      "spoken_text": "Ese producto supera tu presupuesto. ¿Quieres añadirlo de todas formas o prefieres otro?",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "agregar_al_carrito",
+          "args": {
+            "product_id": "B07P67N2J1",
+            "cantidad": 2
+          },
+          "reason": "añadir dos unidades del candidato 2",
+          "ok": false,
+          "summary": "[presupuesto_excedido] El total sería 60,00 € y supera el presupuesto de 50,00 € por 10,00 €. Dentro del presupuesto caben como máximo 1 unidades de este producto.",
+          "issues": [
+            {
+              "code": "presupuesto_excedido",
+              "message": "El total sería 60,00 € y supera el presupuesto de 50,00 € por 10,00 €.",
+              "product_id": null,
+              "details": {
+                "total_cents": 6000,
+                "budget_cents": 5000,
+                "excess_cents": 1000,
+                "product_id": "B07P67N2J1",
+                "unit_price_cents": 1600,
+                "max_quantity": 1
+              }
+            }
+          ]
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 9.192,
+        "tools": 0.03,
+        "tts": 0.0,
+        "total": 9.222
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-2258b5f4-19_presupuesto_compartido-c1",
+        "state": {
+          "budget_cents": 5000,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B01M0TJMI7",
+              "title": "Amazon Basics - Juego de toallas (colores resistentes, 2 toallas de baño, 2 de manos y 2 para bidé), color blanco",
+              "brand": "Amazon Basics",
+              "price_cents": 1400,
+              "stock": 20
+            },
+            {
+              "product_id": "B07P67N2J1",
+              "title": "Chantarole - Juego de Toallas baño Grandes: 1 Toalla de baño + 1 Toalla Manos + 1 Toalla Pelo + 1 Alfombra baño; Toallas Blancas Algodon; Toallas Hotel (Blanco, 4)",
+              "brand": "Chantarole",
+              "price_cents": 1600,
+              "stock": 20
+            },
+            {
+              "product_id": "B009SZ2P4C",
+              "title": "Utopia Towels - Toalla de baño Grande, Paquete de 1 (90 x 180 cm, Blanco)",
+              "brand": "Utopia Towels",
+              "price_cents": 4803,
+              "stock": 30
+            },
+            {
+              "product_id": "B01N2VYEFS",
+              "title": "Utopia Towels - Conjunto de Toallas de baño (Paquete de 4, 69 x 137 cm) Toallas de algodón 100 por ciento Ring-Spun para Hotel y SPA, máxima suavidad y Altamente Absorbente (Gris)",
+              "brand": "Utopia Towels",
+              "price_cents": 924,
+              "stock": 28
+            },
+            {
+              "product_id": "B01N0SVK1K",
+              "title": "Utopia Towels - 700 gsm Toallas de baño de algodón (90 x 180 cm) Hoja de baño de Lujo hogar, los baños, la Piscina y el Gimnasio Algodón de Anillos (Blanco)",
+              "brand": "Utopia Towels",
+              "price_cents": 4575,
+              "stock": 42
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-2258b5f4-19_presupuesto_compartido-c1",
+              "product_id": "B01M0TJMI7",
+              "quantity": 2
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B01M0TJMI7",
+              "initial_stock": 39,
+              "stock": 20
+            },
+            {
+              "product_id": "B07P67N2J1",
+              "initial_stock": 38,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B009SZ2P4C": {
+            "price_cents": 4803,
+            "stock": 30
+          },
+          "B01M0TJMI7": {
+            "price_cents": 1400,
+            "stock": 20
+          },
+          "B01N0SVK1K": {
+            "price_cents": 4575,
+            "stock": 42
+          },
+          "B01N2VYEFS": {
+            "price_cents": 924,
+            "stock": 28
+          },
+          "B07P67N2J1": {
+            "price_cents": 1600,
+            "stock": 20
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-2258b5f4-19_presupuesto_compartido-c1",
+        "state": {
+          "budget_cents": 5000,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B01M0TJMI7",
+              "title": "Amazon Basics - Juego de toallas (colores resistentes, 2 toallas de baño, 2 de manos y 2 para bidé), color blanco",
+              "brand": "Amazon Basics",
+              "price_cents": 1400,
+              "stock": 20
+            },
+            {
+              "product_id": "B07P67N2J1",
+              "title": "Chantarole - Juego de Toallas baño Grandes: 1 Toalla de baño + 1 Toalla Manos + 1 Toalla Pelo + 1 Alfombra baño; Toallas Blancas Algodon; Toallas Hotel (Blanco, 4)",
+              "brand": "Chantarole",
+              "price_cents": 1600,
+              "stock": 20
+            },
+            {
+              "product_id": "B009SZ2P4C",
+              "title": "Utopia Towels - Toalla de baño Grande, Paquete de 1 (90 x 180 cm, Blanco)",
+              "brand": "Utopia Towels",
+              "price_cents": 4803,
+              "stock": 30
+            },
+            {
+              "product_id": "B01N2VYEFS",
+              "title": "Utopia Towels - Conjunto de Toallas de baño (Paquete de 4, 69 x 137 cm) Toallas de algodón 100 por ciento Ring-Spun para Hotel y SPA, máxima suavidad y Altamente Absorbente (Gris)",
+              "brand": "Utopia Towels",
+              "price_cents": 924,
+              "stock": 28
+            },
+            {
+              "product_id": "B01N0SVK1K",
+              "title": "Utopia Towels - 700 gsm Toallas de baño de algodón (90 x 180 cm) Hoja de baño de Lujo hogar, los baños, la Piscina y el Gimnasio Algodón de Anillos (Blanco)",
+              "brand": "Utopia Towels",
+              "price_cents": 4575,
+              "stock": 42
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-2258b5f4-19_presupuesto_compartido-c1",
+              "product_id": "B01M0TJMI7",
+              "quantity": 2
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B01M0TJMI7",
+              "initial_stock": 39,
+              "stock": 20
+            },
+            {
+              "product_id": "B07P67N2J1",
+              "initial_stock": 38,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B009SZ2P4C": {
+            "price_cents": 4803,
+            "stock": 30
+          },
+          "B01M0TJMI7": {
+            "price_cents": 1400,
+            "stock": 20
+          },
+          "B01N0SVK1K": {
+            "price_cents": 4575,
+            "stock": 42
+          },
+          "B01N2VYEFS": {
+            "price_cents": 924,
+            "stock": 28
+          },
+          "B07P67N2J1": {
+            "price_cents": 1600,
+            "stock": 20
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "lines": [
+              {
+                "product": "@primeras",
+                "quantity": 2
+              }
+            ]
+          },
+          "ok": true,
+          "detail": "carrito: 2 × B01M0TJMI7"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 4,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Pues solo una de la segunda.",
+      "agent_input": "Pues solo una de la segunda.",
+      "response": "Hecho, añadida una unidad. En total, 44,00 €. En el carrito hay 2 unidades de «Amazon Basics - Juego de toallas (colores resistentes, 2 toallas de…» a 14,00 € cada una, 28,00 €; 1 unidad de «Chantarole - Juego de Toallas baño Grandes: 1 Toalla de baño + 1…» a 16,00 € cada una, 16,00 €. Total: 44,00 €. Tu presupuesto es de 50,00 € y te quedan 6,00 €.",
+      "spoken_text": "Hecho, añadida una unidad. En total, cuarenta y cuatro euros. En el carrito hay dos unidades de Amazon Basics a catorce euros cada una, veintiocho euros, una unidad de Chantarole a dieciséis euros cada una, dieciséis euros. Total: cuarenta y cuatro euros. Tu presupuesto es de cincuenta euros y te quedan seis euros.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "agregar_al_carrito",
+          "args": {
+            "product_id": "B07P67N2J1",
+            "cantidad": 1
+          },
+          "reason": "añadir una unidad del candidato 2",
+          "ok": true,
+          "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B01M0TJMI7 | Amazon Basics - Juego de toallas (colores resistentes, 2 toallas de… | 2 unidades × 14,00 € = 28,00 € | existencias: 20\n- id=B07P67N2J1 | Chantarole - Juego de Toallas baño Grandes: 1 Toalla de baño + 1… | 1 unidad × 16,00 € = 16,00 € | existencias: 20\nTotal del carrito: 44,00 €",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 9.337,
+        "tools": 0.046,
+        "tts": 0.0,
+        "total": 9.383
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-2258b5f4-19_presupuesto_compartido-c1",
+        "state": {
+          "budget_cents": 5000,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B01M0TJMI7",
+              "title": "Amazon Basics - Juego de toallas (colores resistentes, 2 toallas de baño, 2 de manos y 2 para bidé), color blanco",
+              "brand": "Amazon Basics",
+              "price_cents": 1400,
+              "stock": 20
+            },
+            {
+              "product_id": "B07P67N2J1",
+              "title": "Chantarole - Juego de Toallas baño Grandes: 1 Toalla de baño + 1 Toalla Manos + 1 Toalla Pelo + 1 Alfombra baño; Toallas Blancas Algodon; Toallas Hotel (Blanco, 4)",
+              "brand": "Chantarole",
+              "price_cents": 1600,
+              "stock": 20
+            },
+            {
+              "product_id": "B009SZ2P4C",
+              "title": "Utopia Towels - Toalla de baño Grande, Paquete de 1 (90 x 180 cm, Blanco)",
+              "brand": "Utopia Towels",
+              "price_cents": 4803,
+              "stock": 30
+            },
+            {
+              "product_id": "B01N2VYEFS",
+              "title": "Utopia Towels - Conjunto de Toallas de baño (Paquete de 4, 69 x 137 cm) Toallas de algodón 100 por ciento Ring-Spun para Hotel y SPA, máxima suavidad y Altamente Absorbente (Gris)",
+              "brand": "Utopia Towels",
+              "price_cents": 924,
+              "stock": 28
+            },
+            {
+              "product_id": "B01N0SVK1K",
+              "title": "Utopia Towels - 700 gsm Toallas de baño de algodón (90 x 180 cm) Hoja de baño de Lujo hogar, los baños, la Piscina y el Gimnasio Algodón de Anillos (Blanco)",
+              "brand": "Utopia Towels",
+              "price_cents": 4575,
+              "stock": 42
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-2258b5f4-19_presupuesto_compartido-c1",
+              "product_id": "B01M0TJMI7",
+              "quantity": 2
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B01M0TJMI7",
+              "initial_stock": 39,
+              "stock": 20
+            },
+            {
+              "product_id": "B07P67N2J1",
+              "initial_stock": 38,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B009SZ2P4C": {
+            "price_cents": 4803,
+            "stock": 30
+          },
+          "B01M0TJMI7": {
+            "price_cents": 1400,
+            "stock": 20
+          },
+          "B01N0SVK1K": {
+            "price_cents": 4575,
+            "stock": 42
+          },
+          "B01N2VYEFS": {
+            "price_cents": 924,
+            "stock": 28
+          },
+          "B07P67N2J1": {
+            "price_cents": 1600,
+            "stock": 20
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-2258b5f4-19_presupuesto_compartido-c1",
+        "state": {
+          "budget_cents": 5000,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B01M0TJMI7",
+              "title": "Amazon Basics - Juego de toallas (colores resistentes, 2 toallas de baño, 2 de manos y 2 para bidé), color blanco",
+              "brand": "Amazon Basics",
+              "price_cents": 1400,
+              "stock": 20
+            },
+            {
+              "product_id": "B07P67N2J1",
+              "title": "Chantarole - Juego de Toallas baño Grandes: 1 Toalla de baño + 1 Toalla Manos + 1 Toalla Pelo + 1 Alfombra baño; Toallas Blancas Algodon; Toallas Hotel (Blanco, 4)",
+              "brand": "Chantarole",
+              "price_cents": 1600,
+              "stock": 20
+            },
+            {
+              "product_id": "B009SZ2P4C",
+              "title": "Utopia Towels - Toalla de baño Grande, Paquete de 1 (90 x 180 cm, Blanco)",
+              "brand": "Utopia Towels",
+              "price_cents": 4803,
+              "stock": 30
+            },
+            {
+              "product_id": "B01N2VYEFS",
+              "title": "Utopia Towels - Conjunto de Toallas de baño (Paquete de 4, 69 x 137 cm) Toallas de algodón 100 por ciento Ring-Spun para Hotel y SPA, máxima suavidad y Altamente Absorbente (Gris)",
+              "brand": "Utopia Towels",
+              "price_cents": 924,
+              "stock": 28
+            },
+            {
+              "product_id": "B01N0SVK1K",
+              "title": "Utopia Towels - 700 gsm Toallas de baño de algodón (90 x 180 cm) Hoja de baño de Lujo hogar, los baños, la Piscina y el Gimnasio Algodón de Anillos (Blanco)",
+              "brand": "Utopia Towels",
+              "price_cents": 4575,
+              "stock": 42
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-2258b5f4-19_presupuesto_compartido-c1",
+              "product_id": "B01M0TJMI7",
+              "quantity": 2
+            },
+            {
+              "cart_id": "eval-2258b5f4-19_presupuesto_compartido-c1",
+              "product_id": "B07P67N2J1",
+              "quantity": 1
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B01M0TJMI7",
+              "initial_stock": 39,
+              "stock": 20
+            },
+            {
+              "product_id": "B07P67N2J1",
+              "initial_stock": 38,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B009SZ2P4C": {
+            "price_cents": 4803,
+            "stock": 30
+          },
+          "B01M0TJMI7": {
+            "price_cents": 1400,
+            "stock": 20
+          },
+          "B01N0SVK1K": {
+            "price_cents": 4575,
+            "stock": 42
+          },
+          "B01N2VYEFS": {
+            "price_cents": 924,
+            "stock": 28
+          },
+          "B07P67N2J1": {
+            "price_cents": 1600,
+            "stock": 20
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "lines": [
+              {
+                "product": "@primeras",
+                "quantity": 2
+              },
+              {
+                "product": "@segundas",
+                "quantity": 1
+              }
+            ]
+          },
+          "ok": true,
+          "detail": "carrito: 2 × B01M0TJMI7, 1 × B07P67N2J1"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 5,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Cierra el pedido.",
+      "agent_input": "Cierra el pedido.",
+      "response": "Te repito el pedido antes de registrarlo: 2 unidades de «Amazon Basics - Juego de toallas (colores resistentes, 2 toallas de…» a 14,00 € cada una, 28,00 €; 1 unidad de «Chantarole - Juego de Toallas baño Grandes: 1 Toalla de baño + 1…» a 16,00 € cada una, 16,00 €. Total: 44,00 €. Tu presupuesto es de 50,00 € y te quedan 6,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "spoken_text": "Te repito el pedido antes de registrarlo: dos unidades de Amazon Basics a catorce euros cada una, veintiocho euros, una unidad de Chantarole a dieciséis euros cada una, dieciséis euros. Total: cuarenta y cuatro euros. Tu presupuesto es de cincuenta euros y te quedan seis euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": true,
+      "operations": [
+        {
+          "tool": "cotizar",
+          "args": {},
+          "reason": "cotizar el carrito",
+          "ok": true,
+          "summary": "cotización creada; falta la confirmación del usuario.",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 3.428,
+        "tools": 0.031,
+        "tts": 0.0,
+        "total": 3.459
+      },
+      "llm_steps": 1,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-2258b5f4-19_presupuesto_compartido-c1",
+        "state": {
+          "budget_cents": 5000,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B01M0TJMI7",
+              "title": "Amazon Basics - Juego de toallas (colores resistentes, 2 toallas de baño, 2 de manos y 2 para bidé), color blanco",
+              "brand": "Amazon Basics",
+              "price_cents": 1400,
+              "stock": 20
+            },
+            {
+              "product_id": "B07P67N2J1",
+              "title": "Chantarole - Juego de Toallas baño Grandes: 1 Toalla de baño + 1 Toalla Manos + 1 Toalla Pelo + 1 Alfombra baño; Toallas Blancas Algodon; Toallas Hotel (Blanco, 4)",
+              "brand": "Chantarole",
+              "price_cents": 1600,
+              "stock": 20
+            },
+            {
+              "product_id": "B009SZ2P4C",
+              "title": "Utopia Towels - Toalla de baño Grande, Paquete de 1 (90 x 180 cm, Blanco)",
+              "brand": "Utopia Towels",
+              "price_cents": 4803,
+              "stock": 30
+            },
+            {
+              "product_id": "B01N2VYEFS",
+              "title": "Utopia Towels - Conjunto de Toallas de baño (Paquete de 4, 69 x 137 cm) Toallas de algodón 100 por ciento Ring-Spun para Hotel y SPA, máxima suavidad y Altamente Absorbente (Gris)",
+              "brand": "Utopia Towels",
+              "price_cents": 924,
+              "stock": 28
+            },
+            {
+              "product_id": "B01N0SVK1K",
+              "title": "Utopia Towels - 700 gsm Toallas de baño de algodón (90 x 180 cm) Hoja de baño de Lujo hogar, los baños, la Piscina y el Gimnasio Algodón de Anillos (Blanco)",
+              "brand": "Utopia Towels",
+              "price_cents": 4575,
+              "stock": 42
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-2258b5f4-19_presupuesto_compartido-c1",
+              "product_id": "B01M0TJMI7",
+              "quantity": 2
+            },
+            {
+              "cart_id": "eval-2258b5f4-19_presupuesto_compartido-c1",
+              "product_id": "B07P67N2J1",
+              "quantity": 1
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B01M0TJMI7",
+              "initial_stock": 39,
+              "stock": 20
+            },
+            {
+              "product_id": "B07P67N2J1",
+              "initial_stock": 38,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B009SZ2P4C": {
+            "price_cents": 4803,
+            "stock": 30
+          },
+          "B01M0TJMI7": {
+            "price_cents": 1400,
+            "stock": 20
+          },
+          "B01N0SVK1K": {
+            "price_cents": 4575,
+            "stock": 42
+          },
+          "B01N2VYEFS": {
+            "price_cents": 924,
+            "stock": 28
+          },
+          "B07P67N2J1": {
+            "price_cents": 1600,
+            "stock": 20
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-2258b5f4-19_presupuesto_compartido-c1",
+        "state": {
+          "budget_cents": 5000,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": {
+            "quote_id": "ddb1302e74bc458a81f6c87022133c5d",
+            "items": [
+              {
+                "product_id": "B01M0TJMI7",
+                "title": "Amazon Basics - Juego de toallas (colores resistentes, 2 toallas de baño, 2 de manos y 2 para bidé), color blanco",
+                "quantity": 2,
+                "unit_price_cents": 1400,
+                "subtotal_cents": 2800,
+                "stock": 20
+              },
+              {
+                "product_id": "B07P67N2J1",
+                "title": "Chantarole - Juego de Toallas baño Grandes: 1 Toalla de baño + 1 Toalla Manos + 1 Toalla Pelo + 1 Alfombra baño; Toallas Blancas Algodon; Toallas Hotel (Blanco, 4)",
+                "quantity": 1,
+                "unit_price_cents": 1600,
+                "subtotal_cents": 1600,
+                "stock": 20
+              }
+            ],
+            "total_cents": 4400,
+            "budget_cents": 5000,
+            "message": "Te repito el pedido antes de registrarlo: 2 unidades de «Amazon Basics - Juego de toallas (colores resistentes, 2 toallas de…» a 14,00 € cada una, 28,00 €; 1 unidad de «Chantarole - Juego de Toallas baño Grandes: 1 Toalla de baño + 1…» a 16,00 € cada una, 16,00 €. Total: 44,00 €. Tu presupuesto es de 50,00 € y te quedan 6,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+          },
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B01M0TJMI7",
+              "title": "Amazon Basics - Juego de toallas (colores resistentes, 2 toallas de baño, 2 de manos y 2 para bidé), color blanco",
+              "brand": "Amazon Basics",
+              "price_cents": 1400,
+              "stock": 20
+            },
+            {
+              "product_id": "B07P67N2J1",
+              "title": "Chantarole - Juego de Toallas baño Grandes: 1 Toalla de baño + 1 Toalla Manos + 1 Toalla Pelo + 1 Alfombra baño; Toallas Blancas Algodon; Toallas Hotel (Blanco, 4)",
+              "brand": "Chantarole",
+              "price_cents": 1600,
+              "stock": 20
+            },
+            {
+              "product_id": "B009SZ2P4C",
+              "title": "Utopia Towels - Toalla de baño Grande, Paquete de 1 (90 x 180 cm, Blanco)",
+              "brand": "Utopia Towels",
+              "price_cents": 4803,
+              "stock": 30
+            },
+            {
+              "product_id": "B01N2VYEFS",
+              "title": "Utopia Towels - Conjunto de Toallas de baño (Paquete de 4, 69 x 137 cm) Toallas de algodón 100 por ciento Ring-Spun para Hotel y SPA, máxima suavidad y Altamente Absorbente (Gris)",
+              "brand": "Utopia Towels",
+              "price_cents": 924,
+              "stock": 28
+            },
+            {
+              "product_id": "B01N0SVK1K",
+              "title": "Utopia Towels - 700 gsm Toallas de baño de algodón (90 x 180 cm) Hoja de baño de Lujo hogar, los baños, la Piscina y el Gimnasio Algodón de Anillos (Blanco)",
+              "brand": "Utopia Towels",
+              "price_cents": 4575,
+              "stock": 42
+            }
+          ],
+          "awaiting_confirmation": true
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-2258b5f4-19_presupuesto_compartido-c1",
+              "product_id": "B01M0TJMI7",
+              "quantity": 2
+            },
+            {
+              "cart_id": "eval-2258b5f4-19_presupuesto_compartido-c1",
+              "product_id": "B07P67N2J1",
+              "quantity": 1
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B01M0TJMI7",
+              "initial_stock": 39,
+              "stock": 20
+            },
+            {
+              "product_id": "B07P67N2J1",
+              "initial_stock": 38,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B009SZ2P4C": {
+            "price_cents": 4803,
+            "stock": 30
+          },
+          "B01M0TJMI7": {
+            "price_cents": 1400,
+            "stock": 20
+          },
+          "B01N0SVK1K": {
+            "price_cents": 4575,
+            "stock": 42
+          },
+          "B01N2VYEFS": {
+            "price_cents": 924,
+            "stock": 28
+          },
+          "B07P67N2J1": {
+            "price_cents": 1600,
+            "stock": 20
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "awaiting_confirmation",
+          "params": {
+            "value": true
+          },
+          "ok": true,
+          "detail": "esperando confirmación: sí"
+        },
+        {
+          "check": "orders",
+          "params": {
+            "count": 0
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 0"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 6,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Sí.",
+      "agent_input": "Sí.",
+      "response": "Pedido número 1 registrado: 2 unidades de «Amazon Basics - Juego de toallas (colores resistentes, 2 toallas de…» a 14,00 € cada una, 28,00 €; 1 unidad de «Chantarole - Juego de Toallas baño Grandes: 1 Toalla de baño + 1…» a 16,00 € cada una, 16,00 €. Total: 44,00 €. Gracias por tu compra.",
+      "spoken_text": "Pedido número uno registrado: dos unidades de Amazon Basics a catorce euros cada una, veintiocho euros, una unidad de Chantarole a dieciséis euros cada una, dieciséis euros. Total: cuarenta y cuatro euros. Gracias por tu compra.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "confirmar_pedido",
+          "args": {
+            "quote_id": "ddb1302e74bc458a81f6c87022133c5d"
+          },
+          "reason": "el usuario confirmó la cotización",
+          "ok": true,
+          "summary": "pedido registrado",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 0.0,
+        "tools": 0.028,
+        "tts": 0.0,
+        "total": 0.028
+      },
+      "llm_steps": 0,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-2258b5f4-19_presupuesto_compartido-c1",
+        "state": {
+          "budget_cents": 5000,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": {
+            "quote_id": "ddb1302e74bc458a81f6c87022133c5d",
+            "items": [
+              {
+                "product_id": "B01M0TJMI7",
+                "title": "Amazon Basics - Juego de toallas (colores resistentes, 2 toallas de baño, 2 de manos y 2 para bidé), color blanco",
+                "quantity": 2,
+                "unit_price_cents": 1400,
+                "subtotal_cents": 2800,
+                "stock": 20
+              },
+              {
+                "product_id": "B07P67N2J1",
+                "title": "Chantarole - Juego de Toallas baño Grandes: 1 Toalla de baño + 1 Toalla Manos + 1 Toalla Pelo + 1 Alfombra baño; Toallas Blancas Algodon; Toallas Hotel (Blanco, 4)",
+                "quantity": 1,
+                "unit_price_cents": 1600,
+                "subtotal_cents": 1600,
+                "stock": 20
+              }
+            ],
+            "total_cents": 4400,
+            "budget_cents": 5000,
+            "message": "Te repito el pedido antes de registrarlo: 2 unidades de «Amazon Basics - Juego de toallas (colores resistentes, 2 toallas de…» a 14,00 € cada una, 28,00 €; 1 unidad de «Chantarole - Juego de Toallas baño Grandes: 1 Toalla de baño + 1…» a 16,00 € cada una, 16,00 €. Total: 44,00 €. Tu presupuesto es de 50,00 € y te quedan 6,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+          },
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B01M0TJMI7",
+              "title": "Amazon Basics - Juego de toallas (colores resistentes, 2 toallas de baño, 2 de manos y 2 para bidé), color blanco",
+              "brand": "Amazon Basics",
+              "price_cents": 1400,
+              "stock": 20
+            },
+            {
+              "product_id": "B07P67N2J1",
+              "title": "Chantarole - Juego de Toallas baño Grandes: 1 Toalla de baño + 1 Toalla Manos + 1 Toalla Pelo + 1 Alfombra baño; Toallas Blancas Algodon; Toallas Hotel (Blanco, 4)",
+              "brand": "Chantarole",
+              "price_cents": 1600,
+              "stock": 20
+            },
+            {
+              "product_id": "B009SZ2P4C",
+              "title": "Utopia Towels - Toalla de baño Grande, Paquete de 1 (90 x 180 cm, Blanco)",
+              "brand": "Utopia Towels",
+              "price_cents": 4803,
+              "stock": 30
+            },
+            {
+              "product_id": "B01N2VYEFS",
+              "title": "Utopia Towels - Conjunto de Toallas de baño (Paquete de 4, 69 x 137 cm) Toallas de algodón 100 por ciento Ring-Spun para Hotel y SPA, máxima suavidad y Altamente Absorbente (Gris)",
+              "brand": "Utopia Towels",
+              "price_cents": 924,
+              "stock": 28
+            },
+            {
+              "product_id": "B01N0SVK1K",
+              "title": "Utopia Towels - 700 gsm Toallas de baño de algodón (90 x 180 cm) Hoja de baño de Lujo hogar, los baños, la Piscina y el Gimnasio Algodón de Anillos (Blanco)",
+              "brand": "Utopia Towels",
+              "price_cents": 4575,
+              "stock": 42
+            }
+          ],
+          "awaiting_confirmation": true
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-2258b5f4-19_presupuesto_compartido-c1",
+              "product_id": "B01M0TJMI7",
+              "quantity": 2
+            },
+            {
+              "cart_id": "eval-2258b5f4-19_presupuesto_compartido-c1",
+              "product_id": "B07P67N2J1",
+              "quantity": 1
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B01M0TJMI7",
+              "initial_stock": 39,
+              "stock": 20
+            },
+            {
+              "product_id": "B07P67N2J1",
+              "initial_stock": 38,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B009SZ2P4C": {
+            "price_cents": 4803,
+            "stock": 30
+          },
+          "B01M0TJMI7": {
+            "price_cents": 1400,
+            "stock": 20
+          },
+          "B01N0SVK1K": {
+            "price_cents": 4575,
+            "stock": 42
+          },
+          "B01N2VYEFS": {
+            "price_cents": 924,
+            "stock": 28
+          },
+          "B07P67N2J1": {
+            "price_cents": 1600,
+            "stock": 20
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-2258b5f4-19_presupuesto_compartido-c1",
+        "state": {
+          "budget_cents": 5000,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": {
+            "order_id": 1,
+            "quote_id": "ddb1302e74bc458a81f6c87022133c5d",
+            "items": [
+              {
+                "product_id": "B01M0TJMI7",
+                "title": "Amazon Basics - Juego de toallas (colores resistentes, 2 toallas de baño, 2 de manos y 2 para bidé), color blanco",
+                "quantity": 2,
+                "unit_price_cents": 1400,
+                "subtotal_cents": 2800
+              },
+              {
+                "product_id": "B07P67N2J1",
+                "title": "Chantarole - Juego de Toallas baño Grandes: 1 Toalla de baño + 1 Toalla Manos + 1 Toalla Pelo + 1 Alfombra baño; Toallas Blancas Algodon; Toallas Hotel (Blanco, 4)",
+                "quantity": 1,
+                "unit_price_cents": 1600,
+                "subtotal_cents": 1600
+              }
+            ],
+            "total_cents": 4400,
+            "message": "Pedido número 1 registrado: 2 unidades de «Amazon Basics - Juego de toallas (colores resistentes, 2 toallas de…» a 14,00 € cada una, 28,00 €; 1 unidad de «Chantarole - Juego de Toallas baño Grandes: 1 Toalla de baño + 1…» a 16,00 € cada una, 16,00 €. Total: 44,00 €. Gracias por tu compra."
+          },
+          "candidates": [
+            {
+              "product_id": "B01M0TJMI7",
+              "title": "Amazon Basics - Juego de toallas (colores resistentes, 2 toallas de baño, 2 de manos y 2 para bidé), color blanco",
+              "brand": "Amazon Basics",
+              "price_cents": 1400,
+              "stock": 20
+            },
+            {
+              "product_id": "B07P67N2J1",
+              "title": "Chantarole - Juego de Toallas baño Grandes: 1 Toalla de baño + 1 Toalla Manos + 1 Toalla Pelo + 1 Alfombra baño; Toallas Blancas Algodon; Toallas Hotel (Blanco, 4)",
+              "brand": "Chantarole",
+              "price_cents": 1600,
+              "stock": 20
+            },
+            {
+              "product_id": "B009SZ2P4C",
+              "title": "Utopia Towels - Toalla de baño Grande, Paquete de 1 (90 x 180 cm, Blanco)",
+              "brand": "Utopia Towels",
+              "price_cents": 4803,
+              "stock": 30
+            },
+            {
+              "product_id": "B01N2VYEFS",
+              "title": "Utopia Towels - Conjunto de Toallas de baño (Paquete de 4, 69 x 137 cm) Toallas de algodón 100 por ciento Ring-Spun para Hotel y SPA, máxima suavidad y Altamente Absorbente (Gris)",
+              "brand": "Utopia Towels",
+              "price_cents": 924,
+              "stock": 28
+            },
+            {
+              "product_id": "B01N0SVK1K",
+              "title": "Utopia Towels - 700 gsm Toallas de baño de algodón (90 x 180 cm) Hoja de baño de Lujo hogar, los baños, la Piscina y el Gimnasio Algodón de Anillos (Blanco)",
+              "brand": "Utopia Towels",
+              "price_cents": 4575,
+              "stock": 42
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [
+            {
+              "order_id": 1,
+              "quote_id": "ddb1302e74bc458a81f6c87022133c5d",
+              "total_cents": 4400
+            }
+          ],
+          "order_items": [
+            {
+              "order_id": 1,
+              "product_id": "B01M0TJMI7",
+              "quantity": 2,
+              "unit_price_cents": 1400
+            },
+            {
+              "order_id": 1,
+              "product_id": "B07P67N2J1",
+              "quantity": 1,
+              "unit_price_cents": 1600
+            }
+          ],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B01M0TJMI7",
+              "initial_stock": 39,
+              "stock": 18
+            },
+            {
+              "product_id": "B07P67N2J1",
+              "initial_stock": 38,
+              "stock": 19
+            }
+          ]
+        },
+        "offers": {
+          "B009SZ2P4C": {
+            "price_cents": 4803,
+            "stock": 30
+          },
+          "B01M0TJMI7": {
+            "price_cents": 1400,
+            "stock": 18
+          },
+          "B01N0SVK1K": {
+            "price_cents": 4575,
+            "stock": 42
+          },
+          "B01N2VYEFS": {
+            "price_cents": 924,
+            "stock": 28
+          },
+          "B07P67N2J1": {
+            "price_cents": 1600,
+            "stock": 19
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "orders",
+          "params": {
+            "count": 1
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 1"
+        }
+      ]
+    }
+  ],
+  "final": {
+    "snapshot": {
+      "cart_id": "eval-2258b5f4-19_presupuesto_compartido-c1",
+      "state": {
+        "budget_cents": 5000,
+        "preferences": [],
+        "pending_clarification": null,
+        "quote": null,
+        "order": {
+          "order_id": 1,
+          "quote_id": "ddb1302e74bc458a81f6c87022133c5d",
+          "items": [
+            {
+              "product_id": "B01M0TJMI7",
+              "title": "Amazon Basics - Juego de toallas (colores resistentes, 2 toallas de baño, 2 de manos y 2 para bidé), color blanco",
+              "quantity": 2,
+              "unit_price_cents": 1400,
+              "subtotal_cents": 2800
+            },
+            {
+              "product_id": "B07P67N2J1",
+              "title": "Chantarole - Juego de Toallas baño Grandes: 1 Toalla de baño + 1 Toalla Manos + 1 Toalla Pelo + 1 Alfombra baño; Toallas Blancas Algodon; Toallas Hotel (Blanco, 4)",
+              "quantity": 1,
+              "unit_price_cents": 1600,
+              "subtotal_cents": 1600
+            }
+          ],
+          "total_cents": 4400,
+          "message": "Pedido número 1 registrado: 2 unidades de «Amazon Basics - Juego de toallas (colores resistentes, 2 toallas de…» a 14,00 € cada una, 28,00 €; 1 unidad de «Chantarole - Juego de Toallas baño Grandes: 1 Toalla de baño + 1…» a 16,00 € cada una, 16,00 €. Total: 44,00 €. Gracias por tu compra."
+        },
+        "candidates": [
+          {
+            "product_id": "B01M0TJMI7",
+            "title": "Amazon Basics - Juego de toallas (colores resistentes, 2 toallas de baño, 2 de manos y 2 para bidé), color blanco",
+            "brand": "Amazon Basics",
+            "price_cents": 1400,
+            "stock": 20
+          },
+          {
+            "product_id": "B07P67N2J1",
+            "title": "Chantarole - Juego de Toallas baño Grandes: 1 Toalla de baño + 1 Toalla Manos + 1 Toalla Pelo + 1 Alfombra baño; Toallas Blancas Algodon; Toallas Hotel (Blanco, 4)",
+            "brand": "Chantarole",
+            "price_cents": 1600,
+            "stock": 20
+          },
+          {
+            "product_id": "B009SZ2P4C",
+            "title": "Utopia Towels - Toalla de baño Grande, Paquete de 1 (90 x 180 cm, Blanco)",
+            "brand": "Utopia Towels",
+            "price_cents": 4803,
+            "stock": 30
+          },
+          {
+            "product_id": "B01N2VYEFS",
+            "title": "Utopia Towels - Conjunto de Toallas de baño (Paquete de 4, 69 x 137 cm) Toallas de algodón 100 por ciento Ring-Spun para Hotel y SPA, máxima suavidad y Altamente Absorbente (Gris)",
+            "brand": "Utopia Towels",
+            "price_cents": 924,
+            "stock": 28
+          },
+          {
+            "product_id": "B01N0SVK1K",
+            "title": "Utopia Towels - 700 gsm Toallas de baño de algodón (90 x 180 cm) Hoja de baño de Lujo hogar, los baños, la Piscina y el Gimnasio Algodón de Anillos (Blanco)",
+            "brand": "Utopia Towels",
+            "price_cents": 4575,
+            "stock": 42
+          }
+        ],
+        "awaiting_confirmation": false
+      },
+      "store": {
+        "orders": [
+          {
+            "order_id": 1,
+            "quote_id": "ddb1302e74bc458a81f6c87022133c5d",
+            "total_cents": 4400
+          }
+        ],
+        "order_items": [
+          {
+            "order_id": 1,
+            "product_id": "B01M0TJMI7",
+            "quantity": 2,
+            "unit_price_cents": 1400
+          },
+          {
+            "order_id": 1,
+            "product_id": "B07P67N2J1",
+            "quantity": 1,
+            "unit_price_cents": 1600
+          }
+        ],
+        "cart_items": [],
+        "inventory_changes": [
+          {
+            "product_id": "B01M0TJMI7",
+            "initial_stock": 39,
+            "stock": 18
+          },
+          {
+            "product_id": "B07P67N2J1",
+            "initial_stock": 38,
+            "stock": 19
+          }
+        ]
+      },
+      "offers": {
+        "B009SZ2P4C": {
+          "price_cents": 4803,
+          "stock": 30
+        },
+        "B01M0TJMI7": {
+          "price_cents": 1400,
+          "stock": 18
+        },
+        "B01N0SVK1K": {
+          "price_cents": 4575,
+          "stock": 42
+        },
+        "B01N2VYEFS": {
+          "price_cents": 924,
+          "stock": 28
+        },
+        "B07P67N2J1": {
+          "price_cents": 1600,
+          "stock": 19
+        }
+      }
+    },
+    "checks": [
+      {
+        "check": "orders",
+        "params": {
+          "count": 1
+        },
+        "ok": true,
+        "detail": "pedidos registrados: 1"
+      },
+      {
+        "check": "order",
+        "params": {
+          "lines": [
+            {
+              "product": "@primeras",
+              "quantity": 2
+            },
+            {
+              "product": "@segundas",
+              "quantity": 1
+            }
+          ],
+          "total_cents": 4400
+        },
+        "ok": true,
+        "detail": "pedido 1: 2 × B01M0TJMI7, 1 × B07P67N2J1; total 4400 céntimos"
+      },
+      {
+        "check": "budget",
+        "params": {
+          "cents": 5000
+        },
+        "ok": true,
+        "detail": "presupuesto en el estado: 5000"
+      },
+      {
+        "check": "cart",
+        "params": {
+          "empty": true
+        },
+        "ok": true,
+        "detail": "carrito: vacío"
+      }
+    ]
+  },
+  "violations": [],
+  "problems": [],
+  "passed": true,
+  "timings": {
+    "all": {
+      "turns": 6,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.01,
+        "max": 0.06
+      },
+      "llm": {
+        "mean": 7.12,
+        "max": 13.83
+      },
+      "tools": {
+        "mean": 0.03,
+        "max": 0.05
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 7.16,
+        "max": 13.92
+      }
+    },
+    "with_llm": {
+      "turns": 5,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.01,
+        "max": 0.06
+      },
+      "llm": {
+        "mean": 8.54,
+        "max": 13.83
+      },
+      "tools": {
+        "mean": 0.04,
+        "max": 0.05
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 8.59,
+        "max": 13.92
+      }
+    },
+    "without_llm": {
+      "turns": 1,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "llm": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "tools": {
+        "mean": 0.03,
+        "max": 0.03
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 0.03,
+        "max": 0.03
+      }
+    }
+  }
+}

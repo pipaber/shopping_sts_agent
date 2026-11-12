@@ -1,0 +1,247 @@
+{
+  "date": "2026-11-12T19:20:01",
+  "commit": "d81bc00",
+  "memory_backend": "postgres",
+  "models": {
+    "llm": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+    "asr": null,
+    "tts": null,
+    "embeddings": "intfloat/multilingual-e5-small",
+    "reranker": "control"
+  },
+  "voice": {},
+  "load": {
+    "search_seconds": 35.9,
+    "llm_seconds": 1.9,
+    "asr_seconds": null,
+    "tts_seconds": null,
+    "total_seconds": 38.2,
+    "vram_mib": {
+      "search": 712,
+      "llm": 5826,
+      "asr": 5826,
+      "loaded": 5826
+    }
+  },
+  "input": "texto",
+  "audio_sources": {},
+  "scenarios": [
+    {
+      "id": "01_compra_confirmada",
+      "title": "Compra confirmada",
+      "kind": "compra_confirmada",
+      "passed": true
+    },
+    {
+      "id": "02_pedido_ambiguo",
+      "title": "Pedido ambiguo que requiere aclaración",
+      "kind": "pedido_ambiguo",
+      "passed": true
+    },
+    {
+      "id": "03_cambio_cantidad",
+      "title": "Cambio de cantidad manteniendo las demás restricciones",
+      "kind": "cambio_cantidad",
+      "passed": true
+    },
+    {
+      "id": "04_sin_existencias",
+      "title": "Producto sin existencias que requiere alternativa",
+      "kind": "sin_existencias",
+      "passed": true
+    },
+    {
+      "id": "05_correccion_transcripcion",
+      "title": "Corrección de una transcripción antes de comprar",
+      "kind": "correccion_transcripcion",
+      "passed": true
+    },
+    {
+      "id": "06_cambio_stock_confirmacion_repetida",
+      "title": "Cambio de stock entre cotización y confirmación, y confirmación repetida",
+      "kind": "cambio_stock_confirmacion_repetida",
+      "passed": true
+    },
+    {
+      "id": "07_presupuesto_excedido",
+      "title": "Presupuesto excedido al añadir",
+      "kind": "presupuesto_excedido",
+      "passed": true
+    },
+    {
+      "id": "08_cantidad_invalida",
+      "title": "Cantidad inválida",
+      "kind": "cantidad_invalida",
+      "passed": true
+    },
+    {
+      "id": "09_producto_inexistente",
+      "title": "Producto inexistente",
+      "kind": "producto_inexistente",
+      "passed": true
+    },
+    {
+      "id": "10_atributo_no_verificable",
+      "title": "Atributo no verificable",
+      "kind": "atributo_no_verificable",
+      "passed": true
+    },
+    {
+      "id": "11_rechazo_confirmacion",
+      "title": "Rechazo en la confirmación",
+      "kind": "rechazo_confirmacion",
+      "passed": true
+    },
+    {
+      "id": "12_memoria_preferencias",
+      "title": "Memoria de preferencias entre conversaciones",
+      "kind": "memoria_preferencias",
+      "passed": true
+    },
+    {
+      "id": "13_confirmacion_con_cambio",
+      "title": "Un sí con cambios no compra",
+      "kind": "confirmacion_con_cambio",
+      "passed": true
+    },
+    {
+      "id": "14_pregunta_sin_cambios",
+      "title": "Una pregunta no cambia el carrito",
+      "kind": "pregunta_sin_cambios",
+      "passed": true
+    },
+    {
+      "id": "15_stock_insuficiente",
+      "title": "Stock insuficiente al añadir",
+      "kind": "stock_insuficiente",
+      "passed": true
+    },
+    {
+      "id": "16_quitar_del_carrito",
+      "title": "Dos productos y quitar uno",
+      "kind": "quitar_del_carrito",
+      "passed": true
+    },
+    {
+      "id": "17_cambio_presupuesto",
+      "title": "Bajar el presupuesto con el carrito lleno",
+      "kind": "cambio_presupuesto",
+      "passed": true
+    },
+    {
+      "id": "18_cierre_sin_carrito",
+      "title": "Cerrar y confirmar sin nada en el carrito",
+      "kind": "cierre_sin_carrito",
+      "passed": true
+    },
+    {
+      "id": "19_presupuesto_compartido",
+      "title": "Presupuesto compartido entre dos productos",
+      "kind": "presupuesto_compartido",
+      "passed": true
+    },
+    {
+      "id": "20_agotado_al_confirmar",
+      "title": "Producto agotado entre la cotización y la confirmación",
+      "kind": "agotado_al_confirmar",
+      "passed": true
+    }
+  ],
+  "summary": {
+    "scenarios": 20,
+    "passed": 20,
+    "pass_rate": 1.0,
+    "failed": [],
+    "turns": 87,
+    "violations": {
+      "cantidad": 0,
+      "presupuesto": 0,
+      "existencias": 0,
+      "pedido_duplicado": 0,
+      "cambio_parcial": 0
+    },
+    "timings": {
+      "all": {
+        "turns": 87,
+        "asr": {
+          "mean": 0.0,
+          "max": 0.0
+        },
+        "retrieval": {
+          "mean": 0.02,
+          "max": 0.15
+        },
+        "llm": {
+          "mean": 6.72,
+          "max": 15.53
+        },
+        "tools": {
+          "mean": 0.03,
+          "max": 0.07
+        },
+        "tts": {
+          "mean": 0.0,
+          "max": 0.0
+        },
+        "total": {
+          "mean": 6.77,
+          "max": 15.64
+        }
+      },
+      "with_llm": {
+        "turns": 73,
+        "asr": {
+          "mean": 0.0,
+          "max": 0.0
+        },
+        "retrieval": {
+          "mean": 0.02,
+          "max": 0.15
+        },
+        "llm": {
+          "mean": 8.0,
+          "max": 15.53
+        },
+        "tools": {
+          "mean": 0.03,
+          "max": 0.07
+        },
+        "tts": {
+          "mean": 0.0,
+          "max": 0.0
+        },
+        "total": {
+          "mean": 8.06,
+          "max": 15.64
+        }
+      },
+      "without_llm": {
+        "turns": 14,
+        "asr": {
+          "mean": 0.0,
+          "max": 0.0
+        },
+        "retrieval": {
+          "mean": 0.01,
+          "max": 0.07
+        },
+        "llm": {
+          "mean": 0.0,
+          "max": 0.0
+        },
+        "tools": {
+          "mean": 0.03,
+          "max": 0.04
+        },
+        "tts": {
+          "mean": 0.0,
+          "max": 0.0
+        },
+        "total": {
+          "mean": 0.04,
+          "max": 0.11
+        }
+      }
+    }
+  }
+}

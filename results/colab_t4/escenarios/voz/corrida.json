@@ -1,0 +1,175 @@
+{
+  "date": "2026-11-12T19:33:18",
+  "commit": "d81bc00",
+  "memory_backend": "postgres",
+  "models": {
+    "llm": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+    "asr": "large-v3-turbo",
+    "tts": "XTTS-v2",
+    "embeddings": "intfloat/multilingual-e5-small",
+    "reranker": "control"
+  },
+  "voice": {
+    "reference": "audio/referencia/referencia.wav",
+    "speaker": null,
+    "speed": 1.1
+  },
+  "load": {
+    "search_seconds": 38.9,
+    "llm_seconds": 9.6,
+    "asr_seconds": 28.3,
+    "tts_seconds": 30.6,
+    "total_seconds": 108.7,
+    "vram_mib": {
+      "search": 712,
+      "llm": 5826,
+      "asr": 7394,
+      "loaded": 9152
+    }
+  },
+  "input": "audio",
+  "audio_sources": {
+    "01_compra_confirmada": "grabaciones del usuario",
+    "02_pedido_ambiguo": "grabaciones del usuario",
+    "03_cambio_cantidad": "grabaciones del usuario",
+    "04_sin_existencias": "grabaciones del usuario",
+    "05_correccion_transcripcion": "grabaciones del usuario",
+    "06_cambio_stock_confirmacion_repetida": "grabaciones del usuario"
+  },
+  "audio_dir": "audio/corridas/voz",
+  "scenarios": [
+    {
+      "id": "01_compra_confirmada",
+      "title": "Compra confirmada",
+      "kind": "compra_confirmada",
+      "passed": true
+    },
+    {
+      "id": "02_pedido_ambiguo",
+      "title": "Pedido ambiguo que requiere aclaración",
+      "kind": "pedido_ambiguo",
+      "passed": true
+    },
+    {
+      "id": "03_cambio_cantidad",
+      "title": "Cambio de cantidad manteniendo las demás restricciones",
+      "kind": "cambio_cantidad",
+      "passed": true
+    },
+    {
+      "id": "04_sin_existencias",
+      "title": "Producto sin existencias que requiere alternativa",
+      "kind": "sin_existencias",
+      "passed": true
+    },
+    {
+      "id": "05_correccion_transcripcion",
+      "title": "Corrección de una transcripción antes de comprar",
+      "kind": "correccion_transcripcion",
+      "passed": true
+    },
+    {
+      "id": "06_cambio_stock_confirmacion_repetida",
+      "title": "Cambio de stock entre cotización y confirmación, y confirmación repetida",
+      "kind": "cambio_stock_confirmacion_repetida",
+      "passed": true
+    }
+  ],
+  "summary": {
+    "scenarios": 6,
+    "passed": 6,
+    "pass_rate": 1.0,
+    "failed": [],
+    "turns": 31,
+    "violations": {
+      "cantidad": 0,
+      "presupuesto": 0,
+      "existencias": 0,
+      "pedido_duplicado": 0,
+      "cambio_parcial": 0
+    },
+    "timings": {
+      "all": {
+        "turns": 31,
+        "asr": {
+          "mean": 0.39,
+          "max": 1.0
+        },
+        "retrieval": {
+          "mean": 0.02,
+          "max": 0.12
+        },
+        "llm": {
+          "mean": 6.08,
+          "max": 16.52
+        },
+        "tools": {
+          "mean": 0.04,
+          "max": 0.05
+        },
+        "tts": {
+          "mean": 12.44,
+          "max": 23.29
+        },
+        "total": {
+          "mean": 18.96,
+          "max": 36.26
+        }
+      },
+      "with_llm": {
+        "turns": 24,
+        "asr": {
+          "mean": 0.41,
+          "max": 1.0
+        },
+        "retrieval": {
+          "mean": 0.02,
+          "max": 0.12
+        },
+        "llm": {
+          "mean": 7.85,
+          "max": 16.52
+        },
+        "tools": {
+          "mean": 0.04,
+          "max": 0.05
+        },
+        "tts": {
+          "mean": 13.07,
+          "max": 20.09
+        },
+        "total": {
+          "mean": 21.38,
+          "max": 36.26
+        }
+      },
+      "without_llm": {
+        "turns": 7,
+        "asr": {
+          "mean": 0.35,
+          "max": 0.37
+        },
+        "retrieval": {
+          "mean": 0.01,
+          "max": 0.05
+        },
+        "llm": {
+          "mean": 0.0,
+          "max": 0.0
+        },
+        "tools": {
+          "mean": 0.03,
+          "max": 0.04
+        },
+        "tts": {
+          "mean": 10.27,
+          "max": 23.29
+        },
+        "total": {
+          "mean": 10.66,
+          "max": 23.69
+        }
+      }
+    }
+  }
+}

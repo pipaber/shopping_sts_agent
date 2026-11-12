@@ -1,0 +1,928 @@
+{
+  "id": "09_producto_inexistente",
+  "title": "Producto inexistente",
+  "kind": "producto_inexistente",
+  "description": "El usuario pide el séptimo de una lista de cinco y después un producto por un código que no existe. El agente no debe añadir otro producto en su lugar. Tras la búsqueda la tienda deja los cinco candidatos con 20 unidades, para que nada se rechace por falta de existencias: si el agente añade un producto que no se le pidió, el carrito lo muestra.",
+  "voice": false,
+  "input": "texto",
+  "audio_source": null,
+  "user_id": "eval-2258b5f4-09_producto_inexistente",
+  "threads": [
+    "eval-2258b5f4-09_producto_inexistente-c1"
+  ],
+  "names": {
+    "candidato1": "B07QG82RGM",
+    "candidato2": "B099MQKFGG",
+    "candidato3": "B08MV67XX7",
+    "candidato4": "B07GYCF7N9",
+    "candidato5": "B07TY4VMZ3"
+  },
+  "steps": [
+    {
+      "kind": "turn",
+      "turn": 1,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Busco un altavoz bluetooth.",
+      "agent_input": "Busco un altavoz bluetooth.",
+      "response": "Tengo el Tracer Rave Blue por 44,10 euros, el Genérico negro por 22,53 euros, el HP plateado por 24,21 euros, el Motorola Negro por 70,16 euros y el JXFS colorido por 11,83 euros. ¿Te interesa alguno?",
+      "spoken_text": "Tengo el Tracer Rave Blue por cuarenta y cuatro euros con diez céntimos, el Genérico negro por veintidós euros con cincuenta y tres céntimos, el HP plateado por veinticuatro euros con veintiún céntimos, el Motorola Negro por setenta euros con dieciséis céntimos y el JXFS colorido por once euros con ochenta y tres céntimos. ¿Te interesa alguno?",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "buscar_productos",
+          "args": {
+            "consulta": "altavoz bluetooth"
+          },
+          "reason": "buscar el altavoz bluetooth",
+          "ok": true,
+          "summary": "estos son ahora los CANDIDATOS, del más al menos relevante:\n[1] id=B07QG82RGM | Tracer Rave Blue Altavoz Bluetooth Portátil/Speaker Inalámbrico, 20 W, hasta 8 Horas, Micro SD, Jack 3.5mm, Bluetooth 4.2 | marca: Tracer | color: desconocido | precio: 44,10 € | existencias: 1 | características (extracto): Speaker Bluetooth Tracer compatible con bluetooth 4.2 El altavoz portátil es compatible con iOS, Android, PC y Mac El modelo de tracer Rave BLUE acepta los siguientes medios de reproducción: Bluetooth, Micro SD ,Jack 3.5mm Gracias a su… | descripción: desconocido\n[2] id=B099MQKFGG | Altavoz Bluetooth Portátil, Altavoz Bluetooth Inalámbrico Estéreo Sonido de Bajo Bluetooth 5.0 Manos Libres/Modo AUX/Tarjeta TF/USB para Samsung Huawei XiaoMi Sony etc | marca: Genérico | color: negro 1 | precio: 22,53 € | existencias: 16 | características (extracto): 📢Sonido Estéreo📢Altavoz bluetooth 5.0 ofrecerá un excelente sonido estéreo y graves robustos a través de dos controladores de rango completo de 5W, y está equipado con diafragma de bajos excelente y cavidad de altavoz independiente. El… | descripción: 📢Conexión rápida La tecnología Bluetooth 5.0 más avanzada garantiza una distancia de conexión de hasta 10 metros y una velocidad 4 veces más rápida que Bluetooth 4.2, transmitiendo datos de manera…\n[3] id=B08MV67XX7 | HP - PC Altavoz Bluetooth 350, Altavoz portátil con micrófono, conexión Bluetooth y AUX 3,5 mm, Carga USB-C, Resistente al Agua y al Polvo, Compatible con PC, Tablet y Smartphone, Color Plateado | marca: HP | color: plateado | precio: 24,21 € | existencias: 19 | características (extracto): Conexión: Bluetooth 5 y AUX 3,5 mm Tecnología: plug-and-play simplificada Micrófono: integrado, para escuchar música o contestar llamadas con manos libres Resistencia: agua y polvo Diseño: portátil y compacto | descripción: desconocido\n[4] id=B07GYCF7N9 | Motorola Sonic Boost 210 - Altavoz inalámbrico Bluetooth, Color Negro | marca: Motorola Lifestyle | color: Negro | precio: 70,16 € | existencias: 5 | características (extracto): El tacto sensible controles-Liso y el diseño moderno con los botones sensible, le trae una experiencia de uso increíble y divertida El integrado MIC y función manos libres puede permitirle disfrutar de música maravillosa sin la molestia de… | descripción: desconocido\n[5] id=B07TY4VMZ3 | JXFS Altavoz Bluetooth con lámpara LED Colorido Bola mágica Altavoz inalámbrico Bluetooth con Control Remoto Navidad Altavoces para Bajos al Aire Libre-Blue | marca: JXFS | color: color | precio: 11,83 € | existencias: 36 | características (extracto): CON CONTROL REMOTO, VARIOS MODOS DE LUZ: puede cambiar la canción, el volumen y el brillo, destellará diferentes colores hermosos y delicados que iluminan las habitaciones oscuras o el espacio. De la musica Cool UFO Shape, 13 colores… | descripción: Altavoz Bluetooth portátil con iluminación de colores mágica atmósfera, ultra-bajo consumo de energía y Super baja frequence. Support bluetooth y USB línea in. Super bluetooth singal. Have 8…",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.066,
+        "llm": 11.743,
+        "tools": 0.022,
+        "tts": 0.0,
+        "total": 11.83
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-2258b5f4-09_producto_inexistente-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {}
+      },
+      "after": {
+        "cart_id": "eval-2258b5f4-09_producto_inexistente-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07QG82RGM",
+              "title": "Tracer Rave Blue Altavoz Bluetooth Portátil/Speaker Inalámbrico, 20 W, hasta 8 Horas, Micro SD, Jack 3.5mm, Bluetooth 4.2",
+              "brand": "Tracer",
+              "price_cents": 4410,
+              "stock": 1
+            },
+            {
+              "product_id": "B099MQKFGG",
+              "title": "Altavoz Bluetooth Portátil, Altavoz Bluetooth Inalámbrico Estéreo Sonido de Bajo Bluetooth 5.0 Manos Libres/Modo AUX/Tarjeta TF/USB para Samsung Huawei XiaoMi Sony etc",
+              "brand": "Genérico",
+              "price_cents": 2253,
+              "stock": 16
+            },
+            {
+              "product_id": "B08MV67XX7",
+              "title": "HP - PC Altavoz Bluetooth 350, Altavoz portátil con micrófono, conexión Bluetooth y AUX 3,5 mm, Carga USB-C, Resistente al Agua y al Polvo, Compatible con PC, Tablet y Smartphone, Color Plateado",
+              "brand": "HP",
+              "price_cents": 2421,
+              "stock": 19
+            },
+            {
+              "product_id": "B07GYCF7N9",
+              "title": "Motorola Sonic Boost 210 - Altavoz inalámbrico Bluetooth, Color Negro",
+              "brand": "Motorola Lifestyle",
+              "price_cents": 7016,
+              "stock": 5
+            },
+            {
+              "product_id": "B07TY4VMZ3",
+              "title": "JXFS Altavoz Bluetooth con lámpara LED Colorido Bola mágica Altavoz inalámbrico Bluetooth con Control Remoto Navidad Altavoces para Bajos al Aire Libre-Blue",
+              "brand": "JXFS",
+              "price_cents": 1183,
+              "stock": 36
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {
+          "B07GYCF7N9": {
+            "price_cents": 7016,
+            "stock": 5
+          },
+          "B07QG82RGM": {
+            "price_cents": 4410,
+            "stock": 1
+          },
+          "B07TY4VMZ3": {
+            "price_cents": 1183,
+            "stock": 36
+          },
+          "B08MV67XX7": {
+            "price_cents": 2421,
+            "stock": 19
+          },
+          "B099MQKFGG": {
+            "price_cents": 2253,
+            "stock": 16
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        }
+      ]
+    },
+    {
+      "kind": "remember",
+      "name": "candidato1",
+      "ref": "candidate:1",
+      "product_id": "B07QG82RGM",
+      "title": "Tracer Rave Blue Altavoz Bluetooth Portátil/Speaker Inalámbrico, 20 W, hasta 8 Horas, Micro SD, Jack 3.5mm, Bluetooth 4.2"
+    },
+    {
+      "kind": "remember",
+      "name": "candidato2",
+      "ref": "candidate:2",
+      "product_id": "B099MQKFGG",
+      "title": "Altavoz Bluetooth Portátil, Altavoz Bluetooth Inalámbrico Estéreo Sonido de Bajo Bluetooth 5.0 Manos Libres/Modo AUX/Tarjeta TF/USB para Samsung Huawei XiaoMi Sony etc"
+    },
+    {
+      "kind": "remember",
+      "name": "candidato3",
+      "ref": "candidate:3",
+      "product_id": "B08MV67XX7",
+      "title": "HP - PC Altavoz Bluetooth 350, Altavoz portátil con micrófono, conexión Bluetooth y AUX 3,5 mm, Carga USB-C, Resistente al Agua y al Polvo, Compatible con PC, Tablet y Smartphone, Color Plateado"
+    },
+    {
+      "kind": "remember",
+      "name": "candidato4",
+      "ref": "candidate:4",
+      "product_id": "B07GYCF7N9",
+      "title": "Motorola Sonic Boost 210 - Altavoz inalámbrico Bluetooth, Color Negro"
+    },
+    {
+      "kind": "remember",
+      "name": "candidato5",
+      "ref": "candidate:5",
+      "product_id": "B07TY4VMZ3",
+      "title": "JXFS Altavoz Bluetooth con lámpara LED Colorido Bola mágica Altavoz inalámbrico Bluetooth con Control Remoto Navidad Altavoces para Bajos al Aire Libre-Blue"
+    },
+    {
+      "kind": "event",
+      "event": "set_offer",
+      "product": "@candidato1",
+      "product_id": "B07QG82RGM",
+      "price_cents": null,
+      "stock": 20
+    },
+    {
+      "kind": "event",
+      "event": "set_offer",
+      "product": "@candidato2",
+      "product_id": "B099MQKFGG",
+      "price_cents": null,
+      "stock": 20
+    },
+    {
+      "kind": "event",
+      "event": "set_offer",
+      "product": "@candidato3",
+      "product_id": "B08MV67XX7",
+      "price_cents": null,
+      "stock": 20
+    },
+    {
+      "kind": "event",
+      "event": "set_offer",
+      "product": "@candidato4",
+      "product_id": "B07GYCF7N9",
+      "price_cents": null,
+      "stock": 20
+    },
+    {
+      "kind": "event",
+      "event": "set_offer",
+      "product": "@candidato5",
+      "product_id": "B07TY4VMZ3",
+      "price_cents": null,
+      "stock": 20
+    },
+    {
+      "kind": "turn",
+      "turn": 2,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Añade dos del séptimo.",
+      "agent_input": "Añade dos del séptimo.",
+      "response": "Parece que quieres añadir dos unidades de un producto que no está en la lista. ¿Podrías indicarme cuál es?",
+      "spoken_text": "Parece que quieres añadir dos unidades de un producto que no está en la lista. ¿Podrías indicarme cuál es?",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "pedir_aclaracion",
+          "args": {
+            "pregunta": "Parece que quieres añadir dos unidades de un producto que no está en la lista. ¿Podrías indicarme cuál es?"
+          },
+          "reason": "leer el mensaje del usuario",
+          "ok": true,
+          "summary": "pregunta enviada al usuario",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 5.281,
+        "tools": 0.025,
+        "tts": 0.0,
+        "total": 5.306
+      },
+      "llm_steps": 1,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-2258b5f4-09_producto_inexistente-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07QG82RGM",
+              "title": "Tracer Rave Blue Altavoz Bluetooth Portátil/Speaker Inalámbrico, 20 W, hasta 8 Horas, Micro SD, Jack 3.5mm, Bluetooth 4.2",
+              "brand": "Tracer",
+              "price_cents": 4410,
+              "stock": 1
+            },
+            {
+              "product_id": "B099MQKFGG",
+              "title": "Altavoz Bluetooth Portátil, Altavoz Bluetooth Inalámbrico Estéreo Sonido de Bajo Bluetooth 5.0 Manos Libres/Modo AUX/Tarjeta TF/USB para Samsung Huawei XiaoMi Sony etc",
+              "brand": "Genérico",
+              "price_cents": 2253,
+              "stock": 16
+            },
+            {
+              "product_id": "B08MV67XX7",
+              "title": "HP - PC Altavoz Bluetooth 350, Altavoz portátil con micrófono, conexión Bluetooth y AUX 3,5 mm, Carga USB-C, Resistente al Agua y al Polvo, Compatible con PC, Tablet y Smartphone, Color Plateado",
+              "brand": "HP",
+              "price_cents": 2421,
+              "stock": 19
+            },
+            {
+              "product_id": "B07GYCF7N9",
+              "title": "Motorola Sonic Boost 210 - Altavoz inalámbrico Bluetooth, Color Negro",
+              "brand": "Motorola Lifestyle",
+              "price_cents": 7016,
+              "stock": 5
+            },
+            {
+              "product_id": "B07TY4VMZ3",
+              "title": "JXFS Altavoz Bluetooth con lámpara LED Colorido Bola mágica Altavoz inalámbrico Bluetooth con Control Remoto Navidad Altavoces para Bajos al Aire Libre-Blue",
+              "brand": "JXFS",
+              "price_cents": 1183,
+              "stock": 36
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B07GYCF7N9",
+              "initial_stock": 5,
+              "stock": 20
+            },
+            {
+              "product_id": "B07QG82RGM",
+              "initial_stock": 1,
+              "stock": 20
+            },
+            {
+              "product_id": "B07TY4VMZ3",
+              "initial_stock": 36,
+              "stock": 20
+            },
+            {
+              "product_id": "B08MV67XX7",
+              "initial_stock": 19,
+              "stock": 20
+            },
+            {
+              "product_id": "B099MQKFGG",
+              "initial_stock": 16,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B07GYCF7N9": {
+            "price_cents": 7016,
+            "stock": 20
+          },
+          "B07QG82RGM": {
+            "price_cents": 4410,
+            "stock": 20
+          },
+          "B07TY4VMZ3": {
+            "price_cents": 1183,
+            "stock": 20
+          },
+          "B08MV67XX7": {
+            "price_cents": 2421,
+            "stock": 20
+          },
+          "B099MQKFGG": {
+            "price_cents": 2253,
+            "stock": 20
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-2258b5f4-09_producto_inexistente-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": "Parece que quieres añadir dos unidades de un producto que no está en la lista. ¿Podrías indicarme cuál es?",
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07QG82RGM",
+              "title": "Tracer Rave Blue Altavoz Bluetooth Portátil/Speaker Inalámbrico, 20 W, hasta 8 Horas, Micro SD, Jack 3.5mm, Bluetooth 4.2",
+              "brand": "Tracer",
+              "price_cents": 4410,
+              "stock": 20
+            },
+            {
+              "product_id": "B099MQKFGG",
+              "title": "Altavoz Bluetooth Portátil, Altavoz Bluetooth Inalámbrico Estéreo Sonido de Bajo Bluetooth 5.0 Manos Libres/Modo AUX/Tarjeta TF/USB para Samsung Huawei XiaoMi Sony etc",
+              "brand": "Genérico",
+              "price_cents": 2253,
+              "stock": 20
+            },
+            {
+              "product_id": "B08MV67XX7",
+              "title": "HP - PC Altavoz Bluetooth 350, Altavoz portátil con micrófono, conexión Bluetooth y AUX 3,5 mm, Carga USB-C, Resistente al Agua y al Polvo, Compatible con PC, Tablet y Smartphone, Color Plateado",
+              "brand": "HP",
+              "price_cents": 2421,
+              "stock": 20
+            },
+            {
+              "product_id": "B07GYCF7N9",
+              "title": "Motorola Sonic Boost 210 - Altavoz inalámbrico Bluetooth, Color Negro",
+              "brand": "Motorola Lifestyle",
+              "price_cents": 7016,
+              "stock": 20
+            },
+            {
+              "product_id": "B07TY4VMZ3",
+              "title": "JXFS Altavoz Bluetooth con lámpara LED Colorido Bola mágica Altavoz inalámbrico Bluetooth con Control Remoto Navidad Altavoces para Bajos al Aire Libre-Blue",
+              "brand": "JXFS",
+              "price_cents": 1183,
+              "stock": 20
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B07GYCF7N9",
+              "initial_stock": 5,
+              "stock": 20
+            },
+            {
+              "product_id": "B07QG82RGM",
+              "initial_stock": 1,
+              "stock": 20
+            },
+            {
+              "product_id": "B07TY4VMZ3",
+              "initial_stock": 36,
+              "stock": 20
+            },
+            {
+              "product_id": "B08MV67XX7",
+              "initial_stock": 19,
+              "stock": 20
+            },
+            {
+              "product_id": "B099MQKFGG",
+              "initial_stock": 16,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B07GYCF7N9": {
+            "price_cents": 7016,
+            "stock": 20
+          },
+          "B07QG82RGM": {
+            "price_cents": 4410,
+            "stock": 20
+          },
+          "B07TY4VMZ3": {
+            "price_cents": 1183,
+            "stock": 20
+          },
+          "B08MV67XX7": {
+            "price_cents": 2421,
+            "stock": 20
+          },
+          "B099MQKFGG": {
+            "price_cents": 2253,
+            "stock": 20
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 3,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Añade dos unidades del producto con código ZX-999.",
+      "agent_input": "Añade dos unidades del producto con código ZX-999.",
+      "response": "¿Podrías indicarme cuál es el altavoz que buscas?",
+      "spoken_text": "¿Podrías indicarme cuál es el altavoz que buscas?",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "pedir_aclaracion",
+          "args": {
+            "pregunta": "¿Podrías indicarme cuál es el altavoz que buscas?"
+          },
+          "reason": "el producto no está en la lista",
+          "ok": true,
+          "summary": "pregunta enviada al usuario",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 5.27,
+        "tools": 0.028,
+        "tts": 0.0,
+        "total": 5.298
+      },
+      "llm_steps": 1,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-2258b5f4-09_producto_inexistente-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": "Parece que quieres añadir dos unidades de un producto que no está en la lista. ¿Podrías indicarme cuál es?",
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07QG82RGM",
+              "title": "Tracer Rave Blue Altavoz Bluetooth Portátil/Speaker Inalámbrico, 20 W, hasta 8 Horas, Micro SD, Jack 3.5mm, Bluetooth 4.2",
+              "brand": "Tracer",
+              "price_cents": 4410,
+              "stock": 20
+            },
+            {
+              "product_id": "B099MQKFGG",
+              "title": "Altavoz Bluetooth Portátil, Altavoz Bluetooth Inalámbrico Estéreo Sonido de Bajo Bluetooth 5.0 Manos Libres/Modo AUX/Tarjeta TF/USB para Samsung Huawei XiaoMi Sony etc",
+              "brand": "Genérico",
+              "price_cents": 2253,
+              "stock": 20
+            },
+            {
+              "product_id": "B08MV67XX7",
+              "title": "HP - PC Altavoz Bluetooth 350, Altavoz portátil con micrófono, conexión Bluetooth y AUX 3,5 mm, Carga USB-C, Resistente al Agua y al Polvo, Compatible con PC, Tablet y Smartphone, Color Plateado",
+              "brand": "HP",
+              "price_cents": 2421,
+              "stock": 20
+            },
+            {
+              "product_id": "B07GYCF7N9",
+              "title": "Motorola Sonic Boost 210 - Altavoz inalámbrico Bluetooth, Color Negro",
+              "brand": "Motorola Lifestyle",
+              "price_cents": 7016,
+              "stock": 20
+            },
+            {
+              "product_id": "B07TY4VMZ3",
+              "title": "JXFS Altavoz Bluetooth con lámpara LED Colorido Bola mágica Altavoz inalámbrico Bluetooth con Control Remoto Navidad Altavoces para Bajos al Aire Libre-Blue",
+              "brand": "JXFS",
+              "price_cents": 1183,
+              "stock": 20
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B07GYCF7N9",
+              "initial_stock": 5,
+              "stock": 20
+            },
+            {
+              "product_id": "B07QG82RGM",
+              "initial_stock": 1,
+              "stock": 20
+            },
+            {
+              "product_id": "B07TY4VMZ3",
+              "initial_stock": 36,
+              "stock": 20
+            },
+            {
+              "product_id": "B08MV67XX7",
+              "initial_stock": 19,
+              "stock": 20
+            },
+            {
+              "product_id": "B099MQKFGG",
+              "initial_stock": 16,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B07GYCF7N9": {
+            "price_cents": 7016,
+            "stock": 20
+          },
+          "B07QG82RGM": {
+            "price_cents": 4410,
+            "stock": 20
+          },
+          "B07TY4VMZ3": {
+            "price_cents": 1183,
+            "stock": 20
+          },
+          "B08MV67XX7": {
+            "price_cents": 2421,
+            "stock": 20
+          },
+          "B099MQKFGG": {
+            "price_cents": 2253,
+            "stock": 20
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-2258b5f4-09_producto_inexistente-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": "¿Podrías indicarme cuál es el altavoz que buscas?",
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07QG82RGM",
+              "title": "Tracer Rave Blue Altavoz Bluetooth Portátil/Speaker Inalámbrico, 20 W, hasta 8 Horas, Micro SD, Jack 3.5mm, Bluetooth 4.2",
+              "brand": "Tracer",
+              "price_cents": 4410,
+              "stock": 20
+            },
+            {
+              "product_id": "B099MQKFGG",
+              "title": "Altavoz Bluetooth Portátil, Altavoz Bluetooth Inalámbrico Estéreo Sonido de Bajo Bluetooth 5.0 Manos Libres/Modo AUX/Tarjeta TF/USB para Samsung Huawei XiaoMi Sony etc",
+              "brand": "Genérico",
+              "price_cents": 2253,
+              "stock": 20
+            },
+            {
+              "product_id": "B08MV67XX7",
+              "title": "HP - PC Altavoz Bluetooth 350, Altavoz portátil con micrófono, conexión Bluetooth y AUX 3,5 mm, Carga USB-C, Resistente al Agua y al Polvo, Compatible con PC, Tablet y Smartphone, Color Plateado",
+              "brand": "HP",
+              "price_cents": 2421,
+              "stock": 20
+            },
+            {
+              "product_id": "B07GYCF7N9",
+              "title": "Motorola Sonic Boost 210 - Altavoz inalámbrico Bluetooth, Color Negro",
+              "brand": "Motorola Lifestyle",
+              "price_cents": 7016,
+              "stock": 20
+            },
+            {
+              "product_id": "B07TY4VMZ3",
+              "title": "JXFS Altavoz Bluetooth con lámpara LED Colorido Bola mágica Altavoz inalámbrico Bluetooth con Control Remoto Navidad Altavoces para Bajos al Aire Libre-Blue",
+              "brand": "JXFS",
+              "price_cents": 1183,
+              "stock": 20
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B07GYCF7N9",
+              "initial_stock": 5,
+              "stock": 20
+            },
+            {
+              "product_id": "B07QG82RGM",
+              "initial_stock": 1,
+              "stock": 20
+            },
+            {
+              "product_id": "B07TY4VMZ3",
+              "initial_stock": 36,
+              "stock": 20
+            },
+            {
+              "product_id": "B08MV67XX7",
+              "initial_stock": 19,
+              "stock": 20
+            },
+            {
+              "product_id": "B099MQKFGG",
+              "initial_stock": 16,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B07GYCF7N9": {
+            "price_cents": 7016,
+            "stock": 20
+          },
+          "B07QG82RGM": {
+            "price_cents": 4410,
+            "stock": 20
+          },
+          "B07TY4VMZ3": {
+            "price_cents": 1183,
+            "stock": 20
+          },
+          "B08MV67XX7": {
+            "price_cents": 2421,
+            "stock": 20
+          },
+          "B099MQKFGG": {
+            "price_cents": 2253,
+            "stock": 20
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        }
+      ]
+    }
+  ],
+  "final": {
+    "snapshot": {
+      "cart_id": "eval-2258b5f4-09_producto_inexistente-c1",
+      "state": {
+        "budget_cents": null,
+        "preferences": [],
+        "pending_clarification": "¿Podrías indicarme cuál es el altavoz que buscas?",
+        "quote": null,
+        "order": null,
+        "candidates": [
+          {
+            "product_id": "B07QG82RGM",
+            "title": "Tracer Rave Blue Altavoz Bluetooth Portátil/Speaker Inalámbrico, 20 W, hasta 8 Horas, Micro SD, Jack 3.5mm, Bluetooth 4.2",
+            "brand": "Tracer",
+            "price_cents": 4410,
+            "stock": 20
+          },
+          {
+            "product_id": "B099MQKFGG",
+            "title": "Altavoz Bluetooth Portátil, Altavoz Bluetooth Inalámbrico Estéreo Sonido de Bajo Bluetooth 5.0 Manos Libres/Modo AUX/Tarjeta TF/USB para Samsung Huawei XiaoMi Sony etc",
+            "brand": "Genérico",
+            "price_cents": 2253,
+            "stock": 20
+          },
+          {
+            "product_id": "B08MV67XX7",
+            "title": "HP - PC Altavoz Bluetooth 350, Altavoz portátil con micrófono, conexión Bluetooth y AUX 3,5 mm, Carga USB-C, Resistente al Agua y al Polvo, Compatible con PC, Tablet y Smartphone, Color Plateado",
+            "brand": "HP",
+            "price_cents": 2421,
+            "stock": 20
+          },
+          {
+            "product_id": "B07GYCF7N9",
+            "title": "Motorola Sonic Boost 210 - Altavoz inalámbrico Bluetooth, Color Negro",
+            "brand": "Motorola Lifestyle",
+            "price_cents": 7016,
+            "stock": 20
+          },
+          {
+            "product_id": "B07TY4VMZ3",
+            "title": "JXFS Altavoz Bluetooth con lámpara LED Colorido Bola mágica Altavoz inalámbrico Bluetooth con Control Remoto Navidad Altavoces para Bajos al Aire Libre-Blue",
+            "brand": "JXFS",
+            "price_cents": 1183,
+            "stock": 20
+          }
+        ],
+        "awaiting_confirmation": false
+      },
+      "store": {
+        "orders": [],
+        "order_items": [],
+        "cart_items": [],
+        "inventory_changes": [
+          {
+            "product_id": "B07GYCF7N9",
+            "initial_stock": 5,
+            "stock": 20
+          },
+          {
+            "product_id": "B07QG82RGM",
+            "initial_stock": 1,
+            "stock": 20
+          },
+          {
+            "product_id": "B07TY4VMZ3",
+            "initial_stock": 36,
+            "stock": 20
+          },
+          {
+            "product_id": "B08MV67XX7",
+            "initial_stock": 19,
+            "stock": 20
+          },
+          {
+            "product_id": "B099MQKFGG",
+            "initial_stock": 16,
+            "stock": 20
+          }
+        ]
+      },
+      "offers": {
+        "B07GYCF7N9": {
+          "price_cents": 7016,
+          "stock": 20
+        },
+        "B07QG82RGM": {
+          "price_cents": 4410,
+          "stock": 20
+        },
+        "B07TY4VMZ3": {
+          "price_cents": 1183,
+          "stock": 20
+        },
+        "B08MV67XX7": {
+          "price_cents": 2421,
+          "stock": 20
+        },
+        "B099MQKFGG": {
+          "price_cents": 2253,
+          "stock": 20
+        }
+      }
+    },
+    "checks": [
+      {
+        "check": "orders",
+        "params": {
+          "count": 0
+        },
+        "ok": true,
+        "detail": "pedidos registrados: 0"
+      },
+      {
+        "check": "cart",
+        "params": {
+          "empty": true
+        },
+        "ok": true,
+        "detail": "carrito: vacío"
+      }
+    ]
+  },
+  "violations": [],
+  "problems": [],
+  "passed": true,
+  "timings": {
+    "all": {
+      "turns": 3,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.02,
+        "max": 0.07
+      },
+      "llm": {
+        "mean": 7.43,
+        "max": 11.74
+      },
+      "tools": {
+        "mean": 0.02,
+        "max": 0.03
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 7.48,
+        "max": 11.83
+      }
+    },
+    "with_llm": {
+      "turns": 3,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.02,
+        "max": 0.07
+      },
+      "llm": {
+        "mean": 7.43,
+        "max": 11.74
+      },
+      "tools": {
+        "mean": 0.02,
+        "max": 0.03
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 7.48,
+        "max": 11.83
+      }
+    },
+    "without_llm": {
+      "turns": 0
+    }
+  }
+}

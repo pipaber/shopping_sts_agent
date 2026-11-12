@@ -468,7 +468,7 @@ El «texto peor» es el mismo a las cuatro velocidades: la respuesta con las mar
 
 `notebooks/colab.ipynb` corre el proyecto de principio a fin en una T4 de Colab con 2 CPU: instalación, Postgres, datos, recuperación, reranker, agente por texto, escenarios por texto y por voz, conversación en vivo y resumen.
 
-**Corrida final** (12 de noviembre de 2026, commit `d81bc00`; Ubuntu 24.04, CUDA 13.0), con la voz del autor clonada de la referencia nueva a velocidad 1,10 y sus 31 grabaciones. Las cifras se leyeron en la sesión de Colab (salida de las celdas, su `resumen.md` y su `corrida.json`), que es temporal: esos archivos no están en el repositorio. La columna de la workstation sale de `results/`.
+**Corrida final** (12 de noviembre de 2026, commit `d81bc00`; Ubuntu 24.04, CUDA 13.0), con la voz del autor clonada de la referencia nueva a velocidad 1,10 y sus 31 grabaciones. Las cifras se leyeron en la sesión de Colab (salida de las celdas, su `resumen.md` y su `corrida.json`); los archivos de esa corrida se descargaron después y están en `results/colab_t4/`. La columna de la workstation sale del resto de `results/`.
 
 | Medida | Workstation (RTX A2000, 12 GB) | Colab (T4, 2 CPU) |
 |---|---|---|

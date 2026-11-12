@@ -1,0 +1,308 @@
+{
+  "id": "12_memoria_preferencias",
+  "title": "Memoria de preferencias entre conversaciones",
+  "kind": "memoria_preferencias",
+  "description": "El usuario deja dicha una preferencia en una conversación y pregunta por ella en otra nueva (otro hilo, mismo usuario). La preferencia debe estar en el estado de la segunda conversación y en la respuesta.",
+  "voice": false,
+  "input": "texto",
+  "audio_source": null,
+  "user_id": "eval-2258b5f4-12_memoria_preferencias",
+  "threads": [
+    "eval-2258b5f4-12_memoria_preferencias-c1",
+    "eval-2258b5f4-12_memoria_preferencias-c2"
+  ],
+  "names": {},
+  "steps": [
+    {
+      "kind": "turn",
+      "turn": 1,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Recuerda para otras veces que prefiero el color azul.",
+      "agent_input": "Recuerda para otras veces que prefiero el color azul.",
+      "response": "He guardado que te gusta el color azul. ¿En qué puedo ayudarte ahora?",
+      "spoken_text": "He guardado que te gusta el color azul. ¿En qué puedo ayudarte ahora?",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "guardar_preferencia",
+          "args": {
+            "preferencia": "color azul"
+          },
+          "reason": "guardar la preferencia del usuario",
+          "ok": true,
+          "summary": "preferencia guardada.",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 5.165,
+        "tools": 0.032,
+        "tts": 0.0,
+        "total": 5.197
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-2258b5f4-12_memoria_preferencias-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {}
+      },
+      "after": {
+        "cart_id": "eval-2258b5f4-12_memoria_preferencias-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [
+            "color azul"
+          ],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {}
+      },
+      "checks": [
+        {
+          "check": "preference",
+          "params": {
+            "contains": "azul"
+          },
+          "ok": true,
+          "detail": "preferencias: ['color azul']"
+        }
+      ]
+    },
+    {
+      "kind": "new_conversation",
+      "thread_id": "eval-2258b5f4-12_memoria_preferencias-c2"
+    },
+    {
+      "kind": "turn",
+      "turn": 2,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Hola, ¿recuerdas qué color prefiero?",
+      "agent_input": "Hola, ¿recuerdas qué color prefiero?",
+      "response": "Sí, he guardado que tu color preferido es azul.",
+      "spoken_text": "Sí, he guardado que tu color preferido es azul.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "guardar_preferencia",
+          "args": {
+            "preferencia": "color azul"
+          },
+          "reason": "confirmar la preferencia del usuario",
+          "ok": true,
+          "summary": "preferencia guardada.",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 4.642,
+        "tools": 0.027,
+        "tts": 0.0,
+        "total": 4.669
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-2258b5f4-12_memoria_preferencias-c2",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {}
+      },
+      "after": {
+        "cart_id": "eval-2258b5f4-12_memoria_preferencias-c2",
+        "state": {
+          "budget_cents": null,
+          "preferences": [
+            "color azul"
+          ],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {}
+      },
+      "checks": [
+        {
+          "check": "preference",
+          "params": {
+            "contains": "azul"
+          },
+          "ok": true,
+          "detail": "preferencias: ['color azul']"
+        },
+        {
+          "check": "response_contains",
+          "params": {
+            "text": "azul"
+          },
+          "ok": true,
+          "detail": "la respuesta contiene «azul»"
+        }
+      ]
+    }
+  ],
+  "final": {
+    "snapshot": {
+      "cart_id": "eval-2258b5f4-12_memoria_preferencias-c2",
+      "state": {
+        "budget_cents": null,
+        "preferences": [
+          "color azul"
+        ],
+        "pending_clarification": null,
+        "quote": null,
+        "order": null,
+        "candidates": [],
+        "awaiting_confirmation": false
+      },
+      "store": {
+        "orders": [],
+        "order_items": [],
+        "cart_items": [],
+        "inventory_changes": []
+      },
+      "offers": {}
+    },
+    "checks": [
+      {
+        "check": "orders",
+        "params": {
+          "count": 0
+        },
+        "ok": true,
+        "detail": "pedidos registrados: 0"
+      },
+      {
+        "check": "cart",
+        "params": {
+          "empty": true
+        },
+        "ok": true,
+        "detail": "carrito: vacío"
+      }
+    ]
+  },
+  "violations": [],
+  "problems": [],
+  "passed": true,
+  "timings": {
+    "all": {
+      "turns": 2,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "llm": {
+        "mean": 4.9,
+        "max": 5.17
+      },
+      "tools": {
+        "mean": 0.03,
+        "max": 0.03
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 4.93,
+        "max": 5.2
+      }
+    },
+    "with_llm": {
+      "turns": 2,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "llm": {
+        "mean": 4.9,
+        "max": 5.17
+      },
+      "tools": {
+        "mean": 0.03,
+        "max": 0.03
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 4.93,
+        "max": 5.2
+      }
+    },
+    "without_llm": {
+      "turns": 0
+    }
+  }
+}
