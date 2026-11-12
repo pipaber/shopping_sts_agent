@@ -244,6 +244,37 @@ uv run python -m shopping_agent.voice.tts --speaker "NOMBRE" --script scenarios/
 
 Los audios sintéticos sirven para comprobar que el flujo funciona, no para evaluar el ASR. En `results/` hay dos corridas hechas con esos audios de entrada: [voz_demo_compra](results/voz_demo_compra/transcripcion.md), en la que el agente clona un hablante de prueba ([métricas](results/voz_demo_compra/metricas.md)), y [voz_demo_compra_voz_usuario](results/voz_demo_compra_voz_usuario/transcripcion.md), en la que clona la grabación de referencia del autor ([métricas](results/voz_demo_compra_voz_usuario/metricas.md)). Los audios de entrada y de respuesta no se suben.
 
+### Conversación en vivo
+
+```bash
+uv run python -m shopping_agent.voice.live --restore
+```
+
+Carga una sola vez la búsqueda con el reranker, el LLM, el ASR y el TTS, abre una conversación y atiende turnos por HTTP en `127.0.0.1:8765`, solo desde la propia máquina. Sirve para hablar con el agente turno a turno desde otro proceso que no puede importar el paquete, como las celdas del notebook de Colab, sin recargar los modelos en cada turno. Opciones: `--port`, `--reference` o `--speaker` (la voz, como en `voice.chat`), `--restore`, `--user`, `--n-ctx`, `--data`, `--db` y `--volatile-memory`. Se detiene con Ctrl+C o `kill`.
+
+Todo va en JSON (UTF-8):
+
+| Ruta | Petición | Respuesta |
+|---|---|---|
+| `GET /health` | — | `ready` (`false` mientras cargan los modelos), `load` (segundos de carga: `search`, `llm`, `asr`, `tts`, `total`), `vram_mib` (memoria de GPU del proceso en ese momento), `thread` (hilo de la conversación) y `voice` (de dónde sale la voz del agente). Mientras carga, `load` está vacío y `thread` y `voice` son `null` |
+| `POST /turn` | `{"audio": "/ruta/turno.wav"}` o `{"text": "…"}`, uno de los dos | `turn` (número de turno), `heard` (lo que entendió el ASR, o el texto), `response`, `spoken` (el texto enviado al TTS), `audio` (ruta absoluta del WAV de la respuesta), `operations` (lista de `tool`, `args`, `ok` y `summary` de cada herramienta ejecutada o rechazada), `awaiting_confirmation` y `seconds` (`asr`, `retrieval`, `llm`, `tools`, `tts`, `total`) |
+| `POST /reset` | `{"restore": true}` o nada | `thread` (el hilo de la conversación nueva) y `restored`. Con `restore` la tienda vuelve a su estado inicial |
+
+```bash
+curl -s http://127.0.0.1:8765/health
+curl -s -X POST http://127.0.0.1:8765/turn -d '{"audio": "/ruta/a/turno.wav"}'
+curl -s -X POST http://127.0.0.1:8765/turn -d '{"text": "Busco una botella de agua."}'
+```
+
+- **Errores:** `{"error": "mensaje"}` con código 400 (petición mal formada o audio que no existe), 404 (ruta desconocida), 503 (los modelos aún cargan) o 500 (el turno falló). Tras un 500 el servidor sigue atendiendo.
+- **Un turno a la vez:** los modelos comparten la GPU; una petición que llega durante un turno espera a que termine.
+- **Audio sin voz:** si el ASR no entiende nada (silencio, ruido), `heard` va vacío, el agente no recibe ningún mensaje y la respuesta pide repetir. Si se esperaba la confirmación de un pedido, se sigue esperando.
+- **Lo que queda de cada conversación:** los audios de entrada y de respuesta en `audio/corridas/en_vivo/<hilo>/` (fuera de git) y, reescritos tras cada turno, `turnos.json` y `transcripcion.md` en `results/en_vivo/<hilo>/`, con el mismo formato que una corrida de `voice.chat`.
+
+Prueba real del servidor (12 de noviembre, en la workstation): el escenario 03 con las cinco grabaciones del usuario, enviado turno a turno por HTTP con la tienda restaurada y el suceso externo del escenario aplicado tras el primer turno (la tienda deja el primer candidato a 9,50 € con 20 unidades). El pedido queda igual que en la corrida por voz: 4 unidades de la misma botella, 38,00 €, existencias 16. Los cuatro turnos con LLM tardaron 13,4 s de media (ASR 0,39, LLM 5,29, TTS 7,65) y la confirmación, que no pasa por el LLM, 5,1 s. El proceso ocupa 9 532 MiB de memoria de GPU con todo cargado y 9 824 al terminar la conversación. En una segunda conversación, un audio en silencio y otro de ruido volvieron con `heard` vacío en 1,1 s sin consultar al agente, un archivo que no era audio dio un 500 y el turno siguiente se atendió, y de dos turnos enviados a la vez el segundo esperó al primero. Las transcripciones están en [results/en_vivo/vivo-c6e6740e](results/en_vivo/vivo-c6e6740e/transcripcion.md) y [results/en_vivo/vivo-b2a21e1c](results/en_vivo/vivo-b2a21e1c/transcripcion.md).
+
+La carga tarda 26 s (búsqueda 15,4, LLM 0,7, ASR 0,9, TTS 9,2) si no depende de la red. En la corrida de la prueba tardó 160 s: al cargar el modelo de embeddings, `sentence-transformers` consulta huggingface.co aunque el modelo ya esté descargado, y ese día una de las direcciones del servidor no respondía desde la workstation. Con los modelos ya descargados, `HF_HUB_OFFLINE=1` evita esa consulta; los 26 s se midieron así. Durante la carga `/health` contestó `ready: false` en todo momento.
+
 ### Métricas de voz
 
 ```bash
@@ -361,6 +392,7 @@ src/shopping_agent/
     chat.py, report.py   comando de chat por texto y transcripción
     memory.py, llm.py, search.py   Postgres, LLM local y búsqueda híbrida con reranker opcional
   voice/       audio, asr, speech_text, tts, pipeline (un turno por voz), chat (comando), report
+    live.py      servidor local para conversar en vivo, turno a turno
   eval/        evaluación de la recuperación, del reranker (comparación y coste) y métricas de voz
     scenario_format.py, scenario_checks.py   formato de los escenarios; comprobaciones por código
     scenario_violations.py                   violaciones de restricciones, turno a turno

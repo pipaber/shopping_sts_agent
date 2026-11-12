@@ -1,0 +1,309 @@
+{
+  "date": "2026-11-12T10:41:51",
+  "note": "conversación en vivo",
+  "mode": "audio",
+  "models": {
+    "llm": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+    "asr": "large-v3-turbo",
+    "tts": "XTTS-v2",
+    "embeddings": "intfloat/multilingual-e5-small",
+    "reranker": "control"
+  },
+  "voice": {
+    "reference": "audio/referencia/referencia.wav",
+    "speaker": null
+  },
+  "load": {
+    "search_seconds": 149.8,
+    "llm_seconds": 0.7,
+    "asr_seconds": 1.0,
+    "tts_seconds": 8.2,
+    "total_seconds": 160.3,
+    "vram_mib": {
+      "search": 706,
+      "llm": 5820,
+      "asr": 7772,
+      "loaded": 9532,
+      "after_run": 9824
+    }
+  },
+  "memory_backend": "postgres",
+  "thread_id": "vivo-b2a21e1c",
+  "turns": [
+    {
+      "turn": 1,
+      "input_audio": "entrada_01.wav",
+      "input_seconds": 2.0,
+      "transcript": "",
+      "expected_text": null,
+      "agent_input": "",
+      "response": "No te he oído bien. ¿Puedes repetirlo?",
+      "spoken_text": "No te he oído bien. ¿Puedes repetirlo?",
+      "output_audio": "respuesta_01.wav",
+      "output_seconds": 5.0986666666666665,
+      "awaiting_confirmation": false,
+      "operations": [],
+      "timings": {
+        "asr": 0.012,
+        "retrieval": 0.0,
+        "llm": 0.0,
+        "tools": 0.0,
+        "tts": 1.119,
+        "total": 1.132
+      },
+      "llm_steps": 0,
+      "tts_first_chunk_seconds": 1.111,
+      "tts_retries": 0,
+      "product_terms": []
+    },
+    {
+      "turn": 2,
+      "input_audio": "entrada_02.wav",
+      "input_seconds": 2.0,
+      "transcript": "",
+      "expected_text": null,
+      "agent_input": "",
+      "response": "No te he oído bien. ¿Puedes repetirlo?",
+      "spoken_text": "No te he oído bien. ¿Puedes repetirlo?",
+      "output_audio": "respuesta_02.wav",
+      "output_seconds": 5.0986666666666665,
+      "awaiting_confirmation": false,
+      "operations": [],
+      "timings": {
+        "asr": 0.005,
+        "retrieval": 0.0,
+        "llm": 0.0,
+        "tools": 0.0,
+        "tts": 1.112,
+        "total": 1.116
+      },
+      "llm_steps": 0,
+      "tts_first_chunk_seconds": 1.103,
+      "tts_retries": 0,
+      "product_terms": []
+    },
+    {
+      "turn": 3,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": null,
+      "agent_input": "Hola, busco una taza de cerámica.",
+      "response": "Tengo una taza de cerámica de zhqingyu por 7,70 euros, una de View Show por 117,22 euros, una de AmyNovelty por 24,63 euros, una de AN por 7,48 euros y una de DrMugCollection por 32,09 euros. ¿Te interesa alguna?",
+      "spoken_text": "Tengo una taza de cerámica de zhqingyu por siete euros con setenta céntimos, una de View Show por ciento diecisiete euros con veintidós céntimos, una de AmyNovelty por veinticuatro euros con sesenta y tres céntimos, una de AN por siete euros con cuarenta y ocho céntimos y una de DrMugCollection por treinta y dos euros con nueve céntimos. ¿Te interesa alguna?",
+      "output_audio": "respuesta_03.wav",
+      "output_seconds": 28.073333333333334,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "buscar_productos",
+          "args": {
+            "consulta": "taza cerámica"
+          },
+          "reason": "buscar la taza de cerámica",
+          "ok": true,
+          "summary": "estos son ahora los CANDIDATOS, del más al menos relevante:\n[1] id=B082DCGNR3 | zhqingyu Figura Abstracta Creativa - Bicicleta Amor Taza Gran Capacidad Personalidad Creativa Tendencia Taza de cerámica hogar con Tapa Taza de Regalo Femenina | marca: zhqingyu | color: desconocido | precio: 7,70 € | existencias: 17 | características (extracto): 1: cerámica de alta calidad: 2: lavavajillas y horno microondas 3: Adecuado para té, leche, café y diversas bebidas. 4: El diseño de mango moderado te hace sentir más cómodo. 5: El diseño novedoso y único es el regalo de elección para sus… | descripción: Si hay algún problema con el producto, o si tiene alguna idea o sugerencia para nuestros productos, no dude en ponerse en contacto con nosotros. Y comprar el riesgo cero del producto aquí. Su…\n[2] id=B08P7G46MH | View Show Logo Television The Talk TV AmericanMejor Taza de café Regalo 11 oz | marca: desconocido | color: Color Blanco. | precio: 117,22 € | existencias: 20 | características (extracto): Diseño: la taza de café de mármol de cerámica no es demasiado pequeña ni demasiado grande. El diseño es divertido, único y adecuado para todos los usuarios. Un gran comienzo de conversación: impreso en ambos lados. Mantenemos estrictos… | descripción: Calidad excelente: esta taza de café dulce está hecha de cerámica especial, estable e irrompible, incluso con agua caliente o microondas. Es más saludable que los vasos de papel y fácil de limpiar…\n[3] id=B082TTWQ55 | Taza De Cerámica,Taza De Café De La Bandera De Panamá Taza De Té De Cerámica De Regalo De Aniversario De 11 Oz | marca: AmyNovelty | color: desconocido | precio: 24,63 € | existencias: 21 | características (extracto): Tazas de cerámica duraderas: esta taza de café y té de alta calidad está hecha de material de cerámica blanca de primera calidad, de larga duración para el uso y saludable para el consumo diario. Tazas de café estándar: con el clásico… | descripción: ¡Felices vacaciones a todos y bienvenidos a nuestra tienda! Nuestra taza de té de café informal está hecha de material cerámico blanco de primera calidad, que es duradero para su uso y saludable para…\n[4] id=B08ZLX5MXL | Taza Desayuno con Mensaje Respira_ Regalos Originales para Mujer_ Taza café Infusiones o Decoración Hogar en Cerámica de Gran Calidad. | marca: AN | color: desconocido | precio: 7,48 € | existencias: 17 | características (extracto): TAZA DE ALTA CALIDAD. Taza de cerámica blanca de 350 ml. con ilustración creada por diseñadores e impresa con tinta sublime resistente a microondas y lavavajillas. REGALO IDEAL. Las tazas originales para regalar con frases motivadoras, de… | descripción: Consigue una de las tazas originales para regalar con mensajes ilustrados por diseñadores ¿Buscas un regalo especial? Sorprende con buen gusto regalando tazas originales de alta calidad impresas con…\n[5] id=B01N7Z06EV | Taza Principito Reloj | marca: DrMugCollection | color: desconocido | precio: 32,09 € | existencias: 13 | características (extracto): Taza de cerámica de calidad. 320ml | descripción: Taza de cerámica de calidad. 320ml",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.03,
+        "llm": 6.904,
+        "tools": 0.028,
+        "tts": 6.498,
+        "total": 13.46
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": 2.644,
+      "tts_retries": 0,
+      "product_terms": []
+    },
+    {
+      "turn": 4,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": null,
+      "agent_input": "¿Cuánto cuesta la primera?",
+      "response": "Cuesta 7,70 euros.",
+      "spoken_text": "Cuesta siete euros con setenta céntimos.",
+      "output_audio": "respuesta_04.wav",
+      "output_seconds": 3.616,
+      "awaiting_confirmation": false,
+      "operations": [],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 2.798,
+        "tools": 0.031,
+        "tts": 0.795,
+        "total": 3.624
+      },
+      "llm_steps": 1,
+      "tts_first_chunk_seconds": 0.79,
+      "tts_retries": 0,
+      "product_terms": []
+    },
+    {
+      "turn": 5,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": null,
+      "agent_input": "¿Qué hay en el carrito?",
+      "response": "El carrito está vacío.",
+      "spoken_text": "El carrito está vacío.",
+      "output_audio": "respuesta_05.wav",
+      "output_seconds": 4.736,
+      "awaiting_confirmation": false,
+      "operations": [],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 2.401,
+        "tools": 0.031,
+        "tts": 1.034,
+        "total": 3.466
+      },
+      "llm_steps": 1,
+      "tts_first_chunk_seconds": 1.027,
+      "tts_retries": 0,
+      "product_terms": []
+    },
+    {
+      "turn": 6,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": null,
+      "agent_input": "¿Cuál es mi presupuesto?",
+      "response": "La primera taza cuesta 7,70 euros.",
+      "spoken_text": "La primera taza cuesta siete euros con setenta céntimos.",
+      "output_audio": "respuesta_06.wav",
+      "output_seconds": 6.4,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "consultar_precio_stock",
+          "args": {
+            "product_id": "B082DCGNR3"
+          },
+          "reason": "el usuario pregunta su presupuesto",
+          "ok": true,
+          "summary": "precio 7,70 €; quedan 17 unidades. Esta herramienta no da características: para color, batería, medidas u otros datos del producto usa detalle_producto.",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 4.45,
+        "tools": 0.032,
+        "tts": 1.425,
+        "total": 5.907
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": 1.414,
+      "tts_retries": 0,
+      "product_terms": []
+    }
+  ],
+  "timings": {
+    "all": {
+      "turns": 6,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.01
+      },
+      "retrieval": {
+        "mean": 0.01,
+        "max": 0.03
+      },
+      "llm": {
+        "mean": 2.76,
+        "max": 6.9
+      },
+      "tools": {
+        "mean": 0.02,
+        "max": 0.03
+      },
+      "tts": {
+        "mean": 2.0,
+        "max": 6.5
+      },
+      "total": {
+        "mean": 4.78,
+        "max": 13.46
+      }
+    },
+    "with_llm": {
+      "turns": 4,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.01,
+        "max": 0.03
+      },
+      "llm": {
+        "mean": 4.14,
+        "max": 6.9
+      },
+      "tools": {
+        "mean": 0.03,
+        "max": 0.03
+      },
+      "tts": {
+        "mean": 2.44,
+        "max": 6.5
+      },
+      "total": {
+        "mean": 6.61,
+        "max": 13.46
+      }
+    },
+    "without_llm": {
+      "turns": 2,
+      "asr": {
+        "mean": 0.01,
+        "max": 0.01
+      },
+      "retrieval": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "llm": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "tools": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "tts": {
+        "mean": 1.12,
+        "max": 1.12
+      },
+      "total": {
+        "mean": 1.12,
+        "max": 1.13
+      }
+    }
+  },
+  "final_state": {
+    "budget_cents": null,
+    "preferences": [],
+    "cart": [],
+    "quote": null,
+    "order": null
+  },
+  "store": {
+    "orders": [],
+    "order_items": [],
+    "cart_items": [],
+    "inventory_changes": []
+  },
+  "text_run": null
+}
