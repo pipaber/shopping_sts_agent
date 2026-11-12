@@ -1,0 +1,1200 @@
+{
+  "asr_model": "large-v3-turbo",
+  "folder": "audio/escenarios",
+  "expected": 31,
+  "found": 30,
+  "asr": {
+    "cases": 30,
+    "wer": 0.06569343065693431,
+    "exact": 27,
+    "amounts": {
+      "total": 3,
+      "errors": 0,
+      "error_rate": 0.0
+    },
+    "quantities": {
+      "total": 6,
+      "errors": 2,
+      "error_rate": 0.3333333333333333
+    },
+    "products": {
+      "total": 13,
+      "errors": 1,
+      "error_rate": 0.07692307692307693
+    }
+  },
+  "scenarios": [
+    {
+      "id": "01_compra_confirmada",
+      "turns": 4,
+      "files": [
+        {
+          "file": "audio/escenarios/01_compra_confirmada/01.wav",
+          "turn": 1,
+          "audio_seconds": 5.5,
+          "reference": "Hola, busco una cafetera italiana. Tengo un presupuesto de 60 euros.",
+          "hypothesis": "Hola, busco una cafetería italiana. Tengo un presupuesto de 60 euros.",
+          "wer": {
+            "wer": 0.09090909090909091,
+            "reference_words": 11,
+            "hits": 10,
+            "substitutions": 1,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "amounts": {
+            "reference": [
+              6000
+            ],
+            "hypothesis": [
+              6000
+            ],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "quantities": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "products": {
+            "total": 1,
+            "missing": [
+              {
+                "term": "cafetera italiana",
+                "closest": "cafeteria italiana",
+                "similarity": 0.97
+              }
+            ],
+            "errors": 1
+          },
+          "exact": false,
+          "closest_turn": 1
+        },
+        {
+          "file": "audio/escenarios/01_compra_confirmada/02.wav",
+          "turn": 2,
+          "audio_seconds": 3.7,
+          "reference": "Añade dos de la primera al carrito.",
+          "hypothesis": "Añade dos de la primera al carrito.",
+          "wer": {
+            "wer": 0.0,
+            "reference_words": 7,
+            "hits": 7,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "amounts": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "quantities": {
+            "reference": [
+              2
+            ],
+            "hypothesis": [
+              2
+            ],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "products": {
+            "total": 1,
+            "missing": [],
+            "errors": 0
+          },
+          "exact": true,
+          "closest_turn": 2
+        },
+        {
+          "file": "audio/escenarios/01_compra_confirmada/03.wav",
+          "turn": 3,
+          "audio_seconds": 2.5,
+          "reference": "Quiero cerrar el pedido.",
+          "hypothesis": "Quiero cerrar el pedido.",
+          "wer": {
+            "wer": 0.0,
+            "reference_words": 4,
+            "hits": 4,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "amounts": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "quantities": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "products": {
+            "total": 0,
+            "missing": [],
+            "errors": 0
+          },
+          "exact": true,
+          "closest_turn": 3
+        },
+        {
+          "file": "audio/escenarios/01_compra_confirmada/04.wav",
+          "turn": 4,
+          "audio_seconds": 2.4,
+          "reference": "Sí, confirmo.",
+          "hypothesis": "Sí, confirmo.",
+          "wer": {
+            "wer": 0.0,
+            "reference_words": 2,
+            "hits": 2,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "amounts": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "quantities": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "products": {
+            "total": 0,
+            "missing": [],
+            "errors": 0
+          },
+          "exact": true,
+          "closest_turn": 4
+        }
+      ],
+      "missing": []
+    },
+    {
+      "id": "02_pedido_ambiguo",
+      "turns": 3,
+      "files": [
+        {
+          "file": "audio/escenarios/02_pedido_ambiguo/01.wav",
+          "turn": 1,
+          "audio_seconds": 5.5,
+          "reference": "Quiero comprar un regalo para mi hermana.",
+          "hypothesis": "Quiero comprar un regalo para mi hermana.",
+          "wer": {
+            "wer": 0.0,
+            "reference_words": 7,
+            "hits": 7,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "amounts": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "quantities": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "products": {
+            "total": 0,
+            "missing": [],
+            "errors": 0
+          },
+          "exact": true,
+          "closest_turn": 1
+        },
+        {
+          "file": "audio/escenarios/02_pedido_ambiguo/02.wav",
+          "turn": 2,
+          "audio_seconds": 5.4,
+          "reference": "Unos auriculares bluetooth, y no quiero gastar más de 50 euros.",
+          "hypothesis": "Unos auriculares Bluetooth y no quiero gastar más de 50 euros.",
+          "wer": {
+            "wer": 0.0,
+            "reference_words": 11,
+            "hits": 11,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "amounts": {
+            "reference": [
+              5000
+            ],
+            "hypothesis": [
+              5000
+            ],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "quantities": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "products": {
+            "total": 1,
+            "missing": [],
+            "errors": 0
+          },
+          "exact": true,
+          "closest_turn": 2
+        },
+        {
+          "file": "audio/escenarios/02_pedido_ambiguo/03.wav",
+          "turn": 3,
+          "audio_seconds": 2.7,
+          "reference": "Ponme uno del primero.",
+          "hypothesis": "Ponme uno del primero.",
+          "wer": {
+            "wer": 0.0,
+            "reference_words": 4,
+            "hits": 4,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "amounts": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "quantities": {
+            "reference": [
+              1
+            ],
+            "hypothesis": [
+              1
+            ],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "products": {
+            "total": 1,
+            "missing": [],
+            "errors": 0
+          },
+          "exact": true,
+          "closest_turn": 3
+        }
+      ],
+      "missing": []
+    },
+    {
+      "id": "03_cambio_cantidad",
+      "turns": 5,
+      "files": [
+        {
+          "file": "audio/escenarios/03_cambio_cantidad/01.wav",
+          "turn": 1,
+          "audio_seconds": 6.0,
+          "reference": "Busco una botella de agua de acero inoxidable. Mi presupuesto es de 45 euros.",
+          "hypothesis": "Busco una botella de agua de acero inoxidable. Mi presupuesto es de 45 euros.",
+          "wer": {
+            "wer": 0.0,
+            "reference_words": 16,
+            "hits": 16,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "amounts": {
+            "reference": [
+              4500
+            ],
+            "hypothesis": [
+              4500
+            ],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "quantities": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "products": {
+            "total": 1,
+            "missing": [],
+            "errors": 0
+          },
+          "exact": true,
+          "closest_turn": 1
+        },
+        {
+          "file": "audio/escenarios/03_cambio_cantidad/02.wav",
+          "turn": 2,
+          "audio_seconds": 2.5,
+          "reference": "Añade dos de la primera.",
+          "hypothesis": "Añade dos de la primera.",
+          "wer": {
+            "wer": 0.0,
+            "reference_words": 5,
+            "hits": 5,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "amounts": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "quantities": {
+            "reference": [
+              2
+            ],
+            "hypothesis": [
+              2
+            ],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "products": {
+            "total": 1,
+            "missing": [],
+            "errors": 0
+          },
+          "exact": true,
+          "closest_turn": 2
+        },
+        {
+          "file": "audio/escenarios/03_cambio_cantidad/03.wav",
+          "turn": 3,
+          "audio_seconds": 2.8,
+          "reference": "Mejor que sean cuatro.",
+          "hypothesis": "Mejor que sean cuatro.",
+          "wer": {
+            "wer": 0.0,
+            "reference_words": 4,
+            "hits": 4,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "amounts": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "quantities": {
+            "reference": [
+              4
+            ],
+            "hypothesis": [
+              4
+            ],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "products": {
+            "total": 0,
+            "missing": [],
+            "errors": 0
+          },
+          "exact": true,
+          "closest_turn": 3
+        },
+        {
+          "file": "audio/escenarios/03_cambio_cantidad/04.wav",
+          "turn": 4,
+          "audio_seconds": 2.1,
+          "reference": "Ciérralo.",
+          "hypothesis": "Cierralo.",
+          "wer": {
+            "wer": 0.0,
+            "reference_words": 1,
+            "hits": 1,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "amounts": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "quantities": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "products": {
+            "total": 0,
+            "missing": [],
+            "errors": 0
+          },
+          "exact": true,
+          "closest_turn": 4
+        },
+        {
+          "file": "audio/escenarios/03_cambio_cantidad/05.wav",
+          "turn": 5,
+          "audio_seconds": 2.0,
+          "reference": "Sí.",
+          "hypothesis": "Sí.",
+          "wer": {
+            "wer": 0.0,
+            "reference_words": 1,
+            "hits": 1,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "amounts": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "quantities": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "products": {
+            "total": 0,
+            "missing": [],
+            "errors": 0
+          },
+          "exact": true,
+          "closest_turn": 5
+        }
+      ],
+      "missing": []
+    },
+    {
+      "id": "04_sin_existencias",
+      "turns": 5,
+      "files": [
+        {
+          "file": "audio/escenarios/04_sin_existencias/01.wav",
+          "turn": 1,
+          "audio_seconds": 3.2,
+          "reference": "Necesito una esterilla de yoga.",
+          "hypothesis": "Necesito una esterilla de yoga.",
+          "wer": {
+            "wer": 0.0,
+            "reference_words": 5,
+            "hits": 5,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "amounts": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "quantities": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "products": {
+            "total": 1,
+            "missing": [],
+            "errors": 0
+          },
+          "exact": true,
+          "closest_turn": 1
+        },
+        {
+          "file": "audio/escenarios/04_sin_existencias/02.wav",
+          "turn": 2,
+          "audio_seconds": 2.8,
+          "reference": "Ponme una de la primera.",
+          "hypothesis": "Ponme una de la primera.",
+          "wer": {
+            "wer": 0.0,
+            "reference_words": 5,
+            "hits": 5,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "amounts": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "quantities": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "products": {
+            "total": 1,
+            "missing": [],
+            "errors": 0
+          },
+          "exact": true,
+          "closest_turn": 2
+        },
+        {
+          "file": "audio/escenarios/04_sin_existencias/03.wav",
+          "turn": 3,
+          "audio_seconds": 3.4,
+          "reference": "Entonces ponme una de la segunda.",
+          "hypothesis": "Entonces ponme una de la segunda.",
+          "wer": {
+            "wer": 0.0,
+            "reference_words": 6,
+            "hits": 6,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "amounts": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "quantities": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "products": {
+            "total": 1,
+            "missing": [],
+            "errors": 0
+          },
+          "exact": true,
+          "closest_turn": 3
+        },
+        {
+          "file": "audio/escenarios/04_sin_existencias/04.wav",
+          "turn": 4,
+          "audio_seconds": 2.3,
+          "reference": "Cierra el pedido.",
+          "hypothesis": "Cierra el pedido.",
+          "wer": {
+            "wer": 0.0,
+            "reference_words": 3,
+            "hits": 3,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "amounts": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "quantities": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "products": {
+            "total": 0,
+            "missing": [],
+            "errors": 0
+          },
+          "exact": true,
+          "closest_turn": 4
+        },
+        {
+          "file": "audio/escenarios/04_sin_existencias/05.wav",
+          "turn": 5,
+          "audio_seconds": 2.2,
+          "reference": "Sí, confirmo.",
+          "hypothesis": "Sí, confirmo.",
+          "wer": {
+            "wer": 0.0,
+            "reference_words": 2,
+            "hits": 2,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "amounts": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "quantities": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "products": {
+            "total": 0,
+            "missing": [],
+            "errors": 0
+          },
+          "exact": true,
+          "closest_turn": 5
+        }
+      ],
+      "missing": []
+    },
+    {
+      "id": "05_correccion_transcripcion",
+      "turns": 6,
+      "files": [
+        {
+          "file": "audio/escenarios/05_correccion_transcripcion/01.wav",
+          "turn": 1,
+          "audio_seconds": 2.7,
+          "reference": "Busco un ratón inalámbrico.",
+          "hypothesis": "Busca un ratón inalámbrico.",
+          "wer": {
+            "wer": 0.25,
+            "reference_words": 4,
+            "hits": 3,
+            "substitutions": 1,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "amounts": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "quantities": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "products": {
+            "total": 1,
+            "missing": [],
+            "errors": 0
+          },
+          "exact": false,
+          "closest_turn": 1
+        },
+        {
+          "file": "audio/escenarios/05_correccion_transcripcion/02.wav",
+          "turn": 2,
+          "audio_seconds": 2.6,
+          "reference": "Añade dos del primero.",
+          "hypothesis": "Añade dos del primero.",
+          "wer": {
+            "wer": 0.0,
+            "reference_words": 4,
+            "hits": 4,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "amounts": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "quantities": {
+            "reference": [
+              2
+            ],
+            "hypothesis": [
+              2
+            ],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "products": {
+            "total": 1,
+            "missing": [],
+            "errors": 0
+          },
+          "exact": true,
+          "closest_turn": 2
+        },
+        {
+          "file": "audio/escenarios/05_correccion_transcripcion/03.wav",
+          "turn": 3,
+          "audio_seconds": 2.3,
+          "reference": "Cierra el pedido.",
+          "hypothesis": "Cierra el pedido.",
+          "wer": {
+            "wer": 0.0,
+            "reference_words": 3,
+            "hits": 3,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "amounts": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "quantities": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "products": {
+            "total": 0,
+            "missing": [],
+            "errors": 0
+          },
+          "exact": true,
+          "closest_turn": 3
+        },
+        {
+          "file": "audio/escenarios/05_correccion_transcripcion/05.wav",
+          "turn": 5,
+          "audio_seconds": 4.2,
+          "reference": "Ahora sí, cierra el pedido.",
+          "hypothesis": "No, espera, he dicho 12, no 2.",
+          "wer": {
+            "wer": 1.4,
+            "reference_words": 5,
+            "hits": 0,
+            "substitutions": 5,
+            "deletions": 0,
+            "insertions": 2
+          },
+          "amounts": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "quantities": {
+            "reference": [],
+            "hypothesis": [
+              12,
+              2
+            ],
+            "missing": [],
+            "extra": [
+              2,
+              12
+            ],
+            "errors": 2
+          },
+          "products": {
+            "total": 0,
+            "missing": [],
+            "errors": 0
+          },
+          "exact": false,
+          "closest_turn": 4
+        },
+        {
+          "file": "audio/escenarios/05_correccion_transcripcion/06.wav",
+          "turn": 6,
+          "audio_seconds": 2.6,
+          "reference": "Sí, confirmo.",
+          "hypothesis": "Sí, confirmo.",
+          "wer": {
+            "wer": 0.0,
+            "reference_words": 2,
+            "hits": 2,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "amounts": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "quantities": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "products": {
+            "total": 0,
+            "missing": [],
+            "errors": 0
+          },
+          "exact": true,
+          "closest_turn": 6
+        }
+      ],
+      "missing": [
+        "04"
+      ]
+    },
+    {
+      "id": "06_cambio_stock_confirmacion_repetida",
+      "turns": 8,
+      "files": [
+        {
+          "file": "audio/escenarios/06_cambio_stock_confirmacion_repetida/01.wav",
+          "turn": 1,
+          "audio_seconds": 3.8,
+          "reference": "Busco una lámpara de escritorio LED.",
+          "hypothesis": "Busco una lámpara de escritorio LED.",
+          "wer": {
+            "wer": 0.0,
+            "reference_words": 6,
+            "hits": 6,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "amounts": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "quantities": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "products": {
+            "total": 1,
+            "missing": [],
+            "errors": 0
+          },
+          "exact": true,
+          "closest_turn": 1
+        },
+        {
+          "file": "audio/escenarios/06_cambio_stock_confirmacion_repetida/02.wav",
+          "turn": 2,
+          "audio_seconds": 2.9,
+          "reference": "Añade tres de la primera.",
+          "hypothesis": "Añade 3 de la primera.",
+          "wer": {
+            "wer": 0.0,
+            "reference_words": 5,
+            "hits": 5,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "amounts": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "quantities": {
+            "reference": [
+              3
+            ],
+            "hypothesis": [
+              3
+            ],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "products": {
+            "total": 1,
+            "missing": [],
+            "errors": 0
+          },
+          "exact": true,
+          "closest_turn": 2
+        },
+        {
+          "file": "audio/escenarios/06_cambio_stock_confirmacion_repetida/03.wav",
+          "turn": 3,
+          "audio_seconds": 2.9,
+          "reference": "Quiero cerrar el pedido.",
+          "hypothesis": "Quiero cerrar el pedido.",
+          "wer": {
+            "wer": 0.0,
+            "reference_words": 4,
+            "hits": 4,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "amounts": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "quantities": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "products": {
+            "total": 0,
+            "missing": [],
+            "errors": 0
+          },
+          "exact": true,
+          "closest_turn": 3
+        },
+        {
+          "file": "audio/escenarios/06_cambio_stock_confirmacion_repetida/04.wav",
+          "turn": 4,
+          "audio_seconds": 1.7,
+          "reference": "Sí.",
+          "hypothesis": "Sí.",
+          "wer": {
+            "wer": 0.0,
+            "reference_words": 1,
+            "hits": 1,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "amounts": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "quantities": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "products": {
+            "total": 0,
+            "missing": [],
+            "errors": 0
+          },
+          "exact": true,
+          "closest_turn": 4
+        },
+        {
+          "file": "audio/escenarios/06_cambio_stock_confirmacion_repetida/05.wav",
+          "turn": 5,
+          "audio_seconds": 2.7,
+          "reference": "Vale, déjalo en una.",
+          "hypothesis": "Vale, déjalo en una.",
+          "wer": {
+            "wer": 0.0,
+            "reference_words": 4,
+            "hits": 4,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "amounts": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "quantities": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "products": {
+            "total": 0,
+            "missing": [],
+            "errors": 0
+          },
+          "exact": true,
+          "closest_turn": 5
+        },
+        {
+          "file": "audio/escenarios/06_cambio_stock_confirmacion_repetida/06.wav",
+          "turn": 6,
+          "audio_seconds": 2.5,
+          "reference": "Cierra el pedido.",
+          "hypothesis": "Cierra el pedido.",
+          "wer": {
+            "wer": 0.0,
+            "reference_words": 3,
+            "hits": 3,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "amounts": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "quantities": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "products": {
+            "total": 0,
+            "missing": [],
+            "errors": 0
+          },
+          "exact": true,
+          "closest_turn": 6
+        },
+        {
+          "file": "audio/escenarios/06_cambio_stock_confirmacion_repetida/07.wav",
+          "turn": 7,
+          "audio_seconds": 1.9,
+          "reference": "Sí.",
+          "hypothesis": "Sí.",
+          "wer": {
+            "wer": 0.0,
+            "reference_words": 1,
+            "hits": 1,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "amounts": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "quantities": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "products": {
+            "total": 0,
+            "missing": [],
+            "errors": 0
+          },
+          "exact": true,
+          "closest_turn": 7
+        },
+        {
+          "file": "audio/escenarios/06_cambio_stock_confirmacion_repetida/08.wav",
+          "turn": 8,
+          "audio_seconds": 1.9,
+          "reference": "Sí.",
+          "hypothesis": "sí",
+          "wer": {
+            "wer": 0.0,
+            "reference_words": 1,
+            "hits": 1,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "amounts": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "quantities": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "products": {
+            "total": 0,
+            "missing": [],
+            "errors": 0
+          },
+          "exact": true,
+          "closest_turn": 8
+        }
+      ],
+      "missing": []
+    }
+  ]
+}
