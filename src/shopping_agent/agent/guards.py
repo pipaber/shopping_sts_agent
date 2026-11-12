@@ -11,7 +11,8 @@ from shopping_agent.store.ops import Issue
 UNGROUNDED_NUMBER = "cifra_sin_sustento"
 FALSE_ORDER_CLAIM = "pedido_no_registrado"
 MUST_QUOTE = "cierre_sin_cotizar"
-INTERNAL_CODES = frozenset({UNGROUNDED_NUMBER, FALSE_ORDER_CLAIM, MUST_QUOTE})  # no se le dicen al usuario
+UNSTATED_BUDGET = "presupuesto_no_dicho"
+INTERNAL_CODES = frozenset({UNGROUNDED_NUMBER, FALSE_ORDER_CLAIM, MUST_QUOTE, UNSTATED_BUDGET})  # no se le dicen al usuario
 
 # --- Confirmación del usuario -------------------------------------------------------
 
@@ -75,6 +76,17 @@ def wants_checkout(text: str) -> bool:
     if "?" in folded or _NOT_YET & set(_WORD.findall(folded)):
         return False
     return _CHECKOUT.search(folded) is not None
+
+
+# --- Mención de dinero ----------------------------------------------------------------
+
+_MONEY = re.compile(r"\b(?:euros?|eur|presupuesto|gast\w+|dinero|tope|limite)\b|€")
+
+
+def mentions_money(text: str) -> bool:
+    """¿Habla el texto de dinero? "60 euros", "mi presupuesto", "no quiero gastar más".
+    Un número suelto ("he dicho 12, no 2") no lo es: puede ser una cantidad de unidades."""
+    return _MONEY.search(fold(text)) is not None
 
 
 # --- Validación de la respuesta del LLM ----------------------------------------------

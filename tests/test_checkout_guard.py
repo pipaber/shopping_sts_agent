@@ -132,3 +132,40 @@ def test_budget_rejection_offers_the_quantity_that_fits(tmp_path):
     shop.llm.extend([call(tools.ADD, product_id="P1", cantidad=2), say()])
     session.send("Pues los que quepan")
     assert "porque no cabe en el presupuesto; caben 2 unidades" in context_seen(shop) and cart_of(session) == {"P1": 2}
+
+
+@pytest.mark.parametrize("text", ["Tengo 40 euros.", "Mi presupuesto es de sesenta", "No quiero gastar más de 50", "Mi tope son 30", "Hasta 20 €"])
+def test_messages_that_speak_of_money(text):
+    assert guards.mentions_money(text)
+
+
+@pytest.mark.parametrize("text", ["No, espera, he dicho 12, no 2.", "Perdona, eran 14, no 4.", "Mejor que sean 3", "Añade 2 del primero", "Sí"])
+def test_messages_with_bare_numbers_do_not(text):
+    assert not guards.mentions_money(text)
+
+
+def test_a_bare_number_with_a_cart_is_not_taken_for_a_budget(with_cart):
+    shop, session = with_cart
+    shop.llm.extend([call(tools.SET_BUDGET, importe_eur=8), call(tools.SET_QUANTITY, product_id="P1", cantidad=8), say()])
+    turn = session.send("No, espera, he dicho 8, no 2.")
+    assert codes(turn.operations[0]) == [guards.UNSTATED_BUDGET] and session.state.get("budget_cents") is None
+    assert cart_of(session) == {"P1": 8} and "presupuesto" not in turn.response.lower()
+
+
+def test_a_budget_goes_through_when_money_is_mentioned_or_was_asked_about(with_cart):
+    shop, session = with_cart
+    shop.llm.extend([call(tools.SET_BUDGET, importe_eur=500), say()])
+    session.send("Por cierto, no quiero gastar más de 500 euros.")
+    assert session.state["budget_cents"] == 50000
+    shop.llm.extend([call(tools.CLARIFY, pregunta="¿Cuál es tu presupuesto ahora?"), call(tools.SET_BUDGET, importe_eur=600), say()])
+    session.send("Cámbialo.")
+    session.send("600")
+    assert session.state["budget_cents"] == 60000
+
+
+def test_without_a_cart_a_bare_number_can_be_a_budget(tmp_path):
+    shop = Shop(tmp_path)
+    session = shop.session()
+    shop.llm.extend([call(tools.SET_BUDGET, importe_eur=40), say()])
+    session.send("Busco una mochila, como mucho 40.")
+    assert session.state["budget_cents"] == 4000

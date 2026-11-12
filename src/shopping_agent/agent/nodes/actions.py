@@ -8,7 +8,7 @@ from typing import Literal
 from langchain_core.runnables import RunnableConfig
 from langgraph.types import Command
 
-from shopping_agent.agent import prompt, references, tools
+from shopping_agent.agent import guards, prompt, references, tools
 from shopping_agent.agent.deps import Deps, cart_id, user_id
 from shopping_agent.agent.nodes.steps import record, rejected, step
 from shopping_agent.agent.state import AgentState, Candidate, Update, cart_total, decision_args
@@ -23,6 +23,12 @@ REPEATED_SEARCH_MESSAGE = (
     "Esa búsqueda devuelve los mismos CANDIDATOS que ya tienes, con sus precios y existencias al día. No la "
     "repitas. Si el usuario pregunta por un dato de un producto, míralo con detalle_producto; si tampoco "
     "aparece ahí, usa responder para decir que el catálogo no lo indica."
+)
+# Con cifras ("he dicho 12, no 2"), el LLM a veces toma por presupuesto una corrección de la cantidad.
+UNSTATED_BUDGET_MESSAGE = (
+    "El mensaje del usuario no habla de dinero ni de presupuesto, y hay productos en el carrito: un número suelto "
+    "puede ser una cantidad de unidades. Si corrige cuántas unidades quiere, usa cambiar_cantidad con la cantidad "
+    "final; si no está claro a qué se refiere, usa pedir_aclaracion."
 )
 
 
@@ -58,7 +64,8 @@ def buyable_first(ranked: list[Candidate], remaining_cents: int | None) -> list[
 def validar(state: AgentState) -> Command[Literal["ejecutar_herramienta", "interpretar"]]:
     """Comprueba la llamada antes de tocar la tienda; si no vale, vuelve al LLM con el motivo."""
     decision = state.decision
-    issues = tools.validate_call(decision.get("herramienta"), decision_args(decision), state) or _reference_issues(state)
+    issues = tools.validate_call(decision.get("herramienta"), decision_args(decision), state)
+    issues = issues or _reference_issues(state) or _budget_issues(state)
     if issues:
         return Command(update=rejected(state, issues), goto="interpretar")
     return Command(goto="ejecutar_herramienta")
@@ -72,6 +79,15 @@ def _reference_issues(state: AgentState) -> list[Issue]:
         return []
     product_ids = decision.get("product_ids") or [decision.get("product_id")]
     return references.check_products(state.user_input, state.candidates, product_ids, adding=tool == tools.ADD)
+
+
+def _budget_issues(state: AgentState) -> list[Issue]:
+    """Con productos en el carrito, un presupuesto solo se fija si el usuario habla de dinero,
+    en su mensaje o al contestar a una pregunta del agente sobre el presupuesto."""
+    said = f"{state.user_input} {state.pending_clarification or ''}"
+    if state.decision.get("herramienta") != tools.SET_BUDGET or not state.cart or guards.mentions_money(said):
+        return []
+    return [Issue(guards.UNSTATED_BUDGET, UNSTATED_BUDGET_MESSAGE)]
 
 
 def ejecutar_herramienta(state: AgentState, config: RunnableConfig, *, deps: Deps) -> Update:
