@@ -20,7 +20,7 @@ from test_voice_pipeline import FakeASR, FakeTTS, purchase_script
 SETUP = {
     "note": live.NOTE, "mode": "audio",
     "models": {"llm": "guion", "asr": "simulado", "tts": "simulado", "embeddings": "ninguno"},
-    "voice": {"reference": None, "speaker": "Prueba", "speed": 1.15},
+    "voice": {"reference": None, "speaker": "Prueba", "speed": 1.1},
     "load": {"search_seconds": 1.0, "llm_seconds": 2.0, "asr_seconds": 3.0, "tts_seconds": 4.0, "total_seconds": 10.0,
              "vram_mib": {"loaded": 100}},
     "memory_backend": "memoria",
@@ -90,7 +90,7 @@ def test_health_says_what_is_loaded(running):
     status, health = running.client.send("/health")
     assert status == 200 and health["ready"] is True
     assert health["load"] == {"search": 1.0, "llm": 2.0, "asr": 3.0, "tts": 4.0, "total": 10.0}
-    assert health["thread"].startswith("vivo-") and "Prueba" in health["voice"] and "1,15" in health["voice"]
+    assert health["thread"].startswith("vivo-") and "Prueba" in health["voice"] and "1,10" in health["voice"]
     assert "vram_mib" in health
 
 

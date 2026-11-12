@@ -406,7 +406,7 @@ def test_an_audio_run_is_summarized_by_where_its_audio_came_from(shop, tmp_path)
     }
     info = {
         "date": "2026-11-11", "commit": "abc", "input": AUDIO, "audio_sources": {}, "memory_backend": "memoria volátil",
-        "models": {"reranker": "control"}, "voice": {"reference": "voz.wav", "speaker": None, "speed": 1.15},
+        "models": {"reranker": "control"}, "voice": {"reference": "voz.wav", "speaker": None, "speed": 1.1},
         "load": {"search_seconds": 1, "llm_seconds": 1, "total_seconds": 2},
     }
     measured = {
@@ -427,7 +427,7 @@ def test_an_audio_run_is_summarized_by_where_its_audio_came_from(shop, tmp_path)
     assert "**Audios de entrada: grabaciones del usuario.** Escenarios re: 1 de 1 correctos." in text
     assert "`real`, turno 1: se dijo «Busco una cafetera» y entendió «Busco una cafetería»." in text
     row = next(line for line in text.splitlines() if line.startswith("| `voz` | clonada"))
-    assert "velocidad del habla 1,15 | 2 de 2 | 0.0 % | 0.750 | 0.250 | — | 0.00 |" in row  # corridas por texto: sin audio de respuesta
+    assert "velocidad del habla 1,10 | 2 de 2 | 0.0 % | 0.750 | 0.250 | — | 0.00 |" in row  # corridas por texto: sin audio de respuesta
     assert "Semejanza con las grabaciones reales (coseno ECAPA): media 0.250, mínima 0.250." in text
     assert "las 5 grabaciones reales se parecen entre sí 0.400" in text and text.count("sale optimista") == 1
 

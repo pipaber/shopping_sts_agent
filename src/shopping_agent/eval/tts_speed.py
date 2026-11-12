@@ -2,8 +2,8 @@
 
 Uso::
 
-    python -m shopping_agent.eval.tts_speed --speeds 1.0 1.15 --run results/escenarios/voz_referencia_anterior
-    python -m shopping_agent.eval.tts_speed --speeds 1.0 1.15 1.3 --script frases.txt
+    python -m shopping_agent.eval.tts_speed --speeds 1.0 1.1 --run results/escenarios/voz_referencia_anterior
+    python -m shopping_agent.eval.tts_speed --speeds 1.0 1.1 1.15 1.3 --script frases.txt
 
 Sintetiza con la voz del agente los textos de ``--script`` (uno por línea) y las
 respuestas de una corrida de escenarios por voz ya guardada (``--run``: lo que se
@@ -42,7 +42,7 @@ from shopping_agent.eval.voice import (
 )
 from shopping_agent.voice.audio import read_audio, write_wav
 from shopping_agent.voice.speech_text import to_speech
-from shopping_agent.voice.tts import SpeechSynthesizer, XttsTTS
+from shopping_agent.voice.tts import DEFAULT_SPEED, SpeechSynthesizer, XttsTTS
 
 RESULTS = Path("results/voz_velocidad")
 AUDIO_DIR = Path("audio/corridas/velocidad")  # carpeta sin versionar
@@ -134,7 +134,7 @@ def to_markdown(report: dict[str, Any]) -> str:
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Mide la voz del agente a varias velocidades del habla.")
-    parser.add_argument("--speeds", type=float, nargs="+", default=[1.0, 1.15])
+    parser.add_argument("--speeds", type=float, nargs="+", default=[1.0, DEFAULT_SPEED])
     parser.add_argument("--script", type=Path, default=None, help="archivo con una frase por línea")
     parser.add_argument("--run", type=Path, default=None, help="corrida de escenarios por voz de la que tomar las respuestas")
     parser.add_argument("--reference", type=Path, default=None, help="grabación de referencia para la voz del agente")

@@ -278,7 +278,7 @@ def test_reference_recording_is_found_in_its_default_folder(tmp_path, monkeypatc
 
 def test_speech_speed_comes_from_the_argument_the_environment_or_the_default(monkeypatch):
     monkeypatch.delenv(SPEED_ENV, raising=False)
-    assert resolve_speed() == DEFAULT_SPEED == 1.15
+    assert resolve_speed() == DEFAULT_SPEED == 1.10
     monkeypatch.setenv(SPEED_ENV, "1,3")  # con coma decimal también vale
     assert resolve_speed() == 1.3
     assert resolve_speed(1.0) == 1.0  # el argumento manda sobre el entorno
@@ -301,17 +301,17 @@ class RecordingModel:
 
 def test_speech_speed_reaches_the_model_and_the_saved_voice():
     tts = XttsTTS.__new__(XttsTTS)  # sin cargar el modelo: solo lo que usa una síntesis
-    tts.model, tts.language, tts.temperature, tts.speed = RecordingModel(), "es", 0.65, 1.15
+    tts.model, tts.language, tts.temperature, tts.speed = RecordingModel(), "es", 0.65, 1.1
     tts.gpt_cond_latent = tts.speaker_embedding = None
     tts.reference, tts.speaker = None, "Prueba"
     assert len(tts._generate("Hola.")) == 2400
-    assert tts.model.options[0]["speed"] == 1.15
-    assert tts.voice == {"reference": None, "speaker": "Prueba", "speed": 1.15}
+    assert tts.model.options[0]["speed"] == 1.1
+    assert tts.voice == {"reference": None, "speaker": "Prueba", "speed": 1.1}
 
 
 def test_voice_label_says_how_fast_the_agent_speaks():
-    assert voice_label({"reference": "voz.wav", "speaker": None, "speed": 1.15}) == (
-        "clonada de la grabación de referencia `voz.wav`, velocidad del habla 1,15"
+    assert voice_label({"reference": "voz.wav", "speaker": None, "speed": 1.1}) == (
+        "clonada de la grabación de referencia `voz.wav`, velocidad del habla 1,10"
     )
     assert voice_label({"reference": None, "speaker": "Prueba", "speed": 1.0}).endswith("«Prueba», velocidad del habla 1,00")
     assert voice_label({"reference": "voz.wav", "speaker": None}) == "clonada de la grabación de referencia `voz.wav`"  # corridas anteriores

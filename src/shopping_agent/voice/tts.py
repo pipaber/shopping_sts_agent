@@ -14,7 +14,7 @@ no se clona la voz de nadie que no la haya cedido.
 
 XTTS-v2 copia el ritmo de la grabación de referencia. La velocidad del habla se ajusta
 sobre ese ritmo con ``--speed`` o ``SHOPPING_AGENT_TTS_SPEED``: 1,0 lo deja igual y, por
-defecto, 1,15 habla un 15 % más rápido.
+defecto, 1,10 habla un 10 % más rápido.
 
 XTTS-v2 se publica con la licencia CPML de Coqui (uso no comercial). Este módulo
 no la acepta por nadie: si no consta aceptada, se detiene y explica cómo hacerlo.
@@ -40,7 +40,7 @@ MODEL_NAME = "tts_models/multilingual/multi-dataset/xtts_v2"
 REFERENCE_ENV = "SHOPPING_AGENT_VOICE_REF"
 SPEAKER_ENV = "SHOPPING_AGENT_TTS_SPEAKER"
 SPEED_ENV = "SHOPPING_AGENT_TTS_SPEED"
-DEFAULT_SPEED = 1.15  # elegida de oído por el autor de la voz; 1,0 es el ritmo de la referencia
+DEFAULT_SPEED = 1.10  # el valor más alto medido que conserva entera la frase de confirmación; 1,0 es el ritmo de la referencia
 SPEED_LIMITS = (0.5, 2.0)
 DEFAULT_REFERENCE = Path("audio/referencia/referencia.wav")  # carpeta sin versionar
 LICENSE_URL = "https://tts-hub.github.io/cpml"  # la dirección que muestra el propio paquete
@@ -127,7 +127,7 @@ def resolve_voice(reference: str | Path | None = None, speaker: str | None = Non
 
 def resolve_speed(speed: float | None = None) -> float:
     """Velocidad del habla respecto al ritmo de la referencia: el argumento manda;
-    sin él, ``SHOPPING_AGENT_TTS_SPEED`` y, si tampoco está, 1,15."""
+    sin él, ``SHOPPING_AGENT_TTS_SPEED`` y, si tampoco está, 1,10."""
     written = str(speed) if speed is not None else os.environ.get(SPEED_ENV) or str(DEFAULT_SPEED)
     try:
         value = float(written.replace(",", "."))
