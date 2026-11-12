@@ -169,3 +169,27 @@ def test_without_a_cart_a_bare_number_can_be_a_budget(tmp_path):
     shop.llm.extend([call(tools.SET_BUDGET, importe_eur=40), say()])
     session.send("Busco una mochila, como mucho 40.")
     assert session.state["budget_cents"] == 4000
+
+
+LINE = {"product_id": "P1", "title": "Auriculares", "quantity": 2, "unit_price_cents": 2000, "subtotal_cents": 4000, "stock": 10}
+
+
+def test_hint_says_bare_numbers_are_not_an_amount_when_there_is_a_cart():
+    hint = prompt.units_hint("No, espera, he dicho 12, no 2.", [LINE], None)
+    assert "(12, 2)" in hint and "cambiar_cantidad" in hint
+    assert prompt.units_hint("No, espera, he dicho 12, no 2.", [], None) == ""
+    assert prompt.units_hint("No, espera, he dicho doce, no dos.", [LINE], None) == ""
+    assert prompt.units_hint("Mejor baja mi presupuesto a 25 euros.", [LINE], None) == ""
+    assert prompt.units_hint("600", [LINE], "¿Cuál es tu presupuesto ahora?") == ""
+
+
+@pytest.mark.parametrize("text", ["Añade dos del producto con código ZX-999.", "¿El de 2.4G tiene USB 3.0?", "¿Cuesta 19,99?"])
+def test_codes_models_and_decimals_are_not_bare_numbers(text):
+    assert prompt.units_hint(text, [LINE], None) == ""
+
+
+def test_the_llm_sees_the_hint_in_its_turn_context(with_cart):
+    shop, session = with_cart
+    shop.llm.extend([call(tools.SET_QUANTITY, product_id="P1", cantidad=8), say()])
+    session.send("No, espera, he dicho 8, no 2.")
+    assert "no son un importe" in context_seen(shop) and cart_of(session) == {"P1": 8}

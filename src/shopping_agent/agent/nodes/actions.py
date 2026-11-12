@@ -25,10 +25,11 @@ REPEATED_SEARCH_MESSAGE = (
     "aparece ahí, usa responder para decir que el catálogo no lo indica."
 )
 # Con cifras ("he dicho 12, no 2"), el LLM a veces toma por presupuesto una corrección de la cantidad.
+# El aviso de ``prompt.units_hint`` lo previene; esto impide que el presupuesto llegue a fijarse.
 UNSTATED_BUDGET_MESSAGE = (
-    "El mensaje del usuario no habla de dinero ni de presupuesto, y hay productos en el carrito: un número suelto "
-    "puede ser una cantidad de unidades. Si corrige cuántas unidades quiere, usa cambiar_cantidad con la cantidad "
-    "final; si no está claro a qué se refiere, usa pedir_aclaracion."
+    "El mensaje del usuario no habla de dinero ni de presupuesto, y hay productos en el carrito: sus números no "
+    "son un importe. Si corrige cuántas unidades quiere de un producto del carrito, usa cambiar_cantidad con la "
+    "cantidad final; si no está claro a qué se refiere, usa pedir_aclaracion."
 )
 
 

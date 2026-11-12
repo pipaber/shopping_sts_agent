@@ -161,6 +161,23 @@ def amount_hint(text: str) -> str:
     )
 
 
+# Números que no son parte de un código, un modelo o un decimal: "12" sí; "ZX-999" y "2.4G" no.
+_BARE_NUMBER = re.compile(r"(?<![\w.,-])\d+(?![\w-]|[.,]\d)")
+
+
+def units_hint(text: str, cart: Sequence[CartLine], asked: str | None) -> str:
+    """Aviso determinista si, con productos en el carrito, el mensaje trae números sueltos y no
+    habla de dinero (ni contesta a una pregunta sobre el presupuesto, ``asked``)."""
+    numbers = _BARE_NUMBER.findall(text)
+    if not cart or not numbers or guards.mentions_money(f"{text} {asked or ''}"):
+        return ""
+    return (
+        f"AVISO DEL SISTEMA: el mensaje trae números sin hablar de dinero ({', '.join(numbers)}): no son un importe. Si "
+        "el usuario corrige cuántas unidades quiere de un producto del carrito, el paso es cambiar_cantidad con "
+        "la cantidad final."
+    )
+
+
 def checkout_hint(text: str, cart: Sequence[CartLine]) -> str:
     """Aviso determinista si el mensaje pide cerrar la compra y hay algo que cerrar."""
     if not cart or not guards.wants_checkout(text):
@@ -169,9 +186,15 @@ def checkout_hint(text: str, cart: Sequence[CartLine]) -> str:
 
 
 def turn_context(state: AgentState, text: str) -> str:
-    """Lo que el LLM ve del estado durante todo el turno, con los avisos que procedan:
-    que el mensaje trae un importe, a qué candidato corresponde cada posición que nombra y que pide cerrar la compra."""
-    hints = (amount_hint(text), references.reference_hint(text, state.candidates), checkout_hint(text, state.cart))
+    """Lo que el LLM ve del estado durante todo el turno, con los avisos que procedan: que el mensaje
+    trae un importe o números que son unidades, a qué candidato corresponde cada posición que nombra y
+    que pide cerrar la compra."""
+    hints = (
+        amount_hint(text),
+        units_hint(text, state.cart, state.pending_clarification),
+        references.reference_hint(text, state.candidates),
+        checkout_hint(text, state.cart),
+    )
     return "\n".join([render_state(state), *filter(None, hints)])
 
 
