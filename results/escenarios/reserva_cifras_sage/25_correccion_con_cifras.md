@@ -1,0 +1,118 @@
+# 25_correccion_con_cifras — Corregir una cantidad con cifras antes de confirmar
+
+- Veredicto: **correcto**
+- Entrada: texto
+- Tipo: `correccion_con_cifras`
+- Qué se prueba: Escenario de reserva, escrito antes de corregir el agente y sin ejecutarlo. Con la cotización pendiente, el usuario corrige la cantidad escribiendo los números con cifras («Perdona, eran 14, no 4.»), como los escribe a veces el ASR. El agente debe cambiar la cantidad, no fijar un presupuesto; el pedido final lleva catorce.
+
+## Turno 1 (9.1 s)
+
+**Usuario (texto):** Necesito unas pilas recargables.
+
+- `buscar_productos(consulta="pilas recargables")` → OK: estos son ahora los CANDIDATOS, del más al menos relevante: [1] id=B01N7IWX0G | EMPUJADOR RECARGABLE DE 1,34 METROS CON PILA Y CARGADOR | marca: LATIGO | color: desconocido | precio: 42,86 € | existencias: 30 | características (extracto): Alargadera de 134 cm Bateria y cargador incluidos | descripci…
+
+**Agente:** Tengo la opción de Latigo de 1,34 metros por 42,86 euros, la de 1,10 metros por 9,28 euros, la de 58 centímetros por 17,92 euros, el quitapelusas de Pritech por 5,11 euros y el cargador de pilas de Bonai por 14,97 euros. ¿Te interesa alguna?
+
+**Enviado al TTS:** Tengo la opción de Latigo de uno coma treinta y cuatro metros por cuarenta y dos euros con ochenta y seis céntimos, la de uno coma diez metros por nueve euros con veintiocho céntimos, la de cincuenta y ocho centímetros por diecisiete euros con noventa y dos céntimos, el quitapelusas de Pritech por cinco euros con once céntimos y el cargador de pilas de Bonai por catorce euros con noventa y siete céntimos. ¿Te interesa alguna?
+
+- ✔ `cart(empty=true)` — carrito: vacío
+
+> `@elegidas` = `B01N7IWX0G` (candidate:1): EMPUJADOR RECARGABLE DE 1,34 METROS CON PILA Y CARGADOR
+
+> **Suceso externo:** la tienda deja `B01N7IWX0G` (@elegidas) con precio 3,00 € y existencias 30.
+
+## Turno 2 (5.0 s)
+
+**Usuario (texto):** Ponme cuatro de la primera.
+
+- `agregar_al_carrito(product_id="B01N7IWX0G", cantidad=4)` → OK: hecho. Así queda el carrito. CARRITO: - id=B01N7IWX0G | EMPUJADOR RECARGABLE DE 1,34 METROS CON PILA Y CARGADOR | 4 unidades × 3,00 € = 12,00 € | existencias: 30 Total del carrito: 12,00 €
+
+**Agente:** Hecho, añadidas cuatro unidades. El total es 12,00 euros. En el carrito hay 4 unidades de «EMPUJADOR RECARGABLE DE 1,34 METROS CON PILA Y CARGADOR» a 3,00 € cada una, 12,00 €. Total: 12,00 €.
+
+**Enviado al TTS:** Hecho, añadidas cuatro unidades. El total es doce euros. En el carrito hay cuatro unidades de EMPUJADOR RECARGABLE DE uno a tres euros cada una, doce euros. Total: doce euros.
+
+- ✔ `cart(lines=[{"product": "@elegidas", "quantity": 4}])` — carrito: 4 × B01N7IWX0G
+
+## Turno 3 (2.0 s)
+
+**Usuario (texto):** Quiero pagar.
+
+- `cotizar()` → OK: cotización creada; falta la confirmación del usuario.
+
+**Agente:** Te repito el pedido antes de registrarlo: 4 unidades de «EMPUJADOR RECARGABLE DE 1,34 METROS CON PILA Y CARGADOR» a 3,00 € cada una, 12,00 €. Total: 12,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar. *(esperando confirmación)*
+
+**Enviado al TTS:** Te repito el pedido antes de registrarlo: cuatro unidades de EMPUJADOR RECARGABLE DE uno a tres euros cada una, doce euros. Total: doce euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.
+
+- ✔ `awaiting_confirmation(value=true)` — esperando confirmación: sí
+- ✔ `orders(count=0)` — pedidos registrados: 0
+
+## Turno 4 (7.2 s)
+
+**Usuario (texto):** Perdona, eran 14, no 4.
+
+- `cambiar_cantidad(product_id="B01N7IWX0G", cantidad=14)` → OK: hecho. Así queda el carrito. CARRITO: - id=B01N7IWX0G | EMPUJADOR RECARGABLE DE 1,34 METROS CON PILA Y CARGADOR | 14 unidades × 3,00 € = 42,00 € | existencias: 30 Total del carrito: 42,00 €
+- `responder(texto="Hecho, añadidas 10 unidades más. Ahora tienes 14 unidades en el carrito.")` → RECHAZADO: [cifra_sin_sustento] En tu respuesta hay cifras que no aparecen en los datos (10). Usa solo cifras de CANDIDATOS, CARRITO o de un RESULTADO, sin hacer cuentas; si te falta un dato de un producto, consúltalo con detalle_producto o di que no consta.
+
+**Agente:** Perdona, no he podido completar tu petición. ¿Puedes decírmelo de otra forma? En el carrito hay 14 unidades de «EMPUJADOR RECARGABLE DE 1,34 METROS CON PILA Y CARGADOR» a 3,00 € cada una, 42,00 €. Total: 42,00 €.
+
+**Enviado al TTS:** Perdona, no he podido completar tu petición. ¿Puedes decírmelo de otra forma? En el carrito hay catorce unidades de EMPUJADOR RECARGABLE DE uno a tres euros cada una, cuarenta y dos euros. Total: cuarenta y dos euros.
+
+- ✔ `orders(count=0)` — pedidos registrados: 0
+- ✔ `cart(lines=[{"product": "@elegidas", "quantity": 14}])` — carrito: 14 × B01N7IWX0G
+
+## Turno 5 (2.0 s)
+
+**Usuario (texto):** Ya está, tramítalo.
+
+- `cotizar()` → OK: cotización creada; falta la confirmación del usuario.
+
+**Agente:** Te repito el pedido antes de registrarlo: 14 unidades de «EMPUJADOR RECARGABLE DE 1,34 METROS CON PILA Y CARGADOR» a 3,00 € cada una, 42,00 €. Total: 42,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar. *(esperando confirmación)*
+
+**Enviado al TTS:** Te repito el pedido antes de registrarlo: catorce unidades de EMPUJADOR RECARGABLE DE uno a tres euros cada una, cuarenta y dos euros. Total: cuarenta y dos euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.
+
+- ✔ `awaiting_confirmation(value=true)` — esperando confirmación: sí
+- ✔ `orders(count=0)` — pedidos registrados: 0
+
+## Turno 6 (0.0 s)
+
+**Usuario (texto):** Sí.
+
+- `confirmar_pedido(quote_id="c6537fc064e54d0aa089a3a7885c84dd")` → OK: pedido registrado
+
+**Agente:** Pedido número 1 registrado: 14 unidades de «EMPUJADOR RECARGABLE DE 1,34 METROS CON PILA Y CARGADOR» a 3,00 € cada una, 42,00 €. Total: 42,00 €. Gracias por tu compra.
+
+**Enviado al TTS:** Pedido número uno registrado: catorce unidades de EMPUJADOR RECARGABLE DE uno a tres euros cada una, cuarenta y dos euros. Total: cuarenta y dos euros. Gracias por tu compra.
+
+- ✔ `orders(count=1)` — pedidos registrados: 1
+
+## Comprobaciones finales
+
+- ✔ `orders(count=1)` — pedidos registrados: 1
+- ✔ `order(lines=[{"product": "@elegidas", "quantity": 14}], total_cents=4200)` — pedido 1: 14 × B01N7IWX0G; total 4200 céntimos
+- ✔ `stock(product="@elegidas", equals=16)` — existencias de B01N7IWX0G: 16
+- ✔ `cart(empty=true)` — carrito: vacío
+
+## Violaciones de restricciones
+
+- Ninguna.
+
+## Estado final de la tienda
+
+- Pedido 1: total 42,00 €
+  - pedido 1: 14 × `B01N7IWX0G` a 3,00 €
+- Inventario `B01N7IWX0G`: 30 → 16
+- Líneas de carrito pendientes: 0
+
+## Latencia por turno (segundos)
+
+| Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
+|---|---|---|---|---|---|---|---|
+| 1 | 0.00 | 0.04 | 8.97 | 0.05 | 0.00 | 9.05 | 0.0 s |
+| 2 | 0.00 | 0.00 | 4.95 | 0.06 | 0.00 | 5.00 | 0.0 s |
+| 3 | 0.00 | 0.00 | 1.92 | 0.04 | 0.00 | 1.96 | 0.0 s |
+| 4 | 0.00 | 0.00 | 7.12 | 0.05 | 0.00 | 7.16 | 0.0 s |
+| 5 | 0.00 | 0.00 | 1.96 | 0.04 | 0.00 | 1.99 | 0.0 s |
+| 6 | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | 0.0 s |
+| **Media de los turnos con LLM (5)** | 0.00 | 0.01 | 4.98 | 0.05 | 0.00 | 5.03 | |
+| **Media de los turnos sin LLM (1)** | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | |
+

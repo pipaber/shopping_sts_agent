@@ -1,0 +1,1641 @@
+{
+  "id": "25_correccion_con_cifras",
+  "title": "Corregir una cantidad con cifras antes de confirmar",
+  "kind": "correccion_con_cifras",
+  "description": "Escenario de reserva, escrito antes de corregir el agente y sin ejecutarlo. Con la cotización pendiente, el usuario corrige la cantidad escribiendo los números con cifras («Perdona, eran 14, no 4.»), como los escribe a veces el ASR. El agente debe cambiar la cantidad, no fijar un presupuesto; el pedido final lleva catorce.",
+  "voice": false,
+  "input": "texto",
+  "audio_source": null,
+  "user_id": "eval-2dba5b47-25_correccion_con_cifras",
+  "threads": [
+    "eval-2dba5b47-25_correccion_con_cifras-c1"
+  ],
+  "names": {
+    "elegidas": "B07F58PXYR"
+  },
+  "steps": [
+    {
+      "kind": "turn",
+      "turn": 1,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Necesito unas pilas recargables.",
+      "agent_input": "Necesito unas pilas recargables.",
+      "response": "Tengo la opción de BONAI LCD Cargador de Pilas por 14,97 euros, el quitapelusas Severin por 38,16 euros, el empujador recargable Latigo por 42,86 euros, el pack de cepillos de dientes Philips por 25,13 euros y el pica veterinario PICAAVISPA por 9,79 euros. ¿Te interesa alguna?",
+      "spoken_text": "Tengo la opción de BONAI LCD Cargador de Pilas por catorce euros con noventa y siete céntimos, el quitapelusas Severin por treinta y ocho euros con dieciséis céntimos, el empujador recargable Latigo por cuarenta y dos euros con ochenta y seis céntimos, el pack de cepillos de dientes Philips por veinticinco euros con trece céntimos y el pica veterinario PICAAVISPA por nueve euros con setenta y nueve céntimos. ¿Te interesa alguna?",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "buscar_productos",
+          "args": {
+            "consulta": "pilas recargables"
+          },
+          "reason": "buscar pilas recargables",
+          "ok": true,
+          "summary": "estos son ahora los CANDIDATOS, del más al menos relevante:\n[1] id=B07F58PXYR | BONAI LCD Cargador de Pilas Inteligente para AA/AAA/SC/C/D /9V Ni-MH/Ni-CD, 4 Ranura Independiente y Auto-Detección, Universal Cargador Pilas con Función de Descarga (Cargador de batería AC) | marca: BONAI | color: desconocido | precio: 14,97 € | existencias: 45 | características (extracto): 🔋Multifunción: BONAI Cargador de Pilas Inteligente 4 Ranura de carga independiente. Puede cargar aleatoriamente hasta1-4 baterías de tamaño AA / AAA / C / D Ni-MH/Ni-CD de 1.2V, o 2 baterías recargables de 9V al mismo tiempo.Cada ranura… | descripción: desconocido\n[2] id=B00171UT6Q | SEVERIN CS 7976 Quitapelusas, Funcionamiento a Pilas, Blanco | marca: Severin | color: Blanco | precio: 38,16 € | existencias: 37 | características (extracto): Fácil eliminación de pelusas: Práctico quitapelusas para desechar fibras sueltas o salientes en vestidos y otros tejidos Uso sencillo: Eliminación de pelusas de diferentes tamaños mediante la rejilla metálica y el depósito recogepelusas… | descripción: desconocido\n[3] id=B01N7IWX0G | EMPUJADOR RECARGABLE DE 1,34 METROS CON PILA Y CARGADOR | marca: LATIGO | color: desconocido | precio: 42,86 € | existencias: 30 | características (extracto): Alargadera de 134 cm Bateria y cargador incluidos | descripción: EMPUJADOR ELECTRICO RECARGABLE DE 1,34 METROS CON PILAS Y CARGADOR\n[4] id=B074D1R8KF | Philips Sonicare DiamondClean HX9327/87 - Pack 2 cepillos de dientes eléctricos recargables, 5 modos, 2 cabezales, vaso cargador, Color Blanco | marca: Philips | color: Blanco | precio: 25,13 € | existencias: 26 | características (extracto): Pack de 2 mangos de DiamondClean con modo Limpieza en profundidad, 2 cabezales de AdaptiveClean, 1 cargador de vaso y una base de carga Elimina hasta 10 veces más placa con AdaptiveClean Mejora la salud de las encías en solo 2 semanas… | descripción: desconocido\n[5] id=B07C578KX3 | PICA ELÉCTRICA DE VETERINARIA PARA GANADO CON BATERÍA A PILAS (PLASTICO) | marca: PICAAVISPA | color: desconocido | precio: 9,79 € | existencias: 16 | características (extracto): desconocido | descripción: desconocido",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.03,
+        "llm": 9.069,
+        "tools": 0.036,
+        "tts": 0.0,
+        "total": 9.135
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-2dba5b47-25_correccion_con_cifras-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {}
+      },
+      "after": {
+        "cart_id": "eval-2dba5b47-25_correccion_con_cifras-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07F58PXYR",
+              "title": "BONAI LCD Cargador de Pilas Inteligente para AA/AAA/SC/C/D /9V Ni-MH/Ni-CD, 4 Ranura Independiente y Auto-Detección, Universal Cargador Pilas con Función de Descarga (Cargador de batería AC)",
+              "brand": "BONAI",
+              "price_cents": 1497,
+              "stock": 45
+            },
+            {
+              "product_id": "B00171UT6Q",
+              "title": "SEVERIN CS 7976 Quitapelusas, Funcionamiento a Pilas, Blanco",
+              "brand": "Severin",
+              "price_cents": 3816,
+              "stock": 37
+            },
+            {
+              "product_id": "B01N7IWX0G",
+              "title": "EMPUJADOR RECARGABLE DE 1,34 METROS CON PILA Y CARGADOR",
+              "brand": "LATIGO",
+              "price_cents": 4286,
+              "stock": 30
+            },
+            {
+              "product_id": "B074D1R8KF",
+              "title": "Philips Sonicare DiamondClean HX9327/87 - Pack 2 cepillos de dientes eléctricos recargables, 5 modos, 2 cabezales, vaso cargador, Color Blanco",
+              "brand": "Philips",
+              "price_cents": 2513,
+              "stock": 26
+            },
+            {
+              "product_id": "B07C578KX3",
+              "title": "PICA ELÉCTRICA DE VETERINARIA PARA GANADO CON BATERÍA A PILAS (PLASTICO)",
+              "brand": "PICAAVISPA",
+              "price_cents": 979,
+              "stock": 16
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {
+          "B00171UT6Q": {
+            "price_cents": 3816,
+            "stock": 37
+          },
+          "B01N7IWX0G": {
+            "price_cents": 4286,
+            "stock": 30
+          },
+          "B074D1R8KF": {
+            "price_cents": 2513,
+            "stock": 26
+          },
+          "B07C578KX3": {
+            "price_cents": 979,
+            "stock": 16
+          },
+          "B07F58PXYR": {
+            "price_cents": 1497,
+            "stock": 45
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        }
+      ]
+    },
+    {
+      "kind": "remember",
+      "name": "elegidas",
+      "ref": "candidate:1",
+      "product_id": "B07F58PXYR",
+      "title": "BONAI LCD Cargador de Pilas Inteligente para AA/AAA/SC/C/D /9V Ni-MH/Ni-CD, 4 Ranura Independiente y Auto-Detección, Universal Cargador Pilas con Función de Descarga (Cargador de batería AC)"
+    },
+    {
+      "kind": "event",
+      "event": "set_offer",
+      "product": "@elegidas",
+      "product_id": "B07F58PXYR",
+      "price_cents": 300,
+      "stock": 30
+    },
+    {
+      "kind": "turn",
+      "turn": 2,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Ponme cuatro de la primera.",
+      "agent_input": "Ponme cuatro de la primera.",
+      "response": "Hecho, añadidas cuatro unidades. El total del carrito es 12,00 euros. En el carrito hay 4 unidades de «BONAI LCD Cargador de Pilas Inteligente para AA/AAA/SC/C/D /9V…» a 3,00 € cada una, 12,00 €. Total: 12,00 €.",
+      "spoken_text": "Hecho, añadidas cuatro unidades. El total del carrito es doce euros. En el carrito hay cuatro unidades de BONAI LCD Cargador de Pilas Inteligente a tres euros cada una, doce euros. Total: doce euros.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "agregar_al_carrito",
+          "args": {
+            "product_id": "B07F58PXYR",
+            "cantidad": 4
+          },
+          "reason": "añadir cuatro unidades del primer candidato",
+          "ok": true,
+          "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B07F58PXYR | BONAI LCD Cargador de Pilas Inteligente para AA/AAA/SC/C/D /9V… | 4 unidades × 3,00 € = 12,00 € | existencias: 30\nTotal del carrito: 12,00 €",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 4.955,
+        "tools": 0.047,
+        "tts": 0.0,
+        "total": 5.001
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-2dba5b47-25_correccion_con_cifras-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07F58PXYR",
+              "title": "BONAI LCD Cargador de Pilas Inteligente para AA/AAA/SC/C/D /9V Ni-MH/Ni-CD, 4 Ranura Independiente y Auto-Detección, Universal Cargador Pilas con Función de Descarga (Cargador de batería AC)",
+              "brand": "BONAI",
+              "price_cents": 1497,
+              "stock": 45
+            },
+            {
+              "product_id": "B00171UT6Q",
+              "title": "SEVERIN CS 7976 Quitapelusas, Funcionamiento a Pilas, Blanco",
+              "brand": "Severin",
+              "price_cents": 3816,
+              "stock": 37
+            },
+            {
+              "product_id": "B01N7IWX0G",
+              "title": "EMPUJADOR RECARGABLE DE 1,34 METROS CON PILA Y CARGADOR",
+              "brand": "LATIGO",
+              "price_cents": 4286,
+              "stock": 30
+            },
+            {
+              "product_id": "B074D1R8KF",
+              "title": "Philips Sonicare DiamondClean HX9327/87 - Pack 2 cepillos de dientes eléctricos recargables, 5 modos, 2 cabezales, vaso cargador, Color Blanco",
+              "brand": "Philips",
+              "price_cents": 2513,
+              "stock": 26
+            },
+            {
+              "product_id": "B07C578KX3",
+              "title": "PICA ELÉCTRICA DE VETERINARIA PARA GANADO CON BATERÍA A PILAS (PLASTICO)",
+              "brand": "PICAAVISPA",
+              "price_cents": 979,
+              "stock": 16
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B07F58PXYR",
+              "initial_stock": 45,
+              "stock": 30
+            }
+          ]
+        },
+        "offers": {
+          "B00171UT6Q": {
+            "price_cents": 3816,
+            "stock": 37
+          },
+          "B01N7IWX0G": {
+            "price_cents": 4286,
+            "stock": 30
+          },
+          "B074D1R8KF": {
+            "price_cents": 2513,
+            "stock": 26
+          },
+          "B07C578KX3": {
+            "price_cents": 979,
+            "stock": 16
+          },
+          "B07F58PXYR": {
+            "price_cents": 300,
+            "stock": 30
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-2dba5b47-25_correccion_con_cifras-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07F58PXYR",
+              "title": "BONAI LCD Cargador de Pilas Inteligente para AA/AAA/SC/C/D /9V Ni-MH/Ni-CD, 4 Ranura Independiente y Auto-Detección, Universal Cargador Pilas con Función de Descarga (Cargador de batería AC)",
+              "brand": "BONAI",
+              "price_cents": 300,
+              "stock": 30
+            },
+            {
+              "product_id": "B00171UT6Q",
+              "title": "SEVERIN CS 7976 Quitapelusas, Funcionamiento a Pilas, Blanco",
+              "brand": "Severin",
+              "price_cents": 3816,
+              "stock": 37
+            },
+            {
+              "product_id": "B01N7IWX0G",
+              "title": "EMPUJADOR RECARGABLE DE 1,34 METROS CON PILA Y CARGADOR",
+              "brand": "LATIGO",
+              "price_cents": 4286,
+              "stock": 30
+            },
+            {
+              "product_id": "B074D1R8KF",
+              "title": "Philips Sonicare DiamondClean HX9327/87 - Pack 2 cepillos de dientes eléctricos recargables, 5 modos, 2 cabezales, vaso cargador, Color Blanco",
+              "brand": "Philips",
+              "price_cents": 2513,
+              "stock": 26
+            },
+            {
+              "product_id": "B07C578KX3",
+              "title": "PICA ELÉCTRICA DE VETERINARIA PARA GANADO CON BATERÍA A PILAS (PLASTICO)",
+              "brand": "PICAAVISPA",
+              "price_cents": 979,
+              "stock": 16
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-2dba5b47-25_correccion_con_cifras-c1",
+              "product_id": "B07F58PXYR",
+              "quantity": 4
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B07F58PXYR",
+              "initial_stock": 45,
+              "stock": 30
+            }
+          ]
+        },
+        "offers": {
+          "B00171UT6Q": {
+            "price_cents": 3816,
+            "stock": 37
+          },
+          "B01N7IWX0G": {
+            "price_cents": 4286,
+            "stock": 30
+          },
+          "B074D1R8KF": {
+            "price_cents": 2513,
+            "stock": 26
+          },
+          "B07C578KX3": {
+            "price_cents": 979,
+            "stock": 16
+          },
+          "B07F58PXYR": {
+            "price_cents": 300,
+            "stock": 30
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "lines": [
+              {
+                "product": "@elegidas",
+                "quantity": 4
+              }
+            ]
+          },
+          "ok": true,
+          "detail": "carrito: 4 × B07F58PXYR"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 3,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Quiero pagar.",
+      "agent_input": "Quiero pagar.",
+      "response": "Te repito el pedido antes de registrarlo: 4 unidades de «BONAI LCD Cargador de Pilas Inteligente para AA/AAA/SC/C/D /9V…» a 3,00 € cada una, 12,00 €. Total: 12,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "spoken_text": "Te repito el pedido antes de registrarlo: cuatro unidades de BONAI LCD Cargador de Pilas Inteligente a tres euros cada una, doce euros. Total: doce euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": true,
+      "operations": [
+        {
+          "tool": "cotizar",
+          "args": {},
+          "reason": "cotizar el carrito",
+          "ok": true,
+          "summary": "cotización creada; falta la confirmación del usuario.",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 1.817,
+        "tools": 0.037,
+        "tts": 0.0,
+        "total": 1.854
+      },
+      "llm_steps": 1,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-2dba5b47-25_correccion_con_cifras-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07F58PXYR",
+              "title": "BONAI LCD Cargador de Pilas Inteligente para AA/AAA/SC/C/D /9V Ni-MH/Ni-CD, 4 Ranura Independiente y Auto-Detección, Universal Cargador Pilas con Función de Descarga (Cargador de batería AC)",
+              "brand": "BONAI",
+              "price_cents": 300,
+              "stock": 30
+            },
+            {
+              "product_id": "B00171UT6Q",
+              "title": "SEVERIN CS 7976 Quitapelusas, Funcionamiento a Pilas, Blanco",
+              "brand": "Severin",
+              "price_cents": 3816,
+              "stock": 37
+            },
+            {
+              "product_id": "B01N7IWX0G",
+              "title": "EMPUJADOR RECARGABLE DE 1,34 METROS CON PILA Y CARGADOR",
+              "brand": "LATIGO",
+              "price_cents": 4286,
+              "stock": 30
+            },
+            {
+              "product_id": "B074D1R8KF",
+              "title": "Philips Sonicare DiamondClean HX9327/87 - Pack 2 cepillos de dientes eléctricos recargables, 5 modos, 2 cabezales, vaso cargador, Color Blanco",
+              "brand": "Philips",
+              "price_cents": 2513,
+              "stock": 26
+            },
+            {
+              "product_id": "B07C578KX3",
+              "title": "PICA ELÉCTRICA DE VETERINARIA PARA GANADO CON BATERÍA A PILAS (PLASTICO)",
+              "brand": "PICAAVISPA",
+              "price_cents": 979,
+              "stock": 16
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-2dba5b47-25_correccion_con_cifras-c1",
+              "product_id": "B07F58PXYR",
+              "quantity": 4
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B07F58PXYR",
+              "initial_stock": 45,
+              "stock": 30
+            }
+          ]
+        },
+        "offers": {
+          "B00171UT6Q": {
+            "price_cents": 3816,
+            "stock": 37
+          },
+          "B01N7IWX0G": {
+            "price_cents": 4286,
+            "stock": 30
+          },
+          "B074D1R8KF": {
+            "price_cents": 2513,
+            "stock": 26
+          },
+          "B07C578KX3": {
+            "price_cents": 979,
+            "stock": 16
+          },
+          "B07F58PXYR": {
+            "price_cents": 300,
+            "stock": 30
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-2dba5b47-25_correccion_con_cifras-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": {
+            "quote_id": "fd5caa0b64ae4bbd99d9dd2f39a367bf",
+            "items": [
+              {
+                "product_id": "B07F58PXYR",
+                "title": "BONAI LCD Cargador de Pilas Inteligente para AA/AAA/SC/C/D /9V Ni-MH/Ni-CD, 4 Ranura Independiente y Auto-Detección, Universal Cargador Pilas con Función de Descarga (Cargador de batería AC)",
+                "quantity": 4,
+                "unit_price_cents": 300,
+                "subtotal_cents": 1200,
+                "stock": 30
+              }
+            ],
+            "total_cents": 1200,
+            "budget_cents": null,
+            "message": "Te repito el pedido antes de registrarlo: 4 unidades de «BONAI LCD Cargador de Pilas Inteligente para AA/AAA/SC/C/D /9V…» a 3,00 € cada una, 12,00 €. Total: 12,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+          },
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07F58PXYR",
+              "title": "BONAI LCD Cargador de Pilas Inteligente para AA/AAA/SC/C/D /9V Ni-MH/Ni-CD, 4 Ranura Independiente y Auto-Detección, Universal Cargador Pilas con Función de Descarga (Cargador de batería AC)",
+              "brand": "BONAI",
+              "price_cents": 300,
+              "stock": 30
+            },
+            {
+              "product_id": "B00171UT6Q",
+              "title": "SEVERIN CS 7976 Quitapelusas, Funcionamiento a Pilas, Blanco",
+              "brand": "Severin",
+              "price_cents": 3816,
+              "stock": 37
+            },
+            {
+              "product_id": "B01N7IWX0G",
+              "title": "EMPUJADOR RECARGABLE DE 1,34 METROS CON PILA Y CARGADOR",
+              "brand": "LATIGO",
+              "price_cents": 4286,
+              "stock": 30
+            },
+            {
+              "product_id": "B074D1R8KF",
+              "title": "Philips Sonicare DiamondClean HX9327/87 - Pack 2 cepillos de dientes eléctricos recargables, 5 modos, 2 cabezales, vaso cargador, Color Blanco",
+              "brand": "Philips",
+              "price_cents": 2513,
+              "stock": 26
+            },
+            {
+              "product_id": "B07C578KX3",
+              "title": "PICA ELÉCTRICA DE VETERINARIA PARA GANADO CON BATERÍA A PILAS (PLASTICO)",
+              "brand": "PICAAVISPA",
+              "price_cents": 979,
+              "stock": 16
+            }
+          ],
+          "awaiting_confirmation": true
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-2dba5b47-25_correccion_con_cifras-c1",
+              "product_id": "B07F58PXYR",
+              "quantity": 4
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B07F58PXYR",
+              "initial_stock": 45,
+              "stock": 30
+            }
+          ]
+        },
+        "offers": {
+          "B00171UT6Q": {
+            "price_cents": 3816,
+            "stock": 37
+          },
+          "B01N7IWX0G": {
+            "price_cents": 4286,
+            "stock": 30
+          },
+          "B074D1R8KF": {
+            "price_cents": 2513,
+            "stock": 26
+          },
+          "B07C578KX3": {
+            "price_cents": 979,
+            "stock": 16
+          },
+          "B07F58PXYR": {
+            "price_cents": 300,
+            "stock": 30
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "awaiting_confirmation",
+          "params": {
+            "value": true
+          },
+          "ok": true,
+          "detail": "esperando confirmación: sí"
+        },
+        {
+          "check": "orders",
+          "params": {
+            "count": 0
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 0"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 4,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Perdona, eran 14, no 4.",
+      "agent_input": "Perdona, eran 14, no 4.",
+      "response": "Hecho, añadidas 10 unidades más. El total del carrito es 42,00 euros. En el carrito hay 14 unidades de «BONAI LCD Cargador de Pilas Inteligente para AA/AAA/SC/C/D /9V…» a 3,00 € cada una, 42,00 €. Total: 42,00 €.",
+      "spoken_text": "Hecho, añadidas diez unidades más. El total del carrito es cuarenta y dos euros. En el carrito hay catorce unidades de BONAI LCD Cargador de Pilas Inteligente a tres euros cada una, cuarenta y dos euros. Total: cuarenta y dos euros.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "cambiar_cantidad",
+          "args": {
+            "product_id": "B07F58PXYR",
+            "cantidad": 14
+          },
+          "reason": "corrige la cantidad",
+          "ok": true,
+          "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B07F58PXYR | BONAI LCD Cargador de Pilas Inteligente para AA/AAA/SC/C/D /9V… | 14 unidades × 3,00 € = 42,00 € | existencias: 30\nTotal del carrito: 42,00 €",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 4.89,
+        "tools": 0.051,
+        "tts": 0.0,
+        "total": 4.941
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-2dba5b47-25_correccion_con_cifras-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": {
+            "quote_id": "fd5caa0b64ae4bbd99d9dd2f39a367bf",
+            "items": [
+              {
+                "product_id": "B07F58PXYR",
+                "title": "BONAI LCD Cargador de Pilas Inteligente para AA/AAA/SC/C/D /9V Ni-MH/Ni-CD, 4 Ranura Independiente y Auto-Detección, Universal Cargador Pilas con Función de Descarga (Cargador de batería AC)",
+                "quantity": 4,
+                "unit_price_cents": 300,
+                "subtotal_cents": 1200,
+                "stock": 30
+              }
+            ],
+            "total_cents": 1200,
+            "budget_cents": null,
+            "message": "Te repito el pedido antes de registrarlo: 4 unidades de «BONAI LCD Cargador de Pilas Inteligente para AA/AAA/SC/C/D /9V…» a 3,00 € cada una, 12,00 €. Total: 12,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+          },
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07F58PXYR",
+              "title": "BONAI LCD Cargador de Pilas Inteligente para AA/AAA/SC/C/D /9V Ni-MH/Ni-CD, 4 Ranura Independiente y Auto-Detección, Universal Cargador Pilas con Función de Descarga (Cargador de batería AC)",
+              "brand": "BONAI",
+              "price_cents": 300,
+              "stock": 30
+            },
+            {
+              "product_id": "B00171UT6Q",
+              "title": "SEVERIN CS 7976 Quitapelusas, Funcionamiento a Pilas, Blanco",
+              "brand": "Severin",
+              "price_cents": 3816,
+              "stock": 37
+            },
+            {
+              "product_id": "B01N7IWX0G",
+              "title": "EMPUJADOR RECARGABLE DE 1,34 METROS CON PILA Y CARGADOR",
+              "brand": "LATIGO",
+              "price_cents": 4286,
+              "stock": 30
+            },
+            {
+              "product_id": "B074D1R8KF",
+              "title": "Philips Sonicare DiamondClean HX9327/87 - Pack 2 cepillos de dientes eléctricos recargables, 5 modos, 2 cabezales, vaso cargador, Color Blanco",
+              "brand": "Philips",
+              "price_cents": 2513,
+              "stock": 26
+            },
+            {
+              "product_id": "B07C578KX3",
+              "title": "PICA ELÉCTRICA DE VETERINARIA PARA GANADO CON BATERÍA A PILAS (PLASTICO)",
+              "brand": "PICAAVISPA",
+              "price_cents": 979,
+              "stock": 16
+            }
+          ],
+          "awaiting_confirmation": true
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-2dba5b47-25_correccion_con_cifras-c1",
+              "product_id": "B07F58PXYR",
+              "quantity": 4
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B07F58PXYR",
+              "initial_stock": 45,
+              "stock": 30
+            }
+          ]
+        },
+        "offers": {
+          "B00171UT6Q": {
+            "price_cents": 3816,
+            "stock": 37
+          },
+          "B01N7IWX0G": {
+            "price_cents": 4286,
+            "stock": 30
+          },
+          "B074D1R8KF": {
+            "price_cents": 2513,
+            "stock": 26
+          },
+          "B07C578KX3": {
+            "price_cents": 979,
+            "stock": 16
+          },
+          "B07F58PXYR": {
+            "price_cents": 300,
+            "stock": 30
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-2dba5b47-25_correccion_con_cifras-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07F58PXYR",
+              "title": "BONAI LCD Cargador de Pilas Inteligente para AA/AAA/SC/C/D /9V Ni-MH/Ni-CD, 4 Ranura Independiente y Auto-Detección, Universal Cargador Pilas con Función de Descarga (Cargador de batería AC)",
+              "brand": "BONAI",
+              "price_cents": 300,
+              "stock": 30
+            },
+            {
+              "product_id": "B00171UT6Q",
+              "title": "SEVERIN CS 7976 Quitapelusas, Funcionamiento a Pilas, Blanco",
+              "brand": "Severin",
+              "price_cents": 3816,
+              "stock": 37
+            },
+            {
+              "product_id": "B01N7IWX0G",
+              "title": "EMPUJADOR RECARGABLE DE 1,34 METROS CON PILA Y CARGADOR",
+              "brand": "LATIGO",
+              "price_cents": 4286,
+              "stock": 30
+            },
+            {
+              "product_id": "B074D1R8KF",
+              "title": "Philips Sonicare DiamondClean HX9327/87 - Pack 2 cepillos de dientes eléctricos recargables, 5 modos, 2 cabezales, vaso cargador, Color Blanco",
+              "brand": "Philips",
+              "price_cents": 2513,
+              "stock": 26
+            },
+            {
+              "product_id": "B07C578KX3",
+              "title": "PICA ELÉCTRICA DE VETERINARIA PARA GANADO CON BATERÍA A PILAS (PLASTICO)",
+              "brand": "PICAAVISPA",
+              "price_cents": 979,
+              "stock": 16
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-2dba5b47-25_correccion_con_cifras-c1",
+              "product_id": "B07F58PXYR",
+              "quantity": 14
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B07F58PXYR",
+              "initial_stock": 45,
+              "stock": 30
+            }
+          ]
+        },
+        "offers": {
+          "B00171UT6Q": {
+            "price_cents": 3816,
+            "stock": 37
+          },
+          "B01N7IWX0G": {
+            "price_cents": 4286,
+            "stock": 30
+          },
+          "B074D1R8KF": {
+            "price_cents": 2513,
+            "stock": 26
+          },
+          "B07C578KX3": {
+            "price_cents": 979,
+            "stock": 16
+          },
+          "B07F58PXYR": {
+            "price_cents": 300,
+            "stock": 30
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "orders",
+          "params": {
+            "count": 0
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 0"
+        },
+        {
+          "check": "cart",
+          "params": {
+            "lines": [
+              {
+                "product": "@elegidas",
+                "quantity": 14
+              }
+            ]
+          },
+          "ok": true,
+          "detail": "carrito: 14 × B07F58PXYR"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 5,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Ya está, tramítalo.",
+      "agent_input": "Ya está, tramítalo.",
+      "response": "Te repito el pedido antes de registrarlo: 14 unidades de «BONAI LCD Cargador de Pilas Inteligente para AA/AAA/SC/C/D /9V…» a 3,00 € cada una, 42,00 €. Total: 42,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "spoken_text": "Te repito el pedido antes de registrarlo: catorce unidades de BONAI LCD Cargador de Pilas Inteligente a tres euros cada una, cuarenta y dos euros. Total: cuarenta y dos euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": true,
+      "operations": [
+        {
+          "tool": "cotizar",
+          "args": {},
+          "reason": "cotizar el carrito",
+          "ok": true,
+          "summary": "cotización creada; falta la confirmación del usuario.",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 1.848,
+        "tools": 0.037,
+        "tts": 0.0,
+        "total": 1.885
+      },
+      "llm_steps": 1,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-2dba5b47-25_correccion_con_cifras-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07F58PXYR",
+              "title": "BONAI LCD Cargador de Pilas Inteligente para AA/AAA/SC/C/D /9V Ni-MH/Ni-CD, 4 Ranura Independiente y Auto-Detección, Universal Cargador Pilas con Función de Descarga (Cargador de batería AC)",
+              "brand": "BONAI",
+              "price_cents": 300,
+              "stock": 30
+            },
+            {
+              "product_id": "B00171UT6Q",
+              "title": "SEVERIN CS 7976 Quitapelusas, Funcionamiento a Pilas, Blanco",
+              "brand": "Severin",
+              "price_cents": 3816,
+              "stock": 37
+            },
+            {
+              "product_id": "B01N7IWX0G",
+              "title": "EMPUJADOR RECARGABLE DE 1,34 METROS CON PILA Y CARGADOR",
+              "brand": "LATIGO",
+              "price_cents": 4286,
+              "stock": 30
+            },
+            {
+              "product_id": "B074D1R8KF",
+              "title": "Philips Sonicare DiamondClean HX9327/87 - Pack 2 cepillos de dientes eléctricos recargables, 5 modos, 2 cabezales, vaso cargador, Color Blanco",
+              "brand": "Philips",
+              "price_cents": 2513,
+              "stock": 26
+            },
+            {
+              "product_id": "B07C578KX3",
+              "title": "PICA ELÉCTRICA DE VETERINARIA PARA GANADO CON BATERÍA A PILAS (PLASTICO)",
+              "brand": "PICAAVISPA",
+              "price_cents": 979,
+              "stock": 16
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-2dba5b47-25_correccion_con_cifras-c1",
+              "product_id": "B07F58PXYR",
+              "quantity": 14
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B07F58PXYR",
+              "initial_stock": 45,
+              "stock": 30
+            }
+          ]
+        },
+        "offers": {
+          "B00171UT6Q": {
+            "price_cents": 3816,
+            "stock": 37
+          },
+          "B01N7IWX0G": {
+            "price_cents": 4286,
+            "stock": 30
+          },
+          "B074D1R8KF": {
+            "price_cents": 2513,
+            "stock": 26
+          },
+          "B07C578KX3": {
+            "price_cents": 979,
+            "stock": 16
+          },
+          "B07F58PXYR": {
+            "price_cents": 300,
+            "stock": 30
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-2dba5b47-25_correccion_con_cifras-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": {
+            "quote_id": "01cf2711ccb046749812b01f19a1cd15",
+            "items": [
+              {
+                "product_id": "B07F58PXYR",
+                "title": "BONAI LCD Cargador de Pilas Inteligente para AA/AAA/SC/C/D /9V Ni-MH/Ni-CD, 4 Ranura Independiente y Auto-Detección, Universal Cargador Pilas con Función de Descarga (Cargador de batería AC)",
+                "quantity": 14,
+                "unit_price_cents": 300,
+                "subtotal_cents": 4200,
+                "stock": 30
+              }
+            ],
+            "total_cents": 4200,
+            "budget_cents": null,
+            "message": "Te repito el pedido antes de registrarlo: 14 unidades de «BONAI LCD Cargador de Pilas Inteligente para AA/AAA/SC/C/D /9V…» a 3,00 € cada una, 42,00 €. Total: 42,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+          },
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07F58PXYR",
+              "title": "BONAI LCD Cargador de Pilas Inteligente para AA/AAA/SC/C/D /9V Ni-MH/Ni-CD, 4 Ranura Independiente y Auto-Detección, Universal Cargador Pilas con Función de Descarga (Cargador de batería AC)",
+              "brand": "BONAI",
+              "price_cents": 300,
+              "stock": 30
+            },
+            {
+              "product_id": "B00171UT6Q",
+              "title": "SEVERIN CS 7976 Quitapelusas, Funcionamiento a Pilas, Blanco",
+              "brand": "Severin",
+              "price_cents": 3816,
+              "stock": 37
+            },
+            {
+              "product_id": "B01N7IWX0G",
+              "title": "EMPUJADOR RECARGABLE DE 1,34 METROS CON PILA Y CARGADOR",
+              "brand": "LATIGO",
+              "price_cents": 4286,
+              "stock": 30
+            },
+            {
+              "product_id": "B074D1R8KF",
+              "title": "Philips Sonicare DiamondClean HX9327/87 - Pack 2 cepillos de dientes eléctricos recargables, 5 modos, 2 cabezales, vaso cargador, Color Blanco",
+              "brand": "Philips",
+              "price_cents": 2513,
+              "stock": 26
+            },
+            {
+              "product_id": "B07C578KX3",
+              "title": "PICA ELÉCTRICA DE VETERINARIA PARA GANADO CON BATERÍA A PILAS (PLASTICO)",
+              "brand": "PICAAVISPA",
+              "price_cents": 979,
+              "stock": 16
+            }
+          ],
+          "awaiting_confirmation": true
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-2dba5b47-25_correccion_con_cifras-c1",
+              "product_id": "B07F58PXYR",
+              "quantity": 14
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B07F58PXYR",
+              "initial_stock": 45,
+              "stock": 30
+            }
+          ]
+        },
+        "offers": {
+          "B00171UT6Q": {
+            "price_cents": 3816,
+            "stock": 37
+          },
+          "B01N7IWX0G": {
+            "price_cents": 4286,
+            "stock": 30
+          },
+          "B074D1R8KF": {
+            "price_cents": 2513,
+            "stock": 26
+          },
+          "B07C578KX3": {
+            "price_cents": 979,
+            "stock": 16
+          },
+          "B07F58PXYR": {
+            "price_cents": 300,
+            "stock": 30
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "awaiting_confirmation",
+          "params": {
+            "value": true
+          },
+          "ok": true,
+          "detail": "esperando confirmación: sí"
+        },
+        {
+          "check": "orders",
+          "params": {
+            "count": 0
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 0"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 6,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Sí.",
+      "agent_input": "Sí.",
+      "response": "Pedido número 1 registrado: 14 unidades de «BONAI LCD Cargador de Pilas Inteligente para AA/AAA/SC/C/D /9V…» a 3,00 € cada una, 42,00 €. Total: 42,00 €. Gracias por tu compra.",
+      "spoken_text": "Pedido número uno registrado: catorce unidades de BONAI LCD Cargador de Pilas Inteligente a tres euros cada una, cuarenta y dos euros. Total: cuarenta y dos euros. Gracias por tu compra.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "confirmar_pedido",
+          "args": {
+            "quote_id": "01cf2711ccb046749812b01f19a1cd15"
+          },
+          "reason": "el usuario confirmó la cotización",
+          "ok": true,
+          "summary": "pedido registrado",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 0.0,
+        "tools": 0.027,
+        "tts": 0.0,
+        "total": 0.027
+      },
+      "llm_steps": 0,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-2dba5b47-25_correccion_con_cifras-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": {
+            "quote_id": "01cf2711ccb046749812b01f19a1cd15",
+            "items": [
+              {
+                "product_id": "B07F58PXYR",
+                "title": "BONAI LCD Cargador de Pilas Inteligente para AA/AAA/SC/C/D /9V Ni-MH/Ni-CD, 4 Ranura Independiente y Auto-Detección, Universal Cargador Pilas con Función de Descarga (Cargador de batería AC)",
+                "quantity": 14,
+                "unit_price_cents": 300,
+                "subtotal_cents": 4200,
+                "stock": 30
+              }
+            ],
+            "total_cents": 4200,
+            "budget_cents": null,
+            "message": "Te repito el pedido antes de registrarlo: 14 unidades de «BONAI LCD Cargador de Pilas Inteligente para AA/AAA/SC/C/D /9V…» a 3,00 € cada una, 42,00 €. Total: 42,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+          },
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B07F58PXYR",
+              "title": "BONAI LCD Cargador de Pilas Inteligente para AA/AAA/SC/C/D /9V Ni-MH/Ni-CD, 4 Ranura Independiente y Auto-Detección, Universal Cargador Pilas con Función de Descarga (Cargador de batería AC)",
+              "brand": "BONAI",
+              "price_cents": 300,
+              "stock": 30
+            },
+            {
+              "product_id": "B00171UT6Q",
+              "title": "SEVERIN CS 7976 Quitapelusas, Funcionamiento a Pilas, Blanco",
+              "brand": "Severin",
+              "price_cents": 3816,
+              "stock": 37
+            },
+            {
+              "product_id": "B01N7IWX0G",
+              "title": "EMPUJADOR RECARGABLE DE 1,34 METROS CON PILA Y CARGADOR",
+              "brand": "LATIGO",
+              "price_cents": 4286,
+              "stock": 30
+            },
+            {
+              "product_id": "B074D1R8KF",
+              "title": "Philips Sonicare DiamondClean HX9327/87 - Pack 2 cepillos de dientes eléctricos recargables, 5 modos, 2 cabezales, vaso cargador, Color Blanco",
+              "brand": "Philips",
+              "price_cents": 2513,
+              "stock": 26
+            },
+            {
+              "product_id": "B07C578KX3",
+              "title": "PICA ELÉCTRICA DE VETERINARIA PARA GANADO CON BATERÍA A PILAS (PLASTICO)",
+              "brand": "PICAAVISPA",
+              "price_cents": 979,
+              "stock": 16
+            }
+          ],
+          "awaiting_confirmation": true
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-2dba5b47-25_correccion_con_cifras-c1",
+              "product_id": "B07F58PXYR",
+              "quantity": 14
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B07F58PXYR",
+              "initial_stock": 45,
+              "stock": 30
+            }
+          ]
+        },
+        "offers": {
+          "B00171UT6Q": {
+            "price_cents": 3816,
+            "stock": 37
+          },
+          "B01N7IWX0G": {
+            "price_cents": 4286,
+            "stock": 30
+          },
+          "B074D1R8KF": {
+            "price_cents": 2513,
+            "stock": 26
+          },
+          "B07C578KX3": {
+            "price_cents": 979,
+            "stock": 16
+          },
+          "B07F58PXYR": {
+            "price_cents": 300,
+            "stock": 30
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-2dba5b47-25_correccion_con_cifras-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": {
+            "order_id": 1,
+            "quote_id": "01cf2711ccb046749812b01f19a1cd15",
+            "items": [
+              {
+                "product_id": "B07F58PXYR",
+                "title": "BONAI LCD Cargador de Pilas Inteligente para AA/AAA/SC/C/D /9V Ni-MH/Ni-CD, 4 Ranura Independiente y Auto-Detección, Universal Cargador Pilas con Función de Descarga (Cargador de batería AC)",
+                "quantity": 14,
+                "unit_price_cents": 300,
+                "subtotal_cents": 4200
+              }
+            ],
+            "total_cents": 4200,
+            "message": "Pedido número 1 registrado: 14 unidades de «BONAI LCD Cargador de Pilas Inteligente para AA/AAA/SC/C/D /9V…» a 3,00 € cada una, 42,00 €. Total: 42,00 €. Gracias por tu compra."
+          },
+          "candidates": [
+            {
+              "product_id": "B07F58PXYR",
+              "title": "BONAI LCD Cargador de Pilas Inteligente para AA/AAA/SC/C/D /9V Ni-MH/Ni-CD, 4 Ranura Independiente y Auto-Detección, Universal Cargador Pilas con Función de Descarga (Cargador de batería AC)",
+              "brand": "BONAI",
+              "price_cents": 300,
+              "stock": 30
+            },
+            {
+              "product_id": "B00171UT6Q",
+              "title": "SEVERIN CS 7976 Quitapelusas, Funcionamiento a Pilas, Blanco",
+              "brand": "Severin",
+              "price_cents": 3816,
+              "stock": 37
+            },
+            {
+              "product_id": "B01N7IWX0G",
+              "title": "EMPUJADOR RECARGABLE DE 1,34 METROS CON PILA Y CARGADOR",
+              "brand": "LATIGO",
+              "price_cents": 4286,
+              "stock": 30
+            },
+            {
+              "product_id": "B074D1R8KF",
+              "title": "Philips Sonicare DiamondClean HX9327/87 - Pack 2 cepillos de dientes eléctricos recargables, 5 modos, 2 cabezales, vaso cargador, Color Blanco",
+              "brand": "Philips",
+              "price_cents": 2513,
+              "stock": 26
+            },
+            {
+              "product_id": "B07C578KX3",
+              "title": "PICA ELÉCTRICA DE VETERINARIA PARA GANADO CON BATERÍA A PILAS (PLASTICO)",
+              "brand": "PICAAVISPA",
+              "price_cents": 979,
+              "stock": 16
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [
+            {
+              "order_id": 1,
+              "quote_id": "01cf2711ccb046749812b01f19a1cd15",
+              "total_cents": 4200
+            }
+          ],
+          "order_items": [
+            {
+              "order_id": 1,
+              "product_id": "B07F58PXYR",
+              "quantity": 14,
+              "unit_price_cents": 300
+            }
+          ],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B07F58PXYR",
+              "initial_stock": 45,
+              "stock": 16
+            }
+          ]
+        },
+        "offers": {
+          "B00171UT6Q": {
+            "price_cents": 3816,
+            "stock": 37
+          },
+          "B01N7IWX0G": {
+            "price_cents": 4286,
+            "stock": 30
+          },
+          "B074D1R8KF": {
+            "price_cents": 2513,
+            "stock": 26
+          },
+          "B07C578KX3": {
+            "price_cents": 979,
+            "stock": 16
+          },
+          "B07F58PXYR": {
+            "price_cents": 300,
+            "stock": 16
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "orders",
+          "params": {
+            "count": 1
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 1"
+        }
+      ]
+    }
+  ],
+  "final": {
+    "snapshot": {
+      "cart_id": "eval-2dba5b47-25_correccion_con_cifras-c1",
+      "state": {
+        "budget_cents": null,
+        "preferences": [],
+        "pending_clarification": null,
+        "quote": null,
+        "order": {
+          "order_id": 1,
+          "quote_id": "01cf2711ccb046749812b01f19a1cd15",
+          "items": [
+            {
+              "product_id": "B07F58PXYR",
+              "title": "BONAI LCD Cargador de Pilas Inteligente para AA/AAA/SC/C/D /9V Ni-MH/Ni-CD, 4 Ranura Independiente y Auto-Detección, Universal Cargador Pilas con Función de Descarga (Cargador de batería AC)",
+              "quantity": 14,
+              "unit_price_cents": 300,
+              "subtotal_cents": 4200
+            }
+          ],
+          "total_cents": 4200,
+          "message": "Pedido número 1 registrado: 14 unidades de «BONAI LCD Cargador de Pilas Inteligente para AA/AAA/SC/C/D /9V…» a 3,00 € cada una, 42,00 €. Total: 42,00 €. Gracias por tu compra."
+        },
+        "candidates": [
+          {
+            "product_id": "B07F58PXYR",
+            "title": "BONAI LCD Cargador de Pilas Inteligente para AA/AAA/SC/C/D /9V Ni-MH/Ni-CD, 4 Ranura Independiente y Auto-Detección, Universal Cargador Pilas con Función de Descarga (Cargador de batería AC)",
+            "brand": "BONAI",
+            "price_cents": 300,
+            "stock": 30
+          },
+          {
+            "product_id": "B00171UT6Q",
+            "title": "SEVERIN CS 7976 Quitapelusas, Funcionamiento a Pilas, Blanco",
+            "brand": "Severin",
+            "price_cents": 3816,
+            "stock": 37
+          },
+          {
+            "product_id": "B01N7IWX0G",
+            "title": "EMPUJADOR RECARGABLE DE 1,34 METROS CON PILA Y CARGADOR",
+            "brand": "LATIGO",
+            "price_cents": 4286,
+            "stock": 30
+          },
+          {
+            "product_id": "B074D1R8KF",
+            "title": "Philips Sonicare DiamondClean HX9327/87 - Pack 2 cepillos de dientes eléctricos recargables, 5 modos, 2 cabezales, vaso cargador, Color Blanco",
+            "brand": "Philips",
+            "price_cents": 2513,
+            "stock": 26
+          },
+          {
+            "product_id": "B07C578KX3",
+            "title": "PICA ELÉCTRICA DE VETERINARIA PARA GANADO CON BATERÍA A PILAS (PLASTICO)",
+            "brand": "PICAAVISPA",
+            "price_cents": 979,
+            "stock": 16
+          }
+        ],
+        "awaiting_confirmation": false
+      },
+      "store": {
+        "orders": [
+          {
+            "order_id": 1,
+            "quote_id": "01cf2711ccb046749812b01f19a1cd15",
+            "total_cents": 4200
+          }
+        ],
+        "order_items": [
+          {
+            "order_id": 1,
+            "product_id": "B07F58PXYR",
+            "quantity": 14,
+            "unit_price_cents": 300
+          }
+        ],
+        "cart_items": [],
+        "inventory_changes": [
+          {
+            "product_id": "B07F58PXYR",
+            "initial_stock": 45,
+            "stock": 16
+          }
+        ]
+      },
+      "offers": {
+        "B00171UT6Q": {
+          "price_cents": 3816,
+          "stock": 37
+        },
+        "B01N7IWX0G": {
+          "price_cents": 4286,
+          "stock": 30
+        },
+        "B074D1R8KF": {
+          "price_cents": 2513,
+          "stock": 26
+        },
+        "B07C578KX3": {
+          "price_cents": 979,
+          "stock": 16
+        },
+        "B07F58PXYR": {
+          "price_cents": 300,
+          "stock": 16
+        }
+      }
+    },
+    "checks": [
+      {
+        "check": "orders",
+        "params": {
+          "count": 1
+        },
+        "ok": true,
+        "detail": "pedidos registrados: 1"
+      },
+      {
+        "check": "order",
+        "params": {
+          "lines": [
+            {
+              "product": "@elegidas",
+              "quantity": 14
+            }
+          ],
+          "total_cents": 4200
+        },
+        "ok": true,
+        "detail": "pedido 1: 14 × B07F58PXYR; total 4200 céntimos"
+      },
+      {
+        "check": "stock",
+        "params": {
+          "product": "@elegidas",
+          "equals": 16
+        },
+        "ok": true,
+        "detail": "existencias de B07F58PXYR: 16"
+      },
+      {
+        "check": "cart",
+        "params": {
+          "empty": true
+        },
+        "ok": true,
+        "detail": "carrito: vacío"
+      }
+    ]
+  },
+  "violations": [],
+  "problems": [],
+  "passed": true,
+  "timings": {
+    "all": {
+      "turns": 6,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.01,
+        "max": 0.03
+      },
+      "llm": {
+        "mean": 3.76,
+        "max": 9.07
+      },
+      "tools": {
+        "mean": 0.04,
+        "max": 0.05
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 3.81,
+        "max": 9.13
+      }
+    },
+    "with_llm": {
+      "turns": 5,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.01,
+        "max": 0.03
+      },
+      "llm": {
+        "mean": 4.52,
+        "max": 9.07
+      },
+      "tools": {
+        "mean": 0.04,
+        "max": 0.05
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 4.56,
+        "max": 9.13
+      }
+    },
+    "without_llm": {
+      "turns": 1,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "llm": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "tools": {
+        "mean": 0.03,
+        "max": 0.03
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 0.03,
+        "max": 0.03
+      }
+    }
+  }
+}

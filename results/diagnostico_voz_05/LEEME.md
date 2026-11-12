@@ -11,6 +11,8 @@ En la corrida `voz` con las grabaciones del usuario, el escenario `05_correccion
 
 La causa son las cifras: con «12, no 2» el LLM fija un presupuesto de 12 € en lugar de cambiar la cantidad a doce. Son dos corridas de un escenario, con un LLM determinista; no dicen con qué frecuencia Whisper escribe los números con cifras ni qué haría el LLM con otras frases.
 
+**Después de la corrección** (commit `885515a`: guarda y aviso de los números sueltos), la misma copia con «he dicho 12, no 2» pasa: [solo_cifras_tras_guarda](solo_cifras_tras_guarda/05_correccion_transcripcion.md), con `cambiar_cantidad(cantidad=12)` en el turno 4.
+
 Para repetirlo: copiar `scenarios/evaluacion/05_correccion_transcripcion.json` a una carpeta aparte, cambiar la frase y correr
 
 ```bash

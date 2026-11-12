@@ -1,0 +1,1645 @@
+{
+  "id": "05_correccion_transcripcion",
+  "title": "Corrección de una transcripción antes de comprar",
+  "kind": "correccion_transcripcion",
+  "description": "El agente repite el pedido con dos unidades y el usuario corrige antes de confirmar: había dicho doce (dos y doce se confunden con facilidad al transcribir). No debe registrarse nada con dos unidades; el pedido final lleva doce.",
+  "voice": true,
+  "input": "texto",
+  "audio_source": null,
+  "user_id": "eval-1b7b289c-05_correccion_transcripcion",
+  "threads": [
+    "eval-1b7b289c-05_correccion_transcripcion-c1"
+  ],
+  "names": {
+    "elegido": "B08P34RJSX"
+  },
+  "steps": [
+    {
+      "kind": "turn",
+      "turn": 1,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Busco un ratón inalámbrico.",
+      "agent_input": "Busco un ratón inalámbrico.",
+      "response": "Tengo el ratón inalámbrico INPHIC en plata por 33,29 €, el de INPHIC en plata clara por 42,45 €, el de Anmck en negro por 23,61 €, el de WisFox en gris por 19,69 € y el OMEN VECTOR de HP por 10,84 €. ¿Te interesa alguno?",
+      "spoken_text": "Tengo el ratón inalámbrico INPHIC en plata por treinta y tres euros con veintinueve céntimos, el de INPHIC en plata clara por cuarenta y dos euros con cuarenta y cinco céntimos, el de Anmck en negro por veintitrés euros con sesenta y un céntimos, el de WisFox en gris por diecinueve euros con sesenta y nueve céntimos y el OMEN VECTOR de HP por diez euros con ochenta y cuatro céntimos. ¿Te interesa alguno?",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "buscar_productos",
+          "args": {
+            "consulta": "ratón inalámbrico"
+          },
+          "reason": "buscar el ratón inalámbrico",
+          "ok": true,
+          "summary": "estos son ahora los CANDIDATOS, del más al menos relevante:\n[1] id=B08P34RJSX | Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con Receptor USB, 3 Niveles Ajustables De dpi para Computadora PortáTil, Pc, Mac, Computadora, Macbook, Plata | marca: INPHIC | color: plata | precio: 33,29 € | existencias: 41 | características (extracto): (Función actualizada) recargable y con indicador de potencia: batería incorporada de gran capacidad, que puede utilizarse hasta un mes. Este ratón inalámbrico está equipado con tres luces indicadoras de funcionamiento. El diseño innovador… | descripción: Este es un nuevo ratón inalámbrico actualizado, con indicador de batería que se acabó de un corte de energía. Con fiabilidad, plug and play y fácil configuración. El diseño silencioso con el sensor…\n[2] id=B0757LNVBT | Ratón Inalámbrico Recargable, Silencioso Infame Ratón óptico Silencioso Click Mini, Ultra Delgado 1600 dpi para Computadora Portátil, PC, Portátil, Computadora, Macbook (Plata Clara) | marca: INPHIC | color: Plata clara | precio: 42,45 € | existencias: 3 | características (extracto): Ratón inalámbrico recargable:Batería de polímero de litio incorporada, una vez cargada dura 2000 horas, fácil de cargar a través de cable micro USB (aprox.2 horas para carga completa), nunca más utilice las pilas AA tradicionales.El ratón… | descripción: El ratón inalámbrico recargable Inphic ofrece una rápida transmisión de datos inalámbricos y un increíble clic silencioso. Olvídese de las pilas tradicionales Batería de litio de alta calidad…\n[3] id=B07DPGQ8ZN | Anmck RatóN Inalambrico para Portatil,ErgonóMico Y Silencioso RatóN Recargable,USB 2.4 G con Nano Receptor,3 Niveles Ajustables dpi,Ultra Delgado Plano Y Pequeño RatóN InaláMbrico para Laptop-Negro | marca: Anmck | color: Black | precio: 23,61 € | existencias: 1 | características (extracto): [RATÓN INALÁMBRICO RECARGABLE ]Baterías de polímero de litio incorporadas, alto ciclo de vida, fácil de cargar por cable micro USB(Carga de 1 hora para usar 30 días), no más necesidad de pilas AAA adicionales, nunca se preocupe por el… | descripción: Especificaciones: Dimensiones: 5,7 x 10,1 cm. Peso: 64 g aprox. DPI ajustable: 1000-1200-1600 Tipo de batería: batería recargable integrada de polímero de litio. Corriente nominal/Voltaje: 10 mA/V…\n[4] id=B089K72ZV3 | WisFox Ratón Inalambrico, 2.4G Ergonómico Antideslizante Inalámbrico Ratón de Computadora Ratón Laptop Ratón USB 6 Botones con Receptor Nano 3 Ajustables de dpi Ratones para Windows,Mac (Gris) | marca: WisFox | color: Gris | precio: 19,69 € | existencias: 4 | características (extracto): 3 SWITCH AJUSTABLE DE DPI & ENCHUFE Y JUEGA: Nuestro ratón inalámbrico ergonómico para PC tiene configuraciones de 3 niveles de DPI (800/1200/1600). Controle libremente la velocidad de su mouse óptico, el diseño de 6 botones puede… | descripción: desconocido\n[5] id=B08J8BLBKS | RATON INALAMBRICO OMEN VECTOR | marca: HP | color: desconocido | precio: 10,84 € | existencias: 48 | características (extracto): Conexión: inalámbrica mediante USB, alojado en un pabellón auricular 6 teclas programables – DPI hasta 16.000, con sensor óptico pixart PAW3335 Iluminación: hasta 16,8 millones de colores Hp omen command center: sí | descripción: desconocido",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.035,
+        "llm": 9.267,
+        "tools": 0.031,
+        "tts": 0.0,
+        "total": 9.332
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [
+        "ratón inalámbrico"
+      ],
+      "before": {
+        "cart_id": "eval-1b7b289c-05_correccion_transcripcion-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {}
+      },
+      "after": {
+        "cart_id": "eval-1b7b289c-05_correccion_transcripcion-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08P34RJSX",
+              "title": "Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con Receptor USB, 3 Niveles Ajustables De dpi para Computadora PortáTil, Pc, Mac, Computadora, Macbook, Plata",
+              "brand": "INPHIC",
+              "price_cents": 3329,
+              "stock": 41
+            },
+            {
+              "product_id": "B0757LNVBT",
+              "title": "Ratón Inalámbrico Recargable, Silencioso Infame Ratón óptico Silencioso Click Mini, Ultra Delgado 1600 dpi para Computadora Portátil, PC, Portátil, Computadora, Macbook (Plata Clara)",
+              "brand": "INPHIC",
+              "price_cents": 4245,
+              "stock": 3
+            },
+            {
+              "product_id": "B07DPGQ8ZN",
+              "title": "Anmck RatóN Inalambrico para Portatil,ErgonóMico Y Silencioso RatóN Recargable,USB 2.4 G con Nano Receptor,3 Niveles Ajustables dpi,Ultra Delgado Plano Y Pequeño RatóN InaláMbrico para Laptop-Negro",
+              "brand": "Anmck",
+              "price_cents": 2361,
+              "stock": 1
+            },
+            {
+              "product_id": "B089K72ZV3",
+              "title": "WisFox Ratón Inalambrico, 2.4G Ergonómico Antideslizante Inalámbrico Ratón de Computadora Ratón Laptop Ratón USB 6 Botones con Receptor Nano 3 Ajustables de dpi Ratones para Windows,Mac (Gris)",
+              "brand": "WisFox",
+              "price_cents": 1969,
+              "stock": 4
+            },
+            {
+              "product_id": "B08J8BLBKS",
+              "title": "RATON INALAMBRICO OMEN VECTOR",
+              "brand": "HP",
+              "price_cents": 1084,
+              "stock": 48
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {
+          "B0757LNVBT": {
+            "price_cents": 4245,
+            "stock": 3
+          },
+          "B07DPGQ8ZN": {
+            "price_cents": 2361,
+            "stock": 1
+          },
+          "B089K72ZV3": {
+            "price_cents": 1969,
+            "stock": 4
+          },
+          "B08J8BLBKS": {
+            "price_cents": 1084,
+            "stock": 48
+          },
+          "B08P34RJSX": {
+            "price_cents": 3329,
+            "stock": 41
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        }
+      ]
+    },
+    {
+      "kind": "remember",
+      "name": "elegido",
+      "ref": "candidate:1",
+      "product_id": "B08P34RJSX",
+      "title": "Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con Receptor USB, 3 Niveles Ajustables De dpi para Computadora PortáTil, Pc, Mac, Computadora, Macbook, Plata"
+    },
+    {
+      "kind": "event",
+      "event": "set_offer",
+      "product": "@elegido",
+      "product_id": "B08P34RJSX",
+      "price_cents": 1100,
+      "stock": 20
+    },
+    {
+      "kind": "turn",
+      "turn": 2,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Añade dos del primero.",
+      "agent_input": "Añade dos del primero.",
+      "response": "Hecho, añadidas dos unidades. En el carrito hay 2 unidades de «Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con…» a 11,00 € cada una, 22,00 €. Total: 22,00 €.",
+      "spoken_text": "Hecho, añadidas dos unidades. En el carrito hay dos unidades de Raton inalámbrico a once euros cada una, veintidós euros. Total: veintidós euros.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "agregar_al_carrito",
+          "args": {
+            "product_id": "B08P34RJSX",
+            "cantidad": 2
+          },
+          "reason": "añadir dos unidades del candidato 1",
+          "ok": true,
+          "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B08P34RJSX | Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con… | 2 unidades × 11,00 € = 22,00 € | existencias: 20\nTotal del carrito: 22,00 €",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 4.576,
+        "tools": 0.053,
+        "tts": 0.0,
+        "total": 4.629
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [
+        "primero"
+      ],
+      "before": {
+        "cart_id": "eval-1b7b289c-05_correccion_transcripcion-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08P34RJSX",
+              "title": "Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con Receptor USB, 3 Niveles Ajustables De dpi para Computadora PortáTil, Pc, Mac, Computadora, Macbook, Plata",
+              "brand": "INPHIC",
+              "price_cents": 3329,
+              "stock": 41
+            },
+            {
+              "product_id": "B0757LNVBT",
+              "title": "Ratón Inalámbrico Recargable, Silencioso Infame Ratón óptico Silencioso Click Mini, Ultra Delgado 1600 dpi para Computadora Portátil, PC, Portátil, Computadora, Macbook (Plata Clara)",
+              "brand": "INPHIC",
+              "price_cents": 4245,
+              "stock": 3
+            },
+            {
+              "product_id": "B07DPGQ8ZN",
+              "title": "Anmck RatóN Inalambrico para Portatil,ErgonóMico Y Silencioso RatóN Recargable,USB 2.4 G con Nano Receptor,3 Niveles Ajustables dpi,Ultra Delgado Plano Y Pequeño RatóN InaláMbrico para Laptop-Negro",
+              "brand": "Anmck",
+              "price_cents": 2361,
+              "stock": 1
+            },
+            {
+              "product_id": "B089K72ZV3",
+              "title": "WisFox Ratón Inalambrico, 2.4G Ergonómico Antideslizante Inalámbrico Ratón de Computadora Ratón Laptop Ratón USB 6 Botones con Receptor Nano 3 Ajustables de dpi Ratones para Windows,Mac (Gris)",
+              "brand": "WisFox",
+              "price_cents": 1969,
+              "stock": 4
+            },
+            {
+              "product_id": "B08J8BLBKS",
+              "title": "RATON INALAMBRICO OMEN VECTOR",
+              "brand": "HP",
+              "price_cents": 1084,
+              "stock": 48
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B08P34RJSX",
+              "initial_stock": 41,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B0757LNVBT": {
+            "price_cents": 4245,
+            "stock": 3
+          },
+          "B07DPGQ8ZN": {
+            "price_cents": 2361,
+            "stock": 1
+          },
+          "B089K72ZV3": {
+            "price_cents": 1969,
+            "stock": 4
+          },
+          "B08J8BLBKS": {
+            "price_cents": 1084,
+            "stock": 48
+          },
+          "B08P34RJSX": {
+            "price_cents": 1100,
+            "stock": 20
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-1b7b289c-05_correccion_transcripcion-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08P34RJSX",
+              "title": "Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con Receptor USB, 3 Niveles Ajustables De dpi para Computadora PortáTil, Pc, Mac, Computadora, Macbook, Plata",
+              "brand": "INPHIC",
+              "price_cents": 1100,
+              "stock": 20
+            },
+            {
+              "product_id": "B0757LNVBT",
+              "title": "Ratón Inalámbrico Recargable, Silencioso Infame Ratón óptico Silencioso Click Mini, Ultra Delgado 1600 dpi para Computadora Portátil, PC, Portátil, Computadora, Macbook (Plata Clara)",
+              "brand": "INPHIC",
+              "price_cents": 4245,
+              "stock": 3
+            },
+            {
+              "product_id": "B07DPGQ8ZN",
+              "title": "Anmck RatóN Inalambrico para Portatil,ErgonóMico Y Silencioso RatóN Recargable,USB 2.4 G con Nano Receptor,3 Niveles Ajustables dpi,Ultra Delgado Plano Y Pequeño RatóN InaláMbrico para Laptop-Negro",
+              "brand": "Anmck",
+              "price_cents": 2361,
+              "stock": 1
+            },
+            {
+              "product_id": "B089K72ZV3",
+              "title": "WisFox Ratón Inalambrico, 2.4G Ergonómico Antideslizante Inalámbrico Ratón de Computadora Ratón Laptop Ratón USB 6 Botones con Receptor Nano 3 Ajustables de dpi Ratones para Windows,Mac (Gris)",
+              "brand": "WisFox",
+              "price_cents": 1969,
+              "stock": 4
+            },
+            {
+              "product_id": "B08J8BLBKS",
+              "title": "RATON INALAMBRICO OMEN VECTOR",
+              "brand": "HP",
+              "price_cents": 1084,
+              "stock": 48
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-1b7b289c-05_correccion_transcripcion-c1",
+              "product_id": "B08P34RJSX",
+              "quantity": 2
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B08P34RJSX",
+              "initial_stock": 41,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B0757LNVBT": {
+            "price_cents": 4245,
+            "stock": 3
+          },
+          "B07DPGQ8ZN": {
+            "price_cents": 2361,
+            "stock": 1
+          },
+          "B089K72ZV3": {
+            "price_cents": 1969,
+            "stock": 4
+          },
+          "B08J8BLBKS": {
+            "price_cents": 1084,
+            "stock": 48
+          },
+          "B08P34RJSX": {
+            "price_cents": 1100,
+            "stock": 20
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "lines": [
+              {
+                "product": "@elegido",
+                "quantity": 2
+              }
+            ]
+          },
+          "ok": true,
+          "detail": "carrito: 2 × B08P34RJSX"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 3,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Cierra el pedido.",
+      "agent_input": "Cierra el pedido.",
+      "response": "Te repito el pedido antes de registrarlo: 2 unidades de «Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con…» a 11,00 € cada una, 22,00 €. Total: 22,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "spoken_text": "Te repito el pedido antes de registrarlo: dos unidades de Raton inalámbrico a once euros cada una, veintidós euros. Total: veintidós euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": true,
+      "operations": [
+        {
+          "tool": "cotizar",
+          "args": {},
+          "reason": "cotizar el pedido",
+          "ok": true,
+          "summary": "cotización creada; falta la confirmación del usuario.",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 2.107,
+        "tools": 0.042,
+        "tts": 0.0,
+        "total": 2.149
+      },
+      "llm_steps": 1,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-1b7b289c-05_correccion_transcripcion-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08P34RJSX",
+              "title": "Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con Receptor USB, 3 Niveles Ajustables De dpi para Computadora PortáTil, Pc, Mac, Computadora, Macbook, Plata",
+              "brand": "INPHIC",
+              "price_cents": 1100,
+              "stock": 20
+            },
+            {
+              "product_id": "B0757LNVBT",
+              "title": "Ratón Inalámbrico Recargable, Silencioso Infame Ratón óptico Silencioso Click Mini, Ultra Delgado 1600 dpi para Computadora Portátil, PC, Portátil, Computadora, Macbook (Plata Clara)",
+              "brand": "INPHIC",
+              "price_cents": 4245,
+              "stock": 3
+            },
+            {
+              "product_id": "B07DPGQ8ZN",
+              "title": "Anmck RatóN Inalambrico para Portatil,ErgonóMico Y Silencioso RatóN Recargable,USB 2.4 G con Nano Receptor,3 Niveles Ajustables dpi,Ultra Delgado Plano Y Pequeño RatóN InaláMbrico para Laptop-Negro",
+              "brand": "Anmck",
+              "price_cents": 2361,
+              "stock": 1
+            },
+            {
+              "product_id": "B089K72ZV3",
+              "title": "WisFox Ratón Inalambrico, 2.4G Ergonómico Antideslizante Inalámbrico Ratón de Computadora Ratón Laptop Ratón USB 6 Botones con Receptor Nano 3 Ajustables de dpi Ratones para Windows,Mac (Gris)",
+              "brand": "WisFox",
+              "price_cents": 1969,
+              "stock": 4
+            },
+            {
+              "product_id": "B08J8BLBKS",
+              "title": "RATON INALAMBRICO OMEN VECTOR",
+              "brand": "HP",
+              "price_cents": 1084,
+              "stock": 48
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-1b7b289c-05_correccion_transcripcion-c1",
+              "product_id": "B08P34RJSX",
+              "quantity": 2
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B08P34RJSX",
+              "initial_stock": 41,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B0757LNVBT": {
+            "price_cents": 4245,
+            "stock": 3
+          },
+          "B07DPGQ8ZN": {
+            "price_cents": 2361,
+            "stock": 1
+          },
+          "B089K72ZV3": {
+            "price_cents": 1969,
+            "stock": 4
+          },
+          "B08J8BLBKS": {
+            "price_cents": 1084,
+            "stock": 48
+          },
+          "B08P34RJSX": {
+            "price_cents": 1100,
+            "stock": 20
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-1b7b289c-05_correccion_transcripcion-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": {
+            "quote_id": "b9c2d0157ddf451ab1c5bb265f33907c",
+            "items": [
+              {
+                "product_id": "B08P34RJSX",
+                "title": "Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con Receptor USB, 3 Niveles Ajustables De dpi para Computadora PortáTil, Pc, Mac, Computadora, Macbook, Plata",
+                "quantity": 2,
+                "unit_price_cents": 1100,
+                "subtotal_cents": 2200,
+                "stock": 20
+              }
+            ],
+            "total_cents": 2200,
+            "budget_cents": null,
+            "message": "Te repito el pedido antes de registrarlo: 2 unidades de «Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con…» a 11,00 € cada una, 22,00 €. Total: 22,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+          },
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08P34RJSX",
+              "title": "Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con Receptor USB, 3 Niveles Ajustables De dpi para Computadora PortáTil, Pc, Mac, Computadora, Macbook, Plata",
+              "brand": "INPHIC",
+              "price_cents": 1100,
+              "stock": 20
+            },
+            {
+              "product_id": "B0757LNVBT",
+              "title": "Ratón Inalámbrico Recargable, Silencioso Infame Ratón óptico Silencioso Click Mini, Ultra Delgado 1600 dpi para Computadora Portátil, PC, Portátil, Computadora, Macbook (Plata Clara)",
+              "brand": "INPHIC",
+              "price_cents": 4245,
+              "stock": 3
+            },
+            {
+              "product_id": "B07DPGQ8ZN",
+              "title": "Anmck RatóN Inalambrico para Portatil,ErgonóMico Y Silencioso RatóN Recargable,USB 2.4 G con Nano Receptor,3 Niveles Ajustables dpi,Ultra Delgado Plano Y Pequeño RatóN InaláMbrico para Laptop-Negro",
+              "brand": "Anmck",
+              "price_cents": 2361,
+              "stock": 1
+            },
+            {
+              "product_id": "B089K72ZV3",
+              "title": "WisFox Ratón Inalambrico, 2.4G Ergonómico Antideslizante Inalámbrico Ratón de Computadora Ratón Laptop Ratón USB 6 Botones con Receptor Nano 3 Ajustables de dpi Ratones para Windows,Mac (Gris)",
+              "brand": "WisFox",
+              "price_cents": 1969,
+              "stock": 4
+            },
+            {
+              "product_id": "B08J8BLBKS",
+              "title": "RATON INALAMBRICO OMEN VECTOR",
+              "brand": "HP",
+              "price_cents": 1084,
+              "stock": 48
+            }
+          ],
+          "awaiting_confirmation": true
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-1b7b289c-05_correccion_transcripcion-c1",
+              "product_id": "B08P34RJSX",
+              "quantity": 2
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B08P34RJSX",
+              "initial_stock": 41,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B0757LNVBT": {
+            "price_cents": 4245,
+            "stock": 3
+          },
+          "B07DPGQ8ZN": {
+            "price_cents": 2361,
+            "stock": 1
+          },
+          "B089K72ZV3": {
+            "price_cents": 1969,
+            "stock": 4
+          },
+          "B08J8BLBKS": {
+            "price_cents": 1084,
+            "stock": 48
+          },
+          "B08P34RJSX": {
+            "price_cents": 1100,
+            "stock": 20
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "awaiting_confirmation",
+          "params": {
+            "value": true
+          },
+          "ok": true,
+          "detail": "esperando confirmación: sí"
+        },
+        {
+          "check": "orders",
+          "params": {
+            "count": 0
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 0"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 4,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "No, espera, he dicho 12, no 2.",
+      "agent_input": "No, espera, he dicho 12, no 2.",
+      "response": "Hecho, añadidas 10 unidades más. En total, 132,00 €. En el carrito hay 12 unidades de «Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con…» a 11,00 € cada una, 132,00 €. Total: 132,00 €.",
+      "spoken_text": "Hecho, añadidas diez unidades más. En total, ciento treinta y dos euros. En el carrito hay doce unidades de Raton inalámbrico a once euros cada una, ciento treinta y dos euros. Total: ciento treinta y dos euros.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "cambiar_cantidad",
+          "args": {
+            "product_id": "B08P34RJSX",
+            "cantidad": 12
+          },
+          "reason": "corregir la cantidad",
+          "ok": true,
+          "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B08P34RJSX | Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con… | 12 unidades × 11,00 € = 132,00 € | existencias: 20\nTotal del carrito: 132,00 €",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 5.27,
+        "tools": 0.053,
+        "tts": 0.0,
+        "total": 5.323
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-1b7b289c-05_correccion_transcripcion-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": {
+            "quote_id": "b9c2d0157ddf451ab1c5bb265f33907c",
+            "items": [
+              {
+                "product_id": "B08P34RJSX",
+                "title": "Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con Receptor USB, 3 Niveles Ajustables De dpi para Computadora PortáTil, Pc, Mac, Computadora, Macbook, Plata",
+                "quantity": 2,
+                "unit_price_cents": 1100,
+                "subtotal_cents": 2200,
+                "stock": 20
+              }
+            ],
+            "total_cents": 2200,
+            "budget_cents": null,
+            "message": "Te repito el pedido antes de registrarlo: 2 unidades de «Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con…» a 11,00 € cada una, 22,00 €. Total: 22,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+          },
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08P34RJSX",
+              "title": "Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con Receptor USB, 3 Niveles Ajustables De dpi para Computadora PortáTil, Pc, Mac, Computadora, Macbook, Plata",
+              "brand": "INPHIC",
+              "price_cents": 1100,
+              "stock": 20
+            },
+            {
+              "product_id": "B0757LNVBT",
+              "title": "Ratón Inalámbrico Recargable, Silencioso Infame Ratón óptico Silencioso Click Mini, Ultra Delgado 1600 dpi para Computadora Portátil, PC, Portátil, Computadora, Macbook (Plata Clara)",
+              "brand": "INPHIC",
+              "price_cents": 4245,
+              "stock": 3
+            },
+            {
+              "product_id": "B07DPGQ8ZN",
+              "title": "Anmck RatóN Inalambrico para Portatil,ErgonóMico Y Silencioso RatóN Recargable,USB 2.4 G con Nano Receptor,3 Niveles Ajustables dpi,Ultra Delgado Plano Y Pequeño RatóN InaláMbrico para Laptop-Negro",
+              "brand": "Anmck",
+              "price_cents": 2361,
+              "stock": 1
+            },
+            {
+              "product_id": "B089K72ZV3",
+              "title": "WisFox Ratón Inalambrico, 2.4G Ergonómico Antideslizante Inalámbrico Ratón de Computadora Ratón Laptop Ratón USB 6 Botones con Receptor Nano 3 Ajustables de dpi Ratones para Windows,Mac (Gris)",
+              "brand": "WisFox",
+              "price_cents": 1969,
+              "stock": 4
+            },
+            {
+              "product_id": "B08J8BLBKS",
+              "title": "RATON INALAMBRICO OMEN VECTOR",
+              "brand": "HP",
+              "price_cents": 1084,
+              "stock": 48
+            }
+          ],
+          "awaiting_confirmation": true
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-1b7b289c-05_correccion_transcripcion-c1",
+              "product_id": "B08P34RJSX",
+              "quantity": 2
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B08P34RJSX",
+              "initial_stock": 41,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B0757LNVBT": {
+            "price_cents": 4245,
+            "stock": 3
+          },
+          "B07DPGQ8ZN": {
+            "price_cents": 2361,
+            "stock": 1
+          },
+          "B089K72ZV3": {
+            "price_cents": 1969,
+            "stock": 4
+          },
+          "B08J8BLBKS": {
+            "price_cents": 1084,
+            "stock": 48
+          },
+          "B08P34RJSX": {
+            "price_cents": 1100,
+            "stock": 20
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-1b7b289c-05_correccion_transcripcion-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08P34RJSX",
+              "title": "Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con Receptor USB, 3 Niveles Ajustables De dpi para Computadora PortáTil, Pc, Mac, Computadora, Macbook, Plata",
+              "brand": "INPHIC",
+              "price_cents": 1100,
+              "stock": 20
+            },
+            {
+              "product_id": "B0757LNVBT",
+              "title": "Ratón Inalámbrico Recargable, Silencioso Infame Ratón óptico Silencioso Click Mini, Ultra Delgado 1600 dpi para Computadora Portátil, PC, Portátil, Computadora, Macbook (Plata Clara)",
+              "brand": "INPHIC",
+              "price_cents": 4245,
+              "stock": 3
+            },
+            {
+              "product_id": "B07DPGQ8ZN",
+              "title": "Anmck RatóN Inalambrico para Portatil,ErgonóMico Y Silencioso RatóN Recargable,USB 2.4 G con Nano Receptor,3 Niveles Ajustables dpi,Ultra Delgado Plano Y Pequeño RatóN InaláMbrico para Laptop-Negro",
+              "brand": "Anmck",
+              "price_cents": 2361,
+              "stock": 1
+            },
+            {
+              "product_id": "B089K72ZV3",
+              "title": "WisFox Ratón Inalambrico, 2.4G Ergonómico Antideslizante Inalámbrico Ratón de Computadora Ratón Laptop Ratón USB 6 Botones con Receptor Nano 3 Ajustables de dpi Ratones para Windows,Mac (Gris)",
+              "brand": "WisFox",
+              "price_cents": 1969,
+              "stock": 4
+            },
+            {
+              "product_id": "B08J8BLBKS",
+              "title": "RATON INALAMBRICO OMEN VECTOR",
+              "brand": "HP",
+              "price_cents": 1084,
+              "stock": 48
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-1b7b289c-05_correccion_transcripcion-c1",
+              "product_id": "B08P34RJSX",
+              "quantity": 12
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B08P34RJSX",
+              "initial_stock": 41,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B0757LNVBT": {
+            "price_cents": 4245,
+            "stock": 3
+          },
+          "B07DPGQ8ZN": {
+            "price_cents": 2361,
+            "stock": 1
+          },
+          "B089K72ZV3": {
+            "price_cents": 1969,
+            "stock": 4
+          },
+          "B08J8BLBKS": {
+            "price_cents": 1084,
+            "stock": 48
+          },
+          "B08P34RJSX": {
+            "price_cents": 1100,
+            "stock": 20
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "orders",
+          "params": {
+            "count": 0
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 0"
+        },
+        {
+          "check": "cart",
+          "params": {
+            "lines": [
+              {
+                "product": "@elegido",
+                "quantity": 12
+              }
+            ]
+          },
+          "ok": true,
+          "detail": "carrito: 12 × B08P34RJSX"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 5,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Ahora sí, cierra el pedido.",
+      "agent_input": "Ahora sí, cierra el pedido.",
+      "response": "Te repito el pedido antes de registrarlo: 12 unidades de «Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con…» a 11,00 € cada una, 132,00 €. Total: 132,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "spoken_text": "Te repito el pedido antes de registrarlo: doce unidades de Raton inalámbrico a once euros cada una, ciento treinta y dos euros. Total: ciento treinta y dos euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": true,
+      "operations": [
+        {
+          "tool": "cotizar",
+          "args": {},
+          "reason": "cotizar el pedido",
+          "ok": true,
+          "summary": "cotización creada; falta la confirmación del usuario.",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 2.179,
+        "tools": 0.039,
+        "tts": 0.0,
+        "total": 2.218
+      },
+      "llm_steps": 1,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-1b7b289c-05_correccion_transcripcion-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08P34RJSX",
+              "title": "Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con Receptor USB, 3 Niveles Ajustables De dpi para Computadora PortáTil, Pc, Mac, Computadora, Macbook, Plata",
+              "brand": "INPHIC",
+              "price_cents": 1100,
+              "stock": 20
+            },
+            {
+              "product_id": "B0757LNVBT",
+              "title": "Ratón Inalámbrico Recargable, Silencioso Infame Ratón óptico Silencioso Click Mini, Ultra Delgado 1600 dpi para Computadora Portátil, PC, Portátil, Computadora, Macbook (Plata Clara)",
+              "brand": "INPHIC",
+              "price_cents": 4245,
+              "stock": 3
+            },
+            {
+              "product_id": "B07DPGQ8ZN",
+              "title": "Anmck RatóN Inalambrico para Portatil,ErgonóMico Y Silencioso RatóN Recargable,USB 2.4 G con Nano Receptor,3 Niveles Ajustables dpi,Ultra Delgado Plano Y Pequeño RatóN InaláMbrico para Laptop-Negro",
+              "brand": "Anmck",
+              "price_cents": 2361,
+              "stock": 1
+            },
+            {
+              "product_id": "B089K72ZV3",
+              "title": "WisFox Ratón Inalambrico, 2.4G Ergonómico Antideslizante Inalámbrico Ratón de Computadora Ratón Laptop Ratón USB 6 Botones con Receptor Nano 3 Ajustables de dpi Ratones para Windows,Mac (Gris)",
+              "brand": "WisFox",
+              "price_cents": 1969,
+              "stock": 4
+            },
+            {
+              "product_id": "B08J8BLBKS",
+              "title": "RATON INALAMBRICO OMEN VECTOR",
+              "brand": "HP",
+              "price_cents": 1084,
+              "stock": 48
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-1b7b289c-05_correccion_transcripcion-c1",
+              "product_id": "B08P34RJSX",
+              "quantity": 12
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B08P34RJSX",
+              "initial_stock": 41,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B0757LNVBT": {
+            "price_cents": 4245,
+            "stock": 3
+          },
+          "B07DPGQ8ZN": {
+            "price_cents": 2361,
+            "stock": 1
+          },
+          "B089K72ZV3": {
+            "price_cents": 1969,
+            "stock": 4
+          },
+          "B08J8BLBKS": {
+            "price_cents": 1084,
+            "stock": 48
+          },
+          "B08P34RJSX": {
+            "price_cents": 1100,
+            "stock": 20
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-1b7b289c-05_correccion_transcripcion-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": {
+            "quote_id": "91e5569154bf4d96a1a5d2af745fe941",
+            "items": [
+              {
+                "product_id": "B08P34RJSX",
+                "title": "Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con Receptor USB, 3 Niveles Ajustables De dpi para Computadora PortáTil, Pc, Mac, Computadora, Macbook, Plata",
+                "quantity": 12,
+                "unit_price_cents": 1100,
+                "subtotal_cents": 13200,
+                "stock": 20
+              }
+            ],
+            "total_cents": 13200,
+            "budget_cents": null,
+            "message": "Te repito el pedido antes de registrarlo: 12 unidades de «Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con…» a 11,00 € cada una, 132,00 €. Total: 132,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+          },
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08P34RJSX",
+              "title": "Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con Receptor USB, 3 Niveles Ajustables De dpi para Computadora PortáTil, Pc, Mac, Computadora, Macbook, Plata",
+              "brand": "INPHIC",
+              "price_cents": 1100,
+              "stock": 20
+            },
+            {
+              "product_id": "B0757LNVBT",
+              "title": "Ratón Inalámbrico Recargable, Silencioso Infame Ratón óptico Silencioso Click Mini, Ultra Delgado 1600 dpi para Computadora Portátil, PC, Portátil, Computadora, Macbook (Plata Clara)",
+              "brand": "INPHIC",
+              "price_cents": 4245,
+              "stock": 3
+            },
+            {
+              "product_id": "B07DPGQ8ZN",
+              "title": "Anmck RatóN Inalambrico para Portatil,ErgonóMico Y Silencioso RatóN Recargable,USB 2.4 G con Nano Receptor,3 Niveles Ajustables dpi,Ultra Delgado Plano Y Pequeño RatóN InaláMbrico para Laptop-Negro",
+              "brand": "Anmck",
+              "price_cents": 2361,
+              "stock": 1
+            },
+            {
+              "product_id": "B089K72ZV3",
+              "title": "WisFox Ratón Inalambrico, 2.4G Ergonómico Antideslizante Inalámbrico Ratón de Computadora Ratón Laptop Ratón USB 6 Botones con Receptor Nano 3 Ajustables de dpi Ratones para Windows,Mac (Gris)",
+              "brand": "WisFox",
+              "price_cents": 1969,
+              "stock": 4
+            },
+            {
+              "product_id": "B08J8BLBKS",
+              "title": "RATON INALAMBRICO OMEN VECTOR",
+              "brand": "HP",
+              "price_cents": 1084,
+              "stock": 48
+            }
+          ],
+          "awaiting_confirmation": true
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-1b7b289c-05_correccion_transcripcion-c1",
+              "product_id": "B08P34RJSX",
+              "quantity": 12
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B08P34RJSX",
+              "initial_stock": 41,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B0757LNVBT": {
+            "price_cents": 4245,
+            "stock": 3
+          },
+          "B07DPGQ8ZN": {
+            "price_cents": 2361,
+            "stock": 1
+          },
+          "B089K72ZV3": {
+            "price_cents": 1969,
+            "stock": 4
+          },
+          "B08J8BLBKS": {
+            "price_cents": 1084,
+            "stock": 48
+          },
+          "B08P34RJSX": {
+            "price_cents": 1100,
+            "stock": 20
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "awaiting_confirmation",
+          "params": {
+            "value": true
+          },
+          "ok": true,
+          "detail": "esperando confirmación: sí"
+        },
+        {
+          "check": "orders",
+          "params": {
+            "count": 0
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 0"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 6,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Sí, confirmo.",
+      "agent_input": "Sí, confirmo.",
+      "response": "Pedido número 1 registrado: 12 unidades de «Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con…» a 11,00 € cada una, 132,00 €. Total: 132,00 €. Gracias por tu compra.",
+      "spoken_text": "Pedido número uno registrado: doce unidades de Raton inalámbrico a once euros cada una, ciento treinta y dos euros. Total: ciento treinta y dos euros. Gracias por tu compra.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "confirmar_pedido",
+          "args": {
+            "quote_id": "91e5569154bf4d96a1a5d2af745fe941"
+          },
+          "reason": "el usuario confirmó la cotización",
+          "ok": true,
+          "summary": "pedido registrado",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 0.0,
+        "tools": 0.026,
+        "tts": 0.0,
+        "total": 0.026
+      },
+      "llm_steps": 0,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-1b7b289c-05_correccion_transcripcion-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": {
+            "quote_id": "91e5569154bf4d96a1a5d2af745fe941",
+            "items": [
+              {
+                "product_id": "B08P34RJSX",
+                "title": "Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con Receptor USB, 3 Niveles Ajustables De dpi para Computadora PortáTil, Pc, Mac, Computadora, Macbook, Plata",
+                "quantity": 12,
+                "unit_price_cents": 1100,
+                "subtotal_cents": 13200,
+                "stock": 20
+              }
+            ],
+            "total_cents": 13200,
+            "budget_cents": null,
+            "message": "Te repito el pedido antes de registrarlo: 12 unidades de «Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con…» a 11,00 € cada una, 132,00 €. Total: 132,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+          },
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08P34RJSX",
+              "title": "Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con Receptor USB, 3 Niveles Ajustables De dpi para Computadora PortáTil, Pc, Mac, Computadora, Macbook, Plata",
+              "brand": "INPHIC",
+              "price_cents": 1100,
+              "stock": 20
+            },
+            {
+              "product_id": "B0757LNVBT",
+              "title": "Ratón Inalámbrico Recargable, Silencioso Infame Ratón óptico Silencioso Click Mini, Ultra Delgado 1600 dpi para Computadora Portátil, PC, Portátil, Computadora, Macbook (Plata Clara)",
+              "brand": "INPHIC",
+              "price_cents": 4245,
+              "stock": 3
+            },
+            {
+              "product_id": "B07DPGQ8ZN",
+              "title": "Anmck RatóN Inalambrico para Portatil,ErgonóMico Y Silencioso RatóN Recargable,USB 2.4 G con Nano Receptor,3 Niveles Ajustables dpi,Ultra Delgado Plano Y Pequeño RatóN InaláMbrico para Laptop-Negro",
+              "brand": "Anmck",
+              "price_cents": 2361,
+              "stock": 1
+            },
+            {
+              "product_id": "B089K72ZV3",
+              "title": "WisFox Ratón Inalambrico, 2.4G Ergonómico Antideslizante Inalámbrico Ratón de Computadora Ratón Laptop Ratón USB 6 Botones con Receptor Nano 3 Ajustables de dpi Ratones para Windows,Mac (Gris)",
+              "brand": "WisFox",
+              "price_cents": 1969,
+              "stock": 4
+            },
+            {
+              "product_id": "B08J8BLBKS",
+              "title": "RATON INALAMBRICO OMEN VECTOR",
+              "brand": "HP",
+              "price_cents": 1084,
+              "stock": 48
+            }
+          ],
+          "awaiting_confirmation": true
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-1b7b289c-05_correccion_transcripcion-c1",
+              "product_id": "B08P34RJSX",
+              "quantity": 12
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B08P34RJSX",
+              "initial_stock": 41,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B0757LNVBT": {
+            "price_cents": 4245,
+            "stock": 3
+          },
+          "B07DPGQ8ZN": {
+            "price_cents": 2361,
+            "stock": 1
+          },
+          "B089K72ZV3": {
+            "price_cents": 1969,
+            "stock": 4
+          },
+          "B08J8BLBKS": {
+            "price_cents": 1084,
+            "stock": 48
+          },
+          "B08P34RJSX": {
+            "price_cents": 1100,
+            "stock": 20
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-1b7b289c-05_correccion_transcripcion-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": {
+            "order_id": 1,
+            "quote_id": "91e5569154bf4d96a1a5d2af745fe941",
+            "items": [
+              {
+                "product_id": "B08P34RJSX",
+                "title": "Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con Receptor USB, 3 Niveles Ajustables De dpi para Computadora PortáTil, Pc, Mac, Computadora, Macbook, Plata",
+                "quantity": 12,
+                "unit_price_cents": 1100,
+                "subtotal_cents": 13200
+              }
+            ],
+            "total_cents": 13200,
+            "message": "Pedido número 1 registrado: 12 unidades de «Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con…» a 11,00 € cada una, 132,00 €. Total: 132,00 €. Gracias por tu compra."
+          },
+          "candidates": [
+            {
+              "product_id": "B08P34RJSX",
+              "title": "Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con Receptor USB, 3 Niveles Ajustables De dpi para Computadora PortáTil, Pc, Mac, Computadora, Macbook, Plata",
+              "brand": "INPHIC",
+              "price_cents": 1100,
+              "stock": 20
+            },
+            {
+              "product_id": "B0757LNVBT",
+              "title": "Ratón Inalámbrico Recargable, Silencioso Infame Ratón óptico Silencioso Click Mini, Ultra Delgado 1600 dpi para Computadora Portátil, PC, Portátil, Computadora, Macbook (Plata Clara)",
+              "brand": "INPHIC",
+              "price_cents": 4245,
+              "stock": 3
+            },
+            {
+              "product_id": "B07DPGQ8ZN",
+              "title": "Anmck RatóN Inalambrico para Portatil,ErgonóMico Y Silencioso RatóN Recargable,USB 2.4 G con Nano Receptor,3 Niveles Ajustables dpi,Ultra Delgado Plano Y Pequeño RatóN InaláMbrico para Laptop-Negro",
+              "brand": "Anmck",
+              "price_cents": 2361,
+              "stock": 1
+            },
+            {
+              "product_id": "B089K72ZV3",
+              "title": "WisFox Ratón Inalambrico, 2.4G Ergonómico Antideslizante Inalámbrico Ratón de Computadora Ratón Laptop Ratón USB 6 Botones con Receptor Nano 3 Ajustables de dpi Ratones para Windows,Mac (Gris)",
+              "brand": "WisFox",
+              "price_cents": 1969,
+              "stock": 4
+            },
+            {
+              "product_id": "B08J8BLBKS",
+              "title": "RATON INALAMBRICO OMEN VECTOR",
+              "brand": "HP",
+              "price_cents": 1084,
+              "stock": 48
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [
+            {
+              "order_id": 1,
+              "quote_id": "91e5569154bf4d96a1a5d2af745fe941",
+              "total_cents": 13200
+            }
+          ],
+          "order_items": [
+            {
+              "order_id": 1,
+              "product_id": "B08P34RJSX",
+              "quantity": 12,
+              "unit_price_cents": 1100
+            }
+          ],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B08P34RJSX",
+              "initial_stock": 41,
+              "stock": 8
+            }
+          ]
+        },
+        "offers": {
+          "B0757LNVBT": {
+            "price_cents": 4245,
+            "stock": 3
+          },
+          "B07DPGQ8ZN": {
+            "price_cents": 2361,
+            "stock": 1
+          },
+          "B089K72ZV3": {
+            "price_cents": 1969,
+            "stock": 4
+          },
+          "B08J8BLBKS": {
+            "price_cents": 1084,
+            "stock": 48
+          },
+          "B08P34RJSX": {
+            "price_cents": 1100,
+            "stock": 8
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "orders",
+          "params": {
+            "count": 1
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 1"
+        }
+      ]
+    }
+  ],
+  "final": {
+    "snapshot": {
+      "cart_id": "eval-1b7b289c-05_correccion_transcripcion-c1",
+      "state": {
+        "budget_cents": null,
+        "preferences": [],
+        "pending_clarification": null,
+        "quote": null,
+        "order": {
+          "order_id": 1,
+          "quote_id": "91e5569154bf4d96a1a5d2af745fe941",
+          "items": [
+            {
+              "product_id": "B08P34RJSX",
+              "title": "Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con Receptor USB, 3 Niveles Ajustables De dpi para Computadora PortáTil, Pc, Mac, Computadora, Macbook, Plata",
+              "quantity": 12,
+              "unit_price_cents": 1100,
+              "subtotal_cents": 13200
+            }
+          ],
+          "total_cents": 13200,
+          "message": "Pedido número 1 registrado: 12 unidades de «Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con…» a 11,00 € cada una, 132,00 €. Total: 132,00 €. Gracias por tu compra."
+        },
+        "candidates": [
+          {
+            "product_id": "B08P34RJSX",
+            "title": "Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con Receptor USB, 3 Niveles Ajustables De dpi para Computadora PortáTil, Pc, Mac, Computadora, Macbook, Plata",
+            "brand": "INPHIC",
+            "price_cents": 1100,
+            "stock": 20
+          },
+          {
+            "product_id": "B0757LNVBT",
+            "title": "Ratón Inalámbrico Recargable, Silencioso Infame Ratón óptico Silencioso Click Mini, Ultra Delgado 1600 dpi para Computadora Portátil, PC, Portátil, Computadora, Macbook (Plata Clara)",
+            "brand": "INPHIC",
+            "price_cents": 4245,
+            "stock": 3
+          },
+          {
+            "product_id": "B07DPGQ8ZN",
+            "title": "Anmck RatóN Inalambrico para Portatil,ErgonóMico Y Silencioso RatóN Recargable,USB 2.4 G con Nano Receptor,3 Niveles Ajustables dpi,Ultra Delgado Plano Y Pequeño RatóN InaláMbrico para Laptop-Negro",
+            "brand": "Anmck",
+            "price_cents": 2361,
+            "stock": 1
+          },
+          {
+            "product_id": "B089K72ZV3",
+            "title": "WisFox Ratón Inalambrico, 2.4G Ergonómico Antideslizante Inalámbrico Ratón de Computadora Ratón Laptop Ratón USB 6 Botones con Receptor Nano 3 Ajustables de dpi Ratones para Windows,Mac (Gris)",
+            "brand": "WisFox",
+            "price_cents": 1969,
+            "stock": 4
+          },
+          {
+            "product_id": "B08J8BLBKS",
+            "title": "RATON INALAMBRICO OMEN VECTOR",
+            "brand": "HP",
+            "price_cents": 1084,
+            "stock": 48
+          }
+        ],
+        "awaiting_confirmation": false
+      },
+      "store": {
+        "orders": [
+          {
+            "order_id": 1,
+            "quote_id": "91e5569154bf4d96a1a5d2af745fe941",
+            "total_cents": 13200
+          }
+        ],
+        "order_items": [
+          {
+            "order_id": 1,
+            "product_id": "B08P34RJSX",
+            "quantity": 12,
+            "unit_price_cents": 1100
+          }
+        ],
+        "cart_items": [],
+        "inventory_changes": [
+          {
+            "product_id": "B08P34RJSX",
+            "initial_stock": 41,
+            "stock": 8
+          }
+        ]
+      },
+      "offers": {
+        "B0757LNVBT": {
+          "price_cents": 4245,
+          "stock": 3
+        },
+        "B07DPGQ8ZN": {
+          "price_cents": 2361,
+          "stock": 1
+        },
+        "B089K72ZV3": {
+          "price_cents": 1969,
+          "stock": 4
+        },
+        "B08J8BLBKS": {
+          "price_cents": 1084,
+          "stock": 48
+        },
+        "B08P34RJSX": {
+          "price_cents": 1100,
+          "stock": 8
+        }
+      }
+    },
+    "checks": [
+      {
+        "check": "orders",
+        "params": {
+          "count": 1
+        },
+        "ok": true,
+        "detail": "pedidos registrados: 1"
+      },
+      {
+        "check": "order",
+        "params": {
+          "lines": [
+            {
+              "product": "@elegido",
+              "quantity": 12
+            }
+          ],
+          "total_cents": 13200
+        },
+        "ok": true,
+        "detail": "pedido 1: 12 × B08P34RJSX; total 13200 céntimos"
+      },
+      {
+        "check": "stock",
+        "params": {
+          "product": "@elegido",
+          "equals": 8
+        },
+        "ok": true,
+        "detail": "existencias de B08P34RJSX: 8"
+      },
+      {
+        "check": "cart",
+        "params": {
+          "empty": true
+        },
+        "ok": true,
+        "detail": "carrito: vacío"
+      }
+    ]
+  },
+  "violations": [],
+  "problems": [],
+  "passed": true,
+  "timings": {
+    "all": {
+      "turns": 6,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.01,
+        "max": 0.04
+      },
+      "llm": {
+        "mean": 3.9,
+        "max": 9.27
+      },
+      "tools": {
+        "mean": 0.04,
+        "max": 0.05
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 3.95,
+        "max": 9.33
+      }
+    },
+    "with_llm": {
+      "turns": 5,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.01,
+        "max": 0.04
+      },
+      "llm": {
+        "mean": 4.68,
+        "max": 9.27
+      },
+      "tools": {
+        "mean": 0.04,
+        "max": 0.05
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 4.73,
+        "max": 9.33
+      }
+    },
+    "without_llm": {
+      "turns": 1,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "llm": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "tools": {
+        "mean": 0.03,
+        "max": 0.03
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 0.03,
+        "max": 0.03
+      }
+    }
+  }
+}

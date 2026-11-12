@@ -1,0 +1,1636 @@
+{
+  "id": "26_presupuesto_con_carrito",
+  "title": "Presupuesto dicho con el carrito lleno y cantidad con cifras",
+  "kind": "presupuesto_con_carrito",
+  "description": "Escenario de reserva, escrito antes de corregir el agente y sin ejecutarlo. Con productos en el carrito el usuario dice su gasto máximo en euros, y el agente debe fijarlo. Después cambia la cantidad con una cifra suelta («Entonces que sean 4.»): debe cambiar la cantidad y dejar el presupuesto como estaba.",
+  "voice": false,
+  "input": "texto",
+  "audio_source": null,
+  "user_id": "eval-2dba5b47-26_presupuesto_con_carrito",
+  "threads": [
+    "eval-2dba5b47-26_presupuesto_con_carrito-c1"
+  ],
+  "names": {
+    "elegido": "B08VMR6YL7"
+  },
+  "steps": [
+    {
+      "kind": "turn",
+      "turn": 1,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Busco un cuaderno de tapa dura.",
+      "agent_input": "Busco un cuaderno de tapa dura.",
+      "response": "Tengo el Arteza de Azul cobalto y gris por 10,95 €, el Arteza de Rosa y Granate por 10,16 €, el Eachgoo A5 negro por 43,88 €, el Moleskine negro por 7,01 € y el Eachgoo A4 negro por 26,05 €. ¿Te interesa alguno?",
+      "spoken_text": "Tengo el Arteza de Azul cobalto y gris por diez euros con noventa y cinco céntimos, el Arteza de Rosa y Granate por diez euros con dieciséis céntimos, el Eachgoo A5 negro por cuarenta y tres euros con ochenta y ocho céntimos, el Moleskine negro por siete euros con un céntimo y el Eachgoo A4 negro por veintiséis euros con cinco céntimos. ¿Te interesa alguno?",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "buscar_productos",
+          "args": {
+            "consulta": "cuaderno tapa dura"
+          },
+          "reason": "buscar el cuaderno",
+          "ok": true,
+          "summary": "estos son ahora los CANDIDATOS, del más al menos relevante:\n[1] id=B08VMR6YL7 | Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 2, Azul Cobalto y Gris], Pack Cuadernos de Dibujo, Diarios de Tapa Dura con Papel de Escribir en Blanco [96 Hojas] | marca: ARTEZA | color: Azul cobalto y gris | precio: 10,95 € | existencias: 4 | características (extracto): Juego de 2 Cuadernos Tapa Dura (15 x 20 cm) - Con cubiertas sólidas y encuadernación resistente, sirven como cuaderno de viaje. Vienen con banda elástica, cinta marcapáginas y bolsillo interior. 96 Hojas de Papel Grueso de 128 gsm -… | descripción: Cuaderno con Hojas en Blanco para Escribir tu Diario Con un excelente papel de 128 g / m2 y una encuadernación de confianza, nuestro cuaderno para apuntes sirve para las listas de tareas pendientes…\n[2] id=B08VMTLR4V | Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 3: Rosa Claro, Rosa Oscuro, Granate], Pack Cuadernos de Dibujo, Diarios de Tapa Dura, con Rayas, en Blanco y con Puntos [96 Hojas] | marca: ARTEZA | color: desconocido | precio: 10,16 € | existencias: 39 | características (extracto): Juego de 3 Cuadernos Tapa Dura (15 x 20 cm) - Con cubiertas sólidas y encuadernación resistente, sirven como cuaderno de viaje. Vienen con banda elástica, cinta marcapáginas y bolsillo interior. 96 Hojas de Papel Grueso de 128 gsm -… | descripción: Cuaderno con Hojas en Blanco para Escribir tu Diario Con un excelente papel de 128 g / m2 y una encuadernación de confianza, nuestro cuaderno para apuntes sirve para las listas de tareas pendientes…\n[3] id=B07DL4T68P | Eachgoo Espiral Encuadernación Cuaderno, Tapa Dura Cuaderno Dibujo (A5) | marca: Eachgoo | color: negro | precio: 43,88 € | existencias: 33 | características (extracto): MÁS OPCIONES: Tres tamaños de cuaderno de espiral para elegir (A5, A4, A3). BUENA CALIDAD: El hojas dibujo es 120gsm, 60 caras (30 hojas) de papel de dibujo de buena calidad. MEJOR REGALO: Hojas Dibujo es perfecto para dibujar y pintar… | descripción: 1. Bloc de dibujo reciclado con cubiertas de tableros duros naturales y anillo negro encuadernado,60 caras (30 páginas) de papel reciclado de 120gsm. 2. El cuaderno de bocetos en espiral de tapa dura…\n[4] id=B0112S7DTY | Moleskine QP060BKEVER - Cuaderno digital Evernote (CARNETS CONNECTES), Negro | marca: Moleskine | color: Negro | precio: 7,01 € | existencias: 50 | características (extracto): Cuaderno evernote de tapa dura compatible con soportes digitales para traspasar todas tus anotaciones a tu ordenador, teléfono y tablet para hacer tus manuscritos digitalizados más accesibles, consultables y fáciles de compartir. las… | descripción: desconocido\n[5] id=B07DL1KFC2 | Eachgoo Espiral Encuadernación Cuaderno, Tapa Dura Cuaderno Dibujo (A4) | marca: Eachgoo | color: negro | precio: 26,05 € | existencias: 17 | características (extracto): MÁS OPCIONES: Tres tamaños de cuaderno de espiral para elegir (A5, A4, A3). BUENA CALIDAD: El hojas dibujo es 120gsm, 60 caras (30 hojas) de papel de dibujo de buena calidad. MEJOR REGALO: Hojas Dibujo es perfecto para dibujar y pintar… | descripción: 1. Bloc de dibujo reciclado con cubiertas de tableros duros naturales y anillo negro encuadernado,60 caras (30 páginas) de papel reciclado de 120gsm. 2. El cuaderno de bocetos en espiral de tapa dura…",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.025,
+        "llm": 7.421,
+        "tools": 0.026,
+        "tts": 0.0,
+        "total": 7.472
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-2dba5b47-26_presupuesto_con_carrito-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {}
+      },
+      "after": {
+        "cart_id": "eval-2dba5b47-26_presupuesto_con_carrito-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08VMR6YL7",
+              "title": "Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 2, Azul Cobalto y Gris], Pack Cuadernos de Dibujo, Diarios de Tapa Dura con Papel de Escribir en Blanco [96 Hojas]",
+              "brand": "ARTEZA",
+              "price_cents": 1095,
+              "stock": 4
+            },
+            {
+              "product_id": "B08VMTLR4V",
+              "title": "Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 3: Rosa Claro, Rosa Oscuro, Granate], Pack Cuadernos de Dibujo, Diarios de Tapa Dura, con Rayas, en Blanco y con Puntos [96 Hojas]",
+              "brand": "ARTEZA",
+              "price_cents": 1016,
+              "stock": 39
+            },
+            {
+              "product_id": "B07DL4T68P",
+              "title": "Eachgoo Espiral Encuadernación Cuaderno, Tapa Dura Cuaderno Dibujo (A5)",
+              "brand": "Eachgoo",
+              "price_cents": 4388,
+              "stock": 33
+            },
+            {
+              "product_id": "B0112S7DTY",
+              "title": "Moleskine QP060BKEVER - Cuaderno digital Evernote (CARNETS CONNECTES), Negro",
+              "brand": "Moleskine",
+              "price_cents": 701,
+              "stock": 50
+            },
+            {
+              "product_id": "B07DL1KFC2",
+              "title": "Eachgoo Espiral Encuadernación Cuaderno, Tapa Dura Cuaderno Dibujo (A4)",
+              "brand": "Eachgoo",
+              "price_cents": 2605,
+              "stock": 17
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {
+          "B0112S7DTY": {
+            "price_cents": 701,
+            "stock": 50
+          },
+          "B07DL1KFC2": {
+            "price_cents": 2605,
+            "stock": 17
+          },
+          "B07DL4T68P": {
+            "price_cents": 4388,
+            "stock": 33
+          },
+          "B08VMR6YL7": {
+            "price_cents": 1095,
+            "stock": 4
+          },
+          "B08VMTLR4V": {
+            "price_cents": 1016,
+            "stock": 39
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        }
+      ]
+    },
+    {
+      "kind": "remember",
+      "name": "elegido",
+      "ref": "candidate:1",
+      "product_id": "B08VMR6YL7",
+      "title": "Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 2, Azul Cobalto y Gris], Pack Cuadernos de Dibujo, Diarios de Tapa Dura con Papel de Escribir en Blanco [96 Hojas]"
+    },
+    {
+      "kind": "event",
+      "event": "set_offer",
+      "product": "@elegido",
+      "product_id": "B08VMR6YL7",
+      "price_cents": 600,
+      "stock": 20
+    },
+    {
+      "kind": "turn",
+      "turn": 2,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Añade dos del primero.",
+      "agent_input": "Añade dos del primero.",
+      "response": "Hecho, añadidas dos unidades. En el carrito hay 2 unidades de «Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 2, Azul Cobalto y…» a 6,00 € cada una, 12,00 €. Total: 12,00 €.",
+      "spoken_text": "Hecho, añadidas dos unidades. En el carrito hay dos unidades de Arteza Cuaderno de Dibujo a seis euros cada una, doce euros. Total: doce euros.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "agregar_al_carrito",
+          "args": {
+            "product_id": "B08VMR6YL7",
+            "cantidad": 2
+          },
+          "reason": "añadir dos unidades del candidato 1",
+          "ok": true,
+          "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B08VMR6YL7 | Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 2, Azul Cobalto y… | 2 unidades × 6,00 € = 12,00 € | existencias: 20\nTotal del carrito: 12,00 €",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 4.697,
+        "tools": 0.052,
+        "tts": 0.0,
+        "total": 4.749
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-2dba5b47-26_presupuesto_con_carrito-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08VMR6YL7",
+              "title": "Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 2, Azul Cobalto y Gris], Pack Cuadernos de Dibujo, Diarios de Tapa Dura con Papel de Escribir en Blanco [96 Hojas]",
+              "brand": "ARTEZA",
+              "price_cents": 1095,
+              "stock": 4
+            },
+            {
+              "product_id": "B08VMTLR4V",
+              "title": "Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 3: Rosa Claro, Rosa Oscuro, Granate], Pack Cuadernos de Dibujo, Diarios de Tapa Dura, con Rayas, en Blanco y con Puntos [96 Hojas]",
+              "brand": "ARTEZA",
+              "price_cents": 1016,
+              "stock": 39
+            },
+            {
+              "product_id": "B07DL4T68P",
+              "title": "Eachgoo Espiral Encuadernación Cuaderno, Tapa Dura Cuaderno Dibujo (A5)",
+              "brand": "Eachgoo",
+              "price_cents": 4388,
+              "stock": 33
+            },
+            {
+              "product_id": "B0112S7DTY",
+              "title": "Moleskine QP060BKEVER - Cuaderno digital Evernote (CARNETS CONNECTES), Negro",
+              "brand": "Moleskine",
+              "price_cents": 701,
+              "stock": 50
+            },
+            {
+              "product_id": "B07DL1KFC2",
+              "title": "Eachgoo Espiral Encuadernación Cuaderno, Tapa Dura Cuaderno Dibujo (A4)",
+              "brand": "Eachgoo",
+              "price_cents": 2605,
+              "stock": 17
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B08VMR6YL7",
+              "initial_stock": 4,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B0112S7DTY": {
+            "price_cents": 701,
+            "stock": 50
+          },
+          "B07DL1KFC2": {
+            "price_cents": 2605,
+            "stock": 17
+          },
+          "B07DL4T68P": {
+            "price_cents": 4388,
+            "stock": 33
+          },
+          "B08VMR6YL7": {
+            "price_cents": 600,
+            "stock": 20
+          },
+          "B08VMTLR4V": {
+            "price_cents": 1016,
+            "stock": 39
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-2dba5b47-26_presupuesto_con_carrito-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08VMR6YL7",
+              "title": "Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 2, Azul Cobalto y Gris], Pack Cuadernos de Dibujo, Diarios de Tapa Dura con Papel de Escribir en Blanco [96 Hojas]",
+              "brand": "ARTEZA",
+              "price_cents": 600,
+              "stock": 20
+            },
+            {
+              "product_id": "B08VMTLR4V",
+              "title": "Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 3: Rosa Claro, Rosa Oscuro, Granate], Pack Cuadernos de Dibujo, Diarios de Tapa Dura, con Rayas, en Blanco y con Puntos [96 Hojas]",
+              "brand": "ARTEZA",
+              "price_cents": 1016,
+              "stock": 39
+            },
+            {
+              "product_id": "B07DL4T68P",
+              "title": "Eachgoo Espiral Encuadernación Cuaderno, Tapa Dura Cuaderno Dibujo (A5)",
+              "brand": "Eachgoo",
+              "price_cents": 4388,
+              "stock": 33
+            },
+            {
+              "product_id": "B0112S7DTY",
+              "title": "Moleskine QP060BKEVER - Cuaderno digital Evernote (CARNETS CONNECTES), Negro",
+              "brand": "Moleskine",
+              "price_cents": 701,
+              "stock": 50
+            },
+            {
+              "product_id": "B07DL1KFC2",
+              "title": "Eachgoo Espiral Encuadernación Cuaderno, Tapa Dura Cuaderno Dibujo (A4)",
+              "brand": "Eachgoo",
+              "price_cents": 2605,
+              "stock": 17
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-2dba5b47-26_presupuesto_con_carrito-c1",
+              "product_id": "B08VMR6YL7",
+              "quantity": 2
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B08VMR6YL7",
+              "initial_stock": 4,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B0112S7DTY": {
+            "price_cents": 701,
+            "stock": 50
+          },
+          "B07DL1KFC2": {
+            "price_cents": 2605,
+            "stock": 17
+          },
+          "B07DL4T68P": {
+            "price_cents": 4388,
+            "stock": 33
+          },
+          "B08VMR6YL7": {
+            "price_cents": 600,
+            "stock": 20
+          },
+          "B08VMTLR4V": {
+            "price_cents": 1016,
+            "stock": 39
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "lines": [
+              {
+                "product": "@elegido",
+                "quantity": 2
+              }
+            ]
+          },
+          "ok": true,
+          "detail": "carrito: 2 × B08VMR6YL7"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 3,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Por cierto, no quiero gastar más de 30 euros.",
+      "agent_input": "Por cierto, no quiero gastar más de 30 euros.",
+      "response": "El cuaderno de Arteza sigue disponible. El total del carrito es 12,00 €, que está dentro del presupuesto de 30 euros. En el carrito hay 2 unidades de «Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 2, Azul Cobalto y…» a 6,00 € cada una, 12,00 €. Total: 12,00 €. Tu presupuesto es de 30,00 € y te quedan 18,00 €.",
+      "spoken_text": "El cuaderno de Arteza sigue disponible. El total del carrito es doce euros, que está dentro del presupuesto de treinta euros. En el carrito hay dos unidades de Arteza Cuaderno de Dibujo a seis euros cada una, doce euros. Total: doce euros. Tu presupuesto es de treinta euros y te quedan dieciocho euros.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "fijar_presupuesto",
+          "args": {
+            "importe_eur": 30
+          },
+          "reason": "el usuario da su gasto máximo",
+          "ok": true,
+          "summary": "presupuesto fijado en 30,00 €.",
+          "issues": []
+        },
+        {
+          "tool": "consultar_precio_stock",
+          "args": {
+            "product_id": "B08VMR6YL7"
+          },
+          "reason": "revisar el carrito con el presupuesto fijado",
+          "ok": true,
+          "summary": "precio 6,00 €; quedan 20 unidades. Esta herramienta no da características: para color, batería, medidas u otros datos del producto usa detalle_producto.",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 7.639,
+        "tools": 0.031,
+        "tts": 0.0,
+        "total": 7.67
+      },
+      "llm_steps": 3,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-2dba5b47-26_presupuesto_con_carrito-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08VMR6YL7",
+              "title": "Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 2, Azul Cobalto y Gris], Pack Cuadernos de Dibujo, Diarios de Tapa Dura con Papel de Escribir en Blanco [96 Hojas]",
+              "brand": "ARTEZA",
+              "price_cents": 600,
+              "stock": 20
+            },
+            {
+              "product_id": "B08VMTLR4V",
+              "title": "Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 3: Rosa Claro, Rosa Oscuro, Granate], Pack Cuadernos de Dibujo, Diarios de Tapa Dura, con Rayas, en Blanco y con Puntos [96 Hojas]",
+              "brand": "ARTEZA",
+              "price_cents": 1016,
+              "stock": 39
+            },
+            {
+              "product_id": "B07DL4T68P",
+              "title": "Eachgoo Espiral Encuadernación Cuaderno, Tapa Dura Cuaderno Dibujo (A5)",
+              "brand": "Eachgoo",
+              "price_cents": 4388,
+              "stock": 33
+            },
+            {
+              "product_id": "B0112S7DTY",
+              "title": "Moleskine QP060BKEVER - Cuaderno digital Evernote (CARNETS CONNECTES), Negro",
+              "brand": "Moleskine",
+              "price_cents": 701,
+              "stock": 50
+            },
+            {
+              "product_id": "B07DL1KFC2",
+              "title": "Eachgoo Espiral Encuadernación Cuaderno, Tapa Dura Cuaderno Dibujo (A4)",
+              "brand": "Eachgoo",
+              "price_cents": 2605,
+              "stock": 17
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-2dba5b47-26_presupuesto_con_carrito-c1",
+              "product_id": "B08VMR6YL7",
+              "quantity": 2
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B08VMR6YL7",
+              "initial_stock": 4,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B0112S7DTY": {
+            "price_cents": 701,
+            "stock": 50
+          },
+          "B07DL1KFC2": {
+            "price_cents": 2605,
+            "stock": 17
+          },
+          "B07DL4T68P": {
+            "price_cents": 4388,
+            "stock": 33
+          },
+          "B08VMR6YL7": {
+            "price_cents": 600,
+            "stock": 20
+          },
+          "B08VMTLR4V": {
+            "price_cents": 1016,
+            "stock": 39
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-2dba5b47-26_presupuesto_con_carrito-c1",
+        "state": {
+          "budget_cents": 3000,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08VMR6YL7",
+              "title": "Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 2, Azul Cobalto y Gris], Pack Cuadernos de Dibujo, Diarios de Tapa Dura con Papel de Escribir en Blanco [96 Hojas]",
+              "brand": "ARTEZA",
+              "price_cents": 600,
+              "stock": 20
+            },
+            {
+              "product_id": "B08VMTLR4V",
+              "title": "Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 3: Rosa Claro, Rosa Oscuro, Granate], Pack Cuadernos de Dibujo, Diarios de Tapa Dura, con Rayas, en Blanco y con Puntos [96 Hojas]",
+              "brand": "ARTEZA",
+              "price_cents": 1016,
+              "stock": 39
+            },
+            {
+              "product_id": "B07DL4T68P",
+              "title": "Eachgoo Espiral Encuadernación Cuaderno, Tapa Dura Cuaderno Dibujo (A5)",
+              "brand": "Eachgoo",
+              "price_cents": 4388,
+              "stock": 33
+            },
+            {
+              "product_id": "B0112S7DTY",
+              "title": "Moleskine QP060BKEVER - Cuaderno digital Evernote (CARNETS CONNECTES), Negro",
+              "brand": "Moleskine",
+              "price_cents": 701,
+              "stock": 50
+            },
+            {
+              "product_id": "B07DL1KFC2",
+              "title": "Eachgoo Espiral Encuadernación Cuaderno, Tapa Dura Cuaderno Dibujo (A4)",
+              "brand": "Eachgoo",
+              "price_cents": 2605,
+              "stock": 17
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-2dba5b47-26_presupuesto_con_carrito-c1",
+              "product_id": "B08VMR6YL7",
+              "quantity": 2
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B08VMR6YL7",
+              "initial_stock": 4,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B0112S7DTY": {
+            "price_cents": 701,
+            "stock": 50
+          },
+          "B07DL1KFC2": {
+            "price_cents": 2605,
+            "stock": 17
+          },
+          "B07DL4T68P": {
+            "price_cents": 4388,
+            "stock": 33
+          },
+          "B08VMR6YL7": {
+            "price_cents": 600,
+            "stock": 20
+          },
+          "B08VMTLR4V": {
+            "price_cents": 1016,
+            "stock": 39
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "budget",
+          "params": {
+            "cents": 3000
+          },
+          "ok": true,
+          "detail": "presupuesto en el estado: 3000"
+        },
+        {
+          "check": "cart",
+          "params": {
+            "lines": [
+              {
+                "product": "@elegido",
+                "quantity": 2
+              }
+            ]
+          },
+          "ok": true,
+          "detail": "carrito: 2 × B08VMR6YL7"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 4,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Entonces que sean 4.",
+      "agent_input": "Entonces que sean 4.",
+      "response": "Hecho, añadidas dos unidades más. En el carrito hay 4 unidades de «Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 2, Azul Cobalto y…» a 6,00 € cada una, 24,00 €. Total: 24,00 €. En el carrito hay 4 unidades de «Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 2, Azul Cobalto y…» a 6,00 € cada una, 24,00 €. Total: 24,00 €. Tu presupuesto es de 30,00 € y te quedan 6,00 €.",
+      "spoken_text": "Hecho, añadidas dos unidades más. En el carrito hay cuatro unidades de Arteza Cuaderno de Dibujo a seis euros cada una, veinticuatro euros. Total: veinticuatro euros. En el carrito hay cuatro unidades de Arteza Cuaderno de Dibujo a seis euros cada una, veinticuatro euros. Total: veinticuatro euros. Tu presupuesto es de treinta euros y te quedan seis euros.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "cambiar_cantidad",
+          "args": {
+            "product_id": "B08VMR6YL7",
+            "cantidad": 4
+          },
+          "reason": "cambiar la cantidad del cuaderno de Arteza",
+          "ok": true,
+          "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B08VMR6YL7 | Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 2, Azul Cobalto y… | 4 unidades × 6,00 € = 24,00 € | existencias: 20\nTotal del carrito: 24,00 €",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 8.073,
+        "tools": 0.052,
+        "tts": 0.0,
+        "total": 8.124
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-2dba5b47-26_presupuesto_con_carrito-c1",
+        "state": {
+          "budget_cents": 3000,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08VMR6YL7",
+              "title": "Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 2, Azul Cobalto y Gris], Pack Cuadernos de Dibujo, Diarios de Tapa Dura con Papel de Escribir en Blanco [96 Hojas]",
+              "brand": "ARTEZA",
+              "price_cents": 600,
+              "stock": 20
+            },
+            {
+              "product_id": "B08VMTLR4V",
+              "title": "Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 3: Rosa Claro, Rosa Oscuro, Granate], Pack Cuadernos de Dibujo, Diarios de Tapa Dura, con Rayas, en Blanco y con Puntos [96 Hojas]",
+              "brand": "ARTEZA",
+              "price_cents": 1016,
+              "stock": 39
+            },
+            {
+              "product_id": "B07DL4T68P",
+              "title": "Eachgoo Espiral Encuadernación Cuaderno, Tapa Dura Cuaderno Dibujo (A5)",
+              "brand": "Eachgoo",
+              "price_cents": 4388,
+              "stock": 33
+            },
+            {
+              "product_id": "B0112S7DTY",
+              "title": "Moleskine QP060BKEVER - Cuaderno digital Evernote (CARNETS CONNECTES), Negro",
+              "brand": "Moleskine",
+              "price_cents": 701,
+              "stock": 50
+            },
+            {
+              "product_id": "B07DL1KFC2",
+              "title": "Eachgoo Espiral Encuadernación Cuaderno, Tapa Dura Cuaderno Dibujo (A4)",
+              "brand": "Eachgoo",
+              "price_cents": 2605,
+              "stock": 17
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-2dba5b47-26_presupuesto_con_carrito-c1",
+              "product_id": "B08VMR6YL7",
+              "quantity": 2
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B08VMR6YL7",
+              "initial_stock": 4,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B0112S7DTY": {
+            "price_cents": 701,
+            "stock": 50
+          },
+          "B07DL1KFC2": {
+            "price_cents": 2605,
+            "stock": 17
+          },
+          "B07DL4T68P": {
+            "price_cents": 4388,
+            "stock": 33
+          },
+          "B08VMR6YL7": {
+            "price_cents": 600,
+            "stock": 20
+          },
+          "B08VMTLR4V": {
+            "price_cents": 1016,
+            "stock": 39
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-2dba5b47-26_presupuesto_con_carrito-c1",
+        "state": {
+          "budget_cents": 3000,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08VMR6YL7",
+              "title": "Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 2, Azul Cobalto y Gris], Pack Cuadernos de Dibujo, Diarios de Tapa Dura con Papel de Escribir en Blanco [96 Hojas]",
+              "brand": "ARTEZA",
+              "price_cents": 600,
+              "stock": 20
+            },
+            {
+              "product_id": "B08VMTLR4V",
+              "title": "Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 3: Rosa Claro, Rosa Oscuro, Granate], Pack Cuadernos de Dibujo, Diarios de Tapa Dura, con Rayas, en Blanco y con Puntos [96 Hojas]",
+              "brand": "ARTEZA",
+              "price_cents": 1016,
+              "stock": 39
+            },
+            {
+              "product_id": "B07DL4T68P",
+              "title": "Eachgoo Espiral Encuadernación Cuaderno, Tapa Dura Cuaderno Dibujo (A5)",
+              "brand": "Eachgoo",
+              "price_cents": 4388,
+              "stock": 33
+            },
+            {
+              "product_id": "B0112S7DTY",
+              "title": "Moleskine QP060BKEVER - Cuaderno digital Evernote (CARNETS CONNECTES), Negro",
+              "brand": "Moleskine",
+              "price_cents": 701,
+              "stock": 50
+            },
+            {
+              "product_id": "B07DL1KFC2",
+              "title": "Eachgoo Espiral Encuadernación Cuaderno, Tapa Dura Cuaderno Dibujo (A4)",
+              "brand": "Eachgoo",
+              "price_cents": 2605,
+              "stock": 17
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-2dba5b47-26_presupuesto_con_carrito-c1",
+              "product_id": "B08VMR6YL7",
+              "quantity": 4
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B08VMR6YL7",
+              "initial_stock": 4,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B0112S7DTY": {
+            "price_cents": 701,
+            "stock": 50
+          },
+          "B07DL1KFC2": {
+            "price_cents": 2605,
+            "stock": 17
+          },
+          "B07DL4T68P": {
+            "price_cents": 4388,
+            "stock": 33
+          },
+          "B08VMR6YL7": {
+            "price_cents": 600,
+            "stock": 20
+          },
+          "B08VMTLR4V": {
+            "price_cents": 1016,
+            "stock": 39
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "budget",
+          "params": {
+            "cents": 3000
+          },
+          "ok": true,
+          "detail": "presupuesto en el estado: 3000"
+        },
+        {
+          "check": "cart",
+          "params": {
+            "lines": [
+              {
+                "product": "@elegido",
+                "quantity": 4
+              }
+            ]
+          },
+          "ok": true,
+          "detail": "carrito: 4 × B08VMR6YL7"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 5,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Cierra el pedido.",
+      "agent_input": "Cierra el pedido.",
+      "response": "Te repito el pedido antes de registrarlo: 4 unidades de «Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 2, Azul Cobalto y…» a 6,00 € cada una, 24,00 €. Total: 24,00 €. Tu presupuesto es de 30,00 € y te quedan 6,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "spoken_text": "Te repito el pedido antes de registrarlo: cuatro unidades de Arteza Cuaderno de Dibujo a seis euros cada una, veinticuatro euros. Total: veinticuatro euros. Tu presupuesto es de treinta euros y te quedan seis euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": true,
+      "operations": [
+        {
+          "tool": "cotizar",
+          "args": {},
+          "reason": "cotizar el pedido",
+          "ok": true,
+          "summary": "cotización creada; falta la confirmación del usuario.",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 2.39,
+        "tools": 0.025,
+        "tts": 0.0,
+        "total": 2.415
+      },
+      "llm_steps": 1,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-2dba5b47-26_presupuesto_con_carrito-c1",
+        "state": {
+          "budget_cents": 3000,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08VMR6YL7",
+              "title": "Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 2, Azul Cobalto y Gris], Pack Cuadernos de Dibujo, Diarios de Tapa Dura con Papel de Escribir en Blanco [96 Hojas]",
+              "brand": "ARTEZA",
+              "price_cents": 600,
+              "stock": 20
+            },
+            {
+              "product_id": "B08VMTLR4V",
+              "title": "Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 3: Rosa Claro, Rosa Oscuro, Granate], Pack Cuadernos de Dibujo, Diarios de Tapa Dura, con Rayas, en Blanco y con Puntos [96 Hojas]",
+              "brand": "ARTEZA",
+              "price_cents": 1016,
+              "stock": 39
+            },
+            {
+              "product_id": "B07DL4T68P",
+              "title": "Eachgoo Espiral Encuadernación Cuaderno, Tapa Dura Cuaderno Dibujo (A5)",
+              "brand": "Eachgoo",
+              "price_cents": 4388,
+              "stock": 33
+            },
+            {
+              "product_id": "B0112S7DTY",
+              "title": "Moleskine QP060BKEVER - Cuaderno digital Evernote (CARNETS CONNECTES), Negro",
+              "brand": "Moleskine",
+              "price_cents": 701,
+              "stock": 50
+            },
+            {
+              "product_id": "B07DL1KFC2",
+              "title": "Eachgoo Espiral Encuadernación Cuaderno, Tapa Dura Cuaderno Dibujo (A4)",
+              "brand": "Eachgoo",
+              "price_cents": 2605,
+              "stock": 17
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-2dba5b47-26_presupuesto_con_carrito-c1",
+              "product_id": "B08VMR6YL7",
+              "quantity": 4
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B08VMR6YL7",
+              "initial_stock": 4,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B0112S7DTY": {
+            "price_cents": 701,
+            "stock": 50
+          },
+          "B07DL1KFC2": {
+            "price_cents": 2605,
+            "stock": 17
+          },
+          "B07DL4T68P": {
+            "price_cents": 4388,
+            "stock": 33
+          },
+          "B08VMR6YL7": {
+            "price_cents": 600,
+            "stock": 20
+          },
+          "B08VMTLR4V": {
+            "price_cents": 1016,
+            "stock": 39
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-2dba5b47-26_presupuesto_con_carrito-c1",
+        "state": {
+          "budget_cents": 3000,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": {
+            "quote_id": "9473048dcd3441d9b720b05adcdcb7ff",
+            "items": [
+              {
+                "product_id": "B08VMR6YL7",
+                "title": "Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 2, Azul Cobalto y Gris], Pack Cuadernos de Dibujo, Diarios de Tapa Dura con Papel de Escribir en Blanco [96 Hojas]",
+                "quantity": 4,
+                "unit_price_cents": 600,
+                "subtotal_cents": 2400,
+                "stock": 20
+              }
+            ],
+            "total_cents": 2400,
+            "budget_cents": 3000,
+            "message": "Te repito el pedido antes de registrarlo: 4 unidades de «Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 2, Azul Cobalto y…» a 6,00 € cada una, 24,00 €. Total: 24,00 €. Tu presupuesto es de 30,00 € y te quedan 6,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+          },
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08VMR6YL7",
+              "title": "Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 2, Azul Cobalto y Gris], Pack Cuadernos de Dibujo, Diarios de Tapa Dura con Papel de Escribir en Blanco [96 Hojas]",
+              "brand": "ARTEZA",
+              "price_cents": 600,
+              "stock": 20
+            },
+            {
+              "product_id": "B08VMTLR4V",
+              "title": "Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 3: Rosa Claro, Rosa Oscuro, Granate], Pack Cuadernos de Dibujo, Diarios de Tapa Dura, con Rayas, en Blanco y con Puntos [96 Hojas]",
+              "brand": "ARTEZA",
+              "price_cents": 1016,
+              "stock": 39
+            },
+            {
+              "product_id": "B07DL4T68P",
+              "title": "Eachgoo Espiral Encuadernación Cuaderno, Tapa Dura Cuaderno Dibujo (A5)",
+              "brand": "Eachgoo",
+              "price_cents": 4388,
+              "stock": 33
+            },
+            {
+              "product_id": "B0112S7DTY",
+              "title": "Moleskine QP060BKEVER - Cuaderno digital Evernote (CARNETS CONNECTES), Negro",
+              "brand": "Moleskine",
+              "price_cents": 701,
+              "stock": 50
+            },
+            {
+              "product_id": "B07DL1KFC2",
+              "title": "Eachgoo Espiral Encuadernación Cuaderno, Tapa Dura Cuaderno Dibujo (A4)",
+              "brand": "Eachgoo",
+              "price_cents": 2605,
+              "stock": 17
+            }
+          ],
+          "awaiting_confirmation": true
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-2dba5b47-26_presupuesto_con_carrito-c1",
+              "product_id": "B08VMR6YL7",
+              "quantity": 4
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B08VMR6YL7",
+              "initial_stock": 4,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B0112S7DTY": {
+            "price_cents": 701,
+            "stock": 50
+          },
+          "B07DL1KFC2": {
+            "price_cents": 2605,
+            "stock": 17
+          },
+          "B07DL4T68P": {
+            "price_cents": 4388,
+            "stock": 33
+          },
+          "B08VMR6YL7": {
+            "price_cents": 600,
+            "stock": 20
+          },
+          "B08VMTLR4V": {
+            "price_cents": 1016,
+            "stock": 39
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "awaiting_confirmation",
+          "params": {
+            "value": true
+          },
+          "ok": true,
+          "detail": "esperando confirmación: sí"
+        },
+        {
+          "check": "orders",
+          "params": {
+            "count": 0
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 0"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 6,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Sí, confirmo.",
+      "agent_input": "Sí, confirmo.",
+      "response": "Pedido número 1 registrado: 4 unidades de «Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 2, Azul Cobalto y…» a 6,00 € cada una, 24,00 €. Total: 24,00 €. Gracias por tu compra.",
+      "spoken_text": "Pedido número uno registrado: cuatro unidades de Arteza Cuaderno de Dibujo a seis euros cada una, veinticuatro euros. Total: veinticuatro euros. Gracias por tu compra.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "confirmar_pedido",
+          "args": {
+            "quote_id": "9473048dcd3441d9b720b05adcdcb7ff"
+          },
+          "reason": "el usuario confirmó la cotización",
+          "ok": true,
+          "summary": "pedido registrado",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 0.0,
+        "tools": 0.03,
+        "tts": 0.0,
+        "total": 0.03
+      },
+      "llm_steps": 0,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-2dba5b47-26_presupuesto_con_carrito-c1",
+        "state": {
+          "budget_cents": 3000,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": {
+            "quote_id": "9473048dcd3441d9b720b05adcdcb7ff",
+            "items": [
+              {
+                "product_id": "B08VMR6YL7",
+                "title": "Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 2, Azul Cobalto y Gris], Pack Cuadernos de Dibujo, Diarios de Tapa Dura con Papel de Escribir en Blanco [96 Hojas]",
+                "quantity": 4,
+                "unit_price_cents": 600,
+                "subtotal_cents": 2400,
+                "stock": 20
+              }
+            ],
+            "total_cents": 2400,
+            "budget_cents": 3000,
+            "message": "Te repito el pedido antes de registrarlo: 4 unidades de «Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 2, Azul Cobalto y…» a 6,00 € cada una, 24,00 €. Total: 24,00 €. Tu presupuesto es de 30,00 € y te quedan 6,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+          },
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08VMR6YL7",
+              "title": "Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 2, Azul Cobalto y Gris], Pack Cuadernos de Dibujo, Diarios de Tapa Dura con Papel de Escribir en Blanco [96 Hojas]",
+              "brand": "ARTEZA",
+              "price_cents": 600,
+              "stock": 20
+            },
+            {
+              "product_id": "B08VMTLR4V",
+              "title": "Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 3: Rosa Claro, Rosa Oscuro, Granate], Pack Cuadernos de Dibujo, Diarios de Tapa Dura, con Rayas, en Blanco y con Puntos [96 Hojas]",
+              "brand": "ARTEZA",
+              "price_cents": 1016,
+              "stock": 39
+            },
+            {
+              "product_id": "B07DL4T68P",
+              "title": "Eachgoo Espiral Encuadernación Cuaderno, Tapa Dura Cuaderno Dibujo (A5)",
+              "brand": "Eachgoo",
+              "price_cents": 4388,
+              "stock": 33
+            },
+            {
+              "product_id": "B0112S7DTY",
+              "title": "Moleskine QP060BKEVER - Cuaderno digital Evernote (CARNETS CONNECTES), Negro",
+              "brand": "Moleskine",
+              "price_cents": 701,
+              "stock": 50
+            },
+            {
+              "product_id": "B07DL1KFC2",
+              "title": "Eachgoo Espiral Encuadernación Cuaderno, Tapa Dura Cuaderno Dibujo (A4)",
+              "brand": "Eachgoo",
+              "price_cents": 2605,
+              "stock": 17
+            }
+          ],
+          "awaiting_confirmation": true
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-2dba5b47-26_presupuesto_con_carrito-c1",
+              "product_id": "B08VMR6YL7",
+              "quantity": 4
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B08VMR6YL7",
+              "initial_stock": 4,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B0112S7DTY": {
+            "price_cents": 701,
+            "stock": 50
+          },
+          "B07DL1KFC2": {
+            "price_cents": 2605,
+            "stock": 17
+          },
+          "B07DL4T68P": {
+            "price_cents": 4388,
+            "stock": 33
+          },
+          "B08VMR6YL7": {
+            "price_cents": 600,
+            "stock": 20
+          },
+          "B08VMTLR4V": {
+            "price_cents": 1016,
+            "stock": 39
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-2dba5b47-26_presupuesto_con_carrito-c1",
+        "state": {
+          "budget_cents": 3000,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": {
+            "order_id": 1,
+            "quote_id": "9473048dcd3441d9b720b05adcdcb7ff",
+            "items": [
+              {
+                "product_id": "B08VMR6YL7",
+                "title": "Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 2, Azul Cobalto y Gris], Pack Cuadernos de Dibujo, Diarios de Tapa Dura con Papel de Escribir en Blanco [96 Hojas]",
+                "quantity": 4,
+                "unit_price_cents": 600,
+                "subtotal_cents": 2400
+              }
+            ],
+            "total_cents": 2400,
+            "message": "Pedido número 1 registrado: 4 unidades de «Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 2, Azul Cobalto y…» a 6,00 € cada una, 24,00 €. Total: 24,00 €. Gracias por tu compra."
+          },
+          "candidates": [
+            {
+              "product_id": "B08VMR6YL7",
+              "title": "Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 2, Azul Cobalto y Gris], Pack Cuadernos de Dibujo, Diarios de Tapa Dura con Papel de Escribir en Blanco [96 Hojas]",
+              "brand": "ARTEZA",
+              "price_cents": 600,
+              "stock": 20
+            },
+            {
+              "product_id": "B08VMTLR4V",
+              "title": "Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 3: Rosa Claro, Rosa Oscuro, Granate], Pack Cuadernos de Dibujo, Diarios de Tapa Dura, con Rayas, en Blanco y con Puntos [96 Hojas]",
+              "brand": "ARTEZA",
+              "price_cents": 1016,
+              "stock": 39
+            },
+            {
+              "product_id": "B07DL4T68P",
+              "title": "Eachgoo Espiral Encuadernación Cuaderno, Tapa Dura Cuaderno Dibujo (A5)",
+              "brand": "Eachgoo",
+              "price_cents": 4388,
+              "stock": 33
+            },
+            {
+              "product_id": "B0112S7DTY",
+              "title": "Moleskine QP060BKEVER - Cuaderno digital Evernote (CARNETS CONNECTES), Negro",
+              "brand": "Moleskine",
+              "price_cents": 701,
+              "stock": 50
+            },
+            {
+              "product_id": "B07DL1KFC2",
+              "title": "Eachgoo Espiral Encuadernación Cuaderno, Tapa Dura Cuaderno Dibujo (A4)",
+              "brand": "Eachgoo",
+              "price_cents": 2605,
+              "stock": 17
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [
+            {
+              "order_id": 1,
+              "quote_id": "9473048dcd3441d9b720b05adcdcb7ff",
+              "total_cents": 2400
+            }
+          ],
+          "order_items": [
+            {
+              "order_id": 1,
+              "product_id": "B08VMR6YL7",
+              "quantity": 4,
+              "unit_price_cents": 600
+            }
+          ],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B08VMR6YL7",
+              "initial_stock": 4,
+              "stock": 16
+            }
+          ]
+        },
+        "offers": {
+          "B0112S7DTY": {
+            "price_cents": 701,
+            "stock": 50
+          },
+          "B07DL1KFC2": {
+            "price_cents": 2605,
+            "stock": 17
+          },
+          "B07DL4T68P": {
+            "price_cents": 4388,
+            "stock": 33
+          },
+          "B08VMR6YL7": {
+            "price_cents": 600,
+            "stock": 16
+          },
+          "B08VMTLR4V": {
+            "price_cents": 1016,
+            "stock": 39
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "orders",
+          "params": {
+            "count": 1
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 1"
+        }
+      ]
+    }
+  ],
+  "final": {
+    "snapshot": {
+      "cart_id": "eval-2dba5b47-26_presupuesto_con_carrito-c1",
+      "state": {
+        "budget_cents": 3000,
+        "preferences": [],
+        "pending_clarification": null,
+        "quote": null,
+        "order": {
+          "order_id": 1,
+          "quote_id": "9473048dcd3441d9b720b05adcdcb7ff",
+          "items": [
+            {
+              "product_id": "B08VMR6YL7",
+              "title": "Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 2, Azul Cobalto y Gris], Pack Cuadernos de Dibujo, Diarios de Tapa Dura con Papel de Escribir en Blanco [96 Hojas]",
+              "quantity": 4,
+              "unit_price_cents": 600,
+              "subtotal_cents": 2400
+            }
+          ],
+          "total_cents": 2400,
+          "message": "Pedido número 1 registrado: 4 unidades de «Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 2, Azul Cobalto y…» a 6,00 € cada una, 24,00 €. Total: 24,00 €. Gracias por tu compra."
+        },
+        "candidates": [
+          {
+            "product_id": "B08VMR6YL7",
+            "title": "Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 2, Azul Cobalto y Gris], Pack Cuadernos de Dibujo, Diarios de Tapa Dura con Papel de Escribir en Blanco [96 Hojas]",
+            "brand": "ARTEZA",
+            "price_cents": 600,
+            "stock": 20
+          },
+          {
+            "product_id": "B08VMTLR4V",
+            "title": "Arteza Cuaderno de Dibujo, 15 x 20 cm [Set de 3: Rosa Claro, Rosa Oscuro, Granate], Pack Cuadernos de Dibujo, Diarios de Tapa Dura, con Rayas, en Blanco y con Puntos [96 Hojas]",
+            "brand": "ARTEZA",
+            "price_cents": 1016,
+            "stock": 39
+          },
+          {
+            "product_id": "B07DL4T68P",
+            "title": "Eachgoo Espiral Encuadernación Cuaderno, Tapa Dura Cuaderno Dibujo (A5)",
+            "brand": "Eachgoo",
+            "price_cents": 4388,
+            "stock": 33
+          },
+          {
+            "product_id": "B0112S7DTY",
+            "title": "Moleskine QP060BKEVER - Cuaderno digital Evernote (CARNETS CONNECTES), Negro",
+            "brand": "Moleskine",
+            "price_cents": 701,
+            "stock": 50
+          },
+          {
+            "product_id": "B07DL1KFC2",
+            "title": "Eachgoo Espiral Encuadernación Cuaderno, Tapa Dura Cuaderno Dibujo (A4)",
+            "brand": "Eachgoo",
+            "price_cents": 2605,
+            "stock": 17
+          }
+        ],
+        "awaiting_confirmation": false
+      },
+      "store": {
+        "orders": [
+          {
+            "order_id": 1,
+            "quote_id": "9473048dcd3441d9b720b05adcdcb7ff",
+            "total_cents": 2400
+          }
+        ],
+        "order_items": [
+          {
+            "order_id": 1,
+            "product_id": "B08VMR6YL7",
+            "quantity": 4,
+            "unit_price_cents": 600
+          }
+        ],
+        "cart_items": [],
+        "inventory_changes": [
+          {
+            "product_id": "B08VMR6YL7",
+            "initial_stock": 4,
+            "stock": 16
+          }
+        ]
+      },
+      "offers": {
+        "B0112S7DTY": {
+          "price_cents": 701,
+          "stock": 50
+        },
+        "B07DL1KFC2": {
+          "price_cents": 2605,
+          "stock": 17
+        },
+        "B07DL4T68P": {
+          "price_cents": 4388,
+          "stock": 33
+        },
+        "B08VMR6YL7": {
+          "price_cents": 600,
+          "stock": 16
+        },
+        "B08VMTLR4V": {
+          "price_cents": 1016,
+          "stock": 39
+        }
+      }
+    },
+    "checks": [
+      {
+        "check": "orders",
+        "params": {
+          "count": 1
+        },
+        "ok": true,
+        "detail": "pedidos registrados: 1"
+      },
+      {
+        "check": "order",
+        "params": {
+          "lines": [
+            {
+              "product": "@elegido",
+              "quantity": 4
+            }
+          ],
+          "total_cents": 2400
+        },
+        "ok": true,
+        "detail": "pedido 1: 4 × B08VMR6YL7; total 2400 céntimos"
+      },
+      {
+        "check": "budget",
+        "params": {
+          "cents": 3000
+        },
+        "ok": true,
+        "detail": "presupuesto en el estado: 3000"
+      },
+      {
+        "check": "stock",
+        "params": {
+          "product": "@elegido",
+          "equals": 16
+        },
+        "ok": true,
+        "detail": "existencias de B08VMR6YL7: 16"
+      },
+      {
+        "check": "cart",
+        "params": {
+          "empty": true
+        },
+        "ok": true,
+        "detail": "carrito: vacío"
+      }
+    ]
+  },
+  "violations": [],
+  "problems": [],
+  "passed": true,
+  "timings": {
+    "all": {
+      "turns": 6,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.0,
+        "max": 0.03
+      },
+      "llm": {
+        "mean": 5.04,
+        "max": 8.07
+      },
+      "tools": {
+        "mean": 0.04,
+        "max": 0.05
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 5.08,
+        "max": 8.12
+      }
+    },
+    "with_llm": {
+      "turns": 5,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.01,
+        "max": 0.03
+      },
+      "llm": {
+        "mean": 6.04,
+        "max": 8.07
+      },
+      "tools": {
+        "mean": 0.04,
+        "max": 0.05
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 6.09,
+        "max": 8.12
+      }
+    },
+    "without_llm": {
+      "turns": 1,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "llm": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "tools": {
+        "mean": 0.03,
+        "max": 0.03
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 0.03,
+        "max": 0.03
+      }
+    }
+  }
+}

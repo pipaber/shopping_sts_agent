@@ -1,0 +1,133 @@
+{
+  "date": "2026-11-12T00:22:33",
+  "commit": "885515a",
+  "memory_backend": "postgres",
+  "models": {
+    "llm": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+    "asr": null,
+    "tts": null,
+    "embeddings": "intfloat/multilingual-e5-small",
+    "reranker": "control"
+  },
+  "voice": {},
+  "load": {
+    "search_seconds": 152.5,
+    "llm_seconds": 0.7,
+    "asr_seconds": null,
+    "tts_seconds": null,
+    "total_seconds": 153.6,
+    "vram_mib": {
+      "search": 706,
+      "llm": 5820,
+      "asr": 5820,
+      "loaded": 5820
+    }
+  },
+  "input": "texto",
+  "audio_sources": {},
+  "scenarios": [
+    {
+      "id": "05_correccion_transcripcion",
+      "title": "Corrección de una transcripción antes de comprar",
+      "kind": "correccion_transcripcion",
+      "passed": true
+    }
+  ],
+  "summary": {
+    "scenarios": 1,
+    "passed": 1,
+    "pass_rate": 1.0,
+    "failed": [],
+    "turns": 6,
+    "violations": {
+      "cantidad": 0,
+      "presupuesto": 0,
+      "existencias": 0,
+      "pedido_duplicado": 0,
+      "cambio_parcial": 0
+    },
+    "timings": {
+      "all": {
+        "turns": 6,
+        "asr": {
+          "mean": 0.0,
+          "max": 0.0
+        },
+        "retrieval": {
+          "mean": 0.01,
+          "max": 0.04
+        },
+        "llm": {
+          "mean": 3.9,
+          "max": 9.27
+        },
+        "tools": {
+          "mean": 0.04,
+          "max": 0.05
+        },
+        "tts": {
+          "mean": 0.0,
+          "max": 0.0
+        },
+        "total": {
+          "mean": 3.95,
+          "max": 9.33
+        }
+      },
+      "with_llm": {
+        "turns": 5,
+        "asr": {
+          "mean": 0.0,
+          "max": 0.0
+        },
+        "retrieval": {
+          "mean": 0.01,
+          "max": 0.04
+        },
+        "llm": {
+          "mean": 4.68,
+          "max": 9.27
+        },
+        "tools": {
+          "mean": 0.04,
+          "max": 0.05
+        },
+        "tts": {
+          "mean": 0.0,
+          "max": 0.0
+        },
+        "total": {
+          "mean": 4.73,
+          "max": 9.33
+        }
+      },
+      "without_llm": {
+        "turns": 1,
+        "asr": {
+          "mean": 0.0,
+          "max": 0.0
+        },
+        "retrieval": {
+          "mean": 0.0,
+          "max": 0.0
+        },
+        "llm": {
+          "mean": 0.0,
+          "max": 0.0
+        },
+        "tools": {
+          "mean": 0.03,
+          "max": 0.03
+        },
+        "tts": {
+          "mean": 0.0,
+          "max": 0.0
+        },
+        "total": {
+          "mean": 0.03,
+          "max": 0.03
+        }
+      }
+    }
+  }
+}

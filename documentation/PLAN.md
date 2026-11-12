@@ -93,6 +93,7 @@ Guardas añadidas el día 11, tras diagnosticar los escenarios que fallaban ([DI
 - **Producto agotado al añadir.** Si la tienda rechaza un producto por agotado y la respuesta del LLM no cita ningún otro candidato, el código añade hasta dos con existencias y su precio, como hace ya al confirmar.
 - **Detalle de producto.** El resultado de `detalle_producto` termina con un recordatorio: ese es todo el texto del catálogo y, si no habla de lo que se pregunta, hay que decir que no lo indica. Que la respuesta se sostenga solo se comprueba por código en las cifras.
 - **Prompt.** Tras un rechazo, proponer no es hacer (regla 9, con un ejemplo); un dato ausente se dice como «el catálogo no lo indica» y no como un hecho sobre el producto (regla 1); una posición que no existe acaba en una pregunta (regla 5).
+- **Números sueltos** (día 12, tras la corrida con la voz del usuario). Con productos en el carrito, si el mensaje trae números y no habla de dinero (ni contesta a una pregunta del agente sobre el presupuesto), el LLM recibe un aviso: no son un importe, y corregir unidades es `cambiar_cantidad`. Además, en esa situación `fijar_presupuesto` se rechaza. Con el carrito vacío no aplica. El motivo y los resultados están en «Voz con las grabaciones del usuario».
 
 Mediciones en la workstation (RTX A2000 12 GB) con las transcripciones de `results/chat_*.json`: 2,5–9,5 s por turno (media 5–6 s; cada turno son de 1 a 3 decisiones de unos 2,7 s), 1 185 tokens/s al evaluar el prompt y 50 tokens/s al generar. La confirmación y el registro del pedido no usan el LLM (0,04 s). Carga inicial: 20 s para el catálogo, el índice BM25 y el modelo de embeddings.
 
@@ -352,9 +353,9 @@ Los seis escenarios que fallaban se diagnosticaron uno a uno ([DIAGNOSTICO_FALLO
 - **Latencia tras la corrección** (corrida `voz_sintetica`, media por turno y máximo): con LLM (24 turnos), ASR 0,35 s, recuperación 0,01 s, LLM 5,05 s, herramientas 0,04 s, TTS 6,30 s; total 11,75 s (20,62). Sin LLM (7 turnos), 4,82 s (11,01). Por texto, 5,08 s por turno con LLM. Las guardas no añaden tiempo apreciable: son comprobaciones de texto, y los rechazos que provocan cuestan una decisión más del LLM en el turno. Carga inicial: 28,8 s con el disco en caliente.
 - **Lo que sigue flojo** y lo que no se ha verificado está al final del diagnóstico: la calidad de las explicaciones, lo que las guardas no reconocen, Colab y el juicio de oído. La corrida con las grabaciones del usuario está en el apartado siguiente.
 
-### Voz con las grabaciones del usuario (11 de noviembre)
+### Voz con las grabaciones del usuario (11 y 12 de noviembre)
 
-El usuario grabó los 31 turnos del [guion](../scenarios/evaluacion/GUION_GRABACION.md) (WAV mono a 48 kHz). El agente, el prompt y los escenarios no se tocaron para esta corrida.
+El usuario grabó los 31 turnos del [guion](../scenarios/evaluacion/GUION_GRABACION.md) (WAV mono a 48 kHz). La primera corrida se hizo sin tocar el agente; después se corrigió el fallo que encontró y se repitió.
 
 **Comprobación previa de los archivos.** `python -m shopping_agent.eval.recordings` transcribe cada grabación con el ASR del agente, sin correr el agente, y la coteja con el texto de su turno ([results/escenarios/grabaciones.md](../results/escenarios/grabaciones.md)):
 
@@ -362,32 +363,46 @@ El usuario grabó los 31 turnos del [guion](../scenarios/evaluacion/GUION_GRABAC
 - 29 se entienden igual que el guion tras normalizar (WER 1,4 %). Errores en importes, 0 de 3; en cantidades, 0 de 8; en nombres de producto, 1 de 13.
 - En la primera entrega faltaba un archivo del escenario 05 y otro estaba numerado un puesto corrido; el usuario lo renombró y grabó el que faltaba. La corrida hecha con esa entrega, con el 05 en audio sintético, está en el historial (commit `a5e7159`).
 
-**Corrida `voz`** ([resumen](../results/escenarios/resumen.md)): los seis escenarios con las grabaciones del usuario (31 turnos). La corrida anterior, toda con el hablante sintético, se conserva como `voz_sintetica`:
+**Corrida `voz`** ([resumen](../results/escenarios/resumen.md)): los seis escenarios con las grabaciones del usuario (31 turnos), con el agente ya corregido. La corrida anterior, toda con el hablante sintético, se conserva como `voz_sintetica`:
 
 | Medida | Voz del usuario (`voz`) | Hablante sintético (`voz_sintetica`) |
 |---|---|---|
-| Escenarios correctos | **5 de 6** (falla 05) | 6 de 6 |
+| Escenarios correctos | 6 de 6 (**5 de 6 antes de corregir**: fallaba 05) | 6 de 6 |
 | Violaciones de restricciones | 0 | 0 |
 | WER del ASR | 1,4 % (29 de 31 turnos idénticos) | 2,1 % (28 de 31) |
 | Errores del ASR en importes | 0 de 3 | 0 de 3 |
 | Errores del ASR en cantidades | 0 de 8 | 0 de 8 |
 | Errores del ASR en nombres de producto | **1 de 13** | 0 de 13 |
-| Escenarios con otra tienda final que con la transcripción correcta | **2 (01 y 05)** | 0 |
+| Escenarios con otra tienda final que con la transcripción correcta | **1 (el 01)**; 2 antes de corregir (01 y 05) | 0 |
 | Inteligibilidad de la voz generada (WER de Whisper) | 3,4 % | 3,9 % |
-| Semejanza con la voz de referencia, media / mínima | 0,742 / 0,501 | 0,741 / 0,501 |
-| Latencia con LLM: ASR / LLM / TTS / total | 25 turnos: 0,35 / 5,14 / 6,24 / 11,77 s (máx. 25,47) | 24 turnos: 0,35 / 5,05 / 6,30 / 11,75 s (máx. 20,62) |
-| Latencia sin LLM, total | 6 turnos: 4,93 s (máx. 11,00) | 7 turnos: 4,82 s (máx. 11,01) |
+| Semejanza con la voz de referencia, media / mínima | 0,741 / 0,501 | 0,741 / 0,501 |
+| Latencia con LLM: ASR / LLM / TTS / total | 24 turnos: 0,35 / 5,03 / 6,54 / 11,97 s (máx. 25,55) | 24 turnos: 0,35 / 5,05 / 6,30 / 11,75 s (máx. 20,62) |
+| Latencia sin LLM, total | 7 turnos: 4,83 s (máx. 11,02) | 7 turnos: 4,82 s (máx. 11,01) |
 
-- **El escenario 05 falla con la voz real, y no por una palabra mal entendida.** En el turno 4 se dijo «No, espera, he dicho doce, no dos.» y Whisper escribió «No, espera, he dicho 12, no 2.»: los mismos números, con cifras. Con esa frase el LLM eligió `fijar_presupuesto(12)` en lugar de `cambiar_cantidad(12)`. El carrito siguió con dos unidades, la cotización se rechazó dos veces por superar el presupuesto de 12 € y no se registró ningún pedido. No hay violación, porque no se compró nada con dos unidades, que es lo que el escenario quiere evitar; pero el pedido de doce no se hizo. Con el hablante sintético Whisper escribió «doce, no dos» y el escenario pasó.
+**El fallo del escenario 05 (primera corrida, commit `702e04e`).**
+
+- **No fue una palabra mal entendida.** En el turno 4 se dijo «No, espera, he dicho doce, no dos.» y Whisper escribió «No, espera, he dicho 12, no 2.»: los mismos números, con cifras. Con esa frase el LLM eligió `fijar_presupuesto(12)` en lugar de `cambiar_cantidad(12)`. El carrito siguió con dos unidades, la cotización se rechazó dos veces por superar el presupuesto de 12 € y no se registró ningún pedido. No hubo violación, porque no se compró nada con dos unidades; pero el pedido de doce no se hizo. Con el hablante sintético Whisper escribió «doce, no dos» y el escenario pasó.
 - **La causa son las cifras.** Se comprobó aparte ([results/diagnostico_voz_05/](../results/diagnostico_voz_05/LEEME.md)) corriendo por texto el escenario 05 con un solo cambio cada vez: con «he dicho 12, no 2» falla de la misma forma; con «Busca un ratón inalámbrico» (el otro cambio del ASR en este escenario) pasa.
-- **Las métricas del ASR no ven este caso.** La normalización iguala «12» y «doce»: el turno cuenta como idéntico y los errores en cantidades son 0 de 8. Como medida del ASR es correcto, porque no entendió otro número; pero la forma escrita cambió la decisión del LLM. No toda cifra falla: en 06 «tres» se transcribió «3» («Añade 3 de la primera») y el LLM añadió tres unidades.
-- **En 01, el error del ASR cambió lo que se compró.** En el turno 1 se dijo «busco una cafetera italiana» y Whisper entendió «busco una cafetería italiana». El LLM buscó «cafetería italiana», el primer candidato pasó a ser un paquete de 120 cápsulas de café (con la transcripción correcta es una cafetera De'Longhi), el agente lo presentó como «una cafetera Nespresso» y el pedido final son dos paquetes de cápsulas. El importe (60 euros) y la cantidad (dos) se entendieron bien.
-- **El escenario 01 cuenta como correcto aunque se compró otra cosa.** Sus comprobaciones se refieren al «primer candidato», al que la tienda fija precio y existencias para que el resultado no dependa de qué producto salga; ninguna mira que sea una cafetera. La expectativa se deja como está. Los cinco aciertos dicen que el flujo y la tienda son coherentes en esos cinco, no que en los cinco se comprara lo pedido: en uno no.
+- **Las métricas del ASR no ven este caso.** La normalización iguala «12» y «doce»: el turno cuenta como idéntico y los errores en cantidades son 0 de 8. Como medida del ASR es correcto, porque no entendió otro número; pero la forma escrita cambió la decisión del LLM. No toda cifra fallaba: en 06 «tres» se transcribió «3» («Añade 3 de la primera») y el LLM añadió tres unidades.
+
+**La corrección (12 de noviembre).** El diseño no cambia: el LLM propone y el código valida.
+
+- **Guarda.** Con productos en el carrito, `fijar_presupuesto` se rechaza si el mensaje no habla de dinero («euros», «presupuesto», «gastar», «tope»…) ni contesta a una pregunta del agente sobre el presupuesto. Con el carrito vacío no aplica: ahí un número suelto no puede ser una corrección de unidades.
+- **Aviso.** La guarda sola no bastó: el LLM dejaba de fijar el presupuesto, pero preguntaba «¿cuántas unidades quieres?» en vez de cambiar la cantidad. Se añadió un aviso determinista al empezar el turno, en la misma situación: los números del mensaje no son un importe y corregir unidades es `cambiar_cantidad`. No cuenta como número suelto el que forma parte de un código, un modelo o un decimal («ZX-999», «2.4G», «19,99»).
+- **Resultado.** El escenario 05 pasa con la voz real (6 de 6) y también su copia por texto con cifras. En 05 las operaciones y la tienda final son ya las de la transcripción correcta.
+- **Las corridas por texto no se repitieron, y por qué.** Sobre los 731 turnos guardados de todas las corridas (338 con productos en el carrito) se calculó dónde saltarían el aviso y la guarda: solo en el turno que fallaba. En los demás, el LLM ve exactamente lo mismo que antes y es determinista. La repetición de los seis escenarios de voz con el texto correcto lo confirma: mismas operaciones y respuestas que antes de la corrección.
+- **Reserva.** Dos escenarios escritos y guardados antes de tocar el agente ([25](../scenarios/reserva/25_correccion_con_cifras.json) y [26](../scenarios/reserva/26_presupuesto_con_carrito.json)) y corridos una sola vez al final: corregir con otra frase y otro producto («Perdona, eran 14, no 4.») y fijar el presupuesto con el carrito lleno seguido de una cifra suelta («Entonces que sean 4.»). Pasan 2 de 2 con el control, con GraphSAGE y sin reranker (corridas `reserva_cifras*`). Los escribió la misma sesión que hizo la corrección, antes de implementarla pero sabiendo qué se iba a corregir; el texto del aviso se ajustó después con el caso del escenario 05, no con ellos.
+- **Límites.** Si el usuario da un presupuesto con un número suelto y el carrito lleno («súbelo a 80»), la guarda lo rechaza y lo normal es que el agente pregunte: una pregunta de más, a cambio de no fijar un presupuesto que nadie pidió. La lista de palabras que cuentan como dinero es corta. Y solo cubre el caso del presupuesto: otras lecturas equivocadas de una cifra las sigue decidiendo el LLM.
+
+**Lo que sigue igual.**
+
+- **En 01, el error del ASR cambia lo que se compra.** En el turno 1 se dijo «busco una cafetera italiana» y Whisper entendió «busco una cafetería italiana». El LLM buscó «cafetería italiana», el primer candidato pasó a ser un paquete de 120 cápsulas de café (con la transcripción correcta es una cafetera De'Longhi), el agente lo presentó como «una cafetera Nespresso» y el pedido final son dos paquetes de cápsulas. El importe (60 euros) y la cantidad (dos) se entendieron bien.
+- **El escenario 01 cuenta como correcto aunque se compró otra cosa.** Sus comprobaciones se refieren al «primer candidato», al que la tienda fija precio y existencias para que el resultado no dependa de qué producto salga; ninguna mira que sea una cafetera. La expectativa se deja como está. El «6 de 6» dice que el flujo y la tienda son coherentes en los seis, no que en los seis se comprara lo pedido: en uno no.
 - **Los demás turnos no cambian nada.** En 02 la consulta sale con otra mayúscula («auriculares Bluetooth») y devuelve los mismos candidatos, igual que con el audio sintético. En 05 «Busco» se entendió «Busca» y la búsqueda fue la misma. En 03, 04 y 06 las operaciones y la tienda final son las de la transcripción correcta.
-- **¿Es un fallo sistemático con esta voz?** No se puede afirmar. En 31 grabaciones hay dos palabras cambiadas, las dos una terminación en la primera frase de una búsqueda («cafetera» → «cafetería», «Busco» → «Busca»), y una sola cambió la compra. Ningún número se entendió mal. Lo que varía es cómo los escribe Whisper: con letras en «Añade dos de la primera» o «Mejor que sean cuatro», con cifras en «he dicho 12, no 2» y «Añade 3 de la primera». Con una toma por turno no se sabe si repetir la grabación daría la misma forma. No se ha corregido nada.
-- **Frente al hablante sintético.** Sus tres diferencias eran una sílaba añadida al final del audio, sin efecto en las operaciones. La voz real no tiene ese artefacto y su WER es menor, pero en dos escenarios lo que salió del ASR cambió el resultado.
-- **La voz generada y la latencia** apenas cambian con la procedencia del audio de entrada: el TTS depende de la respuesta. La corrida con la voz real tiene un turno más con LLM porque en 05 el «Sí, confirmo» final no tenía cotización que confirmar y lo atendió el LLM. El máximo de 25,47 s es el turno 1 de 05, cuya respuesta enumera cinco productos (17,23 s de TTS). Los errores de inteligibilidad siguen siendo marcas que no son palabras («Newdora» → «Neudora», «TENQUAN» → «Tenkwan»).
-- **Sin verificar:** nadie ha escuchado las grabaciones (la correspondencia con el guion se comprobó solo con el ASR); el juicio de oído sobre la voz clonada; Colab. Es una corrida, con un hablante, un micrófono y una toma por turno. La comprobación de la causa en 05 son dos corridas por texto de un escenario.
+- **¿Es un fallo sistemático con esta voz?** No se puede afirmar. En 31 grabaciones hay dos palabras cambiadas, las dos una terminación en la primera frase de una búsqueda («cafetera» → «cafetería», «Busco» → «Busca»), y una sola cambió la compra. Ningún número se entendió mal. Lo que varía es cómo los escribe Whisper: con letras en «Añade dos de la primera» o «Mejor que sean cuatro», con cifras en «he dicho 12, no 2» y «Añade 3 de la primera». Con una toma por turno no se sabe si repetir la grabación daría la misma forma.
+- **Frente al hablante sintético.** Sus tres diferencias eran una sílaba añadida al final del audio, sin efecto en las operaciones. La voz real no tiene ese artefacto y su WER es menor, pero lo que salió del ASR cambió el resultado en dos escenarios antes de la corrección y en uno después.
+- **La voz generada y la latencia** apenas cambian con la procedencia del audio de entrada: el TTS depende de la respuesta. El máximo de 25,55 s es el turno 1 de 05, cuya respuesta enumera cinco productos (17,26 s de TTS). Los errores de inteligibilidad siguen siendo marcas que no son palabras («Newdora» → «Neudora», «TENQUAN» → «Tenkwan»).
+- **Sin verificar:** nadie ha escuchado las grabaciones (la correspondencia con el guion se comprobó solo con el ASR); el juicio de oído sobre la voz clonada; Colab. Es una corrida, con un hablante, un micrófono y una toma por turno. Las corridas por texto de los 20 escenarios y la reserva anterior (21 a 24) no se repitieron con el agente corregido, por el motivo dicho arriba.
 
 ## 7. Cronograma
 
@@ -427,7 +442,7 @@ Dependencias a añadir: `langgraph-checkpoint-postgres`, `psycopg[binary,pool]`,
 
 - Modelo exacto de embeddings (por ahora `intfloat/multilingual-e5-small`). El LLM ya está elegido: Qwen2.5-7B-Instruct Q4_K_M.
 - Comprobar en Colab la instalación de Postgres, de `llama-cpp-python` con CUDA y de las dependencias de voz (`torchaudio`, `torchcodec`, FFmpeg).
-- Decidir si se hace algo con los dos efectos del ASR con la voz real: «cafetera» → «cafetería» cambia la compra en el escenario 01, y «he dicho 12, no 2», con cifras, hace fallar el 05. Opciones sin probar: dar vocabulario del dominio a Whisper, pasar a letras los números de la transcripción antes de dársela al LLM, o que el agente repita qué ha buscado. No se ha tocado nada.
+- Decidir si se hace algo con el error del ASR que cambia la compra («cafetera» → «cafetería», escenario 01 con la voz real). Opciones sin probar: dar vocabulario del dominio a Whisper, o que el agente repita qué ha buscado. No se ha tocado nada. El otro efecto, los números escritos con cifras en el escenario 05, se corrigió el 12 de noviembre.
 - Las respuestas con el carrito completo dan audios de 25 a 47 s; valorar una versión hablada más breve.
 - Decidir, a la vista de test, si el reranker por defecto sigue siendo el control: allí GraphSAGE lo supera en +0,0071 de nDCG@10 (IC [+0,0028; +0,0117]). Es una decisión posterior a ver test y hay que decirlo si se toma.
 - La evaluación en test y las corridas de escenarios están hechas con `multilingual-e5-small`. Cambiar el modelo de embeddings obligaría a repetirlas, y la de test dejaría de ser una evaluación única.

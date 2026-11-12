@@ -1,0 +1,139 @@
+{
+  "date": "2026-11-12T00:38:35",
+  "commit": "fbe4fda",
+  "memory_backend": "postgres",
+  "models": {
+    "llm": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+    "asr": null,
+    "tts": null,
+    "embeddings": "intfloat/multilingual-e5-small",
+    "reranker": null
+  },
+  "voice": {},
+  "load": {
+    "search_seconds": 151.6,
+    "llm_seconds": 0.7,
+    "asr_seconds": null,
+    "tts_seconds": null,
+    "total_seconds": 152.7,
+    "vram_mib": {
+      "search": 604,
+      "llm": 5718,
+      "asr": 5718,
+      "loaded": 5718
+    }
+  },
+  "input": "texto",
+  "audio_sources": {},
+  "scenarios": [
+    {
+      "id": "25_correccion_con_cifras",
+      "title": "Corregir una cantidad con cifras antes de confirmar",
+      "kind": "correccion_con_cifras",
+      "passed": true
+    },
+    {
+      "id": "26_presupuesto_con_carrito",
+      "title": "Presupuesto dicho con el carrito lleno y cantidad con cifras",
+      "kind": "presupuesto_con_carrito",
+      "passed": true
+    }
+  ],
+  "summary": {
+    "scenarios": 2,
+    "passed": 2,
+    "pass_rate": 1.0,
+    "failed": [],
+    "turns": 12,
+    "violations": {
+      "cantidad": 0,
+      "presupuesto": 0,
+      "existencias": 0,
+      "pedido_duplicado": 0,
+      "cambio_parcial": 0
+    },
+    "timings": {
+      "all": {
+        "turns": 12,
+        "asr": {
+          "mean": 0.0,
+          "max": 0.0
+        },
+        "retrieval": {
+          "mean": 0.0,
+          "max": 0.03
+        },
+        "llm": {
+          "mean": 4.4,
+          "max": 9.07
+        },
+        "tools": {
+          "mean": 0.04,
+          "max": 0.05
+        },
+        "tts": {
+          "mean": 0.0,
+          "max": 0.0
+        },
+        "total": {
+          "mean": 4.44,
+          "max": 9.13
+        }
+      },
+      "with_llm": {
+        "turns": 10,
+        "asr": {
+          "mean": 0.0,
+          "max": 0.0
+        },
+        "retrieval": {
+          "mean": 0.01,
+          "max": 0.03
+        },
+        "llm": {
+          "mean": 5.28,
+          "max": 9.07
+        },
+        "tools": {
+          "mean": 0.04,
+          "max": 0.05
+        },
+        "tts": {
+          "mean": 0.0,
+          "max": 0.0
+        },
+        "total": {
+          "mean": 5.32,
+          "max": 9.13
+        }
+      },
+      "without_llm": {
+        "turns": 2,
+        "asr": {
+          "mean": 0.0,
+          "max": 0.0
+        },
+        "retrieval": {
+          "mean": 0.0,
+          "max": 0.0
+        },
+        "llm": {
+          "mean": 0.0,
+          "max": 0.0
+        },
+        "tools": {
+          "mean": 0.03,
+          "max": 0.03
+        },
+        "tts": {
+          "mean": 0.0,
+          "max": 0.0
+        },
+        "total": {
+          "mean": 0.03,
+          "max": 0.03
+        }
+      }
+    }
+  }
+}

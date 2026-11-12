@@ -445,8 +445,8 @@
       "by_source": []
     },
     "voz": {
-      "date": "2026-11-11T23:31:39",
-      "commit": "7e21a71",
+      "date": "2026-11-12T00:23:27",
+      "commit": "885515a",
       "input": "audio",
       "models": {
         "llm": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
@@ -460,11 +460,11 @@
         "speaker": null
       },
       "load": {
-        "search_seconds": 16.1,
+        "search_seconds": 16.0,
         "llm_seconds": 0.7,
-        "asr_seconds": 1.1,
-        "tts_seconds": 8.2,
-        "total_seconds": 36.6,
+        "asr_seconds": 1.0,
+        "tts_seconds": 9.0,
+        "total_seconds": 27.3,
         "vram_mib": {
           "search": 706,
           "llm": 5820,
@@ -482,11 +482,9 @@
         "06_cambio_stock_confirmacion_repetida": "grabaciones del usuario"
       },
       "scenarios": 6,
-      "passed": 5,
-      "pass_rate": 0.8333333333333334,
-      "failed": [
-        "05_correccion_transcripcion"
-      ],
+      "passed": 6,
+      "pass_rate": 1.0,
+      "failed": [],
       "turns": 31,
       "violations": {
         "cantidad": 0,
@@ -500,81 +498,81 @@
           "turns": 31,
           "asr": {
             "mean": 0.34,
-            "max": 0.57
+            "max": 0.55
           },
           "retrieval": {
             "mean": 0.01,
             "max": 0.03
           },
           "llm": {
-            "mean": 4.14,
-            "max": 10.01
+            "mean": 3.89,
+            "max": 9.96
           },
           "tools": {
             "mean": 0.04,
             "max": 0.06
           },
           "tts": {
-            "mean": 5.92,
-            "max": 17.23
+            "mean": 6.07,
+            "max": 17.26
           },
           "total": {
-            "mean": 10.44,
-            "max": 25.47
+            "mean": 10.36,
+            "max": 25.55
           }
         },
         "with_llm": {
-          "turns": 25,
+          "turns": 24,
           "asr": {
             "mean": 0.35,
-            "max": 0.57
+            "max": 0.55
           },
           "retrieval": {
             "mean": 0.01,
             "max": 0.03
           },
           "llm": {
-            "mean": 5.14,
-            "max": 10.01
+            "mean": 5.03,
+            "max": 9.96
           },
           "tools": {
             "mean": 0.04,
             "max": 0.06
           },
           "tts": {
-            "mean": 6.24,
-            "max": 17.23
+            "mean": 6.54,
+            "max": 17.26
           },
           "total": {
-            "mean": 11.77,
-            "max": 25.47
+            "mean": 11.97,
+            "max": 25.55
           }
         },
         "without_llm": {
-          "turns": 6,
+          "turns": 7,
           "asr": {
             "mean": 0.32,
-            "max": 0.33
+            "max": 0.34
           },
           "retrieval": {
             "mean": 0.0,
-            "max": 0.02
+            "max": 0.03
           },
           "llm": {
             "mean": 0.0,
             "max": 0.0
           },
           "tools": {
-            "mean": 0.03,
+            "mean": 0.04,
             "max": 0.04
           },
           "tts": {
-            "mean": 4.57,
-            "max": 10.64
+            "mean": 4.47,
+            "max": 10.66
           },
           "total": {
-            "mean": 4.93,
-            "max": 11.0
+            "mean": 4.83,
+            "max": 11.02
           }
         }
       },
@@ -583,88 +581,10 @@
         "02_pedido_ambiguo": true,
         "03_cambio_cantidad": true,
         "04_sin_existencias": true,
-        "05_correccion_transcripcion": false,
+        "05_correccion_transcripcion": true,
         "06_cambio_stock_confirmacion_repetida": true
       },
-      "failed_checks": {
-        "05_correccion_transcripcion": [
-          {
-            "turn": 4,
-            "check": "cart",
-            "params": {
-              "lines": [
-                {
-                  "product": "@elegido",
-                  "quantity": 12
-                }
-              ]
-            },
-            "ok": false,
-            "detail": "carrito: 2 × B08P34RJSX"
-          },
-          {
-            "turn": 5,
-            "check": "awaiting_confirmation",
-            "params": {
-              "value": true
-            },
-            "ok": false,
-            "detail": "esperando confirmación: no"
-          },
-          {
-            "turn": 6,
-            "check": "orders",
-            "params": {
-              "count": 1
-            },
-            "ok": false,
-            "detail": "pedidos registrados: 0"
-          },
-          {
-            "turn": "final",
-            "check": "orders",
-            "params": {
-              "count": 1
-            },
-            "ok": false,
-            "detail": "pedidos registrados: 0"
-          },
-          {
-            "turn": "final",
-            "check": "order",
-            "params": {
-              "lines": [
-                {
-                  "product": "@elegido",
-                  "quantity": 12
-                }
-              ],
-              "total_cents": 13200
-            },
-            "ok": false,
-            "detail": "no hay ningún pedido"
-          },
-          {
-            "turn": "final",
-            "check": "stock",
-            "params": {
-              "product": "@elegido",
-              "equals": 8
-            },
-            "ok": false,
-            "detail": "existencias de B08P34RJSX: 20"
-          },
-          {
-            "turn": "final",
-            "check": "cart",
-            "params": {
-              "empty": true
-            },
-            "ok": false,
-            "detail": "carrito: 2 × B08P34RJSX"
-          }
-        ]
-      },
+      "failed_checks": {},
       "voice_metrics": {
         "asr": {
           "cases": 31,
@@ -688,8 +608,8 @@
         },
         "tts": {
           "cases": 31,
-          "wer": 0.03414264036418816,
-          "similarity_mean": 0.742144684311484,
+          "wer": 0.033707865168539325,
+          "similarity_mean": 0.7407916814088057,
           "similarity_min": 0.5005643381032236
         }
       },
@@ -705,11 +625,9 @@
             "06_cambio_stock_confirmacion_repetida"
           ],
           "scenarios": 6,
-          "passed": 5,
-          "pass_rate": 0.8333333333333334,
-          "failed": [
-            "05_correccion_transcripcion"
-          ],
+          "passed": 6,
+          "pass_rate": 1.0,
+          "failed": [],
           "turns": 31,
           "violations": {
             "cantidad": 0,
@@ -723,81 +641,81 @@
               "turns": 31,
               "asr": {
                 "mean": 0.34,
-                "max": 0.57
+                "max": 0.55
               },
               "retrieval": {
                 "mean": 0.01,
                 "max": 0.03
               },
               "llm": {
-                "mean": 4.14,
-                "max": 10.01
+                "mean": 3.89,
+                "max": 9.96
               },
               "tools": {
                 "mean": 0.04,
                 "max": 0.06
               },
               "tts": {
-                "mean": 5.92,
-                "max": 17.23
+                "mean": 6.07,
+                "max": 17.26
               },
               "total": {
-                "mean": 10.44,
-                "max": 25.47
+                "mean": 10.36,
+                "max": 25.55
               }
             },
             "with_llm": {
-              "turns": 25,
+              "turns": 24,
               "asr": {
                 "mean": 0.35,
-                "max": 0.57
+                "max": 0.55
               },
               "retrieval": {
                 "mean": 0.01,
                 "max": 0.03
               },
               "llm": {
-                "mean": 5.14,
-                "max": 10.01
+                "mean": 5.03,
+                "max": 9.96
               },
               "tools": {
                 "mean": 0.04,
                 "max": 0.06
               },
               "tts": {
-                "mean": 6.24,
-                "max": 17.23
+                "mean": 6.54,
+                "max": 17.26
               },
               "total": {
-                "mean": 11.77,
-                "max": 25.47
+                "mean": 11.97,
+                "max": 25.55
               }
             },
             "without_llm": {
-              "turns": 6,
+              "turns": 7,
               "asr": {
                 "mean": 0.32,
-                "max": 0.33
+                "max": 0.34
               },
               "retrieval": {
                 "mean": 0.0,
-                "max": 0.02
+                "max": 0.03
               },
               "llm": {
                 "mean": 0.0,
                 "max": 0.0
               },
               "tools": {
-                "mean": 0.03,
+                "mean": 0.04,
                 "max": 0.04
               },
               "tts": {
-                "mean": 4.57,
-                "max": 10.64
+                "mean": 4.47,
+                "max": 10.66
               },
               "total": {
-                "mean": 4.93,
-                "max": 11.0
+                "mean": 4.83,
+                "max": 11.02
               }
             }
           },
@@ -823,8 +741,8 @@
           },
           "tts": {
             "cases": 31,
-            "wer": 0.03414264036418816,
-            "similarity_mean": 0.742144684311484,
+            "wer": 0.033707865168539325,
+            "similarity_mean": 0.7407916814088057,
             "similarity_min": 0.5005643381032236
           },
           "asr_differences": [
@@ -845,8 +763,8 @@
       ]
     },
     "voz_texto_correcto": {
-      "date": "2026-11-11T23:31:39",
-      "commit": "7e21a71",
+      "date": "2026-11-12T00:23:27",
+      "commit": "885515a",
       "input": "texto",
       "models": {
         "llm": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
@@ -860,11 +778,11 @@
         "speaker": null
       },
       "load": {
-        "search_seconds": 16.1,
+        "search_seconds": 16.0,
         "llm_seconds": 0.7,
-        "asr_seconds": 1.1,
-        "tts_seconds": 8.2,
-        "total_seconds": 36.6,
+        "asr_seconds": 1.0,
+        "tts_seconds": 9.0,
+        "total_seconds": 27.3,
         "vram_mib": {
           "search": 706,
           "llm": 5820,
@@ -899,7 +817,7 @@
           },
           "llm": {
             "mean": 3.91,
-            "max": 8.94
+            "max": 8.9
           },
           "tools": {
             "mean": 0.04,
@@ -910,8 +828,8 @@
             "max": 0.0
           },
           "total": {
-            "mean": 3.96,
-            "max": 9.0
+            "mean": 3.95,
+            "max": 8.96
           }
         },
         "with_llm": {
@@ -926,7 +844,7 @@
           },
           "llm": {
             "mean": 5.05,
-            "max": 8.94
+            "max": 8.9
           },
           "tools": {
             "mean": 0.04,
@@ -938,7 +856,7 @@
           },
           "total": {
             "mean": 5.1,
-            "max": 9.0
+            "max": 8.96
           }
         },
         "without_llm": {
@@ -1454,6 +1372,396 @@
       "voice_metrics": null,
       "by_source": []
     },
+    "reserva_cifras": {
+      "date": "2026-11-12T00:33:52",
+      "commit": "fbe4fda",
+      "input": "texto",
+      "models": {
+        "llm": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+        "asr": null,
+        "tts": null,
+        "embeddings": "intfloat/multilingual-e5-small",
+        "reranker": "control"
+      },
+      "voice": {},
+      "load": {
+        "search_seconds": 16.2,
+        "llm_seconds": 0.8,
+        "asr_seconds": null,
+        "tts_seconds": null,
+        "total_seconds": 27.3,
+        "vram_mib": {
+          "search": 706,
+          "llm": 5820,
+          "asr": 5820,
+          "loaded": 5820
+        }
+      },
+      "memory_backend": "postgres",
+      "audio_sources": {},
+      "scenarios": 2,
+      "passed": 2,
+      "pass_rate": 1.0,
+      "failed": [],
+      "turns": 12,
+      "violations": {
+        "cantidad": 0,
+        "presupuesto": 0,
+        "existencias": 0,
+        "pedido_duplicado": 0,
+        "cambio_parcial": 0
+      },
+      "timings": {
+        "all": {
+          "turns": 12,
+          "asr": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "retrieval": {
+            "mean": 0.0,
+            "max": 0.03
+          },
+          "llm": {
+            "mean": 4.52,
+            "max": 8.09
+          },
+          "tools": {
+            "mean": 0.04,
+            "max": 0.05
+          },
+          "tts": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "total": {
+            "mean": 4.56,
+            "max": 8.12
+          }
+        },
+        "with_llm": {
+          "turns": 10,
+          "asr": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "retrieval": {
+            "mean": 0.01,
+            "max": 0.03
+          },
+          "llm": {
+            "mean": 5.42,
+            "max": 8.09
+          },
+          "tools": {
+            "mean": 0.04,
+            "max": 0.05
+          },
+          "tts": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "total": {
+            "mean": 5.47,
+            "max": 8.12
+          }
+        },
+        "without_llm": {
+          "turns": 2,
+          "asr": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "retrieval": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "llm": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "tools": {
+            "mean": 0.03,
+            "max": 0.03
+          },
+          "tts": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "total": {
+            "mean": 0.03,
+            "max": 0.03
+          }
+        }
+      },
+      "verdicts": {
+        "25_correccion_con_cifras": true,
+        "26_presupuesto_con_carrito": true
+      },
+      "failed_checks": {},
+      "voice_metrics": null,
+      "by_source": []
+    },
+    "reserva_cifras_sage": {
+      "date": "2026-11-12T00:35:06",
+      "commit": "fbe4fda",
+      "input": "texto",
+      "models": {
+        "llm": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+        "asr": null,
+        "tts": null,
+        "embeddings": "intfloat/multilingual-e5-small",
+        "reranker": "sage"
+      },
+      "voice": {},
+      "load": {
+        "search_seconds": 16.2,
+        "llm_seconds": 0.7,
+        "asr_seconds": null,
+        "tts_seconds": null,
+        "total_seconds": 17.2,
+        "vram_mib": {
+          "search": 930,
+          "llm": 6044,
+          "asr": 6044,
+          "loaded": 6044
+        }
+      },
+      "memory_backend": "postgres",
+      "audio_sources": {},
+      "scenarios": 2,
+      "passed": 2,
+      "pass_rate": 1.0,
+      "failed": [],
+      "turns": 12,
+      "violations": {
+        "cantidad": 0,
+        "presupuesto": 0,
+        "existencias": 0,
+        "pedido_duplicado": 0,
+        "cambio_parcial": 0
+      },
+      "timings": {
+        "all": {
+          "turns": 12,
+          "asr": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "retrieval": {
+            "mean": 0.01,
+            "max": 0.04
+          },
+          "llm": {
+            "mean": 4.42,
+            "max": 8.97
+          },
+          "tools": {
+            "mean": 0.04,
+            "max": 0.06
+          },
+          "tts": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "total": {
+            "mean": 4.46,
+            "max": 9.05
+          }
+        },
+        "with_llm": {
+          "turns": 10,
+          "asr": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "retrieval": {
+            "mean": 0.01,
+            "max": 0.04
+          },
+          "llm": {
+            "mean": 5.3,
+            "max": 8.97
+          },
+          "tools": {
+            "mean": 0.04,
+            "max": 0.06
+          },
+          "tts": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "total": {
+            "mean": 5.35,
+            "max": 9.05
+          }
+        },
+        "without_llm": {
+          "turns": 2,
+          "asr": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "retrieval": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "llm": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "tools": {
+            "mean": 0.03,
+            "max": 0.03
+          },
+          "tts": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "total": {
+            "mean": 0.03,
+            "max": 0.03
+          }
+        }
+      },
+      "verdicts": {
+        "25_correccion_con_cifras": true,
+        "26_presupuesto_con_carrito": true
+      },
+      "failed_checks": {},
+      "voice_metrics": null,
+      "by_source": []
+    },
+    "reserva_cifras_sin_reranker": {
+      "date": "2026-11-12T00:38:35",
+      "commit": "fbe4fda",
+      "input": "texto",
+      "models": {
+        "llm": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+        "asr": null,
+        "tts": null,
+        "embeddings": "intfloat/multilingual-e5-small",
+        "reranker": null
+      },
+      "voice": {},
+      "load": {
+        "search_seconds": 151.6,
+        "llm_seconds": 0.7,
+        "asr_seconds": null,
+        "tts_seconds": null,
+        "total_seconds": 152.7,
+        "vram_mib": {
+          "search": 604,
+          "llm": 5718,
+          "asr": 5718,
+          "loaded": 5718
+        }
+      },
+      "memory_backend": "postgres",
+      "audio_sources": {},
+      "scenarios": 2,
+      "passed": 2,
+      "pass_rate": 1.0,
+      "failed": [],
+      "turns": 12,
+      "violations": {
+        "cantidad": 0,
+        "presupuesto": 0,
+        "existencias": 0,
+        "pedido_duplicado": 0,
+        "cambio_parcial": 0
+      },
+      "timings": {
+        "all": {
+          "turns": 12,
+          "asr": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "retrieval": {
+            "mean": 0.0,
+            "max": 0.03
+          },
+          "llm": {
+            "mean": 4.4,
+            "max": 9.07
+          },
+          "tools": {
+            "mean": 0.04,
+            "max": 0.05
+          },
+          "tts": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "total": {
+            "mean": 4.44,
+            "max": 9.13
+          }
+        },
+        "with_llm": {
+          "turns": 10,
+          "asr": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "retrieval": {
+            "mean": 0.01,
+            "max": 0.03
+          },
+          "llm": {
+            "mean": 5.28,
+            "max": 9.07
+          },
+          "tools": {
+            "mean": 0.04,
+            "max": 0.05
+          },
+          "tts": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "total": {
+            "mean": 5.32,
+            "max": 9.13
+          }
+        },
+        "without_llm": {
+          "turns": 2,
+          "asr": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "retrieval": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "llm": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "tools": {
+            "mean": 0.03,
+            "max": 0.03
+          },
+          "tts": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "total": {
+            "mean": 0.03,
+            "max": 0.03
+          }
+        }
+      },
+      "verdicts": {
+        "25_correccion_con_cifras": true,
+        "26_presupuesto_con_carrito": true
+      },
+      "failed_checks": {},
+      "voice_metrics": null,
+      "by_source": []
+    },
     "reserva_sage": {
       "date": "2026-11-10T17:16:00",
       "commit": "9a1a276",
@@ -1785,17 +2093,13 @@
       },
       {
         "id": "05_correccion_transcripcion",
-        "passed_audio": false,
+        "passed_audio": true,
         "passed_text": true,
         "asr_changed_words": [
           1
         ],
-        "different_operations": [
-          4,
-          5,
-          6
-        ],
-        "same_store": false
+        "different_operations": [],
+        "same_store": true
       },
       {
         "id": "06_cambio_stock_confirmacion_repetida",

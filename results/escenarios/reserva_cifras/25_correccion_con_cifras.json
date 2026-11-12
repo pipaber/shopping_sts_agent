@@ -1,0 +1,1662 @@
+{
+  "id": "25_correccion_con_cifras",
+  "title": "Corregir una cantidad con cifras antes de confirmar",
+  "kind": "correccion_con_cifras",
+  "description": "Escenario de reserva, escrito antes de corregir el agente y sin ejecutarlo. Con la cotización pendiente, el usuario corrige la cantidad escribiendo los números con cifras («Perdona, eran 14, no 4.»), como los escribe a veces el ASR. El agente debe cambiar la cantidad, no fijar un presupuesto; el pedido final lleva catorce.",
+  "voice": false,
+  "input": "texto",
+  "audio_source": null,
+  "user_id": "eval-b71c0ca4-25_correccion_con_cifras",
+  "threads": [
+    "eval-b71c0ca4-25_correccion_con_cifras-c1"
+  ],
+  "names": {
+    "elegidas": "B077CTJZG7"
+  },
+  "steps": [
+    {
+      "kind": "turn",
+      "turn": 1,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Necesito unas pilas recargables.",
+      "agent_input": "Necesito unas pilas recargables.",
+      "response": "Tengo una opción de PRITECH por 5,11 euros, un cargador de pilas BONAI por 14,97 euros, y dos empujadores recargables de LATIGO, uno de 9,28 euros y otro de 17,92 euros. ¿Te interesa alguna?",
+      "spoken_text": "Tengo una opción de PRITECH por cinco euros con once céntimos, un cargador de pilas BONAI por catorce euros con noventa y siete céntimos, y dos empujadores recargables de LATIGO, uno de nueve euros con veintiocho céntimos y otro de diecisiete euros con noventa y dos céntimos. ¿Te interesa alguna?",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "buscar_productos",
+          "args": {
+            "consulta": "pilas recargables"
+          },
+          "reason": "buscar pilas recargables",
+          "ok": true,
+          "summary": "estos son ahora los CANDIDATOS, del más al menos relevante:\n[1] id=B077CTJZG7 | PRITECH - Quitapelusas regargable USB Adecuado para Todas Las Prendas, con Orificios de 3 tamaños en la Rejilla para Pelusas de Cualquier tamaño Dos Posiciones. Modelo ES1048. (Azul) | marca: PRITECH | color: Azul | precio: 5,11 € | existencias: 4 | características (extracto): Quitapelusas recargable que incluye: 1 cepillo de limpieza, 1 tapa de ajuste de altura y un cable para recargar Cuchillas de acero inoxidable de alta calidad de dos alturas y orificios de 3 tamaños en el cabezal de corte para atrapar… | descripción: Elimina de forma rápida y fácil las bolitas de tejido de las prendas con el quitapelusas de Pritech. Este práctico aparato ayuda a que las prendas se vean como nuevas. Ideal para cualquier prenda, ya…\n[2] id=B07F58PXYR | BONAI LCD Cargador de Pilas Inteligente para AA/AAA/SC/C/D /9V Ni-MH/Ni-CD, 4 Ranura Independiente y Auto-Detección, Universal Cargador Pilas con Función de Descarga (Cargador de batería AC) | marca: BONAI | color: desconocido | precio: 14,97 € | existencias: 45 | características (extracto): 🔋Multifunción: BONAI Cargador de Pilas Inteligente 4 Ranura de carga independiente. Puede cargar aleatoriamente hasta1-4 baterías de tamaño AA / AAA / C / D Ni-MH/Ni-CD de 1.2V, o 2 baterías recargables de 9V al mismo tiempo.Cada ranura… | descripción: desconocido\n[3] id=B01N7IWX0G | EMPUJADOR RECARGABLE DE 1,34 METROS CON PILA Y CARGADOR | marca: LATIGO | color: desconocido | precio: 42,86 € | existencias: 30 | características (extracto): Alargadera de 134 cm Bateria y cargador incluidos | descripción: EMPUJADOR ELECTRICO RECARGABLE DE 1,34 METROS CON PILAS Y CARGADOR\n[4] id=B01MRYAMYZ | EMPUJADOR RECARGABLE DE 1,10 METROS CON PILA Y CARGADOR | marca: LATIGO | color: desconocido | precio: 9,28 € | existencias: 41 | características (extracto): Alargadera de 110 cm Bateria y cargador incluidos | descripción: EMPUJADOR ELECTRICO RECARGABLE DE 1,10 METROS, PILA Y CARGADOR\n[5] id=B01N7IYV3U | EMPUJADOR RECARGABLE DE 58 CMS CON PILA Y CARGADOR | marca: LATIGO | color: desconocido | precio: 17,92 € | existencias: 33 | características (extracto): Alargadera de 58 cm Bateria y cargador incluidos | descripción: EMPUJADOR ELECTRICO DE 58 CMS CON PILA Y CARGADOR",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.03,
+        "llm": 7.878,
+        "tools": 0.035,
+        "tts": 0.0,
+        "total": 7.943
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-b71c0ca4-25_correccion_con_cifras-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {}
+      },
+      "after": {
+        "cart_id": "eval-b71c0ca4-25_correccion_con_cifras-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B077CTJZG7",
+              "title": "PRITECH - Quitapelusas regargable USB Adecuado para Todas Las Prendas, con Orificios de 3 tamaños en la Rejilla para Pelusas de Cualquier tamaño Dos Posiciones. Modelo ES1048. (Azul)",
+              "brand": "PRITECH",
+              "price_cents": 511,
+              "stock": 4
+            },
+            {
+              "product_id": "B07F58PXYR",
+              "title": "BONAI LCD Cargador de Pilas Inteligente para AA/AAA/SC/C/D /9V Ni-MH/Ni-CD, 4 Ranura Independiente y Auto-Detección, Universal Cargador Pilas con Función de Descarga (Cargador de batería AC)",
+              "brand": "BONAI",
+              "price_cents": 1497,
+              "stock": 45
+            },
+            {
+              "product_id": "B01N7IWX0G",
+              "title": "EMPUJADOR RECARGABLE DE 1,34 METROS CON PILA Y CARGADOR",
+              "brand": "LATIGO",
+              "price_cents": 4286,
+              "stock": 30
+            },
+            {
+              "product_id": "B01MRYAMYZ",
+              "title": "EMPUJADOR RECARGABLE DE 1,10 METROS CON PILA Y CARGADOR",
+              "brand": "LATIGO",
+              "price_cents": 928,
+              "stock": 41
+            },
+            {
+              "product_id": "B01N7IYV3U",
+              "title": "EMPUJADOR RECARGABLE DE 58 CMS CON PILA Y CARGADOR",
+              "brand": "LATIGO",
+              "price_cents": 1792,
+              "stock": 33
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {
+          "B01MRYAMYZ": {
+            "price_cents": 928,
+            "stock": 41
+          },
+          "B01N7IWX0G": {
+            "price_cents": 4286,
+            "stock": 30
+          },
+          "B01N7IYV3U": {
+            "price_cents": 1792,
+            "stock": 33
+          },
+          "B077CTJZG7": {
+            "price_cents": 511,
+            "stock": 4
+          },
+          "B07F58PXYR": {
+            "price_cents": 1497,
+            "stock": 45
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        }
+      ]
+    },
+    {
+      "kind": "remember",
+      "name": "elegidas",
+      "ref": "candidate:1",
+      "product_id": "B077CTJZG7",
+      "title": "PRITECH - Quitapelusas regargable USB Adecuado para Todas Las Prendas, con Orificios de 3 tamaños en la Rejilla para Pelusas de Cualquier tamaño Dos Posiciones. Modelo ES1048. (Azul)"
+    },
+    {
+      "kind": "event",
+      "event": "set_offer",
+      "product": "@elegidas",
+      "product_id": "B077CTJZG7",
+      "price_cents": 300,
+      "stock": 30
+    },
+    {
+      "kind": "turn",
+      "turn": 2,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Ponme cuatro de la primera.",
+      "agent_input": "Ponme cuatro de la primera.",
+      "response": "Hecho, añadidas cuatro unidades. El total es 12,00 euros. En el carrito hay 4 unidades de «PRITECH - Quitapelusas regargable USB Adecuado para Todas Las…» a 3,00 € cada una, 12,00 €. Total: 12,00 €.",
+      "spoken_text": "Hecho, añadidas cuatro unidades. El total es doce euros. En el carrito hay cuatro unidades de PRITECH a tres euros cada una, doce euros. Total: doce euros.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "agregar_al_carrito",
+          "args": {
+            "product_id": "B077CTJZG7",
+            "cantidad": 4
+          },
+          "reason": "añadir cuatro unidades del candidato 1",
+          "ok": true,
+          "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B077CTJZG7 | PRITECH - Quitapelusas regargable USB Adecuado para Todas Las… | 4 unidades × 3,00 € = 12,00 € | existencias: 30\nTotal del carrito: 12,00 €",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 4.942,
+        "tools": 0.052,
+        "tts": 0.0,
+        "total": 4.994
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-b71c0ca4-25_correccion_con_cifras-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B077CTJZG7",
+              "title": "PRITECH - Quitapelusas regargable USB Adecuado para Todas Las Prendas, con Orificios de 3 tamaños en la Rejilla para Pelusas de Cualquier tamaño Dos Posiciones. Modelo ES1048. (Azul)",
+              "brand": "PRITECH",
+              "price_cents": 511,
+              "stock": 4
+            },
+            {
+              "product_id": "B07F58PXYR",
+              "title": "BONAI LCD Cargador de Pilas Inteligente para AA/AAA/SC/C/D /9V Ni-MH/Ni-CD, 4 Ranura Independiente y Auto-Detección, Universal Cargador Pilas con Función de Descarga (Cargador de batería AC)",
+              "brand": "BONAI",
+              "price_cents": 1497,
+              "stock": 45
+            },
+            {
+              "product_id": "B01N7IWX0G",
+              "title": "EMPUJADOR RECARGABLE DE 1,34 METROS CON PILA Y CARGADOR",
+              "brand": "LATIGO",
+              "price_cents": 4286,
+              "stock": 30
+            },
+            {
+              "product_id": "B01MRYAMYZ",
+              "title": "EMPUJADOR RECARGABLE DE 1,10 METROS CON PILA Y CARGADOR",
+              "brand": "LATIGO",
+              "price_cents": 928,
+              "stock": 41
+            },
+            {
+              "product_id": "B01N7IYV3U",
+              "title": "EMPUJADOR RECARGABLE DE 58 CMS CON PILA Y CARGADOR",
+              "brand": "LATIGO",
+              "price_cents": 1792,
+              "stock": 33
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B077CTJZG7",
+              "initial_stock": 4,
+              "stock": 30
+            }
+          ]
+        },
+        "offers": {
+          "B01MRYAMYZ": {
+            "price_cents": 928,
+            "stock": 41
+          },
+          "B01N7IWX0G": {
+            "price_cents": 4286,
+            "stock": 30
+          },
+          "B01N7IYV3U": {
+            "price_cents": 1792,
+            "stock": 33
+          },
+          "B077CTJZG7": {
+            "price_cents": 300,
+            "stock": 30
+          },
+          "B07F58PXYR": {
+            "price_cents": 1497,
+            "stock": 45
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-b71c0ca4-25_correccion_con_cifras-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B077CTJZG7",
+              "title": "PRITECH - Quitapelusas regargable USB Adecuado para Todas Las Prendas, con Orificios de 3 tamaños en la Rejilla para Pelusas de Cualquier tamaño Dos Posiciones. Modelo ES1048. (Azul)",
+              "brand": "PRITECH",
+              "price_cents": 300,
+              "stock": 30
+            },
+            {
+              "product_id": "B07F58PXYR",
+              "title": "BONAI LCD Cargador de Pilas Inteligente para AA/AAA/SC/C/D /9V Ni-MH/Ni-CD, 4 Ranura Independiente y Auto-Detección, Universal Cargador Pilas con Función de Descarga (Cargador de batería AC)",
+              "brand": "BONAI",
+              "price_cents": 1497,
+              "stock": 45
+            },
+            {
+              "product_id": "B01N7IWX0G",
+              "title": "EMPUJADOR RECARGABLE DE 1,34 METROS CON PILA Y CARGADOR",
+              "brand": "LATIGO",
+              "price_cents": 4286,
+              "stock": 30
+            },
+            {
+              "product_id": "B01MRYAMYZ",
+              "title": "EMPUJADOR RECARGABLE DE 1,10 METROS CON PILA Y CARGADOR",
+              "brand": "LATIGO",
+              "price_cents": 928,
+              "stock": 41
+            },
+            {
+              "product_id": "B01N7IYV3U",
+              "title": "EMPUJADOR RECARGABLE DE 58 CMS CON PILA Y CARGADOR",
+              "brand": "LATIGO",
+              "price_cents": 1792,
+              "stock": 33
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-b71c0ca4-25_correccion_con_cifras-c1",
+              "product_id": "B077CTJZG7",
+              "quantity": 4
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B077CTJZG7",
+              "initial_stock": 4,
+              "stock": 30
+            }
+          ]
+        },
+        "offers": {
+          "B01MRYAMYZ": {
+            "price_cents": 928,
+            "stock": 41
+          },
+          "B01N7IWX0G": {
+            "price_cents": 4286,
+            "stock": 30
+          },
+          "B01N7IYV3U": {
+            "price_cents": 1792,
+            "stock": 33
+          },
+          "B077CTJZG7": {
+            "price_cents": 300,
+            "stock": 30
+          },
+          "B07F58PXYR": {
+            "price_cents": 1497,
+            "stock": 45
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "lines": [
+              {
+                "product": "@elegidas",
+                "quantity": 4
+              }
+            ]
+          },
+          "ok": true,
+          "detail": "carrito: 4 × B077CTJZG7"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 3,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Quiero pagar.",
+      "agent_input": "Quiero pagar.",
+      "response": "Te repito el pedido antes de registrarlo: 4 unidades de «PRITECH - Quitapelusas regargable USB Adecuado para Todas Las…» a 3,00 € cada una, 12,00 €. Total: 12,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "spoken_text": "Te repito el pedido antes de registrarlo: cuatro unidades de PRITECH a tres euros cada una, doce euros. Total: doce euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": true,
+      "operations": [
+        {
+          "tool": "cotizar",
+          "args": {},
+          "reason": "cotizar el carrito",
+          "ok": true,
+          "summary": "cotización creada; falta la confirmación del usuario.",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 1.901,
+        "tools": 0.041,
+        "tts": 0.0,
+        "total": 1.943
+      },
+      "llm_steps": 1,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-b71c0ca4-25_correccion_con_cifras-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B077CTJZG7",
+              "title": "PRITECH - Quitapelusas regargable USB Adecuado para Todas Las Prendas, con Orificios de 3 tamaños en la Rejilla para Pelusas de Cualquier tamaño Dos Posiciones. Modelo ES1048. (Azul)",
+              "brand": "PRITECH",
+              "price_cents": 300,
+              "stock": 30
+            },
+            {
+              "product_id": "B07F58PXYR",
+              "title": "BONAI LCD Cargador de Pilas Inteligente para AA/AAA/SC/C/D /9V Ni-MH/Ni-CD, 4 Ranura Independiente y Auto-Detección, Universal Cargador Pilas con Función de Descarga (Cargador de batería AC)",
+              "brand": "BONAI",
+              "price_cents": 1497,
+              "stock": 45
+            },
+            {
+              "product_id": "B01N7IWX0G",
+              "title": "EMPUJADOR RECARGABLE DE 1,34 METROS CON PILA Y CARGADOR",
+              "brand": "LATIGO",
+              "price_cents": 4286,
+              "stock": 30
+            },
+            {
+              "product_id": "B01MRYAMYZ",
+              "title": "EMPUJADOR RECARGABLE DE 1,10 METROS CON PILA Y CARGADOR",
+              "brand": "LATIGO",
+              "price_cents": 928,
+              "stock": 41
+            },
+            {
+              "product_id": "B01N7IYV3U",
+              "title": "EMPUJADOR RECARGABLE DE 58 CMS CON PILA Y CARGADOR",
+              "brand": "LATIGO",
+              "price_cents": 1792,
+              "stock": 33
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-b71c0ca4-25_correccion_con_cifras-c1",
+              "product_id": "B077CTJZG7",
+              "quantity": 4
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B077CTJZG7",
+              "initial_stock": 4,
+              "stock": 30
+            }
+          ]
+        },
+        "offers": {
+          "B01MRYAMYZ": {
+            "price_cents": 928,
+            "stock": 41
+          },
+          "B01N7IWX0G": {
+            "price_cents": 4286,
+            "stock": 30
+          },
+          "B01N7IYV3U": {
+            "price_cents": 1792,
+            "stock": 33
+          },
+          "B077CTJZG7": {
+            "price_cents": 300,
+            "stock": 30
+          },
+          "B07F58PXYR": {
+            "price_cents": 1497,
+            "stock": 45
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-b71c0ca4-25_correccion_con_cifras-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": {
+            "quote_id": "a319e4d9b2b44ee890093abeaacfef3b",
+            "items": [
+              {
+                "product_id": "B077CTJZG7",
+                "title": "PRITECH - Quitapelusas regargable USB Adecuado para Todas Las Prendas, con Orificios de 3 tamaños en la Rejilla para Pelusas de Cualquier tamaño Dos Posiciones. Modelo ES1048. (Azul)",
+                "quantity": 4,
+                "unit_price_cents": 300,
+                "subtotal_cents": 1200,
+                "stock": 30
+              }
+            ],
+            "total_cents": 1200,
+            "budget_cents": null,
+            "message": "Te repito el pedido antes de registrarlo: 4 unidades de «PRITECH - Quitapelusas regargable USB Adecuado para Todas Las…» a 3,00 € cada una, 12,00 €. Total: 12,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+          },
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B077CTJZG7",
+              "title": "PRITECH - Quitapelusas regargable USB Adecuado para Todas Las Prendas, con Orificios de 3 tamaños en la Rejilla para Pelusas de Cualquier tamaño Dos Posiciones. Modelo ES1048. (Azul)",
+              "brand": "PRITECH",
+              "price_cents": 300,
+              "stock": 30
+            },
+            {
+              "product_id": "B07F58PXYR",
+              "title": "BONAI LCD Cargador de Pilas Inteligente para AA/AAA/SC/C/D /9V Ni-MH/Ni-CD, 4 Ranura Independiente y Auto-Detección, Universal Cargador Pilas con Función de Descarga (Cargador de batería AC)",
+              "brand": "BONAI",
+              "price_cents": 1497,
+              "stock": 45
+            },
+            {
+              "product_id": "B01N7IWX0G",
+              "title": "EMPUJADOR RECARGABLE DE 1,34 METROS CON PILA Y CARGADOR",
+              "brand": "LATIGO",
+              "price_cents": 4286,
+              "stock": 30
+            },
+            {
+              "product_id": "B01MRYAMYZ",
+              "title": "EMPUJADOR RECARGABLE DE 1,10 METROS CON PILA Y CARGADOR",
+              "brand": "LATIGO",
+              "price_cents": 928,
+              "stock": 41
+            },
+            {
+              "product_id": "B01N7IYV3U",
+              "title": "EMPUJADOR RECARGABLE DE 58 CMS CON PILA Y CARGADOR",
+              "brand": "LATIGO",
+              "price_cents": 1792,
+              "stock": 33
+            }
+          ],
+          "awaiting_confirmation": true
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-b71c0ca4-25_correccion_con_cifras-c1",
+              "product_id": "B077CTJZG7",
+              "quantity": 4
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B077CTJZG7",
+              "initial_stock": 4,
+              "stock": 30
+            }
+          ]
+        },
+        "offers": {
+          "B01MRYAMYZ": {
+            "price_cents": 928,
+            "stock": 41
+          },
+          "B01N7IWX0G": {
+            "price_cents": 4286,
+            "stock": 30
+          },
+          "B01N7IYV3U": {
+            "price_cents": 1792,
+            "stock": 33
+          },
+          "B077CTJZG7": {
+            "price_cents": 300,
+            "stock": 30
+          },
+          "B07F58PXYR": {
+            "price_cents": 1497,
+            "stock": 45
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "awaiting_confirmation",
+          "params": {
+            "value": true
+          },
+          "ok": true,
+          "detail": "esperando confirmación: sí"
+        },
+        {
+          "check": "orders",
+          "params": {
+            "count": 0
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 0"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 4,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Perdona, eran 14, no 4.",
+      "agent_input": "Perdona, eran 14, no 4.",
+      "response": "Perdona, no he podido completar tu petición. ¿Puedes decírmelo de otra forma? En el carrito hay 14 unidades de «PRITECH - Quitapelusas regargable USB Adecuado para Todas Las…» a 3,00 € cada una, 42,00 €. Total: 42,00 €.",
+      "spoken_text": "Perdona, no he podido completar tu petición. ¿Puedes decírmelo de otra forma? En el carrito hay catorce unidades de PRITECH a tres euros cada una, cuarenta y dos euros. Total: cuarenta y dos euros.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "cambiar_cantidad",
+          "args": {
+            "product_id": "B077CTJZG7",
+            "cantidad": 14
+          },
+          "reason": "corrige la cantidad",
+          "ok": true,
+          "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B077CTJZG7 | PRITECH - Quitapelusas regargable USB Adecuado para Todas Las… | 14 unidades × 3,00 € = 42,00 € | existencias: 30\nTotal del carrito: 42,00 €",
+          "issues": []
+        },
+        {
+          "tool": "responder",
+          "args": {
+            "texto": "Hecho, añadidas 10 unidades más. El total es 42,00 euros."
+          },
+          "reason": "confirmar el cambio",
+          "ok": false,
+          "summary": "[cifra_sin_sustento] En tu respuesta hay cifras que no aparecen en los datos (10). Usa solo cifras de CANDIDATOS, CARRITO o de un RESULTADO, sin hacer cuentas; si te falta un dato de un producto, consúltalo con detalle_producto o di que no consta.",
+          "issues": [
+            {
+              "code": "cifra_sin_sustento",
+              "message": "En tu respuesta hay cifras que no aparecen en los datos (10). Usa solo cifras de CANDIDATOS, CARRITO o de un RESULTADO, sin hacer cuentas; si te falta un dato de un producto, consúltalo con detalle_producto o di que no consta.",
+              "product_id": null,
+              "details": {
+                "numbers": [
+                  "10"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 7.048,
+        "tools": 0.048,
+        "tts": 0.0,
+        "total": 7.096
+      },
+      "llm_steps": 3,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-b71c0ca4-25_correccion_con_cifras-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": {
+            "quote_id": "a319e4d9b2b44ee890093abeaacfef3b",
+            "items": [
+              {
+                "product_id": "B077CTJZG7",
+                "title": "PRITECH - Quitapelusas regargable USB Adecuado para Todas Las Prendas, con Orificios de 3 tamaños en la Rejilla para Pelusas de Cualquier tamaño Dos Posiciones. Modelo ES1048. (Azul)",
+                "quantity": 4,
+                "unit_price_cents": 300,
+                "subtotal_cents": 1200,
+                "stock": 30
+              }
+            ],
+            "total_cents": 1200,
+            "budget_cents": null,
+            "message": "Te repito el pedido antes de registrarlo: 4 unidades de «PRITECH - Quitapelusas regargable USB Adecuado para Todas Las…» a 3,00 € cada una, 12,00 €. Total: 12,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+          },
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B077CTJZG7",
+              "title": "PRITECH - Quitapelusas regargable USB Adecuado para Todas Las Prendas, con Orificios de 3 tamaños en la Rejilla para Pelusas de Cualquier tamaño Dos Posiciones. Modelo ES1048. (Azul)",
+              "brand": "PRITECH",
+              "price_cents": 300,
+              "stock": 30
+            },
+            {
+              "product_id": "B07F58PXYR",
+              "title": "BONAI LCD Cargador de Pilas Inteligente para AA/AAA/SC/C/D /9V Ni-MH/Ni-CD, 4 Ranura Independiente y Auto-Detección, Universal Cargador Pilas con Función de Descarga (Cargador de batería AC)",
+              "brand": "BONAI",
+              "price_cents": 1497,
+              "stock": 45
+            },
+            {
+              "product_id": "B01N7IWX0G",
+              "title": "EMPUJADOR RECARGABLE DE 1,34 METROS CON PILA Y CARGADOR",
+              "brand": "LATIGO",
+              "price_cents": 4286,
+              "stock": 30
+            },
+            {
+              "product_id": "B01MRYAMYZ",
+              "title": "EMPUJADOR RECARGABLE DE 1,10 METROS CON PILA Y CARGADOR",
+              "brand": "LATIGO",
+              "price_cents": 928,
+              "stock": 41
+            },
+            {
+              "product_id": "B01N7IYV3U",
+              "title": "EMPUJADOR RECARGABLE DE 58 CMS CON PILA Y CARGADOR",
+              "brand": "LATIGO",
+              "price_cents": 1792,
+              "stock": 33
+            }
+          ],
+          "awaiting_confirmation": true
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-b71c0ca4-25_correccion_con_cifras-c1",
+              "product_id": "B077CTJZG7",
+              "quantity": 4
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B077CTJZG7",
+              "initial_stock": 4,
+              "stock": 30
+            }
+          ]
+        },
+        "offers": {
+          "B01MRYAMYZ": {
+            "price_cents": 928,
+            "stock": 41
+          },
+          "B01N7IWX0G": {
+            "price_cents": 4286,
+            "stock": 30
+          },
+          "B01N7IYV3U": {
+            "price_cents": 1792,
+            "stock": 33
+          },
+          "B077CTJZG7": {
+            "price_cents": 300,
+            "stock": 30
+          },
+          "B07F58PXYR": {
+            "price_cents": 1497,
+            "stock": 45
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-b71c0ca4-25_correccion_con_cifras-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B077CTJZG7",
+              "title": "PRITECH - Quitapelusas regargable USB Adecuado para Todas Las Prendas, con Orificios de 3 tamaños en la Rejilla para Pelusas de Cualquier tamaño Dos Posiciones. Modelo ES1048. (Azul)",
+              "brand": "PRITECH",
+              "price_cents": 300,
+              "stock": 30
+            },
+            {
+              "product_id": "B07F58PXYR",
+              "title": "BONAI LCD Cargador de Pilas Inteligente para AA/AAA/SC/C/D /9V Ni-MH/Ni-CD, 4 Ranura Independiente y Auto-Detección, Universal Cargador Pilas con Función de Descarga (Cargador de batería AC)",
+              "brand": "BONAI",
+              "price_cents": 1497,
+              "stock": 45
+            },
+            {
+              "product_id": "B01N7IWX0G",
+              "title": "EMPUJADOR RECARGABLE DE 1,34 METROS CON PILA Y CARGADOR",
+              "brand": "LATIGO",
+              "price_cents": 4286,
+              "stock": 30
+            },
+            {
+              "product_id": "B01MRYAMYZ",
+              "title": "EMPUJADOR RECARGABLE DE 1,10 METROS CON PILA Y CARGADOR",
+              "brand": "LATIGO",
+              "price_cents": 928,
+              "stock": 41
+            },
+            {
+              "product_id": "B01N7IYV3U",
+              "title": "EMPUJADOR RECARGABLE DE 58 CMS CON PILA Y CARGADOR",
+              "brand": "LATIGO",
+              "price_cents": 1792,
+              "stock": 33
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-b71c0ca4-25_correccion_con_cifras-c1",
+              "product_id": "B077CTJZG7",
+              "quantity": 14
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B077CTJZG7",
+              "initial_stock": 4,
+              "stock": 30
+            }
+          ]
+        },
+        "offers": {
+          "B01MRYAMYZ": {
+            "price_cents": 928,
+            "stock": 41
+          },
+          "B01N7IWX0G": {
+            "price_cents": 4286,
+            "stock": 30
+          },
+          "B01N7IYV3U": {
+            "price_cents": 1792,
+            "stock": 33
+          },
+          "B077CTJZG7": {
+            "price_cents": 300,
+            "stock": 30
+          },
+          "B07F58PXYR": {
+            "price_cents": 1497,
+            "stock": 45
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "orders",
+          "params": {
+            "count": 0
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 0"
+        },
+        {
+          "check": "cart",
+          "params": {
+            "lines": [
+              {
+                "product": "@elegidas",
+                "quantity": 14
+              }
+            ]
+          },
+          "ok": true,
+          "detail": "carrito: 14 × B077CTJZG7"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 5,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Ya está, tramítalo.",
+      "agent_input": "Ya está, tramítalo.",
+      "response": "Te repito el pedido antes de registrarlo: 14 unidades de «PRITECH - Quitapelusas regargable USB Adecuado para Todas Las…» a 3,00 € cada una, 42,00 €. Total: 42,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "spoken_text": "Te repito el pedido antes de registrarlo: catorce unidades de PRITECH a tres euros cada una, cuarenta y dos euros. Total: cuarenta y dos euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": true,
+      "operations": [
+        {
+          "tool": "cotizar",
+          "args": {},
+          "reason": "cotizar el carrito",
+          "ok": true,
+          "summary": "cotización creada; falta la confirmación del usuario.",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 1.921,
+        "tools": 0.042,
+        "tts": 0.0,
+        "total": 1.963
+      },
+      "llm_steps": 1,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-b71c0ca4-25_correccion_con_cifras-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B077CTJZG7",
+              "title": "PRITECH - Quitapelusas regargable USB Adecuado para Todas Las Prendas, con Orificios de 3 tamaños en la Rejilla para Pelusas de Cualquier tamaño Dos Posiciones. Modelo ES1048. (Azul)",
+              "brand": "PRITECH",
+              "price_cents": 300,
+              "stock": 30
+            },
+            {
+              "product_id": "B07F58PXYR",
+              "title": "BONAI LCD Cargador de Pilas Inteligente para AA/AAA/SC/C/D /9V Ni-MH/Ni-CD, 4 Ranura Independiente y Auto-Detección, Universal Cargador Pilas con Función de Descarga (Cargador de batería AC)",
+              "brand": "BONAI",
+              "price_cents": 1497,
+              "stock": 45
+            },
+            {
+              "product_id": "B01N7IWX0G",
+              "title": "EMPUJADOR RECARGABLE DE 1,34 METROS CON PILA Y CARGADOR",
+              "brand": "LATIGO",
+              "price_cents": 4286,
+              "stock": 30
+            },
+            {
+              "product_id": "B01MRYAMYZ",
+              "title": "EMPUJADOR RECARGABLE DE 1,10 METROS CON PILA Y CARGADOR",
+              "brand": "LATIGO",
+              "price_cents": 928,
+              "stock": 41
+            },
+            {
+              "product_id": "B01N7IYV3U",
+              "title": "EMPUJADOR RECARGABLE DE 58 CMS CON PILA Y CARGADOR",
+              "brand": "LATIGO",
+              "price_cents": 1792,
+              "stock": 33
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-b71c0ca4-25_correccion_con_cifras-c1",
+              "product_id": "B077CTJZG7",
+              "quantity": 14
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B077CTJZG7",
+              "initial_stock": 4,
+              "stock": 30
+            }
+          ]
+        },
+        "offers": {
+          "B01MRYAMYZ": {
+            "price_cents": 928,
+            "stock": 41
+          },
+          "B01N7IWX0G": {
+            "price_cents": 4286,
+            "stock": 30
+          },
+          "B01N7IYV3U": {
+            "price_cents": 1792,
+            "stock": 33
+          },
+          "B077CTJZG7": {
+            "price_cents": 300,
+            "stock": 30
+          },
+          "B07F58PXYR": {
+            "price_cents": 1497,
+            "stock": 45
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-b71c0ca4-25_correccion_con_cifras-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": {
+            "quote_id": "ecc35fda56944dc8abc7536a2fe7fea5",
+            "items": [
+              {
+                "product_id": "B077CTJZG7",
+                "title": "PRITECH - Quitapelusas regargable USB Adecuado para Todas Las Prendas, con Orificios de 3 tamaños en la Rejilla para Pelusas de Cualquier tamaño Dos Posiciones. Modelo ES1048. (Azul)",
+                "quantity": 14,
+                "unit_price_cents": 300,
+                "subtotal_cents": 4200,
+                "stock": 30
+              }
+            ],
+            "total_cents": 4200,
+            "budget_cents": null,
+            "message": "Te repito el pedido antes de registrarlo: 14 unidades de «PRITECH - Quitapelusas regargable USB Adecuado para Todas Las…» a 3,00 € cada una, 42,00 €. Total: 42,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+          },
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B077CTJZG7",
+              "title": "PRITECH - Quitapelusas regargable USB Adecuado para Todas Las Prendas, con Orificios de 3 tamaños en la Rejilla para Pelusas de Cualquier tamaño Dos Posiciones. Modelo ES1048. (Azul)",
+              "brand": "PRITECH",
+              "price_cents": 300,
+              "stock": 30
+            },
+            {
+              "product_id": "B07F58PXYR",
+              "title": "BONAI LCD Cargador de Pilas Inteligente para AA/AAA/SC/C/D /9V Ni-MH/Ni-CD, 4 Ranura Independiente y Auto-Detección, Universal Cargador Pilas con Función de Descarga (Cargador de batería AC)",
+              "brand": "BONAI",
+              "price_cents": 1497,
+              "stock": 45
+            },
+            {
+              "product_id": "B01N7IWX0G",
+              "title": "EMPUJADOR RECARGABLE DE 1,34 METROS CON PILA Y CARGADOR",
+              "brand": "LATIGO",
+              "price_cents": 4286,
+              "stock": 30
+            },
+            {
+              "product_id": "B01MRYAMYZ",
+              "title": "EMPUJADOR RECARGABLE DE 1,10 METROS CON PILA Y CARGADOR",
+              "brand": "LATIGO",
+              "price_cents": 928,
+              "stock": 41
+            },
+            {
+              "product_id": "B01N7IYV3U",
+              "title": "EMPUJADOR RECARGABLE DE 58 CMS CON PILA Y CARGADOR",
+              "brand": "LATIGO",
+              "price_cents": 1792,
+              "stock": 33
+            }
+          ],
+          "awaiting_confirmation": true
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-b71c0ca4-25_correccion_con_cifras-c1",
+              "product_id": "B077CTJZG7",
+              "quantity": 14
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B077CTJZG7",
+              "initial_stock": 4,
+              "stock": 30
+            }
+          ]
+        },
+        "offers": {
+          "B01MRYAMYZ": {
+            "price_cents": 928,
+            "stock": 41
+          },
+          "B01N7IWX0G": {
+            "price_cents": 4286,
+            "stock": 30
+          },
+          "B01N7IYV3U": {
+            "price_cents": 1792,
+            "stock": 33
+          },
+          "B077CTJZG7": {
+            "price_cents": 300,
+            "stock": 30
+          },
+          "B07F58PXYR": {
+            "price_cents": 1497,
+            "stock": 45
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "awaiting_confirmation",
+          "params": {
+            "value": true
+          },
+          "ok": true,
+          "detail": "esperando confirmación: sí"
+        },
+        {
+          "check": "orders",
+          "params": {
+            "count": 0
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 0"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 6,
+      "input_audio": null,
+      "input_seconds": null,
+      "transcript": null,
+      "expected_text": "Sí.",
+      "agent_input": "Sí.",
+      "response": "Pedido número 1 registrado: 14 unidades de «PRITECH - Quitapelusas regargable USB Adecuado para Todas Las…» a 3,00 € cada una, 42,00 €. Total: 42,00 €. Gracias por tu compra.",
+      "spoken_text": "Pedido número uno registrado: catorce unidades de PRITECH a tres euros cada una, cuarenta y dos euros. Total: cuarenta y dos euros. Gracias por tu compra.",
+      "output_audio": null,
+      "output_seconds": null,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "confirmar_pedido",
+          "args": {
+            "quote_id": "ecc35fda56944dc8abc7536a2fe7fea5"
+          },
+          "reason": "el usuario confirmó la cotización",
+          "ok": true,
+          "summary": "pedido registrado",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.0,
+        "retrieval": 0.0,
+        "llm": 0.0,
+        "tools": 0.028,
+        "tts": 0.0,
+        "total": 0.028
+      },
+      "llm_steps": 0,
+      "tts_first_chunk_seconds": null,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-b71c0ca4-25_correccion_con_cifras-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": {
+            "quote_id": "ecc35fda56944dc8abc7536a2fe7fea5",
+            "items": [
+              {
+                "product_id": "B077CTJZG7",
+                "title": "PRITECH - Quitapelusas regargable USB Adecuado para Todas Las Prendas, con Orificios de 3 tamaños en la Rejilla para Pelusas de Cualquier tamaño Dos Posiciones. Modelo ES1048. (Azul)",
+                "quantity": 14,
+                "unit_price_cents": 300,
+                "subtotal_cents": 4200,
+                "stock": 30
+              }
+            ],
+            "total_cents": 4200,
+            "budget_cents": null,
+            "message": "Te repito el pedido antes de registrarlo: 14 unidades de «PRITECH - Quitapelusas regargable USB Adecuado para Todas Las…» a 3,00 € cada una, 42,00 €. Total: 42,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+          },
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B077CTJZG7",
+              "title": "PRITECH - Quitapelusas regargable USB Adecuado para Todas Las Prendas, con Orificios de 3 tamaños en la Rejilla para Pelusas de Cualquier tamaño Dos Posiciones. Modelo ES1048. (Azul)",
+              "brand": "PRITECH",
+              "price_cents": 300,
+              "stock": 30
+            },
+            {
+              "product_id": "B07F58PXYR",
+              "title": "BONAI LCD Cargador de Pilas Inteligente para AA/AAA/SC/C/D /9V Ni-MH/Ni-CD, 4 Ranura Independiente y Auto-Detección, Universal Cargador Pilas con Función de Descarga (Cargador de batería AC)",
+              "brand": "BONAI",
+              "price_cents": 1497,
+              "stock": 45
+            },
+            {
+              "product_id": "B01N7IWX0G",
+              "title": "EMPUJADOR RECARGABLE DE 1,34 METROS CON PILA Y CARGADOR",
+              "brand": "LATIGO",
+              "price_cents": 4286,
+              "stock": 30
+            },
+            {
+              "product_id": "B01MRYAMYZ",
+              "title": "EMPUJADOR RECARGABLE DE 1,10 METROS CON PILA Y CARGADOR",
+              "brand": "LATIGO",
+              "price_cents": 928,
+              "stock": 41
+            },
+            {
+              "product_id": "B01N7IYV3U",
+              "title": "EMPUJADOR RECARGABLE DE 58 CMS CON PILA Y CARGADOR",
+              "brand": "LATIGO",
+              "price_cents": 1792,
+              "stock": 33
+            }
+          ],
+          "awaiting_confirmation": true
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-b71c0ca4-25_correccion_con_cifras-c1",
+              "product_id": "B077CTJZG7",
+              "quantity": 14
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B077CTJZG7",
+              "initial_stock": 4,
+              "stock": 30
+            }
+          ]
+        },
+        "offers": {
+          "B01MRYAMYZ": {
+            "price_cents": 928,
+            "stock": 41
+          },
+          "B01N7IWX0G": {
+            "price_cents": 4286,
+            "stock": 30
+          },
+          "B01N7IYV3U": {
+            "price_cents": 1792,
+            "stock": 33
+          },
+          "B077CTJZG7": {
+            "price_cents": 300,
+            "stock": 30
+          },
+          "B07F58PXYR": {
+            "price_cents": 1497,
+            "stock": 45
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-b71c0ca4-25_correccion_con_cifras-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": {
+            "order_id": 1,
+            "quote_id": "ecc35fda56944dc8abc7536a2fe7fea5",
+            "items": [
+              {
+                "product_id": "B077CTJZG7",
+                "title": "PRITECH - Quitapelusas regargable USB Adecuado para Todas Las Prendas, con Orificios de 3 tamaños en la Rejilla para Pelusas de Cualquier tamaño Dos Posiciones. Modelo ES1048. (Azul)",
+                "quantity": 14,
+                "unit_price_cents": 300,
+                "subtotal_cents": 4200
+              }
+            ],
+            "total_cents": 4200,
+            "message": "Pedido número 1 registrado: 14 unidades de «PRITECH - Quitapelusas regargable USB Adecuado para Todas Las…» a 3,00 € cada una, 42,00 €. Total: 42,00 €. Gracias por tu compra."
+          },
+          "candidates": [
+            {
+              "product_id": "B077CTJZG7",
+              "title": "PRITECH - Quitapelusas regargable USB Adecuado para Todas Las Prendas, con Orificios de 3 tamaños en la Rejilla para Pelusas de Cualquier tamaño Dos Posiciones. Modelo ES1048. (Azul)",
+              "brand": "PRITECH",
+              "price_cents": 300,
+              "stock": 30
+            },
+            {
+              "product_id": "B07F58PXYR",
+              "title": "BONAI LCD Cargador de Pilas Inteligente para AA/AAA/SC/C/D /9V Ni-MH/Ni-CD, 4 Ranura Independiente y Auto-Detección, Universal Cargador Pilas con Función de Descarga (Cargador de batería AC)",
+              "brand": "BONAI",
+              "price_cents": 1497,
+              "stock": 45
+            },
+            {
+              "product_id": "B01N7IWX0G",
+              "title": "EMPUJADOR RECARGABLE DE 1,34 METROS CON PILA Y CARGADOR",
+              "brand": "LATIGO",
+              "price_cents": 4286,
+              "stock": 30
+            },
+            {
+              "product_id": "B01MRYAMYZ",
+              "title": "EMPUJADOR RECARGABLE DE 1,10 METROS CON PILA Y CARGADOR",
+              "brand": "LATIGO",
+              "price_cents": 928,
+              "stock": 41
+            },
+            {
+              "product_id": "B01N7IYV3U",
+              "title": "EMPUJADOR RECARGABLE DE 58 CMS CON PILA Y CARGADOR",
+              "brand": "LATIGO",
+              "price_cents": 1792,
+              "stock": 33
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [
+            {
+              "order_id": 1,
+              "quote_id": "ecc35fda56944dc8abc7536a2fe7fea5",
+              "total_cents": 4200
+            }
+          ],
+          "order_items": [
+            {
+              "order_id": 1,
+              "product_id": "B077CTJZG7",
+              "quantity": 14,
+              "unit_price_cents": 300
+            }
+          ],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B077CTJZG7",
+              "initial_stock": 4,
+              "stock": 16
+            }
+          ]
+        },
+        "offers": {
+          "B01MRYAMYZ": {
+            "price_cents": 928,
+            "stock": 41
+          },
+          "B01N7IWX0G": {
+            "price_cents": 4286,
+            "stock": 30
+          },
+          "B01N7IYV3U": {
+            "price_cents": 1792,
+            "stock": 33
+          },
+          "B077CTJZG7": {
+            "price_cents": 300,
+            "stock": 16
+          },
+          "B07F58PXYR": {
+            "price_cents": 1497,
+            "stock": 45
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "orders",
+          "params": {
+            "count": 1
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 1"
+        }
+      ]
+    }
+  ],
+  "final": {
+    "snapshot": {
+      "cart_id": "eval-b71c0ca4-25_correccion_con_cifras-c1",
+      "state": {
+        "budget_cents": null,
+        "preferences": [],
+        "pending_clarification": null,
+        "quote": null,
+        "order": {
+          "order_id": 1,
+          "quote_id": "ecc35fda56944dc8abc7536a2fe7fea5",
+          "items": [
+            {
+              "product_id": "B077CTJZG7",
+              "title": "PRITECH - Quitapelusas regargable USB Adecuado para Todas Las Prendas, con Orificios de 3 tamaños en la Rejilla para Pelusas de Cualquier tamaño Dos Posiciones. Modelo ES1048. (Azul)",
+              "quantity": 14,
+              "unit_price_cents": 300,
+              "subtotal_cents": 4200
+            }
+          ],
+          "total_cents": 4200,
+          "message": "Pedido número 1 registrado: 14 unidades de «PRITECH - Quitapelusas regargable USB Adecuado para Todas Las…» a 3,00 € cada una, 42,00 €. Total: 42,00 €. Gracias por tu compra."
+        },
+        "candidates": [
+          {
+            "product_id": "B077CTJZG7",
+            "title": "PRITECH - Quitapelusas regargable USB Adecuado para Todas Las Prendas, con Orificios de 3 tamaños en la Rejilla para Pelusas de Cualquier tamaño Dos Posiciones. Modelo ES1048. (Azul)",
+            "brand": "PRITECH",
+            "price_cents": 300,
+            "stock": 30
+          },
+          {
+            "product_id": "B07F58PXYR",
+            "title": "BONAI LCD Cargador de Pilas Inteligente para AA/AAA/SC/C/D /9V Ni-MH/Ni-CD, 4 Ranura Independiente y Auto-Detección, Universal Cargador Pilas con Función de Descarga (Cargador de batería AC)",
+            "brand": "BONAI",
+            "price_cents": 1497,
+            "stock": 45
+          },
+          {
+            "product_id": "B01N7IWX0G",
+            "title": "EMPUJADOR RECARGABLE DE 1,34 METROS CON PILA Y CARGADOR",
+            "brand": "LATIGO",
+            "price_cents": 4286,
+            "stock": 30
+          },
+          {
+            "product_id": "B01MRYAMYZ",
+            "title": "EMPUJADOR RECARGABLE DE 1,10 METROS CON PILA Y CARGADOR",
+            "brand": "LATIGO",
+            "price_cents": 928,
+            "stock": 41
+          },
+          {
+            "product_id": "B01N7IYV3U",
+            "title": "EMPUJADOR RECARGABLE DE 58 CMS CON PILA Y CARGADOR",
+            "brand": "LATIGO",
+            "price_cents": 1792,
+            "stock": 33
+          }
+        ],
+        "awaiting_confirmation": false
+      },
+      "store": {
+        "orders": [
+          {
+            "order_id": 1,
+            "quote_id": "ecc35fda56944dc8abc7536a2fe7fea5",
+            "total_cents": 4200
+          }
+        ],
+        "order_items": [
+          {
+            "order_id": 1,
+            "product_id": "B077CTJZG7",
+            "quantity": 14,
+            "unit_price_cents": 300
+          }
+        ],
+        "cart_items": [],
+        "inventory_changes": [
+          {
+            "product_id": "B077CTJZG7",
+            "initial_stock": 4,
+            "stock": 16
+          }
+        ]
+      },
+      "offers": {
+        "B01MRYAMYZ": {
+          "price_cents": 928,
+          "stock": 41
+        },
+        "B01N7IWX0G": {
+          "price_cents": 4286,
+          "stock": 30
+        },
+        "B01N7IYV3U": {
+          "price_cents": 1792,
+          "stock": 33
+        },
+        "B077CTJZG7": {
+          "price_cents": 300,
+          "stock": 16
+        },
+        "B07F58PXYR": {
+          "price_cents": 1497,
+          "stock": 45
+        }
+      }
+    },
+    "checks": [
+      {
+        "check": "orders",
+        "params": {
+          "count": 1
+        },
+        "ok": true,
+        "detail": "pedidos registrados: 1"
+      },
+      {
+        "check": "order",
+        "params": {
+          "lines": [
+            {
+              "product": "@elegidas",
+              "quantity": 14
+            }
+          ],
+          "total_cents": 4200
+        },
+        "ok": true,
+        "detail": "pedido 1: 14 × B077CTJZG7; total 4200 céntimos"
+      },
+      {
+        "check": "stock",
+        "params": {
+          "product": "@elegidas",
+          "equals": 16
+        },
+        "ok": true,
+        "detail": "existencias de B077CTJZG7: 16"
+      },
+      {
+        "check": "cart",
+        "params": {
+          "empty": true
+        },
+        "ok": true,
+        "detail": "carrito: vacío"
+      }
+    ]
+  },
+  "violations": [],
+  "problems": [],
+  "passed": true,
+  "timings": {
+    "all": {
+      "turns": 6,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.01,
+        "max": 0.03
+      },
+      "llm": {
+        "mean": 3.95,
+        "max": 7.88
+      },
+      "tools": {
+        "mean": 0.04,
+        "max": 0.05
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 3.99,
+        "max": 7.94
+      }
+    },
+    "with_llm": {
+      "turns": 5,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.01,
+        "max": 0.03
+      },
+      "llm": {
+        "mean": 4.74,
+        "max": 7.88
+      },
+      "tools": {
+        "mean": 0.04,
+        "max": 0.05
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 4.79,
+        "max": 7.94
+      }
+    },
+    "without_llm": {
+      "turns": 1,
+      "asr": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "retrieval": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "llm": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "tools": {
+        "mean": 0.03,
+        "max": 0.03
+      },
+      "tts": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "total": {
+        "mean": 0.03,
+        "max": 0.03
+      }
+    }
+  }
+}
