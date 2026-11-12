@@ -13,14 +13,18 @@ from shopping_agent.voice.asr import Transcription
 from shopping_agent.voice.audio import read_audio, write_wav
 from shopping_agent.voice.chat import scenario_paths
 from shopping_agent.voice.pipeline import NOT_HEARD, STAGES, VoicePipeline, comparable_store, compare_runs, summarize_timings
-from shopping_agent.voice.report import to_markdown
+from shopping_agent.voice.report import to_markdown, voice_label
 from shopping_agent.voice.tts import (
     DEFAULT_REFERENCE,
+    DEFAULT_SPEED,
     REFERENCE_ENV,
     SPEAKER_ENV,
+    SPEED_ENV,
     Synthesis,
     VoiceNotConfigured,
+    XttsTTS,
     join_chunks,
+    resolve_speed,
     resolve_voice,
     too_long,
 )
@@ -270,6 +274,48 @@ def test_reference_recording_is_found_in_its_default_folder(tmp_path, monkeypatc
     monkeypatch.setenv(SPEAKER_ENV, "Hablante de prueba")
     write_wav(tmp_path / DEFAULT_REFERENCE, np.zeros(100, dtype=np.float32), 44100)
     assert resolve_voice() == (DEFAULT_REFERENCE, None)  # la grabación propia gana al hablante de prueba
+
+
+def test_speech_speed_comes_from_the_argument_the_environment_or_the_default(monkeypatch):
+    monkeypatch.delenv(SPEED_ENV, raising=False)
+    assert resolve_speed() == DEFAULT_SPEED == 1.15
+    monkeypatch.setenv(SPEED_ENV, "1,3")  # con coma decimal también vale
+    assert resolve_speed() == 1.3
+    assert resolve_speed(1.0) == 1.0  # el argumento manda sobre el entorno
+    for wrong in ("rápido", "0", "3"):
+        monkeypatch.setenv(SPEED_ENV, wrong)
+        with pytest.raises(VoiceNotConfigured, match=SPEED_ENV):
+            resolve_speed()
+
+
+class RecordingModel:
+    """Hace de XTTS-v2: anota con qué opciones se le pide cada síntesis."""
+
+    def __init__(self):
+        self.options = []
+
+    def inference(self, text, language, latent, embedding, **options):
+        self.options.append(options)
+        return {"wav": np.zeros(2400, dtype=np.float32)}
+
+
+def test_speech_speed_reaches_the_model_and_the_saved_voice():
+    tts = XttsTTS.__new__(XttsTTS)  # sin cargar el modelo: solo lo que usa una síntesis
+    tts.model, tts.language, tts.temperature, tts.speed = RecordingModel(), "es", 0.65, 1.15
+    tts.gpt_cond_latent = tts.speaker_embedding = None
+    tts.reference, tts.speaker = None, "Prueba"
+    assert len(tts._generate("Hola.")) == 2400
+    assert tts.model.options[0]["speed"] == 1.15
+    assert tts.voice == {"reference": None, "speaker": "Prueba", "speed": 1.15}
+
+
+def test_voice_label_says_how_fast_the_agent_speaks():
+    assert voice_label({"reference": "voz.wav", "speaker": None, "speed": 1.15}) == (
+        "clonada de la grabación de referencia `voz.wav`, velocidad del habla 1,15"
+    )
+    assert voice_label({"reference": None, "speaker": "Prueba", "speed": 1.0}).endswith("«Prueba», velocidad del habla 1,00")
+    assert voice_label({"reference": "voz.wav", "speaker": None}) == "clonada de la grabación de referencia `voz.wav`"  # corridas anteriores
+    assert voice_label({}) == "sin síntesis"
 
 
 def test_scenario_name_fills_in_the_paths(tmp_path, monkeypatch):

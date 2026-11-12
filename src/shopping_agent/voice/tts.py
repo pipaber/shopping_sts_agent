@@ -12,6 +12,10 @@ frecuencia de muestreo). Mientras no exista esa grabación se puede desarrollar 
 uno de los hablantes que trae XTTS-v2 (``--speaker`` o ``SHOPPING_AGENT_TTS_SPEAKER``);
 no se clona la voz de nadie que no la haya cedido.
 
+XTTS-v2 copia el ritmo de la grabación de referencia. La velocidad del habla se ajusta
+sobre ese ritmo con ``--speed`` o ``SHOPPING_AGENT_TTS_SPEED``: 1,0 lo deja igual y, por
+defecto, 1,15 habla un 15 % más rápido.
+
 XTTS-v2 se publica con la licencia CPML de Coqui (uso no comercial). Este módulo
 no la acepta por nadie: si no consta aceptada, se detiene y explica cómo hacerlo.
 """
@@ -35,6 +39,9 @@ from shopping_agent.voice.speech_text import split_for_tts, to_speech
 MODEL_NAME = "tts_models/multilingual/multi-dataset/xtts_v2"
 REFERENCE_ENV = "SHOPPING_AGENT_VOICE_REF"
 SPEAKER_ENV = "SHOPPING_AGENT_TTS_SPEAKER"
+SPEED_ENV = "SHOPPING_AGENT_TTS_SPEED"
+DEFAULT_SPEED = 1.15  # elegida de oído por el autor de la voz; 1,0 es el ritmo de la referencia
+SPEED_LIMITS = (0.5, 2.0)
 DEFAULT_REFERENCE = Path("audio/referencia/referencia.wav")  # carpeta sin versionar
 LICENSE_URL = "https://tts-hub.github.io/cpml"  # la dirección que muestra el propio paquete
 SAMPLE_RATE = 24000  # salida de XTTS-v2
@@ -118,6 +125,20 @@ def resolve_voice(reference: str | Path | None = None, speaker: str | None = Non
     )
 
 
+def resolve_speed(speed: float | None = None) -> float:
+    """Velocidad del habla respecto al ritmo de la referencia: el argumento manda;
+    sin él, ``SHOPPING_AGENT_TTS_SPEED`` y, si tampoco está, 1,15."""
+    written = str(speed) if speed is not None else os.environ.get(SPEED_ENV) or str(DEFAULT_SPEED)
+    try:
+        value = float(written.replace(",", "."))
+    except ValueError:
+        value = float("nan")
+    low, high = SPEED_LIMITS
+    if not low <= value <= high:
+        raise VoiceNotConfigured(f"La velocidad del habla ({SPEED_ENV} o --speed) debe estar entre {low} y {high}: {written!r}")
+    return value
+
+
 def ensure_model() -> tuple[Path, Path]:
     """Carpeta del modelo y ruta de su configuración, descargándolo si hace falta.
 
@@ -177,8 +198,10 @@ class XttsTTS:
         temperature: float = 0.65,
         seed: int = 0,
         max_chars: int = MAX_CHARS,
+        speed: float | None = None,
     ) -> None:
         self.reference, self.speaker = resolve_voice(reference, speaker)
+        self.speed = resolve_speed(speed)
         self.language = language
         self.temperature = temperature
         self.seed = seed
@@ -215,7 +238,7 @@ class XttsTTS:
     @property
     def voice(self) -> dict[str, Any]:
         """De dónde sale la voz, para dejarlo escrito en los resultados."""
-        return {"reference": str(self.reference) if self.reference else None, "speaker": self.speaker}
+        return {"reference": str(self.reference) if self.reference else None, "speaker": self.speaker, "speed": self.speed}
 
     def _generate(self, text: str) -> np.ndarray:
         import torch
@@ -227,6 +250,7 @@ class XttsTTS:
                 self.gpt_cond_latent,
                 self.speaker_embedding,
                 temperature=self.temperature,
+                speed=self.speed,
                 enable_text_splitting=False,
             )
         wav = output["wav"]
@@ -296,6 +320,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--script", type=Path, default=None, help="archivo con una frase por línea")
     parser.add_argument("--out-dir", type=Path, default=None, help="carpeta de salida para --script (01.wav, 02.wav…)")
     parser.add_argument("--seed", type=int, default=0)
+    parser.add_argument("--speed", type=float, default=None, help=f"velocidad del habla (por defecto, {SPEED_ENV} o {DEFAULT_SPEED})")
     return parser.parse_args()
 
 
@@ -318,7 +343,7 @@ def main() -> None:
             model_dir, _ = ensure_model()
             print("\n".join(sorted(torch.load(model_dir / "speakers_xtts.pth", weights_only=True))))
             return
-        tts = XttsTTS(args.reference, args.speaker, seed=args.seed)
+        tts = XttsTTS(args.reference, args.speaker, seed=args.seed, speed=args.speed)
     except (LicenseNotAccepted, VoiceNotConfigured) as error:
         sys.exit(str(error))
     print(f"[XTTS-v2 en {tts.device}; voz: {tts.voice}; carga {tts.load_seconds:.1f} s; VRAM {tts.vram_mib} MiB]", file=sys.stderr)

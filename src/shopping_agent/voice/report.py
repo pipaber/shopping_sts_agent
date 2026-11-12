@@ -13,10 +13,13 @@ SUMMARY_ROWS = (("with_llm", "Media de los turnos con LLM"), ("without_llm", "Me
 
 
 def voice_label(voice: dict[str, Any]) -> str:
+    """De dónde sale la voz y a qué velocidad habla. Las corridas guardadas antes de
+    que la velocidad fuera un ajuste no la anotan: iban a 1,0."""
+    speed = f", velocidad del habla {voice['speed']:.2f}".replace(".", ",") if voice.get("speed") else ""
     if voice.get("reference"):
-        return f"clonada de la grabación de referencia `{voice['reference']}`"
+        return f"clonada de la grabación de referencia `{voice['reference']}`{speed}"
     if voice.get("speaker"):
-        return f"hablante incluido en XTTS-v2 «{voice['speaker']}»"
+        return f"hablante incluido en XTTS-v2 «{voice['speaker']}»{speed}"
     return "sin síntesis"
 
 
