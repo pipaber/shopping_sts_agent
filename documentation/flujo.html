@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Asistente de compras por voz: flujo de datos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #fdfbf5; --ink: #1e1e1e; --soft: #5f5f5f; --line: #1e1e1e; --card: #ffffff;
+    --yellow: #ffec99; --yellow-s: #f08c00;
+    --blue: #a5d8ff; --blue-s: #1971c2;
+    --purple: #d0bfff; --purple-s: #6741d9;
+    --green: #b2f2bb; --green-s: #2f9e44;
+    --orange: #ffd8a8; --orange-s: #e8590c;
+    --pink: #fcc2d7; --pink-s: #c2255c;
+    --teal: #96f2d7; --teal-s: #099268;
+    --gray: #e9ecef; --gray-s: #495057;
+    --hatch: rgba(103, 65, 217, .10);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #151515; --ink: #ececec; --soft: #a8a8a8; --line: #ececec; --card: #1f1f1f;
+      --yellow: #5c4a00; --yellow-s: #ffd43b;
+      --blue: #123a5c; --blue-s: #74c0fc;
+      --purple: #34256b; --purple-s: #b197fc;
+      --green: #14401f; --green-s: #69db7c;
+      --orange: #5a2a05; --orange-s: #ffa94d;
+      --pink: #5a1530; --pink-s: #f783ac;
+      --teal: #0b4a39; --teal-s: #63e6be;
+      --gray: #2c2f33; --gray-s: #ced4da;
+      --hatch: rgba(177, 151, 252, .13);
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #151515; --ink: #ececec; --soft: #a8a8a8; --line: #ececec; --card: #1f1f1f;
+    --yellow: #5c4a00; --yellow-s: #ffd43b;
+    --blue: #123a5c; --blue-s: #74c0fc;
+    --purple: #34256b; --purple-s: #b197fc;
+    --green: #14401f; --green-s: #69db7c;
+    --orange: #5a2a05; --orange-s: #ffa94d;
+    --pink: #5a1530; --pink-s: #f783ac;
+    --teal: #0b4a39; --teal-s: #63e6be;
+    --gray: #2c2f33; --gray-s: #ced4da;
+    --hatch: rgba(177, 151, 252, .13);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: "Patrick Hand", "Segoe Print", "Bradley Hand", "Comic Sans MS", cursive;
+    font-size: 20px; line-height: 1.45;
+    background-image: radial-gradient(circle, color-mix(in srgb, var(--ink) 9%, transparent) 1px, transparent 1.2px);
+    background-size: 26px 26px;
+  }
+  main, header, footer { max-width: 1180px; margin: 0 auto; padding: 0 16px; }
+  h1, h2, h3 { font-family: "Caveat", "Patrick Hand", cursive; line-height: 1.05; margin: 0; }
+  h1 { font-size: clamp(44px, 7vw, 76px); }
+  h2 { font-size: clamp(34px, 5vw, 48px); margin-bottom: 6px; }
+  h3 { font-size: 30px; }
+  p { margin: 8px 0; }
+  a { color: var(--blue-s); }
+  code, .mono { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: .78em; }
+  .lead { color: var(--soft); max-width: 62ch; }
+  section { padding: 44px 0 8px; }
+
+  /* Trazo a mano */
+  .sketch {
+    background: var(--card); border: 2.5px solid var(--line);
+    border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+    padding: 16px 20px; position: relative;
+  }
+  .sketch.alt { border-radius: 15px 225px 15px 255px / 255px 15px 225px 15px; }
+  .tint-yellow { background: var(--yellow); } .tint-blue { background: var(--blue); }
+  .tint-purple { background: var(--purple); } .tint-green { background: var(--green); }
+  .tint-orange { background: var(--orange); } .tint-pink { background: var(--pink); }
+  .tint-teal { background: var(--teal); } .tint-gray { background: var(--gray); }
+  .underline { display: inline-block; position: relative; }
+  .underline::after {
+    content: ""; position: absolute; left: -2%; right: -2%; bottom: -6px; height: 10px;
+    border-bottom: 4px solid var(--orange-s); border-radius: 50% 40% 60% 30% / 0 0 100% 100%;
+    transform: rotate(-.6deg);
+  }
+
+  header { padding-top: 44px; }
+  .hero { display: grid; grid-template-columns: 1.3fr 1fr; gap: 28px; align-items: center; }
+  .hero .bubble { transform: rotate(1.2deg); font-size: 22px; }
+  .hero .bubble b { font-family: "Caveat", cursive; font-size: 30px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .chip {
+    border: 2px solid var(--line); border-radius: 30px 12px 28px 10px / 12px 28px 10px 30px;
+    padding: 1px 12px; font-size: 18px; background: var(--card); white-space: nowrap;
+  }
+  nav { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 22px; font-size: 19px; }
+
+  /* Diagrama principal */
+  .board { overflow-x: auto; padding: 6px 0 2px; }
+  .board svg { min-width: 940px; width: 100%; height: auto; display: block; }
+  svg text { font-family: "Patrick Hand", "Segoe Print", "Comic Sans MS", cursive; fill: var(--ink); }
+  svg .t { font-family: "Caveat", "Patrick Hand", cursive; font-weight: 700; font-size: 27px; }
+  svg .s { font-size: 17px; }
+  svg .note { font-size: 17px; fill: var(--soft); }
+  .shape { stroke: var(--line); stroke-width: 2.6; stroke-linejoin: round; }
+  .edge { fill: none; stroke: var(--line); stroke-width: 2.6; stroke-linecap: round; opacity: .55; }
+  .edge.dash { stroke-dasharray: 8 8; }
+  .edge.flow { opacity: 1; stroke-width: 3.6; stroke: var(--orange-s); stroke-dasharray: 10 9; animation: flow .8s linear infinite; }
+  @keyframes flow { to { stroke-dashoffset: -19; } }
+  .dim .node:not(.on) { opacity: .38; }
+  .dim .edge:not(.flow) { opacity: .22; }
+  .node.on .shape { stroke-width: 4.2; }
+  .node.on { animation: pop .45s ease-out; transform-box: fill-box; transform-origin: center; }
+  @keyframes pop { 0% { transform: scale(.94); } 60% { transform: scale(1.05); } 100% { transform: scale(1); } }
+  .off-mode { opacity: .18 !important; }
+  #packet { fill: var(--orange-s); stroke: var(--line); stroke-width: 2.5; opacity: 0; }
+
+  .controls { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; margin: 10px 0 12px; }
+  button {
+    font: inherit; color: var(--ink); background: var(--card); cursor: pointer;
+    border: 2.5px solid var(--line); padding: 3px 14px;
+    border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+    box-shadow: 3px 3px 0 var(--line); transition: transform .08s, box-shadow .08s;
+  }
+  button:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--line); }
+  button:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--line); }
+  button[aria-pressed="true"] { background: var(--yellow); }
+  .group { display: flex; gap: 6px; flex-wrap: wrap; }
+  .group-label { color: var(--soft); font-size: 18px; }
+  .caption { min-height: 190px; display: grid; grid-template-columns: auto 1fr; gap: 6px 18px; align-items: start; }
+  .caption .num {
+    font-family: "Caveat", cursive; font-size: 54px; line-height: 1; width: 64px; height: 64px;
+    display: grid; place-items: center; border: 3px solid var(--line); border-radius: 50% 46% 52% 48%;
+    background: var(--yellow); transform: rotate(-4deg);
+  }
+  .caption h3 { margin-top: 4px; }
+  .caption .body { grid-column: 2; }
+  .caption .time { display: inline-block; margin-top: 6px; }
+  .quote { border-left: 4px solid var(--orange-s); padding: 2px 12px; margin: 6px 0; }
+  .json { display: block; background: var(--gray); border: 2px dashed var(--gray-s); border-radius: 10px; padding: 8px 12px; margin: 6px 0; white-space: pre-wrap; word-break: break-word; }
+  .dots { display: flex; gap: 6px; align-items: center; }
+  .dots i { width: 13px; height: 13px; border: 2px solid var(--line); border-radius: 50% 44% 52% 46%; display: block; }
+  .dots i.on { background: var(--orange-s); }
+
+  /* Rejillas de tarjetas */
+  .grid { display: grid; gap: 16px; }
+  .g2 { grid-template-columns: repeat(2, 1fr); } .g3 { grid-template-columns: repeat(3, 1fr); } .g4 { grid-template-columns: repeat(4, 1fr); }
+  .card h3 { margin-bottom: 4px; }
+  .card small, small { color: var(--soft); font-size: 17px; }
+  ul { margin: 6px 0; padding-left: 22px; } li { margin: 2px 0; }
+  .tilt-l { transform: rotate(-.7deg); } .tilt-r { transform: rotate(.6deg); }
+
+  /* De ESCI a la tienda */
+  .lane { display: grid; grid-template-columns: 1fr 44px 1.25fr 44px 1.25fr; gap: 8px; align-items: stretch; margin: 14px 0; }
+  .lane .arrow { display: grid; place-items: center; font-family: "Caveat", cursive; font-size: 46px; animation: nudge 1.6s ease-in-out infinite; }
+  @keyframes nudge { 50% { transform: translateX(6px); } }
+  .wall { border-style: dashed; }
+  .stamp {
+    position: absolute; top: -14px; right: 14px; background: var(--card); border: 2.5px solid var(--pink-s); color: var(--pink-s);
+    padding: 0 10px; border-radius: 8px; transform: rotate(4deg); font-size: 17px;
+  }
+  .stamp.ok { border-color: var(--green-s); color: var(--green-s); }
+
+  /* Barras */
+  .bar { display: flex; height: 54px; border: 2.5px solid var(--line); border-radius: 14px 30px 16px 26px / 26px 14px 30px 16px; overflow: hidden; background: var(--card); }
+  .bar span { display: grid; place-items: center; width: 0; transition: width 1.2s cubic-bezier(.2, .8, .2, 1); border-right: 2px solid var(--line); font-size: 17px; white-space: nowrap; overflow: hidden; }
+  .bar span:last-child { border-right: 0; }
+  .legend { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 18px; margin: 6px 0 14px; }
+  .legend i { display: inline-block; width: 16px; height: 16px; border: 2px solid var(--line); border-radius: 4px; vertical-align: -2px; margin-right: 5px; }
+
+  /* Conversación */
+  .chat { display: grid; gap: 10px; }
+  .msg { max-width: 78%; padding: 8px 16px; }
+  .msg.user { justify-self: end; background: var(--yellow); }
+  .msg.bot { justify-self: start; background: var(--blue); }
+  .msg small { display: block; }
+
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s, transform .6s; }
+  .reveal.in { opacity: 1; transform: none; }
+  footer { padding: 40px 16px 60px; color: var(--soft); font-size: 18px; }
+
+  @media (max-width: 860px) {
+    body { font-size: 19px; }
+    .hero, .g2, .g3, .g4 { grid-template-columns: 1fr; }
+    .g4 { grid-template-columns: repeat(2, 1fr); }
+    .lane { grid-template-columns: 1fr; }
+    .lane .arrow { transform: rotate(90deg); animation: none; height: 34px; }
+    .caption { grid-template-columns: 1fr; } .caption .body { grid-column: 1; }
+    .msg { max-width: 94%; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .reveal { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hero">
+    <div>
+      <h1><span class="underline">Asistente de compras</span> por voz</h1>
+      <p class="lead">Cómo viajan los datos: de lo que dices al micrófono a un pedido registrado y una respuesta hablada con tu propia voz. Laboratorio 4.</p>
+      <div class="chips">
+        <span class="chip">🎙 voz o texto</span>
+        <span class="chip">🧠 modelos 100 % locales</span>
+        <span class="chip">🛒 tienda simulada</span>
+        <span class="chip">✅ el código valida</span>
+      </div>
+    </div>
+    <div class="sketch tint-yellow bubble">
+      <b>El caso de uso</b>
+      <p>Comprar hablando, en español: «busco una botella de acero, tengo 45 euros», «añade dos», «mejor cuatro», «ciérralo», «sí».</p>
+      <p>El asistente busca en un catálogo real, lleva el carrito y el presupuesto, repite el pedido antes de registrarlo y solo compra con un <b>sí</b>.</p>
+    </div>
+  </div>
+  <nav aria-label="Secciones">
+    <a href="#turno">1 · Un turno</a><a href="#agente">2 · El agente</a><a href="#datos">3 · Los datos</a>
+    <a href="#modelos">4 · Modelos</a><a href="#hardware">5 · Hardware</a><a href="#uso">6 · Una compra</a>
+  </nav>
+</header>
+
+<main>
+
+<section id="turno">
+  <h2>1 · Un turno, paso a paso</h2>
+  <p class="lead">Cada turno recorre la misma tubería. Elige un tipo de turno y míralo avanzar; los textos y los tiempos son de una conversación real con la voz del autor.</p>
+
+  <div class="controls">
+    <span class="group-label">Turno:</span>
+    <div class="group" id="flows"></div>
+    <span class="group-label">Entrada:</span>
+    <div class="group">
+      <button type="button" id="m-voz" aria-pressed="true">🎙 Voz</button>
+      <button type="button" id="m-texto" aria-pressed="false">⌨️ Texto</button>
+    </div>
+  </div>
+
+  <div class="board">
+    <svg id="diagram" viewBox="0 -60 1280 640" role="img" aria-label="Diagrama del flujo de un turno: usuario, ASR, agente con LLM y código, búsqueda, tienda, memoria, TTS y respuesta">
+      <defs>
+        <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="4.5" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+        <pattern id="hatch" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(-38)">
+          <line x1="0" y1="0" x2="0" y2="9" style="stroke: var(--hatch); stroke-width: 5"/>
+        </pattern>
+        <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+          <path d="M1,1 L11,6 L1,11" style="fill: none; stroke: context-stroke; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"/>
+        </marker>
+      </defs>
+
+      <g filter="url(#rough)">
+        <rect class="shape" x="430" y="20" width="430" height="320" rx="26" style="fill: url(#hatch)"/>
+        <path id="e1" class="edge" marker-end="url(#arrow)" d="M172,115 L216,115"/>
+        <path id="e2" class="edge" marker-end="url(#arrow)" d="M382,115 L446,115"/>
+        <path id="e3" class="edge" marker-end="url(#arrow)" d="M632,98 L656,98"/>
+        <path id="e3b" class="edge" marker-end="url(#arrow)" d="M658,136 L634,136"/>
+        <path id="e4" class="edge" marker-end="url(#arrow)" d="M762,162 C768,290 716,372 690,436"/>
+        <path id="e5" class="edge" marker-end="url(#arrow)" d="M712,436 C742,380 796,296 790,164"/>
+        <path id="e6" class="edge" marker-end="url(#arrow)" d="M500,162 C486,290 436,372 410,436"/>
+        <path id="e7" class="edge" marker-end="url(#arrow)" d="M388,436 C412,376 470,290 478,164"/>
+        <path id="e8" class="edge" marker-end="url(#arrow)" d="M582,162 L618,216"/>
+        <path id="e8b" class="edge" marker-end="url(#arrow)" d="M712,162 L676,216"/>
+        <path id="e9" class="edge" marker-end="url(#arrow)" d="M737,266 C836,266 852,115 906,115"/>
+        <path id="e10" class="edge" marker-end="url(#arrow)" d="M1072,115 L1106,115"/>
+        <path id="e11" class="edge dash" marker-end="url(#arrow)" d="M800,342 C840,380 880,400 920,436"/>
+        <path id="tb1" class="edge dash" marker-end="url(#arrow)" d="M95,68 C120,-40 400,-44 452,36"/>
+        <path id="tb2" class="edge dash" marker-end="url(#arrow)" d="M840,36 C900,-44 1150,-40 1185,66"/>
+      </g>
+
+      <g class="node" id="n-user"><rect filter="url(#rough)" class="shape" x="20" y="70" width="150" height="90" rx="16" style="fill: var(--yellow)"/><text class="t" x="95" y="108" text-anchor="middle">Tú</text><text class="s" x="95" y="136" text-anchor="middle">hablas o escribes</text></g>
+      <g class="node" id="n-asr"><rect filter="url(#rough)" class="shape" x="220" y="70" width="160" height="90" rx="16" style="fill: var(--blue)"/><text class="t" x="300" y="108" text-anchor="middle">ASR</text><text class="s" x="300" y="136" text-anchor="middle">Whisper turbo</text></g>
+      <text class="t" x="448" y="52" style="font-size: 25px">Agente · LangGraph</text>
+      <g class="node" id="n-llm"><rect filter="url(#rough)" class="shape" x="450" y="70" width="180" height="90" rx="16" style="fill: var(--purple)"/><text class="t" x="540" y="108" text-anchor="middle">LLM propone</text><text class="s" x="540" y="136" text-anchor="middle">Qwen2.5-7B · 1 paso</text></g>
+      <g class="node" id="n-code"><rect filter="url(#rough)" class="shape" x="660" y="70" width="180" height="90" rx="16" style="fill: var(--green)"/><text class="t" x="750" y="108" text-anchor="middle">Código valida</text><text class="s" x="750" y="136" text-anchor="middle">y ejecuta</text></g>
+      <g class="node" id="n-resp"><rect filter="url(#rough)" class="shape" x="555" y="220" width="180" height="90" rx="16" style="fill: var(--orange)"/><text class="t" x="645" y="258" text-anchor="middle">Respuesta</text><text class="s" x="645" y="286" text-anchor="middle">texto + cifras exactas</text></g>
+      <g class="node" id="n-tts"><rect filter="url(#rough)" class="shape" x="910" y="70" width="160" height="90" rx="16" style="fill: var(--blue)"/><text class="t" x="990" y="108" text-anchor="middle">TTS</text><text class="s" x="990" y="136" text-anchor="middle">XTTS-v2 · tu voz</text></g>
+      <g class="node" id="n-spk"><rect filter="url(#rough)" class="shape" x="1110" y="70" width="150" height="90" rx="16" style="fill: var(--yellow)"/><text class="t" x="1185" y="108" text-anchor="middle">Escuchas</text><text class="s" x="1185" y="136" text-anchor="middle">o lees</text></g>
+      <g class="node" id="n-search"><rect filter="url(#rough)" class="shape" x="250" y="440" width="270" height="112" rx="16" style="fill: var(--pink)"/><text class="t" x="385" y="476" text-anchor="middle">Búsqueda</text><text class="s" x="385" y="503" text-anchor="middle">BM25 + denso → RRF → reranker</text><text class="s" x="385" y="528" text-anchor="middle">43 674 productos de ESCI</text></g>
+      <g class="node" id="n-shop"><rect filter="url(#rough)" class="shape" x="560" y="440" width="230" height="112" rx="16" style="fill: var(--teal)"/><text class="t" x="675" y="476" text-anchor="middle">Tienda · SQLite</text><text class="s" x="675" y="503" text-anchor="middle">precios, existencias,</text><text class="s" x="675" y="528" text-anchor="middle">carrito y pedidos</text></g>
+      <g class="node" id="n-mem"><rect filter="url(#rough)" class="shape" x="830" y="440" width="250" height="112" rx="16" style="fill: var(--gray)"/><text class="t" x="955" y="476" text-anchor="middle">Memoria · Postgres</text><text class="s" x="955" y="503" text-anchor="middle">estado de la conversación</text><text class="s" x="955" y="528" text-anchor="middle">y preferencias del usuario</text></g>
+
+      <text class="note" x="268" y="-22" text-anchor="middle">por texto: sin ASR</text>
+      <text class="note" x="1020" y="-22" text-anchor="middle">por texto: sin TTS</text>
+      <circle id="packet" r="10"/>
+    </svg>
+  </div>
+
+  <div class="controls">
+    <button type="button" id="prev" aria-label="Paso anterior">◀</button>
+    <button type="button" id="play" aria-label="Reproducir o pausar">⏸ Pausa</button>
+    <button type="button" id="next" aria-label="Paso siguiente">▶</button>
+    <div class="dots" id="dots" aria-hidden="true"></div>
+  </div>
+  <div class="sketch caption" aria-live="polite">
+    <div class="num" id="c-num">1</div>
+    <h3 id="c-title"></h3>
+    <div class="body" id="c-body"></div>
+  </div>
+  <p><small>¿Voz o texto? Las dos. El agente es el mismo: por voz se le pone un reconocedor delante (ASR) y un sintetizador detrás (TTS); por texto se saltan esas dos etapas.</small></p>
+</section>
+
+<section id="agente" class="reveal">
+  <h2>2 · Qué hace el agente</h2>
+  <p class="lead">Es un grafo explícito de LangGraph con doce nodos. La regla de diseño: <b>el LLM propone, el código decide</b>.</p>
+  <div class="grid g2">
+    <div class="sketch card tint-purple tilt-l">
+      <h3>🧠 El LLM (Qwen2.5-7B)</h3>
+      <ul>
+        <li>Entiende el mensaje del usuario.</li>
+        <li>Elige <b>una herramienta por paso</b>, en un JSON que una gramática obliga a ser válido: solo puede nombrar productos que existen.</li>
+        <li>Redacta la respuesta, corta y pensada para leerse en voz alta.</li>
+        <li>Como mucho seis pasos por turno.</li>
+      </ul>
+    </div>
+    <div class="sketch alt card tint-green tilt-r">
+      <h3>🛡 El código</h3>
+      <ul>
+        <li>Valida cada llamada: producto, cantidad, «el segundo» es de verdad el segundo.</li>
+        <li>Existencias y presupuesto se comprueban en la tienda, dentro de una transacción.</li>
+        <li>Comprueba que toda cifra de la respuesta sale de los datos.</li>
+        <li>Repite el pedido y espera un <b>sí</b> inequívoco. Registrar el pedido <b>no</b> es una herramienta del LLM.</li>
+        <li>El pedido se registra una sola vez aunque el «sí» se repita.</li>
+      </ul>
+    </div>
+  </div>
+  <p style="margin-top: 16px">Las doce herramientas que puede proponer:</p>
+  <div class="chips">
+    <span class="chip mono">buscar_productos</span><span class="chip mono">detalle_producto</span><span class="chip mono">comparar</span>
+    <span class="chip mono">consultar_precio_stock</span><span class="chip mono">agregar_al_carrito</span><span class="chip mono">cambiar_cantidad</span>
+    <span class="chip mono">quitar_del_carrito</span><span class="chip mono">fijar_presupuesto</span><span class="chip mono">guardar_preferencia</span>
+    <span class="chip mono">cotizar</span><span class="chip mono">pedir_aclaracion</span><span class="chip mono">responder</span>
+  </div>
+</section>
+
+<section id="datos" class="reveal">
+  <h2>3 · Qué tomamos de la base de datos</h2>
+  <p class="lead">El enunciado da ESCI (Shopping Queries Dataset de Amazon). Usamos su versión reducida y solo la parte en español. Tres caminos, y uno tiene un muro.</p>
+
+  <div class="lane">
+    <div class="sketch card tint-pink"><h3>Productos de ESCI</h3><small>título, descripción, características, marca y color</small></div>
+    <div class="arrow">→</div>
+    <div class="sketch alt card"><h3>Catálogo</h3><p><b>43 674</b> productos en español.</p><small>Un dato ausente se muestra como «desconocido»; el agente no lo inventa.</small></div>
+    <div class="arrow">→</div>
+    <div class="sketch card tint-green"><span class="stamp ok">lo usa el agente</span><h3>Índices de búsqueda</h3><small>BM25 (léxico) y vectores <span class="mono">multilingual-e5-small</span> en FAISS; se fusionan con RRF y un reranker reordena los 50 primeros.</small></div>
+  </div>
+
+  <div class="lane">
+    <div class="sketch card tint-pink"><h3>Consultas y etiquetas</h3><small>cada pareja consulta-producto con su etiqueta E, S, C o I</small></div>
+    <div class="arrow">→</div>
+    <div class="sketch alt card"><h3>Train y test</h3><p><b>1 500</b> consultas de train (40 029 parejas) y <b>300</b> de test (8 400).</p></div>
+    <div class="arrow">→</div>
+    <div class="sketch card wall tint-gray"><span class="stamp">el agente no las lee</span><h3>Solo entrenar y medir</h3><small>Train entrena el reranker (control sin grafo y GraphSAGE). Test se usó una sola vez, para la evaluación final.</small></div>
+  </div>
+
+  <div class="lane">
+    <div class="sketch card tint-yellow"><h3>Lo que ESCI no trae</h3><small>precios y existencias</small></div>
+    <div class="arrow">→</div>
+    <div class="sketch alt card"><h3>Datos ficticios con semilla</h3><p>Precio y stock generados con la semilla <b>42</b>; un 10 % de productos agotados.</p></div>
+    <div class="arrow">→</div>
+    <div class="sketch card tint-teal"><span class="stamp ok">lo usa el agente</span><h3>Tienda simulada (SQLite)</h3><small>inventario, carritos, cotizaciones y pedidos. Volver al estado inicial es copiar un archivo.</small></div>
+  </div>
+</section>
+
+<section id="modelos" class="reveal">
+  <h2>4 · Modelos locales y tecnología</h2>
+  <p class="lead">Ninguna API externa de inferencia: todo corre en la misma máquina.</p>
+  <div class="grid g4">
+    <div class="sketch card tint-blue"><h3>Oír</h3><p>Whisper large-v3-turbo</p><small><span class="mono">faster-whisper</span>, español fijo y filtro de voz (Silero VAD)</small></div>
+    <div class="sketch alt card tint-purple"><h3>Decidir</h3><p>Qwen2.5-7B-Instruct</p><small>GGUF Q4_K_M con <span class="mono">llama-cpp-python</span>; salida JSON con gramática</small></div>
+    <div class="sketch card tint-blue"><h3>Hablar</h3><p>XTTS-v2</p><small><span class="mono">coqui-tts</span>; clona la voz desde una grabación de referencia. Licencia no comercial</small></div>
+    <div class="sketch alt card tint-pink"><h3>Buscar</h3><p>BM25 + e5-small + reranker</p><small><span class="mono">bm25s</span>, FAISS y un reranker entrenado (PyTorch Geometric para GraphSAGE)</small></div>
+    <div class="sketch alt card tint-green"><h3>Orquestar</h3><p>LangGraph</p><small>grafo explícito, sin agente preconstruido</small></div>
+    <div class="sketch card tint-teal"><h3>Vender</h3><p>SQLite</p><small>transacciones para confirmar: todo o nada</small></div>
+    <div class="sketch alt card tint-gray"><h3>Recordar</h3><p>Postgres</p><small>puntos de control de la conversación y preferencias entre conversaciones</small></div>
+    <div class="sketch card tint-yellow"><h3>Medir</h3><p>ECAPA-TDNN y jiwer</p><small>solo en la evaluación: semejanza de la voz y WER</small></div>
+  </div>
+</section>
+
+<section id="hardware" class="reveal">
+  <h2>5 · Infraestructura</h2>
+  <div class="grid g2">
+    <div class="sketch card tilt-l">
+      <h3>🖥 Estación de trabajo</h3>
+      <ul>
+        <li>GPU NVIDIA RTX A2000 de 12 GB</li>
+        <li>CPU Intel Core i9-14900K (32 hilos), 125 GB de RAM</li>
+        <li>Linux, Python 3.11, PyTorch con CUDA</li>
+      </ul>
+      <small>Aquí se midió todo lo de esta página.</small>
+    </div>
+    <div class="sketch alt card tilt-r">
+      <h3>☁️ Google Colab</h3>
+      <p>El enunciado pide que pueda correr en Colab con una GPU T4 (16 GB). El cuaderno está en <a href="../notebooks/colab.ipynb">notebooks/colab.ipynb</a>.</p>
+      <small>La carga inicial de los modelos se cuenta aparte de la latencia por turno.</small>
+    </div>
+  </div>
+
+  <h3 style="margin-top: 26px">Memoria de GPU con todo cargado</h3>
+  <div class="bar" data-bar>
+    <span data-w="5.7" class="tint-pink" title="Búsqueda: 706 MiB">búsq.</span>
+    <span data-w="41.6" class="tint-purple">LLM · 5 114 MiB</span>
+    <span data-w="15.9" class="tint-blue">ASR · 1 952</span>
+    <span data-w="14.4" class="tint-teal">TTS · 1 760</span>
+    <span data-w="22.4">libre</span>
+  </div>
+  <div class="legend"><span><b>9 532 MiB</b> de 12 282 tras cargar el último modelo (búsqueda 706 → LLM 5 820 → ASR 7 772 → TTS 9 532).</span></div>
+
+  <h3>Latencia de un turno por voz (media, con LLM)</h3>
+  <div class="bar" data-bar>
+    <span data-w="3" class="tint-blue" title="ASR 0,35 s"></span>
+    <span data-w="42" class="tint-purple">LLM · 5,03 s</span>
+    <span data-w="55" class="tint-teal">TTS · 6,54 s</span>
+  </div>
+  <div class="legend">
+    <span><i class="tint-blue"></i>ASR 0,35 s</span><span><i class="tint-purple"></i>LLM 5,03 s</span><span><i class="tint-teal"></i>TTS 6,54 s</span>
+    <span>búsqueda y herramientas: 0,05 s</span><span><b>total 11,97 s</b></span>
+  </div>
+  <p><small>Por texto, el mismo turno tarda unos 5 s (solo el LLM). Confirmar el pedido no usa el LLM: 4,8 s por voz, casi todo TTS. Cargar los modelos al arrancar: unos 27 s.</small></p>
+</section>
+
+<section id="uso" class="reveal">
+  <h2>6 · Una compra completa</h2>
+  <p class="lead">Conversación real por voz (escenario 03 de la evaluación, con las grabaciones del autor). Las respuestas están abreviadas.</p>
+  <div class="chat">
+    <div class="sketch msg user">Busco una botella de agua de acero inoxidable. Mi presupuesto es de 45 euros.</div>
+    <div class="sketch alt msg bot">Tengo la botella de agua de Newdora por 6,72 euros, la de KOSAD por 12,37… ¿Te interesa alguna? He anotado un presupuesto de 45,00 €.<small>fijar_presupuesto → buscar_productos</small></div>
+    <div class="sketch msg user">Añade dos de la primera.</div>
+    <div class="sketch alt msg bot">Hecho, añadidas dos unidades. Total: 19,00 €. Tu presupuesto es de 45,00 € y te quedan 26,00 €.<small>agregar_al_carrito</small></div>
+    <div class="sketch msg user">Mejor que sean cuatro.</div>
+    <div class="sketch alt msg bot">Hecho, el total es 38,00 €. Te quedan 7,00 €.<small>cambiar_cantidad</small></div>
+    <div class="sketch msg user">Ciérralo.</div>
+    <div class="sketch alt msg bot">Te repito el pedido antes de registrarlo: 4 unidades a 9,50 € cada una, 38,00 €. ¿Lo confirmo?<small>cotizar: todavía no compra</small></div>
+    <div class="sketch msg user">Sí.</div>
+    <div class="sketch alt msg bot">Pedido número 1 registrado: 4 unidades, total 38,00 €. Gracias por tu compra.<small>el código registra el pedido en una transacción</small></div>
+  </div>
+
+  <h3 style="margin-top: 26px">Lo medido</h3>
+  <div class="grid g4">
+    <div class="sketch card tint-green"><h3>20 de 20</h3><small>escenarios por texto, con los tres rerankers. Son el conjunto con el que se ajustó el agente: no es una tasa de aciertos general.</small></div>
+    <div class="sketch alt card tint-blue"><h3>6 de 6</h3><small>escenarios por voz con las grabaciones del autor. En uno, un error del ASR hizo comprar otro producto sin que la comprobación lo viera.</small></div>
+    <div class="sketch card tint-yellow"><h3>1,4 %</h3><small>WER del ASR con la voz real (31 turnos, un hablante, una toma por turno).</small></div>
+    <div class="sketch alt card tint-teal"><h3>0</h3><small>violaciones de cantidad, presupuesto, existencias, pedido duplicado o cambio parcial.</small></div>
+  </div>
+  <p><small>El detalle, con lo que no se ha verificado, está en <a href="PLAN.md">PLAN.md</a> y en <a href="../results/escenarios/resumen.md">results/escenarios/resumen.md</a>.</small></p>
+</section>
+
+</main>
+
+<footer>
+  Elaborado con asistencia de IA generativa; conviene validarlo con el docente. Cifras del 12 de noviembre de 2026, medidas en la estación de trabajo.
+</footer>
+
+<script>
+(() => {
+  const q = (s) => `<div class="quote">«${s}»</div>`;
+  const j = (s) => `<code class="json">${s}</code>`;
+  const t = (s) => `<span class="chip time">⏱ ${s}</span>`;
+
+  // Cada paso: nodos que se iluminan, aristas que recorre el paquete y lo que se cuenta.
+  // voice: solo existe por voz. text: variante cuando la entrada es texto.
+  const FLOWS = {
+    buscar: { label: "🔎 Buscar", steps: [
+      { nodes: ["user"], edges: ["e1"], title: "Hablas", body: `Un audio por turno: <b>6,0 s</b> de voz, mono a 48 kHz.`,
+        text: { edges: ["tb1"], title: "Escribes", body: `El mensaje entra tal cual, sin pasar por el ASR.` + q("Busco una botella de agua de acero inoxidable. Mi presupuesto es de 45 euros.") } },
+      { voice: true, nodes: ["asr"], edges: ["e2"], title: "ASR: de audio a texto", body: q("Busco una botella de agua de acero inoxidable. Mi presupuesto es de 45 euros.") + t("0,37 s") },
+      { nodes: ["llm", "code"], edges: ["e3", "e3b"], title: "Primer paso: el presupuesto", body: `El mensaje trae un importe, así que el LLM propone anotarlo. El código lo valida y lo guarda.` + j(`{"motivo": "el usuario da su gasto máximo", "herramienta": "fijar_presupuesto", "importe_eur": 45}`) },
+      { nodes: ["llm", "search"], edges: ["e6"], title: "Segundo paso: buscar", body: `El importe nunca va en la consulta.` + j(`{"motivo": "buscar lo que pide", "herramienta": "buscar_productos", "consulta": "botella de agua acero inoxidable"}`) },
+      { nodes: ["search", "llm"], edges: ["e7"], title: "La búsqueda devuelve candidatos", body: `BM25 y vectores se fusionan (RRF), un reranker reordena los 50 primeros y se enseñan <b>5</b>, primero los que se pueden comprar con ese presupuesto.<br>[1] Newdora · 6,72 € · [2] KOSAD · 12,37 € · [3] KOUAJ · 18,29 € …` + t("0,03 s") },
+      { nodes: ["llm", "resp", "mem"], edges: ["e8", "e11"], title: "Respuesta sustentada", body: q("Tengo la botella de agua de Newdora por 6,72 euros, la de KOSAD por 12,37… ¿Te interesa alguna?") + `El código comprueba que cada cifra aparece en los candidatos. El estado queda guardado en Postgres.` + t("LLM: 7,9 s") },
+      { voice: true, nodes: ["tts"], edges: ["e9"], title: "TTS con la voz clonada", body: `Antes de sintetizar, las cifras pasan a palabras:` + q("…por seis euros con setenta y dos céntimos…") + t("8,0 s") },
+      { nodes: ["spk"], edges: ["e10"], title: "Escuchas la respuesta", body: `Turno completo: <b>16,3 s</b> (ASR 0,37 · LLM 7,87 · búsqueda y herramientas 0,06 · TTS 7,98).`,
+        text: { edges: ["tb2"], title: "Lees la respuesta", body: `Sin ASR ni TTS queda el tiempo del LLM: unos 8 s en este turno.` } },
+    ] },
+    carrito: { label: "🛒 Añadir al carrito", steps: [
+      { nodes: ["user"], edges: ["e1"], title: "Hablas", body: `<b>2,5 s</b> de audio.`,
+        text: { edges: ["tb1"], title: "Escribes", body: q("Añade dos de la primera.") } },
+      { voice: true, nodes: ["asr"], edges: ["e2"], title: "ASR: de audio a texto", body: q("Añade dos de la primera.") + t("0,33 s") },
+      { nodes: ["llm"], edges: ["e3"], title: "El LLM propone un paso", body: `«La primera» es el candidato [1]; el código se lo recuerda con un aviso.` + j(`{"motivo": "añadir dos unidades del candidato 1", "herramienta": "agregar_al_carrito", "product_id": "B07VQNY8PK", "cantidad": 2}`) },
+      { nodes: ["code", "shop"], edges: ["e4"], title: "El código valida y ejecuta", body: `¿Existe el producto? ✔ ¿Es el que señaló el usuario? ✔ ¿Cantidad válida? ✔<br>La tienda comprueba existencias y presupuesto dentro de la transacción.` },
+      { nodes: ["shop", "code"], edges: ["e5", "e3b"], title: "La tienda contesta", body: `CARRITO: 2 unidades × 9,50 € = <b>19,00 €</b>. Ese resultado vuelve al LLM.` + t("0,05 s") },
+      { nodes: ["llm", "resp", "mem"], edges: ["e8", "e11"], title: "Respuesta: frase del LLM, cifras del código", body: q("Hecho, añadidas dos unidades. […] Total: 19,00 €. Tu presupuesto es de 45,00 € y te quedan 26,00 €.") + `El contenido exacto del carrito lo escribe el código, no el LLM.` + t("LLM: 4,9 s") },
+      { voice: true, nodes: ["tts"], edges: ["e9"], title: "TTS con la voz clonada", body: q("…dos unidades […] a nueve euros con cincuenta céntimos cada una, diecinueve euros…") + t("10,0 s") },
+      { nodes: ["spk"], edges: ["e10"], title: "Escuchas la respuesta", body: `Turno completo: <b>15,3 s</b> (ASR 0,33 · LLM 4,91 · herramientas 0,05 · TTS 10,02).`,
+        text: { edges: ["tb2"], title: "Lees la respuesta", body: `Por texto, este turno son unos 5 s.` } },
+    ] },
+    confirmar: { label: "✅ Confirmar el pedido", steps: [
+      { nodes: ["user"], edges: ["e1"], title: "Hablas", body: `El agente acaba de repetir el pedido y espera. <b>2,0 s</b> de audio.`,
+        text: { edges: ["tb1"], title: "Escribes", body: q("Sí.") } },
+      { voice: true, nodes: ["asr"], edges: ["e2"], title: "ASR: de audio a texto", body: q("Sí.") + t("0,32 s") },
+      { nodes: ["code"], edges: [], title: "Aquí no decide el LLM", body: `El código clasifica la respuesta: solo cuenta un <b>sí</b> que no diga nada más. «Sí, pero que sean tres» no compra.` },
+      { nodes: ["code", "shop"], edges: ["e4"], title: "Transacción: todo o nada", body: `Vuelve a comprobar existencias, precio y presupuesto; inserta el pedido (uno por cotización) y descuenta el inventario. Si algo cambió, no se registra nada y el agente propone una alternativa.` },
+      { nodes: ["shop", "resp", "mem"], edges: ["e5", "e8b", "e11"], title: "Pedido registrado", body: q("Pedido número 1 registrado: 4 unidades […] Total: 38,00 €. Gracias por tu compra.") + `Este texto lo escribe el código.` + t("0,04 s") },
+      { voice: true, nodes: ["tts"], edges: ["e9"], title: "TTS con la voz clonada", body: q("Pedido número uno registrado: cuatro unidades […] treinta y ocho euros.") + t("4,9 s") },
+      { nodes: ["spk"], edges: ["e10"], title: "Escuchas la confirmación", body: `Turno completo: <b>5,2 s</b>, sin LLM. Si repites el «sí», el pedido no se duplica.`,
+        text: { edges: ["tb2"], title: "Lees la confirmación", body: `Por texto es casi instantáneo: 0,03 s.` } },
+    ] },
+  };
+
+  const svg = document.getElementById("diagram");
+  const packet = document.getElementById("packet");
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const state = { flow: "buscar", mode: "voz", index: 0, playing: !reduced, timer: null, run: 0 };
+
+  const steps = () => FLOWS[state.flow].steps
+    .filter((step) => state.mode === "voz" || !step.voice)
+    .map((step) => (state.mode === "texto" && step.text ? { ...step, ...step.text } : step));
+
+  function travel(ids, run) {
+    if (reduced || !ids.length) { packet.style.opacity = 0; return; }
+    const [id, ...rest] = ids;
+    const path = document.getElementById(id);
+    const length = path.getTotalLength();
+    const start = performance.now();
+    const duration = Math.min(1100, 380 + length * 2.2);
+    packet.style.opacity = 1;
+    const frame = (now) => {
+      if (run !== state.run) return;
+      const k = Math.min(1, (now - start) / duration);
+      const eased = k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
+      const point = path.getPointAtLength(length * eased);
+      packet.setAttribute("cx", point.x);
+      packet.setAttribute("cy", point.y);
+      if (k < 1) requestAnimationFrame(frame);
+      else if (rest.length) travel(rest, run);
+      else packet.style.opacity = 0;
+    };
+    requestAnimationFrame(frame);
+  }
+
+  function render() {
+    const list = steps();
+    state.index = (state.index + list.length) % list.length;
+    const step = list[state.index];
+    state.run += 1;
+    svg.classList.add("dim");
+    svg.querySelectorAll(".node").forEach((node) => node.classList.toggle("on", step.nodes.includes(node.id.slice(2))));
+    svg.querySelectorAll(".edge").forEach((edge) => edge.classList.toggle("flow", step.edges.includes(edge.id)));
+    const text = state.mode === "texto";
+    ["n-asr", "n-tts", "e1", "e2", "e9", "e10"].forEach((id) => document.getElementById(id).classList.toggle("off-mode", text));
+    ["tb1", "tb2"].forEach((id) => document.getElementById(id).classList.toggle("off-mode", !text));
+    document.getElementById("c-num").textContent = state.index + 1;
+    document.getElementById("c-title").textContent = step.title;
+    document.getElementById("c-body").innerHTML = step.body;
+    document.getElementById("dots").innerHTML = list.map((_, i) => `<i class="${i === state.index ? "on" : ""}"></i>`).join("");
+    travel(step.edges, state.run);
+  }
+
+  function schedule() {
+    clearInterval(state.timer);
+    document.getElementById("play").textContent = state.playing ? "⏸ Pausa" : "▶ Reproducir";
+    if (state.playing) state.timer = setInterval(() => { state.index += 1; render(); }, 4600);
+  }
+
+  function go(change) { state.playing = false; state.index += change; render(); schedule(); }
+
+  const flows = document.getElementById("flows");
+  Object.entries(FLOWS).forEach(([key, flow]) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.textContent = flow.label;
+    button.setAttribute("aria-pressed", key === state.flow);
+    button.addEventListener("click", () => {
+      state.flow = key; state.index = 0;
+      flows.querySelectorAll("button").forEach((other) => other.setAttribute("aria-pressed", other === button));
+      render(); schedule();
+    });
+    flows.appendChild(button);
+  });
+  const modes = { voz: document.getElementById("m-voz"), texto: document.getElementById("m-texto") };
+  Object.entries(modes).forEach(([mode, button]) => button.addEventListener("click", () => {
+    state.mode = mode; state.index = 0;
+    Object.entries(modes).forEach(([other, element]) => element.setAttribute("aria-pressed", other === mode));
+    render(); schedule();
+  }));
+  document.getElementById("prev").addEventListener("click", () => go(-1));
+  document.getElementById("next").addEventListener("click", () => go(1));
+  document.getElementById("play").addEventListener("click", () => { state.playing = !state.playing; schedule(); });
+
+  // Secciones y barras que aparecen al llegar a ellas.
+  const seen = new IntersectionObserver((entries) => entries.forEach((entry) => {
+    if (!entry.isIntersecting) return;
+    entry.target.classList.add("in");
+    entry.target.querySelectorAll("[data-bar] span").forEach((span) => { span.style.width = `${span.dataset.w}%`; });
+    seen.unobserve(entry.target);
+  }), { threshold: .12 });
+  document.querySelectorAll(".reveal").forEach((section) => seen.observe(section));
+
+  render();
+  schedule();
+})();
+</script>
+</body>
+</html>

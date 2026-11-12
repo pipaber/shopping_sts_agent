@@ -4,6 +4,39 @@ Asistente que recibe consultas habladas en español, recupera productos de un ca
 
 El diseño y el cronograma están en [documentation/PLAN.md](documentation/PLAN.md).
 
+## Cómo funciona
+
+El recorrido de los datos, de la voz del usuario al pedido registrado y a la respuesta hablada, está en una página animada: [documentation/flujo.html](documentation/flujo.html). GitHub muestra su código, no la página: para verla hay que abrir el archivo en un navegador (con el repositorio clonado, `documentation/flujo.html`). Recorre paso a paso tres turnos reales (buscar, añadir al carrito y confirmar), por voz o por texto.
+
+[![Flujo de un turno: usuario, ASR, agente, búsqueda, tienda, memoria y TTS](documentation/flujo.png)](documentation/flujo.html)
+
+El mismo flujo, resumido:
+
+```mermaid
+flowchart LR
+    U(["Usuario"]) -- "audio" --> ASR["ASR<br/>Whisper large-v3-turbo"]
+    ASR -- "texto" --> LLM
+    U -. "por texto" .-> LLM
+    subgraph AG["Agente (LangGraph)"]
+        LLM["El LLM propone un paso<br/>Qwen2.5-7B"] --> COD["El código valida y ejecuta"]
+        COD -- "resultado" --> LLM
+        LLM --> R["Respuesta<br/>texto con cifras comprobadas"]
+    end
+    COD <--> B[("Búsqueda<br/>BM25 + denso, RRF, reranker<br/>catálogo ESCI")]
+    COD <--> T[("Tienda simulada<br/>SQLite")]
+    COD -.-> M[("Memoria<br/>Postgres")]
+    R -- "texto" --> TTS["TTS<br/>XTTS-v2, voz clonada"]
+    TTS -- "audio" --> S(["Respuesta"])
+    R -. "por texto" .-> S
+```
+
+- **Caso de uso.** Comprar hablando en español: buscar un producto con un presupuesto, añadirlo al carrito, corregir la cantidad y cerrar el pedido. El agente repite el pedido antes de registrarlo y solo compra con un sí.
+- **Voz o texto.** Las dos. El agente es el mismo; por voz lleva un reconocedor delante (ASR) y un sintetizador detrás (TTS), y por texto se saltan esas dos etapas.
+- **Función del agente.** El LLM propone una herramienta por paso y redacta la respuesta; el código valida cada llamada, comprueba existencias y presupuesto en la tienda, verifica las cifras de la respuesta y es el único que registra pedidos.
+- **Qué se toma de ESCI.** La versión reducida, solo en español: 43 674 productos (título, descripción, características, marca y color) forman el catálogo en el que busca el agente. Las consultas y sus etiquetas (1 500 de `train` y 300 de `test`) solo sirven para entrenar el reranker y para medir: el agente no las lee. Precios y existencias no vienen en ESCI: son ficticios, generados con semilla.
+- **Modelos, todos locales.** Whisper large-v3-turbo, Qwen2.5-7B-Instruct (GGUF Q4_K_M), XTTS-v2 y `multilingual-e5-small`, más un reranker entrenado aquí.
+- **Hardware.** Medido en una estación de trabajo con una NVIDIA RTX A2000 de 12 GB (9 532 MiB de memoria de GPU con todo cargado). El objetivo del enunciado es Google Colab con una T4: [notebooks/colab.ipynb](notebooks/colab.ipynb).
+
 ## Entorno
 
 Requiere [uv](https://docs.astral.sh/uv/) y Python 3.11. PyTorch se instala con CUDA 12.6 en Windows y Linux.
