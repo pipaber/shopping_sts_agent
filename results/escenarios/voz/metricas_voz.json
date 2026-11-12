@@ -22,8 +22,8 @@
     },
     "tts": {
       "cases": 31,
-      "wer": 0.03414264036418816,
-      "similarity_mean": 0.742144684311484,
+      "wer": 0.033707865168539325,
+      "similarity_mean": 0.7407916814088057,
       "similarity_min": 0.5005643381032236
     }
   },
@@ -1218,9 +1218,9 @@
       "tts": {
         "summary": {
           "cases": 6,
-          "wer": 0.01282051282051282,
-          "similarity_mean": 0.7618052931506428,
-          "similarity_min": 0.745800269322805
+          "wer": 0.01195219123505976,
+          "similarity_mean": 0.7548147781534724,
+          "similarity_min": 0.7379131974344041
         },
         "cases": [
           {
@@ -1267,45 +1267,45 @@
           },
           {
             "turn": 4,
-            "spoken_text": "El carrito suma veintidós euros, lo que supera tu presupuesto de doce euros en diez euros. ¿Qué quieres hacer? En el carrito hay dos unidades de Raton inalámbrico a once euros cada una, veintidós euros. Total: veintidós euros. Tu presupuesto es de doce euros y lo superas en diez euros.",
-            "heard": "El carrito suma 22 euros, lo que supera tu presupuesto de 12 euros en 10 euros. ¿Qué quieres hacer? En el carrito hay dos unidades de ratón inalámbrico a 11 euros cada una. 22 euros. Total, 22 euros. Tu presupuesto es de 12 euros y lo superas en 10 euros.",
+            "spoken_text": "Hecho, añadidas diez unidades más. En total, doce unidades de Raton inalámbrico a once euros cada una, ciento treinta y dos euros. Total: ciento treinta y dos euros. En el carrito hay doce unidades de Raton inalámbrico a once euros cada una, ciento treinta y dos euros. Total: ciento treinta y dos euros.",
+            "heard": "Hecho, añadidas 10 unidades más. En total, 12 unidades de ratón inalámbrico a 11 euros cada una, 132 euros. Total, 132 euros. En el carrito hay 12 unidades de ratón inalámbrico a 11 euros cada una, 132 euros. Total, 132 euros.",
             "wer": {
               "wer": 0.0,
-              "reference_words": 50,
-              "hits": 50,
+              "reference_words": 53,
+              "hits": 53,
               "substitutions": 0,
               "deletions": 0,
               "insertions": 0
             },
-            "similarity": 0.7835254546356876
+            "similarity": 0.7941483856449075
           },
           {
             "turn": 5,
-            "spoken_text": "Ese ratón cuesta once euros y el carrito supera tu presupuesto de doce euros en diez euros. ¿Quieres reducir el número de unidades o cambiar por otro?",
-            "heard": "Ese ratón cuesta 11 euros y el carrito supera tu presupuesto de 12 euros en 10 euros. ¿Quieres reducir el número de unidades o cambiar por otro?",
+            "spoken_text": "Te repito el pedido antes de registrarlo: doce unidades de Raton inalámbrico a once euros cada una, ciento treinta y dos euros. Total: ciento treinta y dos euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+            "heard": "Te repito el pedido antes de registrarlo, 12 unidades de ratón inalámbrico a 11 euros cada una, 132 euros. Total, 132 euros. ¿Lo confirmo? Di sí para registrarlo o dime qué quieres cambiar.",
             "wer": {
               "wer": 0.0,
-              "reference_words": 27,
-              "hits": 27,
+              "reference_words": 39,
+              "hits": 39,
               "substitutions": 0,
               "deletions": 0,
               "insertions": 0
             },
-            "similarity": 0.7712344074400541
+            "similarity": 0.7379131974344041
           },
           {
             "turn": 6,
-            "spoken_text": "Ese ratón cuesta once euros y el carrito supera tu presupuesto de doce euros en diez euros. ¿Quieres reducir el número de unidades o cambiar por otro?",
-            "heard": "Ese ratón cuesta 11 euros y el carrito supera tu presupuesto de 12 euros en 10 euros. ¿Quieres reducir el número de unidades o cambiar por otro?",
+            "spoken_text": "Pedido número uno registrado: doce unidades de Raton inalámbrico a once euros cada una, ciento treinta y dos euros. Total: ciento treinta y dos euros. Gracias por tu compra.",
+            "heard": "Pedido número 1 registrado. 12 unidades de ratón inalámbrico a 11 euros cada una, 132 euros. Total, 132 euros. Gracias por tu compra.",
             "wer": {
               "wer": 0.0,
-              "reference_words": 27,
-              "hits": 27,
+              "reference_words": 29,
+              "hits": 29,
               "substitutions": 0,
               "deletions": 0,
               "insertions": 0
             },
-            "similarity": 0.7712344074400541
+            "similarity": 0.7519895964534605
           }
         ]
       }

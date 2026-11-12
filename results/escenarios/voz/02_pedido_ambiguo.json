@@ -6,9 +6,9 @@
   "voice": true,
   "input": "audio",
   "audio_source": "grabaciones del usuario",
-  "user_id": "eval-9011462b-02_pedido_ambiguo",
+  "user_id": "eval-01f6a90e-02_pedido_ambiguo",
   "threads": [
-    "eval-9011462b-02_pedido_ambiguo-c1"
+    "eval-01f6a90e-02_pedido_ambiguo-c1"
   ],
   "names": {
     "elegido": "B081C31KV4"
@@ -40,19 +40,19 @@
         }
       ],
       "timings": {
-        "asr": 0.334,
+        "asr": 0.338,
         "retrieval": 0.0,
-        "llm": 1.818,
+        "llm": 1.863,
         "tools": 0.025,
-        "tts": 0.705,
-        "total": 2.881
+        "tts": 0.714,
+        "total": 2.941
       },
       "llm_steps": 1,
-      "tts_first_chunk_seconds": 0.7,
+      "tts_first_chunk_seconds": 0.709,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-9011462b-02_pedido_ambiguo-c1",
+        "cart_id": "eval-01f6a90e-02_pedido_ambiguo-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -71,7 +71,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-9011462b-02_pedido_ambiguo-c1",
+        "cart_id": "eval-01f6a90e-02_pedido_ambiguo-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -150,21 +150,21 @@
         }
       ],
       "timings": {
-        "asr": 0.349,
-        "retrieval": 0.031,
-        "llm": 8.242,
-        "tools": 0.029,
-        "tts": 11.639,
-        "total": 20.291
+        "asr": 0.354,
+        "retrieval": 0.032,
+        "llm": 8.26,
+        "tools": 0.03,
+        "tts": 11.707,
+        "total": 20.382
       },
       "llm_steps": 3,
-      "tts_first_chunk_seconds": 3.877,
+      "tts_first_chunk_seconds": 3.906,
       "tts_retries": 0,
       "product_terms": [
         "auriculares bluetooth"
       ],
       "before": {
-        "cart_id": "eval-9011462b-02_pedido_ambiguo-c1",
+        "cart_id": "eval-01f6a90e-02_pedido_ambiguo-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -183,7 +183,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-9011462b-02_pedido_ambiguo-c1",
+        "cart_id": "eval-01f6a90e-02_pedido_ambiguo-c1",
         "state": {
           "budget_cents": 5000,
           "preferences": [],
@@ -319,21 +319,21 @@
         }
       ],
       "timings": {
-        "asr": 0.321,
+        "asr": 0.324,
         "retrieval": 0.0,
-        "llm": 4.808,
-        "tools": 0.052,
-        "tts": 6.897,
-        "total": 12.079
+        "llm": 4.818,
+        "tools": 0.056,
+        "tts": 6.911,
+        "total": 12.109
       },
       "llm_steps": 2,
-      "tts_first_chunk_seconds": 4.307,
+      "tts_first_chunk_seconds": 4.32,
       "tts_retries": 0,
       "product_terms": [
         "primero"
       ],
       "before": {
-        "cart_id": "eval-9011462b-02_pedido_ambiguo-c1",
+        "cart_id": "eval-01f6a90e-02_pedido_ambiguo-c1",
         "state": {
           "budget_cents": 5000,
           "preferences": [],
@@ -415,7 +415,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-9011462b-02_pedido_ambiguo-c1",
+        "cart_id": "eval-01f6a90e-02_pedido_ambiguo-c1",
         "state": {
           "budget_cents": 5000,
           "preferences": [],
@@ -466,7 +466,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-9011462b-02_pedido_ambiguo-c1",
+              "cart_id": "eval-01f6a90e-02_pedido_ambiguo-c1",
               "product_id": "B081C31KV4",
               "quantity": 1
             }
@@ -521,7 +521,7 @@
   ],
   "final": {
     "snapshot": {
-      "cart_id": "eval-9011462b-02_pedido_ambiguo-c1",
+      "cart_id": "eval-01f6a90e-02_pedido_ambiguo-c1",
       "state": {
         "budget_cents": 5000,
         "preferences": [],
@@ -572,7 +572,7 @@
         "order_items": [],
         "cart_items": [
           {
-            "cart_id": "eval-9011462b-02_pedido_ambiguo-c1",
+            "cart_id": "eval-01f6a90e-02_pedido_ambiguo-c1",
             "product_id": "B081C31KV4",
             "quantity": 1
           }
@@ -656,7 +656,7 @@
     "all": {
       "turns": 3,
       "asr": {
-        "mean": 0.33,
+        "mean": 0.34,
         "max": 0.35
       },
       "retrieval": {
@@ -664,26 +664,26 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 4.96,
-        "max": 8.24
+        "mean": 4.98,
+        "max": 8.26
       },
       "tools": {
         "mean": 0.04,
-        "max": 0.05
+        "max": 0.06
       },
       "tts": {
-        "mean": 6.41,
-        "max": 11.64
+        "mean": 6.44,
+        "max": 11.71
       },
       "total": {
-        "mean": 11.75,
-        "max": 20.29
+        "mean": 11.81,
+        "max": 20.38
       }
     },
     "with_llm": {
       "turns": 3,
       "asr": {
-        "mean": 0.33,
+        "mean": 0.34,
         "max": 0.35
       },
       "retrieval": {
@@ -691,20 +691,20 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 4.96,
-        "max": 8.24
+        "mean": 4.98,
+        "max": 8.26
       },
       "tools": {
         "mean": 0.04,
-        "max": 0.05
+        "max": 0.06
       },
       "tts": {
-        "mean": 6.41,
-        "max": 11.64
+        "mean": 6.44,
+        "max": 11.71
       },
       "total": {
-        "mean": 11.75,
-        "max": 20.29
+        "mean": 11.81,
+        "max": 20.38
       }
     },
     "without_llm": {

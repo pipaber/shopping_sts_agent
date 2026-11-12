@@ -21,7 +21,7 @@
 
 > **Suceso externo:** la tienda deja `B085CHJ9BD` (@elegida) con precio 15,00 € y existencias 10.
 
-## Turno 2 (10.5 s)
+## Turno 2 (10.6 s)
 
 **Usuario (transcripción del ASR):** Añade 3 de la primera.
 
@@ -54,7 +54,7 @@
 
 **Usuario (transcripción del ASR):** Sí.
 
-- `confirmar_pedido(quote_id="4f8626eb745448569ea95a7f600b53c4")` → RECHAZADO: [stock_insuficiente] Solo queda 1 unidad del producto B085CHJ9BD y se pidieron 3.
+- `confirmar_pedido(quote_id="f0383becec9a400897d2dc4ada4b5101")` → RECHAZADO: [stock_insuficiente] Solo queda 1 unidad del producto B085CHJ9BD y se pidieron 3.
 
 **Agente:** No he registrado el pedido porque la tienda cambió después de la cotización. De «Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege…» solo queda 1 unidad y habías pedido 3. Puedo dejarlo en 1. Como alternativa tengo: «Lámpara Escritorio LED, Flexo de Escritorio (Cuidado Ocular, Puerto…» a 23,23 €, con 16 en existencias; «Lámpara Escritorio LED,JUKSTG 5 Modos 10 Niveles de Brillo Lámpara de…» a 34,86 €, con 25 en existencias; «Lámpara de escritorio LED Lámpara de lectura de brazo Eye-Care…» a 23,86 €, con 34 en existencias. ¿Qué prefieres?
 
@@ -65,7 +65,7 @@
 - ✔ `cart(lines=[{"product": "@elegida", "quantity": 3}])` — carrito: 3 × B085CHJ9BD
 - ✔ `stock(product="@elegida", equals=1)` — existencias de B085CHJ9BD: 1
 
-## Turno 5 (11.6 s)
+## Turno 5 (11.7 s)
 
 **Usuario (transcripción del ASR):** Vale, déjalo en una.
 
@@ -78,7 +78,7 @@
 - ✔ `cart(lines=[{"product": "@elegida", "quantity": 1}])` — carrito: 1 × B085CHJ9BD
 - ✔ `orders(count=0)` — pedidos registrados: 0
 
-## Turno 6 (7.5 s)
+## Turno 6 (7.6 s)
 
 **Usuario (transcripción del ASR):** Cierra el pedido.
 
@@ -95,7 +95,7 @@
 
 **Usuario (transcripción del ASR):** Sí.
 
-- `confirmar_pedido(quote_id="54ddd78cb69c48a4b62494de89cd33ad")` → OK: pedido registrado
+- `confirmar_pedido(quote_id="9c9195a6838b43a4b384dbaef5166248")` → OK: pedido registrado
 
 **Agente:** Pedido número 1 registrado: 1 unidad de «Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege…» a 15,00 € cada una, 15,00 €. Total: 15,00 €. Gracias por tu compra.
 
@@ -109,7 +109,7 @@
 
 **Texto correcto:** Sí.
 
-- `confirmar_pedido(quote_id="54ddd78cb69c48a4b62494de89cd33ad")` → OK: el pedido ya estaba registrado; no se duplicó
+- `confirmar_pedido(quote_id="9c9195a6838b43a4b384dbaef5166248")` → OK: el pedido ya estaba registrado; no se duplicó
 
 **Agente:** Ese pedido ya estaba registrado con el número 1, así que no lo he duplicado. Total: 15,00 €.
 
@@ -139,14 +139,14 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.35 | 0.03 | 7.66 | 0.03 | 9.27 | 17.33 | 38.1 s |
-| 2 | 0.34 | 0.00 | 5.45 | 0.06 | 4.69 | 10.53 | 19.9 s |
-| 3 | 0.34 | 0.00 | 2.36 | 0.03 | 4.95 | 7.68 | 21.2 s |
-| 4 | 0.32 | 0.02 | 0.00 | 0.02 | 10.64 | 11.00 | 44.6 s |
-| 5 | 0.34 | 0.00 | 6.70 | 0.06 | 4.53 | 11.63 | 18.9 s |
-| 6 | 0.33 | 0.00 | 2.13 | 0.03 | 5.05 | 7.54 | 21.8 s |
-| 7 | 0.32 | 0.00 | 0.00 | 0.03 | 3.11 | 3.46 | 12.9 s |
-| 8 | 0.32 | 0.00 | 0.00 | 0.04 | 2.14 | 2.50 | 9.2 s |
-| **Media de los turnos con LLM (5)** | 0.34 | 0.01 | 4.86 | 0.04 | 5.70 | 10.94 | |
-| **Media de los turnos sin LLM (3)** | 0.32 | 0.01 | 0.00 | 0.03 | 5.30 | 5.65 | |
+| 1 | 0.35 | 0.03 | 7.61 | 0.03 | 9.28 | 17.29 | 38.1 s |
+| 2 | 0.34 | 0.00 | 5.46 | 0.06 | 4.70 | 10.56 | 19.9 s |
+| 3 | 0.34 | 0.00 | 2.37 | 0.04 | 4.96 | 7.71 | 21.2 s |
+| 4 | 0.32 | 0.03 | 0.00 | 0.01 | 10.66 | 11.02 | 44.6 s |
+| 5 | 0.34 | 0.00 | 6.72 | 0.05 | 4.54 | 11.65 | 18.9 s |
+| 6 | 0.33 | 0.00 | 2.13 | 0.04 | 5.08 | 7.58 | 21.8 s |
+| 7 | 0.32 | 0.00 | 0.00 | 0.04 | 3.11 | 3.47 | 12.9 s |
+| 8 | 0.32 | 0.00 | 0.00 | 0.03 | 2.13 | 2.49 | 9.2 s |
+| **Media de los turnos con LLM (5)** | 0.34 | 0.01 | 4.86 | 0.04 | 5.71 | 10.96 | |
+| **Media de los turnos sin LLM (3)** | 0.32 | 0.01 | 0.00 | 0.03 | 5.30 | 5.66 | |
 

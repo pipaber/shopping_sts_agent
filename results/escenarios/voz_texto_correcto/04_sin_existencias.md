@@ -70,7 +70,7 @@
 
 **Usuario (texto):** Sí, confirmo.
 
-- `confirmar_pedido(quote_id="b31df21023f44221866586e53cdb122b")` → OK: pedido registrado
+- `confirmar_pedido(quote_id="100ded2f8b3840ef8a7f5901a54b6ba5")` → OK: pedido registrado
 
 **Agente:** Pedido número 1 registrado: 1 unidad de «Esterilla Yoga,Ya no es quien vive, sino a Cristo que vive en mí…» a 18,00 € cada una, 18,00 €. Total: 18,00 €. Gracias por tu compra.
 
@@ -101,11 +101,11 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.03 | 7.15 | 0.03 | 0.00 | 7.20 | 0.0 s |
-| 2 | 0.00 | 0.00 | 5.47 | 0.02 | 0.00 | 5.49 | 0.0 s |
-| 3 | 0.00 | 0.00 | 4.97 | 0.04 | 0.00 | 5.02 | 0.0 s |
-| 4 | 0.00 | 0.00 | 2.31 | 0.04 | 0.00 | 2.35 | 0.0 s |
+| 1 | 0.00 | 0.03 | 7.13 | 0.01 | 0.00 | 7.18 | 0.0 s |
+| 2 | 0.00 | 0.00 | 5.46 | 0.03 | 0.00 | 5.49 | 0.0 s |
+| 3 | 0.00 | 0.00 | 4.95 | 0.05 | 0.00 | 5.00 | 0.0 s |
+| 4 | 0.00 | 0.00 | 2.30 | 0.04 | 0.00 | 2.34 | 0.0 s |
 | 5 | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | 0.0 s |
-| **Media de los turnos con LLM (4)** | 0.00 | 0.01 | 4.97 | 0.03 | 0.00 | 5.01 | |
+| **Media de los turnos con LLM (4)** | 0.00 | 0.01 | 4.96 | 0.03 | 0.00 | 5.00 | |
 | **Media de los turnos sin LLM (1)** | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | |
 

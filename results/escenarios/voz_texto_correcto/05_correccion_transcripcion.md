@@ -21,7 +21,7 @@
 
 > **Suceso externo:** la tienda deja `B08P34RJSX` (@elegido) con precio 11,00 € y existencias 20.
 
-## Turno 2 (4.8 s)
+## Turno 2 (4.9 s)
 
 **Usuario (texto):** Añade dos del primero.
 
@@ -76,7 +76,7 @@
 
 **Usuario (texto):** Sí, confirmo.
 
-- `confirmar_pedido(quote_id="e6c79b08828c4679baa1248ae222994f")` → OK: pedido registrado
+- `confirmar_pedido(quote_id="5090d2ba8f66452e98a1f1e2f621cd63")` → OK: pedido registrado
 
 **Agente:** Pedido número 1 registrado: 12 unidades de «Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con…» a 11,00 € cada una, 132,00 €. Total: 132,00 €. Gracias por tu compra.
 
@@ -106,12 +106,12 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.03 | 7.85 | 0.03 | 0.00 | 7.91 | 0.0 s |
-| 2 | 0.00 | 0.00 | 4.79 | 0.05 | 0.00 | 4.84 | 0.0 s |
-| 3 | 0.00 | 0.00 | 2.27 | 0.04 | 0.00 | 2.31 | 0.0 s |
-| 4 | 0.00 | 0.00 | 7.93 | 0.04 | 0.00 | 7.97 | 0.0 s |
-| 5 | 0.00 | 0.00 | 2.36 | 0.04 | 0.00 | 2.40 | 0.0 s |
-| 6 | 0.00 | 0.00 | 0.00 | 0.02 | 0.00 | 0.02 | 0.0 s |
+| 1 | 0.00 | 0.03 | 7.83 | 0.03 | 0.00 | 7.89 | 0.0 s |
+| 2 | 0.00 | 0.00 | 4.82 | 0.05 | 0.00 | 4.88 | 0.0 s |
+| 3 | 0.00 | 0.00 | 2.26 | 0.04 | 0.00 | 2.30 | 0.0 s |
+| 4 | 0.00 | 0.00 | 7.94 | 0.06 | 0.00 | 8.00 | 0.0 s |
+| 5 | 0.00 | 0.00 | 2.35 | 0.04 | 0.00 | 2.39 | 0.0 s |
+| 6 | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | 0.0 s |
 | **Media de los turnos con LLM (5)** | 0.00 | 0.01 | 5.04 | 0.04 | 0.00 | 5.09 | |
-| **Media de los turnos sin LLM (1)** | 0.00 | 0.00 | 0.00 | 0.02 | 0.00 | 0.02 | |
+| **Media de los turnos sin LLM (1)** | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | |
 

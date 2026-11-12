@@ -19,7 +19,7 @@
 - ✔ `cart(empty=true)` — carrito: vacío
 - ✔ `orders(count=0)` — pedidos registrados: 0
 
-## Turno 2 (20.3 s)
+## Turno 2 (20.4 s)
 
 **Usuario (transcripción del ASR):** Unos auriculares Bluetooth y no quiero gastar más de 50 euros.
 
@@ -71,8 +71,8 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.33 | 0.00 | 1.82 | 0.03 | 0.70 | 2.88 | 3.2 s |
-| 2 | 0.35 | 0.03 | 8.24 | 0.03 | 11.64 | 20.29 | 48.8 s |
-| 3 | 0.32 | 0.00 | 4.81 | 0.05 | 6.90 | 12.08 | 29.0 s |
-| **Media de los turnos con LLM (3)** | 0.33 | 0.01 | 4.96 | 0.04 | 6.41 | 11.75 | |
+| 1 | 0.34 | 0.00 | 1.86 | 0.03 | 0.71 | 2.94 | 3.2 s |
+| 2 | 0.35 | 0.03 | 8.26 | 0.03 | 11.71 | 20.38 | 48.8 s |
+| 3 | 0.32 | 0.00 | 4.82 | 0.06 | 6.91 | 12.11 | 29.0 s |
+| **Media de los turnos con LLM (3)** | 0.34 | 0.01 | 4.98 | 0.04 | 6.44 | 11.81 | |
 

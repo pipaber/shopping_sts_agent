@@ -6,9 +6,9 @@
   "voice": true,
   "input": "audio",
   "audio_source": "grabaciones del usuario",
-  "user_id": "eval-9011462b-03_cambio_cantidad",
+  "user_id": "eval-01f6a90e-03_cambio_cantidad",
   "threads": [
-    "eval-9011462b-03_cambio_cantidad-c1"
+    "eval-01f6a90e-03_cambio_cantidad-c1"
   ],
   "names": {
     "elegida": "B07VQNY8PK"
@@ -50,21 +50,21 @@
         }
       ],
       "timings": {
-        "asr": 0.369,
-        "retrieval": 0.031,
-        "llm": 7.867,
-        "tools": 0.031,
-        "tts": 7.945,
-        "total": 16.242
+        "asr": 0.37,
+        "retrieval": 0.03,
+        "llm": 7.866,
+        "tools": 0.03,
+        "tts": 7.982,
+        "total": 16.278
       },
       "llm_steps": 3,
-      "tts_first_chunk_seconds": 2.467,
+      "tts_first_chunk_seconds": 2.478,
       "tts_retries": 0,
       "product_terms": [
         "botella de agua de acero inoxidable"
       ],
       "before": {
-        "cart_id": "eval-9011462b-03_cambio_cantidad-c1",
+        "cart_id": "eval-01f6a90e-03_cambio_cantidad-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -83,7 +83,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-9011462b-03_cambio_cantidad-c1",
+        "cart_id": "eval-01f6a90e-03_cambio_cantidad-c1",
         "state": {
           "budget_cents": 4500,
           "preferences": [],
@@ -213,19 +213,19 @@
       "timings": {
         "asr": 0.33,
         "retrieval": 0.0,
-        "llm": 4.974,
+        "llm": 4.906,
         "tools": 0.054,
-        "tts": 9.998,
-        "total": 15.355
+        "tts": 10.022,
+        "total": 15.313
       },
       "llm_steps": 2,
-      "tts_first_chunk_seconds": 1.576,
+      "tts_first_chunk_seconds": 1.578,
       "tts_retries": 0,
       "product_terms": [
         "primera"
       ],
       "before": {
-        "cart_id": "eval-9011462b-03_cambio_cantidad-c1",
+        "cart_id": "eval-01f6a90e-03_cambio_cantidad-c1",
         "state": {
           "budget_cents": 4500,
           "preferences": [],
@@ -307,7 +307,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-9011462b-03_cambio_cantidad-c1",
+        "cart_id": "eval-01f6a90e-03_cambio_cantidad-c1",
         "state": {
           "budget_cents": 4500,
           "preferences": [],
@@ -358,7 +358,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-9011462b-03_cambio_cantidad-c1",
+              "cart_id": "eval-01f6a90e-03_cambio_cantidad-c1",
               "product_id": "B07VQNY8PK",
               "quantity": 2
             }
@@ -437,19 +437,19 @@
         }
       ],
       "timings": {
-        "asr": 0.326,
+        "asr": 0.328,
         "retrieval": 0.0,
-        "llm": 4.857,
-        "tools": 0.053,
-        "tts": 5.834,
-        "total": 11.07
+        "llm": 4.877,
+        "tools": 0.054,
+        "tts": 5.85,
+        "total": 11.11
       },
       "llm_steps": 2,
-      "tts_first_chunk_seconds": 1.125,
+      "tts_first_chunk_seconds": 1.131,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-9011462b-03_cambio_cantidad-c1",
+        "cart_id": "eval-01f6a90e-03_cambio_cantidad-c1",
         "state": {
           "budget_cents": 4500,
           "preferences": [],
@@ -500,7 +500,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-9011462b-03_cambio_cantidad-c1",
+              "cart_id": "eval-01f6a90e-03_cambio_cantidad-c1",
               "product_id": "B07VQNY8PK",
               "quantity": 2
             }
@@ -537,7 +537,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-9011462b-03_cambio_cantidad-c1",
+        "cart_id": "eval-01f6a90e-03_cambio_cantidad-c1",
         "state": {
           "budget_cents": 4500,
           "preferences": [],
@@ -588,7 +588,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-9011462b-03_cambio_cantidad-c1",
+              "cart_id": "eval-01f6a90e-03_cambio_cantidad-c1",
               "product_id": "B07VQNY8PK",
               "quantity": 4
             }
@@ -672,19 +672,19 @@
         }
       ],
       "timings": {
-        "asr": 0.324,
+        "asr": 0.325,
         "retrieval": 0.0,
-        "llm": 2.088,
-        "tools": 0.04,
-        "tts": 7.426,
-        "total": 9.878
+        "llm": 2.097,
+        "tools": 0.041,
+        "tts": 7.43,
+        "total": 9.893
       },
       "llm_steps": 1,
-      "tts_first_chunk_seconds": 4.184,
+      "tts_first_chunk_seconds": 4.185,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-9011462b-03_cambio_cantidad-c1",
+        "cart_id": "eval-01f6a90e-03_cambio_cantidad-c1",
         "state": {
           "budget_cents": 4500,
           "preferences": [],
@@ -735,7 +735,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-9011462b-03_cambio_cantidad-c1",
+              "cart_id": "eval-01f6a90e-03_cambio_cantidad-c1",
               "product_id": "B07VQNY8PK",
               "quantity": 4
             }
@@ -772,13 +772,13 @@
         }
       },
       "after": {
-        "cart_id": "eval-9011462b-03_cambio_cantidad-c1",
+        "cart_id": "eval-01f6a90e-03_cambio_cantidad-c1",
         "state": {
           "budget_cents": 4500,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "0168a0e1b15b4d04b1a928dcafecc03a",
+            "quote_id": "f1be2af44aee492a97f5e4f356ba1f57",
             "items": [
               {
                 "product_id": "B07VQNY8PK",
@@ -838,7 +838,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-9011462b-03_cambio_cantidad-c1",
+              "cart_id": "eval-01f6a90e-03_cambio_cantidad-c1",
               "product_id": "B07VQNY8PK",
               "quantity": 4
             }
@@ -910,7 +910,7 @@
         {
           "tool": "confirmar_pedido",
           "args": {
-            "quote_id": "0168a0e1b15b4d04b1a928dcafecc03a"
+            "quote_id": "f1be2af44aee492a97f5e4f356ba1f57"
           },
           "reason": "el usuario confirmó la cotización",
           "ok": true,
@@ -919,25 +919,25 @@
         }
       ],
       "timings": {
-        "asr": 0.317,
+        "asr": 0.32,
         "retrieval": 0.0,
         "llm": 0.0,
-        "tools": 0.042,
-        "tts": 4.849,
-        "total": 5.207
+        "tools": 0.036,
+        "tts": 4.869,
+        "total": 5.226
       },
       "llm_steps": 0,
-      "tts_first_chunk_seconds": 3.303,
+      "tts_first_chunk_seconds": 3.317,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-9011462b-03_cambio_cantidad-c1",
+        "cart_id": "eval-01f6a90e-03_cambio_cantidad-c1",
         "state": {
           "budget_cents": 4500,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "0168a0e1b15b4d04b1a928dcafecc03a",
+            "quote_id": "f1be2af44aee492a97f5e4f356ba1f57",
             "items": [
               {
                 "product_id": "B07VQNY8PK",
@@ -997,7 +997,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-9011462b-03_cambio_cantidad-c1",
+              "cart_id": "eval-01f6a90e-03_cambio_cantidad-c1",
               "product_id": "B07VQNY8PK",
               "quantity": 4
             }
@@ -1034,7 +1034,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-9011462b-03_cambio_cantidad-c1",
+        "cart_id": "eval-01f6a90e-03_cambio_cantidad-c1",
         "state": {
           "budget_cents": 4500,
           "preferences": [],
@@ -1042,7 +1042,7 @@
           "quote": null,
           "order": {
             "order_id": 1,
-            "quote_id": "0168a0e1b15b4d04b1a928dcafecc03a",
+            "quote_id": "f1be2af44aee492a97f5e4f356ba1f57",
             "items": [
               {
                 "product_id": "B07VQNY8PK",
@@ -1098,7 +1098,7 @@
           "orders": [
             {
               "order_id": 1,
-              "quote_id": "0168a0e1b15b4d04b1a928dcafecc03a",
+              "quote_id": "f1be2af44aee492a97f5e4f356ba1f57",
               "total_cents": 3800
             }
           ],
@@ -1156,7 +1156,7 @@
   ],
   "final": {
     "snapshot": {
-      "cart_id": "eval-9011462b-03_cambio_cantidad-c1",
+      "cart_id": "eval-01f6a90e-03_cambio_cantidad-c1",
       "state": {
         "budget_cents": 4500,
         "preferences": [],
@@ -1164,7 +1164,7 @@
         "quote": null,
         "order": {
           "order_id": 1,
-          "quote_id": "0168a0e1b15b4d04b1a928dcafecc03a",
+          "quote_id": "f1be2af44aee492a97f5e4f356ba1f57",
           "items": [
             {
               "product_id": "B07VQNY8PK",
@@ -1220,7 +1220,7 @@
         "orders": [
           {
             "order_id": 1,
-            "quote_id": "0168a0e1b15b4d04b1a928dcafecc03a",
+            "quote_id": "f1be2af44aee492a97f5e4f356ba1f57",
             "total_cents": 3800
           }
         ],
@@ -1329,7 +1329,7 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 3.96,
+        "mean": 3.95,
         "max": 7.87
       },
       "tools": {
@@ -1337,12 +1337,12 @@
         "max": 0.05
       },
       "tts": {
-        "mean": 7.21,
-        "max": 10.0
+        "mean": 7.23,
+        "max": 10.02
       },
       "total": {
-        "mean": 11.55,
-        "max": 16.24
+        "mean": 11.56,
+        "max": 16.28
       }
     },
     "with_llm": {
@@ -1356,7 +1356,7 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 4.95,
+        "mean": 4.94,
         "max": 7.87
       },
       "tools": {
@@ -1364,12 +1364,12 @@
         "max": 0.05
       },
       "tts": {
-        "mean": 7.8,
-        "max": 10.0
+        "mean": 7.82,
+        "max": 10.02
       },
       "total": {
-        "mean": 13.14,
-        "max": 16.24
+        "mean": 13.15,
+        "max": 16.28
       }
     },
     "without_llm": {
@@ -1391,12 +1391,12 @@
         "max": 0.04
       },
       "tts": {
-        "mean": 4.85,
-        "max": 4.85
+        "mean": 4.87,
+        "max": 4.87
       },
       "total": {
-        "mean": 5.21,
-        "max": 5.21
+        "mean": 5.23,
+        "max": 5.23
       }
     }
   }

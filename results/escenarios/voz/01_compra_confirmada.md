@@ -25,7 +25,7 @@
 
 > **Suceso externo:** la tienda deja `B088MC6DPT` (@elegida) con precio 14,50 € y existencias 20.
 
-## Turno 2 (10.2 s)
+## Turno 2 (10.3 s)
 
 **Usuario (transcripción del ASR):** Añade dos de la primera al carrito.
 
@@ -55,7 +55,7 @@
 
 **Usuario (transcripción del ASR):** Sí, confirmo.
 
-- `confirmar_pedido(quote_id="594454c23af04c18b6a8a01941b3b25a")` → OK: pedido registrado
+- `confirmar_pedido(quote_id="573e5b93cb9e4c86b092c47e4417d995")` → OK: pedido registrado
 
 **Agente:** Pedido número 1 registrado: 2 unidades de «FRHOME - Nespresso 120 Cápsulas de Café compatibles - Il Caffè…» a 14,50 € cada una, 29,00 €. Total: 29,00 €. Gracias por tu compra.
 
@@ -86,10 +86,10 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.57 | 0.03 | 10.01 | 0.03 | 7.78 | 18.42 | 35.1 s |
-| 2 | 0.33 | 0.00 | 4.77 | 0.04 | 5.05 | 10.19 | 21.8 s |
-| 3 | 0.32 | 0.00 | 1.96 | 0.04 | 6.35 | 8.68 | 27.5 s |
-| 4 | 0.31 | 0.00 | 0.00 | 0.03 | 3.86 | 4.21 | 16.2 s |
-| **Media de los turnos con LLM (3)** | 0.41 | 0.01 | 5.58 | 0.04 | 6.39 | 12.43 | |
-| **Media de los turnos sin LLM (1)** | 0.31 | 0.00 | 0.00 | 0.03 | 3.86 | 4.21 | |
+| 1 | 0.55 | 0.03 | 9.96 | 0.05 | 7.80 | 18.38 | 35.1 s |
+| 2 | 0.33 | 0.00 | 4.86 | 0.05 | 5.08 | 10.32 | 21.8 s |
+| 3 | 0.32 | 0.00 | 1.97 | 0.04 | 6.38 | 8.72 | 27.5 s |
+| 4 | 0.32 | 0.00 | 0.00 | 0.04 | 3.88 | 4.24 | 16.2 s |
+| **Media de los turnos con LLM (3)** | 0.40 | 0.01 | 5.59 | 0.05 | 6.42 | 12.47 | |
+| **Media de los turnos sin LLM (1)** | 0.32 | 0.00 | 0.00 | 0.04 | 3.88 | 4.24 | |
 

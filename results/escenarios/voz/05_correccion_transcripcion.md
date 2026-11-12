@@ -1,11 +1,11 @@
 # 05_correccion_transcripcion — Corrección de una transcripción antes de comprar
 
-- Veredicto: **fallo**
+- Veredicto: **correcto**
 - Entrada: audio (grabaciones del usuario)
 - Tipo: `correccion_transcripcion`
 - Qué se prueba: El agente repite el pedido con dos unidades y el usuario corrige antes de confirmar: había dicho doce (dos y doce se confunden con facilidad al transcribir). No debe registrarse nada con dos unidades; el pedido final lleva doce.
 
-## Turno 1 (25.5 s)
+## Turno 1 (25.6 s)
 
 **Usuario (transcripción del ASR):** Busca un ratón inalámbrico.
 
@@ -48,52 +48,52 @@
 - ✔ `awaiting_confirmation(value=true)` — esperando confirmación: sí
 - ✔ `orders(count=0)` — pedidos registrados: 0
 
-## Turno 4 (12.4 s)
+## Turno 4 (15.7 s)
 
 **Usuario (transcripción del ASR):** No, espera, he dicho 12, no 2.
 
 **Texto correcto:** No, espera, he dicho doce, no dos.
 
-- `fijar_presupuesto(importe_eur=12)` → OK: presupuesto fijado en 12,00 €. Aviso: el carrito suma 22,00 € y lo supera en 10,00 €.
+- `cambiar_cantidad(product_id="B08P34RJSX", cantidad=12)` → OK: hecho. Así queda el carrito. CARRITO: - id=B08P34RJSX | Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con… | 12 unidades × 11,00 € = 132,00 € | existencias: 20 Total del carrito: 132,00 €
 
-**Agente:** El carrito suma 22,00 €, lo que supera tu presupuesto de 12,00 € en 10,00 €. ¿Qué quieres hacer? En el carrito hay 2 unidades de «Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con…» a 11,00 € cada una, 22,00 €. Total: 22,00 €. Tu presupuesto es de 12,00 € y lo superas en 10,00 €.
+**Agente:** Hecho, añadidas 10 unidades más. En total, 12 unidades de «Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con…» a 11,00 € cada una, 132,00 €. Total: 132,00 €. En el carrito hay 12 unidades de «Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con…» a 11,00 € cada una, 132,00 €. Total: 132,00 €.
 
-**Enviado al TTS:** El carrito suma veintidós euros, lo que supera tu presupuesto de doce euros en diez euros. ¿Qué quieres hacer? En el carrito hay dos unidades de Raton inalámbrico a once euros cada una, veintidós euros. Total: veintidós euros. Tu presupuesto es de doce euros y lo superas en diez euros.
+**Enviado al TTS:** Hecho, añadidas diez unidades más. En total, doce unidades de Raton inalámbrico a once euros cada una, ciento treinta y dos euros. Total: ciento treinta y dos euros. En el carrito hay doce unidades de Raton inalámbrico a once euros cada una, ciento treinta y dos euros. Total: ciento treinta y dos euros.
 
 - ✔ `orders(count=0)` — pedidos registrados: 0
-- ✘ `cart(lines=[{"product": "@elegido", "quantity": 12}])` — carrito: 2 × B08P34RJSX
+- ✔ `cart(lines=[{"product": "@elegido", "quantity": 12}])` — carrito: 12 × B08P34RJSX
 
-## Turno 5 (9.7 s)
+## Turno 5 (8.6 s)
 
 **Usuario (transcripción del ASR):** Ahora sí, cierra el pedido.
 
-- `cotizar()` → RECHAZADO: [presupuesto_excedido] El total sería 22,00 € y supera el presupuesto de 12,00 € por 10,00 €.
+- `cotizar()` → OK: cotización creada; falta la confirmación del usuario.
 
-**Agente:** Ese ratón cuesta 11,00 € y el carrito supera tu presupuesto de 12,00 € en 10,00 €. ¿Quieres reducir el número de unidades o cambiar por otro?
+**Agente:** Te repito el pedido antes de registrarlo: 12 unidades de «Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con…» a 11,00 € cada una, 132,00 €. Total: 132,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar. *(esperando confirmación)*
 
-**Enviado al TTS:** Ese ratón cuesta once euros y el carrito supera tu presupuesto de doce euros en diez euros. ¿Quieres reducir el número de unidades o cambiar por otro?
+**Enviado al TTS:** Te repito el pedido antes de registrarlo: doce unidades de Raton inalámbrico a once euros cada una, ciento treinta y dos euros. Total: ciento treinta y dos euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.
 
-- ✘ `awaiting_confirmation(value=true)` — esperando confirmación: no
+- ✔ `awaiting_confirmation(value=true)` — esperando confirmación: sí
 - ✔ `orders(count=0)` — pedidos registrados: 0
 
-## Turno 6 (9.8 s)
+## Turno 6 (4.2 s)
 
 **Usuario (transcripción del ASR):** Sí, confirmo.
 
-- `cotizar()` → RECHAZADO: [presupuesto_excedido] El total sería 22,00 € y supera el presupuesto de 12,00 € por 10,00 €.
+- `confirmar_pedido(quote_id="a9a53c87f5264fd7a2129c24bad7373c")` → OK: pedido registrado
 
-**Agente:** Ese ratón cuesta 11,00 € y el carrito supera tu presupuesto de 12,00 € en 10,00 €. ¿Quieres reducir el número de unidades o cambiar por otro?
+**Agente:** Pedido número 1 registrado: 12 unidades de «Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con…» a 11,00 € cada una, 132,00 €. Total: 132,00 €. Gracias por tu compra.
 
-**Enviado al TTS:** Ese ratón cuesta once euros y el carrito supera tu presupuesto de doce euros en diez euros. ¿Quieres reducir el número de unidades o cambiar por otro?
+**Enviado al TTS:** Pedido número uno registrado: doce unidades de Raton inalámbrico a once euros cada una, ciento treinta y dos euros. Total: ciento treinta y dos euros. Gracias por tu compra.
 
-- ✘ `orders(count=1)` — pedidos registrados: 0
+- ✔ `orders(count=1)` — pedidos registrados: 1
 
 ## Comprobaciones finales
 
-- ✘ `orders(count=1)` — pedidos registrados: 0
-- ✘ `order(lines=[{"product": "@elegido", "quantity": 12}], total_cents=13200)` — no hay ningún pedido
-- ✘ `stock(product="@elegido", equals=8)` — existencias de B08P34RJSX: 20
-- ✘ `cart(empty=true)` — carrito: 2 × B08P34RJSX
+- ✔ `orders(count=1)` — pedidos registrados: 1
+- ✔ `order(lines=[{"product": "@elegido", "quantity": 12}], total_cents=13200)` — pedido 1: 12 × B08P34RJSX; total 13200 céntimos
+- ✔ `stock(product="@elegido", equals=8)` — existencias de B08P34RJSX: 8
+- ✔ `cart(empty=true)` — carrito: vacío
 
 ## Violaciones de restricciones
 
@@ -101,18 +101,21 @@
 
 ## Estado final de la tienda
 
-- Inventario `B08P34RJSX`: 41 → 20
-- Líneas de carrito pendientes: 1
+- Pedido 1: total 132,00 €
+  - pedido 1: 12 × `B08P34RJSX` a 11,00 €
+- Inventario `B08P34RJSX`: 41 → 8
+- Líneas de carrito pendientes: 0
 
 ## Latencia por turno (segundos)
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.34 | 0.03 | 7.83 | 0.03 | 17.23 | 25.47 | 44.0 s |
-| 2 | 0.33 | 0.00 | 4.75 | 0.05 | 2.73 | 7.86 | 11.5 s |
-| 3 | 0.33 | 0.00 | 2.25 | 0.04 | 5.36 | 7.98 | 22.9 s |
-| 4 | 0.35 | 0.00 | 5.84 | 0.03 | 6.18 | 12.41 | 26.0 s |
-| 5 | 0.34 | 0.00 | 6.11 | 0.03 | 3.24 | 9.72 | 13.4 s |
-| 6 | 0.33 | 0.00 | 6.24 | 0.03 | 3.22 | 9.82 | 13.4 s |
-| **Media de los turnos con LLM (6)** | 0.34 | 0.01 | 5.50 | 0.04 | 6.33 | 12.21 | |
+| 1 | 0.34 | 0.03 | 7.90 | 0.03 | 17.26 | 25.55 | 44.0 s |
+| 2 | 0.33 | 0.00 | 4.74 | 0.06 | 2.73 | 7.86 | 11.5 s |
+| 3 | 0.33 | 0.00 | 2.27 | 0.04 | 5.37 | 8.01 | 22.9 s |
+| 4 | 0.35 | 0.00 | 7.92 | 0.05 | 7.35 | 15.68 | 30.7 s |
+| 5 | 0.34 | 0.00 | 2.35 | 0.04 | 5.89 | 8.62 | 24.8 s |
+| 6 | 0.34 | 0.00 | 0.00 | 0.04 | 3.82 | 4.19 | 15.6 s |
+| **Media de los turnos con LLM (5)** | 0.34 | 0.01 | 5.03 | 0.04 | 7.72 | 13.14 | |
+| **Media de los turnos sin LLM (1)** | 0.34 | 0.00 | 0.00 | 0.04 | 3.82 | 4.19 | |
 
