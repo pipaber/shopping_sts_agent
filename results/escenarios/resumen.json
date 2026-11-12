@@ -145,7 +145,8 @@
         "20_agotado_al_confirmar": true
       },
       "failed_checks": {},
-      "voice_metrics": null
+      "voice_metrics": null,
+      "by_source": []
     },
     "texto_sage": {
       "date": "2026-11-10T16:45:58",
@@ -292,7 +293,8 @@
         "20_agotado_al_confirmar": true
       },
       "failed_checks": {},
-      "voice_metrics": null
+      "voice_metrics": null,
+      "by_source": []
     },
     "texto_sin_reranker": {
       "date": "2026-11-10T16:52:29",
@@ -439,9 +441,147 @@
         "20_agotado_al_confirmar": true
       },
       "failed_checks": {},
-      "voice_metrics": null
+      "voice_metrics": null,
+      "by_source": []
     },
-    "voz": {
+    "voz_texto_correcto": {
+      "date": "2026-11-10T16:59:11",
+      "commit": "5d31abf+cambios",
+      "input": "texto",
+      "models": {
+        "llm": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+        "asr": "large-v3-turbo",
+        "tts": "XTTS-v2",
+        "embeddings": "intfloat/multilingual-e5-small",
+        "reranker": "control"
+      },
+      "voice": {
+        "reference": "audio/referencia/referencia.wav",
+        "speaker": null
+      },
+      "load": {
+        "search_seconds": 16.3,
+        "llm_seconds": 0.7,
+        "asr_seconds": 1.1,
+        "tts_seconds": 10.1,
+        "total_seconds": 28.8,
+        "vram_mib": {
+          "search": 706,
+          "llm": 5820,
+          "asr": 7772,
+          "loaded": 9532
+        }
+      },
+      "memory_backend": "postgres",
+      "audio_sources": {},
+      "scenarios": 6,
+      "passed": 6,
+      "pass_rate": 1.0,
+      "failed": [],
+      "turns": 31,
+      "violations": {
+        "cantidad": 0,
+        "presupuesto": 0,
+        "existencias": 0,
+        "pedido_duplicado": 0,
+        "cambio_parcial": 0
+      },
+      "timings": {
+        "all": {
+          "turns": 31,
+          "asr": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "retrieval": {
+            "mean": 0.01,
+            "max": 0.03
+          },
+          "llm": {
+            "mean": 3.9,
+            "max": 8.93
+          },
+          "tools": {
+            "mean": 0.04,
+            "max": 0.1
+          },
+          "tts": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "total": {
+            "mean": 3.95,
+            "max": 8.99
+          }
+        },
+        "with_llm": {
+          "turns": 24,
+          "asr": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "retrieval": {
+            "mean": 0.01,
+            "max": 0.03
+          },
+          "llm": {
+            "mean": 5.04,
+            "max": 8.93
+          },
+          "tools": {
+            "mean": 0.04,
+            "max": 0.1
+          },
+          "tts": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "total": {
+            "mean": 5.09,
+            "max": 8.99
+          }
+        },
+        "without_llm": {
+          "turns": 7,
+          "asr": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "retrieval": {
+            "mean": 0.0,
+            "max": 0.02
+          },
+          "llm": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "tools": {
+            "mean": 0.03,
+            "max": 0.03
+          },
+          "tts": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "total": {
+            "mean": 0.03,
+            "max": 0.04
+          }
+        }
+      },
+      "verdicts": {
+        "01_compra_confirmada": true,
+        "02_pedido_ambiguo": true,
+        "03_cambio_cantidad": true,
+        "04_sin_existencias": true,
+        "05_correccion_transcripcion": true,
+        "06_cambio_stock_confirmacion_repetida": true
+      },
+      "failed_checks": {},
+      "voice_metrics": null,
+      "by_source": []
+    },
+    "voz_sintetica": {
       "date": "2026-11-10T16:59:11",
       "commit": "5d31abf+cambios",
       "input": "audio",
@@ -609,143 +749,161 @@
           "similarity_mean": 0.7413332651340095,
           "similarity_min": 0.5005643381032236
         }
-      }
-    },
-    "voz_texto_correcto": {
-      "date": "2026-11-10T16:59:11",
-      "commit": "5d31abf+cambios",
-      "input": "texto",
-      "models": {
-        "llm": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
-        "asr": "large-v3-turbo",
-        "tts": "XTTS-v2",
-        "embeddings": "intfloat/multilingual-e5-small",
-        "reranker": "control"
       },
-      "voice": {
-        "reference": "audio/referencia/referencia.wav",
-        "speaker": null
-      },
-      "load": {
-        "search_seconds": 16.3,
-        "llm_seconds": 0.7,
-        "asr_seconds": 1.1,
-        "tts_seconds": 10.1,
-        "total_seconds": 28.8,
-        "vram_mib": {
-          "search": 706,
-          "llm": 5820,
-          "asr": 7772,
-          "loaded": 9532
-        }
-      },
-      "memory_backend": "postgres",
-      "audio_sources": {},
-      "scenarios": 6,
-      "passed": 6,
-      "pass_rate": 1.0,
-      "failed": [],
-      "turns": 31,
-      "violations": {
-        "cantidad": 0,
-        "presupuesto": 0,
-        "existencias": 0,
-        "pedido_duplicado": 0,
-        "cambio_parcial": 0
-      },
-      "timings": {
-        "all": {
+      "by_source": [
+        {
+          "source": "sintéticos, hablante de prueba «Luis Moray» de XTTS-v2 (no es la voz del usuario)",
+          "ids": [
+            "01_compra_confirmada",
+            "02_pedido_ambiguo",
+            "03_cambio_cantidad",
+            "04_sin_existencias",
+            "05_correccion_transcripcion",
+            "06_cambio_stock_confirmacion_repetida"
+          ],
+          "scenarios": 6,
+          "passed": 6,
+          "pass_rate": 1.0,
+          "failed": [],
           "turns": 31,
+          "violations": {
+            "cantidad": 0,
+            "presupuesto": 0,
+            "existencias": 0,
+            "pedido_duplicado": 0,
+            "cambio_parcial": 0
+          },
+          "timings": {
+            "all": {
+              "turns": 31,
+              "asr": {
+                "mean": 0.34,
+                "max": 0.56
+              },
+              "retrieval": {
+                "mean": 0.01,
+                "max": 0.05
+              },
+              "llm": {
+                "mean": 3.91,
+                "max": 9.84
+              },
+              "tools": {
+                "mean": 0.04,
+                "max": 0.06
+              },
+              "tts": {
+                "mean": 5.88,
+                "max": 11.85
+              },
+              "total": {
+                "mean": 10.19,
+                "max": 20.62
+              }
+            },
+            "with_llm": {
+              "turns": 24,
+              "asr": {
+                "mean": 0.35,
+                "max": 0.56
+              },
+              "retrieval": {
+                "mean": 0.01,
+                "max": 0.05
+              },
+              "llm": {
+                "mean": 5.05,
+                "max": 9.84
+              },
+              "tools": {
+                "mean": 0.04,
+                "max": 0.06
+              },
+              "tts": {
+                "mean": 6.3,
+                "max": 11.85
+              },
+              "total": {
+                "mean": 11.75,
+                "max": 20.62
+              }
+            },
+            "without_llm": {
+              "turns": 7,
+              "asr": {
+                "mean": 0.32,
+                "max": 0.33
+              },
+              "retrieval": {
+                "mean": 0.0,
+                "max": 0.03
+              },
+              "llm": {
+                "mean": 0.0,
+                "max": 0.0
+              },
+              "tools": {
+                "mean": 0.04,
+                "max": 0.04
+              },
+              "tts": {
+                "mean": 4.46,
+                "max": 10.64
+              },
+              "total": {
+                "mean": 4.82,
+                "max": 11.01
+              }
+            }
+          },
           "asr": {
-            "mean": 0.0,
-            "max": 0.0
-          },
-          "retrieval": {
-            "mean": 0.01,
-            "max": 0.03
-          },
-          "llm": {
-            "mean": 3.9,
-            "max": 8.93
-          },
-          "tools": {
-            "mean": 0.04,
-            "max": 0.1
+            "cases": 31,
+            "wer": 0.020833333333333332,
+            "exact": 28,
+            "amounts": {
+              "total": 3,
+              "errors": 0,
+              "error_rate": 0.0
+            },
+            "quantities": {
+              "total": 8,
+              "errors": 0,
+              "error_rate": 0.0
+            },
+            "products": {
+              "total": 13,
+              "errors": 0,
+              "error_rate": 0.0
+            }
           },
           "tts": {
-            "mean": 0.0,
-            "max": 0.0
+            "cases": 31,
+            "wer": 0.039097744360902256,
+            "similarity_mean": 0.7413332651340095,
+            "similarity_min": 0.5005643381032236
           },
-          "total": {
-            "mean": 3.95,
-            "max": 8.99
-          }
-        },
-        "with_llm": {
-          "turns": 24,
-          "asr": {
-            "mean": 0.0,
-            "max": 0.0
-          },
-          "retrieval": {
-            "mean": 0.01,
-            "max": 0.03
-          },
-          "llm": {
-            "mean": 5.04,
-            "max": 8.93
-          },
-          "tools": {
-            "mean": 0.04,
-            "max": 0.1
-          },
-          "tts": {
-            "mean": 0.0,
-            "max": 0.0
-          },
-          "total": {
-            "mean": 5.09,
-            "max": 8.99
-          }
-        },
-        "without_llm": {
-          "turns": 7,
-          "asr": {
-            "mean": 0.0,
-            "max": 0.0
-          },
-          "retrieval": {
-            "mean": 0.0,
-            "max": 0.02
-          },
-          "llm": {
-            "mean": 0.0,
-            "max": 0.0
-          },
-          "tools": {
-            "mean": 0.03,
-            "max": 0.03
-          },
-          "tts": {
-            "mean": 0.0,
-            "max": 0.0
-          },
-          "total": {
-            "mean": 0.03,
-            "max": 0.04
-          }
+          "asr_differences": [
+            {
+              "scenario": "01_compra_confirmada",
+              "turn": 2,
+              "reference": "Añade dos de la primera al carrito.",
+              "hypothesis": "Añade dos de la primera al carrito E."
+            },
+            {
+              "scenario": "04_sin_existencias",
+              "turn": 3,
+              "reference": "Entonces ponme una de la segunda.",
+              "hypothesis": "Entonces ponme una de la segunda. De."
+            },
+            {
+              "scenario": "06_cambio_stock_confirmacion_repetida",
+              "turn": 1,
+              "reference": "Busco una lámpara de escritorio LED.",
+              "hypothesis": "Busco una lámpara de escritorio LED. Lo."
+            }
+          ]
         }
-      },
-      "verdicts": {
-        "01_compra_confirmada": true,
-        "02_pedido_ambiguo": true,
-        "03_cambio_cantidad": true,
-        "04_sin_existencias": true,
-        "05_correccion_transcripcion": true,
-        "06_cambio_stock_confirmacion_repetida": true
-      },
-      "failed_checks": {},
-      "voice_metrics": null
+      ]
     },
     "reserva": {
       "date": "2026-11-10T17:12:09",
@@ -893,7 +1051,8 @@
           }
         ]
       },
-      "voice_metrics": null
+      "voice_metrics": null,
+      "by_source": []
     },
     "reserva_sage": {
       "date": "2026-11-10T17:16:00",
@@ -1024,7 +1183,8 @@
         "24_dato_que_no_consta": true
       },
       "failed_checks": {},
-      "voice_metrics": null
+      "voice_metrics": null,
+      "by_source": []
     },
     "reserva_sin_reranker": {
       "date": "2026-11-10T17:17:40",
@@ -1178,67 +1338,70 @@
           }
         ]
       },
-      "voice_metrics": null
+      "voice_metrics": null,
+      "by_source": []
     }
   },
-  "audio_vs_correct_text": [
-    {
-      "id": "01_compra_confirmada",
-      "passed_audio": true,
-      "passed_text": true,
-      "asr_changed_words": [
-        2
-      ],
-      "different_operations": [],
-      "same_store": true
-    },
-    {
-      "id": "02_pedido_ambiguo",
-      "passed_audio": true,
-      "passed_text": true,
-      "asr_changed_words": [],
-      "different_operations": [
-        2
-      ],
-      "same_store": true
-    },
-    {
-      "id": "03_cambio_cantidad",
-      "passed_audio": true,
-      "passed_text": true,
-      "asr_changed_words": [],
-      "different_operations": [],
-      "same_store": true
-    },
-    {
-      "id": "04_sin_existencias",
-      "passed_audio": true,
-      "passed_text": true,
-      "asr_changed_words": [
-        3
-      ],
-      "different_operations": [],
-      "same_store": true
-    },
-    {
-      "id": "05_correccion_transcripcion",
-      "passed_audio": true,
-      "passed_text": true,
-      "asr_changed_words": [],
-      "different_operations": [],
-      "same_store": true
-    },
-    {
-      "id": "06_cambio_stock_confirmacion_repetida",
-      "passed_audio": true,
-      "passed_text": true,
-      "asr_changed_words": [
-        1
-      ],
-      "different_operations": [],
-      "same_store": true
-    }
-  ],
+  "audio_vs_correct_text": {
+    "voz_sintetica": [
+      {
+        "id": "01_compra_confirmada",
+        "passed_audio": true,
+        "passed_text": true,
+        "asr_changed_words": [
+          2
+        ],
+        "different_operations": [],
+        "same_store": true
+      },
+      {
+        "id": "02_pedido_ambiguo",
+        "passed_audio": true,
+        "passed_text": true,
+        "asr_changed_words": [],
+        "different_operations": [
+          2
+        ],
+        "same_store": true
+      },
+      {
+        "id": "03_cambio_cantidad",
+        "passed_audio": true,
+        "passed_text": true,
+        "asr_changed_words": [],
+        "different_operations": [],
+        "same_store": true
+      },
+      {
+        "id": "04_sin_existencias",
+        "passed_audio": true,
+        "passed_text": true,
+        "asr_changed_words": [
+          3
+        ],
+        "different_operations": [],
+        "same_store": true
+      },
+      {
+        "id": "05_correccion_transcripcion",
+        "passed_audio": true,
+        "passed_text": true,
+        "asr_changed_words": [],
+        "different_operations": [],
+        "same_store": true
+      },
+      {
+        "id": "06_cambio_stock_confirmacion_repetida",
+        "passed_audio": true,
+        "passed_text": true,
+        "asr_changed_words": [
+          1
+        ],
+        "different_operations": [],
+        "same_store": true
+      }
+    ]
+  },
   "baseline": "results/escenarios_base",
   "before_after": [
     {
@@ -1529,7 +1692,7 @@
       }
     },
     {
-      "run": "voz",
+      "run": "voz_texto_correcto",
       "scenarios": 6,
       "before": 3,
       "after": 6,
@@ -1567,7 +1730,7 @@
       }
     },
     {
-      "run": "voz_texto_correcto",
+      "run": "voz_sintetica",
       "scenarios": 6,
       "before": 3,
       "after": 6,

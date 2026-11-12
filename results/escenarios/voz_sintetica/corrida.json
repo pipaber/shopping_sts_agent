@@ -35,7 +35,7 @@
     "05_correccion_transcripcion": "sintéticos, hablante de prueba «Luis Moray» de XTTS-v2 (no es la voz del usuario)",
     "06_cambio_stock_confirmacion_repetida": "sintéticos, hablante de prueba «Luis Moray» de XTTS-v2 (no es la voz del usuario)"
   },
-  "audio_dir": "audio/corridas/voz",
+  "audio_dir": "audio/corridas/voz_sintetica",
   "scenarios": [
     {
       "id": "01_compra_confirmada",

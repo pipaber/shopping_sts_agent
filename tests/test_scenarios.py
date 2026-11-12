@@ -18,6 +18,7 @@ from shopping_agent.eval import scenarios as command
 from shopping_agent.eval.scenario_checks import View, match_lines, resolve, run_check
 from shopping_agent.eval.scenario_report import before_after, compare_with_text, failed_checks, ficha, run_summary, summarize, to_markdown
 from shopping_agent.eval.scenario_runner import AUDIO, TEXT, AudioInputs, Bench, ScenarioRun
+from shopping_agent.eval.voice import asr_errors
 from shopping_agent.voice.audio import write_wav
 from test_agent import Shop, call, say
 from test_voice_pipeline import FakeASR, FakeTTS
@@ -390,6 +391,36 @@ def test_summary_markdown_lists_runs_and_failures(shop, tmp_path):
     assert "[compra](texto/compra.md)" in text and "turno 2: `cart`" in text
 
 
+def test_an_audio_run_is_summarized_by_where_its_audio_came_from(shop, tmp_path):
+    def asr(reference, hypothesis):
+        return {"cases": [{"turn": 1, **asr_errors(reference, hypothesis, ["cafetera"])}]}
+
+    def record(scenario_id, source):
+        return {**run(shop, tmp_path, {**PURCHASE, "id": scenario_id}, purchase_script(), run_id=scenario_id), "audio_source": source}
+
+    records = [record("real", "grabaciones del usuario"), record("prueba", "sintéticos")]
+    metrics = {
+        "real": {"asr": asr("Busco una cafetera", "Busco una cafetería"), "tts": {"cases": []}},
+        "prueba": {"asr": asr("Busco una cafetera", "Busco una cafetera."), "tts": {"cases": []}},
+    }
+    info = {
+        "date": "2026-11-11", "commit": "abc", "input": AUDIO, "audio_sources": {}, "memory_backend": "memoria volátil",
+        "models": {"reranker": "control"}, "voice": {}, "load": {"search_seconds": 1, "llm_seconds": 1, "total_seconds": 2},
+    }
+    voice = {"name": "voz", "info": info, "records": records, "voice_metrics": {"summary": {}, "scenarios": metrics}}
+    repeat = {"name": "voz_texto_correcto", "info": info, "records": records, "voice_metrics": None}
+    summary = summarize([voice, repeat])
+    real, synthetic = summary["runs"]["voz"]["by_source"]
+    assert (real["source"], real["ids"], real["passed"]) == ("grabaciones del usuario", ["real"], 1)
+    assert real["asr"]["products"]["errors"] == 1 and synthetic["asr"]["products"]["errors"] == 0
+    assert [found["hypothesis"] for found in real["asr_differences"]] == ["Busco una cafetería"]
+    assert synthetic["asr_differences"] == [] and summary["runs"]["voz_texto_correcto"]["by_source"] == []
+    assert list(summary["audio_vs_correct_text"]) == ["voz"]
+    text = to_markdown(summary)
+    assert "**Audios de entrada: grabaciones del usuario.** Escenarios re: 1 de 1 correctos." in text
+    assert "`real`, turno 1: se dijo «Busco una cafetera» y entendió «Busco una cafetería»." in text
+
+
 def test_recordings_are_preferred_over_synthetic_audio(tmp_path):
     scenario = fmt.parse_scenario(PURCHASE)
     recordings, synthetic = tmp_path / "escenarios", tmp_path / "sinteticos"
@@ -417,5 +448,5 @@ def test_before_and_after_lists_what_was_fixed_and_what_broke():
     row = rows[0]
     assert (row["before"], row["after"], row["scenarios"]) == (2, 2, 3)
     assert row["fixed"] == ["b"] and row["regressions"] == ["c"]
-    text = to_markdown({"runs": {}, "audio_vs_correct_text": [], "baseline": "base", "before_after": rows})
+    text = to_markdown({"runs": {}, "audio_vs_correct_text": {}, "baseline": "base", "before_after": rows})
     assert "| `texto` | 2 de 3 | 2 de 3 | b | c |" in text and "| `b` | ✘ → ✔ |" in text

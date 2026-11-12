@@ -8,6 +8,11 @@ Lee ``results/escenarios/<corrida>/`` y escribe ``results/escenarios/resumen.jso
 y ``resumen.md``: porcentaje de escenarios correctos por corrida, violaciones de
 restricciones, errores del ASR, voz sintetizada, latencia por etapa y la lista de
 comprobaciones fallidas, que es el material para analizar aciertos y fallos.
+
+Una corrida por audio se resume además según de dónde salieron los audios de
+entrada (grabaciones del usuario o hablante sintético), porque una misma corrida
+puede mezclar las dos cosas. ``voz_sintetica`` es la corrida con audio sintético
+que se conserva para comparar con la voz real.
 """
 
 from __future__ import annotations
@@ -21,6 +26,7 @@ from typing import Any
 
 from shopping_agent.agent.report import store_lines
 from shopping_agent.eval.scenario_violations import KINDS
+from shopping_agent.eval.voice import normalize, summarize_asr, summarize_tts
 from shopping_agent.store.ops import format_eur
 from shopping_agent.voice.pipeline import STAGES, TOTAL, VoiceTurn, comparable_store, compare_runs, summarize_timings
 from shopping_agent.voice.report import STAGE_LABELS, timing_lines, turn_lines
@@ -28,8 +34,8 @@ from shopping_agent.voice.report import STAGE_LABELS, timing_lines, turn_lines
 DEFAULT_DIR = Path("results/escenarios")
 BASELINE_DIR = Path("results/escenarios_base")  # corridas de antes de corregir el agente
 RUN_FILE, SUMMARY_NAME, VOICE_METRICS_FILE = "corrida.json", "resumen", "metricas_voz.json"
-AUDIO_RUN, TEXT_REPEAT_RUN = "voz", "voz_texto_correcto"
-RUN_ORDER = ("texto", "texto_sage", "texto_sin_reranker", AUDIO_RUN, TEXT_REPEAT_RUN)
+AUDIO_RUN, TEXT_REPEAT_RUN, SYNTHETIC_RUN = "voz", "voz_texto_correcto", "voz_sintetica"
+RUN_ORDER = ("texto", "texto_sage", "texto_sin_reranker", AUDIO_RUN, TEXT_REPEAT_RUN, SYNTHETIC_RUN)
 _TURN_FIELDS = tuple(field.name for field in fields(VoiceTurn))
 _MARK = {True: "✔", False: "✘"}
 
@@ -158,6 +164,45 @@ def compare_with_text(audio: Record, text: Record) -> dict[str, Any]:
     }
 
 
+# --- Una corrida por audio, según de dónde salió el audio ---------------------------------
+
+
+def _asr_differences(records: list[Record], metrics: dict[str, Any]) -> list[dict[str, Any]]:
+    """Los turnos en los que el ASR no entendió el texto dicho, con lo que entendió."""
+    return [
+        {"scenario": record["id"], "turn": case["turn"], "reference": case["reference"], "hypothesis": case["hypothesis"]}
+        for record in records
+        for case in metrics[record["id"]]["asr"]["cases"]
+        if normalize(case["reference"]) != normalize(case["hypothesis"])
+    ]
+
+
+def _source_entry(source: str, records: list[Record], metrics: dict[str, Any]) -> dict[str, Any]:
+    """Aciertos, ASR, voz generada y latencias de los escenarios con una misma procedencia de audio."""
+
+    def cases(kind: str) -> list[dict[str, Any]]:
+        return [case for record in records for case in metrics[record["id"]][kind]["cases"]]
+
+    return {
+        "source": source,
+        "ids": [record["id"] for record in records],
+        **run_summary(records),
+        "asr": summarize_asr(cases("asr")),
+        "tts": summarize_tts(cases("tts")),
+        "asr_differences": _asr_differences(records, metrics),
+    }
+
+
+def by_source(run: dict[str, Any]) -> list[dict[str, Any]]:
+    """Una corrida por audio partida por la procedencia de sus audios de entrada."""
+    if not run["voice_metrics"]:
+        return []
+    groups: dict[str, list[Record]] = {}
+    for record in run["records"]:
+        groups.setdefault(record["audio_source"], []).append(record)
+    return [_source_entry(source, records, run["voice_metrics"]["scenarios"]) for source, records in groups.items()]
+
+
 # --- Resumen de todas las corridas --------------------------------------------------------
 
 
@@ -188,15 +233,20 @@ def _run_entry(run: dict[str, Any]) -> dict[str, Any]:
         "verdicts": {record["id"]: record["passed"] for record in records},
         "failed_checks": {record["id"]: failed_checks(record) for record in records if not record["passed"]},
         "voice_metrics": run["voice_metrics"]["summary"] if run["voice_metrics"] else None,
+        "by_source": by_source(run),
     }
 
 
-def _audio_vs_text(runs: dict[str, dict[str, Any]]) -> list[dict[str, Any]]:
-    """Cada escenario de voz frente a su repetición con la transcripción correcta."""
-    if AUDIO_RUN not in runs or TEXT_REPEAT_RUN not in runs:
-        return []
+def _audio_vs_text(runs: dict[str, dict[str, Any]]) -> dict[str, list[dict[str, Any]]]:
+    """Por cada corrida con audio, sus escenarios frente a la repetición con la transcripción correcta."""
+    if TEXT_REPEAT_RUN not in runs:
+        return {}
     texts = {record["id"]: record for record in runs[TEXT_REPEAT_RUN]["records"]}
-    return [compare_with_text(record, texts[record["id"]]) for record in runs[AUDIO_RUN]["records"] if record["id"] in texts]
+    return {
+        name: [compare_with_text(record, texts[record["id"]]) for record in run["records"] if record["id"] in texts]
+        for name, run in runs.items()
+        if run["voice_metrics"]
+    }
 
 
 def summarize(runs: list[dict[str, Any]]) -> dict[str, Any]:
@@ -281,20 +331,45 @@ def _load_lines(runs: dict[str, Any]) -> list[str]:
     return [*lines, ""]
 
 
-def _voice_lines(run: dict[str, Any]) -> list[str]:
-    """Errores del ASR y voz sintetizada de la corrida por audio."""
-    metrics = run["voice_metrics"]
-    if not metrics:
-        return []
-    asr, tts = metrics["asr"], metrics["tts"]
-    lines = [f"- Audios de entrada: {'; '.join(sorted(set(run['audio_sources'].values())))}."]
-    lines.append(f"- ASR: {asr['cases']} turnos, {asr['exact']} idénticos tras normalizar; WER {_percent(asr['wer'])}.")
+def _asr_lines(asr: dict[str, Any]) -> list[str]:
+    lines = [f"- ASR: {asr['cases']} turnos, {asr['exact']} idénticos tras normalizar; WER {_percent(asr['wer'])}."]
     for key, label in (("amounts", "importes"), ("quantities", "cantidades"), ("products", "nombres de producto")):
         lines.append(f"- Errores del ASR en {label}: {asr[key]['errors']} de {asr[key]['total']} ({_percent(asr[key]['error_rate'])}).")
-    lines.append(f"- Inteligibilidad de la voz generada (WER de Whisper sobre {tts['cases']} respuestas): {_percent(tts['wer'])}.")
+    return lines
+
+
+def _difference_lines(differences: list[dict[str, Any]]) -> list[str]:
+    lines = [f"- Turnos en los que el ASR cambió palabras: {len(differences) or 'ninguno'}."]
+    lines += [
+        f"  - `{found['scenario']}`, turno {found['turn']}: se dijo «{found['reference']}» y entendió «{found['hypothesis']}»."
+        for found in differences
+    ]
+    return lines
+
+
+def _tts_lines(tts: dict[str, Any]) -> list[str]:
+    lines = [f"- Inteligibilidad de la voz generada (WER de Whisper sobre {tts['cases']} respuestas): {_percent(tts['wer'])}."]
     if tts["similarity_mean"] is not None:
         lines.append(f"- Semejanza con la voz de referencia (coseno ECAPA): media {tts['similarity_mean']:.3f}, mínima {tts['similarity_min']:.3f}.")
-    return [*lines, ""]
+    return lines
+
+
+def _latency_line(stats: dict[str, Any]) -> list[str]:
+    if not stats["turns"]:
+        return []
+    stages = ", ".join(f"{STAGE_LABELS[stage]} {stats[stage]['mean']:.2f}" for stage in (*STAGES, TOTAL))
+    return [f"- Latencia media por turno con LLM ({stats['turns']} turnos, segundos): {stages}; máximo {stats[TOTAL]['max']:.2f}."]
+
+
+def _voice_lines(name: str, run: dict[str, Any]) -> list[str]:
+    """Una corrida por audio: aciertos, ASR, voz generada y latencia, por procedencia del audio."""
+    lines = [f"### `{name}`", ""]
+    for entry in run["by_source"]:
+        scenarios = ", ".join(scenario[:2] for scenario in entry["ids"])
+        lines += [f"**Audios de entrada: {entry['source']}.** Escenarios {scenarios}: {entry['passed']} de {entry['scenarios']} correctos.", ""]
+        lines += [*_asr_lines(entry["asr"]), *_difference_lines(entry["asr_differences"])]
+        lines += [*_tts_lines(entry["tts"]), *_latency_line(entry["timings"]["with_llm"]), ""]
+    return lines
 
 
 def _comparison_table(rows: list[dict[str, Any]]) -> list[str]:
@@ -336,6 +411,21 @@ def _before_after_lines(rows: list[dict[str, Any]]) -> list[str]:
     return [*lines, ""]
 
 
+def _voice_section(runs: dict[str, Any]) -> list[str]:
+    audio_runs = {name: run for name, run in runs.items() if run.get("by_source")}
+    lines = ["## Voz", ""] if audio_runs else []
+    for name, run in audio_runs.items():
+        lines += _voice_lines(name, run)
+    return lines
+
+
+def _comparison_section(comparisons: dict[str, list[dict[str, Any]]]) -> list[str]:
+    lines = ["## Audio frente a transcripción correcta", ""] if comparisons else []
+    for name, rows in comparisons.items():
+        lines += [f"### `{name}`", "", *_comparison_table(rows)]
+    return lines
+
+
 def to_markdown(summary: dict[str, Any]) -> str:
     runs = summary["runs"]
     lines = ["# Evaluación con escenarios: resumen", "", "Cada corrida tiene una ficha por escenario en su carpeta.", ""]
@@ -344,10 +434,7 @@ def to_markdown(summary: dict[str, Any]) -> str:
         lines += ["## Antes y después de corregir el agente", "", f"Línea base: `{summary['baseline']}`.", ""]
         lines += _before_after_lines(summary["before_after"])
     lines += ["## Violaciones de restricciones", "", *_violation_table(runs)]
-    if AUDIO_RUN in runs:
-        lines += ["## Voz", "", *_voice_lines(runs[AUDIO_RUN])]
-    if summary["audio_vs_correct_text"]:
-        lines += ["## Audio frente a transcripción correcta", "", *_comparison_table(summary["audio_vs_correct_text"])]
+    lines += [*_voice_section(runs), *_comparison_section(summary["audio_vs_correct_text"])]
     lines += ["## Latencia por etapa (segundos por turno, media y máximo)", "", *_latency_table(runs)]
     lines += ["Carga inicial de los modelos, aparte de los turnos:", "", *_load_lines(runs)]
     lines += ["## Comprobaciones que fallaron", "", *_failure_lines(runs)]

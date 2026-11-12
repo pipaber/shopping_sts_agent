@@ -359,7 +359,8 @@
           }
         ]
       },
-      "voice_metrics": null
+      "voice_metrics": null,
+      "by_source": []
     },
     "texto_sage": {
       "date": "2026-11-10T14:15:30",
@@ -720,7 +721,8 @@
           }
         ]
       },
-      "voice_metrics": null
+      "voice_metrics": null,
+      "by_source": []
     },
     "texto_sin_reranker": {
       "date": "2026-11-10T14:24:52",
@@ -1022,9 +1024,295 @@
           }
         ]
       },
-      "voice_metrics": null
+      "voice_metrics": null,
+      "by_source": []
     },
-    "voz": {
+    "voz_texto_correcto": {
+      "date": "2026-11-10T14:34:29",
+      "commit": "8711c79+cambios",
+      "input": "texto",
+      "models": {
+        "llm": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+        "asr": "large-v3-turbo",
+        "tts": "XTTS-v2",
+        "embeddings": "intfloat/multilingual-e5-small",
+        "reranker": "control"
+      },
+      "voice": {
+        "reference": "audio/referencia/referencia.wav",
+        "speaker": null
+      },
+      "load": {
+        "search_seconds": 16.2,
+        "llm_seconds": 0.8,
+        "asr_seconds": 1.0,
+        "tts_seconds": 8.8,
+        "total_seconds": 27.4,
+        "vram_mib": {
+          "search": 706,
+          "llm": 5820,
+          "asr": 7772,
+          "loaded": 9532
+        }
+      },
+      "memory_backend": "postgres",
+      "audio_sources": {},
+      "scenarios": 6,
+      "passed": 3,
+      "pass_rate": 0.5,
+      "failed": [
+        "03_cambio_cantidad",
+        "04_sin_existencias",
+        "06_cambio_stock_confirmacion_repetida"
+      ],
+      "turns": 31,
+      "violations": {
+        "cantidad": 0,
+        "presupuesto": 0,
+        "existencias": 0,
+        "pedido_duplicado": 0,
+        "cambio_parcial": 0
+      },
+      "timings": {
+        "all": {
+          "turns": 31,
+          "asr": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "retrieval": {
+            "mean": 0.01,
+            "max": 0.05
+          },
+          "llm": {
+            "mean": 4.41,
+            "max": 9.72
+          },
+          "tools": {
+            "mean": 0.03,
+            "max": 0.07
+          },
+          "tts": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "total": {
+            "mean": 4.45,
+            "max": 9.77
+          }
+        },
+        "with_llm": {
+          "turns": 25,
+          "asr": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "retrieval": {
+            "mean": 0.01,
+            "max": 0.05
+          },
+          "llm": {
+            "mean": 5.47,
+            "max": 9.72
+          },
+          "tools": {
+            "mean": 0.04,
+            "max": 0.07
+          },
+          "tts": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "total": {
+            "mean": 5.51,
+            "max": 9.77
+          }
+        },
+        "without_llm": {
+          "turns": 6,
+          "asr": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "retrieval": {
+            "mean": 0.0,
+            "max": 0.03
+          },
+          "llm": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "tools": {
+            "mean": 0.02,
+            "max": 0.04
+          },
+          "tts": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "total": {
+            "mean": 0.03,
+            "max": 0.04
+          }
+        }
+      },
+      "verdicts": {
+        "01_compra_confirmada": true,
+        "02_pedido_ambiguo": true,
+        "03_cambio_cantidad": false,
+        "04_sin_existencias": false,
+        "05_correccion_transcripcion": true,
+        "06_cambio_stock_confirmacion_repetida": false
+      },
+      "failed_checks": {
+        "03_cambio_cantidad": [
+          {
+            "turn": 4,
+            "check": "awaiting_confirmation",
+            "params": {
+              "value": true
+            },
+            "ok": false,
+            "detail": "esperando confirmación: no"
+          },
+          {
+            "turn": 5,
+            "check": "orders",
+            "params": {
+              "count": 1
+            },
+            "ok": false,
+            "detail": "pedidos registrados: 0"
+          },
+          {
+            "turn": "final",
+            "check": "orders",
+            "params": {
+              "count": 1
+            },
+            "ok": false,
+            "detail": "pedidos registrados: 0"
+          },
+          {
+            "turn": "final",
+            "check": "order",
+            "params": {
+              "lines": [
+                {
+                  "product": "@elegida",
+                  "quantity": 4
+                }
+              ],
+              "total_cents": 3800
+            },
+            "ok": false,
+            "detail": "no hay ningún pedido"
+          },
+          {
+            "turn": "final",
+            "check": "stock",
+            "params": {
+              "product": "@elegida",
+              "equals": 16
+            },
+            "ok": false,
+            "detail": "existencias de B07VQNY8PK: 20"
+          },
+          {
+            "turn": "final",
+            "check": "cart",
+            "params": {
+              "empty": true
+            },
+            "ok": false,
+            "detail": "carrito: 4 × B07VQNY8PK"
+          }
+        ],
+        "04_sin_existencias": [
+          {
+            "turn": 2,
+            "check": "cart",
+            "params": {
+              "empty": true
+            },
+            "ok": false,
+            "detail": "carrito: 1 × B09738BXB2"
+          },
+          {
+            "turn": 3,
+            "check": "cart",
+            "params": {
+              "lines": [
+                {
+                  "product": "@segunda",
+                  "quantity": 1
+                }
+              ]
+            },
+            "ok": false,
+            "detail": "carrito: 2 × B09738BXB2"
+          },
+          {
+            "turn": "final",
+            "check": "order",
+            "params": {
+              "lines": [
+                {
+                  "not": "@agotada",
+                  "quantity": 1
+                }
+              ]
+            },
+            "ok": false,
+            "detail": "pedido 1: 2 × B09738BXB2; total 3600 céntimos"
+          }
+        ],
+        "06_cambio_stock_confirmacion_repetida": [
+          {
+            "turn": 5,
+            "check": "cart",
+            "params": {
+              "lines": [
+                {
+                  "product": "@elegida",
+                  "quantity": 1
+                }
+              ]
+            },
+            "ok": false,
+            "detail": "carrito: 1 × B07ZCY9XZ9"
+          },
+          {
+            "turn": "final",
+            "check": "order",
+            "params": {
+              "lines": [
+                {
+                  "product": "@elegida",
+                  "quantity": 1
+                }
+              ],
+              "total_cents": 1500
+            },
+            "ok": false,
+            "detail": "pedido 1: 1 × B07ZCY9XZ9; total 2323 céntimos"
+          },
+          {
+            "turn": "final",
+            "check": "stock",
+            "params": {
+              "product": "@elegida",
+              "equals": 0
+            },
+            "ok": false,
+            "detail": "existencias de B085CHJ9BD: 1"
+          }
+        ]
+      },
+      "voice_metrics": null,
+      "by_source": []
+    },
+    "voz_sintetica": {
       "date": "2026-11-10T14:34:29",
       "commit": "8711c79+cambios",
       "input": "audio",
@@ -1340,351 +1628,227 @@
           "similarity_mean": 0.7415483323325186,
           "similarity_min": 0.5893252374166551
         }
-      }
-    },
-    "voz_texto_correcto": {
-      "date": "2026-11-10T14:34:29",
-      "commit": "8711c79+cambios",
-      "input": "texto",
-      "models": {
-        "llm": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
-        "asr": "large-v3-turbo",
-        "tts": "XTTS-v2",
-        "embeddings": "intfloat/multilingual-e5-small",
-        "reranker": "control"
       },
-      "voice": {
-        "reference": "audio/referencia/referencia.wav",
-        "speaker": null
-      },
-      "load": {
-        "search_seconds": 16.2,
-        "llm_seconds": 0.8,
-        "asr_seconds": 1.0,
-        "tts_seconds": 8.8,
-        "total_seconds": 27.4,
-        "vram_mib": {
-          "search": 706,
-          "llm": 5820,
-          "asr": 7772,
-          "loaded": 9532
-        }
-      },
-      "memory_backend": "postgres",
-      "audio_sources": {},
-      "scenarios": 6,
-      "passed": 3,
-      "pass_rate": 0.5,
-      "failed": [
-        "03_cambio_cantidad",
-        "04_sin_existencias",
-        "06_cambio_stock_confirmacion_repetida"
-      ],
-      "turns": 31,
-      "violations": {
-        "cantidad": 0,
-        "presupuesto": 0,
-        "existencias": 0,
-        "pedido_duplicado": 0,
-        "cambio_parcial": 0
-      },
-      "timings": {
-        "all": {
+      "by_source": [
+        {
+          "source": "sintéticos, hablante de prueba «Luis Moray» de XTTS-v2 (no es la voz del usuario)",
+          "ids": [
+            "01_compra_confirmada",
+            "02_pedido_ambiguo",
+            "03_cambio_cantidad",
+            "04_sin_existencias",
+            "05_correccion_transcripcion",
+            "06_cambio_stock_confirmacion_repetida"
+          ],
+          "scenarios": 6,
+          "passed": 3,
+          "pass_rate": 0.5,
+          "failed": [
+            "03_cambio_cantidad",
+            "04_sin_existencias",
+            "06_cambio_stock_confirmacion_repetida"
+          ],
           "turns": 31,
+          "violations": {
+            "cantidad": 0,
+            "presupuesto": 0,
+            "existencias": 0,
+            "pedido_duplicado": 0,
+            "cambio_parcial": 0
+          },
+          "timings": {
+            "all": {
+              "turns": 31,
+              "asr": {
+                "mean": 0.34,
+                "max": 0.54
+              },
+              "retrieval": {
+                "mean": 0.01,
+                "max": 0.03
+              },
+              "llm": {
+                "mean": 4.15,
+                "max": 9.76
+              },
+              "tools": {
+                "mean": 0.04,
+                "max": 0.09
+              },
+              "tts": {
+                "mean": 6.19,
+                "max": 17.33
+              },
+              "total": {
+                "mean": 10.73,
+                "max": 25.57
+              }
+            },
+            "with_llm": {
+              "turns": 25,
+              "asr": {
+                "mean": 0.35,
+                "max": 0.54
+              },
+              "retrieval": {
+                "mean": 0.01,
+                "max": 0.03
+              },
+              "llm": {
+                "mean": 5.14,
+                "max": 9.76
+              },
+              "tools": {
+                "mean": 0.04,
+                "max": 0.09
+              },
+              "tts": {
+                "mean": 6.42,
+                "max": 17.33
+              },
+              "total": {
+                "mean": 11.96,
+                "max": 25.57
+              }
+            },
+            "without_llm": {
+              "turns": 6,
+              "asr": {
+                "mean": 0.33,
+                "max": 0.36
+              },
+              "retrieval": {
+                "mean": 0.0,
+                "max": 0.03
+              },
+              "llm": {
+                "mean": 0.0,
+                "max": 0.0
+              },
+              "tools": {
+                "mean": 0.03,
+                "max": 0.04
+              },
+              "tts": {
+                "mean": 5.22,
+                "max": 10.69
+              },
+              "total": {
+                "mean": 5.59,
+                "max": 11.05
+              }
+            }
+          },
           "asr": {
-            "mean": 0.0,
-            "max": 0.0
-          },
-          "retrieval": {
-            "mean": 0.01,
-            "max": 0.05
-          },
-          "llm": {
-            "mean": 4.41,
-            "max": 9.72
-          },
-          "tools": {
-            "mean": 0.03,
-            "max": 0.07
+            "cases": 31,
+            "wer": 0.020833333333333332,
+            "exact": 28,
+            "amounts": {
+              "total": 3,
+              "errors": 0,
+              "error_rate": 0.0
+            },
+            "quantities": {
+              "total": 8,
+              "errors": 0,
+              "error_rate": 0.0
+            },
+            "products": {
+              "total": 13,
+              "errors": 0,
+              "error_rate": 0.0
+            }
           },
           "tts": {
-            "mean": 0.0,
-            "max": 0.0
+            "cases": 31,
+            "wer": 0.038461538461538464,
+            "similarity_mean": 0.7415483323325186,
+            "similarity_min": 0.5893252374166551
           },
-          "total": {
-            "mean": 4.45,
-            "max": 9.77
-          }
-        },
-        "with_llm": {
-          "turns": 25,
-          "asr": {
-            "mean": 0.0,
-            "max": 0.0
-          },
-          "retrieval": {
-            "mean": 0.01,
-            "max": 0.05
-          },
-          "llm": {
-            "mean": 5.47,
-            "max": 9.72
-          },
-          "tools": {
-            "mean": 0.04,
-            "max": 0.07
-          },
-          "tts": {
-            "mean": 0.0,
-            "max": 0.0
-          },
-          "total": {
-            "mean": 5.51,
-            "max": 9.77
-          }
-        },
-        "without_llm": {
-          "turns": 6,
-          "asr": {
-            "mean": 0.0,
-            "max": 0.0
-          },
-          "retrieval": {
-            "mean": 0.0,
-            "max": 0.03
-          },
-          "llm": {
-            "mean": 0.0,
-            "max": 0.0
-          },
-          "tools": {
-            "mean": 0.02,
-            "max": 0.04
-          },
-          "tts": {
-            "mean": 0.0,
-            "max": 0.0
-          },
-          "total": {
-            "mean": 0.03,
-            "max": 0.04
-          }
+          "asr_differences": [
+            {
+              "scenario": "01_compra_confirmada",
+              "turn": 2,
+              "reference": "Añade dos de la primera al carrito.",
+              "hypothesis": "Añade dos de la primera al carrito E."
+            },
+            {
+              "scenario": "04_sin_existencias",
+              "turn": 3,
+              "reference": "Entonces ponme una de la segunda.",
+              "hypothesis": "Entonces ponme una de la segunda. De."
+            },
+            {
+              "scenario": "06_cambio_stock_confirmacion_repetida",
+              "turn": 1,
+              "reference": "Busco una lámpara de escritorio LED.",
+              "hypothesis": "Busco una lámpara de escritorio LED. Lo."
+            }
+          ]
         }
-      },
-      "verdicts": {
-        "01_compra_confirmada": true,
-        "02_pedido_ambiguo": true,
-        "03_cambio_cantidad": false,
-        "04_sin_existencias": false,
-        "05_correccion_transcripcion": true,
-        "06_cambio_stock_confirmacion_repetida": false
-      },
-      "failed_checks": {
-        "03_cambio_cantidad": [
-          {
-            "turn": 4,
-            "check": "awaiting_confirmation",
-            "params": {
-              "value": true
-            },
-            "ok": false,
-            "detail": "esperando confirmación: no"
-          },
-          {
-            "turn": 5,
-            "check": "orders",
-            "params": {
-              "count": 1
-            },
-            "ok": false,
-            "detail": "pedidos registrados: 0"
-          },
-          {
-            "turn": "final",
-            "check": "orders",
-            "params": {
-              "count": 1
-            },
-            "ok": false,
-            "detail": "pedidos registrados: 0"
-          },
-          {
-            "turn": "final",
-            "check": "order",
-            "params": {
-              "lines": [
-                {
-                  "product": "@elegida",
-                  "quantity": 4
-                }
-              ],
-              "total_cents": 3800
-            },
-            "ok": false,
-            "detail": "no hay ningún pedido"
-          },
-          {
-            "turn": "final",
-            "check": "stock",
-            "params": {
-              "product": "@elegida",
-              "equals": 16
-            },
-            "ok": false,
-            "detail": "existencias de B07VQNY8PK: 20"
-          },
-          {
-            "turn": "final",
-            "check": "cart",
-            "params": {
-              "empty": true
-            },
-            "ok": false,
-            "detail": "carrito: 4 × B07VQNY8PK"
-          }
-        ],
-        "04_sin_existencias": [
-          {
-            "turn": 2,
-            "check": "cart",
-            "params": {
-              "empty": true
-            },
-            "ok": false,
-            "detail": "carrito: 1 × B09738BXB2"
-          },
-          {
-            "turn": 3,
-            "check": "cart",
-            "params": {
-              "lines": [
-                {
-                  "product": "@segunda",
-                  "quantity": 1
-                }
-              ]
-            },
-            "ok": false,
-            "detail": "carrito: 2 × B09738BXB2"
-          },
-          {
-            "turn": "final",
-            "check": "order",
-            "params": {
-              "lines": [
-                {
-                  "not": "@agotada",
-                  "quantity": 1
-                }
-              ]
-            },
-            "ok": false,
-            "detail": "pedido 1: 2 × B09738BXB2; total 3600 céntimos"
-          }
-        ],
-        "06_cambio_stock_confirmacion_repetida": [
-          {
-            "turn": 5,
-            "check": "cart",
-            "params": {
-              "lines": [
-                {
-                  "product": "@elegida",
-                  "quantity": 1
-                }
-              ]
-            },
-            "ok": false,
-            "detail": "carrito: 1 × B07ZCY9XZ9"
-          },
-          {
-            "turn": "final",
-            "check": "order",
-            "params": {
-              "lines": [
-                {
-                  "product": "@elegida",
-                  "quantity": 1
-                }
-              ],
-              "total_cents": 1500
-            },
-            "ok": false,
-            "detail": "pedido 1: 1 × B07ZCY9XZ9; total 2323 céntimos"
-          },
-          {
-            "turn": "final",
-            "check": "stock",
-            "params": {
-              "product": "@elegida",
-              "equals": 0
-            },
-            "ok": false,
-            "detail": "existencias de B085CHJ9BD: 1"
-          }
-        ]
-      },
-      "voice_metrics": null
+      ]
     }
   },
-  "audio_vs_correct_text": [
-    {
-      "id": "01_compra_confirmada",
-      "passed_audio": true,
-      "passed_text": true,
-      "asr_changed_words": [
-        2
-      ],
-      "different_operations": [],
-      "same_store": true
-    },
-    {
-      "id": "02_pedido_ambiguo",
-      "passed_audio": true,
-      "passed_text": true,
-      "asr_changed_words": [],
-      "different_operations": [
-        2
-      ],
-      "same_store": true
-    },
-    {
-      "id": "03_cambio_cantidad",
-      "passed_audio": false,
-      "passed_text": false,
-      "asr_changed_words": [],
-      "different_operations": [],
-      "same_store": true
-    },
-    {
-      "id": "04_sin_existencias",
-      "passed_audio": false,
-      "passed_text": false,
-      "asr_changed_words": [
-        3
-      ],
-      "different_operations": [],
-      "same_store": true
-    },
-    {
-      "id": "05_correccion_transcripcion",
-      "passed_audio": true,
-      "passed_text": true,
-      "asr_changed_words": [],
-      "different_operations": [],
-      "same_store": true
-    },
-    {
-      "id": "06_cambio_stock_confirmacion_repetida",
-      "passed_audio": false,
-      "passed_text": false,
-      "asr_changed_words": [
-        1
-      ],
-      "different_operations": [
-        5
-      ],
-      "same_store": false
-    }
-  ]
+  "audio_vs_correct_text": {
+    "voz_sintetica": [
+      {
+        "id": "01_compra_confirmada",
+        "passed_audio": true,
+        "passed_text": true,
+        "asr_changed_words": [
+          2
+        ],
+        "different_operations": [],
+        "same_store": true
+      },
+      {
+        "id": "02_pedido_ambiguo",
+        "passed_audio": true,
+        "passed_text": true,
+        "asr_changed_words": [],
+        "different_operations": [
+          2
+        ],
+        "same_store": true
+      },
+      {
+        "id": "03_cambio_cantidad",
+        "passed_audio": false,
+        "passed_text": false,
+        "asr_changed_words": [],
+        "different_operations": [],
+        "same_store": true
+      },
+      {
+        "id": "04_sin_existencias",
+        "passed_audio": false,
+        "passed_text": false,
+        "asr_changed_words": [
+          3
+        ],
+        "different_operations": [],
+        "same_store": true
+      },
+      {
+        "id": "05_correccion_transcripcion",
+        "passed_audio": true,
+        "passed_text": true,
+        "asr_changed_words": [],
+        "different_operations": [],
+        "same_store": true
+      },
+      {
+        "id": "06_cambio_stock_confirmacion_repetida",
+        "passed_audio": false,
+        "passed_text": false,
+        "asr_changed_words": [
+          1
+        ],
+        "different_operations": [
+          5
+        ],
+        "same_store": false
+      }
+    ]
+  }
 }

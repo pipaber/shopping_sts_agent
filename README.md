@@ -250,7 +250,7 @@ Qué queda de cada corrida:
 | `results/escenarios/<corrida>/<escenario>.json` | Turnos (texto, transcripción del ASR, respuesta, texto enviado al TTS), operaciones, tiempos por etapa e instantáneas del agente y de la tienda antes y después de cada turno |
 | `results/escenarios/<corrida>/<escenario>.md` | Ficha del escenario: la conversación con sus operaciones, cada comprobación con su resultado, las violaciones y el estado final de la tienda |
 | `results/escenarios/<corrida>/corrida.json` | Fecha, commit, modelos, carga inicial y veredictos |
-| `results/escenarios/voz/metricas_voz.json` | Errores del ASR (WER, importes, cantidades y nombres de producto), inteligibilidad y semejanza de la voz, turno a turno |
+| `results/escenarios/voz/metricas_voz.json` (y `voz_sintetica/`) | Errores del ASR (WER, importes, cantidades y nombres de producto), inteligibilidad y semejanza de la voz, turno a turno |
 | `results/escenarios/resumen.md` y `.json` | Tablas de todas las corridas |
 | `audio/corridas/voz/<escenario>/` | Audios de entrada y de respuesta (fuera de git) |
 
