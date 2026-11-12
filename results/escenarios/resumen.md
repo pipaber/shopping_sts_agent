@@ -11,6 +11,7 @@ Cada corrida tiene una ficha por escenario en su carpeta.
 | `texto_sin_reranker` | texto | sin reranker | 20 | 20 | 100.0 % |
 | `voz` | audio | control | 6 | 6 | 100.0 % |
 | `voz_texto_correcto` | texto | control | 6 | 6 | 100.0 % |
+| `voz_velocidad_1_15` | audio | control | 6 | 6 | 100.0 % |
 | `voz_referencia_anterior` | audio | control | 6 | 6 | 100.0 % |
 | `voz_sintetica` | audio | control | 6 | 6 | 100.0 % |
 | `reserva` | texto | control | 4 | 3 | 75.0 % |
@@ -20,34 +21,34 @@ Cada corrida tiene una ficha por escenario en su carpeta.
 | `reserva_sage` | texto | sage | 4 | 4 | 100.0 % |
 | `reserva_sin_reranker` | texto | sin reranker | 4 | 3 | 75.0 % |
 
-| Escenario | `texto` | `texto_sage` | `texto_sin_reranker` | `voz` | `voz_texto_correcto` | `voz_referencia_anterior` | `voz_sintetica` | `reserva` | `reserva_cifras` | `reserva_cifras_sage` | `reserva_cifras_sin_reranker` | `reserva_sage` | `reserva_sin_reranker` |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| `01_compra_confirmada` | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |  |  |  |  |  |  |
-| `02_pedido_ambiguo` | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |  |  |  |  |  |  |
-| `03_cambio_cantidad` | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |  |  |  |  |  |  |
-| `04_sin_existencias` | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |  |  |  |  |  |  |
-| `05_correccion_transcripcion` | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |  |  |  |  |  |  |
-| `06_cambio_stock_confirmacion_repetida` | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |  |  |  |  |  |  |
-| `07_presupuesto_excedido` | ✔ | ✔ | ✔ |  |  |  |  |  |  |  |  |  |  |
-| `08_cantidad_invalida` | ✔ | ✔ | ✔ |  |  |  |  |  |  |  |  |  |  |
-| `09_producto_inexistente` | ✔ | ✔ | ✔ |  |  |  |  |  |  |  |  |  |  |
-| `10_atributo_no_verificable` | ✔ | ✔ | ✔ |  |  |  |  |  |  |  |  |  |  |
-| `11_rechazo_confirmacion` | ✔ | ✔ | ✔ |  |  |  |  |  |  |  |  |  |  |
-| `12_memoria_preferencias` | ✔ | ✔ | ✔ |  |  |  |  |  |  |  |  |  |  |
-| `13_confirmacion_con_cambio` | ✔ | ✔ | ✔ |  |  |  |  |  |  |  |  |  |  |
-| `14_pregunta_sin_cambios` | ✔ | ✔ | ✔ |  |  |  |  |  |  |  |  |  |  |
-| `15_stock_insuficiente` | ✔ | ✔ | ✔ |  |  |  |  |  |  |  |  |  |  |
-| `16_quitar_del_carrito` | ✔ | ✔ | ✔ |  |  |  |  |  |  |  |  |  |  |
-| `17_cambio_presupuesto` | ✔ | ✔ | ✔ |  |  |  |  |  |  |  |  |  |  |
-| `18_cierre_sin_carrito` | ✔ | ✔ | ✔ |  |  |  |  |  |  |  |  |  |  |
-| `19_presupuesto_compartido` | ✔ | ✔ | ✔ |  |  |  |  |  |  |  |  |  |  |
-| `20_agotado_al_confirmar` | ✔ | ✔ | ✔ |  |  |  |  |  |  |  |  |  |  |
-| `21_cierre_otras_palabras` |  |  |  |  |  |  |  | ✔ |  |  |  | ✔ | ✔ |
-| `22_agotado_otro_candidato` |  |  |  |  |  |  |  | ✔ |  |  |  | ✔ | ✔ |
-| `23_candidato_fuera_de_lista` |  |  |  |  |  |  |  | ✔ |  |  |  | ✔ | ✔ |
-| `24_dato_que_no_consta` |  |  |  |  |  |  |  | ✘ |  |  |  | ✔ | ✘ |
-| `25_correccion_con_cifras` |  |  |  |  |  |  |  |  | ✔ | ✔ | ✔ |  |  |
-| `26_presupuesto_con_carrito` |  |  |  |  |  |  |  |  | ✔ | ✔ | ✔ |  |  |
+| Escenario | `texto` | `texto_sage` | `texto_sin_reranker` | `voz` | `voz_texto_correcto` | `voz_velocidad_1_15` | `voz_referencia_anterior` | `voz_sintetica` | `reserva` | `reserva_cifras` | `reserva_cifras_sage` | `reserva_cifras_sin_reranker` | `reserva_sage` | `reserva_sin_reranker` |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| `01_compra_confirmada` | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |  |  |  |  |  |  |
+| `02_pedido_ambiguo` | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |  |  |  |  |  |  |
+| `03_cambio_cantidad` | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |  |  |  |  |  |  |
+| `04_sin_existencias` | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |  |  |  |  |  |  |
+| `05_correccion_transcripcion` | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |  |  |  |  |  |  |
+| `06_cambio_stock_confirmacion_repetida` | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |  |  |  |  |  |  |
+| `07_presupuesto_excedido` | ✔ | ✔ | ✔ |  |  |  |  |  |  |  |  |  |  |  |
+| `08_cantidad_invalida` | ✔ | ✔ | ✔ |  |  |  |  |  |  |  |  |  |  |  |
+| `09_producto_inexistente` | ✔ | ✔ | ✔ |  |  |  |  |  |  |  |  |  |  |  |
+| `10_atributo_no_verificable` | ✔ | ✔ | ✔ |  |  |  |  |  |  |  |  |  |  |  |
+| `11_rechazo_confirmacion` | ✔ | ✔ | ✔ |  |  |  |  |  |  |  |  |  |  |  |
+| `12_memoria_preferencias` | ✔ | ✔ | ✔ |  |  |  |  |  |  |  |  |  |  |  |
+| `13_confirmacion_con_cambio` | ✔ | ✔ | ✔ |  |  |  |  |  |  |  |  |  |  |  |
+| `14_pregunta_sin_cambios` | ✔ | ✔ | ✔ |  |  |  |  |  |  |  |  |  |  |  |
+| `15_stock_insuficiente` | ✔ | ✔ | ✔ |  |  |  |  |  |  |  |  |  |  |  |
+| `16_quitar_del_carrito` | ✔ | ✔ | ✔ |  |  |  |  |  |  |  |  |  |  |  |
+| `17_cambio_presupuesto` | ✔ | ✔ | ✔ |  |  |  |  |  |  |  |  |  |  |  |
+| `18_cierre_sin_carrito` | ✔ | ✔ | ✔ |  |  |  |  |  |  |  |  |  |  |  |
+| `19_presupuesto_compartido` | ✔ | ✔ | ✔ |  |  |  |  |  |  |  |  |  |  |  |
+| `20_agotado_al_confirmar` | ✔ | ✔ | ✔ |  |  |  |  |  |  |  |  |  |  |  |
+| `21_cierre_otras_palabras` |  |  |  |  |  |  |  |  | ✔ |  |  |  | ✔ | ✔ |
+| `22_agotado_otro_candidato` |  |  |  |  |  |  |  |  | ✔ |  |  |  | ✔ | ✔ |
+| `23_candidato_fuera_de_lista` |  |  |  |  |  |  |  |  | ✔ |  |  |  | ✔ | ✔ |
+| `24_dato_que_no_consta` |  |  |  |  |  |  |  |  | ✘ |  |  |  | ✔ | ✘ |
+| `25_correccion_con_cifras` |  |  |  |  |  |  |  |  |  | ✔ | ✔ | ✔ |  |  |
+| `26_presupuesto_con_carrito` |  |  |  |  |  |  |  |  |  | ✔ | ✔ | ✔ |  |  |
 
 ## Antes y después de corregir el agente
 
@@ -93,6 +94,7 @@ Línea base: `results/escenarios_base`.
 | `texto_sin_reranker` | 0 | 0 | 0 | 0 | 0 |
 | `voz` | 0 | 0 | 0 | 0 | 0 |
 | `voz_texto_correcto` | 0 | 0 | 0 | 0 | 0 |
+| `voz_velocidad_1_15` | 0 | 0 | 0 | 0 | 0 |
 | `voz_referencia_anterior` | 0 | 0 | 0 | 0 | 0 |
 | `voz_sintetica` | 0 | 0 | 0 | 0 | 0 |
 | `reserva` | 0 | 0 | 0 | 0 | 0 |
@@ -106,13 +108,31 @@ Línea base: `results/escenarios_base`.
 
 | Corrida | Voz del agente | Correctos | Inteligibilidad (WER) | Semejanza con la referencia | Semejanza con las grabaciones reales | Audio de respuesta (s) | TTS (s por turno) | Total (s por turno) | Total con LLM (s) |
 |---|---|---|---|---|---|---|---|---|---|
-| `voz` | clonada de la grabación de referencia `audio/referencia/referencia.wav`, velocidad del habla 1,15 | 6 de 6 | 7.0 % | 0.709 | 0.270 | 20.68 | 5.61 | 9.92 | 11.35 |
+| `voz` | clonada de la grabación de referencia `audio/referencia/referencia.wav`, velocidad del habla 1,10 | 6 de 6 | 5.5 % | 0.710 | 0.273 | 21.61 | 5.62 | 9.92 | 11.35 |
+| `voz_velocidad_1_15` | clonada de la grabación de referencia `audio/referencia/referencia.wav`, velocidad del habla 1,15 | 6 de 6 | 7.0 % | 0.709 | 0.270 | 20.68 | 5.61 | 9.92 | 11.35 |
 | `voz_referencia_anterior` | clonada de la grabación de referencia `audio/referencia/referencia_anterior.wav` | 6 de 6 | 3.4 % | 0.741 | 0.259 | 24.78 | 6.07 | 10.36 | 11.97 |
-| `voz_sintetica` | clonada de la grabación de referencia `audio/referencia/referencia.wav` | 6 de 6 | 3.9 % | 0.741 | — | 24.77 | 5.88 | 10.19 | 11.75 |
+| `voz_sintetica` | clonada de la grabación de referencia `audio/referencia/referencia_anterior.wav` | 6 de 6 | 3.9 % | 0.741 | — | 24.77 | 5.88 | 10.19 | 11.75 |
 
 La semejanza con la referencia compara con la misma grabación de la que se clonó la voz y sale optimista (misma toma, mismo micrófono); la semejanza con las grabaciones reales compara con audios del mismo hablante que el modelo no usó y dice mejor cuánto se parece a su voz de otro momento.
 
 ### `voz`
+
+**Audios de entrada: grabaciones del usuario.** Escenarios 01, 02, 03, 04, 05, 06: 6 de 6 correctos.
+
+- ASR: 31 turnos, 29 idénticos tras normalizar; WER 1.4 %.
+- Errores del ASR en importes: 0 de 3 (0.0 %).
+- Errores del ASR en cantidades: 0 de 8 (0.0 %).
+- Errores del ASR en nombres de producto: 1 de 13 (7.7 %).
+- Turnos en los que el ASR cambió palabras: 2.
+  - `01_compra_confirmada`, turno 1: se dijo «Hola, busco una cafetera italiana. Tengo un presupuesto de 60 euros.» y entendió «Hola, busco una cafetería italiana. Tengo un presupuesto de 60 euros.».
+  - `05_correccion_transcripcion`, turno 1: se dijo «Busco un ratón inalámbrico.» y entendió «Busca un ratón inalámbrico.».
+- Inteligibilidad de la voz generada (WER de Whisper sobre 31 respuestas): 5.5 %.
+- Semejanza con la referencia (coseno ECAPA): media 0.710, mínima 0.609.
+- Semejanza con las grabaciones reales (coseno ECAPA): media 0.273, mínima 0.234.
+- Como techo, las 31 grabaciones reales se parecen entre sí 0.377.
+- Latencia media por turno con LLM (24 turnos, segundos): ASR 0.35, Recuperación 0.01, LLM 5.05, Herramientas 0.04, TTS 5.90, Total 11.35; máximo 18.84.
+
+### `voz_velocidad_1_15`
 
 **Audios de entrada: grabaciones del usuario.** Escenarios 01, 02, 03, 04, 05, 06: 6 de 6 correctos.
 
@@ -175,6 +195,17 @@ La semejanza con la referencia compara con la misma grabación de la que se clon
 | `05_correccion_transcripcion` | ✔ | ✔ | [1] | ninguno | sí |
 | `06_cambio_stock_confirmacion_repetida` | ✔ | ✔ | ninguno | ninguno | sí |
 
+### `voz_velocidad_1_15`
+
+| Escenario | Con audio | Con el texto correcto | Turnos con palabras cambiadas por el ASR | Turnos con operaciones distintas | Misma tienda final |
+|---|---|---|---|---|---|
+| `01_compra_confirmada` | ✔ | ✔ | [1] | [1, 2] | no |
+| `02_pedido_ambiguo` | ✔ | ✔ | ninguno | [2] | sí |
+| `03_cambio_cantidad` | ✔ | ✔ | ninguno | ninguno | sí |
+| `04_sin_existencias` | ✔ | ✔ | ninguno | ninguno | sí |
+| `05_correccion_transcripcion` | ✔ | ✔ | [1] | ninguno | sí |
+| `06_cambio_stock_confirmacion_repetida` | ✔ | ✔ | ninguno | ninguno | sí |
+
 ### `voz_referencia_anterior`
 
 | Escenario | Con audio | Con el texto correcto | Turnos con palabras cambiadas por el ASR | Turnos con operaciones distintas | Misma tienda final |
@@ -207,10 +238,12 @@ La semejanza con la referencia compara con la misma grabación de la que se clon
 | `texto_sage`, sin LLM | 14 | 0.00 (máx. 0.00) | 0.01 (máx. 0.04) | 0.00 (máx. 0.00) | 0.03 (máx. 0.03) | 0.00 (máx. 0.00) | 0.03 (máx. 0.06) |
 | `texto_sin_reranker`, con LLM | 73 | 0.00 (máx. 0.00) | 0.01 (máx. 0.03) | 4.97 (máx. 9.42) | 0.04 (máx. 0.07) | 0.00 (máx. 0.00) | 5.02 (máx. 9.50) |
 | `texto_sin_reranker`, sin LLM | 14 | 0.00 (máx. 0.00) | 0.00 (máx. 0.02) | 0.00 (máx. 0.00) | 0.03 (máx. 0.03) | 0.00 (máx. 0.00) | 0.03 (máx. 0.03) |
-| `voz`, con LLM | 24 | 0.35 (máx. 0.57) | 0.01 (máx. 0.03) | 5.05 (máx. 10.01) | 0.04 (máx. 0.06) | 5.89 (máx. 9.59) | 11.35 (máx. 18.63) |
-| `voz`, sin LLM | 7 | 0.33 (máx. 0.33) | 0.00 (máx. 0.02) | 0.00 (máx. 0.00) | 0.04 (máx. 0.04) | 4.65 (máx. 10.44) | 5.02 (máx. 10.80) |
-| `voz_texto_correcto`, con LLM | 24 | 0.00 (máx. 0.00) | 0.01 (máx. 0.03) | 5.13 (máx. 9.23) | 0.04 (máx. 0.05) | 0.00 (máx. 0.00) | 5.18 (máx. 9.29) |
-| `voz_texto_correcto`, sin LLM | 7 | 0.00 (máx. 0.00) | 0.00 (máx. 0.02) | 0.00 (máx. 0.00) | 0.03 (máx. 0.03) | 0.00 (máx. 0.00) | 0.03 (máx. 0.04) |
+| `voz`, con LLM | 24 | 0.35 (máx. 0.54) | 0.01 (máx. 0.03) | 5.05 (máx. 9.93) | 0.04 (máx. 0.06) | 5.90 (máx. 10.34) | 11.35 (máx. 18.84) |
+| `voz`, sin LLM | 7 | 0.32 (máx. 0.34) | 0.00 (máx. 0.02) | 0.00 (máx. 0.00) | 0.04 (máx. 0.04) | 4.64 (máx. 10.44) | 5.01 (máx. 10.81) |
+| `voz_texto_correcto`, con LLM | 24 | 0.00 (máx. 0.00) | 0.01 (máx. 0.03) | 5.14 (máx. 9.16) | 0.04 (máx. 0.10) | 0.00 (máx. 0.00) | 5.19 (máx. 9.22) |
+| `voz_texto_correcto`, sin LLM | 7 | 0.00 (máx. 0.00) | 0.00 (máx. 0.02) | 0.00 (máx. 0.00) | 0.03 (máx. 0.06) | 0.00 (máx. 0.00) | 0.03 (máx. 0.08) |
+| `voz_velocidad_1_15`, con LLM | 24 | 0.35 (máx. 0.57) | 0.01 (máx. 0.03) | 5.05 (máx. 10.01) | 0.04 (máx. 0.06) | 5.89 (máx. 9.59) | 11.35 (máx. 18.63) |
+| `voz_velocidad_1_15`, sin LLM | 7 | 0.33 (máx. 0.33) | 0.00 (máx. 0.02) | 0.00 (máx. 0.00) | 0.04 (máx. 0.04) | 4.65 (máx. 10.44) | 5.02 (máx. 10.80) |
 | `voz_referencia_anterior`, con LLM | 24 | 0.35 (máx. 0.55) | 0.01 (máx. 0.03) | 5.03 (máx. 9.96) | 0.04 (máx. 0.06) | 6.54 (máx. 17.26) | 11.97 (máx. 25.55) |
 | `voz_referencia_anterior`, sin LLM | 7 | 0.32 (máx. 0.34) | 0.00 (máx. 0.03) | 0.00 (máx. 0.00) | 0.04 (máx. 0.04) | 4.47 (máx. 10.66) | 4.83 (máx. 11.02) |
 | `voz_sintetica`, con LLM | 24 | 0.35 (máx. 0.56) | 0.01 (máx. 0.05) | 5.05 (máx. 9.84) | 0.04 (máx. 0.06) | 6.30 (máx. 11.85) | 11.75 (máx. 20.62) |
@@ -233,8 +266,9 @@ Carga inicial de los modelos, aparte de los turnos:
 - `texto`: catálogo y recuperadores 16.2 s, LLM 0.7 s; total 17.3 s.
 - `texto_sage`: catálogo y recuperadores 149.8 s, LLM 0.8 s; total 150.9 s.
 - `texto_sin_reranker`: catálogo y recuperadores 15.8 s, LLM 0.7 s; total 16.9 s.
-- `voz`: catálogo y recuperadores 15.1 s, LLM 0.8 s, ASR 0.8 s, TTS 11.3 s; total 28.3 s.
-- `voz_texto_correcto`: catálogo y recuperadores 15.1 s, LLM 0.8 s, ASR 0.8 s, TTS 11.3 s; total 28.3 s.
+- `voz`: catálogo y recuperadores 15.1 s, LLM 0.7 s, ASR 0.8 s, TTS 7.5 s; total 24.4 s.
+- `voz_texto_correcto`: catálogo y recuperadores 15.1 s, LLM 0.7 s, ASR 0.8 s, TTS 7.5 s; total 24.4 s.
+- `voz_velocidad_1_15`: catálogo y recuperadores 15.1 s, LLM 0.8 s, ASR 0.8 s, TTS 11.3 s; total 28.3 s.
 - `voz_referencia_anterior`: catálogo y recuperadores 16.0 s, LLM 0.7 s, ASR 1.0 s, TTS 9.0 s; total 27.3 s.
 - `voz_sintetica`: catálogo y recuperadores 16.3 s, LLM 0.7 s, ASR 1.1 s, TTS 10.1 s; total 28.8 s.
 - `reserva`: catálogo y recuperadores 149.8 s, LLM 0.8 s; total 160.9 s.

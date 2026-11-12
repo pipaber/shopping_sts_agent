@@ -41,7 +41,7 @@
 
 > `@segunda` = `B09738BXB2` (candidate:2): Esterilla Yoga,Ya no es quien vive, sino a Cristo que vive en mí. ,Esterilla Deporte Antideslizante Ecológica y 100% Natural de,No tóxico,para Pilates,Fitness
 
-## Turno 3 (8.8 s)
+## Turno 3 (8.9 s)
 
 **Usuario (transcripción del ASR):** Entonces ponme una de la segunda.
 
@@ -70,7 +70,7 @@
 
 **Usuario (transcripción del ASR):** Sí, confirmo.
 
-- `confirmar_pedido(quote_id="ea987c1e325d4becbc12b36d25c826be")` → OK: pedido registrado
+- `confirmar_pedido(quote_id="614d5823069b40cc93e42c8cfd05ad92")` → OK: pedido registrado
 
 **Agente:** Pedido número 1 registrado: 1 unidad de «Esterilla Yoga,Ya no es quien vive, sino a Cristo que vive en mí…» a 18,00 € cada una, 18,00 €. Total: 18,00 €. Gracias por tu compra.
 
@@ -101,11 +101,11 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.34 | 0.03 | 7.07 | 0.03 | 6.07 | 13.54 | 22.7 s |
-| 2 | 0.33 | 0.00 | 5.45 | 0.03 | 4.45 | 10.27 | 16.6 s |
-| 3 | 0.34 | 0.00 | 4.95 | 0.04 | 3.48 | 8.81 | 12.6 s |
-| 4 | 0.33 | 0.00 | 2.32 | 0.04 | 4.40 | 7.09 | 16.4 s |
-| 5 | 0.33 | 0.00 | 0.00 | 0.04 | 4.11 | 4.48 | 14.7 s |
-| **Media de los turnos con LLM (4)** | 0.34 | 0.01 | 4.95 | 0.04 | 4.60 | 9.93 | |
-| **Media de los turnos sin LLM (1)** | 0.33 | 0.00 | 0.00 | 0.04 | 4.11 | 4.48 | |
+| 1 | 0.34 | 0.03 | 7.05 | 0.03 | 6.04 | 13.50 | 23.7 s |
+| 2 | 0.33 | 0.00 | 5.48 | 0.03 | 4.44 | 10.28 | 17.4 s |
+| 3 | 0.34 | 0.00 | 5.03 | 0.05 | 3.48 | 8.89 | 13.2 s |
+| 4 | 0.33 | 0.00 | 2.32 | 0.04 | 4.39 | 7.08 | 17.1 s |
+| 5 | 0.33 | 0.00 | 0.00 | 0.04 | 4.08 | 4.45 | 15.4 s |
+| **Media de los turnos con LLM (4)** | 0.34 | 0.01 | 4.97 | 0.04 | 4.59 | 9.94 | |
+| **Media de los turnos sin LLM (1)** | 0.33 | 0.00 | 0.00 | 0.04 | 4.08 | 4.45 | |
 

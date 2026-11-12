@@ -6,9 +6,9 @@
   "voice": true,
   "input": "audio",
   "audio_source": "grabaciones del usuario",
-  "user_id": "eval-07f6aa19-03_cambio_cantidad",
+  "user_id": "eval-136880e9-03_cambio_cantidad",
   "threads": [
-    "eval-07f6aa19-03_cambio_cantidad-c1"
+    "eval-136880e9-03_cambio_cantidad-c1"
   ],
   "names": {
     "elegida": "B07VQNY8PK"
@@ -25,7 +25,7 @@
       "response": "Tengo la botella de agua de Newdora por 6,72 euros, la de KOSAD por 12,37, la de KOUAJ por 18,29 y las de ion8 por 4,97 y 10,79 euros. ¿Te interesa alguna? He anotado un presupuesto de 45,00 €.",
       "spoken_text": "Tengo la botella de agua de Newdora por seis euros con setenta y dos céntimos, la de KOSAD por doce coma treinta y siete, la de KOUAJ por dieciocho coma veintinueve y las de ion8 por cuatro coma noventa y siete y diez euros con setenta y nueve céntimos. ¿Te interesa alguna? He anotado un presupuesto de cuarenta y cinco euros.",
       "output_audio": "respuesta_01.wav",
-      "output_seconds": 22.078666666666667,
+      "output_seconds": 23.102666666666668,
       "awaiting_confirmation": false,
       "operations": [
         {
@@ -50,21 +50,21 @@
         }
       ],
       "timings": {
-        "asr": 0.374,
-        "retrieval": 0.03,
-        "llm": 7.957,
-        "tools": 0.021,
-        "tts": 5.738,
-        "total": 14.12
+        "asr": 0.371,
+        "retrieval": 0.031,
+        "llm": 7.866,
+        "tools": 0.03,
+        "tts": 5.7,
+        "total": 13.997
       },
       "llm_steps": 3,
-      "tts_first_chunk_seconds": 1.964,
+      "tts_first_chunk_seconds": 1.945,
       "tts_retries": 0,
       "product_terms": [
         "botella de agua de acero inoxidable"
       ],
       "before": {
-        "cart_id": "eval-07f6aa19-03_cambio_cantidad-c1",
+        "cart_id": "eval-136880e9-03_cambio_cantidad-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -83,7 +83,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-07f6aa19-03_cambio_cantidad-c1",
+        "cart_id": "eval-136880e9-03_cambio_cantidad-c1",
         "state": {
           "budget_cents": 4500,
           "preferences": [],
@@ -195,7 +195,7 @@
       "response": "Hecho, añadidas dos unidades. El total es 19,00 €. En el carrito hay 2 unidades de «Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío…» a 9,50 € cada una, 19,00 €. Total: 19,00 €. Tu presupuesto es de 45,00 € y te quedan 26,00 €.",
       "spoken_text": "Hecho, añadidas dos unidades. El total es diecinueve euros. En el carrito hay dos unidades de Newdora Botella de Agua Acero Inoxidable quinientos mililitros a nueve euros con cincuenta céntimos cada una, diecinueve euros. Total: diecinueve euros. Tu presupuesto es de cuarenta y cinco euros y te quedan veintiséis euros.",
       "output_audio": "respuesta_02.wav",
-      "output_seconds": 28.116,
+      "output_seconds": 29.364,
       "awaiting_confirmation": false,
       "operations": [
         {
@@ -211,21 +211,21 @@
         }
       ],
       "timings": {
-        "asr": 0.335,
+        "asr": 0.328,
         "retrieval": 0.0,
-        "llm": 4.938,
-        "tools": 0.053,
-        "tts": 7.463,
-        "total": 12.789
+        "llm": 4.902,
+        "tools": 0.052,
+        "tts": 7.4,
+        "total": 12.682
       },
       "llm_steps": 2,
-      "tts_first_chunk_seconds": 1.508,
+      "tts_first_chunk_seconds": 1.492,
       "tts_retries": 0,
       "product_terms": [
         "primera"
       ],
       "before": {
-        "cart_id": "eval-07f6aa19-03_cambio_cantidad-c1",
+        "cart_id": "eval-136880e9-03_cambio_cantidad-c1",
         "state": {
           "budget_cents": 4500,
           "preferences": [],
@@ -307,7 +307,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-07f6aa19-03_cambio_cantidad-c1",
+        "cart_id": "eval-136880e9-03_cambio_cantidad-c1",
         "state": {
           "budget_cents": 4500,
           "preferences": [],
@@ -358,7 +358,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-07f6aa19-03_cambio_cantidad-c1",
+              "cart_id": "eval-136880e9-03_cambio_cantidad-c1",
               "product_id": "B07VQNY8PK",
               "quantity": 2
             }
@@ -421,7 +421,7 @@
       "response": "Hecho, el total es 38,00 €. En el carrito hay 4 unidades de «Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío…» a 9,50 € cada una, 38,00 €. Total: 38,00 €. Tu presupuesto es de 45,00 € y te quedan 7,00 €.",
       "spoken_text": "Hecho, el total es treinta y ocho euros. En el carrito hay cuatro unidades de Newdora Botella de Agua Acero Inoxidable quinientos mililitros a nueve euros con cincuenta céntimos cada una, treinta y ocho euros. Total: treinta y ocho euros. Tu presupuesto es de cuarenta y cinco euros y te quedan siete euros.",
       "output_audio": "respuesta_03.wav",
-      "output_seconds": 23.284,
+      "output_seconds": 24.308,
       "awaiting_confirmation": false,
       "operations": [
         {
@@ -437,19 +437,19 @@
         }
       ],
       "timings": {
-        "asr": 0.332,
+        "asr": 0.325,
         "retrieval": 0.0,
-        "llm": 4.955,
-        "tools": 0.051,
-        "tts": 6.138,
-        "total": 11.477
+        "llm": 4.869,
+        "tools": 0.054,
+        "tts": 6.111,
+        "total": 11.359
       },
       "llm_steps": 2,
-      "tts_first_chunk_seconds": 1.072,
+      "tts_first_chunk_seconds": 1.071,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-07f6aa19-03_cambio_cantidad-c1",
+        "cart_id": "eval-136880e9-03_cambio_cantidad-c1",
         "state": {
           "budget_cents": 4500,
           "preferences": [],
@@ -500,7 +500,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-07f6aa19-03_cambio_cantidad-c1",
+              "cart_id": "eval-136880e9-03_cambio_cantidad-c1",
               "product_id": "B07VQNY8PK",
               "quantity": 2
             }
@@ -537,7 +537,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-07f6aa19-03_cambio_cantidad-c1",
+        "cart_id": "eval-136880e9-03_cambio_cantidad-c1",
         "state": {
           "budget_cents": 4500,
           "preferences": [],
@@ -588,7 +588,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-07f6aa19-03_cambio_cantidad-c1",
+              "cart_id": "eval-136880e9-03_cambio_cantidad-c1",
               "product_id": "B07VQNY8PK",
               "quantity": 4
             }
@@ -659,7 +659,7 @@
       "response": "Te repito el pedido antes de registrarlo: 4 unidades de «Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío…» a 9,50 € cada una, 38,00 €. Total: 38,00 €. Tu presupuesto es de 45,00 € y te quedan 7,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
       "spoken_text": "Te repito el pedido antes de registrarlo: cuatro unidades de Newdora Botella de Agua Acero Inoxidable quinientos mililitros a nueve euros con cincuenta céntimos cada una, treinta y ocho euros. Total: treinta y ocho euros. Tu presupuesto es de cuarenta y cinco euros y te quedan siete euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
       "output_audio": "respuesta_04.wav",
-      "output_seconds": 28.655333333333335,
+      "output_seconds": 29.967333333333332,
       "awaiting_confirmation": true,
       "operations": [
         {
@@ -672,19 +672,19 @@
         }
       ],
       "timings": {
-        "asr": 0.327,
+        "asr": 0.325,
         "retrieval": 0.0,
-        "llm": 2.107,
-        "tools": 0.043,
-        "tts": 7.952,
-        "total": 10.429
+        "llm": 2.088,
+        "tools": 0.042,
+        "tts": 7.907,
+        "total": 10.362
       },
       "llm_steps": 1,
-      "tts_first_chunk_seconds": 3.357,
+      "tts_first_chunk_seconds": 3.33,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-07f6aa19-03_cambio_cantidad-c1",
+        "cart_id": "eval-136880e9-03_cambio_cantidad-c1",
         "state": {
           "budget_cents": 4500,
           "preferences": [],
@@ -735,7 +735,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-07f6aa19-03_cambio_cantidad-c1",
+              "cart_id": "eval-136880e9-03_cambio_cantidad-c1",
               "product_id": "B07VQNY8PK",
               "quantity": 4
             }
@@ -772,13 +772,13 @@
         }
       },
       "after": {
-        "cart_id": "eval-07f6aa19-03_cambio_cantidad-c1",
+        "cart_id": "eval-136880e9-03_cambio_cantidad-c1",
         "state": {
           "budget_cents": 4500,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "d77f462352d64a5baa32b1ba38a8e904",
+            "quote_id": "c39ae7aec01042bf84709a1bf63da99b",
             "items": [
               {
                 "product_id": "B07VQNY8PK",
@@ -838,7 +838,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-07f6aa19-03_cambio_cantidad-c1",
+              "cart_id": "eval-136880e9-03_cambio_cantidad-c1",
               "product_id": "B07VQNY8PK",
               "quantity": 4
             }
@@ -904,13 +904,13 @@
       "response": "Pedido número 1 registrado: 4 unidades de «Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío…» a 9,50 € cada una, 38,00 €. Total: 38,00 €. Gracias por tu compra.",
       "spoken_text": "Pedido número uno registrado: cuatro unidades de Newdora Botella de Agua Acero Inoxidable quinientos mililitros a nueve euros con cincuenta céntimos cada una, treinta y ocho euros. Total: treinta y ocho euros. Gracias por tu compra.",
       "output_audio": "respuesta_05.wav",
-      "output_seconds": 17.882,
+      "output_seconds": 18.682,
       "awaiting_confirmation": false,
       "operations": [
         {
           "tool": "confirmar_pedido",
           "args": {
-            "quote_id": "d77f462352d64a5baa32b1ba38a8e904"
+            "quote_id": "c39ae7aec01042bf84709a1bf63da99b"
           },
           "reason": "el usuario confirmó la cotización",
           "ok": true,
@@ -919,25 +919,25 @@
         }
       ],
       "timings": {
-        "asr": 0.322,
+        "asr": 0.318,
         "retrieval": 0.0,
         "llm": 0.0,
-        "tools": 0.04,
-        "tts": 4.858,
-        "total": 5.22
+        "tools": 0.039,
+        "tts": 4.833,
+        "total": 5.19
       },
       "llm_steps": 0,
-      "tts_first_chunk_seconds": 3.806,
+      "tts_first_chunk_seconds": 3.784,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-07f6aa19-03_cambio_cantidad-c1",
+        "cart_id": "eval-136880e9-03_cambio_cantidad-c1",
         "state": {
           "budget_cents": 4500,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "d77f462352d64a5baa32b1ba38a8e904",
+            "quote_id": "c39ae7aec01042bf84709a1bf63da99b",
             "items": [
               {
                 "product_id": "B07VQNY8PK",
@@ -997,7 +997,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-07f6aa19-03_cambio_cantidad-c1",
+              "cart_id": "eval-136880e9-03_cambio_cantidad-c1",
               "product_id": "B07VQNY8PK",
               "quantity": 4
             }
@@ -1034,7 +1034,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-07f6aa19-03_cambio_cantidad-c1",
+        "cart_id": "eval-136880e9-03_cambio_cantidad-c1",
         "state": {
           "budget_cents": 4500,
           "preferences": [],
@@ -1042,7 +1042,7 @@
           "quote": null,
           "order": {
             "order_id": 1,
-            "quote_id": "d77f462352d64a5baa32b1ba38a8e904",
+            "quote_id": "c39ae7aec01042bf84709a1bf63da99b",
             "items": [
               {
                 "product_id": "B07VQNY8PK",
@@ -1098,7 +1098,7 @@
           "orders": [
             {
               "order_id": 1,
-              "quote_id": "d77f462352d64a5baa32b1ba38a8e904",
+              "quote_id": "c39ae7aec01042bf84709a1bf63da99b",
               "total_cents": 3800
             }
           ],
@@ -1156,7 +1156,7 @@
   ],
   "final": {
     "snapshot": {
-      "cart_id": "eval-07f6aa19-03_cambio_cantidad-c1",
+      "cart_id": "eval-136880e9-03_cambio_cantidad-c1",
       "state": {
         "budget_cents": 4500,
         "preferences": [],
@@ -1164,7 +1164,7 @@
         "quote": null,
         "order": {
           "order_id": 1,
-          "quote_id": "d77f462352d64a5baa32b1ba38a8e904",
+          "quote_id": "c39ae7aec01042bf84709a1bf63da99b",
           "items": [
             {
               "product_id": "B07VQNY8PK",
@@ -1220,7 +1220,7 @@
         "orders": [
           {
             "order_id": 1,
-            "quote_id": "d77f462352d64a5baa32b1ba38a8e904",
+            "quote_id": "c39ae7aec01042bf84709a1bf63da99b",
             "total_cents": 3800
           }
         ],
@@ -1321,7 +1321,7 @@
     "all": {
       "turns": 5,
       "asr": {
-        "mean": 0.34,
+        "mean": 0.33,
         "max": 0.37
       },
       "retrieval": {
@@ -1329,20 +1329,20 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 3.99,
-        "max": 7.96
+        "mean": 3.95,
+        "max": 7.87
       },
       "tools": {
         "mean": 0.04,
         "max": 0.05
       },
       "tts": {
-        "mean": 6.43,
-        "max": 7.95
+        "mean": 6.39,
+        "max": 7.91
       },
       "total": {
-        "mean": 10.81,
-        "max": 14.12
+        "mean": 10.72,
+        "max": 14.0
       }
     },
     "with_llm": {
@@ -1356,20 +1356,20 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 4.99,
-        "max": 7.96
+        "mean": 4.93,
+        "max": 7.87
       },
       "tools": {
         "mean": 0.04,
         "max": 0.05
       },
       "tts": {
-        "mean": 6.82,
-        "max": 7.95
+        "mean": 6.78,
+        "max": 7.91
       },
       "total": {
-        "mean": 12.2,
-        "max": 14.12
+        "mean": 12.1,
+        "max": 14.0
       }
     },
     "without_llm": {
@@ -1391,12 +1391,12 @@
         "max": 0.04
       },
       "tts": {
-        "mean": 4.86,
-        "max": 4.86
+        "mean": 4.83,
+        "max": 4.83
       },
       "total": {
-        "mean": 5.22,
-        "max": 5.22
+        "mean": 5.19,
+        "max": 5.19
       }
     }
   }

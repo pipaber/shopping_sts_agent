@@ -1,0 +1,176 @@
+{
+  "date": "2026-11-12T12:36:46",
+  "commit": "b2acf9c",
+  "memory_backend": "postgres",
+  "models": {
+    "llm": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+    "asr": "large-v3-turbo",
+    "tts": "XTTS-v2",
+    "embeddings": "intfloat/multilingual-e5-small",
+    "reranker": "control"
+  },
+  "voice": {
+    "reference": "audio/referencia/referencia.wav",
+    "speaker": null,
+    "speed": 1.15
+  },
+  "load": {
+    "search_seconds": 15.1,
+    "llm_seconds": 0.8,
+    "asr_seconds": 0.8,
+    "tts_seconds": 11.3,
+    "total_seconds": 28.3,
+    "vram_mib": {
+      "search": 706,
+      "llm": 5820,
+      "asr": 7772,
+      "loaded": 9532
+    }
+  },
+  "input": "audio",
+  "audio_sources": {
+    "01_compra_confirmada": "grabaciones del usuario",
+    "02_pedido_ambiguo": "grabaciones del usuario",
+    "03_cambio_cantidad": "grabaciones del usuario",
+    "04_sin_existencias": "grabaciones del usuario",
+    "05_correccion_transcripcion": "grabaciones del usuario",
+    "06_cambio_stock_confirmacion_repetida": "grabaciones del usuario"
+  },
+  "audio_dir": "audio/corridas/voz_velocidad_1_15",
+  "scenarios": [
+    {
+      "id": "01_compra_confirmada",
+      "title": "Compra confirmada",
+      "kind": "compra_confirmada",
+      "passed": true
+    },
+    {
+      "id": "02_pedido_ambiguo",
+      "title": "Pedido ambiguo que requiere aclaración",
+      "kind": "pedido_ambiguo",
+      "passed": true
+    },
+    {
+      "id": "03_cambio_cantidad",
+      "title": "Cambio de cantidad manteniendo las demás restricciones",
+      "kind": "cambio_cantidad",
+      "passed": true
+    },
+    {
+      "id": "04_sin_existencias",
+      "title": "Producto sin existencias que requiere alternativa",
+      "kind": "sin_existencias",
+      "passed": true
+    },
+    {
+      "id": "05_correccion_transcripcion",
+      "title": "Corrección de una transcripción antes de comprar",
+      "kind": "correccion_transcripcion",
+      "passed": true
+    },
+    {
+      "id": "06_cambio_stock_confirmacion_repetida",
+      "title": "Cambio de stock entre cotización y confirmación, y confirmación repetida",
+      "kind": "cambio_stock_confirmacion_repetida",
+      "passed": true
+    }
+  ],
+  "summary": {
+    "scenarios": 6,
+    "passed": 6,
+    "pass_rate": 1.0,
+    "failed": [],
+    "turns": 31,
+    "violations": {
+      "cantidad": 0,
+      "presupuesto": 0,
+      "existencias": 0,
+      "pedido_duplicado": 0,
+      "cambio_parcial": 0
+    },
+    "timings": {
+      "all": {
+        "turns": 31,
+        "asr": {
+          "mean": 0.34,
+          "max": 0.57
+        },
+        "retrieval": {
+          "mean": 0.01,
+          "max": 0.03
+        },
+        "llm": {
+          "mean": 3.91,
+          "max": 10.01
+        },
+        "tools": {
+          "mean": 0.04,
+          "max": 0.06
+        },
+        "tts": {
+          "mean": 5.61,
+          "max": 10.44
+        },
+        "total": {
+          "mean": 9.92,
+          "max": 18.63
+        }
+      },
+      "with_llm": {
+        "turns": 24,
+        "asr": {
+          "mean": 0.35,
+          "max": 0.57
+        },
+        "retrieval": {
+          "mean": 0.01,
+          "max": 0.03
+        },
+        "llm": {
+          "mean": 5.05,
+          "max": 10.01
+        },
+        "tools": {
+          "mean": 0.04,
+          "max": 0.06
+        },
+        "tts": {
+          "mean": 5.89,
+          "max": 9.59
+        },
+        "total": {
+          "mean": 11.35,
+          "max": 18.63
+        }
+      },
+      "without_llm": {
+        "turns": 7,
+        "asr": {
+          "mean": 0.33,
+          "max": 0.33
+        },
+        "retrieval": {
+          "mean": 0.0,
+          "max": 0.02
+        },
+        "llm": {
+          "mean": 0.0,
+          "max": 0.0
+        },
+        "tools": {
+          "mean": 0.04,
+          "max": 0.04
+        },
+        "tts": {
+          "mean": 4.65,
+          "max": 10.44
+        },
+        "total": {
+          "mean": 5.02,
+          "max": 10.8
+        }
+      }
+    }
+  },
+  "note": "Corrida por voz del 12 de noviembre con la grabación de referencia nueva y la velocidad del habla 1,15, que fue el valor por defecto hasta que se bajó a 1,10. Se conserva para compararla con la corrida a 1,10. Sus audios se copiaron a audio/corridas/voz_velocidad_1_15 y la ruta de este archivo se actualizó por eso."
+}

@@ -1,6 +1,6 @@
 {
-  "date": "2026-11-12T12:36:46",
-  "commit": "b2acf9c",
+  "date": "2026-11-12T13:11:57",
+  "commit": "fb5ef3a+cambios",
   "memory_backend": "postgres",
   "models": {
     "llm": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
@@ -12,14 +12,14 @@
   "voice": {
     "reference": "audio/referencia/referencia.wav",
     "speaker": null,
-    "speed": 1.15
+    "speed": 1.1
   },
   "load": {
     "search_seconds": 15.1,
-    "llm_seconds": 0.8,
+    "llm_seconds": 0.7,
     "asr_seconds": 0.8,
-    "tts_seconds": 11.3,
-    "total_seconds": 28.3,
+    "tts_seconds": 7.5,
+    "total_seconds": 24.4,
     "vram_mib": {
       "search": 706,
       "llm": 5820,
@@ -93,7 +93,7 @@
         "turns": 31,
         "asr": {
           "mean": 0.34,
-          "max": 0.57
+          "max": 0.54
         },
         "retrieval": {
           "mean": 0.01,
@@ -101,26 +101,26 @@
         },
         "llm": {
           "mean": 3.91,
-          "max": 10.01
+          "max": 9.93
         },
         "tools": {
           "mean": 0.04,
           "max": 0.06
         },
         "tts": {
-          "mean": 5.61,
+          "mean": 5.62,
           "max": 10.44
         },
         "total": {
           "mean": 9.92,
-          "max": 18.63
+          "max": 18.84
         }
       },
       "with_llm": {
         "turns": 24,
         "asr": {
           "mean": 0.35,
-          "max": 0.57
+          "max": 0.54
         },
         "retrieval": {
           "mean": 0.01,
@@ -128,26 +128,26 @@
         },
         "llm": {
           "mean": 5.05,
-          "max": 10.01
+          "max": 9.93
         },
         "tools": {
           "mean": 0.04,
           "max": 0.06
         },
         "tts": {
-          "mean": 5.89,
-          "max": 9.59
+          "mean": 5.9,
+          "max": 10.34
         },
         "total": {
           "mean": 11.35,
-          "max": 18.63
+          "max": 18.84
         }
       },
       "without_llm": {
         "turns": 7,
         "asr": {
-          "mean": 0.33,
-          "max": 0.33
+          "mean": 0.32,
+          "max": 0.34
         },
         "retrieval": {
           "mean": 0.0,
@@ -162,12 +162,12 @@
           "max": 0.04
         },
         "tts": {
-          "mean": 4.65,
+          "mean": 4.64,
           "max": 10.44
         },
         "total": {
-          "mean": 5.02,
-          "max": 10.8
+          "mean": 5.01,
+          "max": 10.81
         }
       }
     }

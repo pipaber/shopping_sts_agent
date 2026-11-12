@@ -6,9 +6,9 @@
   "voice": true,
   "input": "audio",
   "audio_source": "grabaciones del usuario",
-  "user_id": "eval-07f6aa19-02_pedido_ambiguo",
+  "user_id": "eval-136880e9-02_pedido_ambiguo",
   "threads": [
-    "eval-07f6aa19-02_pedido_ambiguo-c1"
+    "eval-136880e9-02_pedido_ambiguo-c1"
   ],
   "names": {
     "elegido": "B081C31KV4"
@@ -25,7 +25,7 @@
       "response": "¿Qué tipo de regalo tienes en mente para tu hermana?",
       "spoken_text": "¿Qué tipo de regalo tienes en mente para tu hermana?",
       "output_audio": "respuesta_01.wav",
-      "output_seconds": 2.592,
+      "output_seconds": 2.7306666666666666,
       "awaiting_confirmation": false,
       "operations": [
         {
@@ -40,19 +40,19 @@
         }
       ],
       "timings": {
-        "asr": 0.341,
+        "asr": 0.335,
         "retrieval": 0.0,
-        "llm": 1.85,
-        "tools": 0.015,
-        "tts": 0.679,
-        "total": 2.885
+        "llm": 1.822,
+        "tools": 0.02,
+        "tts": 0.677,
+        "total": 2.855
       },
       "llm_steps": 1,
-      "tts_first_chunk_seconds": 0.674,
+      "tts_first_chunk_seconds": 0.671,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-07f6aa19-02_pedido_ambiguo-c1",
+        "cart_id": "eval-136880e9-02_pedido_ambiguo-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -71,7 +71,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-07f6aa19-02_pedido_ambiguo-c1",
+        "cart_id": "eval-136880e9-02_pedido_ambiguo-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -125,7 +125,7 @@
       "response": "Tengo estos auriculares Bluetooth para ti: los de Mgrett por 9,18 euros, los de TAIN por 9,84 euros, los de WDGP por 32,06 euros, los de GSBLBL por 25,15 euros y los de HoLiv por 16,49 euros. ¿Te interesa alguno? He anotado un presupuesto de 50,00 €.",
       "spoken_text": "Tengo estos auriculares Bluetooth para ti: los de Mgrett por nueve euros con dieciocho céntimos, los de TAIN por nueve euros con ochenta y cuatro céntimos, los de WDGP por treinta y dos euros con seis céntimos, los de GSBLBL por veinticinco euros con quince céntimos y los de HoLiv por dieciséis euros con cuarenta y nueve céntimos. ¿Te interesa alguno? He anotado un presupuesto de cincuenta euros.",
       "output_audio": "respuesta_02.wav",
-      "output_seconds": 30.388,
+      "output_seconds": 31.74266666666667,
       "awaiting_confirmation": false,
       "operations": [
         {
@@ -150,21 +150,21 @@
         }
       ],
       "timings": {
-        "asr": 0.357,
-        "retrieval": 0.031,
-        "llm": 8.334,
-        "tools": 0.031,
-        "tts": 8.184,
-        "total": 16.939
+        "asr": 0.351,
+        "retrieval": 0.032,
+        "llm": 8.419,
+        "tools": 0.028,
+        "tts": 8.128,
+        "total": 16.958
       },
       "llm_steps": 3,
-      "tts_first_chunk_seconds": 2.307,
+      "tts_first_chunk_seconds": 2.289,
       "tts_retries": 0,
       "product_terms": [
         "auriculares bluetooth"
       ],
       "before": {
-        "cart_id": "eval-07f6aa19-02_pedido_ambiguo-c1",
+        "cart_id": "eval-136880e9-02_pedido_ambiguo-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -183,7 +183,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-07f6aa19-02_pedido_ambiguo-c1",
+        "cart_id": "eval-136880e9-02_pedido_ambiguo-c1",
         "state": {
           "budget_cents": 5000,
           "preferences": [],
@@ -303,7 +303,7 @@
       "response": "Hecho, añadido uno de esos auriculares al carrito. En el carrito hay 1 unidad de «Auriculares Bluetooth, 5.0 Auriculares Bluetooth In Ear Inalámbricos…» a 19,90 € cada una, 19,90 €. Total: 19,90 €. Tu presupuesto es de 50,00 € y te quedan 30,10 €.",
       "spoken_text": "Hecho, añadido uno de esos auriculares al carrito. En el carrito hay una unidad de Auriculares Bluetooth a diecinueve euros con noventa céntimos cada una, diecinueve euros con noventa céntimos. Total: diecinueve euros con noventa céntimos. Tu presupuesto es de cincuenta euros y te quedan treinta euros con diez céntimos.",
       "output_audio": "respuesta_03.wav",
-      "output_seconds": 23.738,
+      "output_seconds": 24.804666666666666,
       "awaiting_confirmation": false,
       "operations": [
         {
@@ -319,21 +319,21 @@
         }
       ],
       "timings": {
-        "asr": 0.327,
+        "asr": 0.32,
         "retrieval": 0.0,
-        "llm": 4.863,
-        "tools": 0.044,
-        "tts": 6.46,
-        "total": 11.695
+        "llm": 4.91,
+        "tools": 0.045,
+        "tts": 6.376,
+        "total": 11.65
       },
       "llm_steps": 2,
-      "tts_first_chunk_seconds": 3.751,
+      "tts_first_chunk_seconds": 3.706,
       "tts_retries": 0,
       "product_terms": [
         "primero"
       ],
       "before": {
-        "cart_id": "eval-07f6aa19-02_pedido_ambiguo-c1",
+        "cart_id": "eval-136880e9-02_pedido_ambiguo-c1",
         "state": {
           "budget_cents": 5000,
           "preferences": [],
@@ -415,7 +415,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-07f6aa19-02_pedido_ambiguo-c1",
+        "cart_id": "eval-136880e9-02_pedido_ambiguo-c1",
         "state": {
           "budget_cents": 5000,
           "preferences": [],
@@ -466,7 +466,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-07f6aa19-02_pedido_ambiguo-c1",
+              "cart_id": "eval-136880e9-02_pedido_ambiguo-c1",
               "product_id": "B081C31KV4",
               "quantity": 1
             }
@@ -521,7 +521,7 @@
   ],
   "final": {
     "snapshot": {
-      "cart_id": "eval-07f6aa19-02_pedido_ambiguo-c1",
+      "cart_id": "eval-136880e9-02_pedido_ambiguo-c1",
       "state": {
         "budget_cents": 5000,
         "preferences": [],
@@ -572,7 +572,7 @@
         "order_items": [],
         "cart_items": [
           {
-            "cart_id": "eval-07f6aa19-02_pedido_ambiguo-c1",
+            "cart_id": "eval-136880e9-02_pedido_ambiguo-c1",
             "product_id": "B081C31KV4",
             "quantity": 1
           }
@@ -657,54 +657,54 @@
       "turns": 3,
       "asr": {
         "mean": 0.34,
-        "max": 0.36
+        "max": 0.35
       },
       "retrieval": {
         "mean": 0.01,
         "max": 0.03
       },
       "llm": {
-        "mean": 5.02,
-        "max": 8.33
+        "mean": 5.05,
+        "max": 8.42
       },
       "tools": {
         "mean": 0.03,
         "max": 0.04
       },
       "tts": {
-        "mean": 5.11,
-        "max": 8.18
+        "mean": 5.06,
+        "max": 8.13
       },
       "total": {
-        "mean": 10.51,
-        "max": 16.94
+        "mean": 10.49,
+        "max": 16.96
       }
     },
     "with_llm": {
       "turns": 3,
       "asr": {
         "mean": 0.34,
-        "max": 0.36
+        "max": 0.35
       },
       "retrieval": {
         "mean": 0.01,
         "max": 0.03
       },
       "llm": {
-        "mean": 5.02,
-        "max": 8.33
+        "mean": 5.05,
+        "max": 8.42
       },
       "tools": {
         "mean": 0.03,
         "max": 0.04
       },
       "tts": {
-        "mean": 5.11,
-        "max": 8.18
+        "mean": 5.06,
+        "max": 8.13
       },
       "total": {
-        "mean": 10.51,
-        "max": 16.94
+        "mean": 10.49,
+        "max": 16.96
       }
     },
     "without_llm": {

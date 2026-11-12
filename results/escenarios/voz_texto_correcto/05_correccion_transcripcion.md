@@ -76,7 +76,7 @@
 
 **Usuario (texto):** Sí, confirmo.
 
-- `confirmar_pedido(quote_id="d498f40ad50d4fa4bcdcbf063b614db2")` → OK: pedido registrado
+- `confirmar_pedido(quote_id="23703fe9dcf94bada4171e1e4b3905d2")` → OK: pedido registrado
 
 **Agente:** Pedido número 1 registrado: 12 unidades de «Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con…» a 11,00 € cada una, 132,00 €. Total: 132,00 €. Gracias por tu compra.
 
@@ -107,11 +107,11 @@
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
 | 1 | 0.00 | 0.03 | 7.94 | 0.03 | 0.00 | 8.00 | 0.0 s |
-| 2 | 0.00 | 0.00 | 4.88 | 0.05 | 0.00 | 4.92 | 0.0 s |
-| 3 | 0.00 | 0.00 | 2.30 | 0.04 | 0.00 | 2.34 | 0.0 s |
-| 4 | 0.00 | 0.00 | 8.06 | 0.04 | 0.00 | 8.11 | 0.0 s |
-| 5 | 0.00 | 0.00 | 2.37 | 0.04 | 0.00 | 2.41 | 0.0 s |
+| 2 | 0.00 | 0.00 | 4.82 | 0.06 | 0.00 | 4.87 | 0.0 s |
+| 3 | 0.00 | 0.00 | 2.29 | 0.04 | 0.00 | 2.33 | 0.0 s |
+| 4 | 0.00 | 0.00 | 8.07 | 0.05 | 0.00 | 8.12 | 0.0 s |
+| 5 | 0.00 | 0.00 | 2.38 | 0.04 | 0.00 | 2.42 | 0.0 s |
 | 6 | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | 0.0 s |
-| **Media de los turnos con LLM (5)** | 0.00 | 0.01 | 5.11 | 0.04 | 0.00 | 5.16 | |
+| **Media de los turnos con LLM (5)** | 0.00 | 0.01 | 5.10 | 0.04 | 0.00 | 5.15 | |
 | **Media de los turnos sin LLM (1)** | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | |
 

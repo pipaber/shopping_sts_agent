@@ -232,49 +232,50 @@ Los dos guiones de demostración siguen la misma convención, con el texto en un
 La voz clonada con la primera grabación de referencia sonaba, a juicio de su autor, «un poco robótica, medio apagada» y lenta. El 12 de noviembre cambiaron dos cosas:
 
 - **Grabación de referencia nueva** (39,6 s; la anterior queda en `audio/referencia/referencia_anterior.wav`). Es habla continua, viva y a ritmo normal, porque XTTS-v2 copia de la referencia el ritmo y la entonación además del timbre.
-- **Velocidad del habla 1,15.** `XttsTTS` pasa `speed` a la síntesis: 1,0 es el ritmo de la referencia y 1,15, el valor por defecto, habla un 15 % más rápido. Se cambia con `SHOPPING_AGENT_TTS_SPEED` (en [.env.example](.env.example)) o con `--speed` en `voice.tts`. La velocidad queda anotada en la descripción de la voz de cada transcripción y en `/health` del servidor en vivo.
+- **Velocidad del habla 1,10.** `XttsTTS` pasa `speed` a la síntesis: 1,0 es el ritmo de la referencia y 1,10, el valor por defecto, habla un 10 % más rápido. Se cambia con `SHOPPING_AGENT_TTS_SPEED` (en [.env.example](.env.example)) o con `--speed` en `voice.tts`. La velocidad queda anotada en la descripción de la voz de cada transcripción y en `/health` del servidor en vivo.
 
-El autor comparó de oído tres versiones (referencia anterior, nueva, y nueva a 1,15) y eligió la última. Lo medido, sobre los seis escenarios de voz con sus grabaciones (31 turnos, las mismas 31 respuestas del agente en las dos corridas):
-
-| Medida | Voz anterior (`voz_referencia_anterior`) | Voz nueva a 1,15 (`voz`) |
-|---|---|---|
-| Escenarios correctos | 6 de 6 | 6 de 6 |
-| Inteligibilidad (WER de Whisper sobre la síntesis) | 3,4 % | **7,0 %** |
-| Semejanza con su grabación de referencia, media / mínima | 0,741 / 0,501 | 0,709 / 0,593 |
-| Semejanza con las 31 grabaciones reales del usuario, media / mínima | 0,259 / 0,221 | 0,270 / 0,191 |
-| Duración media del audio de respuesta | 24,8 s | 20,7 s |
-| TTS por turno, media (todos / con LLM) | 6,07 / 6,54 s | 5,61 / 5,89 s |
-| Latencia total por turno, media (todos / con LLM) | 10,36 / 11,97 s | 9,92 / 11,35 s |
-| Turno más lento | 25,55 s | 18,63 s |
-
-Las dos semejanzas no dicen lo mismo. La primera compara con la misma grabación de la que se clonó la voz y sale optimista (misma toma, mismo micrófono); además, cada corrida se compara con su propia referencia, así que 0,741 y 0,709 no son comparables entre sí. La segunda compara con las grabaciones del usuario que entran en los escenarios, que el modelo no usó para clonar: su techo es 0,377, lo que esas 31 grabaciones se parecen entre sí (son cortas, de 1 a 6 s).
-
-Qué dice y qué no:
-
-- **Se oye antes y dura menos.** Las respuestas duran un 17 % menos (un 3 % por la referencia y un 13 % por la velocidad). La espera hasta que empieza a sonar baja unos 0,5 s por turno, y eso viene de la referencia nueva: acelerar no ahorra tiempo de síntesis, solo acorta el audio.
-- **Se parece algo más a la voz real**, pero poco: 0,259 → 0,270, lejos del techo de 0,377. La variación entre turnos es mayor que esa diferencia.
-- **Se entiende peor según Whisper**, y no es por la velocidad sino por la referencia nueva: con las mismas 31 respuestas, 3,4 % con la anterior, 7,9 % con la nueva a velocidad 1,0 y 7,0 % a 1,15. Un tercio de esos errores son de una sola respuesta, la que enumera marcas impronunciables (`02_pedido_ambiguo`, turno 2: «Mgrett», «WDGP», «GSBLBL»…), que con la voz nueva sale con un tramo ininteligible y dura 30 s donde la anterior duraba 49. El resto son palabras sueltas añadidas al final de un fragmento («cada una quince euros», «mua»), que con la voz anterior casi no aparecían.
-- **Efecto propio de la velocidad:** en la frase que pide confirmar, «Di sí para registrarlo», Whisper entiende «dice para registrarlo» en 4 de las 7 respuestas que la llevan; a velocidad 1,0 y a 1,1 la entiende en las 7.
-
-La medida de la velocidad por separado, con la referencia nueva y los mismos 37 textos (6 frases y las 31 respuestas), está en [results/voz_velocidad.md](results/voz_velocidad.md):
+**Por qué 1,10.** El autor comparó de oído tres versiones (referencia anterior, nueva, y nueva a 1,15) y eligió la última, así que el primer valor por defecto fue 1,15. Después se midió la velocidad por separado, con la referencia nueva y los mismos 37 textos (6 frases y las 31 respuestas del agente; [results/voz_velocidad.md](results/voz_velocidad.md)):
 
 | Velocidad | WER de Whisper | WER sin el texto peor | «Di sí» entendido | Semejanza con las grabaciones reales | Audio de los 37 textos | Síntesis |
 |---|---|---|---|---|---|---|
 | 1,0 | 7,5 % | 4,4 % | 7 de 7 | 0,285 | 792 s | 184 s |
-| 1,1 | 6,0 % | 4,5 % | 7 de 7 | 0,274 | 719 s | 184 s |
-| 1,15 (por defecto) | 6,7 % | 4,8 % | 4 de 7 | 0,270 | 688 s | 184 s |
+| 1,1 (por defecto) | 6,0 % | 4,5 % | 7 de 7 | 0,274 | 719 s | 184 s |
+| 1,15 | 6,7 % | 4,8 % | 4 de 7 | 0,270 | 688 s | 184 s |
 | 1,3 | 6,8 % | 5,2 % | 5 de 7 | 0,264 | 609 s | 183 s |
 
 El «texto peor» es el mismo a las cuatro velocidades: la respuesta con las marcas impronunciables. La medida es determinista: repetida, da las mismas transcripciones.
 
-Acelerar no empeora de forma clara el WER, que lo domina ese texto; sin él sube poco a poco con la velocidad. Lo que sí cambia entre 1,1 y 1,15 es la frase de confirmación. El valor por defecto sigue en 1,15, el que eligió el autor de oído; 1,1 es el más alto de los medidos que conserva «Di sí» en las siete respuestas, con un audio un 9 % más corto que a 1,0 en lugar de un 13 %.
+Acelerar no empeora de forma clara el WER, que lo domina ese texto. Lo que cambia entre 1,1 y 1,15 es la frase con la que el agente pide confirmar un pedido: a 1,15, «Di sí para registrarlo» se entiende «dice para registrarlo» en 3 de las 7 respuestas que la llevan. A la vista de la tabla, el autor bajó el valor por defecto a 1,10: es el más alto de los medidos que conserva esa frase entera y el de menor WER.
+
+**Antes y después**, sobre los seis escenarios de voz con sus grabaciones (31 turnos; el agente dio las mismas 31 respuestas en las tres corridas):
+
+| Medida | Voz anterior (`voz_referencia_anterior`) | Voz nueva a 1,15 (`voz_velocidad_1_15`) | Voz nueva a 1,10 (`voz`, la actual) |
+|---|---|---|---|
+| Escenarios correctos | 6 de 6 | 6 de 6 | 6 de 6 |
+| Inteligibilidad (WER de Whisper sobre la síntesis) | 3,4 % | 7,0 % | **5,5 %** |
+| «Di sí para registrarlo» entendido | 7 de 7 | 3 de 7 | **7 de 7** |
+| Semejanza con su grabación de referencia, media / mínima | 0,741 / 0,501 | 0,709 / 0,593 | 0,710 / 0,609 |
+| Semejanza con las 31 grabaciones reales del usuario, media / mínima | 0,259 / 0,221 | 0,270 / 0,191 | 0,273 / 0,234 |
+| Duración media del audio de respuesta | 24,8 s | 20,7 s | 21,6 s |
+| TTS por turno, media (todos / con LLM) | 6,07 / 6,54 s | 5,61 / 5,89 s | 5,62 / 5,90 s |
+| Latencia total por turno, media (todos / con LLM) | 10,36 / 11,97 s | 9,92 / 11,35 s | 9,92 / 11,35 s |
+| Turno más lento | 25,55 s | 18,63 s | 18,84 s |
+
+Las dos semejanzas no dicen lo mismo. La primera compara con la misma grabación de la que se clonó la voz y sale optimista (misma toma, mismo micrófono); además, cada voz se compara con su propia referencia, así que 0,741 y 0,710 no son comparables entre sí. La segunda compara con las grabaciones del usuario que entran en los escenarios, que el modelo no usó para clonar: su techo es 0,377, lo que esas 31 grabaciones se parecen entre sí (son cortas, de 1 a 6 s).
+
+Qué dice y qué no:
+
+- **Se oye antes y dura menos.** Frente a la voz anterior, las respuestas duran un 13 % menos (un 3 % por la referencia y un 10 % por la velocidad). La espera hasta que empieza a sonar baja unos 0,5 s por turno, y eso viene de la referencia nueva: acelerar no ahorra tiempo de síntesis, solo acorta el audio. Por eso la latencia es la misma a 1,10 que a 1,15.
+- **Se parece algo más a la voz real**, pero poco: 0,259 → 0,273, lejos del techo de 0,377.
+- **Se entiende peor que la voz anterior según Whisper**, y no es por la velocidad sino por la referencia nueva: con las mismas 31 respuestas, 3,4 % con la anterior y 7,9 % con la nueva a velocidad 1,0 (medida aparte). A 1,10 queda en 5,5 %. Más de una cuarta parte de esos errores son de una sola respuesta, la que enumera marcas impronunciables (`02_pedido_ambiguo`, turno 2: «Mgrett», «WDGP», «GSBLBL»…), que con la voz nueva sale con un tramo ininteligible y dura 32 s donde la anterior duraba 49. El resto son nombres de marca y palabras sueltas añadidas al final de un fragmento («cada una quince euros», «mua»), que con la voz anterior casi no aparecían.
+- **La frase de confirmación se conserva a 1,10:** Whisper entiende «Di sí» en las 7 respuestas que la llevan, como con la voz anterior.
 
 ```bash
 uv run python -m shopping_agent.eval.tts_speed --speeds 1.0 1.1 1.15 1.3 --script frases.txt --run results/escenarios/voz_referencia_anterior
 uv run python -m shopping_agent.eval.scenarios --voice-metrics voz_referencia_anterior
 ```
 
-El primero repite esa medida; el segundo vuelve a medir la voz de una corrida guardada con sus audios, sin correr el agente (así se añadió la semejanza con las grabaciones reales a la corrida anterior, cuyas demás cifras salieron idénticas). Whisper no es un oyente: el WER dice dónde mirar, y falta escuchar las respuestas señaladas, sobre todo la del escenario 02.
+El primero repite la medida de velocidades; el segundo vuelve a medir la voz de una corrida guardada con sus audios, sin correr el agente (así se añadió la semejanza con las grabaciones reales a la corrida anterior, cuyas demás cifras salieron idénticas). Whisper no es un oyente: el WER dice dónde mirar, y falta escuchar las respuestas señaladas, sobre todo la del escenario 02.
 
 ### Conversación por voz
 
@@ -377,6 +378,7 @@ Qué queda de cada corrida:
 | `results/escenarios/resumen.md` y `.json` | Tablas de todas las corridas |
 | `results/escenarios/voz_sintetica/` | La corrida por voz anterior, con todos los audios de entrada sintéticos; se conserva para compararla con la voz real |
 | `results/escenarios/voz_referencia_anterior/` | La corrida por voz con la voz anterior del agente (primera grabación de referencia, velocidad 1,0); se conserva para compararla con la voz nueva |
+| `results/escenarios/voz_velocidad_1_15/` | La corrida por voz con la referencia nueva a velocidad 1,15, el valor por defecto antes de bajarlo a 1,10 |
 | `results/voz_velocidad.md` y `.json` | Los mismos textos sintetizados a varias velocidades del habla: inteligibilidad, semejanza y duración |
 | `results/escenarios/grabaciones.md` y `.json` | Cada grabación del usuario frente al texto de su turno |
 | `results/diagnostico_voz_05/` | Comprobación aparte de por qué falla el escenario 05 con la voz del usuario |
@@ -390,13 +392,14 @@ Resultados ([results/escenarios/resumen.md](results/escenarios/resumen.md)). «A
 | `texto_sage` | texto | GraphSAGE | 16 de 20 | 20 de 20 |
 | `texto_sin_reranker` | texto | ninguno | 16 de 20 | 20 de 20 |
 | `voz` | grabaciones del usuario (los 31 turnos) | control | — | 6 de 6 (5 de 6 antes de la guarda de los números sueltos) |
+| `voz_velocidad_1_15` | las mismas grabaciones, con la voz nueva a velocidad 1,15 | control | — | 6 de 6 |
 | `voz_referencia_anterior` | las mismas grabaciones, con la voz anterior del agente | control | — | 6 de 6 |
 | `voz_sintetica` | audio sintético de prueba | control | 3 de 6 | 6 de 6 |
 | `voz_texto_correcto` | transcripción correcta | control | 3 de 6 | 6 de 6 |
 
 No hubo ninguna violación de restricciones, ni antes ni después. Los fallos de la línea base eran decisiones del LLM en el diálogo (no cotizaba, añadía o cambiaba un producto que no se le pidió, no contestaba una pregunta). Los 20 escenarios son ahora el conjunto con el que se ajustó el agente: el 100 % no es una tasa de aciertos general.
 
-**Voz con las grabaciones del usuario** (11 y 12 de noviembre, los 31 turnos). El ASR tiene un WER del 1,4 %, sin errores en importes (0 de 3) ni en cantidades (0 de 8) y con uno en nombres de producto (1 de 13). La primera corrida, con el agente sin tocar, dio 5 de 6: en 05 Whisper escribió «he dicho 12, no 2», con cifras, donde se dijo «doce, no dos», y el LLM fijó un presupuesto de 12 € en vez de cambiar la cantidad (causa comprobada aparte en [results/diagnostico_voz_05/](results/diagnostico_voz_05/LEEME.md)). Se corrigió con una guarda y un aviso al LLM: con productos en el carrito, un número que no va con dinero no es un importe. Con eso la voz real da 6 de 6, y dos escenarios de reserva nuevos (25 y 26, corridas `reserva_cifras*`) pasan 2 de 2 con los tres rerankers. Sigue igual el escenario 01: «cafetera italiana» se entendió «cafetería italiana», lo que cambió la búsqueda y el pedido final (dos paquetes de cápsulas de café en lugar de una cafetera); cuenta como correcto porque sus comprobaciones se refieren al primer candidato y no miran qué producto es. Latencia media por turno con LLM: 11,35 s (ASR 0,35, LLM 5,05, TTS 5,89) con la voz nueva del agente; con la anterior, 11,97 s (el antes y el después de la voz están en «Voz del agente: referencia y velocidad»). El detalle, la comparación con el hablante sintético, los límites de la corrección y lo que no se ha verificado están en [documentation/PLAN.md](documentation/PLAN.md), apartado «Voz con las grabaciones del usuario».
+**Voz con las grabaciones del usuario** (11 y 12 de noviembre, los 31 turnos). El ASR tiene un WER del 1,4 %, sin errores en importes (0 de 3) ni en cantidades (0 de 8) y con uno en nombres de producto (1 de 13). La primera corrida, con el agente sin tocar, dio 5 de 6: en 05 Whisper escribió «he dicho 12, no 2», con cifras, donde se dijo «doce, no dos», y el LLM fijó un presupuesto de 12 € en vez de cambiar la cantidad (causa comprobada aparte en [results/diagnostico_voz_05/](results/diagnostico_voz_05/LEEME.md)). Se corrigió con una guarda y un aviso al LLM: con productos en el carrito, un número que no va con dinero no es un importe. Con eso la voz real da 6 de 6, y dos escenarios de reserva nuevos (25 y 26, corridas `reserva_cifras*`) pasan 2 de 2 con los tres rerankers. Sigue igual el escenario 01: «cafetera italiana» se entendió «cafetería italiana», lo que cambió la búsqueda y el pedido final (dos paquetes de cápsulas de café en lugar de una cafetera); cuenta como correcto porque sus comprobaciones se refieren al primer candidato y no miran qué producto es. Latencia media por turno con LLM: 11,35 s (ASR 0,35, LLM 5,05, TTS 5,90) con la voz nueva del agente; con la anterior, 11,97 s (el antes y el después de la voz están en «Voz del agente: referencia y velocidad»). El detalle, la comparación con el hablante sintético, los límites de la corrección y lo que no se ha verificado están en [documentation/PLAN.md](documentation/PLAN.md), apartado «Voz con las grabaciones del usuario».
 
 Para comprobar que las correcciones no dependen de la redacción de esos 20 hay escenarios de reserva en [scenarios/reserva/](scenarios/reserva/), escritos antes de tocar el agente y corridos una sola vez al final. Los cuatro primeros (21 a 24): 3 de 4 con el control, 4 de 4 con GraphSAGE y 3 de 4 sin reranker (el que falla, por una expectativa mal planteada; ver el diagnóstico). Para la corrección de los números sueltos se añadieron otros dos (25 y 26), corridos aparte, también una sola vez: 2 de 2 en las tres configuraciones.
 

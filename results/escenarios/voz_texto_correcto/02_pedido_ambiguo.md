@@ -5,7 +5,7 @@
 - Tipo: `pedido_ambiguo`
 - Qué se prueba: El primer mensaje no dice qué producto se busca: el agente debe preguntar en lugar de suponer. Después el usuario concreta el producto y el presupuesto, y añade una unidad.
 
-## Turno 1 (1.9 s)
+## Turno 1 (2.0 s)
 
 **Usuario (texto):** Quiero comprar un regalo para mi hermana.
 
@@ -37,7 +37,7 @@
 
 > **Suceso externo:** la tienda deja `B081C31KV4` (@elegido) con precio 19,90 € y existencias 20.
 
-## Turno 3 (5.0 s)
+## Turno 3 (5.1 s)
 
 **Usuario (texto):** Ponme uno del primero.
 
@@ -69,8 +69,8 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.00 | 1.92 | 0.02 | 0.00 | 1.94 | 0.0 s |
-| 2 | 0.00 | 0.03 | 8.75 | 0.02 | 0.00 | 8.80 | 0.0 s |
-| 3 | 0.00 | 0.00 | 4.97 | 0.04 | 0.00 | 5.01 | 0.0 s |
-| **Media de los turnos con LLM (3)** | 0.00 | 0.01 | 5.21 | 0.03 | 0.00 | 5.25 | |
+| 1 | 0.00 | 0.00 | 1.93 | 0.02 | 0.00 | 1.96 | 0.0 s |
+| 2 | 0.00 | 0.03 | 8.72 | 0.03 | 0.00 | 8.78 | 0.0 s |
+| 3 | 0.00 | 0.00 | 5.08 | 0.05 | 0.00 | 5.13 | 0.0 s |
+| **Media de los turnos con LLM (3)** | 0.00 | 0.01 | 5.24 | 0.03 | 0.00 | 5.29 | |
 

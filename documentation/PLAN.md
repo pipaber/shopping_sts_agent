@@ -108,7 +108,7 @@ Limitaciones observadas con el modelo de 7B: es sensible a la redacción del pro
 - **Fragmentos.** XTTS-v2 recorta las frases de más de 239 caracteres en español: el texto se parte por frases (y por comas si hace falta) en trozos de hasta 200 caracteres, que se sintetizan uno a uno y se unen con una pausa corta. La semilla del muestreo se fija para que la misma entrada dé la misma salida.
 - **Audio que sobra.** Con textos muy cortos XTTS-v2 a veces sigue "hablando" (un "Sí." salió con cinco segundos de balbuceo). Si un fragmento dura más de 2 s + 0,15 s por carácter, se vuelve a sintetizar con otra semilla, hasta tres veces, y se usa el intento más corto. El umbral es holgado a propósito: una voz pausada llega a 0,10 s por carácter, y un primer umbral ajustado al hablante de prueba (0,09) hacía reintentar sin motivo con la voz real.
 - **Memoria de GPU compartida.** Tras cada síntesis se libera la memoria que PyTorch deja en reserva (cerca de 1 GB después de una respuesta larga). El LLM y Whisper reservan la suya fuera de PyTorch, y en la GPU de 12 GB de la workstation esa reserva bastó para que Whisper se quedara sin memoria en el turno siguiente.
-- **Voz.** Sale de `audio/referencia/referencia.wav` (o de `SHOPPING_AGENT_VOICE_REF`). Mientras no exista, el desarrollo usa un hablante incluido en XTTS-v2, elegido de forma explícita; nunca la voz de otra persona. La carpeta `audio/` y cualquier archivo de audio están fuera de git. Desde el 12 de noviembre la referencia es otra grabación y el agente habla a velocidad 1,15 (`SHOPPING_AGENT_TTS_SPEED`); véase «Voz del agente: referencia nueva y velocidad».
+- **Voz.** Sale de `audio/referencia/referencia.wav` (o de `SHOPPING_AGENT_VOICE_REF`). Mientras no exista, el desarrollo usa un hablante incluido en XTTS-v2, elegido de forma explícita; nunca la voz de otra persona. La carpeta `audio/` y cualquier archivo de audio están fuera de git. Desde el 12 de noviembre la referencia es otra grabación y el agente habla a velocidad 1,10 (`SHOPPING_AGENT_TTS_SPEED`); véase «Voz del agente: referencia nueva y velocidad».
 - **Repetición con el texto correcto.** Como cada turno cambia el carrito y la tienda, no se repite un turno suelto: se repite la conversación entera desde la misma tienda inicial, en otro hilo, dando al agente el texto correcto en lugar del audio. Se compara turno a turno si el ASR cambió el texto, si el agente hizo operaciones distintas y si el estado final de la tienda coincide.
 - **Métricas.** WER con `jiwer` tras normalizar los dos textos (cifras en palabras, minúsculas, sin tildes ni puntuación), para que "60 €" y "sesenta euros" cuenten como lo mismo. Importes y cantidades se extraen de ambos textos y se comparan como conjuntos con repetición; "un" y "una" sueltos son artículos y no cuentan. Los nombres de producto esperados en cada turno (incluidos "el primero", "el segundo"…) se dan en `scenarios/<escenario>.terminos.json`. La semejanza de hablante se mide con ECAPA-TDNN de SpeechBrain, un modelo distinto del codificador de XTTS-v2, en CPU. Desde el 12 de noviembre se mide de dos maneras: con la grabación de referencia, que sale optimista porque es la misma toma de la que se clonó, y con grabaciones reales del hablante que no se usaron para clonar.
 - **Dependencias.** `coqui-tts` 0.28 funciona con PyTorch 2.14 sin cambiarlo. `torchaudio` y `torchcodec` se toman del índice de PyTorch para CUDA 12.6 (las ruedas de PyPI están compiladas para CUDA 13 y no cargan) y `torchcodec` necesita FFmpeg en el sistema; en Colab habrá que usar el índice que corresponda a su versión de CUDA.
@@ -379,7 +379,7 @@ El usuario grabó los 31 turnos del [guion](../scenarios/evaluacion/GUION_GRABAC
 | Latencia con LLM: ASR / LLM / TTS / total | 24 turnos: 0,35 / 5,03 / 6,54 / 11,97 s (máx. 25,55) | 24 turnos: 0,35 / 5,05 / 6,30 / 11,75 s (máx. 20,62) |
 | Latencia sin LLM, total | 7 turnos: 4,83 s (máx. 11,02) | 7 turnos: 4,82 s (máx. 11,01) |
 
-Las filas de la voz generada y de la latencia de esta tabla son de la voz anterior del agente: esa corrida se conserva como `voz_referencia_anterior`, y `voz` es ahora la corrida repetida con la voz nueva (apartado siguiente). Lo demás (aciertos, ASR, tienda final) es igual en las dos.
+Las filas de la voz generada y de la latencia de esta tabla son de la voz anterior del agente: esa corrida se conserva como `voz_referencia_anterior`, y `voz` es ahora la corrida repetida con la voz nueva a velocidad 1,10 (apartado siguiente). Lo demás (aciertos, ASR, tienda final) es igual en las dos.
 
 **El fallo del escenario 05 (primera corrida, commit `702e04e`).**
 
@@ -408,51 +408,55 @@ Las filas de la voz generada y de la latencia de esta tabla son de la voz anteri
 
 ### Voz del agente: referencia nueva y velocidad (12 de noviembre)
 
-El autor de la voz escuchó la voz clonada y la encontró «un poco robótica, medio apagada» y lenta. Grabó otra referencia, comparó de oído tres versiones (referencia anterior, nueva, y nueva a velocidad 1,15) y eligió la última. Es la primera vez que hay un juicio de oído sobre la voz, y es el que decide; lo que sigue son las medidas que lo acompañan.
+El autor de la voz escuchó la voz clonada y la encontró «un poco robótica, medio apagada» y lenta. Grabó otra referencia, comparó de oído tres versiones (referencia anterior, nueva, y nueva a velocidad 1,15) y eligió la última. Es la primera vez que hay un juicio de oído sobre la voz. Con la medida de velocidades delante, el mismo día bajó la velocidad a 1,10.
 
 **Qué cambió.**
 
 - **Referencia.** `audio/referencia/referencia.wav` es ahora una toma de 39,6 s de habla continua, viva y a ritmo normal; la anterior (30 s, más pausada) queda como `referencia_anterior.wav`. El motivo: XTTS-v2 copia de la referencia el ritmo y la entonación, no solo el timbre. Medido antes del cambio con seis frases: la variación de tono de la síntesis pasó de 3,0 a 4,9 semitonos (3,4 en las grabaciones reales del usuario) y la velocidad de 2,3 a 2,4 palabras por segundo (2,8 en las reales).
 - **Cuánto de la referencia se usa.** Revisando el código de `coqui-tts` instalado: con la llamada que hace este proyecto (`get_conditioning_latents` con sus valores por defecto), el decodificador toma el timbre de los primeros 30 s y el modelo que decide el ritmo y la entonación se condiciona solo con los **6 primeros segundos**. La configuración del propio modelo usa 30 s troceados de 6 en 6 para lo segundo. No se ha cambiado: la voz elegida de oído es la que sale con la llamada actual, y cambiarla da otra voz que habría que volver a escuchar.
-- **Velocidad.** `XttsTTS` pasa `speed` a la síntesis (1,15 por defecto; `SHOPPING_AGENT_TTS_SPEED` o `--speed`). XTTS-v2 la aplica estirando o encogiendo la secuencia ya generada antes del decodificador, así que cambia la duración del audio pero no el tiempo de síntesis. La velocidad se anota en la voz de cada corrida y en `/health`; las corridas anteriores no la anotan porque iban a 1,0.
+- **Velocidad.** `XttsTTS` pasa `speed` a la síntesis (1,10 por defecto; `SHOPPING_AGENT_TTS_SPEED` o `--speed`). XTTS-v2 la aplica estirando o encogiendo la secuencia ya generada antes del decodificador, así que cambia la duración del audio pero no el tiempo de síntesis. La velocidad se anota en la voz de cada corrida y en `/health`; las corridas anteriores no la anotan porque iban a 1,0.
 - **Semejanza contra grabaciones reales.** Hasta ahora la semejanza se medía solo contra la grabación de referencia. Ahora se mide además contra las 31 grabaciones del usuario que entran en los escenarios, que no se usan para clonar. Como techo se da cuánto se parecen esas grabaciones entre sí: 0,377 (son cortas, de 1 a 6 s, y el embedding de hablante de un «Sí.» es ruidoso).
-
-**Antes y después** ([resumen](../results/escenarios/resumen.md), apartado «Voz»). La corrida por voz se repitió con la voz nueva (`voz`) y la anterior se conserva como `voz_referencia_anterior`, con sus audios en `audio/corridas/voz_referencia_anterior/`. El agente dio las mismas 31 respuestas en las dos, así que se compara la misma frase con una voz y con otra. La voz anterior se volvió a medir con el código nuevo (`--voice-metrics`) y sus cifras de entonces salieron idénticas.
-
-| Medida | Voz anterior | Voz nueva a 1,15 |
-|---|---|---|
-| Escenarios correctos | 6 de 6 | 6 de 6 |
-| Inteligibilidad (WER de Whisper), 31 respuestas | 3,4 % | 7,0 % |
-| Respuestas entendidas sin ningún error | 13 de 31 | 9 de 31 |
-| Inteligibilidad sin la respuesta peor | 3,0 % | 4,9 % |
-| «Di sí para registrarlo» entendido | 7 de 7 | 3 de 7 |
-| Semejanza con su grabación de referencia, media / mínima | 0,741 / 0,501 | 0,709 / 0,593 |
-| Semejanza con las grabaciones reales, media / mínima (techo 0,377) | 0,259 / 0,221 | 0,270 / 0,191 |
-| Audio de las 31 respuestas | 768 s (24,8 s de media) | 641 s (20,7 s) |
-| TTS por turno, media (todos / con LLM) | 6,07 / 6,54 s | 5,61 / 5,89 s |
-| Latencia total por turno, media (todos / con LLM) | 10,36 / 11,97 s | 9,92 / 11,35 s |
-| Turno más lento | 25,55 s | 18,63 s |
-| Fragmentos repetidos por salir demasiado largos | 1 | 0 |
 
 **La velocidad por separado** ([results/voz_velocidad.md](../results/voz_velocidad.md)): la referencia nueva, los mismos 37 textos (seis frases y las 31 respuestas) a cada velocidad.
 
 | Velocidad | WER de Whisper | WER sin el texto peor | «Di sí» entendido | Semejanza con las grabaciones reales | Audio de los 37 textos | Síntesis |
 |---|---|---|---|---|---|---|
 | 1,0 | 7,5 % | 4,4 % | 7 de 7 | 0,285 | 792 s | 184 s |
-| 1,1 | 6,0 % | 4,5 % | 7 de 7 | 0,274 | 719 s | 184 s |
-| 1,15 (por defecto) | 6,7 % | 4,8 % | 4 de 7 | 0,270 | 688 s | 184 s |
+| 1,1 (por defecto) | 6,0 % | 4,5 % | 7 de 7 | 0,274 | 719 s | 184 s |
+| 1,15 | 6,7 % | 4,8 % | 4 de 7 | 0,270 | 688 s | 184 s |
 | 1,3 | 6,8 % | 5,2 % | 5 de 7 | 0,264 | 609 s | 183 s |
 
 El «texto peor» es el mismo a las cuatro velocidades: la respuesta con las marcas impronunciables. La medida es determinista: repetida, da las mismas transcripciones.
 
+**Por qué 1,10 y no 1,15.** El valor por defecto fue primero 1,15, el elegido de oído. La tabla no muestra que acelerar empeore el WER de forma clara: el global lo mueve un solo texto que sale mal a todas las velocidades, y sin él hay una subida pequeña y gradual. Pero a 1,15 la frase con la que el agente pide confirmar un pedido, «Di sí para registrarlo», se entiende «dice para registrarlo» en 3 de 7 respuestas (en 4 de 7 en la corrida de escenarios), y a 1,0 y 1,1 en ninguna. Es la frase de la que depende que se registre una compra. El usuario vio la tabla y decidió bajar a 1,10: el valor más alto de los medidos que la conserva entera, y el de menor WER. Cuesta que el audio sea un 9 % más corto que a 1,0 en lugar de un 13 %.
+
+**Antes y después** ([resumen](../results/escenarios/resumen.md), apartado «Voz»). La corrida por voz se repitió con cada voz y las tres se conservan: `voz_referencia_anterior` (voz anterior), `voz_velocidad_1_15` (voz nueva a 1,15) y `voz` (voz nueva a 1,10, la actual), con sus audios en `audio/corridas/<corrida>/`. El agente dio las mismas 31 respuestas en las tres, así que se compara la misma frase con una voz y con otra. La voz anterior se volvió a medir con el código nuevo (`--voice-metrics`) y sus cifras de entonces salieron idénticas.
+
+| Medida | Voz anterior | Voz nueva a 1,15 | Voz nueva a 1,10 |
+|---|---|---|---|
+| Escenarios correctos | 6 de 6 | 6 de 6 | 6 de 6 |
+| Inteligibilidad (WER de Whisper), 31 respuestas | 3,4 % | 7,0 % | 5,5 % |
+| Respuestas entendidas sin ningún error | 13 de 31 | 9 de 31 | 12 de 31 |
+| Inteligibilidad sin la respuesta peor | 3,0 % | 4,9 % | 4,2 % |
+| «Di sí para registrarlo» entendido | 7 de 7 | 3 de 7 | 7 de 7 |
+| Semejanza con su grabación de referencia, media / mínima | 0,741 / 0,501 | 0,709 / 0,593 | 0,710 / 0,609 |
+| Semejanza con las grabaciones reales, media / mínima (techo 0,377) | 0,259 / 0,221 | 0,270 / 0,191 | 0,273 / 0,234 |
+| Audio de las 31 respuestas | 768 s (24,8 s de media) | 641 s (20,7 s) | 670 s (21,6 s) |
+| Respuesta más larga | 48,8 s | 38,4 s | 40,2 s |
+| TTS por turno, media (todos / con LLM) | 6,07 / 6,54 s | 5,61 / 5,89 s | 5,62 / 5,90 s |
+| Latencia total por turno, media (todos / con LLM) | 10,36 / 11,97 s | 9,92 / 11,35 s | 9,92 / 11,35 s |
+| Turno más lento | 25,55 s | 18,63 s | 18,84 s |
+| Fragmentos repetidos por salir demasiado largos | 1 | 0 | 0 |
+
 **Lectura.**
 
-- **Acelerar a 1,15 no empeora de forma clara la inteligibilidad.** El WER global no sube. Ese global lo mueve un solo texto que sale mal a todas las velocidades (abajo); sin él hay una subida pequeña y gradual con la velocidad. El efecto concreto es la frase de confirmación: «Di sí» se funde en «dice» en 3 de las 7 respuestas a 1,15 (en 4 de 7 en la corrida de escenarios) y en ninguna a 1,0 ni a 1,1. No se ha cambiado el valor por defecto: lo eligió el autor de oído y la medida no lo contradice de forma clara. Si esa frase importa, 1,1 es el valor más alto de los medidos que la conserva, con un audio un 9 % más corto que a 1,0 en lugar de un 13 %; la otra salida es redactarla de otra forma, que es tocar el agente.
-- **Lo que empeora es la referencia nueva, no la velocidad.** Con las mismas 31 respuestas a velocidad 1,0, el WER pasa del 3,4 % (referencia anterior) al 7,9 % (nueva). Dos causas. Una respuesta, la del escenario 02 que enumera cinco marcas impronunciables («Mgrett», «TAIN», «WDGP», «GSBLBL», «HoLiv»), sale con un tramo ininteligible: dura 30 s donde la voz anterior tardaba 49, y Whisper entiende ahí palabras sin relación con el texto. Y aparecen palabras sueltas añadidas al final de algunos fragmentos («cada una quince euros», «mua»), el artefacto de XTTS-v2 que ya se conocía con el hablante de prueba y que con la voz anterior casi no salía. El umbral de «audio que sobra» no las detecta: son cortas.
-- **La semejanza con la voz real sube poco.** De 0,259 a 0,270 con un techo de 0,377; turno a turno la diferencia cambia de signo. La medida previa con seis frases daba 0,26 → 0,30 sin acelerar; con las 31 respuestas, a 1,0 da 0,285 y a 1,15 baja a 0,270: acelerar resta algo de parecido. La semejanza con la referencia (0,741 → 0,709) no compara las dos voces, porque cada una se mide contra su propia grabación.
-- **Latencia.** El audio de respuesta dura un 17 % menos: un 3 % por la referencia y un 13 % por la velocidad. El tiempo de TTS baja 0,46 s por turno y viene de la referencia (la síntesis de las 31 respuestas tarda 188 s con la anterior y 171–174 s con la nueva, a 1,0 y a 1,15 por igual).
+- **A 1,10 la frase de confirmación se conserva.** En la corrida, Whisper entiende «Di sí» en las 7 respuestas que la llevan (escenarios 01, 03, 04, 05 dos veces y 06 dos veces), como con la voz anterior y como predecía la medida aparte.
+- **Lo que empeora respecto a la voz anterior es la referencia nueva, no la velocidad.** Con las mismas 31 respuestas a velocidad 1,0, el WER pasa del 3,4 % (referencia anterior) al 7,9 % (nueva). Dos causas. Una respuesta, la del escenario 02 que enumera cinco marcas impronunciables («Mgrett», «TAIN», «WDGP», «GSBLBL», «HoLiv»), sale con un tramo ininteligible a todas las velocidades: a 1,10 dura 32 s donde la voz anterior tardaba 49, y Whisper entiende ahí palabras sin relación con el texto (20 de los 73 errores de la corrida). Y aparecen palabras sueltas añadidas al final de algunos fragmentos («cada una quince euros», «muy bien», «mua»), el artefacto de XTTS-v2 que ya se conocía con el hablante de prueba y que con la voz anterior casi no salía. El umbral de «audio que sobra» no las detecta: son cortas.
+- **El WER de 1,10 es menor que el de 1,15 y que el de 1,0, y no hay que leer de más.** Es una semilla de muestreo por texto: la mayor parte de la diferencia está en cómo sale ese texto peor (20 y 32 errores en las corridas a 1,10 y 1,15; 48 en la medida aparte a 1,0). Sin él, 4,2 % a 1,10 y 4,9 % a 1,15.
+- **La semejanza con la voz real sube poco.** De 0,259 a 0,273 con un techo de 0,377. La medida previa con seis frases daba 0,26 → 0,30 sin acelerar; con las 31 respuestas, la medida aparte da 0,285 a 1,0, 0,274 a 1,1 y 0,270 a 1,15: acelerar resta algo de parecido. La semejanza con la referencia (0,741 → 0,710) no compara las dos voces, porque cada una se mide contra su propia grabación.
+- **Latencia.** Frente a la voz anterior, el audio de respuesta dura un 13 % menos: un 3 % por la referencia y un 10 % por la velocidad. El tiempo de TTS baja 0,45 s por turno y viene de la referencia (la síntesis de las 31 respuestas tarda 188 s con la anterior y 171–174 s con la nueva, a cualquier velocidad). Entre 1,15 y 1,10 la latencia no cambia; el audio dura 0,9 s más por respuesta.
 
-**Sin verificar.** Nadie ha escuchado las respuestas que Whisper marca, y Whisper no es un oyente: hay que oír al menos `audio/corridas/voz/02_pedido_ambiguo/respuesta_02.wav` para saber si el tramo se pierde de verdad. La comparación de oído del autor se hizo con seis frases, ninguna con marcas difíciles. Es una corrida por voz y una semilla de muestreo. Las corridas de demostración (`voz_demo_compra_voz_usuario`) y las transcripciones en vivo no se repitieron: son de la voz anterior y anotan `audio/referencia/referencia.wav`, que entonces era la otra grabación. Colab no se ha probado con la voz nueva.
+**Sin verificar.** Nadie ha escuchado las respuestas que Whisper marca, y Whisper no es un oyente: hay que oír al menos `audio/corridas/voz/02_pedido_ambiguo/respuesta_02.wav` para saber si el tramo se pierde de verdad. El autor comparó de oído seis frases a 1,0 y a 1,15, ninguna con marcas difíciles; la voz a 1,10 no consta que la haya escuchado: la eligió por la tabla. Es una corrida por voz con cada voz y una semilla de muestreo. Las corridas de demostración (`voz_demo_compra_voz_usuario`) y las transcripciones en vivo no se repitieron: son de la voz anterior y anotan `audio/referencia/referencia.wav`, que entonces era la otra grabación. Colab no se ha probado con la voz nueva.
 
 ## 7. Cronograma
 
@@ -493,9 +497,9 @@ Dependencias a añadir: `langgraph-checkpoint-postgres`, `psycopg[binary,pool]`,
 - Modelo exacto de embeddings (por ahora `intfloat/multilingual-e5-small`). El LLM ya está elegido: Qwen2.5-7B-Instruct Q4_K_M.
 - Comprobar en Colab la instalación de Postgres, de `llama-cpp-python` con CUDA y de las dependencias de voz (`torchaudio`, `torchcodec`, FFmpeg).
 - Decidir si se hace algo con el error del ASR que cambia la compra («cafetera» → «cafetería», escenario 01 con la voz real). Opciones sin probar: dar vocabulario del dominio a Whisper, o que el agente repita qué ha buscado. No se ha tocado nada. El otro efecto, los números escritos con cifras en el escenario 05, se corrigió el 12 de noviembre.
-- Las respuestas con el carrito completo dan audios largos: hasta 49 s con la voz anterior y hasta 38 s con la nueva; valorar una versión hablada más breve.
+- Las respuestas con el carrito completo dan audios largos: hasta 49 s con la voz anterior y hasta 40 s con la nueva; valorar una versión hablada más breve.
 - Escuchar las respuestas de la voz nueva que Whisper entiende mal (la del escenario 02 con marcas impronunciables y las que terminan con palabras de más) y decidir si se hace algo: otra toma de referencia, otra velocidad, condicionar el ritmo con 30 s de la referencia en lugar de 6, o no leer en voz alta las marcas que no son palabras. Nada de eso se ha probado.
-- «Di sí para registrarlo» se entiende «dice para registrarlo» en parte de las respuestas a velocidad 1,15 y en ninguna a 1,1; decidir si se baja la velocidad a 1,1 o se redacta de otra forma.
+- Escuchar la voz nueva a velocidad 1,10: se eligió por la medida («Di sí para registrarlo» se entiende en 7 de 7; a 1,15, en 3 de 7), no de oído.
 - Decidir, a la vista de test, si el reranker por defecto sigue siendo el control: allí GraphSAGE lo supera en +0,0071 de nDCG@10 (IC [+0,0028; +0,0117]). Es una decisión posterior a ver test y hay que decirlo si se toma.
 - La evaluación en test y las corridas de escenarios están hechas con `multilingual-e5-small`. Cambiar el modelo de embeddings obligaría a repetirlas, y la de test dejaría de ser una evaluación única.
 - Repetir en Colab las corridas de escenarios (latencia y memoria en la T4).

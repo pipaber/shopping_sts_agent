@@ -451,6 +451,474 @@
       "by_source": []
     },
     "voz": {
+      "date": "2026-11-12T13:11:57",
+      "commit": "fb5ef3a+cambios",
+      "input": "audio",
+      "models": {
+        "llm": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+        "asr": "large-v3-turbo",
+        "tts": "XTTS-v2",
+        "embeddings": "intfloat/multilingual-e5-small",
+        "reranker": "control"
+      },
+      "voice": {
+        "reference": "audio/referencia/referencia.wav",
+        "speaker": null,
+        "speed": 1.1
+      },
+      "load": {
+        "search_seconds": 15.1,
+        "llm_seconds": 0.7,
+        "asr_seconds": 0.8,
+        "tts_seconds": 7.5,
+        "total_seconds": 24.4,
+        "vram_mib": {
+          "search": 706,
+          "llm": 5820,
+          "asr": 7772,
+          "loaded": 9532
+        }
+      },
+      "memory_backend": "postgres",
+      "audio_sources": {
+        "01_compra_confirmada": "grabaciones del usuario",
+        "02_pedido_ambiguo": "grabaciones del usuario",
+        "03_cambio_cantidad": "grabaciones del usuario",
+        "04_sin_existencias": "grabaciones del usuario",
+        "05_correccion_transcripcion": "grabaciones del usuario",
+        "06_cambio_stock_confirmacion_repetida": "grabaciones del usuario"
+      },
+      "scenarios": 6,
+      "passed": 6,
+      "pass_rate": 1.0,
+      "failed": [],
+      "turns": 31,
+      "violations": {
+        "cantidad": 0,
+        "presupuesto": 0,
+        "existencias": 0,
+        "pedido_duplicado": 0,
+        "cambio_parcial": 0
+      },
+      "timings": {
+        "all": {
+          "turns": 31,
+          "asr": {
+            "mean": 0.34,
+            "max": 0.54
+          },
+          "retrieval": {
+            "mean": 0.01,
+            "max": 0.03
+          },
+          "llm": {
+            "mean": 3.91,
+            "max": 9.93
+          },
+          "tools": {
+            "mean": 0.04,
+            "max": 0.06
+          },
+          "tts": {
+            "mean": 5.62,
+            "max": 10.44
+          },
+          "total": {
+            "mean": 9.92,
+            "max": 18.84
+          }
+        },
+        "with_llm": {
+          "turns": 24,
+          "asr": {
+            "mean": 0.35,
+            "max": 0.54
+          },
+          "retrieval": {
+            "mean": 0.01,
+            "max": 0.03
+          },
+          "llm": {
+            "mean": 5.05,
+            "max": 9.93
+          },
+          "tools": {
+            "mean": 0.04,
+            "max": 0.06
+          },
+          "tts": {
+            "mean": 5.9,
+            "max": 10.34
+          },
+          "total": {
+            "mean": 11.35,
+            "max": 18.84
+          }
+        },
+        "without_llm": {
+          "turns": 7,
+          "asr": {
+            "mean": 0.32,
+            "max": 0.34
+          },
+          "retrieval": {
+            "mean": 0.0,
+            "max": 0.02
+          },
+          "llm": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "tools": {
+            "mean": 0.04,
+            "max": 0.04
+          },
+          "tts": {
+            "mean": 4.64,
+            "max": 10.44
+          },
+          "total": {
+            "mean": 5.01,
+            "max": 10.81
+          }
+        }
+      },
+      "verdicts": {
+        "01_compra_confirmada": true,
+        "02_pedido_ambiguo": true,
+        "03_cambio_cantidad": true,
+        "04_sin_existencias": true,
+        "05_correccion_transcripcion": true,
+        "06_cambio_stock_confirmacion_repetida": true
+      },
+      "failed_checks": {},
+      "voice_metrics": {
+        "asr": {
+          "cases": 31,
+          "wer": 0.013888888888888888,
+          "exact": 29,
+          "amounts": {
+            "total": 3,
+            "errors": 0,
+            "error_rate": 0.0
+          },
+          "quantities": {
+            "total": 8,
+            "errors": 0,
+            "error_rate": 0.0
+          },
+          "products": {
+            "total": 13,
+            "errors": 1,
+            "error_rate": 0.07692307692307693
+          }
+        },
+        "tts": {
+          "cases": 31,
+          "wer": 0.05468164794007491,
+          "similarity_mean": 0.7102563433763192,
+          "similarity_min": 0.6090172950865124,
+          "similarity_real_mean": 0.2729684359097078,
+          "similarity_real_min": 0.23371786844373
+        }
+      },
+      "real_recordings": {
+        "count": 31,
+        "similarity_among": 0.37742301128777506
+      },
+      "response_audio_seconds": 21.61421505376344,
+      "by_source": [
+        {
+          "source": "grabaciones del usuario",
+          "ids": [
+            "01_compra_confirmada",
+            "02_pedido_ambiguo",
+            "03_cambio_cantidad",
+            "04_sin_existencias",
+            "05_correccion_transcripcion",
+            "06_cambio_stock_confirmacion_repetida"
+          ],
+          "scenarios": 6,
+          "passed": 6,
+          "pass_rate": 1.0,
+          "failed": [],
+          "turns": 31,
+          "violations": {
+            "cantidad": 0,
+            "presupuesto": 0,
+            "existencias": 0,
+            "pedido_duplicado": 0,
+            "cambio_parcial": 0
+          },
+          "timings": {
+            "all": {
+              "turns": 31,
+              "asr": {
+                "mean": 0.34,
+                "max": 0.54
+              },
+              "retrieval": {
+                "mean": 0.01,
+                "max": 0.03
+              },
+              "llm": {
+                "mean": 3.91,
+                "max": 9.93
+              },
+              "tools": {
+                "mean": 0.04,
+                "max": 0.06
+              },
+              "tts": {
+                "mean": 5.62,
+                "max": 10.44
+              },
+              "total": {
+                "mean": 9.92,
+                "max": 18.84
+              }
+            },
+            "with_llm": {
+              "turns": 24,
+              "asr": {
+                "mean": 0.35,
+                "max": 0.54
+              },
+              "retrieval": {
+                "mean": 0.01,
+                "max": 0.03
+              },
+              "llm": {
+                "mean": 5.05,
+                "max": 9.93
+              },
+              "tools": {
+                "mean": 0.04,
+                "max": 0.06
+              },
+              "tts": {
+                "mean": 5.9,
+                "max": 10.34
+              },
+              "total": {
+                "mean": 11.35,
+                "max": 18.84
+              }
+            },
+            "without_llm": {
+              "turns": 7,
+              "asr": {
+                "mean": 0.32,
+                "max": 0.34
+              },
+              "retrieval": {
+                "mean": 0.0,
+                "max": 0.02
+              },
+              "llm": {
+                "mean": 0.0,
+                "max": 0.0
+              },
+              "tools": {
+                "mean": 0.04,
+                "max": 0.04
+              },
+              "tts": {
+                "mean": 4.64,
+                "max": 10.44
+              },
+              "total": {
+                "mean": 5.01,
+                "max": 10.81
+              }
+            }
+          },
+          "asr": {
+            "cases": 31,
+            "wer": 0.013888888888888888,
+            "exact": 29,
+            "amounts": {
+              "total": 3,
+              "errors": 0,
+              "error_rate": 0.0
+            },
+            "quantities": {
+              "total": 8,
+              "errors": 0,
+              "error_rate": 0.0
+            },
+            "products": {
+              "total": 13,
+              "errors": 1,
+              "error_rate": 0.07692307692307693
+            }
+          },
+          "tts": {
+            "cases": 31,
+            "wer": 0.05468164794007491,
+            "similarity_mean": 0.7102563433763192,
+            "similarity_min": 0.6090172950865124,
+            "similarity_real_mean": 0.2729684359097078,
+            "similarity_real_min": 0.23371786844373
+          },
+          "asr_differences": [
+            {
+              "scenario": "01_compra_confirmada",
+              "turn": 1,
+              "reference": "Hola, busco una cafetera italiana. Tengo un presupuesto de 60 euros.",
+              "hypothesis": "Hola, busco una cafetería italiana. Tengo un presupuesto de 60 euros."
+            },
+            {
+              "scenario": "05_correccion_transcripcion",
+              "turn": 1,
+              "reference": "Busco un ratón inalámbrico.",
+              "hypothesis": "Busca un ratón inalámbrico."
+            }
+          ]
+        }
+      ]
+    },
+    "voz_texto_correcto": {
+      "date": "2026-11-12T13:11:57",
+      "commit": "fb5ef3a+cambios",
+      "input": "texto",
+      "models": {
+        "llm": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+        "asr": "large-v3-turbo",
+        "tts": "XTTS-v2",
+        "embeddings": "intfloat/multilingual-e5-small",
+        "reranker": "control"
+      },
+      "voice": {
+        "reference": "audio/referencia/referencia.wav",
+        "speaker": null,
+        "speed": 1.1
+      },
+      "load": {
+        "search_seconds": 15.1,
+        "llm_seconds": 0.7,
+        "asr_seconds": 0.8,
+        "tts_seconds": 7.5,
+        "total_seconds": 24.4,
+        "vram_mib": {
+          "search": 706,
+          "llm": 5820,
+          "asr": 7772,
+          "loaded": 9532
+        }
+      },
+      "memory_backend": "postgres",
+      "audio_sources": {},
+      "scenarios": 6,
+      "passed": 6,
+      "pass_rate": 1.0,
+      "failed": [],
+      "turns": 31,
+      "violations": {
+        "cantidad": 0,
+        "presupuesto": 0,
+        "existencias": 0,
+        "pedido_duplicado": 0,
+        "cambio_parcial": 0
+      },
+      "timings": {
+        "all": {
+          "turns": 31,
+          "asr": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "retrieval": {
+            "mean": 0.01,
+            "max": 0.03
+          },
+          "llm": {
+            "mean": 3.98,
+            "max": 9.16
+          },
+          "tools": {
+            "mean": 0.04,
+            "max": 0.1
+          },
+          "tts": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "total": {
+            "mean": 4.02,
+            "max": 9.22
+          }
+        },
+        "with_llm": {
+          "turns": 24,
+          "asr": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "retrieval": {
+            "mean": 0.01,
+            "max": 0.03
+          },
+          "llm": {
+            "mean": 5.14,
+            "max": 9.16
+          },
+          "tools": {
+            "mean": 0.04,
+            "max": 0.1
+          },
+          "tts": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "total": {
+            "mean": 5.19,
+            "max": 9.22
+          }
+        },
+        "without_llm": {
+          "turns": 7,
+          "asr": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "retrieval": {
+            "mean": 0.0,
+            "max": 0.02
+          },
+          "llm": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "tools": {
+            "mean": 0.03,
+            "max": 0.06
+          },
+          "tts": {
+            "mean": 0.0,
+            "max": 0.0
+          },
+          "total": {
+            "mean": 0.03,
+            "max": 0.08
+          }
+        }
+      },
+      "verdicts": {
+        "01_compra_confirmada": true,
+        "02_pedido_ambiguo": true,
+        "03_cambio_cantidad": true,
+        "04_sin_existencias": true,
+        "05_correccion_transcripcion": true,
+        "06_cambio_stock_confirmacion_repetida": true
+      },
+      "failed_checks": {},
+      "voice_metrics": null,
+      "real_recordings": null,
+      "response_audio_seconds": null,
+      "by_source": []
+    },
+    "voz_velocidad_1_15": {
       "date": "2026-11-12T12:36:46",
       "commit": "b2acf9c",
       "input": "audio",
@@ -777,146 +1245,6 @@
           ]
         }
       ]
-    },
-    "voz_texto_correcto": {
-      "date": "2026-11-12T12:36:46",
-      "commit": "b2acf9c",
-      "input": "texto",
-      "models": {
-        "llm": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
-        "asr": "large-v3-turbo",
-        "tts": "XTTS-v2",
-        "embeddings": "intfloat/multilingual-e5-small",
-        "reranker": "control"
-      },
-      "voice": {
-        "reference": "audio/referencia/referencia.wav",
-        "speaker": null,
-        "speed": 1.15
-      },
-      "load": {
-        "search_seconds": 15.1,
-        "llm_seconds": 0.8,
-        "asr_seconds": 0.8,
-        "tts_seconds": 11.3,
-        "total_seconds": 28.3,
-        "vram_mib": {
-          "search": 706,
-          "llm": 5820,
-          "asr": 7772,
-          "loaded": 9532
-        }
-      },
-      "memory_backend": "postgres",
-      "audio_sources": {},
-      "scenarios": 6,
-      "passed": 6,
-      "pass_rate": 1.0,
-      "failed": [],
-      "turns": 31,
-      "violations": {
-        "cantidad": 0,
-        "presupuesto": 0,
-        "existencias": 0,
-        "pedido_duplicado": 0,
-        "cambio_parcial": 0
-      },
-      "timings": {
-        "all": {
-          "turns": 31,
-          "asr": {
-            "mean": 0.0,
-            "max": 0.0
-          },
-          "retrieval": {
-            "mean": 0.01,
-            "max": 0.03
-          },
-          "llm": {
-            "mean": 3.97,
-            "max": 9.23
-          },
-          "tools": {
-            "mean": 0.04,
-            "max": 0.05
-          },
-          "tts": {
-            "mean": 0.0,
-            "max": 0.0
-          },
-          "total": {
-            "mean": 4.02,
-            "max": 9.29
-          }
-        },
-        "with_llm": {
-          "turns": 24,
-          "asr": {
-            "mean": 0.0,
-            "max": 0.0
-          },
-          "retrieval": {
-            "mean": 0.01,
-            "max": 0.03
-          },
-          "llm": {
-            "mean": 5.13,
-            "max": 9.23
-          },
-          "tools": {
-            "mean": 0.04,
-            "max": 0.05
-          },
-          "tts": {
-            "mean": 0.0,
-            "max": 0.0
-          },
-          "total": {
-            "mean": 5.18,
-            "max": 9.29
-          }
-        },
-        "without_llm": {
-          "turns": 7,
-          "asr": {
-            "mean": 0.0,
-            "max": 0.0
-          },
-          "retrieval": {
-            "mean": 0.0,
-            "max": 0.02
-          },
-          "llm": {
-            "mean": 0.0,
-            "max": 0.0
-          },
-          "tools": {
-            "mean": 0.03,
-            "max": 0.03
-          },
-          "tts": {
-            "mean": 0.0,
-            "max": 0.0
-          },
-          "total": {
-            "mean": 0.03,
-            "max": 0.04
-          }
-        }
-      },
-      "verdicts": {
-        "01_compra_confirmada": true,
-        "02_pedido_ambiguo": true,
-        "03_cambio_cantidad": true,
-        "04_sin_existencias": true,
-        "05_correccion_transcripcion": true,
-        "06_cambio_stock_confirmacion_repetida": true
-      },
-      "failed_checks": {},
-      "voice_metrics": null,
-      "real_recordings": null,
-      "response_audio_seconds": null,
-      "by_source": []
     },
     "voz_referencia_anterior": {
       "date": "2026-11-12T00:23:27",
@@ -1257,7 +1585,7 @@
         "reranker": "control"
       },
       "voice": {
-        "reference": "audio/referencia/referencia.wav",
+        "reference": "audio/referencia/referencia_anterior.wav",
         "speaker": null
       },
       "load": {
@@ -2414,6 +2742,65 @@
   },
   "audio_vs_correct_text": {
     "voz": [
+      {
+        "id": "01_compra_confirmada",
+        "passed_audio": true,
+        "passed_text": true,
+        "asr_changed_words": [
+          1
+        ],
+        "different_operations": [
+          1,
+          2
+        ],
+        "same_store": false
+      },
+      {
+        "id": "02_pedido_ambiguo",
+        "passed_audio": true,
+        "passed_text": true,
+        "asr_changed_words": [],
+        "different_operations": [
+          2
+        ],
+        "same_store": true
+      },
+      {
+        "id": "03_cambio_cantidad",
+        "passed_audio": true,
+        "passed_text": true,
+        "asr_changed_words": [],
+        "different_operations": [],
+        "same_store": true
+      },
+      {
+        "id": "04_sin_existencias",
+        "passed_audio": true,
+        "passed_text": true,
+        "asr_changed_words": [],
+        "different_operations": [],
+        "same_store": true
+      },
+      {
+        "id": "05_correccion_transcripcion",
+        "passed_audio": true,
+        "passed_text": true,
+        "asr_changed_words": [
+          1
+        ],
+        "different_operations": [],
+        "same_store": true
+      },
+      {
+        "id": "06_cambio_stock_confirmacion_repetida",
+        "passed_audio": true,
+        "passed_text": true,
+        "asr_changed_words": [],
+        "different_operations": [],
+        "same_store": true
+      }
+    ],
+    "voz_velocidad_1_15": [
       {
         "id": "01_compra_confirmada",
         "passed_audio": true,

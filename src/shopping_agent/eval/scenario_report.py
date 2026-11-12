@@ -12,9 +12,10 @@ comprobaciones fallidas, que es el material para analizar aciertos y fallos.
 Una corrida por audio se resume además según de dónde salieron los audios de
 entrada (grabaciones del usuario o hablante sintético), porque una misma corrida
 puede mezclar las dos cosas. ``voz_sintetica`` es la corrida con audio sintético
-que se conserva para comparar con la voz real, y ``voz_referencia_anterior`` la
+que se conserva para comparar con la voz real, ``voz_referencia_anterior`` la
 corrida con la voz del agente de antes de cambiar su grabación de referencia y
-la velocidad del habla.
+la velocidad del habla, y ``voz_velocidad_1_15`` la de la voz nueva a 1,15, antes
+de bajar la velocidad por defecto a 1,10.
 """
 
 from __future__ import annotations
@@ -37,8 +38,8 @@ DEFAULT_DIR = Path("results/escenarios")
 BASELINE_DIR = Path("results/escenarios_base")  # corridas de antes de corregir el agente
 RUN_FILE, SUMMARY_NAME, VOICE_METRICS_FILE = "corrida.json", "resumen", "metricas_voz.json"
 AUDIO_RUN, TEXT_REPEAT_RUN, SYNTHETIC_RUN = "voz", "voz_texto_correcto", "voz_sintetica"
-PREVIOUS_VOICE_RUN = "voz_referencia_anterior"  # la voz del agente antes de la referencia nueva y la velocidad
-RUN_ORDER = ("texto", "texto_sage", "texto_sin_reranker", AUDIO_RUN, TEXT_REPEAT_RUN, PREVIOUS_VOICE_RUN, SYNTHETIC_RUN)
+PREVIOUS_VOICE_RUNS = ("voz_velocidad_1_15", "voz_referencia_anterior")  # voces del agente anteriores a la actual
+RUN_ORDER = ("texto", "texto_sage", "texto_sin_reranker", AUDIO_RUN, TEXT_REPEAT_RUN, *PREVIOUS_VOICE_RUNS, SYNTHETIC_RUN)
 _TURN_FIELDS = tuple(field.name for field in fields(VoiceTurn))
 _MARK = {True: "✔", False: "✘"}
 
