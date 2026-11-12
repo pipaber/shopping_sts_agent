@@ -330,7 +330,7 @@ Riesgo que el plan anticipaba: que el GNN no superase al híbrido. Lo supera, pe
 **Qué no se midió.**
 
 - **El ASR con la voz del usuario.** No estaba medido en la línea base. Se midió el 11 de noviembre con los 31 turnos grabados: ver «Voz con las grabaciones del usuario», más abajo.
-- **Nada en Colab.** Todo se corrió en la workstation. Después se midió en la T4 con el hablante de prueba: ver «Ejecución en Colab (T4)».
+- **Nada en Colab.** Todo se corrió en la workstation. Después se corrió entero en la T4, con la voz del autor: ver «Ejecución en Colab (T4)».
 - **El juicio de oído** sobre la voz clonada. La semejanza es un coseno entre embeddings de hablante.
 - **La variabilidad.** Hay una corrida por configuración y el agente es determinista: los porcentajes describen estos 20 guiones con esta redacción, no una tasa de aciertos general. Los escenarios se escribieron conociendo las reglas del agente, aunque sin mirar antes cómo respondía a ellos.
 - **La calidad de las explicaciones.** Las comprobaciones miran lo que el agente hace con la tienda; salvo las cuatro que buscan algo concreto en el texto, no juzgan si la respuesta explica bien un rechazo (el acierto con matices de 08 es un ejemplo).
@@ -353,7 +353,7 @@ Los seis escenarios que fallaban se diagnosticaron uno a uno ([DIAGNOSTICO_FALLO
 - **Escenarios de reserva.** Cuatro escenarios escritos antes de tocar el agente, con otros productos y otra redacción ([scenarios/reserva/](../scenarios/reserva/)), corridos una sola vez al final: 3 de 4 con el control, 4 de 4 con GraphSAGE y 3 de 4 sin reranker. Cerrar el pedido con otras palabras, el producto agotado que no es el primero y el candidato que no está en la lista pasan en las tres configuraciones. El cuarto, el del dato que no consta, falla dos veces por una expectativa mal planteada: sus palabras clave casan con frases del catálogo que no hablan de lo preguntado («garantiza la comodidad», «dentro de las 24 horas»); el agente contestó que el catálogo no lo indica, que es lo correcto. La expectativa no se ha cambiado.
 - **Voz tras la corrección** (31 turnos, audios de entrada sintéticos): WER del ASR 2,1 %, sin errores en importes (0 de 3), cantidades (0 de 8) ni nombres de producto (0 de 13); inteligibilidad de la voz generada 3,9 % de WER; semejanza con la referencia 0,741 de media y 0,501 de mínima. Con audio y con la transcripción correcta el veredicto y la tienda final coinciden en los seis escenarios; la única operación distinta es la consulta de búsqueda que escribe el LLM en un turno del 02.
 - **Latencia tras la corrección** (corrida `voz_sintetica`, media por turno y máximo): con LLM (24 turnos), ASR 0,35 s, recuperación 0,01 s, LLM 5,05 s, herramientas 0,04 s, TTS 6,30 s; total 11,75 s (20,62). Sin LLM (7 turnos), 4,82 s (11,01). Por texto, 5,08 s por turno con LLM. Las guardas no añaden tiempo apreciable: son comprobaciones de texto, y los rechazos que provocan cuestan una decisión más del LLM en el turno. Carga inicial: 28,8 s con el disco en caliente.
-- **Lo que sigue flojo** y lo que no se ha verificado está al final del diagnóstico: la calidad de las explicaciones, lo que las guardas no reconocen, Colab y el juicio de oído. La corrida con las grabaciones del usuario está en el apartado siguiente.
+- **Lo que sigue flojo** y lo que no se ha verificado está al final del diagnóstico: la calidad de las explicaciones, lo que las guardas no reconocen, Colab y el juicio de oído (estos dos últimos, cubiertos después: «Ejecución en Colab (T4)» y «Voz del agente: referencia nueva y velocidad»). La corrida con las grabaciones del usuario está en el apartado siguiente.
 
 ### Voz con las grabaciones del usuario (11 y 12 de noviembre)
 
@@ -406,7 +406,7 @@ Las filas de la voz generada y de la latencia de esta tabla son de la voz anteri
 - **¿Es un fallo sistemático con esta voz?** No se puede afirmar. En 31 grabaciones hay dos palabras cambiadas, las dos una terminación en la primera frase de una búsqueda («cafetera» → «cafetería», «Busco» → «Busca»), y una sola cambió la compra. Ningún número se entendió mal. Lo que varía es cómo los escribe Whisper: con letras en «Añade dos de la primera» o «Mejor que sean cuatro», con cifras en «he dicho 12, no 2» y «Añade 3 de la primera». Con una toma por turno no se sabe si repetir la grabación daría la misma forma.
 - **Frente al hablante sintético.** Sus tres diferencias eran una sílaba añadida al final del audio, sin efecto en las operaciones. La voz real no tiene ese artefacto y su WER es menor, pero lo que salió del ASR cambió el resultado en dos escenarios antes de la corrección y en uno después.
 - **La voz generada y la latencia** apenas cambian con la procedencia del audio de entrada: el TTS depende de la respuesta. El máximo de 25,55 s es el turno 1 de 05, cuya respuesta enumera cinco productos (17,26 s de TTS). Los errores de inteligibilidad siguen siendo marcas que no son palabras («Newdora» → «Neudora», «TENQUAN» → «Tenkwan»).
-- **Sin verificar:** nadie ha escuchado las grabaciones (la correspondencia con el guion se comprobó solo con el ASR); el juicio de oído sobre la voz clonada; Colab. Es una corrida, con un hablante, un micrófono y una toma por turno. Las corridas por texto de los 20 escenarios y la reserva anterior (21 a 24) no se repitieron con el agente corregido, por el motivo dicho arriba.
+- **Sin verificar:** nadie ha escuchado las grabaciones (la correspondencia con el guion se comprobó solo con el ASR); el juicio de oído sobre la voz clonada; Colab (los dos se hicieron después: apartados «Voz del agente: referencia nueva y velocidad» y «Ejecución en Colab (T4)»). Es una corrida, con un hablante, un micrófono y una toma por turno. Las corridas por texto de los 20 escenarios y la reserva anterior (21 a 24) no se repitieron con el agente corregido, por el motivo dicho arriba.
 
 ### Voz del agente: referencia nueva y velocidad (12 de noviembre)
 
@@ -458,7 +458,7 @@ El «texto peor» es el mismo a las cuatro velocidades: la respuesta con las mar
 - **La semejanza con la voz real sube poco.** De 0,259 a 0,273 con un techo de 0,377. La medida previa con seis frases daba 0,26 → 0,30 sin acelerar; con las 31 respuestas, la medida aparte da 0,285 a 1,0, 0,274 a 1,1 y 0,270 a 1,15: acelerar resta algo de parecido. La semejanza con la referencia (0,741 → 0,710) no compara las dos voces, porque cada una se mide contra su propia grabación.
 - **Latencia.** Frente a la voz anterior, el audio de respuesta dura un 13 % menos: un 3 % por la referencia y un 10 % por la velocidad. El tiempo de TTS baja 0,45 s por turno y viene de la referencia (la síntesis de las 31 respuestas tarda 188 s con la anterior y 171–174 s con la nueva, a cualquier velocidad). Entre 1,15 y 1,10 la latencia no cambia; el audio dura 0,9 s más por respuesta.
 
-**Sin verificar.** Nadie ha escuchado las respuestas que Whisper marca, y Whisper no es un oyente: hay que oír al menos `audio/corridas/voz/02_pedido_ambiguo/respuesta_02.wav` para saber si el tramo se pierde de verdad. El autor comparó de oído seis frases a 1,0 y a 1,15, ninguna con marcas difíciles; la voz a 1,10 no consta que la haya escuchado: la eligió por la tabla. Es una corrida por voz con cada voz y una semilla de muestreo. Las corridas de demostración (`voz_demo_compra_voz_usuario`) y las transcripciones en vivo no se repitieron: son de la voz anterior y anotan `audio/referencia/referencia.wav`, que entonces era la otra grabación. Colab no se ha probado con la voz nueva.
+**Sin verificar.** Nadie ha escuchado las respuestas que Whisper marca, y Whisper no es un oyente: hay que oír al menos `audio/corridas/voz/02_pedido_ambiguo/respuesta_02.wav` para saber si el tramo se pierde de verdad. El autor comparó de oído seis frases a 1,0 y a 1,15, ninguna con marcas difíciles; la voz a 1,10 no consta que la haya escuchado: la eligió por la tabla. Es una corrida por voz con cada voz y una semilla de muestreo. Las corridas de demostración (`voz_demo_compra_voz_usuario`) y las transcripciones en vivo no se repitieron: son de la voz anterior y anotan `audio/referencia/referencia.wav`, que entonces era la otra grabación. En Colab la voz nueva se probó después, en la corrida final («Ejecución en Colab (T4)»).
 
 ### Análisis de aciertos y fallos
 
@@ -466,25 +466,41 @@ El «texto peor» es el mismo a las cuatro velocidades: la respuesta con las mar
 
 ### Ejecución en Colab (T4)
 
-`notebooks/colab.ipynb` corre el proyecto de principio a fin en una T4 de Colab con 2 CPU: instalación, Postgres, datos, recuperación, reranker, agente por texto, escenarios por texto y por voz, conversación en vivo y resumen. Lo comprobado:
+`notebooks/colab.ipynb` corre el proyecto de principio a fin en una T4 de Colab con 2 CPU: instalación, Postgres, datos, recuperación, reranker, agente por texto, escenarios por texto y por voz, conversación en vivo y resumen.
 
-- **Instalación.** Postgres con `apt`, `uv sync` con las versiones de `uv.lock`, FFmpeg para `torchcodec` y `llama-cpp-python` desde la rueda precompilada (2 min 13 s en lugar de 61 minutos de compilación). Las dependencias de voz cargan.
-- **Conversación en vivo.** El notebook arranca `shopping_agent.voice.live` en segundo plano y habla con él por HTTP, porque el núcleo de Colab no puede importar el paquete: el proyecto vive en su propio entorno.
-- **Memoria.** Los cuatro modelos y el reranker caben: 9,1 GB de los 15 GB utilizables.
+**Corrida final** (12 de noviembre de 2026, commit `d81bc00`; Ubuntu 24.04, CUDA 13.0), con la voz del autor clonada de la referencia nueva a velocidad 1,10 y sus 31 grabaciones. Las cifras se leyeron en la sesión de Colab (salida de las celdas, su `resumen.md` y su `corrida.json`), que es temporal: esos archivos no están en el repositorio. La columna de la workstation sale de `results/`.
 
-Medido el 11 y el 12 de noviembre **con el hablante de prueba**, no con la voz del autor. No son las cifras finales: falta la corrida final con su voz, y las cifras de Colab se tomaron en la sesión del notebook, no están en `results/`.
+| Medida | Workstation (RTX A2000, 12 GB) | Colab (T4, 2 CPU) |
+|---|---|---|
+| Escenarios por texto | 20 de 20, sin violaciones | 20 de 20, sin violaciones |
+| LLM por turno, por texto (73 turnos) | 5,04 s (máx. 9,79) | 8,00 s (máx. 15,53) |
+| Escenarios por voz, con las 31 grabaciones del autor | 6 de 6, sin violaciones | 6 de 6, sin violaciones |
+| ASR: WER; errores en importes, cantidades y nombres de producto | 1,4 %; 0 de 3, 0 de 8 y 1 de 13 | 1,4 %; 0 de 3, 0 de 8 y 1 de 13 |
+| Inteligibilidad de la voz generada (WER de Whisper) | 5,5 % | 5,6 % |
+| Semejanza con la referencia / con las grabaciones reales (techo 0,377) | 0,710 / 0,273 | 0,709 / 0,272 |
+| Turno por voz con LLM (24 turnos): ASR / LLM / TTS | 0,35 / 5,05 / 5,90 s | 0,41 / 7,85 / 13,07 s |
+| Turno por voz con LLM: total | 11,35 s (máx. 18,84) | 21,38 s (máx. 36,26) |
+| Turno por voz sin LLM (7 turnos): total | 5,01 s (máx. 10,81) | 10,66 s (máx. 23,69) |
+| Memoria de GPU con todo cargado | 9 532 MiB de 12 282 | 9 152 MiB de 15 360 |
+| Carga inicial de los modelos, por voz | 24 s | 109 s (incluye leer por primera vez los modelos recién descargados) |
+| Conversación en vivo: listo para el primer turno | 26 s | 102 s |
+| Conversación en vivo: un turno | 17,8 s (turno de búsqueda) | 29,9 s y 28,2 s (dos turnos del escenario 03) |
 
-| Medida | Workstation (RTX A2000, 12 GB) | Colab T4, hablante de prueba (provisional) | Colab T4, voz del autor (corrida final) |
-|---|---|---|---|
-| Escenarios por texto | 20 de 20; LLM 5,04 s por turno | 20 de 20; LLM 8,0 s por turno | pendiente |
-| Escenarios por voz | 6 de 6 | 6 de 6 | pendiente |
-| Latencia por turno con LLM, por voz (ASR / LLM / TTS) | 11,35 s (0,35 / 5,05 / 5,90) | 17,3 s (0,41 / 7,9 / 8,9) | pendiente |
-| Memoria de GPU con todo cargado | 9 532 MiB | 9,1 GB | pendiente |
-| Carga inicial de los modelos | 24 a 28 s | 99,9 s | pendiente |
-| Conversación en vivo: arranque | 26 s | 96 s | pendiente |
-| Conversación en vivo: turno de búsqueda | 17,8 s | 26 a 28 s | pendiente |
+Qué se comprobó:
 
-La columna de la workstation es la corrida `voz` (voz del autor a velocidad 1,10); sus dos cifras de la conversación en vivo son de la prueba del servidor con la voz anterior. En la T4 el LLM tarda un 56 % más por turno y el TTS un 51 % más, con otra voz; la carga inicial es cuatro veces más lenta.
+- **Instalación.** Postgres con `apt`, `uv sync` con las versiones de `uv.lock`, FFmpeg y `llama-cpp-python` 0.3.36 desde la rueda precompilada: 1 min 44 s en total, frente a 61 minutos compilando. PyTorch 2.14.1+cu126 ve la T4 y `llama-cpp-python` la detecta (14 912 MiB). Las 378 pruebas pasan.
+- **Mismos números que en la workstation donde deben serlo.** Recuperación en `train`: 0,6807 / 0,7372 / 0,7236 (BM25 / denso / híbrido), idéntica. Rerankers entrenados en Colab con la semilla 0: 0,7578 el control y 0,7630 GraphSAGE en validación (en la workstation, medias de cinco semillas de 0,7582 y 0,7617). ASR: las mismas 29 de 31 transcripciones idénticas y el mismo error en un nombre de producto. Voz generada: WER 5,6 % frente a 5,5 %, semejanzas iguales hasta la tercera cifra.
+- **Agente por texto** (`demo_compra`): LLM cargado en 20,8 s con 5 826 MiB; el pedido se registra y la segunda confirmación no lo duplica.
+- **Escenarios por texto:** 20 de 20, sin violaciones. Con LLM, 8,06 s por turno (LLM 8,00; máximo 15,64). Carga inicial 38,2 s (catálogo y recuperadores 35,9, LLM 1,9).
+- **Escenarios por voz:** 6 de 6 con audio y 6 de 6 con la transcripción correcta, sin violaciones. Con LLM, 21,38 s por turno (ASR 0,41, LLM 7,85, TTS 13,07; máximo 36,26); sin LLM, 10,66 s (TTS 10,27; máximo 23,69). Carga inicial 108,7 s (catálogo y recuperadores 38,9, LLM 9,6, ASR 28,3, TTS 30,6), que incluye leer por primera vez los modelos recién descargados.
+- **Memoria.** 712 MiB con la búsqueda, 5 826 con el LLM, 7 394 con el ASR y 9 152 con todo cargado, de 15 360.
+- **Conversación en vivo.** El notebook arranca `shopping_agent.voice.live` en segundo plano y habla con él por HTTP, porque el núcleo de Colab no puede importar el paquete: el proyecto vive en su propio entorno. Listo en 102 s. Dos turnos del escenario 03 con grabaciones del autor: 29,9 s (ASR 1,1, LLM 15,5, TTS 13,1) y 28,2 s (ASR 0,4, LLM 8,6, TTS 19,1), transcripciones correctas. La celda que detiene el agente funcionó.
+
+Lectura:
+
+- **El comportamiento no cambia con la máquina; la latencia, sí.** En la T4 el LLM tarda 1,6 veces más que en la A2000 (8,0 frente a 5,0 s) y la síntesis con la voz clonada 2,2 veces más (13,1 frente a 5,9 s). Un turno por voz con LLM pasa de 11,4 a 21,4 s, y más de la mitad es el TTS.
+- **La voz clonada cuesta más que el hablante de prueba.** La medida anterior en la T4, con un hablante incluido en XTTS-v2, dio 17,3 s por turno con LLM (ASR 0,41, LLM 7,9, TTS 8,9) con 9,1 GB cargados: el LLM tarda lo mismo y el TTS pasa de 8,9 a 13,1 s con la voz del autor.
+- **Sin probar en Colab:** la grabación con el micrófono del navegador, que necesita a una persona delante, y la celda que sube `audio.zip` (los audios se subieron por el panel de archivos). Los audios del autor estuvieron solo en la sesión, que es temporal.
 
 ## 7. Cronograma
 
@@ -526,13 +542,15 @@ Dependencias a añadir: `langgraph-checkpoint-postgres`, `psycopg[binary,pool]`,
 
 - **Modelo de embeddings:** queda `intfloat/multilingual-e5-small`; ni `e5-base` ni `bge-m3` lo superan (apartado 5). El LLM es Qwen2.5-7B-Instruct Q4_K_M.
 - **Instalación en Colab:** Postgres, `llama-cpp-python` con CUDA (rueda precompilada) y las dependencias de voz están comprobadas en la T4 (apartado «Ejecución en Colab (T4)»).
+- **Corrida final en Colab con la voz del autor:** hecha el 12 de noviembre sobre el commit `d81bc00`; 20 de 20 por texto y 6 de 6 por voz, con 9 152 MiB y 21,4 s por turno por voz con LLM.
 - **Análisis de aciertos y fallos:** [ANALISIS_ACIERTOS_FALLOS.md](ANALISIS_ACIERTOS_FALLOS.md).
 - **Números escritos con cifras** (escenario 05 con la voz real): corregido el 12 de noviembre.
 - **Velocidad del habla:** 1,10, decidida por el autor con la medida de velocidades.
 
 **Queda.**
 
-- **Corrida final en Colab con la voz del autor.** Las cifras de la T4 que hay son con el hablante de prueba; la tabla de «Ejecución en Colab (T4)» tiene la columna por rellenar.
+- **En Colab, lo que necesita a una persona:** grabar un turno con el micrófono del navegador y la celda que sube `audio.zip`. Lo demás del notebook está corrido.
+- **Latencia por voz en la T4.** Un turno con LLM tarda 21 s y el más lento 36 s; más de la mitad es la síntesis. Reproducir el primer fragmento mientras se sintetiza el resto, o respuestas habladas más cortas, lo bajarían. No se ha hecho.
 - **Escuchar la voz nueva.** La velocidad 1,10 se eligió por la medida, no de oído. Y nadie ha escuchado las respuestas que Whisper entiende mal: la del escenario 02 con marcas impronunciables y las que terminan con palabras de más. Según lo que se oiga, las salidas son otra toma de referencia, condicionar el ritmo con 30 s de la referencia en lugar de 6, o no leer en voz alta las marcas que no son palabras. Nada de eso se ha probado.
 - **El error del ASR que cambia la compra** («cafetera» → «cafetería», escenario 01 con la voz real). Opciones sin probar: dar vocabulario del dominio a Whisper, o que el agente diga qué ha buscado. No se ha tocado nada.
 - **Respuestas habladas largas.** Las que recitan el carrito completo llegan a 40 s con la voz nueva; valorar una versión hablada más breve.

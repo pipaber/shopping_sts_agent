@@ -35,7 +35,7 @@ flowchart LR
 - **Función del agente.** El LLM propone una herramienta por paso y redacta la respuesta; el código valida cada llamada, comprueba existencias y presupuesto en la tienda, verifica las cifras de la respuesta y es el único que registra pedidos.
 - **Qué se toma de ESCI.** La versión reducida, solo en español: 43 674 productos (título, descripción, características, marca y color) forman el catálogo en el que busca el agente. Las consultas y sus etiquetas (1 500 de `train` y 300 de `test`) solo sirven para entrenar el reranker y para medir: el agente no las lee. Precios y existencias no vienen en ESCI: son ficticios, generados con semilla.
 - **Modelos, todos locales.** Whisper large-v3-turbo, Qwen2.5-7B-Instruct (GGUF Q4_K_M), XTTS-v2 y `multilingual-e5-small`, más un reranker entrenado aquí.
-- **Hardware.** Medido en una estación de trabajo con una NVIDIA RTX A2000 de 12 GB (9 532 MiB de memoria de GPU con todo cargado). El objetivo del enunciado es Google Colab con una T4: [notebooks/colab.ipynb](notebooks/colab.ipynb) (ver «Ejecución en Colab (T4)»).
+- **Hardware.** Medido en una estación de trabajo con una NVIDIA RTX A2000 de 12 GB (9 532 MiB de memoria de GPU con todo cargado). El objetivo del enunciado es Google Colab con una T4, donde también se corrió entero con [notebooks/colab.ipynb](notebooks/colab.ipynb): 9 152 MiB y los mismos resultados, con turnos por voz de 21 s en lugar de 11 (ver «Ejecución en Colab (T4)»).
 
 ## Entorno
 
@@ -446,23 +446,35 @@ GraphSAGE supera al control sin grafo en +0,0071 (IC 95 % [+0,0028; +0,0117]). L
 
 [notebooks/colab.ipynb](notebooks/colab.ipynb) reproduce el proyecto de principio a fin en una T4 de Colab: instalación, datos, recuperación, reranker, agente por texto, escenarios por texto y por voz, y una conversación en vivo con el micrófono del navegador. Todo el procesamiento es local a la sesión; no se llama a ninguna API de inferencia.
 
-- **Instalación.** `uv sync` crea el entorno del proyecto con las versiones de `uv.lock`. `llama-cpp-python` hay que compilarlo con CUDA, y con las 2 CPU de Colab eso tardó 61 minutos. El notebook descarga en su lugar una rueda ya compilada para el sistema de Colab (Ubuntu 24.04, CUDA 13.0), publicada como adjunto de la *release* `colab-llama-cpp-0.3.36` de este repositorio, y comprueba que carga y que usa la GPU; si no sirve en la sesión, compila como respaldo. Con la rueda la instalación baja a 2 min 13 s.
-- **Voz propia.** Las grabaciones se suben a la sesión en un `audio.zip` y se borran al cerrarla; no entran en el repositorio. Sin ellas, el agente habla con un hablante de prueba de XTTS-v2 y los escenarios usan audios sintéticos.
+- **Instalación.** `uv sync` crea el entorno del proyecto con las versiones de `uv.lock`. `llama-cpp-python` hay que compilarlo con CUDA, y con las 2 CPU de Colab eso tardó 61 minutos. El notebook descarga en su lugar una rueda ya compilada para el sistema de Colab (Ubuntu 24.04, CUDA 13.0), publicada como adjunto de la *release* `colab-llama-cpp-0.3.36` de este repositorio, y comprueba que carga y que usa la GPU; si no sirve en la sesión, compila como respaldo. Con la rueda, la instalación completa tardó 1 min 44 s en la corrida final.
+- **Voz propia.** Las grabaciones se suben a la sesión y se borran al cerrarla; no entran en el repositorio. Sin ellas, el agente habla con un hablante de prueba de XTTS-v2 y los escenarios usan audios sintéticos.
 - **Conversación en vivo.** Una celda arranca `shopping_agent.voice.live` en segundo plano y otra graba un turno con el micrófono, lo envía y reproduce la respuesta. No es tiempo real: es una conversación por turnos.
 
-Lo medido hasta ahora en la T4 se hizo con el hablante de prueba, no con la voz del autor, y **no son las cifras finales**: falta la corrida final con su voz. Las cifras de Colab se tomaron en la sesión del notebook; `results/` guarda las corridas de la workstation.
+**Corrida final** (12 de noviembre de 2026, commit `d81bc00`; T4 con 2 CPU, Ubuntu 24.04, CUDA 13.0), con la voz del autor clonada de la referencia nueva a velocidad 1,10 y sus 31 grabaciones. Las cifras de Colab se leyeron en la sesión del notebook, que es temporal: sus archivos no están en el repositorio, y `results/` guarda las corridas de la workstation, que son las de la otra columna.
 
-| Medida | Workstation (RTX A2000, 12 GB) | Colab T4, hablante de prueba (provisional) | Colab T4, voz del autor (corrida final) |
-|---|---|---|---|
-| Escenarios por texto | 20 de 20; LLM 5,04 s por turno | 20 de 20; LLM 8,0 s por turno | pendiente |
-| Escenarios por voz | 6 de 6 | 6 de 6 | pendiente |
-| Latencia por turno con LLM, por voz (ASR / LLM / TTS) | 11,35 s (0,35 / 5,05 / 5,90) | 17,3 s (0,41 / 7,9 / 8,9) | pendiente |
-| Memoria de GPU con todo cargado | 9 532 MiB | 9,1 GB | pendiente |
-| Carga inicial de los modelos | 24 a 28 s | 99,9 s | pendiente |
-| Conversación en vivo: arranque | 26 s | 96 s | pendiente |
-| Conversación en vivo: turno de búsqueda | 17,8 s | 26 a 28 s | pendiente |
+| Medida | Workstation (RTX A2000, 12 GB) | Colab (T4, 2 CPU) |
+|---|---|---|
+| Escenarios por texto | 20 de 20, sin violaciones | 20 de 20, sin violaciones |
+| LLM por turno, por texto (73 turnos) | 5,04 s (máx. 9,79) | 8,00 s (máx. 15,53) |
+| Escenarios por voz, con las 31 grabaciones del autor | 6 de 6, sin violaciones | 6 de 6, sin violaciones |
+| ASR: WER; errores en importes, cantidades y nombres de producto | 1,4 %; 0 de 3, 0 de 8 y 1 de 13 | 1,4 %; 0 de 3, 0 de 8 y 1 de 13 |
+| Inteligibilidad de la voz generada (WER de Whisper) | 5,5 % | 5,6 % |
+| Semejanza con la referencia / con las grabaciones reales (techo 0,377) | 0,710 / 0,273 | 0,709 / 0,272 |
+| Turno por voz con LLM (24 turnos): ASR / LLM / TTS | 0,35 / 5,05 / 5,90 s | 0,41 / 7,85 / 13,07 s |
+| Turno por voz con LLM: total | 11,35 s (máx. 18,84) | 21,38 s (máx. 36,26) |
+| Turno por voz sin LLM (7 turnos): total | 5,01 s (máx. 10,81) | 10,66 s (máx. 23,69) |
+| Memoria de GPU con todo cargado | 9 532 MiB de 12 282 | 9 152 MiB de 15 360 |
+| Carga inicial de los modelos, por voz | 24 s | 109 s (incluye leer por primera vez los modelos recién descargados) |
+| Conversación en vivo: listo para el primer turno | 26 s | 102 s |
+| Conversación en vivo: un turno | 17,8 s (turno de búsqueda) | 29,9 s y 28,2 s (dos turnos del escenario 03) |
 
-La columna de la workstation es la de la voz del autor a velocidad 1,10 (corrida `voz`); sus dos cifras de la conversación en vivo son de la prueba del servidor con la voz anterior. La T4 es más lenta en el LLM y en el TTS, por lo que un turno por voz tarda del orden de la mitad más.
+- **El sistema hace lo mismo en las dos máquinas.** Mismos veredictos, mismo ASR y la misma voz, con diferencias mínimas en las medidas. Las 378 pruebas pasan en Colab, la recuperación en `train` da los mismos nDCG@10 (0,6807, 0,7372 y 0,7236) y los rerankers entrenados allí con la semilla 0 dan 0,7578 (control) y 0,7630 (GraphSAGE) en validación.
+- **La T4 es más lenta.** El LLM tarda 1,6 veces más que en la A2000 (8,0 frente a 5,0 s por turno) y la síntesis con la voz clonada 2,2 veces más (13,1 frente a 5,9 s): un turno por voz con LLM pasa de 11,4 a 21,4 s, y el más lento llega a 36 s. Más de la mitad de ese tiempo es el TTS.
+- **Cabe con margen.** 9 152 MiB de los 15 360 de la T4 con los cuatro modelos y el reranker cargados: 712 con la búsqueda, 5 826 al añadir el LLM y 7 394 al añadir el ASR.
+- **Conversación en vivo.** El servidor quedó listo en 102 s con 9 152 MiB. Dos turnos del escenario 03 con grabaciones del autor, enviados por HTTP, tardaron 29,9 s (ASR 1,1, LLM 15,5, TTS 13,1) y 28,2 s (ASR 0,4, LLM 8,6, TTS 19,1), con las dos transcripciones correctas.
+- **Sin probar en Colab:** la grabación con el micrófono del navegador, que necesita a una persona delante, y la celda que sube `audio.zip` (los audios se subieron por el panel de archivos).
+
+Antes de esta corrida se había medido con el hablante de prueba de XTTS-v2 en lugar de la voz clonada: 6 de 6 por voz y 17,3 s por turno con LLM (TTS 8,9 s). La voz clonada del autor tarda más en sintetizarse.
 
 ## Organización del código
 
