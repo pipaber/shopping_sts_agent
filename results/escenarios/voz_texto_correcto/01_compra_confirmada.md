@@ -5,7 +5,7 @@
 - Tipo: `compra_confirmada`
 - Qué se prueba: El usuario busca con presupuesto, añade dos unidades, pide cerrar y confirma. Tras la búsqueda la tienda fija el primer candidato en 14,50 € y 20 unidades, para que el resultado no dependa de qué producto salga primero.
 
-## Turno 1 (9.0 s)
+## Turno 1 (9.3 s)
 
 **Usuario (texto):** Hola, busco una cafetera italiana. Tengo un presupuesto de 60 euros.
 
@@ -23,7 +23,7 @@
 
 > **Suceso externo:** la tienda deja `B06WGTZ874` (@elegida) con precio 14,50 € y existencias 20.
 
-## Turno 2 (5.2 s)
+## Turno 2 (5.3 s)
 
 **Usuario (texto):** Añade dos de la primera al carrito.
 
@@ -36,7 +36,7 @@
 - ✔ `cart(lines=[{"product": "@elegida", "quantity": 2}])` — carrito: 2 × B06WGTZ874
 - ✔ `orders(count=0)` — pedidos registrados: 0
 
-## Turno 3 (2.2 s)
+## Turno 3 (2.3 s)
 
 **Usuario (texto):** Quiero cerrar el pedido.
 
@@ -53,7 +53,7 @@
 
 **Usuario (texto):** Sí, confirmo.
 
-- `confirmar_pedido(quote_id="e6d02e092e2c487680793b994a03b323")` → OK: pedido registrado
+- `confirmar_pedido(quote_id="5e43950faf314fcc919db7d81fc00ab8")` → OK: pedido registrado
 
 **Agente:** Pedido número 1 registrado: 2 unidades de «De'longhi Dedica - Cafetera de Bomba de Acero Inoxidable para Café…» a 14,50 € cada una, 29,00 €. Total: 29,00 €. Gracias por tu compra.
 
@@ -84,10 +84,10 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.03 | 8.90 | 0.03 | 0.00 | 8.96 | 0.0 s |
-| 2 | 0.00 | 0.00 | 5.11 | 0.05 | 0.00 | 5.16 | 0.0 s |
-| 3 | 0.00 | 0.00 | 2.19 | 0.04 | 0.00 | 2.23 | 0.0 s |
+| 1 | 0.00 | 0.03 | 9.23 | 0.03 | 0.00 | 9.29 | 0.0 s |
+| 2 | 0.00 | 0.00 | 5.22 | 0.05 | 0.00 | 5.28 | 0.0 s |
+| 3 | 0.00 | 0.00 | 2.23 | 0.04 | 0.00 | 2.27 | 0.0 s |
 | 4 | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | 0.0 s |
-| **Media de los turnos con LLM (3)** | 0.00 | 0.01 | 5.40 | 0.04 | 0.00 | 5.45 | |
+| **Media de los turnos con LLM (3)** | 0.00 | 0.01 | 5.56 | 0.04 | 0.00 | 5.61 | |
 | **Media de los turnos sin LLM (1)** | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | |
 

@@ -1,6 +1,6 @@
 {
-  "date": "2026-11-12T00:23:27",
-  "commit": "885515a",
+  "date": "2026-11-12T12:36:46",
+  "commit": "b2acf9c",
   "memory_backend": "postgres",
   "models": {
     "llm": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
@@ -11,14 +11,15 @@
   },
   "voice": {
     "reference": "audio/referencia/referencia.wav",
-    "speaker": null
+    "speaker": null,
+    "speed": 1.15
   },
   "load": {
-    "search_seconds": 16.0,
-    "llm_seconds": 0.7,
-    "asr_seconds": 1.0,
-    "tts_seconds": 9.0,
-    "total_seconds": 27.3,
+    "search_seconds": 15.1,
+    "llm_seconds": 0.8,
+    "asr_seconds": 0.8,
+    "tts_seconds": 11.3,
+    "total_seconds": 28.3,
     "vram_mib": {
       "search": 706,
       "llm": 5820,
@@ -91,20 +92,20 @@
           "max": 0.03
         },
         "llm": {
-          "mean": 3.91,
-          "max": 8.9
+          "mean": 3.97,
+          "max": 9.23
         },
         "tools": {
           "mean": 0.04,
-          "max": 0.06
+          "max": 0.05
         },
         "tts": {
           "mean": 0.0,
           "max": 0.0
         },
         "total": {
-          "mean": 3.95,
-          "max": 8.96
+          "mean": 4.02,
+          "max": 9.29
         }
       },
       "with_llm": {
@@ -118,20 +119,20 @@
           "max": 0.03
         },
         "llm": {
-          "mean": 5.05,
-          "max": 8.9
+          "mean": 5.13,
+          "max": 9.23
         },
         "tools": {
           "mean": 0.04,
-          "max": 0.06
+          "max": 0.05
         },
         "tts": {
           "mean": 0.0,
           "max": 0.0
         },
         "total": {
-          "mean": 5.1,
-          "max": 8.96
+          "mean": 5.18,
+          "max": 9.29
         }
       },
       "without_llm": {

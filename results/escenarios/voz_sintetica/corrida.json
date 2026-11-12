@@ -10,7 +10,7 @@
     "reranker": "control"
   },
   "voice": {
-    "reference": "audio/referencia/referencia.wav",
+    "reference": "audio/referencia/referencia_anterior.wav",
     "speaker": null
   },
   "load": {
@@ -170,5 +170,6 @@
         }
       }
     }
-  }
+  },
+  "note": "Corrida del 10 de noviembre, hecha con la primera grabación de referencia de la voz del agente. Esa grabación se renombró el 12 de noviembre a referencia_anterior.wav y la ruta de este archivo se actualizó por eso; lo demás es la corrida tal como se guardó."
 }

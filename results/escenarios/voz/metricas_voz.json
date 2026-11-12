@@ -22,9 +22,11 @@
     },
     "tts": {
       "cases": 31,
-      "wer": 0.033707865168539325,
-      "similarity_mean": 0.7407916814088057,
-      "similarity_min": 0.5005643381032236
+      "wer": 0.07041198501872659,
+      "similarity_mean": 0.7093363892329454,
+      "similarity_min": 0.5928487891996357,
+      "similarity_real_mean": 0.2695024877049385,
+      "similarity_real_min": 0.19081064838287642
     }
   },
   "scenarios": {
@@ -198,43 +200,47 @@
       "tts": {
         "summary": {
           "cases": 4,
-          "wer": 0.03804347826086957,
-          "similarity_mean": 0.752017905242828,
-          "similarity_min": 0.7441495364989984
+          "wer": 0.059782608695652176,
+          "similarity_mean": 0.7151326008445559,
+          "similarity_min": 0.6923622562666275,
+          "similarity_real_mean": 0.26458504692013574,
+          "similarity_real_min": 0.24619371178424398
         },
         "cases": [
           {
             "turn": 1,
             "spoken_text": "Tengo una cafetera Nespresso de FRHOME por seis euros con trece céntimos, una cafetera Gastroback por cuarenta y seis euros con veinticuatro céntimos, una Breville Barista Max por dos euros con veinticinco céntimos, un libro El amor huele a café por veinticinco euros con dieciséis céntimos y una cafetera De'Longhi por cuarenta y cuatro euros con cincuenta céntimos. ¿Te interesa alguna? He anotado un presupuesto de sesenta euros.",
-            "heard": "Tengo una cafetera Nespresso de Fromm por 6 euros con 13 céntimos, una cafetera GastroVac por 46 euros con 24 céntimos, una Breville Barista Max por 2 euros con 25 céntimos. Un libro El amor huele a café por 25 euros con 16 céntimos y una cafetera de Longhi por 44 euros con 50 céntimos. ¿Te interesa alguna? He anotado un presupuesto de 60 euros.",
+            "heard": "Tengo una cafetera Nespresso de Fromme por 6 euros con 13 céntimos. Una cafetera Gastro Bag por 46 euros con 24 céntimos. Una Breville Barista Max por 2 euros con 25 céntimos. Un libro El Amor Huele a Café por 25 euros con 16 céntimos. Y una cafetera de Longhi por 44 euros con 50 céntimos. ¿Te interesa alguna? He anotado un presupuesto de 60 euros.",
             "wer": {
-              "wer": 0.058823529411764705,
+              "wer": 0.07352941176470588,
               "reference_words": 68,
               "hits": 65,
               "substitutions": 3,
               "deletions": 0,
-              "insertions": 1
+              "insertions": 2
             },
-            "similarity": 0.7473034685928598
+            "similarity": 0.724265178311059,
+            "similarity_real": 0.27264780704568686
           },
           {
             "turn": 2,
             "spoken_text": "Hecho, añadidas dos unidades. El total es veintinueve euros. En el carrito hay dos unidades de FRHOME a catorce euros con cincuenta céntimos cada una, veintinueve euros. Total: veintinueve euros. Tu presupuesto es de sesenta euros y te quedan treinta y un euros.",
-            "heard": "Hecho, añadidas dos unidades. El total es 29 euros. En el carrito hay dos unidades de Frome a 14 euros con 50 céntimos cada una. 29 euros. Total, 29 euros. Tu presupuesto es de 60 euros y te quedan 31 euros.",
+            "heard": "Hecho añadidas dos unidades. El total es 29 euros. En el carrito hay dos unidades de From a 14 euros con 50 céntimos cada una. 29 euros. Total. Tu presupuesto es de 60 euros y te quedan 31 euros.",
             "wer": {
-              "wer": 0.023255813953488372,
+              "wer": 0.06976744186046512,
               "reference_words": 43,
-              "hits": 42,
+              "hits": 40,
               "substitutions": 1,
-              "deletions": 0,
+              "deletions": 2,
               "insertions": 0
             },
-            "similarity": 0.766758805171407
+            "similarity": 0.7271168163120256,
+            "similarity_real": 0.2805878741730937
           },
           {
             "turn": 3,
             "spoken_text": "Te repito el pedido antes de registrarlo: dos unidades de FRHOME a catorce euros con cincuenta céntimos cada una, veintinueve euros. Total: veintinueve euros. Tu presupuesto es de sesenta euros y te quedan treinta y un euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
-            "heard": "Te repito el pedido antes de registrarlo. Dos unidades de Frome a 14 euros con 50 céntimos cada una. 29 euros. Total, 29 euros. Tu presupuesto es de 60 euros y te quedan 31 euros. ¿Lo confirmo? Di sí para registrarlo o dime qué quieres cambiar.",
+            "heard": "Te repito el pedido antes de registrarlo. Dos unidades de From a 14 euros con 50 céntimos cada una. 29 euros. Total, 29 euros. Tu presupuesto es de 60 euros y te quedan 31 euros. ¿Lo confirmo? Di sí para registrarlo o dime qué quieres cambiar.",
             "wer": {
               "wer": 0.020833333333333332,
               "reference_words": 48,
@@ -243,21 +249,23 @@
               "deletions": 0,
               "insertions": 0
             },
-            "similarity": 0.7441495364989984
+            "similarity": 0.6923622562666275,
+            "similarity_real": 0.24619371178424398
           },
           {
             "turn": 4,
             "spoken_text": "Pedido número uno registrado: dos unidades de FRHOME a catorce euros con cincuenta céntimos cada una, veintinueve euros. Total: veintinueve euros. Gracias por tu compra.",
-            "heard": "Pedido número 1. Registrado. 2 unidades de fromme a 14 euros con 50 céntimos cada una, 29 euros. Total, 29 euros. Gracias por tu compra.",
+            "heard": "Pedido número 1 registrado, 2 unidades de Frome a 14 euros con 50 céntimos cada una a 29 euros. Total, 29 euros. Gracias por tu compra.",
             "wer": {
-              "wer": 0.04,
+              "wer": 0.08,
               "reference_words": 25,
               "hits": 24,
               "substitutions": 1,
               "deletions": 0,
-              "insertions": 0
+              "insertions": 1
             },
-            "similarity": 0.7498598107080467
+            "similarity": 0.7167861524885116,
+            "similarity_real": 0.2589107946775182
           }
         ]
       }
@@ -394,9 +402,11 @@
       "tts": {
         "summary": {
           "cases": 3,
-          "wer": 0.0546875,
-          "similarity_mean": 0.6746860276207615,
-          "similarity_min": 0.5005643381032236
+          "wer": 0.25,
+          "similarity_mean": 0.6772887310435513,
+          "similarity_min": 0.5928487891996357,
+          "similarity_real_mean": 0.24130807581104854,
+          "similarity_real_min": 0.19081064838287642
         },
         "cases": [
           {
@@ -411,21 +421,23 @@
               "deletions": 0,
               "insertions": 0
             },
-            "similarity": 0.5005643381032236
+            "similarity": 0.5928487891996357,
+            "similarity_real": 0.19081064838287642
           },
           {
             "turn": 2,
             "spoken_text": "Tengo estos auriculares Bluetooth para ti: los de Mgrett por nueve euros con dieciocho céntimos, los de TAIN por nueve euros con ochenta y cuatro céntimos, los de WDGP por treinta y dos euros con seis céntimos, los de GSBLBL por veinticinco euros con quince céntimos y los de HoLiv por dieciséis euros con cuarenta y nueve céntimos. ¿Te interesa alguno? He anotado un presupuesto de cincuenta euros.",
-            "heard": "Tengo estos auriculares Bluetooth para ti. Los de Marev por 9 euros con 18 céntimos. Los de TAM por 9 euros con 84 céntimos. Los de ULEDGP por 32 euros con 6 céntimos. Los de YG S-Vivelo por 25 euros con 15 céntimos. y los de Olar, por 16 euros con 49 céntimos. ¿Te interesa alguno? He anotado un presupuesto de 50 euros.",
+            "heard": "Tengo estos auriculares Bluetooth para ti, los de Megret por 9 euros con 18 céntimos, los de Time por 9 euros con 84 céntimos, los de VDGP por 32 euros con 6 céntimos, los de G.S.E.V.E.L.E. por 25 euros con 15 céntimos y los de World Warp, Maripo, o Mejía, también te hacía. Y la fiesta del serpante inconsciente, consideré con el T.M.E.L.E. por 49 céntimos. ¿Te interesa alguno? He anotado un presupuesto de 50 euros",
             "wer": {
-              "wer": 0.10294117647058823,
+              "wer": 0.47058823529411764,
               "reference_words": 68,
-              "hits": 63,
-              "substitutions": 5,
+              "hits": 60,
+              "substitutions": 8,
               "deletions": 0,
-              "insertions": 2
+              "insertions": 24
             },
-            "similarity": 0.7688650786823236
+            "similarity": 0.7143488955047097,
+            "similarity_real": 0.2670826180718894
           },
           {
             "turn": 3,
@@ -439,7 +451,8 @@
               "deletions": 0,
               "insertions": 0
             },
-            "similarity": 0.7546286660767374
+            "similarity": 0.7246685084263081,
+            "similarity_real": 0.2660309609783798
           }
         ]
       }
@@ -644,43 +657,47 @@
       "tts": {
         "summary": {
           "cases": 5,
-          "wer": 0.04247104247104247,
-          "similarity_mean": 0.750263309397999,
-          "similarity_min": 0.7339049804785548
+          "wer": 0.05405405405405406,
+          "similarity_mean": 0.7157376802825544,
+          "similarity_min": 0.7006752313703076,
+          "similarity_real_mean": 0.2733588565774128,
+          "similarity_real_min": 0.2627793504594002
         },
         "cases": [
           {
             "turn": 1,
             "spoken_text": "Tengo la botella de agua de Newdora por seis euros con setenta y dos céntimos, la de KOSAD por doce coma treinta y siete, la de KOUAJ por dieciocho coma veintinueve y las de ion8 por cuatro coma noventa y siete y diez euros con setenta y nueve céntimos. ¿Te interesa alguna? He anotado un presupuesto de cuarenta y cinco euros.",
-            "heard": "Tengo la botella de agua de Neudora por 6 euros con 72 céntimos, la de COSAT por 12,37, la de COAG por 18,29 y las de IONOCHO por 4,97 y 10 euros con 79 céntimos. ¿No es que te interesa alguna? He anotado un presupuesto de 45 euros.",
+            "heard": "Tengo la botella de agua de New Dora por 6 euros con 72 céntimos, la de COSAT por 12,37, la de COAG por 18,29 y la sesión 8 por 4,97 y 10 euros con 79 céntimos. ¿Te interesa alguna? He anotado un presupuesto de 45 euros.",
             "wer": {
               "wer": 0.11475409836065574,
               "reference_words": 61,
-              "hits": 57,
-              "substitutions": 4,
+              "hits": 55,
+              "substitutions": 6,
               "deletions": 0,
-              "insertions": 3
+              "insertions": 1
             },
-            "similarity": 0.7339049804785548
+            "similarity": 0.7519053364546678,
+            "similarity_real": 0.2842906624227412
           },
           {
             "turn": 2,
             "spoken_text": "Hecho, añadidas dos unidades. El total es diecinueve euros. En el carrito hay dos unidades de Newdora Botella de Agua Acero Inoxidable quinientos mililitros a nueve euros con cincuenta céntimos cada una, diecinueve euros. Total: diecinueve euros. Tu presupuesto es de cuarenta y cinco euros y te quedan veintiséis euros.",
-            "heard": "Hecho, añadidas dos unidades. El total es 19 euros. En el carrito hay dos unidades de Neudora botella de agua acero inoxidable 500 mililitros a 9 euros con 50 céntimos cada una. 19 euros. Total 19 euros. Tu presupuesto es de 45 euros. Y te quedan 26 euros.",
+            "heard": "Hecho, añadidas dos unidades. El total es 19 euros. En el carrito hay dos unidades de Nudor a botella de agua acero inoxidable, 500 mililitros, a 9 euros. Con 50 céntimos cada una, 19 euros. Total, 19 euros. Tu presupuesto es de 45 euros y te quedan 26 euros.",
             "wer": {
-              "wer": 0.02,
+              "wer": 0.04,
               "reference_words": 50,
               "hits": 49,
               "substitutions": 1,
               "deletions": 0,
-              "insertions": 0
+              "insertions": 1
             },
-            "similarity": 0.7743616477040253
+            "similarity": 0.7041875525087431,
+            "similarity_real": 0.2731156948657793
           },
           {
             "turn": 3,
             "spoken_text": "Hecho, el total es treinta y ocho euros. En el carrito hay cuatro unidades de Newdora Botella de Agua Acero Inoxidable quinientos mililitros a nueve euros con cincuenta céntimos cada una, treinta y ocho euros. Total: treinta y ocho euros. Tu presupuesto es de cuarenta y cinco euros y te quedan siete euros.",
-            "heard": "Hecho, el total es 38 euros. En el carrito hay 4 unidades de miudora botella de agua acero inoxidable. 500 mililitros a 9 euros con 50 céntimos cada una. 38 euros. Total, 38 euros. Tu presupuesto es de 45 euros y te quedan 7 euros.",
+            "heard": "Hecho, el total es 38 euros. En el carrito hay 4 unidades de Nidora botella de agua acero inoxidable. 500 mililitros a 9 euros, con 50 céntimos cada una. 38 euros. Total, 38 euros. Tu presupuesto es de 45 euros y te quedan 7 euros.",
             "wer": {
               "wer": 0.018867924528301886,
               "reference_words": 53,
@@ -689,26 +706,28 @@
               "deletions": 0,
               "insertions": 0
             },
-            "similarity": 0.7383430391151954
+            "similarity": 0.7028296666225151,
+            "similarity_real": 0.27102861376849663
           },
           {
             "turn": 4,
             "spoken_text": "Te repito el pedido antes de registrarlo: cuatro unidades de Newdora Botella de Agua Acero Inoxidable quinientos mililitros a nueve euros con cincuenta céntimos cada una, treinta y ocho euros. Total: treinta y ocho euros. Tu presupuesto es de cuarenta y cinco euros y te quedan siete euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
-            "heard": "Te repito el pedido antes de registrarlo, 4 unidades de Neudora, botella de agua, acero inoxidable, 500 mililitros, a 9 euros, con 50 céntimos cada una, 38 euros. Total, 38 euros. ¿Tu presupuesto es de 45 euros y te quedan 7 euros? ¿Lo confirmo? ¿Di si para registrarlo o dime que quieres cambiar?",
+            "heard": "Te repito el pedido antes de registrarlo, 4 unidades de Neudora botella de agua acero inoxidable 500 ml a 9 euros con 50 céntimos cada una, 38 euros. Total, 38 euros. Tu presupuesto es de 45 euros y te quedan 7 euros. ¿Lo confirmo? Dice para registrarlo o dime que quieres cambiar.",
             "wer": {
-              "wer": 0.01694915254237288,
+              "wer": 0.05084745762711865,
               "reference_words": 59,
-              "hits": 58,
-              "substitutions": 1,
-              "deletions": 0,
+              "hits": 56,
+              "substitutions": 2,
+              "deletions": 1,
               "insertions": 0
             },
-            "similarity": 0.7496312398814152
+            "similarity": 0.7006752313703076,
+            "similarity_real": 0.2627793504594002
           },
           {
             "turn": 5,
             "spoken_text": "Pedido número uno registrado: cuatro unidades de Newdora Botella de Agua Acero Inoxidable quinientos mililitros a nueve euros con cincuenta céntimos cada una, treinta y ocho euros. Total: treinta y ocho euros. Gracias por tu compra.",
-            "heard": "Pedido número 1 registrado, 4 unidades de Neudora botella de agua acero inoxidable, 500 mililitros a 9 euros con 50 céntimos cada una, 38 euros. Total, 38 euros. Gracias por tu compra.",
+            "heard": "Pedido número 1. Registrado. 4 unidades de Neudora botella de agua acero inoxidable 500 ml a 9 euros con 50 céntimos cada una. 38 euros. Total 38 euros. Gracias por tu compra.",
             "wer": {
               "wer": 0.027777777777777776,
               "reference_words": 36,
@@ -717,7 +736,8 @@
               "deletions": 0,
               "insertions": 0
             },
-            "similarity": 0.7550756398108045
+            "similarity": 0.7190906144565377,
+            "similarity_real": 0.2755799613706467
           }
         ]
       }
@@ -910,15 +930,17 @@
       "tts": {
         "summary": {
           "cases": 5,
-          "wer": 0.05747126436781609,
-          "similarity_mean": 0.7304888191851248,
-          "similarity_min": 0.7070172626257241
+          "wer": 0.04597701149425287,
+          "similarity_mean": 0.6945680087904619,
+          "similarity_min": 0.6496826035306169,
+          "similarity_real_mean": 0.26514663752360323,
+          "similarity_real_min": 0.2488107286343657
         },
         "cases": [
           {
             "turn": 1,
             "spoken_text": "Tengo la esterilla de yoga de TENQUAN por veintiséis euros con veintidós céntimos, la de LynnsGraceland por veinte euros, la de Rayline por dieciséis euros con setenta y cinco céntimos, la de Glymnis por diecinueve euros con setenta y cuatro céntimos y la de Hatonky por doce euros con cuarenta y dos céntimos. ¿Te interesa alguna?",
-            "heard": "Tengo la esterilla de yoga de Tenkwan por 26 euros con 22 céntimos, la de Lins Graceland por 20 euros, la de Railin por 16 euros con 75 céntimos, la de Glimmis por 19 euros con 74 céntimos y la de Atonki por 12 euros con 42 céntimos. ¿Te interesa alguna?",
+            "heard": "Tengo la esterilla de yoga de Tenkwan por 26 euros con 22 céntimos, la de Lins Graceland por 20 euros, la de Railin por 16 euros con 75 céntimos, la de Glimnis por 19 euros con 74 céntimos y la de Hatonki por 12 euros con 42 céntimos. ¿Te interesa alguna?",
             "wer": {
               "wer": 0.10714285714285714,
               "reference_words": 56,
@@ -927,54 +949,58 @@
               "deletions": 0,
               "insertions": 1
             },
-            "similarity": 0.7550693347821705
+            "similarity": 0.7465891572029287,
+            "similarity_real": 0.282818137260289
           },
           {
             "turn": 2,
             "spoken_text": "Ese producto se ha agotado. ¿Te interesa alguna de las demás opciones? Como alternativa tengo: Esterilla Yoga a dieciocho euros, con diez en existencias, Rayline a dieciséis euros con setenta y cinco céntimos, con cuarenta en existencias.",
-            "heard": "ese producto se ha agotado te interesa alguna de las demás opciones como alternativa tengo esterilla yoga a 18 euros con 10 en existencias rail line a 16 euros con 75 céntimos con 40 en existencias",
+            "heard": "ese producto se ha agotado. ¿Te interesa alguna de las demás opciones? Como alternativa tengo Esteria Yoga a 18 euros con 10 en existencias. Rayline a 16 euros con 75 céntimos con 40 en existencias.",
             "wer": {
-              "wer": 0.05405405405405406,
+              "wer": 0.02702702702702703,
               "reference_words": 37,
               "hits": 36,
               "substitutions": 1,
               "deletions": 0,
-              "insertions": 1
+              "insertions": 0
             },
-            "similarity": 0.7523107834043387
+            "similarity": 0.706917793165257,
+            "similarity_real": 0.2703399033156647
           },
           {
             "turn": 3,
             "spoken_text": "Hecho, añadida una unidad al carrito. En el carrito hay una unidad de Esterilla Yoga a dieciocho euros cada una, dieciocho euros. Total: dieciocho euros.",
-            "heard": "Hecho, añadidla una unidad al carrito. En el carrito hay una unidad de esterilla yoga a 18 euros cada una. 18 euros. Total, 18 euros.",
+            "heard": "Hecho, añadida una unidad al carrito. En el carrito hay una unidad de esterilla yoga, 18 euros cada una, 18 euros. Total, 18 euros.",
             "wer": {
               "wer": 0.04,
               "reference_words": 25,
               "hits": 24,
-              "substitutions": 1,
-              "deletions": 0,
-              "insertions": 0
-            },
-            "similarity": 0.7093866480921431
-          },
-          {
-            "turn": 4,
-            "spoken_text": "Te repito el pedido antes de registrarlo: una unidad de Esterilla Yoga a dieciocho euros cada una, dieciocho euros. Total: dieciocho euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
-            "heard": "Te repito el pedido antes de registrarlo, una unidad esterilla yoga a 18 euros cada una, 18 euros, total 18 euros, lo confirmo, di si para registrarlo o dime que quieres cambiar.",
-            "wer": {
-              "wer": 0.030303030303030304,
-              "reference_words": 33,
-              "hits": 32,
               "substitutions": 0,
               "deletions": 1,
               "insertions": 0
             },
-            "similarity": 0.7286600670212473
+            "similarity": 0.6496826035306169,
+            "similarity_real": 0.2549082724013299
+          },
+          {
+            "turn": 4,
+            "spoken_text": "Te repito el pedido antes de registrarlo: una unidad de Esterilla Yoga a dieciocho euros cada una, dieciocho euros. Total: dieciocho euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+            "heard": "Te repito el pedido antes de registrarlo. Una unidad de esterilla yoga a 18 euros cada una. 18 euros. Total, 18 euros. ¿Lo confirmo? Di sí para registrarlo. O dime qué quieres cambiar.",
+            "wer": {
+              "wer": 0.0,
+              "reference_words": 33,
+              "hits": 33,
+              "substitutions": 0,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "similarity": 0.6822674774610669,
+            "similarity_real": 0.2488107286343657
           },
           {
             "turn": 5,
             "spoken_text": "Pedido número uno registrado: una unidad de Esterilla Yoga a dieciocho euros cada una, dieciocho euros. Total: dieciocho euros. Gracias por tu compra.",
-            "heard": "Pedido número 1 registrado. Una unidad de esterilla yoga a 18 euros cada una. 18 euros. Total, 18 euros. Gracias por tu compra.",
+            "heard": "Pedido número 1 registrado, una unidad de esterilla yoga a 18 euros cada una, 18 euros. Total, 18 euros. Gracias por tu compra.",
             "wer": {
               "wer": 0.0,
               "reference_words": 23,
@@ -983,7 +1009,8 @@
               "deletions": 0,
               "insertions": 0
             },
-            "similarity": 0.7070172626257241
+            "similarity": 0.6873830125924402,
+            "similarity_real": 0.26885614600636704
           }
         ]
       }
@@ -1218,29 +1245,32 @@
       "tts": {
         "summary": {
           "cases": 6,
-          "wer": 0.01195219123505976,
-          "similarity_mean": 0.7548147781534724,
-          "similarity_min": 0.7379131974344041
+          "wer": 0.0398406374501992,
+          "similarity_mean": 0.719835071493069,
+          "similarity_min": 0.6847194486897664,
+          "similarity_real_mean": 0.28166476208280067,
+          "similarity_real_min": 0.2640910728027569
         },
         "cases": [
           {
             "turn": 1,
             "spoken_text": "Tengo el ratón inalámbrico INPHIC en plata por treinta y tres euros con veintinueve céntimos, el de INPHIC en plata clara por cuarenta y dos euros con cuarenta y cinco céntimos, el de Anmck en negro por veintitrés euros con sesenta y un céntimos, el de WisFox en gris por diecinueve euros con sesenta y nueve céntimos y el OMEN VECTOR de HP por diez euros con ochenta y cuatro céntimos. ¿Te interesa alguno?",
-            "heard": "Tengo el ratón inalámbrico INFIC en plata por 33 euros con 29 céntimos. El de INFIC en plata clara por 42 euros con 45 céntimos. El de ANMAKA en negro por 23 euros con 61 céntimos. El de WISFOX en gris por 19 euros con 69 céntimos. y el OMEN vector de HP por 10 euros con 84 céntimos. ¿Te interesa alguno?",
+            "heard": "Tengo el ratón inalámbrico INFIC en plata por 33 euros con 29 céntimos. El de INFIC en plata, clara por 42 euros con 45 céntimos. El de Anne McKay negro por 23 euros con 61 céntimos. El de Wiss Fox en gris por 19 euros con 69 céntimos. Y el Lomen Vector de HP por 10 euros con 84 céntimos. ¿Te interesa alguno?",
             "wer": {
-              "wer": 0.04054054054054054,
+              "wer": 0.0945945945945946,
               "reference_words": 74,
-              "hits": 71,
-              "substitutions": 3,
+              "hits": 68,
+              "substitutions": 6,
               "deletions": 0,
-              "insertions": 0
+              "insertions": 1
             },
-            "similarity": 0.745800269322805
+            "similarity": 0.7089694964991978,
+            "similarity_real": 0.2640910728027569
           },
           {
             "turn": 2,
             "spoken_text": "Hecho, añadidas dos unidades. En el carrito hay dos unidades de Raton inalámbrico a once euros cada una, veintidós euros. Total: veintidós euros.",
-            "heard": "Hecho, añadidas dos unidades. En el carrito hay dos unidades de ratón inalámbrico a 11 euros cada una, 22 euros. Total, 22 euros.",
+            "heard": "Hecho. Añadidas dos unidades. En el carrito hay dos unidades de ratón inalámbrico a 11 euros cada una. 22 euros. Total. 22 euros.",
             "wer": {
               "wer": 0.0,
               "reference_words": 23,
@@ -1249,40 +1279,43 @@
               "deletions": 0,
               "insertions": 0
             },
-            "similarity": 0.7520204825859185
+            "similarity": 0.6847194486897664,
+            "similarity_real": 0.2765067166927785
           },
           {
             "turn": 3,
             "spoken_text": "Te repito el pedido antes de registrarlo: dos unidades de Raton inalámbrico a once euros cada una, veintidós euros. Total: veintidós euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
-            "heard": "Te repito el pedido antes de registrarlo, dos unidades de ratón inalámbrico a 11 euros cada una, 22 euros. ¿Total? ¿22 euros? ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+            "heard": "Te repito el pedido antes de registrarlo. Dos unidades de ratón inalámbrico a 11 euros cada una. 22 euros. Total, 22 euros. ¿Lo confirmo? Dice para registrarlo. O dime qué quieres cambiar.",
             "wer": {
-              "wer": 0.0,
+              "wer": 0.06060606060606061,
               "reference_words": 33,
-              "hits": 33,
-              "substitutions": 0,
-              "deletions": 0,
+              "hits": 31,
+              "substitutions": 1,
+              "deletions": 1,
               "insertions": 0
             },
-            "similarity": 0.7470167374793384
+            "similarity": 0.7239212650834606,
+            "similarity_real": 0.28362351024512245
           },
           {
             "turn": 4,
             "spoken_text": "Hecho, añadidas diez unidades más. En total, doce unidades de Raton inalámbrico a once euros cada una, ciento treinta y dos euros. Total: ciento treinta y dos euros. En el carrito hay doce unidades de Raton inalámbrico a once euros cada una, ciento treinta y dos euros. Total: ciento treinta y dos euros.",
-            "heard": "Hecho, añadidas 10 unidades más. En total, 12 unidades de ratón inalámbrico a 11 euros cada una, 132 euros. Total, 132 euros. En el carrito hay 12 unidades de ratón inalámbrico a 11 euros cada una, 132 euros. Total, 132 euros.",
+            "heard": "Hecho, añadidas 10 unidades más. En total, 12 unidades de ratón inalámbrico a 11 euros cada una, 132 euros. Total, 132 euros. En el carrito hay 12 unidades de ratón inalámbrico a 11 euros cada una, 132 euros. Total, 132 euros. Mayum",
             "wer": {
-              "wer": 0.0,
+              "wer": 0.018867924528301886,
               "reference_words": 53,
               "hits": 53,
               "substitutions": 0,
               "deletions": 0,
-              "insertions": 0
+              "insertions": 1
             },
-            "similarity": 0.7941483856449075
+            "similarity": 0.7444020839846412,
+            "similarity_real": 0.30196675822767666
           },
           {
             "turn": 5,
             "spoken_text": "Te repito el pedido antes de registrarlo: doce unidades de Raton inalámbrico a once euros cada una, ciento treinta y dos euros. Total: ciento treinta y dos euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
-            "heard": "Te repito el pedido antes de registrarlo, 12 unidades de ratón inalámbrico a 11 euros cada una, 132 euros. Total, 132 euros. ¿Lo confirmo? Di sí para registrarlo o dime qué quieres cambiar.",
+            "heard": "Te repito el pedido antes de registrarlo. 12 unidades de ratón inalámbrico a 11 euros cada una. 132 euros. Total, 132 euros. ¿Lo confirmo? ¿Di sí para registrarlo? ¿O dime qué quieres cambiar?",
             "wer": {
               "wer": 0.0,
               "reference_words": 39,
@@ -1291,12 +1324,13 @@
               "deletions": 0,
               "insertions": 0
             },
-            "similarity": 0.7379131974344041
+            "similarity": 0.7184452282045815,
+            "similarity_real": 0.2706483660306742
           },
           {
             "turn": 6,
             "spoken_text": "Pedido número uno registrado: doce unidades de Raton inalámbrico a once euros cada una, ciento treinta y dos euros. Total: ciento treinta y dos euros. Gracias por tu compra.",
-            "heard": "Pedido número 1 registrado. 12 unidades de ratón inalámbrico a 11 euros cada una, 132 euros. Total, 132 euros. Gracias por tu compra.",
+            "heard": "Pedido número 1 registrado, 12 unidades de ratón inalámbrico a 11 euros cada una, 132 euros. Total, 132 euros. Gracias por tu compra.",
             "wer": {
               "wer": 0.0,
               "reference_words": 29,
@@ -1305,7 +1339,8 @@
               "deletions": 0,
               "insertions": 0
             },
-            "similarity": 0.7519895964534605
+            "similarity": 0.738552906496767,
+            "similarity_real": 0.2931521484977953
           }
         ]
       }
@@ -1598,29 +1633,32 @@
       "tts": {
         "summary": {
           "cases": 8,
-          "wer": 0.02064896755162242,
-          "similarity_mean": 0.749970388500366,
-          "similarity_min": 0.7232122755283881
+          "wer": 0.05604719764011799,
+          "similarity_mean": 0.7158115744236165,
+          "similarity_min": 0.6956553408152003,
+          "similarity_real_mean": 0.27372458259219007,
+          "similarity_real_min": 0.2636670243099447
         },
         "cases": [
           {
             "turn": 1,
             "spoken_text": "Tengo la lámpara de escritorio LED de SLATOR por cuarenta y cuatro euros con veinte céntimos, la de SENXINGYAN por treinta y seis euros con sesenta y un céntimos, la de SOFIL por treinta y ocho euros con setenta y cuatro céntimos, la de Prtukyt por veintitrés euros con ochenta y seis céntimos y la de HyAdierTech por once euros con ochenta y siete céntimos. ¿Te interesa alguna?",
-            "heard": "Tengo la lámpara de escritorio LED de Eslator por 44 euros con 20 céntimos, la de Sensignan por 36 euros con 61 céntimos, la de Sofil por 38 euros con 74 céntimos, la de Protukit por 23 euros con 86 céntimos Y la de Iadiertec por 11 euros con 87 céntimos ¿Te interesa alguna?",
+            "heard": "Tengo la lámpara de escritorio LED de Slator por 44 euros con 20 céntimos, la de Senzingian por 36 euros con 61 céntimos, la de Sofil por 38 euros con 74 céntimos, la de Pertuki por 23 euros con 86 céntimos y la de Jadirtec por 11 euros con 87 céntimos. ¿Te interesa alguna?",
             "wer": {
-              "wer": 0.058823529411764705,
+              "wer": 0.04411764705882353,
               "reference_words": 68,
-              "hits": 64,
-              "substitutions": 4,
+              "hits": 65,
+              "substitutions": 3,
               "deletions": 0,
               "insertions": 0
             },
-            "similarity": 0.7408427065505305
+            "similarity": 0.7340937100819993,
+            "similarity_real": 0.26891687183235125
           },
           {
             "turn": 2,
             "spoken_text": "Hecho, añadidas tres unidades. El total es cuarenta y cinco euros. En el carrito hay tres unidades de Lámpara Escritorio LED a quince euros cada una, cuarenta y cinco euros. Total: cuarenta y cinco euros.",
-            "heard": "Hecho, añadidas 3 unidades. El total es 45 euros. En el carrito hay 3 unidades de lámpara escritorio LED a 15 euros cada una. 45 euros. Total, 45 euros.",
+            "heard": "Hecho. Añadidas tres unidades. El total es 45 euros. En el carrito hay tres unidades de lámpara escritorio LED a 15 euros cada una. 45 euros. Total, 45 euros.",
             "wer": {
               "wer": 0.0,
               "reference_words": 35,
@@ -1629,77 +1667,83 @@
               "deletions": 0,
               "insertions": 0
             },
-            "similarity": 0.7435401708703316
+            "similarity": 0.7190925388766823,
+            "similarity_real": 0.2856097120397813
           },
           {
             "turn": 3,
             "spoken_text": "Te repito el pedido antes de registrarlo: tres unidades de Lámpara Escritorio LED a quince euros cada una, cuarenta y cinco euros. Total: cuarenta y cinco euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
-            "heard": "Te repito el pedido antes de registrarlo, 3 unidades de lámpara escritorio, le da 15 euros cada una, 45 euros, total 45 euros, lo confirmo, di si para registrarlo, o dime que quieres cambiar.",
+            "heard": "Te repito el pedido antes de registrarlo. Tres unidades de lámpara escritorio. Leda 15 euros cada una. 45 euros. Total, 45 euros. ¿Lo confirmo? Dice sí para registrarlo. O dime qué quieres cambiar.",
             "wer": {
-              "wer": 0.05263157894736842,
+              "wer": 0.07894736842105263,
               "reference_words": 38,
-              "hits": 36,
+              "hits": 35,
               "substitutions": 2,
-              "deletions": 0,
+              "deletions": 1,
               "insertions": 0
             },
-            "similarity": 0.7232122755283881
+            "similarity": 0.7191744052173195,
+            "similarity_real": 0.2713145198947039
           },
           {
             "turn": 4,
             "spoken_text": "No he registrado el pedido porque la tienda cambió después de la cotización. De Lámpara Escritorio LED solo queda una unidad y habías pedido tres. Puedo dejarlo en uno. Como alternativa tengo: Lámpara Escritorio LED a veintitrés euros con veintitrés céntimos, con dieciséis en existencias, Lámpara Escritorio LED a treinta y cuatro euros con ochenta y seis céntimos, con veinticinco en existencias, Lámpara de escritorio LED Lámpara de lectura a veintitrés euros con ochenta y seis céntimos, con treinta y cuatro en existencias. ¿Qué prefieres?",
-            "heard": "No he registrado el pedido porque la tienda cambió después de la cotización. De lámpara escritorio LED solo queda una unidad y habías pedido tres. Puedo dejarlo en uno. Como alternativa tengo lámpara escritorio LED a 23 euros con 23 céntimos con 16 en existencias. Lámpara escritorio LED a 34 euros con 86 céntimos con 25 en existencias. Lámpara de escritorio, LED lámpara de lectura 23 euros, con 86 céntimos, con 34 en existencias ¿Qué prefieres?",
+            "heard": "No he registrado el pedido porque la tienda cambió después de la cotización. De lámpara de escritorio, LED solo queda una unidad y habías pedido tres. Puedo dejarlo en uno. Como alternativa tengo, lámpara de escritorio LED a 23 euros con 23 céntimos, con 16 en existencias. Lámpara de escritorio LED a 34 euros con 86 céntimos, con 25 en existencias. Lámpara de escritorio LED lámpara. de lectura a 23 euros con 86 céntimos con 34 en existencias. ¿Qué prefieres?",
             "wer": {
-              "wer": 0.011764705882352941,
+              "wer": 0.03529411764705882,
               "reference_words": 85,
-              "hits": 84,
+              "hits": 85,
               "substitutions": 0,
-              "deletions": 1,
-              "insertions": 0
+              "deletions": 0,
+              "insertions": 3
             },
-            "similarity": 0.7592862414186846
+            "similarity": 0.7175662558639504,
+            "similarity_real": 0.2636670243099447
           },
           {
             "turn": 5,
             "spoken_text": "Hecho, el carrito ahora tiene una unidad de Lámpara Escritorio LED a quince euros, total quince euros. En el carrito hay una unidad de Lámpara Escritorio LED a quince euros cada una, quince euros. Total: quince euros.",
-            "heard": "Hecho, el carrito ahora tiene una unidad de lámpara escritorio LED a 15 euros. Total 15 euros. En el carrito hay una unidad de lámpara escritorio LED a 15 euros cada una. 15 euros. Total, 15 euros.",
+            "heard": "Hecho, el carrito ahora tiene una unidad de lámpara escritorio LED a 15 euros. Total 15 euros. En el carrito hay una unidad de lámpara escritorio LED a 15 euros cada una. 15 euros. Cada una. 15 euros. Total. 15 euros.",
             "wer": {
-              "wer": 0.0,
+              "wer": 0.10810810810810811,
               "reference_words": 37,
               "hits": 37,
               "substitutions": 0,
               "deletions": 0,
-              "insertions": 0
+              "insertions": 4
             },
-            "similarity": 0.7518616127586162
+            "similarity": 0.6956553408152003,
+            "similarity_real": 0.26637770197122207
           },
           {
             "turn": 6,
             "spoken_text": "Te repito el pedido antes de registrarlo: una unidad de Lámpara Escritorio LED a quince euros cada una, quince euros. Total: quince euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
-            "heard": "Te repito el pedido antes de registrarlo. Una unidad de lámpara escritorio LED a 15 euros cada una 15 euros. ¿Total? 15 euros. ¿Lo confirmo? Di sí para registrarlo o dime qué quieres cambiar.",
+            "heard": "Te repito el pedido antes de registrarlo. Una unidad de lámpara escritorio LED a 15 euros cada una. 15 euros. Total, 15 euros. Lo confirmo. Dice para registrarlo. O dime qué quieres cambiar.",
             "wer": {
-              "wer": 0.0,
+              "wer": 0.058823529411764705,
               "reference_words": 34,
-              "hits": 34,
-              "substitutions": 0,
-              "deletions": 0,
+              "hits": 32,
+              "substitutions": 1,
+              "deletions": 1,
               "insertions": 0
             },
-            "similarity": 0.7525128273364546
+            "similarity": 0.7126719453523477,
+            "similarity_real": 0.27013587445774895
           },
           {
             "turn": 7,
             "spoken_text": "Pedido número uno registrado: una unidad de Lámpara Escritorio LED a quince euros cada una, quince euros. Total: quince euros. Gracias por tu compra.",
-            "heard": "Pedido número 1 registrado. Una unidad de lámpara escritorio LED a 15 euros cada una. 15 euros. Total, 15 euros. Gracias por tu compra.",
+            "heard": "Pedido número 1 registrado. Una unidad de lámpara escritorio. Le da 15 euros cada una. 15 euros. Total. 15 euros. Gracias por tu compra. Mua, DJ.",
             "wer": {
-              "wer": 0.0,
+              "wer": 0.16666666666666666,
               "reference_words": 24,
-              "hits": 24,
-              "substitutions": 0,
+              "hits": 22,
+              "substitutions": 2,
               "deletions": 0,
-              "insertions": 0
+              "insertions": 2
             },
-            "similarity": 0.7662833121553903
+            "similarity": 0.7147530656035294,
+            "similarity_real": 0.29311974388161055
           },
           {
             "turn": 8,
@@ -1713,7 +1757,8 @@
               "deletions": 0,
               "insertions": 0
             },
-            "similarity": 0.762223961384532
+            "similarity": 0.7134853335779031,
+            "similarity_real": 0.2706552123501579
           }
         ]
       }
@@ -1723,5 +1768,9 @@
     "asr": "large-v3-turbo",
     "speaker": "speechbrain/spkrec-ecapa-voxceleb"
   },
-  "reference": "audio/referencia/referencia.wav"
+  "reference": "audio/referencia/referencia.wav",
+  "real_recordings": {
+    "count": 31,
+    "similarity_among": 0.37742301128777506
+  }
 }

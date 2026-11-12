@@ -6,9 +6,9 @@
   "voice": true,
   "input": "audio",
   "audio_source": "grabaciones del usuario",
-  "user_id": "eval-01f6a90e-06_cambio_stock_confirmacion_repetida",
+  "user_id": "eval-07f6aa19-06_cambio_stock_confirmacion_repetida",
   "threads": [
-    "eval-01f6a90e-06_cambio_stock_confirmacion_repetida-c1"
+    "eval-07f6aa19-06_cambio_stock_confirmacion_repetida-c1"
   ],
   "names": {
     "elegida": "B085CHJ9BD"
@@ -25,7 +25,7 @@
       "response": "Tengo la lámpara de escritorio LED de SLATOR por 44,20 €, la de SENXINGYAN por 36,61 €, la de SOFIL por 38,74 €, la de Prtukyt por 23,86 € y la de HyAdierTech por 11,87 €. ¿Te interesa alguna?",
       "spoken_text": "Tengo la lámpara de escritorio LED de SLATOR por cuarenta y cuatro euros con veinte céntimos, la de SENXINGYAN por treinta y seis euros con sesenta y un céntimos, la de SOFIL por treinta y ocho euros con setenta y cuatro céntimos, la de Prtukyt por veintitrés euros con ochenta y seis céntimos y la de HyAdierTech por once euros con ochenta y siete céntimos. ¿Te interesa alguna?",
       "output_audio": "respuesta_01.wav",
-      "output_seconds": 38.05733333333333,
+      "output_seconds": 21.982666666666667,
       "awaiting_confirmation": false,
       "operations": [
         {
@@ -40,21 +40,21 @@
         }
       ],
       "timings": {
-        "asr": 0.348,
-        "retrieval": 0.032,
-        "llm": 7.605,
-        "tools": 0.027,
-        "tts": 9.278,
-        "total": 17.291
+        "asr": 0.349,
+        "retrieval": 0.033,
+        "llm": 7.653,
+        "tools": 0.029,
+        "tts": 5.922,
+        "total": 13.986
       },
       "llm_steps": 2,
-      "tts_first_chunk_seconds": 4.106,
+      "tts_first_chunk_seconds": 2.469,
       "tts_retries": 0,
       "product_terms": [
         "lámpara de escritorio LED"
       ],
       "before": {
-        "cart_id": "eval-01f6a90e-06_cambio_stock_confirmacion_repetida-c1",
+        "cart_id": "eval-07f6aa19-06_cambio_stock_confirmacion_repetida-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -73,7 +73,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-01f6a90e-06_cambio_stock_confirmacion_repetida-c1",
+        "cart_id": "eval-07f6aa19-06_cambio_stock_confirmacion_repetida-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -185,7 +185,7 @@
       "response": "Hecho, añadidas tres unidades. El total es 45,00 €. En el carrito hay 3 unidades de «Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege…» a 15,00 € cada una, 45,00 €. Total: 45,00 €.",
       "spoken_text": "Hecho, añadidas tres unidades. El total es cuarenta y cinco euros. En el carrito hay tres unidades de Lámpara Escritorio LED a quince euros cada una, cuarenta y cinco euros. Total: cuarenta y cinco euros.",
       "output_audio": "respuesta_02.wav",
-      "output_seconds": 19.93,
+      "output_seconds": 26.522,
       "awaiting_confirmation": false,
       "operations": [
         {
@@ -201,21 +201,21 @@
         }
       ],
       "timings": {
-        "asr": 0.34,
+        "asr": 0.341,
         "retrieval": 0.0,
-        "llm": 5.465,
-        "tools": 0.056,
-        "tts": 4.698,
-        "total": 10.559
+        "llm": 5.437,
+        "tools": 0.053,
+        "tts": 7.657,
+        "total": 13.487
       },
       "llm_steps": 2,
-      "tts_first_chunk_seconds": 3.725,
+      "tts_first_chunk_seconds": 6.922,
       "tts_retries": 0,
       "product_terms": [
         "primera"
       ],
       "before": {
-        "cart_id": "eval-01f6a90e-06_cambio_stock_confirmacion_repetida-c1",
+        "cart_id": "eval-07f6aa19-06_cambio_stock_confirmacion_repetida-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -297,7 +297,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-01f6a90e-06_cambio_stock_confirmacion_repetida-c1",
+        "cart_id": "eval-07f6aa19-06_cambio_stock_confirmacion_repetida-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -348,7 +348,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-01f6a90e-06_cambio_stock_confirmacion_repetida-c1",
+              "cart_id": "eval-07f6aa19-06_cambio_stock_confirmacion_repetida-c1",
               "product_id": "B085CHJ9BD",
               "quantity": 3
             }
@@ -411,7 +411,7 @@
       "response": "Te repito el pedido antes de registrarlo: 3 unidades de «Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege…» a 15,00 € cada una, 45,00 €. Total: 45,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
       "spoken_text": "Te repito el pedido antes de registrarlo: tres unidades de Lámpara Escritorio LED a quince euros cada una, cuarenta y cinco euros. Total: cuarenta y cinco euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
       "output_audio": "respuesta_03.wav",
-      "output_seconds": 21.231333333333332,
+      "output_seconds": 17.466,
       "awaiting_confirmation": true,
       "operations": [
         {
@@ -424,19 +424,19 @@
         }
       ],
       "timings": {
-        "asr": 0.337,
+        "asr": 0.34,
         "retrieval": 0.0,
-        "llm": 2.37,
-        "tools": 0.043,
-        "tts": 4.959,
-        "total": 7.709
+        "llm": 2.368,
+        "tools": 0.037,
+        "tts": 4.729,
+        "total": 7.475
       },
       "llm_steps": 1,
-      "tts_first_chunk_seconds": 3.25,
+      "tts_first_chunk_seconds": 3.681,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-01f6a90e-06_cambio_stock_confirmacion_repetida-c1",
+        "cart_id": "eval-07f6aa19-06_cambio_stock_confirmacion_repetida-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -487,7 +487,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-01f6a90e-06_cambio_stock_confirmacion_repetida-c1",
+              "cart_id": "eval-07f6aa19-06_cambio_stock_confirmacion_repetida-c1",
               "product_id": "B085CHJ9BD",
               "quantity": 3
             }
@@ -524,13 +524,13 @@
         }
       },
       "after": {
-        "cart_id": "eval-01f6a90e-06_cambio_stock_confirmacion_repetida-c1",
+        "cart_id": "eval-07f6aa19-06_cambio_stock_confirmacion_repetida-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "f0383becec9a400897d2dc4ada4b5101",
+            "quote_id": "b8afdddd01d945b1a48a5aa463430678",
             "items": [
               {
                 "product_id": "B085CHJ9BD",
@@ -590,7 +590,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-01f6a90e-06_cambio_stock_confirmacion_repetida-c1",
+              "cart_id": "eval-07f6aa19-06_cambio_stock_confirmacion_repetida-c1",
               "product_id": "B085CHJ9BD",
               "quantity": 3
             }
@@ -664,13 +664,13 @@
       "response": "No he registrado el pedido porque la tienda cambió después de la cotización. De «Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege…» solo queda 1 unidad y habías pedido 3. Puedo dejarlo en 1. Como alternativa tengo: «Lámpara Escritorio LED, Flexo de Escritorio (Cuidado Ocular, Puerto…» a 23,23 €, con 16 en existencias; «Lámpara Escritorio LED,JUKSTG 5 Modos 10 Niveles de Brillo Lámpara de…» a 34,86 €, con 25 en existencias; «Lámpara de escritorio LED Lámpara de lectura de brazo Eye-Care…» a 23,86 €, con 34 en existencias. ¿Qué prefieres?",
       "spoken_text": "No he registrado el pedido porque la tienda cambió después de la cotización. De Lámpara Escritorio LED solo queda una unidad y habías pedido tres. Puedo dejarlo en uno. Como alternativa tengo: Lámpara Escritorio LED a veintitrés euros con veintitrés céntimos, con dieciséis en existencias, Lámpara Escritorio LED a treinta y cuatro euros con ochenta y seis céntimos, con veinticinco en existencias, Lámpara de escritorio LED Lámpara de lectura a veintitrés euros con ochenta y seis céntimos, con treinta y cuatro en existencias. ¿Qué prefieres?",
       "output_audio": "respuesta_04.wav",
-      "output_seconds": 44.622,
+      "output_seconds": 38.43533333333333,
       "awaiting_confirmation": false,
       "operations": [
         {
           "tool": "confirmar_pedido",
           "args": {
-            "quote_id": "f0383becec9a400897d2dc4ada4b5101"
+            "quote_id": "b8afdddd01d945b1a48a5aa463430678"
           },
           "reason": "el usuario confirmó la cotización",
           "ok": false,
@@ -689,25 +689,25 @@
         }
       ],
       "timings": {
-        "asr": 0.32,
-        "retrieval": 0.025,
+        "asr": 0.323,
+        "retrieval": 0.024,
         "llm": 0.0,
-        "tools": 0.014,
-        "tts": 10.659,
-        "total": 11.019
+        "tools": 0.018,
+        "tts": 10.439,
+        "total": 10.804
       },
       "llm_steps": 0,
-      "tts_first_chunk_seconds": 4.117,
+      "tts_first_chunk_seconds": 3.707,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-01f6a90e-06_cambio_stock_confirmacion_repetida-c1",
+        "cart_id": "eval-07f6aa19-06_cambio_stock_confirmacion_repetida-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "f0383becec9a400897d2dc4ada4b5101",
+            "quote_id": "b8afdddd01d945b1a48a5aa463430678",
             "items": [
               {
                 "product_id": "B085CHJ9BD",
@@ -767,7 +767,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-01f6a90e-06_cambio_stock_confirmacion_repetida-c1",
+              "cart_id": "eval-07f6aa19-06_cambio_stock_confirmacion_repetida-c1",
               "product_id": "B085CHJ9BD",
               "quantity": 3
             }
@@ -804,7 +804,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-01f6a90e-06_cambio_stock_confirmacion_repetida-c1",
+        "cart_id": "eval-07f6aa19-06_cambio_stock_confirmacion_repetida-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -841,7 +841,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-01f6a90e-06_cambio_stock_confirmacion_repetida-c1",
+              "cart_id": "eval-07f6aa19-06_cambio_stock_confirmacion_repetida-c1",
               "product_id": "B085CHJ9BD",
               "quantity": 3
             }
@@ -937,7 +937,7 @@
       "response": "Hecho, el carrito ahora tiene 1 unidad de «Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege…» a 15,00 €, total 15,00 €. En el carrito hay 1 unidad de «Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege…» a 15,00 € cada una, 15,00 €. Total: 15,00 €.",
       "spoken_text": "Hecho, el carrito ahora tiene una unidad de Lámpara Escritorio LED a quince euros, total quince euros. En el carrito hay una unidad de Lámpara Escritorio LED a quince euros cada una, quince euros. Total: quince euros.",
       "output_audio": "respuesta_05.wav",
-      "output_seconds": 18.948666666666668,
+      "output_seconds": 18.863333333333333,
       "awaiting_confirmation": false,
       "operations": [
         {
@@ -953,19 +953,19 @@
         }
       ],
       "timings": {
-        "asr": 0.337,
+        "asr": 0.339,
         "retrieval": 0.0,
-        "llm": 6.723,
-        "tools": 0.054,
-        "tts": 4.538,
-        "total": 11.651
+        "llm": 6.787,
+        "tools": 0.053,
+        "tts": 5.21,
+        "total": 12.389
       },
       "llm_steps": 2,
-      "tts_first_chunk_seconds": 3.865,
+      "tts_first_chunk_seconds": 4.454,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-01f6a90e-06_cambio_stock_confirmacion_repetida-c1",
+        "cart_id": "eval-07f6aa19-06_cambio_stock_confirmacion_repetida-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -1002,7 +1002,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-01f6a90e-06_cambio_stock_confirmacion_repetida-c1",
+              "cart_id": "eval-07f6aa19-06_cambio_stock_confirmacion_repetida-c1",
               "product_id": "B085CHJ9BD",
               "quantity": 3
             }
@@ -1047,7 +1047,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-01f6a90e-06_cambio_stock_confirmacion_repetida-c1",
+        "cart_id": "eval-07f6aa19-06_cambio_stock_confirmacion_repetida-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -1084,7 +1084,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-01f6a90e-06_cambio_stock_confirmacion_repetida-c1",
+              "cart_id": "eval-07f6aa19-06_cambio_stock_confirmacion_repetida-c1",
               "product_id": "B085CHJ9BD",
               "quantity": 1
             }
@@ -1163,7 +1163,7 @@
       "response": "Te repito el pedido antes de registrarlo: 1 unidad de «Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege…» a 15,00 € cada una, 15,00 €. Total: 15,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
       "spoken_text": "Te repito el pedido antes de registrarlo: una unidad de Lámpara Escritorio LED a quince euros cada una, quince euros. Total: quince euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
       "output_audio": "respuesta_06.wav",
-      "output_seconds": 21.786,
+      "output_seconds": 17.00733333333333,
       "awaiting_confirmation": true,
       "operations": [
         {
@@ -1176,19 +1176,19 @@
         }
       ],
       "timings": {
-        "asr": 0.334,
+        "asr": 0.333,
         "retrieval": 0.0,
-        "llm": 2.13,
-        "tools": 0.041,
-        "tts": 5.077,
-        "total": 7.582
+        "llm": 2.147,
+        "tools": 0.042,
+        "tts": 4.571,
+        "total": 7.093
       },
       "llm_steps": 1,
-      "tts_first_chunk_seconds": 3.362,
+      "tts_first_chunk_seconds": 3.524,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-01f6a90e-06_cambio_stock_confirmacion_repetida-c1",
+        "cart_id": "eval-07f6aa19-06_cambio_stock_confirmacion_repetida-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -1225,7 +1225,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-01f6a90e-06_cambio_stock_confirmacion_repetida-c1",
+              "cart_id": "eval-07f6aa19-06_cambio_stock_confirmacion_repetida-c1",
               "product_id": "B085CHJ9BD",
               "quantity": 1
             }
@@ -1270,13 +1270,13 @@
         }
       },
       "after": {
-        "cart_id": "eval-01f6a90e-06_cambio_stock_confirmacion_repetida-c1",
+        "cart_id": "eval-07f6aa19-06_cambio_stock_confirmacion_repetida-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "9c9195a6838b43a4b384dbaef5166248",
+            "quote_id": "dbc30bab35594a56b34aaadd3a4e94d5",
             "items": [
               {
                 "product_id": "B085CHJ9BD",
@@ -1322,7 +1322,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-01f6a90e-06_cambio_stock_confirmacion_repetida-c1",
+              "cart_id": "eval-07f6aa19-06_cambio_stock_confirmacion_repetida-c1",
               "product_id": "B085CHJ9BD",
               "quantity": 1
             }
@@ -1396,13 +1396,13 @@
       "response": "Pedido número 1 registrado: 1 unidad de «Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege…» a 15,00 € cada una, 15,00 €. Total: 15,00 €. Gracias por tu compra.",
       "spoken_text": "Pedido número uno registrado: una unidad de Lámpara Escritorio LED a quince euros cada una, quince euros. Total: quince euros. Gracias por tu compra.",
       "output_audio": "respuesta_07.wav",
-      "output_seconds": 12.949333333333334,
+      "output_seconds": 17.365333333333332,
       "awaiting_confirmation": false,
       "operations": [
         {
           "tool": "confirmar_pedido",
           "args": {
-            "quote_id": "9c9195a6838b43a4b384dbaef5166248"
+            "quote_id": "dbc30bab35594a56b34aaadd3a4e94d5"
           },
           "reason": "el usuario confirmó la cotización",
           "ok": true,
@@ -1411,25 +1411,25 @@
         }
       ],
       "timings": {
-        "asr": 0.32,
+        "asr": 0.324,
         "retrieval": 0.0,
         "llm": 0.0,
-        "tools": 0.04,
-        "tts": 3.11,
-        "total": 3.471
+        "tools": 0.042,
+        "tts": 4.908,
+        "total": 5.274
       },
       "llm_steps": 0,
-      "tts_first_chunk_seconds": 3.089,
+      "tts_first_chunk_seconds": 4.898,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-01f6a90e-06_cambio_stock_confirmacion_repetida-c1",
+        "cart_id": "eval-07f6aa19-06_cambio_stock_confirmacion_repetida-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "9c9195a6838b43a4b384dbaef5166248",
+            "quote_id": "dbc30bab35594a56b34aaadd3a4e94d5",
             "items": [
               {
                 "product_id": "B085CHJ9BD",
@@ -1475,7 +1475,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-01f6a90e-06_cambio_stock_confirmacion_repetida-c1",
+              "cart_id": "eval-07f6aa19-06_cambio_stock_confirmacion_repetida-c1",
               "product_id": "B085CHJ9BD",
               "quantity": 1
             }
@@ -1520,7 +1520,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-01f6a90e-06_cambio_stock_confirmacion_repetida-c1",
+        "cart_id": "eval-07f6aa19-06_cambio_stock_confirmacion_repetida-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -1528,7 +1528,7 @@
           "quote": null,
           "order": {
             "order_id": 1,
-            "quote_id": "9c9195a6838b43a4b384dbaef5166248",
+            "quote_id": "dbc30bab35594a56b34aaadd3a4e94d5",
             "items": [
               {
                 "product_id": "B085CHJ9BD",
@@ -1570,7 +1570,7 @@
           "orders": [
             {
               "order_id": 1,
-              "quote_id": "9c9195a6838b43a4b384dbaef5166248",
+              "quote_id": "dbc30bab35594a56b34aaadd3a4e94d5",
               "total_cents": 1500
             }
           ],
@@ -1644,13 +1644,13 @@
       "response": "Ese pedido ya estaba registrado con el número 1, así que no lo he duplicado. Total: 15,00 €.",
       "spoken_text": "Ese pedido ya estaba registrado con el número uno, así que no lo he duplicado. Total: quince euros.",
       "output_audio": "respuesta_08.wav",
-      "output_seconds": 9.194666666666667,
+      "output_seconds": 7.189333333333333,
       "awaiting_confirmation": false,
       "operations": [
         {
           "tool": "confirmar_pedido",
           "args": {
-            "quote_id": "9c9195a6838b43a4b384dbaef5166248"
+            "quote_id": "dbc30bab35594a56b34aaadd3a4e94d5"
           },
           "reason": "el usuario confirmó la cotización",
           "ok": true,
@@ -1659,19 +1659,19 @@
         }
       ],
       "timings": {
-        "asr": 0.322,
+        "asr": 0.325,
         "retrieval": 0.0,
         "llm": 0.0,
-        "tools": 0.034,
-        "tts": 2.13,
-        "total": 2.486
+        "tools": 0.038,
+        "tts": 1.914,
+        "total": 2.277
       },
       "llm_steps": 0,
-      "tts_first_chunk_seconds": 2.114,
+      "tts_first_chunk_seconds": 1.899,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-01f6a90e-06_cambio_stock_confirmacion_repetida-c1",
+        "cart_id": "eval-07f6aa19-06_cambio_stock_confirmacion_repetida-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -1679,7 +1679,7 @@
           "quote": null,
           "order": {
             "order_id": 1,
-            "quote_id": "9c9195a6838b43a4b384dbaef5166248",
+            "quote_id": "dbc30bab35594a56b34aaadd3a4e94d5",
             "items": [
               {
                 "product_id": "B085CHJ9BD",
@@ -1721,7 +1721,7 @@
           "orders": [
             {
               "order_id": 1,
-              "quote_id": "9c9195a6838b43a4b384dbaef5166248",
+              "quote_id": "dbc30bab35594a56b34aaadd3a4e94d5",
               "total_cents": 1500
             }
           ],
@@ -1774,7 +1774,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-01f6a90e-06_cambio_stock_confirmacion_repetida-c1",
+        "cart_id": "eval-07f6aa19-06_cambio_stock_confirmacion_repetida-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -1782,7 +1782,7 @@
           "quote": null,
           "order": {
             "order_id": 1,
-            "quote_id": "9c9195a6838b43a4b384dbaef5166248",
+            "quote_id": "dbc30bab35594a56b34aaadd3a4e94d5",
             "items": [
               {
                 "product_id": "B085CHJ9BD",
@@ -1824,7 +1824,7 @@
           "orders": [
             {
               "order_id": 1,
-              "quote_id": "9c9195a6838b43a4b384dbaef5166248",
+              "quote_id": "dbc30bab35594a56b34aaadd3a4e94d5",
               "total_cents": 1500
             }
           ],
@@ -1890,7 +1890,7 @@
   ],
   "final": {
     "snapshot": {
-      "cart_id": "eval-01f6a90e-06_cambio_stock_confirmacion_repetida-c1",
+      "cart_id": "eval-07f6aa19-06_cambio_stock_confirmacion_repetida-c1",
       "state": {
         "budget_cents": null,
         "preferences": [],
@@ -1898,7 +1898,7 @@
         "quote": null,
         "order": {
           "order_id": 1,
-          "quote_id": "9c9195a6838b43a4b384dbaef5166248",
+          "quote_id": "dbc30bab35594a56b34aaadd3a4e94d5",
           "items": [
             {
               "product_id": "B085CHJ9BD",
@@ -1940,7 +1940,7 @@
         "orders": [
           {
             "order_id": 1,
-            "quote_id": "9c9195a6838b43a4b384dbaef5166248",
+            "quote_id": "dbc30bab35594a56b34aaadd3a4e94d5",
             "total_cents": 1500
           }
         ],
@@ -2049,20 +2049,20 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 3.04,
-        "max": 7.61
+        "mean": 3.05,
+        "max": 7.65
       },
       "tools": {
         "mean": 0.04,
-        "max": 0.06
+        "max": 0.05
       },
       "tts": {
-        "mean": 5.56,
-        "max": 10.66
+        "mean": 5.67,
+        "max": 10.44
       },
       "total": {
-        "mean": 8.97,
-        "max": 17.29
+        "mean": 9.1,
+        "max": 13.99
       }
     },
     "with_llm": {
@@ -2076,31 +2076,31 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 4.86,
-        "max": 7.61
+        "mean": 4.88,
+        "max": 7.65
       },
       "tools": {
         "mean": 0.04,
-        "max": 0.06
+        "max": 0.05
       },
       "tts": {
-        "mean": 5.71,
-        "max": 9.28
+        "mean": 5.62,
+        "max": 7.66
       },
       "total": {
-        "mean": 10.96,
-        "max": 17.29
+        "mean": 10.89,
+        "max": 13.99
       }
     },
     "without_llm": {
       "turns": 3,
       "asr": {
         "mean": 0.32,
-        "max": 0.32
+        "max": 0.33
       },
       "retrieval": {
         "mean": 0.01,
-        "max": 0.03
+        "max": 0.02
       },
       "llm": {
         "mean": 0.0,
@@ -2111,12 +2111,12 @@
         "max": 0.04
       },
       "tts": {
-        "mean": 5.3,
-        "max": 10.66
+        "mean": 5.75,
+        "max": 10.44
       },
       "total": {
-        "mean": 5.66,
-        "max": 11.02
+        "mean": 6.12,
+        "max": 10.8
       }
     }
   }

@@ -6,9 +6,9 @@
   "voice": true,
   "input": "audio",
   "audio_source": "grabaciones del usuario",
-  "user_id": "eval-01f6a90e-01_compra_confirmada",
+  "user_id": "eval-07f6aa19-01_compra_confirmada",
   "threads": [
-    "eval-01f6a90e-01_compra_confirmada-c1"
+    "eval-07f6aa19-01_compra_confirmada-c1"
   ],
   "names": {
     "elegida": "B088MC6DPT"
@@ -25,7 +25,7 @@
       "response": "Tengo una cafetera Nespresso de FRHOME por 6,13 euros, una cafetera Gastroback por 46,24 euros, una Breville Barista Max por 2,25 euros, un libro 'El amor huele a café' por 25,16 euros y una cafetera De'Longhi por 44,50 euros. ¿Te interesa alguna? He anotado un presupuesto de 60,00 €.",
       "spoken_text": "Tengo una cafetera Nespresso de FRHOME por seis euros con trece céntimos, una cafetera Gastroback por cuarenta y seis euros con veinticuatro céntimos, una Breville Barista Max por dos euros con veinticinco céntimos, un libro El amor huele a café por veinticinco euros con dieciséis céntimos y una cafetera De'Longhi por cuarenta y cuatro euros con cincuenta céntimos. ¿Te interesa alguna? He anotado un presupuesto de sesenta euros.",
       "output_audio": "respuesta_01.wav",
-      "output_seconds": 35.096666666666664,
+      "output_seconds": 31.139333333333333,
       "awaiting_confirmation": false,
       "operations": [
         {
@@ -50,21 +50,21 @@
         }
       ],
       "timings": {
-        "asr": 0.548,
-        "retrieval": 0.03,
-        "llm": 9.955,
-        "tools": 0.047,
-        "tts": 7.802,
-        "total": 18.383
+        "asr": 0.569,
+        "retrieval": 0.031,
+        "llm": 10.012,
+        "tools": 0.035,
+        "tts": 7.981,
+        "total": 18.627
       },
       "llm_steps": 3,
-      "tts_first_chunk_seconds": 2.411,
+      "tts_first_chunk_seconds": 2.679,
       "tts_retries": 0,
       "product_terms": [
         "cafetera italiana"
       ],
       "before": {
-        "cart_id": "eval-01f6a90e-01_compra_confirmada-c1",
+        "cart_id": "eval-07f6aa19-01_compra_confirmada-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -83,7 +83,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-01f6a90e-01_compra_confirmada-c1",
+        "cart_id": "eval-07f6aa19-01_compra_confirmada-c1",
         "state": {
           "budget_cents": 6000,
           "preferences": [],
@@ -203,7 +203,7 @@
       "response": "Hecho, añadidas dos unidades. El total es 29,00 €. En el carrito hay 2 unidades de «FRHOME - Nespresso 120 Cápsulas de Café compatibles - Il Caffè…» a 14,50 € cada una, 29,00 €. Total: 29,00 €. Tu presupuesto es de 60,00 € y te quedan 31,00 €.",
       "spoken_text": "Hecho, añadidas dos unidades. El total es veintinueve euros. En el carrito hay dos unidades de FRHOME a catorce euros con cincuenta céntimos cada una, veintinueve euros. Total: veintinueve euros. Tu presupuesto es de sesenta euros y te quedan treinta y un euros.",
       "output_audio": "respuesta_02.wav",
-      "output_seconds": 21.839333333333332,
+      "output_seconds": 24.900666666666666,
       "awaiting_confirmation": false,
       "operations": [
         {
@@ -219,21 +219,21 @@
         }
       ],
       "timings": {
-        "asr": 0.331,
+        "asr": 0.336,
         "retrieval": 0.0,
-        "llm": 4.855,
-        "tools": 0.054,
-        "tts": 5.08,
-        "total": 10.32
+        "llm": 4.835,
+        "tools": 0.056,
+        "tts": 6.935,
+        "total": 12.163
       },
       "llm_steps": 2,
-      "tts_first_chunk_seconds": 3.746,
+      "tts_first_chunk_seconds": 5.693,
       "tts_retries": 0,
       "product_terms": [
         "primera"
       ],
       "before": {
-        "cart_id": "eval-01f6a90e-01_compra_confirmada-c1",
+        "cart_id": "eval-07f6aa19-01_compra_confirmada-c1",
         "state": {
           "budget_cents": 6000,
           "preferences": [],
@@ -315,7 +315,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-01f6a90e-01_compra_confirmada-c1",
+        "cart_id": "eval-07f6aa19-01_compra_confirmada-c1",
         "state": {
           "budget_cents": 6000,
           "preferences": [],
@@ -366,7 +366,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-01f6a90e-01_compra_confirmada-c1",
+              "cart_id": "eval-07f6aa19-01_compra_confirmada-c1",
               "product_id": "B088MC6DPT",
               "quantity": 2
             }
@@ -437,7 +437,7 @@
       "response": "Te repito el pedido antes de registrarlo: 2 unidades de «FRHOME - Nespresso 120 Cápsulas de Café compatibles - Il Caffè…» a 14,50 € cada una, 29,00 €. Total: 29,00 €. Tu presupuesto es de 60,00 € y te quedan 31,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
       "spoken_text": "Te repito el pedido antes de registrarlo: dos unidades de FRHOME a catorce euros con cincuenta céntimos cada una, veintinueve euros. Total: veintinueve euros. Tu presupuesto es de sesenta euros y te quedan treinta y un euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
       "output_audio": "respuesta_03.wav",
-      "output_seconds": 27.49266666666667,
+      "output_seconds": 21.786,
       "awaiting_confirmation": true,
       "operations": [
         {
@@ -450,19 +450,19 @@
         }
       ],
       "timings": {
-        "asr": 0.324,
+        "asr": 0.328,
         "retrieval": 0.0,
-        "llm": 1.969,
-        "tools": 0.044,
-        "tts": 6.382,
-        "total": 8.719
+        "llm": 1.988,
+        "tools": 0.042,
+        "tts": 5.795,
+        "total": 8.153
       },
       "llm_steps": 1,
-      "tts_first_chunk_seconds": 3.032,
+      "tts_first_chunk_seconds": 3.429,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-01f6a90e-01_compra_confirmada-c1",
+        "cart_id": "eval-07f6aa19-01_compra_confirmada-c1",
         "state": {
           "budget_cents": 6000,
           "preferences": [],
@@ -513,7 +513,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-01f6a90e-01_compra_confirmada-c1",
+              "cart_id": "eval-07f6aa19-01_compra_confirmada-c1",
               "product_id": "B088MC6DPT",
               "quantity": 2
             }
@@ -550,13 +550,13 @@
         }
       },
       "after": {
-        "cart_id": "eval-01f6a90e-01_compra_confirmada-c1",
+        "cart_id": "eval-07f6aa19-01_compra_confirmada-c1",
         "state": {
           "budget_cents": 6000,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "573e5b93cb9e4c86b092c47e4417d995",
+            "quote_id": "bfed945125d448c592c6cccc3092cf75",
             "items": [
               {
                 "product_id": "B088MC6DPT",
@@ -616,7 +616,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-01f6a90e-01_compra_confirmada-c1",
+              "cart_id": "eval-07f6aa19-01_compra_confirmada-c1",
               "product_id": "B088MC6DPT",
               "quantity": 2
             }
@@ -682,13 +682,13 @@
       "response": "Pedido número 1 registrado: 2 unidades de «FRHOME - Nespresso 120 Cápsulas de Café compatibles - Il Caffè…» a 14,50 € cada una, 29,00 €. Total: 29,00 €. Gracias por tu compra.",
       "spoken_text": "Pedido número uno registrado: dos unidades de FRHOME a catorce euros con cincuenta céntimos cada una, veintinueve euros. Total: veintinueve euros. Gracias por tu compra.",
       "output_audio": "respuesta_04.wav",
-      "output_seconds": 16.202666666666666,
+      "output_seconds": 10.816,
       "awaiting_confirmation": false,
       "operations": [
         {
           "tool": "confirmar_pedido",
           "args": {
-            "quote_id": "573e5b93cb9e4c86b092c47e4417d995"
+            "quote_id": "bfed945125d448c592c6cccc3092cf75"
           },
           "reason": "el usuario confirmó la cotización",
           "ok": true,
@@ -697,25 +697,25 @@
         }
       ],
       "timings": {
-        "asr": 0.319,
+        "asr": 0.321,
         "retrieval": 0.0,
         "llm": 0.0,
-        "tools": 0.042,
-        "tts": 3.876,
-        "total": 4.236
+        "tools": 0.04,
+        "tts": 2.968,
+        "total": 3.329
       },
       "llm_steps": 0,
-      "tts_first_chunk_seconds": 3.866,
+      "tts_first_chunk_seconds": 2.95,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-01f6a90e-01_compra_confirmada-c1",
+        "cart_id": "eval-07f6aa19-01_compra_confirmada-c1",
         "state": {
           "budget_cents": 6000,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "573e5b93cb9e4c86b092c47e4417d995",
+            "quote_id": "bfed945125d448c592c6cccc3092cf75",
             "items": [
               {
                 "product_id": "B088MC6DPT",
@@ -775,7 +775,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-01f6a90e-01_compra_confirmada-c1",
+              "cart_id": "eval-07f6aa19-01_compra_confirmada-c1",
               "product_id": "B088MC6DPT",
               "quantity": 2
             }
@@ -812,7 +812,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-01f6a90e-01_compra_confirmada-c1",
+        "cart_id": "eval-07f6aa19-01_compra_confirmada-c1",
         "state": {
           "budget_cents": 6000,
           "preferences": [],
@@ -820,7 +820,7 @@
           "quote": null,
           "order": {
             "order_id": 1,
-            "quote_id": "573e5b93cb9e4c86b092c47e4417d995",
+            "quote_id": "bfed945125d448c592c6cccc3092cf75",
             "items": [
               {
                 "product_id": "B088MC6DPT",
@@ -876,7 +876,7 @@
           "orders": [
             {
               "order_id": 1,
-              "quote_id": "573e5b93cb9e4c86b092c47e4417d995",
+              "quote_id": "bfed945125d448c592c6cccc3092cf75",
               "total_cents": 2900
             }
           ],
@@ -934,7 +934,7 @@
   ],
   "final": {
     "snapshot": {
-      "cart_id": "eval-01f6a90e-01_compra_confirmada-c1",
+      "cart_id": "eval-07f6aa19-01_compra_confirmada-c1",
       "state": {
         "budget_cents": 6000,
         "preferences": [],
@@ -942,7 +942,7 @@
         "quote": null,
         "order": {
           "order_id": 1,
-          "quote_id": "573e5b93cb9e4c86b092c47e4417d995",
+          "quote_id": "bfed945125d448c592c6cccc3092cf75",
           "items": [
             {
               "product_id": "B088MC6DPT",
@@ -998,7 +998,7 @@
         "orders": [
           {
             "order_id": 1,
-            "quote_id": "573e5b93cb9e4c86b092c47e4417d995",
+            "quote_id": "bfed945125d448c592c6cccc3092cf75",
             "total_cents": 2900
           }
         ],
@@ -1099,55 +1099,55 @@
     "all": {
       "turns": 4,
       "asr": {
-        "mean": 0.38,
-        "max": 0.55
+        "mean": 0.39,
+        "max": 0.57
       },
       "retrieval": {
         "mean": 0.01,
         "max": 0.03
       },
       "llm": {
-        "mean": 4.19,
-        "max": 9.96
+        "mean": 4.21,
+        "max": 10.01
       },
       "tools": {
-        "mean": 0.05,
-        "max": 0.05
+        "mean": 0.04,
+        "max": 0.06
       },
       "tts": {
-        "mean": 5.79,
-        "max": 7.8
+        "mean": 5.92,
+        "max": 7.98
       },
       "total": {
-        "mean": 10.41,
-        "max": 18.38
+        "mean": 10.57,
+        "max": 18.63
       }
     },
     "with_llm": {
       "turns": 3,
       "asr": {
-        "mean": 0.4,
-        "max": 0.55
+        "mean": 0.41,
+        "max": 0.57
       },
       "retrieval": {
         "mean": 0.01,
         "max": 0.03
       },
       "llm": {
-        "mean": 5.59,
-        "max": 9.96
+        "mean": 5.61,
+        "max": 10.01
       },
       "tools": {
-        "mean": 0.05,
-        "max": 0.05
+        "mean": 0.04,
+        "max": 0.06
       },
       "tts": {
-        "mean": 6.42,
-        "max": 7.8
+        "mean": 6.9,
+        "max": 7.98
       },
       "total": {
-        "mean": 12.47,
-        "max": 18.38
+        "mean": 12.98,
+        "max": 18.63
       }
     },
     "without_llm": {
@@ -1169,12 +1169,12 @@
         "max": 0.04
       },
       "tts": {
-        "mean": 3.88,
-        "max": 3.88
+        "mean": 2.97,
+        "max": 2.97
       },
       "total": {
-        "mean": 4.24,
-        "max": 4.24
+        "mean": 3.33,
+        "max": 3.33
       }
     }
   }

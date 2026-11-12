@@ -5,7 +5,7 @@
 - Tipo: `cambio_stock_confirmacion_repetida`
 - Qué se prueba: Con la cotización de tres unidades pendiente, la tienda se queda con una sola. La confirmación debe rechazarse sin tocar nada y ofrecer una salida. El usuario lo deja en una unidad, confirma y repite el sí: debe haber un único pedido.
 
-## Turno 1 (17.3 s)
+## Turno 1 (14.0 s)
 
 **Usuario (transcripción del ASR):** Busco una lámpara de escritorio LED.
 
@@ -21,7 +21,7 @@
 
 > **Suceso externo:** la tienda deja `B085CHJ9BD` (@elegida) con precio 15,00 € y existencias 10.
 
-## Turno 2 (10.6 s)
+## Turno 2 (13.5 s)
 
 **Usuario (transcripción del ASR):** Añade 3 de la primera.
 
@@ -35,7 +35,7 @@
 
 - ✔ `cart(lines=[{"product": "@elegida", "quantity": 3}])` — carrito: 3 × B085CHJ9BD
 
-## Turno 3 (7.7 s)
+## Turno 3 (7.5 s)
 
 **Usuario (transcripción del ASR):** Quiero cerrar el pedido.
 
@@ -50,11 +50,11 @@
 
 > **Suceso externo:** la tienda deja `B085CHJ9BD` (@elegida) con existencias 1.
 
-## Turno 4 (11.0 s)
+## Turno 4 (10.8 s)
 
 **Usuario (transcripción del ASR):** Sí.
 
-- `confirmar_pedido(quote_id="f0383becec9a400897d2dc4ada4b5101")` → RECHAZADO: [stock_insuficiente] Solo queda 1 unidad del producto B085CHJ9BD y se pidieron 3.
+- `confirmar_pedido(quote_id="b8afdddd01d945b1a48a5aa463430678")` → RECHAZADO: [stock_insuficiente] Solo queda 1 unidad del producto B085CHJ9BD y se pidieron 3.
 
 **Agente:** No he registrado el pedido porque la tienda cambió después de la cotización. De «Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege…» solo queda 1 unidad y habías pedido 3. Puedo dejarlo en 1. Como alternativa tengo: «Lámpara Escritorio LED, Flexo de Escritorio (Cuidado Ocular, Puerto…» a 23,23 €, con 16 en existencias; «Lámpara Escritorio LED,JUKSTG 5 Modos 10 Niveles de Brillo Lámpara de…» a 34,86 €, con 25 en existencias; «Lámpara de escritorio LED Lámpara de lectura de brazo Eye-Care…» a 23,86 €, con 34 en existencias. ¿Qué prefieres?
 
@@ -65,7 +65,7 @@
 - ✔ `cart(lines=[{"product": "@elegida", "quantity": 3}])` — carrito: 3 × B085CHJ9BD
 - ✔ `stock(product="@elegida", equals=1)` — existencias de B085CHJ9BD: 1
 
-## Turno 5 (11.7 s)
+## Turno 5 (12.4 s)
 
 **Usuario (transcripción del ASR):** Vale, déjalo en una.
 
@@ -78,7 +78,7 @@
 - ✔ `cart(lines=[{"product": "@elegida", "quantity": 1}])` — carrito: 1 × B085CHJ9BD
 - ✔ `orders(count=0)` — pedidos registrados: 0
 
-## Turno 6 (7.6 s)
+## Turno 6 (7.1 s)
 
 **Usuario (transcripción del ASR):** Cierra el pedido.
 
@@ -91,11 +91,11 @@
 - ✔ `awaiting_confirmation(value=true)` — esperando confirmación: sí
 - ✔ `orders(count=0)` — pedidos registrados: 0
 
-## Turno 7 (3.5 s)
+## Turno 7 (5.3 s)
 
 **Usuario (transcripción del ASR):** Sí.
 
-- `confirmar_pedido(quote_id="9c9195a6838b43a4b384dbaef5166248")` → OK: pedido registrado
+- `confirmar_pedido(quote_id="dbc30bab35594a56b34aaadd3a4e94d5")` → OK: pedido registrado
 
 **Agente:** Pedido número 1 registrado: 1 unidad de «Lámpara Escritorio LED, Flexo de Escritorio, La luz natural protege…» a 15,00 € cada una, 15,00 €. Total: 15,00 €. Gracias por tu compra.
 
@@ -103,13 +103,13 @@
 
 - ✔ `orders(count=1)` — pedidos registrados: 1
 
-## Turno 8 (2.5 s)
+## Turno 8 (2.3 s)
 
 **Usuario (transcripción del ASR):** sí
 
 **Texto correcto:** Sí.
 
-- `confirmar_pedido(quote_id="9c9195a6838b43a4b384dbaef5166248")` → OK: el pedido ya estaba registrado; no se duplicó
+- `confirmar_pedido(quote_id="dbc30bab35594a56b34aaadd3a4e94d5")` → OK: el pedido ya estaba registrado; no se duplicó
 
 **Agente:** Ese pedido ya estaba registrado con el número 1, así que no lo he duplicado. Total: 15,00 €.
 
@@ -139,14 +139,14 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.35 | 0.03 | 7.61 | 0.03 | 9.28 | 17.29 | 38.1 s |
-| 2 | 0.34 | 0.00 | 5.46 | 0.06 | 4.70 | 10.56 | 19.9 s |
-| 3 | 0.34 | 0.00 | 2.37 | 0.04 | 4.96 | 7.71 | 21.2 s |
-| 4 | 0.32 | 0.03 | 0.00 | 0.01 | 10.66 | 11.02 | 44.6 s |
-| 5 | 0.34 | 0.00 | 6.72 | 0.05 | 4.54 | 11.65 | 18.9 s |
-| 6 | 0.33 | 0.00 | 2.13 | 0.04 | 5.08 | 7.58 | 21.8 s |
-| 7 | 0.32 | 0.00 | 0.00 | 0.04 | 3.11 | 3.47 | 12.9 s |
-| 8 | 0.32 | 0.00 | 0.00 | 0.03 | 2.13 | 2.49 | 9.2 s |
-| **Media de los turnos con LLM (5)** | 0.34 | 0.01 | 4.86 | 0.04 | 5.71 | 10.96 | |
-| **Media de los turnos sin LLM (3)** | 0.32 | 0.01 | 0.00 | 0.03 | 5.30 | 5.66 | |
+| 1 | 0.35 | 0.03 | 7.65 | 0.03 | 5.92 | 13.99 | 22.0 s |
+| 2 | 0.34 | 0.00 | 5.44 | 0.05 | 7.66 | 13.49 | 26.5 s |
+| 3 | 0.34 | 0.00 | 2.37 | 0.04 | 4.73 | 7.47 | 17.5 s |
+| 4 | 0.32 | 0.02 | 0.00 | 0.02 | 10.44 | 10.80 | 38.4 s |
+| 5 | 0.34 | 0.00 | 6.79 | 0.05 | 5.21 | 12.39 | 18.9 s |
+| 6 | 0.33 | 0.00 | 2.15 | 0.04 | 4.57 | 7.09 | 17.0 s |
+| 7 | 0.32 | 0.00 | 0.00 | 0.04 | 4.91 | 5.27 | 17.4 s |
+| 8 | 0.33 | 0.00 | 0.00 | 0.04 | 1.91 | 2.28 | 7.2 s |
+| **Media de los turnos con LLM (5)** | 0.34 | 0.01 | 4.88 | 0.04 | 5.62 | 10.89 | |
+| **Media de los turnos sin LLM (3)** | 0.32 | 0.01 | 0.00 | 0.03 | 5.75 | 6.12 | |
 

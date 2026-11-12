@@ -6,9 +6,9 @@
   "voice": true,
   "input": "texto",
   "audio_source": null,
-  "user_id": "eval-01f6a90e-texto-03_cambio_cantidad",
+  "user_id": "eval-07f6aa19-texto-03_cambio_cantidad",
   "threads": [
-    "eval-01f6a90e-texto-03_cambio_cantidad-c1"
+    "eval-07f6aa19-texto-03_cambio_cantidad-c1"
   ],
   "names": {
     "elegida": "B07VQNY8PK"
@@ -51,11 +51,11 @@
       ],
       "timings": {
         "asr": 0.0,
-        "retrieval": 0.029,
-        "llm": 8.018,
-        "tools": 0.028,
+        "retrieval": 0.032,
+        "llm": 8.166,
+        "tools": 0.03,
         "tts": 0.0,
-        "total": 8.075
+        "total": 8.228
       },
       "llm_steps": 3,
       "tts_first_chunk_seconds": null,
@@ -64,7 +64,7 @@
         "botella de agua de acero inoxidable"
       ],
       "before": {
-        "cart_id": "eval-01f6a90e-texto-03_cambio_cantidad-c1",
+        "cart_id": "eval-07f6aa19-texto-03_cambio_cantidad-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -83,7 +83,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-01f6a90e-texto-03_cambio_cantidad-c1",
+        "cart_id": "eval-07f6aa19-texto-03_cambio_cantidad-c1",
         "state": {
           "budget_cents": 4500,
           "preferences": [],
@@ -213,10 +213,10 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 4.99,
-        "tools": 0.053,
+        "llm": 5.059,
+        "tools": 0.052,
         "tts": 0.0,
-        "total": 5.043
+        "total": 5.111
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
@@ -225,7 +225,7 @@
         "primera"
       ],
       "before": {
-        "cart_id": "eval-01f6a90e-texto-03_cambio_cantidad-c1",
+        "cart_id": "eval-07f6aa19-texto-03_cambio_cantidad-c1",
         "state": {
           "budget_cents": 4500,
           "preferences": [],
@@ -307,7 +307,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-01f6a90e-texto-03_cambio_cantidad-c1",
+        "cart_id": "eval-07f6aa19-texto-03_cambio_cantidad-c1",
         "state": {
           "budget_cents": 4500,
           "preferences": [],
@@ -358,7 +358,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-01f6a90e-texto-03_cambio_cantidad-c1",
+              "cart_id": "eval-07f6aa19-texto-03_cambio_cantidad-c1",
               "product_id": "B07VQNY8PK",
               "quantity": 2
             }
@@ -439,17 +439,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 4.91,
-        "tools": 0.043,
+        "llm": 4.974,
+        "tools": 0.053,
         "tts": 0.0,
-        "total": 4.952
+        "total": 5.027
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-01f6a90e-texto-03_cambio_cantidad-c1",
+        "cart_id": "eval-07f6aa19-texto-03_cambio_cantidad-c1",
         "state": {
           "budget_cents": 4500,
           "preferences": [],
@@ -500,7 +500,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-01f6a90e-texto-03_cambio_cantidad-c1",
+              "cart_id": "eval-07f6aa19-texto-03_cambio_cantidad-c1",
               "product_id": "B07VQNY8PK",
               "quantity": 2
             }
@@ -537,7 +537,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-01f6a90e-texto-03_cambio_cantidad-c1",
+        "cart_id": "eval-07f6aa19-texto-03_cambio_cantidad-c1",
         "state": {
           "budget_cents": 4500,
           "preferences": [],
@@ -588,7 +588,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-01f6a90e-texto-03_cambio_cantidad-c1",
+              "cart_id": "eval-07f6aa19-texto-03_cambio_cantidad-c1",
               "product_id": "B07VQNY8PK",
               "quantity": 4
             }
@@ -674,17 +674,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 2.098,
-        "tools": 0.039,
+        "llm": 2.119,
+        "tools": 0.04,
         "tts": 0.0,
-        "total": 2.137
+        "total": 2.159
       },
       "llm_steps": 1,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-01f6a90e-texto-03_cambio_cantidad-c1",
+        "cart_id": "eval-07f6aa19-texto-03_cambio_cantidad-c1",
         "state": {
           "budget_cents": 4500,
           "preferences": [],
@@ -735,7 +735,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-01f6a90e-texto-03_cambio_cantidad-c1",
+              "cart_id": "eval-07f6aa19-texto-03_cambio_cantidad-c1",
               "product_id": "B07VQNY8PK",
               "quantity": 4
             }
@@ -772,13 +772,13 @@
         }
       },
       "after": {
-        "cart_id": "eval-01f6a90e-texto-03_cambio_cantidad-c1",
+        "cart_id": "eval-07f6aa19-texto-03_cambio_cantidad-c1",
         "state": {
           "budget_cents": 4500,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "a6102310e33144a9a01d39ff71b21c1c",
+            "quote_id": "ea3f522b8ff8491280ffce616bace98b",
             "items": [
               {
                 "product_id": "B07VQNY8PK",
@@ -838,7 +838,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-01f6a90e-texto-03_cambio_cantidad-c1",
+              "cart_id": "eval-07f6aa19-texto-03_cambio_cantidad-c1",
               "product_id": "B07VQNY8PK",
               "quantity": 4
             }
@@ -910,7 +910,7 @@
         {
           "tool": "confirmar_pedido",
           "args": {
-            "quote_id": "a6102310e33144a9a01d39ff71b21c1c"
+            "quote_id": "ea3f522b8ff8491280ffce616bace98b"
           },
           "reason": "el usuario confirmó la cotización",
           "ok": true,
@@ -922,22 +922,22 @@
         "asr": 0.0,
         "retrieval": 0.0,
         "llm": 0.0,
-        "tools": 0.029,
+        "tools": 0.03,
         "tts": 0.0,
-        "total": 0.029
+        "total": 0.03
       },
       "llm_steps": 0,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-01f6a90e-texto-03_cambio_cantidad-c1",
+        "cart_id": "eval-07f6aa19-texto-03_cambio_cantidad-c1",
         "state": {
           "budget_cents": 4500,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "a6102310e33144a9a01d39ff71b21c1c",
+            "quote_id": "ea3f522b8ff8491280ffce616bace98b",
             "items": [
               {
                 "product_id": "B07VQNY8PK",
@@ -997,7 +997,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-01f6a90e-texto-03_cambio_cantidad-c1",
+              "cart_id": "eval-07f6aa19-texto-03_cambio_cantidad-c1",
               "product_id": "B07VQNY8PK",
               "quantity": 4
             }
@@ -1034,7 +1034,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-01f6a90e-texto-03_cambio_cantidad-c1",
+        "cart_id": "eval-07f6aa19-texto-03_cambio_cantidad-c1",
         "state": {
           "budget_cents": 4500,
           "preferences": [],
@@ -1042,7 +1042,7 @@
           "quote": null,
           "order": {
             "order_id": 1,
-            "quote_id": "a6102310e33144a9a01d39ff71b21c1c",
+            "quote_id": "ea3f522b8ff8491280ffce616bace98b",
             "items": [
               {
                 "product_id": "B07VQNY8PK",
@@ -1098,7 +1098,7 @@
           "orders": [
             {
               "order_id": 1,
-              "quote_id": "a6102310e33144a9a01d39ff71b21c1c",
+              "quote_id": "ea3f522b8ff8491280ffce616bace98b",
               "total_cents": 3800
             }
           ],
@@ -1156,7 +1156,7 @@
   ],
   "final": {
     "snapshot": {
-      "cart_id": "eval-01f6a90e-texto-03_cambio_cantidad-c1",
+      "cart_id": "eval-07f6aa19-texto-03_cambio_cantidad-c1",
       "state": {
         "budget_cents": 4500,
         "preferences": [],
@@ -1164,7 +1164,7 @@
         "quote": null,
         "order": {
           "order_id": 1,
-          "quote_id": "a6102310e33144a9a01d39ff71b21c1c",
+          "quote_id": "ea3f522b8ff8491280ffce616bace98b",
           "items": [
             {
               "product_id": "B07VQNY8PK",
@@ -1220,7 +1220,7 @@
         "orders": [
           {
             "order_id": 1,
-            "quote_id": "a6102310e33144a9a01d39ff71b21c1c",
+            "quote_id": "ea3f522b8ff8491280ffce616bace98b",
             "total_cents": 3800
           }
         ],
@@ -1329,8 +1329,8 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 4.0,
-        "max": 8.02
+        "mean": 4.06,
+        "max": 8.17
       },
       "tools": {
         "mean": 0.04,
@@ -1341,8 +1341,8 @@
         "max": 0.0
       },
       "total": {
-        "mean": 4.05,
-        "max": 8.07
+        "mean": 4.11,
+        "max": 8.23
       }
     },
     "with_llm": {
@@ -1356,8 +1356,8 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 5.0,
-        "max": 8.02
+        "mean": 5.08,
+        "max": 8.17
       },
       "tools": {
         "mean": 0.04,
@@ -1368,8 +1368,8 @@
         "max": 0.0
       },
       "total": {
-        "mean": 5.05,
-        "max": 8.07
+        "mean": 5.13,
+        "max": 8.23
       }
     },
     "without_llm": {

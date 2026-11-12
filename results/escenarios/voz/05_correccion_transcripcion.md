@@ -5,7 +5,7 @@
 - Tipo: `correccion_transcripcion`
 - Qué se prueba: El agente repite el pedido con dos unidades y el usuario corrige antes de confirmar: había dicho doce (dos y doce se confunden con facilidad al transcribir). No debe registrarse nada con dos unidades; el pedido final lleva doce.
 
-## Turno 1 (25.6 s)
+## Turno 1 (16.3 s)
 
 **Usuario (transcripción del ASR):** Busca un ratón inalámbrico.
 
@@ -23,7 +23,7 @@
 
 > **Suceso externo:** la tienda deja `B08P34RJSX` (@elegido) con precio 11,00 € y existencias 20.
 
-## Turno 2 (7.9 s)
+## Turno 2 (8.4 s)
 
 **Usuario (transcripción del ASR):** Añade dos del primero.
 
@@ -35,7 +35,7 @@
 
 - ✔ `cart(lines=[{"product": "@elegido", "quantity": 2}])` — carrito: 2 × B08P34RJSX
 
-## Turno 3 (8.0 s)
+## Turno 3 (8.5 s)
 
 **Usuario (transcripción del ASR):** Cierra el pedido.
 
@@ -48,7 +48,7 @@
 - ✔ `awaiting_confirmation(value=true)` — esperando confirmación: sí
 - ✔ `orders(count=0)` — pedidos registrados: 0
 
-## Turno 4 (15.7 s)
+## Turno 4 (18.0 s)
 
 **Usuario (transcripción del ASR):** No, espera, he dicho 12, no 2.
 
@@ -63,7 +63,7 @@
 - ✔ `orders(count=0)` — pedidos registrados: 0
 - ✔ `cart(lines=[{"product": "@elegido", "quantity": 12}])` — carrito: 12 × B08P34RJSX
 
-## Turno 5 (8.6 s)
+## Turno 5 (7.8 s)
 
 **Usuario (transcripción del ASR):** Ahora sí, cierra el pedido.
 
@@ -76,11 +76,11 @@
 - ✔ `awaiting_confirmation(value=true)` — esperando confirmación: sí
 - ✔ `orders(count=0)` — pedidos registrados: 0
 
-## Turno 6 (4.2 s)
+## Turno 6 (3.8 s)
 
 **Usuario (transcripción del ASR):** Sí, confirmo.
 
-- `confirmar_pedido(quote_id="a9a53c87f5264fd7a2129c24bad7373c")` → OK: pedido registrado
+- `confirmar_pedido(quote_id="89d33decc551467fb6dfdd8f28109004")` → OK: pedido registrado
 
 **Agente:** Pedido número 1 registrado: 12 unidades de «Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con…» a 11,00 € cada una, 132,00 €. Total: 132,00 €. Gracias por tu compra.
 
@@ -110,12 +110,12 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.34 | 0.03 | 7.90 | 0.03 | 17.26 | 25.55 | 44.0 s |
-| 2 | 0.33 | 0.00 | 4.74 | 0.06 | 2.73 | 7.86 | 11.5 s |
-| 3 | 0.33 | 0.00 | 2.27 | 0.04 | 5.37 | 8.01 | 22.9 s |
-| 4 | 0.35 | 0.00 | 7.92 | 0.05 | 7.35 | 15.68 | 30.7 s |
-| 5 | 0.34 | 0.00 | 2.35 | 0.04 | 5.89 | 8.62 | 24.8 s |
-| 6 | 0.34 | 0.00 | 0.00 | 0.04 | 3.82 | 4.19 | 15.6 s |
-| **Media de los turnos con LLM (5)** | 0.34 | 0.01 | 5.03 | 0.04 | 7.72 | 13.14 | |
-| **Media de los turnos sin LLM (1)** | 0.34 | 0.00 | 0.00 | 0.04 | 3.82 | 4.19 | |
+| 1 | 0.34 | 0.03 | 7.90 | 0.03 | 7.95 | 16.25 | 29.9 s |
+| 2 | 0.34 | 0.00 | 4.79 | 0.06 | 3.24 | 8.42 | 11.7 s |
+| 3 | 0.33 | 0.00 | 2.27 | 0.04 | 5.83 | 8.47 | 21.2 s |
+| 4 | 0.35 | 0.00 | 7.96 | 0.06 | 9.59 | 17.95 | 34.2 s |
+| 5 | 0.34 | 0.00 | 2.36 | 0.04 | 5.07 | 7.81 | 18.5 s |
+| 6 | 0.33 | 0.00 | 0.00 | 0.04 | 3.39 | 3.76 | 12.2 s |
+| **Media de los turnos con LLM (5)** | 0.34 | 0.01 | 5.06 | 0.04 | 6.33 | 11.78 | |
+| **Media de los turnos sin LLM (1)** | 0.33 | 0.00 | 0.00 | 0.04 | 3.39 | 3.76 | |
 

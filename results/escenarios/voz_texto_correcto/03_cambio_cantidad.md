@@ -5,7 +5,7 @@
 - Tipo: `cambio_cantidad`
 - Qué se prueba: El usuario añade dos unidades y después corrige a cuatro. El producto y el presupuesto deben seguir siendo los mismos y el pedido final debe llevar cuatro unidades (38,00 € de un presupuesto de 45 €).
 
-## Turno 1 (8.1 s)
+## Turno 1 (8.2 s)
 
 **Usuario (texto):** Busco una botella de agua de acero inoxidable. Mi presupuesto es de 45 euros.
 
@@ -22,7 +22,7 @@
 
 > **Suceso externo:** la tienda deja `B07VQNY8PK` (@elegida) con precio 9,50 € y existencias 20.
 
-## Turno 2 (5.0 s)
+## Turno 2 (5.1 s)
 
 **Usuario (texto):** Añade dos de la primera.
 
@@ -47,7 +47,7 @@
 - ✔ `cart(lines=[{"product": "@elegida", "quantity": 4}])` — carrito: 4 × B07VQNY8PK
 - ✔ `budget(cents=4500)` — presupuesto en el estado: 4500
 
-## Turno 4 (2.1 s)
+## Turno 4 (2.2 s)
 
 **Usuario (texto):** Ciérralo.
 
@@ -64,7 +64,7 @@
 
 **Usuario (texto):** Sí.
 
-- `confirmar_pedido(quote_id="a6102310e33144a9a01d39ff71b21c1c")` → OK: pedido registrado
+- `confirmar_pedido(quote_id="ea3f522b8ff8491280ffce616bace98b")` → OK: pedido registrado
 
 **Agente:** Pedido número 1 registrado: 4 unidades de «Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío…» a 9,50 € cada una, 38,00 €. Total: 38,00 €. Gracias por tu compra.
 
@@ -95,11 +95,11 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.03 | 8.02 | 0.03 | 0.00 | 8.07 | 0.0 s |
-| 2 | 0.00 | 0.00 | 4.99 | 0.05 | 0.00 | 5.04 | 0.0 s |
-| 3 | 0.00 | 0.00 | 4.91 | 0.04 | 0.00 | 4.95 | 0.0 s |
-| 4 | 0.00 | 0.00 | 2.10 | 0.04 | 0.00 | 2.14 | 0.0 s |
+| 1 | 0.00 | 0.03 | 8.17 | 0.03 | 0.00 | 8.23 | 0.0 s |
+| 2 | 0.00 | 0.00 | 5.06 | 0.05 | 0.00 | 5.11 | 0.0 s |
+| 3 | 0.00 | 0.00 | 4.97 | 0.05 | 0.00 | 5.03 | 0.0 s |
+| 4 | 0.00 | 0.00 | 2.12 | 0.04 | 0.00 | 2.16 | 0.0 s |
 | 5 | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | 0.0 s |
-| **Media de los turnos con LLM (4)** | 0.00 | 0.01 | 5.00 | 0.04 | 0.00 | 5.05 | |
+| **Media de los turnos con LLM (4)** | 0.00 | 0.01 | 5.08 | 0.04 | 0.00 | 5.13 | |
 | **Media de los turnos sin LLM (1)** | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | |
 

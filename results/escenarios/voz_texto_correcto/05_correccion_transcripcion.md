@@ -5,7 +5,7 @@
 - Tipo: `correccion_transcripcion`
 - Qué se prueba: El agente repite el pedido con dos unidades y el usuario corrige antes de confirmar: había dicho doce (dos y doce se confunden con facilidad al transcribir). No debe registrarse nada con dos unidades; el pedido final lleva doce.
 
-## Turno 1 (7.9 s)
+## Turno 1 (8.0 s)
 
 **Usuario (texto):** Busco un ratón inalámbrico.
 
@@ -46,7 +46,7 @@
 - ✔ `awaiting_confirmation(value=true)` — esperando confirmación: sí
 - ✔ `orders(count=0)` — pedidos registrados: 0
 
-## Turno 4 (8.0 s)
+## Turno 4 (8.1 s)
 
 **Usuario (texto):** No, espera, he dicho doce, no dos.
 
@@ -76,7 +76,7 @@
 
 **Usuario (texto):** Sí, confirmo.
 
-- `confirmar_pedido(quote_id="5090d2ba8f66452e98a1f1e2f621cd63")` → OK: pedido registrado
+- `confirmar_pedido(quote_id="d498f40ad50d4fa4bcdcbf063b614db2")` → OK: pedido registrado
 
 **Agente:** Pedido número 1 registrado: 12 unidades de «Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con…» a 11,00 € cada una, 132,00 €. Total: 132,00 €. Gracias por tu compra.
 
@@ -106,12 +106,12 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.03 | 7.83 | 0.03 | 0.00 | 7.89 | 0.0 s |
-| 2 | 0.00 | 0.00 | 4.82 | 0.05 | 0.00 | 4.88 | 0.0 s |
-| 3 | 0.00 | 0.00 | 2.26 | 0.04 | 0.00 | 2.30 | 0.0 s |
-| 4 | 0.00 | 0.00 | 7.94 | 0.06 | 0.00 | 8.00 | 0.0 s |
-| 5 | 0.00 | 0.00 | 2.35 | 0.04 | 0.00 | 2.39 | 0.0 s |
+| 1 | 0.00 | 0.03 | 7.94 | 0.03 | 0.00 | 8.00 | 0.0 s |
+| 2 | 0.00 | 0.00 | 4.88 | 0.05 | 0.00 | 4.92 | 0.0 s |
+| 3 | 0.00 | 0.00 | 2.30 | 0.04 | 0.00 | 2.34 | 0.0 s |
+| 4 | 0.00 | 0.00 | 8.06 | 0.04 | 0.00 | 8.11 | 0.0 s |
+| 5 | 0.00 | 0.00 | 2.37 | 0.04 | 0.00 | 2.41 | 0.0 s |
 | 6 | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | 0.0 s |
-| **Media de los turnos con LLM (5)** | 0.00 | 0.01 | 5.04 | 0.04 | 0.00 | 5.09 | |
+| **Media de los turnos con LLM (5)** | 0.00 | 0.01 | 5.11 | 0.04 | 0.00 | 5.16 | |
 | **Media de los turnos sin LLM (1)** | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | |
 

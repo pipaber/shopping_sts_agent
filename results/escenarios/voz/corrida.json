@@ -1,6 +1,6 @@
 {
-  "date": "2026-11-12T00:23:27",
-  "commit": "885515a",
+  "date": "2026-11-12T12:36:46",
+  "commit": "b2acf9c",
   "memory_backend": "postgres",
   "models": {
     "llm": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
@@ -11,14 +11,15 @@
   },
   "voice": {
     "reference": "audio/referencia/referencia.wav",
-    "speaker": null
+    "speaker": null,
+    "speed": 1.15
   },
   "load": {
-    "search_seconds": 16.0,
-    "llm_seconds": 0.7,
-    "asr_seconds": 1.0,
-    "tts_seconds": 9.0,
-    "total_seconds": 27.3,
+    "search_seconds": 15.1,
+    "llm_seconds": 0.8,
+    "asr_seconds": 0.8,
+    "tts_seconds": 11.3,
+    "total_seconds": 28.3,
     "vram_mib": {
       "search": 706,
       "llm": 5820,
@@ -92,65 +93,65 @@
         "turns": 31,
         "asr": {
           "mean": 0.34,
-          "max": 0.55
+          "max": 0.57
         },
         "retrieval": {
           "mean": 0.01,
           "max": 0.03
         },
         "llm": {
-          "mean": 3.89,
-          "max": 9.96
+          "mean": 3.91,
+          "max": 10.01
         },
         "tools": {
           "mean": 0.04,
           "max": 0.06
         },
         "tts": {
-          "mean": 6.07,
-          "max": 17.26
+          "mean": 5.61,
+          "max": 10.44
         },
         "total": {
-          "mean": 10.36,
-          "max": 25.55
+          "mean": 9.92,
+          "max": 18.63
         }
       },
       "with_llm": {
         "turns": 24,
         "asr": {
           "mean": 0.35,
-          "max": 0.55
+          "max": 0.57
         },
         "retrieval": {
           "mean": 0.01,
           "max": 0.03
         },
         "llm": {
-          "mean": 5.03,
-          "max": 9.96
+          "mean": 5.05,
+          "max": 10.01
         },
         "tools": {
           "mean": 0.04,
           "max": 0.06
         },
         "tts": {
-          "mean": 6.54,
-          "max": 17.26
+          "mean": 5.89,
+          "max": 9.59
         },
         "total": {
-          "mean": 11.97,
-          "max": 25.55
+          "mean": 11.35,
+          "max": 18.63
         }
       },
       "without_llm": {
         "turns": 7,
         "asr": {
-          "mean": 0.32,
-          "max": 0.34
+          "mean": 0.33,
+          "max": 0.33
         },
         "retrieval": {
           "mean": 0.0,
-          "max": 0.03
+          "max": 0.02
         },
         "llm": {
           "mean": 0.0,
@@ -161,12 +162,12 @@
           "max": 0.04
         },
         "tts": {
-          "mean": 4.47,
-          "max": 10.66
+          "mean": 4.65,
+          "max": 10.44
         },
         "total": {
-          "mean": 4.83,
-          "max": 11.02
+          "mean": 5.02,
+          "max": 10.8
         }
       }
     }
