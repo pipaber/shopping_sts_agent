@@ -9,7 +9,7 @@ Cada corrida tiene una ficha por escenario en su carpeta.
 | `texto` | texto | control | 20 | 20 | 100.0 % |
 | `texto_sage` | texto | sage | 20 | 20 | 100.0 % |
 | `texto_sin_reranker` | texto | sin reranker | 20 | 20 | 100.0 % |
-| `voz` | audio | control | 6 | 6 | 100.0 % |
+| `voz` | audio | control | 6 | 5 | 83.3 % |
 | `voz_texto_correcto` | texto | control | 6 | 6 | 100.0 % |
 | `voz_sintetica` | audio | control | 6 | 6 | 100.0 % |
 | `reserva` | texto | control | 4 | 3 | 75.0 % |
@@ -22,7 +22,7 @@ Cada corrida tiene una ficha por escenario en su carpeta.
 | `02_pedido_ambiguo` | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |  |  |  |
 | `03_cambio_cantidad` | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |  |  |  |
 | `04_sin_existencias` | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |  |  |  |
-| `05_correccion_transcripcion` | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |  |  |  |
+| `05_correccion_transcripcion` | ✔ | ✔ | ✔ | ✘ | ✔ | ✔ |  |  |  |
 | `06_cambio_stock_confirmacion_repetida` | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |  |  |  |
 | `07_presupuesto_excedido` | ✔ | ✔ | ✔ |  |  |  |  |  |  |
 | `08_cantidad_invalida` | ✔ | ✔ | ✔ |  |  |  |  |  |  |
@@ -96,28 +96,18 @@ Línea base: `results/escenarios_base`.
 
 ### `voz`
 
-**Audios de entrada: grabaciones del usuario.** Escenarios 01, 02, 03, 04, 06: 5 de 5 correctos.
+**Audios de entrada: grabaciones del usuario.** Escenarios 01, 02, 03, 04, 05, 06: 5 de 6 correctos.
 
-- ASR: 25 turnos, 24 idénticos tras normalizar; WER 0.8 %.
+- ASR: 31 turnos, 29 idénticos tras normalizar; WER 1.4 %.
 - Errores del ASR en importes: 0 de 3 (0.0 %).
-- Errores del ASR en cantidades: 0 de 5 (0.0 %).
-- Errores del ASR en nombres de producto: 1 de 11 (9.1 %).
-- Turnos en los que el ASR cambió palabras: 1.
+- Errores del ASR en cantidades: 0 de 8 (0.0 %).
+- Errores del ASR en nombres de producto: 1 de 13 (7.7 %).
+- Turnos en los que el ASR cambió palabras: 2.
   - `01_compra_confirmada`, turno 1: se dijo «Hola, busco una cafetera italiana. Tengo un presupuesto de 60 euros.» y entendió «Hola, busco una cafetería italiana. Tengo un presupuesto de 60 euros.».
-- Inteligibilidad de la voz generada (WER de Whisper sobre 25 respuestas): 3.9 %.
-- Semejanza con la voz de referencia (coseno ECAPA): media 0.737, mínima 0.501.
-- Latencia media por turno con LLM (19 turnos, segundos): ASR 0.35, Recuperación 0.01, LLM 5.01, Herramientas 0.04, TTS 6.20, Total 11.61; máximo 20.32.
-
-**Audios de entrada: sintéticos, hablante de prueba «Luis Moray» de XTTS-v2 (no es la voz del usuario).** Escenarios 05: 1 de 1 correctos.
-
-- ASR: 6 turnos, 6 idénticos tras normalizar; WER 0.0 %.
-- Errores del ASR en importes: 0 de 0 (—).
-- Errores del ASR en cantidades: 0 de 3 (0.0 %).
-- Errores del ASR en nombres de producto: 0 de 2 (0.0 %).
-- Turnos en los que el ASR cambió palabras: ninguno.
-- Inteligibilidad de la voz generada (WER de Whisper sobre 6 respuestas): 2.4 %.
-- Semejanza con la voz de referencia (coseno ECAPA): media 0.756, mínima 0.738.
-- Latencia media por turno con LLM (5 turnos, segundos): ASR 0.34, Recuperación 0.01, LLM 5.00, Herramientas 0.04, TTS 6.27, Total 11.66; máximo 18.22.
+  - `05_correccion_transcripcion`, turno 1: se dijo «Busco un ratón inalámbrico.» y entendió «Busca un ratón inalámbrico.».
+- Inteligibilidad de la voz generada (WER de Whisper sobre 31 respuestas): 3.4 %.
+- Semejanza con la voz de referencia (coseno ECAPA): media 0.742, mínima 0.501.
+- Latencia media por turno con LLM (25 turnos, segundos): ASR 0.35, Recuperación 0.01, LLM 5.14, Herramientas 0.04, TTS 6.24, Total 11.77; máximo 25.47.
 
 ### `voz_sintetica`
 
@@ -145,7 +135,7 @@ Línea base: `results/escenarios_base`.
 | `02_pedido_ambiguo` | ✔ | ✔ | ninguno | [2] | sí |
 | `03_cambio_cantidad` | ✔ | ✔ | ninguno | ninguno | sí |
 | `04_sin_existencias` | ✔ | ✔ | ninguno | ninguno | sí |
-| `05_correccion_transcripcion` | ✔ | ✔ | ninguno | ninguno | sí |
+| `05_correccion_transcripcion` | ✘ | ✔ | [1] | [4, 5, 6] | no |
 | `06_cambio_stock_confirmacion_repetida` | ✔ | ✔ | ninguno | ninguno | sí |
 
 ### `voz_sintetica`
@@ -169,9 +159,9 @@ Línea base: `results/escenarios_base`.
 | `texto_sage`, sin LLM | 14 | 0.00 (máx. 0.00) | 0.01 (máx. 0.04) | 0.00 (máx. 0.00) | 0.03 (máx. 0.03) | 0.00 (máx. 0.00) | 0.03 (máx. 0.06) |
 | `texto_sin_reranker`, con LLM | 73 | 0.00 (máx. 0.00) | 0.01 (máx. 0.03) | 4.97 (máx. 9.42) | 0.04 (máx. 0.07) | 0.00 (máx. 0.00) | 5.02 (máx. 9.50) |
 | `texto_sin_reranker`, sin LLM | 14 | 0.00 (máx. 0.00) | 0.00 (máx. 0.02) | 0.00 (máx. 0.00) | 0.03 (máx. 0.03) | 0.00 (máx. 0.00) | 0.03 (máx. 0.03) |
-| `voz`, con LLM | 24 | 0.34 (máx. 0.56) | 0.01 (máx. 0.03) | 5.01 (máx. 9.94) | 0.04 (máx. 0.06) | 6.22 (máx. 11.62) | 11.62 (máx. 20.32) |
-| `voz`, sin LLM | 7 | 0.32 (máx. 0.33) | 0.00 (máx. 0.02) | 0.00 (máx. 0.00) | 0.04 (máx. 0.04) | 4.46 (máx. 10.64) | 4.82 (máx. 11.00) |
-| `voz_texto_correcto`, con LLM | 24 | 0.00 (máx. 0.00) | 0.01 (máx. 0.03) | 5.05 (máx. 8.92) | 0.04 (máx. 0.06) | 0.00 (máx. 0.00) | 5.10 (máx. 8.97) |
+| `voz`, con LLM | 25 | 0.35 (máx. 0.57) | 0.01 (máx. 0.03) | 5.14 (máx. 10.01) | 0.04 (máx. 0.06) | 6.24 (máx. 17.23) | 11.77 (máx. 25.47) |
+| `voz`, sin LLM | 6 | 0.32 (máx. 0.33) | 0.00 (máx. 0.02) | 0.00 (máx. 0.00) | 0.03 (máx. 0.04) | 4.57 (máx. 10.64) | 4.93 (máx. 11.00) |
+| `voz_texto_correcto`, con LLM | 24 | 0.00 (máx. 0.00) | 0.01 (máx. 0.03) | 5.05 (máx. 8.94) | 0.04 (máx. 0.06) | 0.00 (máx. 0.00) | 5.10 (máx. 9.00) |
 | `voz_texto_correcto`, sin LLM | 7 | 0.00 (máx. 0.00) | 0.00 (máx. 0.02) | 0.00 (máx. 0.00) | 0.03 (máx. 0.03) | 0.00 (máx. 0.00) | 0.03 (máx. 0.04) |
 | `voz_sintetica`, con LLM | 24 | 0.35 (máx. 0.56) | 0.01 (máx. 0.05) | 5.05 (máx. 9.84) | 0.04 (máx. 0.06) | 6.30 (máx. 11.85) | 11.75 (máx. 20.62) |
 | `voz_sintetica`, sin LLM | 7 | 0.32 (máx. 0.33) | 0.00 (máx. 0.03) | 0.00 (máx. 0.00) | 0.04 (máx. 0.04) | 4.46 (máx. 10.64) | 4.82 (máx. 11.01) |
@@ -187,8 +177,8 @@ Carga inicial de los modelos, aparte de los turnos:
 - `texto`: catálogo y recuperadores 16.2 s, LLM 0.7 s; total 17.3 s.
 - `texto_sage`: catálogo y recuperadores 149.8 s, LLM 0.8 s; total 150.9 s.
 - `texto_sin_reranker`: catálogo y recuperadores 15.8 s, LLM 0.7 s; total 16.9 s.
-- `voz`: catálogo y recuperadores 16.1 s, LLM 0.7 s, ASR 1.0 s, TTS 8.9 s; total 27.4 s.
-- `voz_texto_correcto`: catálogo y recuperadores 16.1 s, LLM 0.7 s, ASR 1.0 s, TTS 8.9 s; total 27.4 s.
+- `voz`: catálogo y recuperadores 16.1 s, LLM 0.7 s, ASR 1.1 s, TTS 8.2 s; total 36.6 s.
+- `voz_texto_correcto`: catálogo y recuperadores 16.1 s, LLM 0.7 s, ASR 1.1 s, TTS 8.2 s; total 36.6 s.
 - `voz_sintetica`: catálogo y recuperadores 16.3 s, LLM 0.7 s, ASR 1.1 s, TTS 10.1 s; total 28.8 s.
 - `reserva`: catálogo y recuperadores 149.8 s, LLM 0.8 s; total 160.9 s.
 - `reserva_sage`: catálogo y recuperadores 152.3 s, LLM 0.8 s; total 153.4 s.
@@ -196,6 +186,14 @@ Carga inicial de los modelos, aparte de los turnos:
 
 ## Comprobaciones que fallaron
 
+- `voz` / [05_correccion_transcripcion](voz/05_correccion_transcripcion.md):
+  - turno 4: `cart` — carrito: 2 × B08P34RJSX
+  - turno 5: `awaiting_confirmation` — esperando confirmación: no
+  - turno 6: `orders` — pedidos registrados: 0
+  - al final: `orders` — pedidos registrados: 0
+  - al final: `order` — no hay ningún pedido
+  - al final: `stock` — existencias de B08P34RJSX: 20
+  - al final: `cart` — carrito: 2 × B08P34RJSX
 - `reserva` / [24_dato_que_no_consta](reserva/24_dato_que_no_consta.md):
   - turno 2: `declares_unknown` — dato en el catálogo: sí; la respuesta dice que no consta: sí
 - `reserva_sin_reranker` / [24_dato_que_no_consta](reserva_sin_reranker/24_dato_que_no_consta.md):

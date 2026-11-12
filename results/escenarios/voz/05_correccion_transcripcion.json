@@ -5,10 +5,10 @@
   "description": "El agente repite el pedido con dos unidades y el usuario corrige antes de confirmar: había dicho doce (dos y doce se confunden con facilidad al transcribir). No debe registrarse nada con dos unidades; el pedido final lleva doce.",
   "voice": true,
   "input": "audio",
-  "audio_source": "sintéticos, hablante de prueba «Luis Moray» de XTTS-v2 (no es la voz del usuario)",
-  "user_id": "eval-41cb1880-05_correccion_transcripcion",
+  "audio_source": "grabaciones del usuario",
+  "user_id": "eval-9011462b-05_correccion_transcripcion",
   "threads": [
-    "eval-41cb1880-05_correccion_transcripcion-c1"
+    "eval-9011462b-05_correccion_transcripcion-c1"
   ],
   "names": {
     "elegido": "B08P34RJSX"
@@ -18,14 +18,14 @@
       "kind": "turn",
       "turn": 1,
       "input_audio": "entrada_01.wav",
-      "input_seconds": 1.856,
-      "transcript": "Busco un ratón inalámbrico.",
+      "input_seconds": 2.74,
+      "transcript": "Busca un ratón inalámbrico.",
       "expected_text": "Busco un ratón inalámbrico.",
-      "agent_input": "Busco un ratón inalámbrico.",
-      "response": "Tengo el ratón inalámbrico INPHIC de plata por 33,29 €, el de INPHIC de plata clara por 42,45 €, el de Anmck negro por 23,61 €, el de WisFox gris por 19,69 € y el OMEN VECTOR de HP por 10,84 €. ¿Te interesa alguno?",
-      "spoken_text": "Tengo el ratón inalámbrico INPHIC de plata por treinta y tres euros con veintinueve céntimos, el de INPHIC de plata clara por cuarenta y dos euros con cuarenta y cinco céntimos, el de Anmck negro por veintitrés euros con sesenta y un céntimos, el de WisFox gris por diecinueve euros con sesenta y nueve céntimos y el OMEN VECTOR de HP por diez euros con ochenta y cuatro céntimos. ¿Te interesa alguno?",
+      "agent_input": "Busca un ratón inalámbrico.",
+      "response": "Tengo el ratón inalámbrico INPHIC en plata por 33,29 €, el de INPHIC en plata clara por 42,45 €, el de Anmck en negro por 23,61 €, el de WisFox en gris por 19,69 € y el OMEN VECTOR de HP por 10,84 €. ¿Te interesa alguno?",
+      "spoken_text": "Tengo el ratón inalámbrico INPHIC en plata por treinta y tres euros con veintinueve céntimos, el de INPHIC en plata clara por cuarenta y dos euros con cuarenta y cinco céntimos, el de Anmck en negro por veintitrés euros con sesenta y un céntimos, el de WisFox en gris por diecinueve euros con sesenta y nueve céntimos y el OMEN VECTOR de HP por diez euros con ochenta y cuatro céntimos. ¿Te interesa alguno?",
       "output_audio": "respuesta_01.wav",
-      "output_seconds": 42.97933333333334,
+      "output_seconds": 44.014,
       "awaiting_confirmation": false,
       "operations": [
         {
@@ -40,21 +40,21 @@
         }
       ],
       "timings": {
-        "asr": 0.344,
-        "retrieval": 0.031,
-        "llm": 7.753,
-        "tools": 0.03,
-        "tts": 10.06,
-        "total": 18.219
+        "asr": 0.343,
+        "retrieval": 0.033,
+        "llm": 7.835,
+        "tools": 0.029,
+        "tts": 17.235,
+        "total": 25.474
       },
       "llm_steps": 2,
-      "tts_first_chunk_seconds": 3.216,
-      "tts_retries": 0,
+      "tts_first_chunk_seconds": 3.028,
+      "tts_retries": 1,
       "product_terms": [
         "ratón inalámbrico"
       ],
       "before": {
-        "cart_id": "eval-41cb1880-05_correccion_transcripcion-c1",
+        "cart_id": "eval-9011462b-05_correccion_transcripcion-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -73,7 +73,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-41cb1880-05_correccion_transcripcion-c1",
+        "cart_id": "eval-9011462b-05_correccion_transcripcion-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -178,7 +178,7 @@
       "kind": "turn",
       "turn": 2,
       "input_audio": "entrada_02.wav",
-      "input_seconds": 1.4826875,
+      "input_seconds": 2.63,
       "transcript": "Añade dos del primero.",
       "expected_text": "Añade dos del primero.",
       "agent_input": "Añade dos del primero.",
@@ -201,21 +201,21 @@
         }
       ],
       "timings": {
-        "asr": 0.329,
+        "asr": 0.332,
         "retrieval": 0.0,
-        "llm": 4.739,
+        "llm": 4.75,
         "tools": 0.053,
-        "tts": 2.723,
-        "total": 7.844
+        "tts": 2.725,
+        "total": 7.861
       },
       "llm_steps": 2,
-      "tts_first_chunk_seconds": 2.704,
+      "tts_first_chunk_seconds": 2.705,
       "tts_retries": 0,
       "product_terms": [
         "primero"
       ],
       "before": {
-        "cart_id": "eval-41cb1880-05_correccion_transcripcion-c1",
+        "cart_id": "eval-9011462b-05_correccion_transcripcion-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -297,7 +297,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-41cb1880-05_correccion_transcripcion-c1",
+        "cart_id": "eval-9011462b-05_correccion_transcripcion-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -348,7 +348,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-41cb1880-05_correccion_transcripcion-c1",
+              "cart_id": "eval-9011462b-05_correccion_transcripcion-c1",
               "product_id": "B08P34RJSX",
               "quantity": 2
             }
@@ -404,7 +404,7 @@
       "kind": "turn",
       "turn": 3,
       "input_audio": "entrada_03.wav",
-      "input_seconds": 1.013375,
+      "input_seconds": 2.31,
       "transcript": "Cierra el pedido.",
       "expected_text": "Cierra el pedido.",
       "agent_input": "Cierra el pedido.",
@@ -424,19 +424,19 @@
         }
       ],
       "timings": {
-        "asr": 0.327,
+        "asr": 0.331,
         "retrieval": 0.0,
-        "llm": 2.255,
+        "llm": 2.253,
         "tools": 0.04,
-        "tts": 5.356,
-        "total": 7.978
+        "tts": 5.359,
+        "total": 7.983
       },
       "llm_steps": 1,
-      "tts_first_chunk_seconds": 3.649,
+      "tts_first_chunk_seconds": 3.648,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-41cb1880-05_correccion_transcripcion-c1",
+        "cart_id": "eval-9011462b-05_correccion_transcripcion-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -487,7 +487,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-41cb1880-05_correccion_transcripcion-c1",
+              "cart_id": "eval-9011462b-05_correccion_transcripcion-c1",
               "product_id": "B08P34RJSX",
               "quantity": 2
             }
@@ -524,13 +524,13 @@
         }
       },
       "after": {
-        "cart_id": "eval-41cb1880-05_correccion_transcripcion-c1",
+        "cart_id": "eval-9011462b-05_correccion_transcripcion-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "6686d5a82e1a4ad3be880b234c0abe4f",
+            "quote_id": "95f27616aa1244b687024e20f792ef5d",
             "items": [
               {
                 "product_id": "B08P34RJSX",
@@ -590,7 +590,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-41cb1880-05_correccion_transcripcion-c1",
+              "cart_id": "eval-9011462b-05_correccion_transcripcion-c1",
               "product_id": "B08P34RJSX",
               "quantity": 2
             }
@@ -649,48 +649,47 @@
       "kind": "turn",
       "turn": 4,
       "input_audio": "entrada_04.wav",
-      "input_seconds": 3.157375,
-      "transcript": "No, espera, he dicho doce, no dos.",
+      "input_seconds": 4.25,
+      "transcript": "No, espera, he dicho 12, no 2.",
       "expected_text": "No, espera, he dicho doce, no dos.",
-      "agent_input": "No, espera, he dicho doce, no dos.",
-      "response": "Hecho, añadidas 10 unidades más. En total, 12 unidades de «Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con…» a 11,00 € cada una, 132,00 €. Total: 132,00 €. En el carrito hay 12 unidades de «Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con…» a 11,00 € cada una, 132,00 €. Total: 132,00 €.",
-      "spoken_text": "Hecho, añadidas diez unidades más. En total, doce unidades de Raton inalámbrico a once euros cada una, ciento treinta y dos euros. Total: ciento treinta y dos euros. En el carrito hay doce unidades de Raton inalámbrico a once euros cada una, ciento treinta y dos euros. Total: ciento treinta y dos euros.",
+      "agent_input": "No, espera, he dicho 12, no 2.",
+      "response": "El carrito suma 22,00 €, lo que supera tu presupuesto de 12,00 € en 10,00 €. ¿Qué quieres hacer? En el carrito hay 2 unidades de «Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con…» a 11,00 € cada una, 22,00 €. Total: 22,00 €. Tu presupuesto es de 12,00 € y lo superas en 10,00 €.",
+      "spoken_text": "El carrito suma veintidós euros, lo que supera tu presupuesto de doce euros en diez euros. ¿Qué quieres hacer? En el carrito hay dos unidades de Raton inalámbrico a once euros cada una, veintidós euros. Total: veintidós euros. Tu presupuesto es de doce euros y lo superas en diez euros.",
       "output_audio": "respuesta_04.wav",
-      "output_seconds": 30.746,
+      "output_seconds": 25.956666666666667,
       "awaiting_confirmation": false,
       "operations": [
         {
-          "tool": "cambiar_cantidad",
+          "tool": "fijar_presupuesto",
           "args": {
-            "product_id": "B08P34RJSX",
-            "cantidad": 12
+            "importe_eur": 12
           },
-          "reason": "corregir la cantidad",
+          "reason": "reajustar el presupuesto",
           "ok": true,
-          "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B08P34RJSX | Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con… | 12 unidades × 11,00 € = 132,00 € | existencias: 20\nTotal del carrito: 132,00 €",
+          "summary": "presupuesto fijado en 12,00 €. Aviso: el carrito suma 22,00 € y lo supera en 10,00 €.",
           "issues": []
         }
       ],
       "timings": {
-        "asr": 0.345,
+        "asr": 0.351,
         "retrieval": 0.0,
-        "llm": 7.92,
-        "tools": 0.044,
-        "tts": 7.345,
-        "total": 15.654
+        "llm": 5.841,
+        "tools": 0.033,
+        "tts": 6.183,
+        "total": 12.407
       },
       "llm_steps": 2,
-      "tts_first_chunk_seconds": 3.734,
+      "tts_first_chunk_seconds": 2.096,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-41cb1880-05_correccion_transcripcion-c1",
+        "cart_id": "eval-9011462b-05_correccion_transcripcion-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "6686d5a82e1a4ad3be880b234c0abe4f",
+            "quote_id": "95f27616aa1244b687024e20f792ef5d",
             "items": [
               {
                 "product_id": "B08P34RJSX",
@@ -750,7 +749,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-41cb1880-05_correccion_transcripcion-c1",
+              "cart_id": "eval-9011462b-05_correccion_transcripcion-c1",
               "product_id": "B08P34RJSX",
               "quantity": 2
             }
@@ -787,9 +786,9 @@
         }
       },
       "after": {
-        "cart_id": "eval-41cb1880-05_correccion_transcripcion-c1",
+        "cart_id": "eval-9011462b-05_correccion_transcripcion-c1",
         "state": {
-          "budget_cents": null,
+          "budget_cents": 1200,
           "preferences": [],
           "pending_clarification": null,
           "quote": null,
@@ -838,9 +837,9 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-41cb1880-05_correccion_transcripcion-c1",
+              "cart_id": "eval-9011462b-05_correccion_transcripcion-c1",
               "product_id": "B08P34RJSX",
-              "quantity": 12
+              "quantity": 2
             }
           ],
           "inventory_changes": [
@@ -893,8 +892,8 @@
               }
             ]
           },
-          "ok": true,
-          "detail": "carrito: 12 × B08P34RJSX"
+          "ok": false,
+          "detail": "carrito: 2 × B08P34RJSX"
         }
       ]
     },
@@ -902,41 +901,52 @@
       "kind": "turn",
       "turn": 5,
       "input_audio": "entrada_05.wav",
-      "input_seconds": 2.8266875,
+      "input_seconds": 3.04,
       "transcript": "Ahora sí, cierra el pedido.",
       "expected_text": "Ahora sí, cierra el pedido.",
       "agent_input": "Ahora sí, cierra el pedido.",
-      "response": "Te repito el pedido antes de registrarlo: 12 unidades de «Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con…» a 11,00 € cada una, 132,00 €. Total: 132,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
-      "spoken_text": "Te repito el pedido antes de registrarlo: doce unidades de Raton inalámbrico a once euros cada una, ciento treinta y dos euros. Total: ciento treinta y dos euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "response": "Ese ratón cuesta 11,00 € y el carrito supera tu presupuesto de 12,00 € en 10,00 €. ¿Quieres reducir el número de unidades o cambiar por otro?",
+      "spoken_text": "Ese ratón cuesta once euros y el carrito supera tu presupuesto de doce euros en diez euros. ¿Quieres reducir el número de unidades o cambiar por otro?",
       "output_audio": "respuesta_05.wav",
-      "output_seconds": 24.804666666666666,
-      "awaiting_confirmation": true,
+      "output_seconds": 13.418666666666667,
+      "awaiting_confirmation": false,
       "operations": [
         {
           "tool": "cotizar",
           "args": {},
-          "reason": "cotizar el pedido",
-          "ok": true,
-          "summary": "cotización creada; falta la confirmación del usuario.",
-          "issues": []
+          "reason": "cotizar el carrito",
+          "ok": false,
+          "summary": "[presupuesto_excedido] El total sería 22,00 € y supera el presupuesto de 12,00 € por 10,00 €.",
+          "issues": [
+            {
+              "code": "presupuesto_excedido",
+              "message": "El total sería 22,00 € y supera el presupuesto de 12,00 € por 10,00 €.",
+              "product_id": null,
+              "details": {
+                "total_cents": 2200,
+                "budget_cents": 1200,
+                "excess_cents": 1000
+              }
+            }
+          ]
         }
       ],
       "timings": {
-        "asr": 0.34,
+        "asr": 0.341,
         "retrieval": 0.0,
-        "llm": 2.345,
-        "tools": 0.04,
-        "tts": 5.878,
-        "total": 8.603
+        "llm": 6.108,
+        "tools": 0.031,
+        "tts": 3.238,
+        "total": 9.717
       },
-      "llm_steps": 1,
-      "tts_first_chunk_seconds": 4.155,
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": 3.23,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-41cb1880-05_correccion_transcripcion-c1",
+        "cart_id": "eval-9011462b-05_correccion_transcripcion-c1",
         "state": {
-          "budget_cents": null,
+          "budget_cents": 1200,
           "preferences": [],
           "pending_clarification": null,
           "quote": null,
@@ -985,9 +995,9 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-41cb1880-05_correccion_transcripcion-c1",
+              "cart_id": "eval-9011462b-05_correccion_transcripcion-c1",
               "product_id": "B08P34RJSX",
-              "quantity": 12
+              "quantity": 2
             }
           ],
           "inventory_changes": [
@@ -1022,27 +1032,12 @@
         }
       },
       "after": {
-        "cart_id": "eval-41cb1880-05_correccion_transcripcion-c1",
+        "cart_id": "eval-9011462b-05_correccion_transcripcion-c1",
         "state": {
-          "budget_cents": null,
+          "budget_cents": 1200,
           "preferences": [],
           "pending_clarification": null,
-          "quote": {
-            "quote_id": "9dde391327854042ad5df63830e1acf5",
-            "items": [
-              {
-                "product_id": "B08P34RJSX",
-                "title": "Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con Receptor USB, 3 Niveles Ajustables De dpi para Computadora PortáTil, Pc, Mac, Computadora, Macbook, Plata",
-                "quantity": 12,
-                "unit_price_cents": 1100,
-                "subtotal_cents": 13200,
-                "stock": 20
-              }
-            ],
-            "total_cents": 13200,
-            "budget_cents": null,
-            "message": "Te repito el pedido antes de registrarlo: 12 unidades de «Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con…» a 11,00 € cada una, 132,00 €. Total: 132,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
-          },
+          "quote": null,
           "order": null,
           "candidates": [
             {
@@ -1081,16 +1076,16 @@
               "stock": 48
             }
           ],
-          "awaiting_confirmation": true
+          "awaiting_confirmation": false
         },
         "store": {
           "orders": [],
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-41cb1880-05_correccion_transcripcion-c1",
+              "cart_id": "eval-9011462b-05_correccion_transcripcion-c1",
               "product_id": "B08P34RJSX",
-              "quantity": 12
+              "quantity": 2
             }
           ],
           "inventory_changes": [
@@ -1130,8 +1125,8 @@
           "params": {
             "value": true
           },
-          "ok": true,
-          "detail": "esperando confirmación: sí"
+          "ok": false,
+          "detail": "esperando confirmación: no"
         },
         {
           "check": "orders",
@@ -1147,164 +1142,56 @@
       "kind": "turn",
       "turn": 6,
       "input_audio": "entrada_06.wav",
-      "input_seconds": 1.2906875,
+      "input_seconds": 2.56,
       "transcript": "Sí, confirmo.",
       "expected_text": "Sí, confirmo.",
       "agent_input": "Sí, confirmo.",
-      "response": "Pedido número 1 registrado: 12 unidades de «Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con…» a 11,00 € cada una, 132,00 €. Total: 132,00 €. Gracias por tu compra.",
-      "spoken_text": "Pedido número uno registrado: doce unidades de Raton inalámbrico a once euros cada una, ciento treinta y dos euros. Total: ciento treinta y dos euros. Gracias por tu compra.",
+      "response": "Ese ratón cuesta 11,00 € y el carrito supera tu presupuesto de 12,00 € en 10,00 €. ¿Quieres reducir el número de unidades o cambiar por otro?",
+      "spoken_text": "Ese ratón cuesta once euros y el carrito supera tu presupuesto de doce euros en diez euros. ¿Quieres reducir el número de unidades o cambiar por otro?",
       "output_audio": "respuesta_06.wav",
-      "output_seconds": 15.594666666666667,
+      "output_seconds": 13.418666666666667,
       "awaiting_confirmation": false,
       "operations": [
         {
-          "tool": "confirmar_pedido",
-          "args": {
-            "quote_id": "9dde391327854042ad5df63830e1acf5"
-          },
-          "reason": "el usuario confirmó la cotización",
-          "ok": true,
-          "summary": "pedido registrado",
-          "issues": []
+          "tool": "cotizar",
+          "args": {},
+          "reason": "confirmar el pedido",
+          "ok": false,
+          "summary": "[presupuesto_excedido] El total sería 22,00 € y supera el presupuesto de 12,00 € por 10,00 €.",
+          "issues": [
+            {
+              "code": "presupuesto_excedido",
+              "message": "El total sería 22,00 € y supera el presupuesto de 12,00 € por 10,00 €.",
+              "product_id": null,
+              "details": {
+                "total_cents": 2200,
+                "budget_cents": 1200,
+                "excess_cents": 1000
+              }
+            }
+          ]
         }
       ],
       "timings": {
-        "asr": 0.331,
+        "asr": 0.334,
         "retrieval": 0.0,
-        "llm": 0.0,
-        "tools": 0.042,
-        "tts": 3.811,
-        "total": 4.184
+        "llm": 6.235,
+        "tools": 0.029,
+        "tts": 3.22,
+        "total": 9.818
       },
-      "llm_steps": 0,
-      "tts_first_chunk_seconds": 3.801,
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": 3.213,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-41cb1880-05_correccion_transcripcion-c1",
+        "cart_id": "eval-9011462b-05_correccion_transcripcion-c1",
         "state": {
-          "budget_cents": null,
-          "preferences": [],
-          "pending_clarification": null,
-          "quote": {
-            "quote_id": "9dde391327854042ad5df63830e1acf5",
-            "items": [
-              {
-                "product_id": "B08P34RJSX",
-                "title": "Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con Receptor USB, 3 Niveles Ajustables De dpi para Computadora PortáTil, Pc, Mac, Computadora, Macbook, Plata",
-                "quantity": 12,
-                "unit_price_cents": 1100,
-                "subtotal_cents": 13200,
-                "stock": 20
-              }
-            ],
-            "total_cents": 13200,
-            "budget_cents": null,
-            "message": "Te repito el pedido antes de registrarlo: 12 unidades de «Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con…» a 11,00 € cada una, 132,00 €. Total: 132,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
-          },
-          "order": null,
-          "candidates": [
-            {
-              "product_id": "B08P34RJSX",
-              "title": "Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con Receptor USB, 3 Niveles Ajustables De dpi para Computadora PortáTil, Pc, Mac, Computadora, Macbook, Plata",
-              "brand": "INPHIC",
-              "price_cents": 1100,
-              "stock": 20
-            },
-            {
-              "product_id": "B0757LNVBT",
-              "title": "Ratón Inalámbrico Recargable, Silencioso Infame Ratón óptico Silencioso Click Mini, Ultra Delgado 1600 dpi para Computadora Portátil, PC, Portátil, Computadora, Macbook (Plata Clara)",
-              "brand": "INPHIC",
-              "price_cents": 4245,
-              "stock": 3
-            },
-            {
-              "product_id": "B07DPGQ8ZN",
-              "title": "Anmck RatóN Inalambrico para Portatil,ErgonóMico Y Silencioso RatóN Recargable,USB 2.4 G con Nano Receptor,3 Niveles Ajustables dpi,Ultra Delgado Plano Y Pequeño RatóN InaláMbrico para Laptop-Negro",
-              "brand": "Anmck",
-              "price_cents": 2361,
-              "stock": 1
-            },
-            {
-              "product_id": "B089K72ZV3",
-              "title": "WisFox Ratón Inalambrico, 2.4G Ergonómico Antideslizante Inalámbrico Ratón de Computadora Ratón Laptop Ratón USB 6 Botones con Receptor Nano 3 Ajustables de dpi Ratones para Windows,Mac (Gris)",
-              "brand": "WisFox",
-              "price_cents": 1969,
-              "stock": 4
-            },
-            {
-              "product_id": "B08J8BLBKS",
-              "title": "RATON INALAMBRICO OMEN VECTOR",
-              "brand": "HP",
-              "price_cents": 1084,
-              "stock": 48
-            }
-          ],
-          "awaiting_confirmation": true
-        },
-        "store": {
-          "orders": [],
-          "order_items": [],
-          "cart_items": [
-            {
-              "cart_id": "eval-41cb1880-05_correccion_transcripcion-c1",
-              "product_id": "B08P34RJSX",
-              "quantity": 12
-            }
-          ],
-          "inventory_changes": [
-            {
-              "product_id": "B08P34RJSX",
-              "initial_stock": 41,
-              "stock": 20
-            }
-          ]
-        },
-        "offers": {
-          "B0757LNVBT": {
-            "price_cents": 4245,
-            "stock": 3
-          },
-          "B07DPGQ8ZN": {
-            "price_cents": 2361,
-            "stock": 1
-          },
-          "B089K72ZV3": {
-            "price_cents": 1969,
-            "stock": 4
-          },
-          "B08J8BLBKS": {
-            "price_cents": 1084,
-            "stock": 48
-          },
-          "B08P34RJSX": {
-            "price_cents": 1100,
-            "stock": 20
-          }
-        }
-      },
-      "after": {
-        "cart_id": "eval-41cb1880-05_correccion_transcripcion-c1",
-        "state": {
-          "budget_cents": null,
+          "budget_cents": 1200,
           "preferences": [],
           "pending_clarification": null,
           "quote": null,
-          "order": {
-            "order_id": 1,
-            "quote_id": "9dde391327854042ad5df63830e1acf5",
-            "items": [
-              {
-                "product_id": "B08P34RJSX",
-                "title": "Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con Receptor USB, 3 Niveles Ajustables De dpi para Computadora PortáTil, Pc, Mac, Computadora, Macbook, Plata",
-                "quantity": 12,
-                "unit_price_cents": 1100,
-                "subtotal_cents": 13200
-              }
-            ],
-            "total_cents": 13200,
-            "message": "Pedido número 1 registrado: 12 unidades de «Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con…» a 11,00 € cada una, 132,00 €. Total: 132,00 €. Gracias por tu compra."
-          },
+          "order": null,
           "candidates": [
             {
               "product_id": "B08P34RJSX",
@@ -1345,27 +1232,20 @@
           "awaiting_confirmation": false
         },
         "store": {
-          "orders": [
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
             {
-              "order_id": 1,
-              "quote_id": "9dde391327854042ad5df63830e1acf5",
-              "total_cents": 13200
-            }
-          ],
-          "order_items": [
-            {
-              "order_id": 1,
+              "cart_id": "eval-9011462b-05_correccion_transcripcion-c1",
               "product_id": "B08P34RJSX",
-              "quantity": 12,
-              "unit_price_cents": 1100
+              "quantity": 2
             }
           ],
-          "cart_items": [],
           "inventory_changes": [
             {
               "product_id": "B08P34RJSX",
               "initial_stock": 41,
-              "stock": 8
+              "stock": 20
             }
           ]
         },
@@ -1388,7 +1268,95 @@
           },
           "B08P34RJSX": {
             "price_cents": 1100,
-            "stock": 8
+            "stock": 20
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-9011462b-05_correccion_transcripcion-c1",
+        "state": {
+          "budget_cents": 1200,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B08P34RJSX",
+              "title": "Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con Receptor USB, 3 Niveles Ajustables De dpi para Computadora PortáTil, Pc, Mac, Computadora, Macbook, Plata",
+              "brand": "INPHIC",
+              "price_cents": 1100,
+              "stock": 20
+            },
+            {
+              "product_id": "B0757LNVBT",
+              "title": "Ratón Inalámbrico Recargable, Silencioso Infame Ratón óptico Silencioso Click Mini, Ultra Delgado 1600 dpi para Computadora Portátil, PC, Portátil, Computadora, Macbook (Plata Clara)",
+              "brand": "INPHIC",
+              "price_cents": 4245,
+              "stock": 3
+            },
+            {
+              "product_id": "B07DPGQ8ZN",
+              "title": "Anmck RatóN Inalambrico para Portatil,ErgonóMico Y Silencioso RatóN Recargable,USB 2.4 G con Nano Receptor,3 Niveles Ajustables dpi,Ultra Delgado Plano Y Pequeño RatóN InaláMbrico para Laptop-Negro",
+              "brand": "Anmck",
+              "price_cents": 2361,
+              "stock": 1
+            },
+            {
+              "product_id": "B089K72ZV3",
+              "title": "WisFox Ratón Inalambrico, 2.4G Ergonómico Antideslizante Inalámbrico Ratón de Computadora Ratón Laptop Ratón USB 6 Botones con Receptor Nano 3 Ajustables de dpi Ratones para Windows,Mac (Gris)",
+              "brand": "WisFox",
+              "price_cents": 1969,
+              "stock": 4
+            },
+            {
+              "product_id": "B08J8BLBKS",
+              "title": "RATON INALAMBRICO OMEN VECTOR",
+              "brand": "HP",
+              "price_cents": 1084,
+              "stock": 48
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-9011462b-05_correccion_transcripcion-c1",
+              "product_id": "B08P34RJSX",
+              "quantity": 2
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B08P34RJSX",
+              "initial_stock": 41,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B0757LNVBT": {
+            "price_cents": 4245,
+            "stock": 3
+          },
+          "B07DPGQ8ZN": {
+            "price_cents": 2361,
+            "stock": 1
+          },
+          "B089K72ZV3": {
+            "price_cents": 1969,
+            "stock": 4
+          },
+          "B08J8BLBKS": {
+            "price_cents": 1084,
+            "stock": 48
+          },
+          "B08P34RJSX": {
+            "price_cents": 1100,
+            "stock": 20
           }
         }
       },
@@ -1398,35 +1366,21 @@
           "params": {
             "count": 1
           },
-          "ok": true,
-          "detail": "pedidos registrados: 1"
+          "ok": false,
+          "detail": "pedidos registrados: 0"
         }
       ]
     }
   ],
   "final": {
     "snapshot": {
-      "cart_id": "eval-41cb1880-05_correccion_transcripcion-c1",
+      "cart_id": "eval-9011462b-05_correccion_transcripcion-c1",
       "state": {
-        "budget_cents": null,
+        "budget_cents": 1200,
         "preferences": [],
         "pending_clarification": null,
         "quote": null,
-        "order": {
-          "order_id": 1,
-          "quote_id": "9dde391327854042ad5df63830e1acf5",
-          "items": [
-            {
-              "product_id": "B08P34RJSX",
-              "title": "Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con Receptor USB, 3 Niveles Ajustables De dpi para Computadora PortáTil, Pc, Mac, Computadora, Macbook, Plata",
-              "quantity": 12,
-              "unit_price_cents": 1100,
-              "subtotal_cents": 13200
-            }
-          ],
-          "total_cents": 13200,
-          "message": "Pedido número 1 registrado: 12 unidades de «Raton inalámbrico, Inphic 2.4G Raton inalámbrico Recargable con…» a 11,00 € cada una, 132,00 €. Total: 132,00 €. Gracias por tu compra."
-        },
+        "order": null,
         "candidates": [
           {
             "product_id": "B08P34RJSX",
@@ -1467,27 +1421,20 @@
         "awaiting_confirmation": false
       },
       "store": {
-        "orders": [
+        "orders": [],
+        "order_items": [],
+        "cart_items": [
           {
-            "order_id": 1,
-            "quote_id": "9dde391327854042ad5df63830e1acf5",
-            "total_cents": 13200
-          }
-        ],
-        "order_items": [
-          {
-            "order_id": 1,
+            "cart_id": "eval-9011462b-05_correccion_transcripcion-c1",
             "product_id": "B08P34RJSX",
-            "quantity": 12,
-            "unit_price_cents": 1100
+            "quantity": 2
           }
         ],
-        "cart_items": [],
         "inventory_changes": [
           {
             "product_id": "B08P34RJSX",
             "initial_stock": 41,
-            "stock": 8
+            "stock": 20
           }
         ]
       },
@@ -1510,7 +1457,7 @@
         },
         "B08P34RJSX": {
           "price_cents": 1100,
-          "stock": 8
+          "stock": 20
         }
       }
     },
@@ -1520,8 +1467,8 @@
         "params": {
           "count": 1
         },
-        "ok": true,
-        "detail": "pedidos registrados: 1"
+        "ok": false,
+        "detail": "pedidos registrados: 0"
       },
       {
         "check": "order",
@@ -1534,8 +1481,8 @@
           ],
           "total_cents": 13200
         },
-        "ok": true,
-        "detail": "pedido 1: 12 × B08P34RJSX; total 13200 céntimos"
+        "ok": false,
+        "detail": "no hay ningún pedido"
       },
       {
         "check": "stock",
@@ -1543,103 +1490,79 @@
           "product": "@elegido",
           "equals": 8
         },
-        "ok": true,
-        "detail": "existencias de B08P34RJSX: 8"
+        "ok": false,
+        "detail": "existencias de B08P34RJSX: 20"
       },
       {
         "check": "cart",
         "params": {
           "empty": true
         },
-        "ok": true,
-        "detail": "carrito: vacío"
+        "ok": false,
+        "detail": "carrito: 2 × B08P34RJSX"
       }
     ]
   },
   "violations": [],
   "problems": [],
-  "passed": true,
+  "passed": false,
   "timings": {
     "all": {
       "turns": 6,
       "asr": {
         "mean": 0.34,
-        "max": 0.34
+        "max": 0.35
       },
       "retrieval": {
         "mean": 0.01,
         "max": 0.03
       },
       "llm": {
-        "mean": 4.17,
-        "max": 7.92
+        "mean": 5.5,
+        "max": 7.83
       },
       "tools": {
         "mean": 0.04,
         "max": 0.05
       },
       "tts": {
-        "mean": 5.86,
-        "max": 10.06
+        "mean": 6.33,
+        "max": 17.23
       },
       "total": {
-        "mean": 10.41,
-        "max": 18.22
+        "mean": 12.21,
+        "max": 25.47
       }
     },
     "with_llm": {
-      "turns": 5,
+      "turns": 6,
       "asr": {
         "mean": 0.34,
-        "max": 0.34
+        "max": 0.35
       },
       "retrieval": {
         "mean": 0.01,
         "max": 0.03
       },
       "llm": {
-        "mean": 5.0,
-        "max": 7.92
+        "mean": 5.5,
+        "max": 7.83
       },
       "tools": {
         "mean": 0.04,
         "max": 0.05
       },
       "tts": {
-        "mean": 6.27,
-        "max": 10.06
+        "mean": 6.33,
+        "max": 17.23
       },
       "total": {
-        "mean": 11.66,
-        "max": 18.22
+        "mean": 12.21,
+        "max": 25.47
       }
     },
     "without_llm": {
-      "turns": 1,
-      "asr": {
-        "mean": 0.33,
-        "max": 0.33
-      },
-      "retrieval": {
-        "mean": 0.0,
-        "max": 0.0
-      },
-      "llm": {
-        "mean": 0.0,
-        "max": 0.0
-      },
-      "tools": {
-        "mean": 0.04,
-        "max": 0.04
-      },
-      "tts": {
-        "mean": 3.81,
-        "max": 3.81
-      },
-      "total": {
-        "mean": 4.18,
-        "max": 4.18
-      }
+      "turns": 0
     }
   }
 }

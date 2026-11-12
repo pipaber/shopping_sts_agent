@@ -5,7 +5,7 @@
 - Tipo: `compra_confirmada`
 - Qué se prueba: El usuario busca con presupuesto, añade dos unidades, pide cerrar y confirma. Tras la búsqueda la tienda fija el primer candidato en 14,50 € y 20 unidades, para que el resultado no dependa de qué producto salga primero.
 
-## Turno 1 (18.3 s)
+## Turno 1 (18.4 s)
 
 **Usuario (transcripción del ASR):** Hola, busco una cafetería italiana. Tengo un presupuesto de 60 euros.
 
@@ -55,7 +55,7 @@
 
 **Usuario (transcripción del ASR):** Sí, confirmo.
 
-- `confirmar_pedido(quote_id="73aeaacd435e49a7b31920f4c03aa69e")` → OK: pedido registrado
+- `confirmar_pedido(quote_id="594454c23af04c18b6a8a01941b3b25a")` → OK: pedido registrado
 
 **Agente:** Pedido número 1 registrado: 2 unidades de «FRHOME - Nespresso 120 Cápsulas de Café compatibles - Il Caffè…» a 14,50 € cada una, 29,00 €. Total: 29,00 €. Gracias por tu compra.
 
@@ -86,10 +86,10 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.56 | 0.03 | 9.94 | 0.04 | 7.75 | 18.32 | 35.1 s |
-| 2 | 0.33 | 0.00 | 4.76 | 0.06 | 5.04 | 10.18 | 21.8 s |
-| 3 | 0.32 | 0.00 | 1.96 | 0.04 | 6.35 | 8.67 | 27.5 s |
-| 4 | 0.32 | 0.00 | 0.00 | 0.04 | 3.85 | 4.20 | 16.2 s |
-| **Media de los turnos con LLM (3)** | 0.40 | 0.01 | 5.55 | 0.05 | 6.38 | 12.39 | |
-| **Media de los turnos sin LLM (1)** | 0.32 | 0.00 | 0.00 | 0.04 | 3.85 | 4.20 | |
+| 1 | 0.57 | 0.03 | 10.01 | 0.03 | 7.78 | 18.42 | 35.1 s |
+| 2 | 0.33 | 0.00 | 4.77 | 0.04 | 5.05 | 10.19 | 21.8 s |
+| 3 | 0.32 | 0.00 | 1.96 | 0.04 | 6.35 | 8.68 | 27.5 s |
+| 4 | 0.31 | 0.00 | 0.00 | 0.03 | 3.86 | 4.21 | 16.2 s |
+| **Media de los turnos con LLM (3)** | 0.41 | 0.01 | 5.58 | 0.04 | 6.39 | 12.43 | |
+| **Media de los turnos sin LLM (1)** | 0.31 | 0.00 | 0.00 | 0.03 | 3.86 | 4.21 | |
 

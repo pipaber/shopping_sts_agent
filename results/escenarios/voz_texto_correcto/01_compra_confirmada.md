@@ -53,7 +53,7 @@
 
 **Usuario (texto):** Sí, confirmo.
 
-- `confirmar_pedido(quote_id="01099587afba432bb4a6a70e5653981b")` → OK: pedido registrado
+- `confirmar_pedido(quote_id="b039facd402842eeb3d5854bd0780d7a")` → OK: pedido registrado
 
 **Agente:** Pedido número 1 registrado: 2 unidades de «De'longhi Dedica - Cafetera de Bomba de Acero Inoxidable para Café…» a 14,50 € cada una, 29,00 €. Total: 29,00 €. Gracias por tu compra.
 
@@ -84,10 +84,10 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.03 | 8.92 | 0.03 | 0.00 | 8.97 | 0.0 s |
-| 2 | 0.00 | 0.00 | 5.13 | 0.05 | 0.00 | 5.18 | 0.0 s |
-| 3 | 0.00 | 0.00 | 2.19 | 0.04 | 0.00 | 2.22 | 0.0 s |
+| 1 | 0.00 | 0.03 | 8.94 | 0.03 | 0.00 | 9.00 | 0.0 s |
+| 2 | 0.00 | 0.00 | 5.15 | 0.05 | 0.00 | 5.20 | 0.0 s |
+| 3 | 0.00 | 0.00 | 2.19 | 0.04 | 0.00 | 2.23 | 0.0 s |
 | 4 | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | 0.0 s |
-| **Media de los turnos con LLM (3)** | 0.00 | 0.01 | 5.41 | 0.04 | 0.00 | 5.46 | |
+| **Media de los turnos con LLM (3)** | 0.00 | 0.01 | 5.43 | 0.04 | 0.00 | 5.48 | |
 | **Media de los turnos sin LLM (1)** | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | |
 

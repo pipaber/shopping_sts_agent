@@ -22,7 +22,7 @@
 
 > **Suceso externo:** la tienda deja `B07VQNY8PK` (@elegida) con precio 9,50 € y existencias 20.
 
-## Turno 2 (15.3 s)
+## Turno 2 (15.4 s)
 
 **Usuario (transcripción del ASR):** Añade dos de la primera.
 
@@ -34,7 +34,7 @@
 
 - ✔ `cart(lines=[{"product": "@elegida", "quantity": 2}])` — carrito: 2 × B07VQNY8PK
 
-## Turno 3 (11.0 s)
+## Turno 3 (11.1 s)
 
 **Usuario (transcripción del ASR):** Mejor que sean cuatro.
 
@@ -66,7 +66,7 @@
 
 **Usuario (transcripción del ASR):** Sí.
 
-- `confirmar_pedido(quote_id="4697500c2f57416b9ecba1d6bda476a2")` → OK: pedido registrado
+- `confirmar_pedido(quote_id="0168a0e1b15b4d04b1a928dcafecc03a")` → OK: pedido registrado
 
 **Agente:** Pedido número 1 registrado: 4 unidades de «Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío…» a 9,50 € cada una, 38,00 €. Total: 38,00 €. Gracias por tu compra.
 
@@ -97,11 +97,11 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.37 | 0.03 | 7.84 | 0.03 | 7.94 | 16.20 | 34.4 s |
-| 2 | 0.33 | 0.00 | 4.89 | 0.05 | 9.98 | 15.26 | 41.9 s |
-| 3 | 0.33 | 0.00 | 4.84 | 0.05 | 5.83 | 11.05 | 25.4 s |
-| 4 | 0.32 | 0.00 | 2.08 | 0.04 | 7.43 | 9.88 | 30.9 s |
+| 1 | 0.37 | 0.03 | 7.87 | 0.03 | 7.95 | 16.24 | 34.4 s |
+| 2 | 0.33 | 0.00 | 4.97 | 0.05 | 10.00 | 15.36 | 41.9 s |
+| 3 | 0.33 | 0.00 | 4.86 | 0.05 | 5.83 | 11.07 | 25.4 s |
+| 4 | 0.32 | 0.00 | 2.09 | 0.04 | 7.43 | 9.88 | 30.9 s |
 | 5 | 0.32 | 0.00 | 0.00 | 0.04 | 4.85 | 5.21 | 20.9 s |
-| **Media de los turnos con LLM (4)** | 0.34 | 0.01 | 4.91 | 0.04 | 7.79 | 13.09 | |
+| **Media de los turnos con LLM (4)** | 0.34 | 0.01 | 4.95 | 0.04 | 7.80 | 13.14 | |
 | **Media de los turnos sin LLM (1)** | 0.32 | 0.00 | 0.00 | 0.04 | 4.85 | 5.21 | |
 

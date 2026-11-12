@@ -64,7 +64,7 @@
 
 **Usuario (texto):** Sí.
 
-- `confirmar_pedido(quote_id="b99e02694e974837bc46f3bfb459f726")` → OK: pedido registrado
+- `confirmar_pedido(quote_id="3907395a06c140df9b4facc9c1d88548")` → OK: pedido registrado
 
 **Agente:** Pedido número 1 registrado: 4 unidades de «Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío…» a 9,50 € cada una, 38,00 €. Total: 38,00 €. Gracias por tu compra.
 
@@ -95,11 +95,11 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.03 | 8.05 | 0.03 | 0.00 | 8.11 | 0.0 s |
-| 2 | 0.00 | 0.00 | 4.98 | 0.05 | 0.00 | 5.04 | 0.0 s |
-| 3 | 0.00 | 0.00 | 4.95 | 0.06 | 0.00 | 5.00 | 0.0 s |
-| 4 | 0.00 | 0.00 | 2.10 | 0.04 | 0.00 | 2.15 | 0.0 s |
-| 5 | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | 0.0 s |
-| **Media de los turnos con LLM (4)** | 0.00 | 0.01 | 5.02 | 0.04 | 0.00 | 5.07 | |
-| **Media de los turnos sin LLM (1)** | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | |
+| 1 | 0.00 | 0.03 | 8.04 | 0.03 | 0.00 | 8.10 | 0.0 s |
+| 2 | 0.00 | 0.00 | 4.99 | 0.06 | 0.00 | 5.05 | 0.0 s |
+| 3 | 0.00 | 0.00 | 4.92 | 0.06 | 0.00 | 4.98 | 0.0 s |
+| 4 | 0.00 | 0.00 | 2.11 | 0.04 | 0.00 | 2.15 | 0.0 s |
+| 5 | 0.00 | 0.00 | 0.00 | 0.02 | 0.00 | 0.02 | 0.0 s |
+| **Media de los turnos con LLM (4)** | 0.00 | 0.01 | 5.02 | 0.05 | 0.00 | 5.07 | |
+| **Media de los turnos sin LLM (1)** | 0.00 | 0.00 | 0.00 | 0.02 | 0.00 | 0.02 | |
 

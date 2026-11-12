@@ -6,9 +6,9 @@
   "voice": true,
   "input": "audio",
   "audio_source": "grabaciones del usuario",
-  "user_id": "eval-41cb1880-04_sin_existencias",
+  "user_id": "eval-9011462b-04_sin_existencias",
   "threads": [
-    "eval-41cb1880-04_sin_existencias-c1"
+    "eval-9011462b-04_sin_existencias-c1"
   ],
   "names": {
     "agotada": "B08GPGJY8M",
@@ -42,21 +42,21 @@
         }
       ],
       "timings": {
-        "asr": 0.339,
-        "retrieval": 0.03,
-        "llm": 7.026,
-        "tools": 0.019,
-        "tts": 6.392,
-        "total": 13.807
+        "asr": 0.342,
+        "retrieval": 0.031,
+        "llm": 7.045,
+        "tools": 0.028,
+        "tts": 6.409,
+        "total": 13.856
       },
       "llm_steps": 2,
-      "tts_first_chunk_seconds": 3.272,
+      "tts_first_chunk_seconds": 3.287,
       "tts_retries": 0,
       "product_terms": [
         "esterilla de yoga"
       ],
       "before": {
-        "cart_id": "eval-41cb1880-04_sin_existencias-c1",
+        "cart_id": "eval-9011462b-04_sin_existencias-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -75,7 +75,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-41cb1880-04_sin_existencias-c1",
+        "cart_id": "eval-9011462b-04_sin_existencias-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -230,19 +230,19 @@
       "timings": {
         "asr": 0.33,
         "retrieval": 0.0,
-        "llm": 5.411,
+        "llm": 5.45,
         "tools": 0.033,
-        "tts": 4.7,
-        "total": 10.475
+        "tts": 4.706,
+        "total": 10.519
       },
       "llm_steps": 2,
-      "tts_first_chunk_seconds": 1.655,
+      "tts_first_chunk_seconds": 1.648,
       "tts_retries": 0,
       "product_terms": [
         "primera"
       ],
       "before": {
-        "cart_id": "eval-41cb1880-04_sin_existencias-c1",
+        "cart_id": "eval-9011462b-04_sin_existencias-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -329,7 +329,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-41cb1880-04_sin_existencias-c1",
+        "cart_id": "eval-9011462b-04_sin_existencias-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -476,21 +476,21 @@
         }
       ],
       "timings": {
-        "asr": 0.337,
+        "asr": 0.338,
         "retrieval": 0.0,
-        "llm": 4.931,
-        "tools": 0.045,
-        "tts": 3.302,
-        "total": 8.614
+        "llm": 4.952,
+        "tools": 0.053,
+        "tts": 3.304,
+        "total": 8.646
       },
       "llm_steps": 2,
-      "tts_first_chunk_seconds": 3.293,
+      "tts_first_chunk_seconds": 3.296,
       "tts_retries": 0,
       "product_terms": [
         "segunda"
       ],
       "before": {
-        "cart_id": "eval-41cb1880-04_sin_existencias-c1",
+        "cart_id": "eval-9011462b-04_sin_existencias-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -577,7 +577,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-41cb1880-04_sin_existencias-c1",
+        "cart_id": "eval-9011462b-04_sin_existencias-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -628,7 +628,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-41cb1880-04_sin_existencias-c1",
+              "cart_id": "eval-9011462b-04_sin_existencias-c1",
               "product_id": "B09738BXB2",
               "quantity": 1
             }
@@ -709,19 +709,19 @@
         }
       ],
       "timings": {
-        "asr": 0.329,
+        "asr": 0.328,
         "retrieval": 0.0,
-        "llm": 2.3,
-        "tools": 0.043,
-        "tts": 5.464,
-        "total": 8.135
+        "llm": 2.302,
+        "tools": 0.04,
+        "tts": 5.489,
+        "total": 8.159
       },
       "llm_steps": 1,
-      "tts_first_chunk_seconds": 3.755,
+      "tts_first_chunk_seconds": 3.774,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-41cb1880-04_sin_existencias-c1",
+        "cart_id": "eval-9011462b-04_sin_existencias-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -772,7 +772,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-41cb1880-04_sin_existencias-c1",
+              "cart_id": "eval-9011462b-04_sin_existencias-c1",
               "product_id": "B09738BXB2",
               "quantity": 1
             }
@@ -814,13 +814,13 @@
         }
       },
       "after": {
-        "cart_id": "eval-41cb1880-04_sin_existencias-c1",
+        "cart_id": "eval-9011462b-04_sin_existencias-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "487b6509c9aa458398c6041fc7a394c6",
+            "quote_id": "6e3c7cf83e33410f802cca9e4eac26f8",
             "items": [
               {
                 "product_id": "B09738BXB2",
@@ -880,7 +880,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-41cb1880-04_sin_existencias-c1",
+              "cart_id": "eval-9011462b-04_sin_existencias-c1",
               "product_id": "B09738BXB2",
               "quantity": 1
             }
@@ -957,7 +957,7 @@
         {
           "tool": "confirmar_pedido",
           "args": {
-            "quote_id": "487b6509c9aa458398c6041fc7a394c6"
+            "quote_id": "6e3c7cf83e33410f802cca9e4eac26f8"
           },
           "reason": "el usuario confirmó la cotización",
           "ok": true,
@@ -969,22 +969,22 @@
         "asr": 0.328,
         "retrieval": 0.0,
         "llm": 0.0,
-        "tools": 0.035,
-        "tts": 2.803,
-        "total": 3.166
+        "tools": 0.041,
+        "tts": 2.807,
+        "total": 3.176
       },
       "llm_steps": 0,
-      "tts_first_chunk_seconds": 2.783,
+      "tts_first_chunk_seconds": 2.787,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-41cb1880-04_sin_existencias-c1",
+        "cart_id": "eval-9011462b-04_sin_existencias-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "487b6509c9aa458398c6041fc7a394c6",
+            "quote_id": "6e3c7cf83e33410f802cca9e4eac26f8",
             "items": [
               {
                 "product_id": "B09738BXB2",
@@ -1044,7 +1044,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-41cb1880-04_sin_existencias-c1",
+              "cart_id": "eval-9011462b-04_sin_existencias-c1",
               "product_id": "B09738BXB2",
               "quantity": 1
             }
@@ -1086,7 +1086,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-41cb1880-04_sin_existencias-c1",
+        "cart_id": "eval-9011462b-04_sin_existencias-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -1094,7 +1094,7 @@
           "quote": null,
           "order": {
             "order_id": 1,
-            "quote_id": "487b6509c9aa458398c6041fc7a394c6",
+            "quote_id": "6e3c7cf83e33410f802cca9e4eac26f8",
             "items": [
               {
                 "product_id": "B09738BXB2",
@@ -1150,7 +1150,7 @@
           "orders": [
             {
               "order_id": 1,
-              "quote_id": "487b6509c9aa458398c6041fc7a394c6",
+              "quote_id": "6e3c7cf83e33410f802cca9e4eac26f8",
               "total_cents": 1800
             }
           ],
@@ -1213,7 +1213,7 @@
   ],
   "final": {
     "snapshot": {
-      "cart_id": "eval-41cb1880-04_sin_existencias-c1",
+      "cart_id": "eval-9011462b-04_sin_existencias-c1",
       "state": {
         "budget_cents": null,
         "preferences": [],
@@ -1221,7 +1221,7 @@
         "quote": null,
         "order": {
           "order_id": 1,
-          "quote_id": "487b6509c9aa458398c6041fc7a394c6",
+          "quote_id": "6e3c7cf83e33410f802cca9e4eac26f8",
           "items": [
             {
               "product_id": "B09738BXB2",
@@ -1277,7 +1277,7 @@
         "orders": [
           {
             "order_id": 1,
-            "quote_id": "487b6509c9aa458398c6041fc7a394c6",
+            "quote_id": "6e3c7cf83e33410f802cca9e4eac26f8",
             "total_cents": 1800
           }
         ],
@@ -1382,20 +1382,20 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 3.93,
-        "max": 7.03
+        "mean": 3.95,
+        "max": 7.04
       },
       "tools": {
         "mean": 0.04,
-        "max": 0.04
+        "max": 0.05
       },
       "tts": {
-        "mean": 4.53,
-        "max": 6.39
+        "mean": 4.54,
+        "max": 6.41
       },
       "total": {
-        "mean": 8.84,
-        "max": 13.81
+        "mean": 8.87,
+        "max": 13.86
       }
     },
     "with_llm": {
@@ -1409,20 +1409,20 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 4.92,
-        "max": 7.03
+        "mean": 4.94,
+        "max": 7.04
       },
       "tools": {
         "mean": 0.04,
-        "max": 0.04
+        "max": 0.05
       },
       "tts": {
-        "mean": 4.96,
-        "max": 6.39
+        "mean": 4.98,
+        "max": 6.41
       },
       "total": {
-        "mean": 10.26,
-        "max": 13.81
+        "mean": 10.29,
+        "max": 13.86
       }
     },
     "without_llm": {
@@ -1444,12 +1444,12 @@
         "max": 0.04
       },
       "tts": {
-        "mean": 2.8,
-        "max": 2.8
+        "mean": 2.81,
+        "max": 2.81
       },
       "total": {
-        "mean": 3.17,
-        "max": 3.17
+        "mean": 3.18,
+        "max": 3.18
       }
     }
   }

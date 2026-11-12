@@ -2,8 +2,8 @@
   "summary": {
     "asr": {
       "cases": 31,
-      "wer": 0.006944444444444444,
-      "exact": 30,
+      "wer": 0.013888888888888888,
+      "exact": 29,
       "amounts": {
         "total": 3,
         "errors": 0,
@@ -22,8 +22,8 @@
     },
     "tts": {
       "cases": 31,
-      "wer": 0.03600900225056264,
-      "similarity_mean": 0.7409886387121086,
+      "wer": 0.03414264036418816,
+      "similarity_mean": 0.742144684311484,
       "similarity_min": 0.5005643381032236
     }
   },
@@ -992,8 +992,8 @@
       "asr": {
         "summary": {
           "cases": 6,
-          "wer": 0.0,
-          "exact": 6,
+          "wer": 0.04,
+          "exact": 5,
           "amounts": {
             "total": 0,
             "errors": 0,
@@ -1014,12 +1014,12 @@
           {
             "turn": 1,
             "reference": "Busco un ratón inalámbrico.",
-            "hypothesis": "Busco un ratón inalámbrico.",
+            "hypothesis": "Busca un ratón inalámbrico.",
             "wer": {
-              "wer": 0.0,
+              "wer": 0.25,
               "reference_words": 4,
-              "hits": 4,
-              "substitutions": 0,
+              "hits": 3,
+              "substitutions": 1,
               "deletions": 0,
               "insertions": 0
             },
@@ -1114,7 +1114,7 @@
           {
             "turn": 4,
             "reference": "No, espera, he dicho doce, no dos.",
-            "hypothesis": "No, espera, he dicho doce, no dos.",
+            "hypothesis": "No, espera, he dicho 12, no 2.",
             "wer": {
               "wer": 0.0,
               "reference_words": 7,
@@ -1218,24 +1218,24 @@
       "tts": {
         "summary": {
           "cases": 6,
-          "wer": 0.024096385542168676,
-          "similarity_mean": 0.7558323908872039,
-          "similarity_min": 0.7379131974344041
+          "wer": 0.01282051282051282,
+          "similarity_mean": 0.7618052931506428,
+          "similarity_min": 0.745800269322805
         },
         "cases": [
           {
             "turn": 1,
-            "spoken_text": "Tengo el ratón inalámbrico INPHIC de plata por treinta y tres euros con veintinueve céntimos, el de INPHIC de plata clara por cuarenta y dos euros con cuarenta y cinco céntimos, el de Anmck negro por veintitrés euros con sesenta y un céntimos, el de WisFox gris por diecinueve euros con sesenta y nueve céntimos y el OMEN VECTOR de HP por diez euros con ochenta y cuatro céntimos. ¿Te interesa alguno?",
-            "heard": "Tengo el ratón inalámbrico Infig de plata por 33 euros con 29 céntimos. El de Infig de plata clara por 42 euros con 45 céntimos. El de Anmak en negro por 23 euros con 61 céntimos. El de Wisfox Gris por 19,69 euros y el Omen Vector DHP por 10,84 euros. ¿Te interesa alguno?",
+            "spoken_text": "Tengo el ratón inalámbrico INPHIC en plata por treinta y tres euros con veintinueve céntimos, el de INPHIC en plata clara por cuarenta y dos euros con cuarenta y cinco céntimos, el de Anmck en negro por veintitrés euros con sesenta y un céntimos, el de WisFox en gris por diecinueve euros con sesenta y nueve céntimos y el OMEN VECTOR de HP por diez euros con ochenta y cuatro céntimos. ¿Te interesa alguno?",
+            "heard": "Tengo el ratón inalámbrico INFIC en plata por 33 euros con 29 céntimos. El de INFIC en plata clara por 42 euros con 45 céntimos. El de ANMAKA en negro por 23 euros con 61 céntimos. El de WISFOX en gris por 19 euros con 69 céntimos. y el OMEN vector de HP por 10 euros con 84 céntimos. ¿Te interesa alguno?",
             "wer": {
-              "wer": 0.08333333333333333,
-              "reference_words": 72,
-              "hits": 67,
-              "substitutions": 4,
-              "deletions": 1,
-              "insertions": 1
+              "wer": 0.04054054054054054,
+              "reference_words": 74,
+              "hits": 71,
+              "substitutions": 3,
+              "deletions": 0,
+              "insertions": 0
             },
-            "similarity": 0.751905945725194
+            "similarity": 0.745800269322805
           },
           {
             "turn": 2,
@@ -1267,45 +1267,45 @@
           },
           {
             "turn": 4,
-            "spoken_text": "Hecho, añadidas diez unidades más. En total, doce unidades de Raton inalámbrico a once euros cada una, ciento treinta y dos euros. Total: ciento treinta y dos euros. En el carrito hay doce unidades de Raton inalámbrico a once euros cada una, ciento treinta y dos euros. Total: ciento treinta y dos euros.",
-            "heard": "Hecho, añadidas 10 unidades más. En total, 12 unidades de ratón inalámbrico a 11 euros cada una, 132 euros. Total, 132 euros. En el carrito hay 12 unidades de ratón inalámbrico a 11 euros cada una, 132 euros. Total, 132 euros.",
+            "spoken_text": "El carrito suma veintidós euros, lo que supera tu presupuesto de doce euros en diez euros. ¿Qué quieres hacer? En el carrito hay dos unidades de Raton inalámbrico a once euros cada una, veintidós euros. Total: veintidós euros. Tu presupuesto es de doce euros y lo superas en diez euros.",
+            "heard": "El carrito suma 22 euros, lo que supera tu presupuesto de 12 euros en 10 euros. ¿Qué quieres hacer? En el carrito hay dos unidades de ratón inalámbrico a 11 euros cada una. 22 euros. Total, 22 euros. Tu presupuesto es de 12 euros y lo superas en 10 euros.",
             "wer": {
               "wer": 0.0,
-              "reference_words": 53,
-              "hits": 53,
+              "reference_words": 50,
+              "hits": 50,
               "substitutions": 0,
               "deletions": 0,
               "insertions": 0
             },
-            "similarity": 0.7941483856449075
+            "similarity": 0.7835254546356876
           },
           {
             "turn": 5,
-            "spoken_text": "Te repito el pedido antes de registrarlo: doce unidades de Raton inalámbrico a once euros cada una, ciento treinta y dos euros. Total: ciento treinta y dos euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
-            "heard": "Te repito el pedido antes de registrarlo, 12 unidades de ratón inalámbrico a 11 euros cada una, 132 euros. Total, 132 euros. ¿Lo confirmo? Di sí para registrarlo o dime qué quieres cambiar.",
+            "spoken_text": "Ese ratón cuesta once euros y el carrito supera tu presupuesto de doce euros en diez euros. ¿Quieres reducir el número de unidades o cambiar por otro?",
+            "heard": "Ese ratón cuesta 11 euros y el carrito supera tu presupuesto de 12 euros en 10 euros. ¿Quieres reducir el número de unidades o cambiar por otro?",
             "wer": {
               "wer": 0.0,
-              "reference_words": 39,
-              "hits": 39,
+              "reference_words": 27,
+              "hits": 27,
               "substitutions": 0,
               "deletions": 0,
               "insertions": 0
             },
-            "similarity": 0.7379131974344041
+            "similarity": 0.7712344074400541
           },
           {
             "turn": 6,
-            "spoken_text": "Pedido número uno registrado: doce unidades de Raton inalámbrico a once euros cada una, ciento treinta y dos euros. Total: ciento treinta y dos euros. Gracias por tu compra.",
-            "heard": "Pedido número 1 registrado. 12 unidades de ratón inalámbrico a 11 euros cada una, 132 euros. Total, 132 euros. Gracias por tu compra.",
+            "spoken_text": "Ese ratón cuesta once euros y el carrito supera tu presupuesto de doce euros en diez euros. ¿Quieres reducir el número de unidades o cambiar por otro?",
+            "heard": "Ese ratón cuesta 11 euros y el carrito supera tu presupuesto de 12 euros en 10 euros. ¿Quieres reducir el número de unidades o cambiar por otro?",
             "wer": {
               "wer": 0.0,
-              "reference_words": 29,
-              "hits": 29,
+              "reference_words": 27,
+              "hits": 27,
               "substitutions": 0,
               "deletions": 0,
               "insertions": 0
             },
-            "similarity": 0.7519895964534605
+            "similarity": 0.7712344074400541
           }
         ]
       }

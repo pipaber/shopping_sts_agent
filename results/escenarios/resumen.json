@@ -445,8 +445,8 @@
       "by_source": []
     },
     "voz": {
-      "date": "2026-11-11T20:30:33",
-      "commit": "e85dc3e",
+      "date": "2026-11-11T23:31:39",
+      "commit": "7e21a71",
       "input": "audio",
       "models": {
         "llm": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
@@ -462,9 +462,9 @@
       "load": {
         "search_seconds": 16.1,
         "llm_seconds": 0.7,
-        "asr_seconds": 1.0,
-        "tts_seconds": 8.9,
-        "total_seconds": 27.4,
+        "asr_seconds": 1.1,
+        "tts_seconds": 8.2,
+        "total_seconds": 36.6,
         "vram_mib": {
           "search": 706,
           "llm": 5820,
@@ -478,13 +478,15 @@
         "02_pedido_ambiguo": "grabaciones del usuario",
         "03_cambio_cantidad": "grabaciones del usuario",
         "04_sin_existencias": "grabaciones del usuario",
-        "05_correccion_transcripcion": "sintéticos, hablante de prueba «Luis Moray» de XTTS-v2 (no es la voz del usuario)",
+        "05_correccion_transcripcion": "grabaciones del usuario",
         "06_cambio_stock_confirmacion_repetida": "grabaciones del usuario"
       },
       "scenarios": 6,
-      "passed": 6,
-      "pass_rate": 1.0,
-      "failed": [],
+      "passed": 5,
+      "pass_rate": 0.8333333333333334,
+      "failed": [
+        "05_correccion_transcripcion"
+      ],
       "turns": 31,
       "violations": {
         "cantidad": 0,
@@ -498,58 +500,58 @@
           "turns": 31,
           "asr": {
             "mean": 0.34,
-            "max": 0.56
+            "max": 0.57
           },
           "retrieval": {
             "mean": 0.01,
             "max": 0.03
           },
           "llm": {
-            "mean": 3.88,
-            "max": 9.94
+            "mean": 4.14,
+            "max": 10.01
           },
           "tools": {
             "mean": 0.04,
             "max": 0.06
           },
           "tts": {
-            "mean": 5.82,
-            "max": 11.62
+            "mean": 5.92,
+            "max": 17.23
           },
           "total": {
-            "mean": 10.09,
-            "max": 20.32
+            "mean": 10.44,
+            "max": 25.47
           }
         },
         "with_llm": {
-          "turns": 24,
+          "turns": 25,
           "asr": {
-            "mean": 0.34,
-            "max": 0.56
+            "mean": 0.35,
+            "max": 0.57
           },
           "retrieval": {
             "mean": 0.01,
             "max": 0.03
           },
           "llm": {
-            "mean": 5.01,
-            "max": 9.94
+            "mean": 5.14,
+            "max": 10.01
           },
           "tools": {
             "mean": 0.04,
             "max": 0.06
           },
           "tts": {
-            "mean": 6.22,
-            "max": 11.62
+            "mean": 6.24,
+            "max": 17.23
           },
           "total": {
-            "mean": 11.62,
-            "max": 20.32
+            "mean": 11.77,
+            "max": 25.47
           }
         },
         "without_llm": {
-          "turns": 7,
+          "turns": 6,
           "asr": {
             "mean": 0.32,
             "max": 0.33
@@ -563,15 +565,15 @@
             "max": 0.0
           },
           "tools": {
-            "mean": 0.04,
+            "mean": 0.03,
             "max": 0.04
           },
           "tts": {
-            "mean": 4.46,
+            "mean": 4.57,
             "max": 10.64
           },
           "total": {
-            "mean": 4.82,
+            "mean": 4.93,
             "max": 11.0
           }
         }
@@ -581,15 +583,93 @@
         "02_pedido_ambiguo": true,
         "03_cambio_cantidad": true,
         "04_sin_existencias": true,
-        "05_correccion_transcripcion": true,
+        "05_correccion_transcripcion": false,
         "06_cambio_stock_confirmacion_repetida": true
       },
-      "failed_checks": {},
+      "failed_checks": {
+        "05_correccion_transcripcion": [
+          {
+            "turn": 4,
+            "check": "cart",
+            "params": {
+              "lines": [
+                {
+                  "product": "@elegido",
+                  "quantity": 12
+                }
+              ]
+            },
+            "ok": false,
+            "detail": "carrito: 2 × B08P34RJSX"
+          },
+          {
+            "turn": 5,
+            "check": "awaiting_confirmation",
+            "params": {
+              "value": true
+            },
+            "ok": false,
+            "detail": "esperando confirmación: no"
+          },
+          {
+            "turn": 6,
+            "check": "orders",
+            "params": {
+              "count": 1
+            },
+            "ok": false,
+            "detail": "pedidos registrados: 0"
+          },
+          {
+            "turn": "final",
+            "check": "orders",
+            "params": {
+              "count": 1
+            },
+            "ok": false,
+            "detail": "pedidos registrados: 0"
+          },
+          {
+            "turn": "final",
+            "check": "order",
+            "params": {
+              "lines": [
+                {
+                  "product": "@elegido",
+                  "quantity": 12
+                }
+              ],
+              "total_cents": 13200
+            },
+            "ok": false,
+            "detail": "no hay ningún pedido"
+          },
+          {
+            "turn": "final",
+            "check": "stock",
+            "params": {
+              "product": "@elegido",
+              "equals": 8
+            },
+            "ok": false,
+            "detail": "existencias de B08P34RJSX: 20"
+          },
+          {
+            "turn": "final",
+            "check": "cart",
+            "params": {
+              "empty": true
+            },
+            "ok": false,
+            "detail": "carrito: 2 × B08P34RJSX"
+          }
+        ]
+      },
       "voice_metrics": {
         "asr": {
           "cases": 31,
-          "wer": 0.006944444444444444,
-          "exact": 30,
+          "wer": 0.013888888888888888,
+          "exact": 29,
           "amounts": {
             "total": 3,
             "errors": 0,
@@ -608,8 +688,8 @@
         },
         "tts": {
           "cases": 31,
-          "wer": 0.03600900225056264,
-          "similarity_mean": 0.7409886387121086,
+          "wer": 0.03414264036418816,
+          "similarity_mean": 0.742144684311484,
           "similarity_min": 0.5005643381032236
         }
       },
@@ -621,13 +701,16 @@
             "02_pedido_ambiguo",
             "03_cambio_cantidad",
             "04_sin_existencias",
+            "05_correccion_transcripcion",
             "06_cambio_stock_confirmacion_repetida"
           ],
-          "scenarios": 5,
+          "scenarios": 6,
           "passed": 5,
-          "pass_rate": 1.0,
-          "failed": [],
-          "turns": 25,
+          "pass_rate": 0.8333333333333334,
+          "failed": [
+            "05_correccion_transcripcion"
+          ],
+          "turns": 31,
           "violations": {
             "cantidad": 0,
             "presupuesto": 0,
@@ -637,57 +720,57 @@
           },
           "timings": {
             "all": {
-              "turns": 25,
+              "turns": 31,
               "asr": {
                 "mean": 0.34,
-                "max": 0.56
+                "max": 0.57
               },
               "retrieval": {
                 "mean": 0.01,
                 "max": 0.03
               },
               "llm": {
-                "mean": 3.81,
-                "max": 9.94
+                "mean": 4.14,
+                "max": 10.01
               },
               "tools": {
                 "mean": 0.04,
                 "max": 0.06
               },
               "tts": {
-                "mean": 5.81,
-                "max": 11.62
+                "mean": 5.92,
+                "max": 17.23
               },
               "total": {
-                "mean": 10.01,
-                "max": 20.32
+                "mean": 10.44,
+                "max": 25.47
               }
             },
             "with_llm": {
-              "turns": 19,
+              "turns": 25,
               "asr": {
                 "mean": 0.35,
-                "max": 0.56
+                "max": 0.57
               },
               "retrieval": {
                 "mean": 0.01,
                 "max": 0.03
               },
               "llm": {
-                "mean": 5.01,
-                "max": 9.94
+                "mean": 5.14,
+                "max": 10.01
               },
               "tools": {
                 "mean": 0.04,
                 "max": 0.06
               },
               "tts": {
-                "mean": 6.2,
-                "max": 11.62
+                "mean": 6.24,
+                "max": 17.23
               },
               "total": {
-                "mean": 11.61,
-                "max": 20.32
+                "mean": 11.77,
+                "max": 25.47
               }
             },
             "without_llm": {
@@ -705,11 +788,11 @@
                 "max": 0.0
               },
               "tools": {
-                "mean": 0.04,
+                "mean": 0.03,
                 "max": 0.04
               },
               "tts": {
-                "mean": 4.56,
+                "mean": 4.57,
                 "max": 10.64
               },
               "total": {
@@ -719,29 +802,29 @@
             }
           },
           "asr": {
-            "cases": 25,
-            "wer": 0.008403361344537815,
-            "exact": 24,
+            "cases": 31,
+            "wer": 0.013888888888888888,
+            "exact": 29,
             "amounts": {
               "total": 3,
               "errors": 0,
               "error_rate": 0.0
             },
             "quantities": {
-              "total": 5,
+              "total": 8,
               "errors": 0,
               "error_rate": 0.0
             },
             "products": {
-              "total": 11,
+              "total": 13,
               "errors": 1,
-              "error_rate": 0.09090909090909091
+              "error_rate": 0.07692307692307693
             }
           },
           "tts": {
-            "cases": 25,
-            "wer": 0.03874538745387454,
-            "similarity_mean": 0.7374261381900857,
+            "cases": 31,
+            "wer": 0.03414264036418816,
+            "similarity_mean": 0.742144684311484,
             "similarity_min": 0.5005643381032236
           },
           "asr_differences": [
@@ -750,142 +833,20 @@
               "turn": 1,
               "reference": "Hola, busco una cafetera italiana. Tengo un presupuesto de 60 euros.",
               "hypothesis": "Hola, busco una cafetería italiana. Tengo un presupuesto de 60 euros."
+            },
+            {
+              "scenario": "05_correccion_transcripcion",
+              "turn": 1,
+              "reference": "Busco un ratón inalámbrico.",
+              "hypothesis": "Busca un ratón inalámbrico."
             }
           ]
-        },
-        {
-          "source": "sintéticos, hablante de prueba «Luis Moray» de XTTS-v2 (no es la voz del usuario)",
-          "ids": [
-            "05_correccion_transcripcion"
-          ],
-          "scenarios": 1,
-          "passed": 1,
-          "pass_rate": 1.0,
-          "failed": [],
-          "turns": 6,
-          "violations": {
-            "cantidad": 0,
-            "presupuesto": 0,
-            "existencias": 0,
-            "pedido_duplicado": 0,
-            "cambio_parcial": 0
-          },
-          "timings": {
-            "all": {
-              "turns": 6,
-              "asr": {
-                "mean": 0.34,
-                "max": 0.34
-              },
-              "retrieval": {
-                "mean": 0.01,
-                "max": 0.03
-              },
-              "llm": {
-                "mean": 4.17,
-                "max": 7.92
-              },
-              "tools": {
-                "mean": 0.04,
-                "max": 0.05
-              },
-              "tts": {
-                "mean": 5.86,
-                "max": 10.06
-              },
-              "total": {
-                "mean": 10.41,
-                "max": 18.22
-              }
-            },
-            "with_llm": {
-              "turns": 5,
-              "asr": {
-                "mean": 0.34,
-                "max": 0.34
-              },
-              "retrieval": {
-                "mean": 0.01,
-                "max": 0.03
-              },
-              "llm": {
-                "mean": 5.0,
-                "max": 7.92
-              },
-              "tools": {
-                "mean": 0.04,
-                "max": 0.05
-              },
-              "tts": {
-                "mean": 6.27,
-                "max": 10.06
-              },
-              "total": {
-                "mean": 11.66,
-                "max": 18.22
-              }
-            },
-            "without_llm": {
-              "turns": 1,
-              "asr": {
-                "mean": 0.33,
-                "max": 0.33
-              },
-              "retrieval": {
-                "mean": 0.0,
-                "max": 0.0
-              },
-              "llm": {
-                "mean": 0.0,
-                "max": 0.0
-              },
-              "tools": {
-                "mean": 0.04,
-                "max": 0.04
-              },
-              "tts": {
-                "mean": 3.81,
-                "max": 3.81
-              },
-              "total": {
-                "mean": 4.18,
-                "max": 4.18
-              }
-            }
-          },
-          "asr": {
-            "cases": 6,
-            "wer": 0.0,
-            "exact": 6,
-            "amounts": {
-              "total": 0,
-              "errors": 0,
-              "error_rate": null
-            },
-            "quantities": {
-              "total": 3,
-              "errors": 0,
-              "error_rate": 0.0
-            },
-            "products": {
-              "total": 2,
-              "errors": 0,
-              "error_rate": 0.0
-            }
-          },
-          "tts": {
-            "cases": 6,
-            "wer": 0.024096385542168676,
-            "similarity_mean": 0.7558323908872039,
-            "similarity_min": 0.7379131974344041
-          },
-          "asr_differences": []
         }
       ]
     },
     "voz_texto_correcto": {
-      "date": "2026-11-11T20:30:33",
-      "commit": "e85dc3e",
+      "date": "2026-11-11T23:31:39",
+      "commit": "7e21a71",
       "input": "texto",
       "models": {
         "llm": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
@@ -901,9 +862,9 @@
       "load": {
         "search_seconds": 16.1,
         "llm_seconds": 0.7,
-        "asr_seconds": 1.0,
-        "tts_seconds": 8.9,
-        "total_seconds": 27.4,
+        "asr_seconds": 1.1,
+        "tts_seconds": 8.2,
+        "total_seconds": 36.6,
         "vram_mib": {
           "search": 706,
           "llm": 5820,
@@ -938,7 +899,7 @@
           },
           "llm": {
             "mean": 3.91,
-            "max": 8.92
+            "max": 8.94
           },
           "tools": {
             "mean": 0.04,
@@ -949,8 +910,8 @@
             "max": 0.0
           },
           "total": {
-            "mean": 3.95,
-            "max": 8.97
+            "mean": 3.96,
+            "max": 9.0
           }
         },
         "with_llm": {
@@ -965,7 +926,7 @@
           },
           "llm": {
             "mean": 5.05,
-            "max": 8.92
+            "max": 8.94
           },
           "tools": {
             "mean": 0.04,
@@ -977,7 +938,7 @@
           },
           "total": {
             "mean": 5.1,
-            "max": 8.97
+            "max": 9.0
           }
         },
         "without_llm": {
@@ -1824,11 +1785,17 @@
       },
       {
         "id": "05_correccion_transcripcion",
-        "passed_audio": true,
+        "passed_audio": false,
         "passed_text": true,
-        "asr_changed_words": [],
-        "different_operations": [],
-        "same_store": true
+        "asr_changed_words": [
+          1
+        ],
+        "different_operations": [
+          4,
+          5,
+          6
+        ],
+        "same_store": false
       },
       {
         "id": "06_cambio_stock_confirmacion_repetida",
