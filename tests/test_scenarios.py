@@ -18,7 +18,7 @@ from shopping_agent.eval import scenarios as command
 from shopping_agent.eval.scenario_checks import View, match_lines, resolve, run_check
 from shopping_agent.eval.scenario_report import before_after, compare_with_text, failed_checks, ficha, run_summary, summarize, to_markdown
 from shopping_agent.eval.scenario_runner import AUDIO, TEXT, AudioInputs, Bench, ScenarioRun
-from shopping_agent.eval.voice import asr_errors
+from shopping_agent.eval.voice import asr_errors, summarize_asr, summarize_tts, wer
 from shopping_agent.voice.audio import write_wav
 from test_agent import Shop, call, say
 from test_voice_pipeline import FakeASR, FakeTTS
@@ -399,15 +399,22 @@ def test_an_audio_run_is_summarized_by_where_its_audio_came_from(shop, tmp_path)
         return {**run(shop, tmp_path, {**PURCHASE, "id": scenario_id}, purchase_script(), run_id=scenario_id), "audio_source": source}
 
     records = [record("real", "grabaciones del usuario"), record("prueba", "sintéticos")]
+    spoken = {"turn": 1, "wer": wer("Hecho.", "Hecho."), "similarity": 0.75, "similarity_real": 0.25}
     metrics = {
-        "real": {"asr": asr("Busco una cafetera", "Busco una cafetería"), "tts": {"cases": []}},
+        "real": {"asr": asr("Busco una cafetera", "Busco una cafetería"), "tts": {"cases": [spoken]}},
         "prueba": {"asr": asr("Busco una cafetera", "Busco una cafetera."), "tts": {"cases": []}},
     }
     info = {
         "date": "2026-11-11", "commit": "abc", "input": AUDIO, "audio_sources": {}, "memory_backend": "memoria volátil",
-        "models": {"reranker": "control"}, "voice": {}, "load": {"search_seconds": 1, "llm_seconds": 1, "total_seconds": 2},
+        "models": {"reranker": "control"}, "voice": {"reference": "voz.wav", "speaker": None, "speed": 1.15},
+        "load": {"search_seconds": 1, "llm_seconds": 1, "total_seconds": 2},
     }
-    voice = {"name": "voz", "info": info, "records": records, "voice_metrics": {"summary": {}, "scenarios": metrics}}
+    measured = {
+        "summary": {"asr": summarize_asr([]), "tts": summarize_tts([spoken])},
+        "scenarios": metrics,
+        "real_recordings": {"count": 5, "similarity_among": 0.4},
+    }
+    voice = {"name": "voz", "info": info, "records": records, "voice_metrics": measured}
     repeat = {"name": "voz_texto_correcto", "info": info, "records": records, "voice_metrics": None}
     summary = summarize([voice, repeat])
     real, synthetic = summary["runs"]["voz"]["by_source"]
@@ -419,6 +426,21 @@ def test_an_audio_run_is_summarized_by_where_its_audio_came_from(shop, tmp_path)
     text = to_markdown(summary)
     assert "**Audios de entrada: grabaciones del usuario.** Escenarios re: 1 de 1 correctos." in text
     assert "`real`, turno 1: se dijo «Busco una cafetera» y entendió «Busco una cafetería»." in text
+    row = next(line for line in text.splitlines() if line.startswith("| `voz` | clonada"))
+    assert "velocidad del habla 1,15 | 2 de 2 | 0.0 % | 0.750 | 0.250 | — | 0.00 |" in row  # corridas por texto: sin audio de respuesta
+    assert "Semejanza con las grabaciones reales (coseno ECAPA): media 0.250, mínima 0.250." in text
+    assert "las 5 grabaciones reales se parecen entre sí 0.400" in text and text.count("sale optimista") == 1
+
+
+def test_user_recordings_of_a_run_are_the_real_voice_to_compare_with(shop, tmp_path):
+    scenario = fmt.parse_scenario(PURCHASE)
+    files = [write_wav(tmp_path / "entradas" / f"{n:02d}.wav", np.zeros(800, dtype=np.float32), 16000) for n in range(1, 6)]
+    bench = bench_for(shop, tmp_path, FakeASR([say.text for say in scenario.says]), FakeTTS())
+    shop.llm.extend(purchase_script())
+    record = ScenarioRun(scenario, bench, "voz", AudioInputs(command.USER_RECORDING, files), tmp_path / "audio" / "compra").run()
+    found = command.user_recordings([record, {**record, "audio_source": "sintéticos"}], tmp_path / "audio")
+    assert [path.name for path in found] == [f"entrada_{number:02d}.wav" for number in range(1, 6)]
+    assert all(path.is_file() for path in found)
 
 
 def test_recordings_are_preferred_over_synthetic_audio(tmp_path):

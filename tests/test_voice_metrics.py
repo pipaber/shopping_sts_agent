@@ -13,7 +13,8 @@ from shopping_agent.eval.voice import (
     normalize,
     pooled_wer,
     read_number,
-    speaker_similarity,
+    similarity_among,
+    speaker_comparison,
     summarize_asr,
     to_markdown,
     wer,
@@ -124,10 +125,33 @@ def _tone(frequency, rate=16000):
     return (0.3 * np.sin(2 * np.pi * frequency * np.arange(rate) / rate)).astype(np.float32), rate
 
 
-def test_speaker_similarity_uses_the_embedder():
-    embedder = FakeEmbedder()
-    assert speaker_similarity(embedder, _tone(220), _tone(220)) == pytest.approx(1.0, abs=1e-3)
-    assert speaker_similarity(embedder, _tone(220), _tone(1500)) < 0.1
+TONES = {"ref.wav": 220, "real_1.wav": 220, "real_2.wav": 1500, "respuesta_01.wav": 220, "respuesta_02.wav": 1500}
+
+
+def _read_tone(path):
+    return _tone(TONES[path.name])
+
+
+def test_synthesis_is_compared_with_the_reference_and_with_real_recordings(tmp_path):
+    real = [tmp_path / "real_1.wav", tmp_path / "real_2.wav"]
+    compare = speaker_comparison(FakeEmbedder(), tmp_path / "ref.wav", real, _read_tone)
+    same, other = compare(tmp_path / "respuesta_01.wav"), compare(tmp_path / "respuesta_02.wav")
+    assert same["similarity"] == pytest.approx(1.0, abs=1e-3) and other["similarity"] < 0.1
+    # con las grabaciones reales es la media: cada respuesta se parece a una de las dos
+    assert same["similarity_real"] == pytest.approx(0.5, abs=1e-2) == pytest.approx(other["similarity_real"], abs=1e-2)
+    only_real = speaker_comparison(FakeEmbedder(), None, real, _read_tone)
+    assert set(only_real(tmp_path / "respuesta_01.wav")) == {"similarity_real"}
+    only_reference = speaker_comparison(FakeEmbedder(), tmp_path / "ref.wav", [], _read_tone)
+    assert set(only_reference(tmp_path / "respuesta_01.wav")) == {"similarity"}
+    assert speaker_comparison(None, tmp_path / "ref.wav", real, _read_tone) is None
+    assert speaker_comparison(FakeEmbedder(), None, [], _read_tone) is None
+
+
+def test_similarity_among_recordings_leaves_each_one_out(tmp_path):
+    alike = [tmp_path / "real_1.wav", tmp_path / "ref.wav"]
+    assert similarity_among(FakeEmbedder(), alike, _read_tone) == pytest.approx(1.0, abs=1e-3)
+    assert similarity_among(FakeEmbedder(), [tmp_path / "real_1.wav", tmp_path / "real_2.wav"], _read_tone) < 0.1
+    assert similarity_among(FakeEmbedder(), alike[:1], _read_tone) is None
 
 
 def test_evaluate_run_without_models(tmp_path):
@@ -146,15 +170,10 @@ def test_evaluate_run_without_models(tmp_path):
     }
     (tmp_path / "turnos.json").write_text(json.dumps(record), encoding="utf-8")
     heard = {"respuesta_01.wav": "Hecho, añadidas dos unidades", "respuesta_02.wav": "Pedido número uno registrados"}
-    tones = {"ref.wav": 220, "respuesta_01.wav": 220, "respuesta_02.wav": 1500}
+    real = [tmp_path / "real_1.wav", tmp_path / "real_2.wav"]
+    compare = speaker_comparison(FakeEmbedder(), tmp_path / "ref.wav", real, _read_tone)
 
-    metrics = evaluate_run(
-        tmp_path,
-        transcribe=lambda path: heard[path.name],
-        embedder=FakeEmbedder(),
-        reference_audio=tmp_path / "ref.wav",
-        read=lambda path: _tone(tones[path.name]),
-    )
+    metrics = evaluate_run(tmp_path, lambda path: heard[path.name], compare)
     asr = metrics["asr"]
     assert asr["summary"]["cases"] == 1
     assert asr["summary"]["quantities"] == {"total": 1, "errors": 1, "error_rate": 1.0}
@@ -164,8 +183,15 @@ def test_evaluate_run_without_models(tmp_path):
     assert tts["summary"]["wer"] == pytest.approx(1 / 8)
     assert tts["cases"][0]["similarity"] == pytest.approx(1.0, abs=1e-3)
     assert tts["summary"]["similarity_min"] < 0.1
+    assert tts["summary"]["similarity_real_mean"] == pytest.approx(0.5, abs=1e-2)
     report = to_markdown(metrics)
     assert "Cantidades: 1 errores de 1" in report and "Semejanza con la referencia" in report
+    assert "Semejanza con las grabaciones reales (coseno ECAPA): media 0.5" in report and "sale optimista" not in report
 
-    no_reference = evaluate_run(tmp_path, lambda path: heard[path.name], None, None, lambda path: _tone(220))
+    metrics["real_recordings"] = {"count": 2, "similarity_among": 0.01}
+    report = to_markdown(metrics)
+    assert "las 2 grabaciones reales se parecen entre sí 0.010" in report and "sale optimista" in report
+
+    no_reference = evaluate_run(tmp_path, lambda path: heard[path.name], None)
     assert no_reference["tts"]["summary"]["similarity_mean"] is None
+    assert no_reference["tts"]["summary"]["similarity_real_mean"] is None

@@ -12,7 +12,9 @@ comprobaciones fallidas, que es el material para analizar aciertos y fallos.
 Una corrida por audio se resume además según de dónde salieron los audios de
 entrada (grabaciones del usuario o hablante sintético), porque una misma corrida
 puede mezclar las dos cosas. ``voz_sintetica`` es la corrida con audio sintético
-que se conserva para comparar con la voz real.
+que se conserva para comparar con la voz real, y ``voz_referencia_anterior`` la
+corrida con la voz del agente de antes de cambiar su grabación de referencia y
+la velocidad del habla.
 """
 
 from __future__ import annotations
@@ -26,16 +28,17 @@ from typing import Any
 
 from shopping_agent.agent.report import store_lines
 from shopping_agent.eval.scenario_violations import KINDS
-from shopping_agent.eval.voice import normalize, summarize_asr, summarize_tts
+from shopping_agent.eval.voice import SIMILARITY, SIMILARITY_NOTE, SIMILARITY_REAL, normalize, similarity_lines, summarize_asr, summarize_tts
 from shopping_agent.store.ops import format_eur
-from shopping_agent.voice.pipeline import STAGES, TOTAL, VoiceTurn, comparable_store, compare_runs, summarize_timings
-from shopping_agent.voice.report import STAGE_LABELS, timing_lines, turn_lines
+from shopping_agent.voice.pipeline import STAGES, TOTAL, TTS, VoiceTurn, comparable_store, compare_runs, summarize_timings
+from shopping_agent.voice.report import STAGE_LABELS, timing_lines, turn_lines, voice_label
 
 DEFAULT_DIR = Path("results/escenarios")
 BASELINE_DIR = Path("results/escenarios_base")  # corridas de antes de corregir el agente
 RUN_FILE, SUMMARY_NAME, VOICE_METRICS_FILE = "corrida.json", "resumen", "metricas_voz.json"
 AUDIO_RUN, TEXT_REPEAT_RUN, SYNTHETIC_RUN = "voz", "voz_texto_correcto", "voz_sintetica"
-RUN_ORDER = ("texto", "texto_sage", "texto_sin_reranker", AUDIO_RUN, TEXT_REPEAT_RUN, SYNTHETIC_RUN)
+PREVIOUS_VOICE_RUN = "voz_referencia_anterior"  # la voz del agente antes de la referencia nueva y la velocidad
+RUN_ORDER = ("texto", "texto_sage", "texto_sin_reranker", AUDIO_RUN, TEXT_REPEAT_RUN, PREVIOUS_VOICE_RUN, SYNTHETIC_RUN)
 _TURN_FIELDS = tuple(field.name for field in fields(VoiceTurn))
 _MARK = {True: "✔", False: "✘"}
 
@@ -224,15 +227,23 @@ def load_runs(folder: Path) -> list[dict[str, Any]]:
 _INFO_KEYS = ("date", "commit", "input", "models", "voice", "load", "memory_backend", "audio_sources")
 
 
+def _response_audio_seconds(records: list[Record]) -> float | None:
+    """Duración media del audio de las respuestas; ``None`` si la corrida no sintetizó."""
+    seconds = [turn["output_seconds"] for record in records for turn in turns_of(record) if turn["output_seconds"]]
+    return sum(seconds) / len(seconds) if seconds else None
+
+
 def _run_entry(run: dict[str, Any]) -> dict[str, Any]:
     """Lo que el resumen guarda de una corrida."""
-    records = run["records"]
+    records, voice = run["records"], run["voice_metrics"] or {}
     return {
         **{key: run["info"].get(key) for key in _INFO_KEYS},
         **run_summary(records),
         "verdicts": {record["id"]: record["passed"] for record in records},
         "failed_checks": {record["id"]: failed_checks(record) for record in records if not record["passed"]},
-        "voice_metrics": run["voice_metrics"]["summary"] if run["voice_metrics"] else None,
+        "voice_metrics": voice.get("summary"),
+        "real_recordings": voice.get("real_recordings"),
+        "response_audio_seconds": _response_audio_seconds(records),
         "by_source": by_source(run),
     }
 
@@ -347,11 +358,9 @@ def _difference_lines(differences: list[dict[str, Any]]) -> list[str]:
     return lines
 
 
-def _tts_lines(tts: dict[str, Any]) -> list[str]:
-    lines = [f"- Inteligibilidad de la voz generada (WER de Whisper sobre {tts['cases']} respuestas): {_percent(tts['wer'])}."]
-    if tts["similarity_mean"] is not None:
-        lines.append(f"- Semejanza con la voz de referencia (coseno ECAPA): media {tts['similarity_mean']:.3f}, mínima {tts['similarity_min']:.3f}.")
-    return lines
+def _tts_lines(tts: dict[str, Any], real: dict[str, Any] | None) -> list[str]:
+    intelligibility = f"- Inteligibilidad de la voz generada (WER de Whisper sobre {tts['cases']} respuestas): {_percent(tts['wer'])}."
+    return [intelligibility, *similarity_lines(tts, real)]
 
 
 def _latency_line(stats: dict[str, Any]) -> list[str]:
@@ -368,8 +377,29 @@ def _voice_lines(name: str, run: dict[str, Any]) -> list[str]:
         scenarios = ", ".join(scenario[:2] for scenario in entry["ids"])
         lines += [f"**Audios de entrada: {entry['source']}.** Escenarios {scenarios}: {entry['passed']} de {entry['scenarios']} correctos.", ""]
         lines += [*_asr_lines(entry["asr"]), *_difference_lines(entry["asr_differences"])]
-        lines += [*_tts_lines(entry["tts"]), *_latency_line(entry["timings"]["with_llm"]), ""]
+        lines += [*_tts_lines(entry["tts"], run.get("real_recordings")), *_latency_line(entry["timings"]["with_llm"]), ""]
     return lines
+
+
+def _number(value: float | None, digits: int) -> str:
+    return "—" if value is None else f"{value:.{digits}f}"
+
+
+def _agent_voice_table(runs: dict[str, Any]) -> list[str]:
+    """La voz del agente en cada corrida por audio, lado a lado: sirve para comparar
+    una voz con otra (otra referencia, otra velocidad) sobre los mismos escenarios."""
+    lines = [
+        "| Corrida | Voz del agente | Correctos | Inteligibilidad (WER) | Semejanza con la referencia | Semejanza con las grabaciones reales "
+        "| Audio de respuesta (s) | TTS (s por turno) | Total (s por turno) | Total con LLM (s) |",
+        "|---" * 10 + "|",
+    ]
+    for name, run in runs.items():
+        tts, timings = run["voice_metrics"]["tts"], run["timings"]
+        similarities = [_number(tts.get(f"{key}_mean"), 3) for key in (SIMILARITY, SIMILARITY_REAL)]
+        seconds = [run["response_audio_seconds"], timings["all"][TTS]["mean"], timings["all"][TOTAL]["mean"], timings["with_llm"][TOTAL]["mean"]]
+        cells = [f"`{name}`", voice_label(run["voice"]), f"{run['passed']} de {run['scenarios']}", _percent(tts["wer"]), *similarities]
+        lines.append("| " + " | ".join([*cells, *(_number(value, 2) for value in seconds)]) + " |")
+    return [*lines, ""]
 
 
 def _comparison_table(rows: list[dict[str, Any]]) -> list[str]:
@@ -413,7 +443,9 @@ def _before_after_lines(rows: list[dict[str, Any]]) -> list[str]:
 
 def _voice_section(runs: dict[str, Any]) -> list[str]:
     audio_runs = {name: run for name, run in runs.items() if run.get("by_source")}
-    lines = ["## Voz", ""] if audio_runs else []
+    lines = ["## Voz", "", *_agent_voice_table(audio_runs)] if audio_runs else []
+    if any(run.get("real_recordings") for run in audio_runs.values()):
+        lines += [SIMILARITY_NOTE, ""]
     for name, run in audio_runs.items():
         lines += _voice_lines(name, run)
     return lines

@@ -3,13 +3,16 @@
 - **Inteligibilidad:** WER de Whisper sobre el audio sintetizado frente al texto
   que se envió al TTS.
 - **Semejanza:** coseno entre los embeddings de hablante (ECAPA-TDNN) de la
-  grabación de referencia y de la síntesis.
+  síntesis y de la voz que imita, medida de dos maneras: con la grabación de
+  referencia, de la que se clonó, y con grabaciones reales del mismo hablante que
+  no se usaron para clonar.
 - **Errores del ASR:** además del WER, qué cantidades, importes y nombres de
   producto del texto correcto no llegaron a la transcripción.
 
 Uso, sobre una corrida guardada por ``shopping_agent.voice.chat``::
 
     python -m shopping_agent.eval.voice results/voz_compra
+    python -m shopping_agent.eval.voice results/voz_compra --real audio/escenarios
 """
 
 from __future__ import annotations
@@ -302,9 +305,47 @@ class EcapaEmbedder:
             return self.model.encode_batch(samples).squeeze().cpu().numpy()
 
 
-def speaker_similarity(embedder: SpeakerEmbedder, reference: tuple[np.ndarray, int], sample: tuple[np.ndarray, int]) -> float:
-    """Coseno entre los embeddings de hablante de dos audios ``(muestras, frecuencia)``."""
-    return cosine(embedder.embed(*reference), embedder.embed(*sample))
+SIMILARITY, SIMILARITY_REAL = "similarity", "similarity_real"
+SIMILARITY_NOTE = (
+    "La semejanza con la referencia compara con la misma grabación de la que se clonó la voz y sale optimista "
+    "(misma toma, mismo micrófono); la semejanza con las grabaciones reales compara con audios del mismo hablante "
+    "que el modelo no usó y dice mejor cuánto se parece a su voz de otro momento."
+)
+ReadAudio = Callable[[Path], tuple[np.ndarray, int]]
+Compare = Callable[[Path], dict[str, float]]
+
+
+def mean_similarity(embedding: np.ndarray, others: Sequence[np.ndarray]) -> float:
+    return float(np.mean([cosine(embedding, other) for other in others]))
+
+
+def speaker_comparison(
+    embedder: SpeakerEmbedder | None, reference_audio: Path | None, real_audios: Sequence[Path], read: ReadAudio
+) -> Compare | None:
+    """Función que mide cuánto se parece un audio a la voz que imita: ``similarity``, con
+    la grabación de referencia, y ``similarity_real``, la media con las grabaciones reales
+    que no se usaron para clonar. ``None`` si no hay con qué comparar."""
+    if embedder is None or not (reference_audio or real_audios):
+        return None
+    reference = embedder.embed(*read(reference_audio)) if reference_audio else None
+    real = [embedder.embed(*read(path)) for path in real_audios]
+
+    def compare(path: Path) -> dict[str, float]:
+        embedding = embedder.embed(*read(path))
+        found = {} if reference is None else {SIMILARITY: cosine(reference, embedding)}
+        return {**found, SIMILARITY_REAL: mean_similarity(embedding, real)} if real else found
+
+    return compare
+
+
+def similarity_among(embedder: SpeakerEmbedder, audios: Sequence[Path], read: ReadAudio) -> float | None:
+    """Cuánto se parecen entre sí unas grabaciones del mismo hablante: media de la
+    semejanza de cada una con las demás. Es el techo de ``similarity_real``."""
+    embeddings = [embedder.embed(*read(path)) for path in audios]
+    if len(embeddings) < 2:
+        return None
+    others = [embeddings[:index] + embeddings[index + 1 :] for index in range(len(embeddings))]
+    return float(np.mean([mean_similarity(embedding, rest) for embedding, rest in zip(embeddings, others)]))
 
 
 # --- Evaluación de una corrida guardada -----------------------------------------------
@@ -317,25 +358,19 @@ def _asr_case(turn: dict[str, Any]) -> dict[str, Any] | None:
     return {"turn": turn["turn"], **asr_errors(turn["expected_text"], turn["transcript"], turn.get("product_terms") or ())}
 
 
-def evaluate_run(
-    run_dir: Path,
-    transcribe: Callable[[Path], str],
-    embedder: SpeakerEmbedder | None,
-    reference_audio: Path | None,
-    read: Callable[[Path], tuple[np.ndarray, int]],
-) -> dict[str, Any]:
+def evaluate_run(run_dir: Path, transcribe: Callable[[Path], str], compare: Compare | None) -> dict[str, Any]:
     """Calcula las tres métricas sobre los turnos guardados en ``run_dir/turnos.json``."""
     turns = json.loads((run_dir / "turnos.json").read_text(encoding="utf-8"))["turns"]
-    return evaluate_turns(turns, run_dir, transcribe, embedder, reference_audio, read)
+    return evaluate_turns(turns, run_dir, transcribe, compare)
 
 
 def _tts_cases(
     turns: Sequence[dict[str, Any]],
     audio_dir: Path,
     transcribe: Callable[[Path], str],
-    similarity: Callable[[Path], float] | None,
+    compare: Compare | None,
 ) -> list[dict[str, Any]]:
-    """Por cada respuesta sintetizada: lo que Whisper entiende de ella y su semejanza con la referencia."""
+    """Por cada respuesta sintetizada: lo que Whisper entiende de ella y su semejanza con la voz que imita."""
     cases = []
     for turn in turns:
         if not (turn.get("output_audio") and turn.get("spoken_text")):
@@ -343,40 +378,19 @@ def _tts_cases(
         path = audio_dir / turn["output_audio"]
         heard = transcribe(path)
         case = {"turn": turn["turn"], "spoken_text": turn["spoken_text"], "heard": heard, "wer": wer(turn["spoken_text"], heard)}
-        if similarity is not None:
-            case["similarity"] = similarity(path)
-        cases.append(case)
+        cases.append({**case, **compare(path)} if compare else case)
     return cases
 
 
-def _similarity_to(
-    embedder: SpeakerEmbedder | None, reference_audio: Path | None, read: Callable[[Path], tuple[np.ndarray, int]]
-) -> Callable[[Path], float] | None:
-    """Función que mide la semejanza de un audio con la referencia; ``None`` si no hay con qué."""
-    if embedder is None or not reference_audio:
-        return None
-    reference = read(reference_audio)
-
-    def similarity(path: Path) -> float:
-        return speaker_similarity(embedder, reference, read(path))
-
-    return similarity
-
-
 def evaluate_turns(
-    turns: Sequence[dict[str, Any]],
-    audio_dir: Path,
-    transcribe: Callable[[Path], str],
-    embedder: SpeakerEmbedder | None,
-    reference_audio: Path | None,
-    read: Callable[[Path], tuple[np.ndarray, int]],
+    turns: Sequence[dict[str, Any]], audio_dir: Path, transcribe: Callable[[Path], str], compare: Compare | None
 ) -> dict[str, Any]:
     """Las tres métricas sobre unos turnos ya guardados, con sus audios en ``audio_dir``.
 
-    ``transcribe`` y ``embedder`` llegan desde fuera para poder probar esta función
-    sin modelos.
+    ``transcribe`` y ``compare`` (véase ``speaker_comparison``) llegan desde fuera para
+    poder probar esta función sin modelos.
     """
-    tts_cases = _tts_cases(turns, audio_dir, transcribe, _similarity_to(embedder, reference_audio, read))
+    tts_cases = _tts_cases(turns, audio_dir, transcribe, compare)
     asr_cases = [case for case in map(_asr_case, turns) if case is not None]
     return {
         "asr": {"summary": summarize_asr(asr_cases), "cases": asr_cases},
@@ -385,13 +399,12 @@ def evaluate_turns(
 
 
 def summarize_tts(cases: Sequence[dict[str, Any]]) -> dict[str, Any]:
-    similarities = [case["similarity"] for case in cases if "similarity" in case]
-    return {
-        "cases": len(cases),
-        "wer": pooled_wer(case["wer"] for case in cases),
-        "similarity_mean": float(np.mean(similarities)) if similarities else None,
-        "similarity_min": float(np.min(similarities)) if similarities else None,
-    }
+    summary: dict[str, Any] = {"cases": len(cases), "wer": pooled_wer(case["wer"] for case in cases)}
+    for key in (SIMILARITY, SIMILARITY_REAL):
+        values = [case[key] for case in cases if key in case]
+        summary[f"{key}_mean"] = float(np.mean(values)) if values else None
+        summary[f"{key}_min"] = float(np.min(values)) if values else None
+    return summary
 
 
 def _percent(value: float | None) -> str:
@@ -431,34 +444,55 @@ def _asr_lines(asr: dict[str, Any]) -> list[str]:
     return lines
 
 
-def _tts_lines(tts: dict[str, Any]) -> list[str]:
+_SIMILARITY_LABELS = ((SIMILARITY, "con la referencia"), (SIMILARITY_REAL, "con las grabaciones reales"))
+
+
+def similarity_lines(summary: dict[str, Any], real: dict[str, Any] | None) -> list[str]:
+    """Las dos semejanzas de un resumen de la voz sintetizada y, si se midió, el techo
+    de la segunda: cuánto se parecen entre sí las grabaciones reales."""
+    lines = [
+        f"- Semejanza {label} (coseno ECAPA): media {summary[f'{key}_mean']:.3f}, mínima {summary[f'{key}_min']:.3f}."
+        for key, label in _SIMILARITY_LABELS
+        if summary.get(f"{key}_mean") is not None
+    ]
+    if real and real.get("similarity_among") is not None:
+        lines.append(f"- Como techo, las {real['count']} grabaciones reales se parecen entre sí {real['similarity_among']:.3f}.")
+    return lines
+
+
+def _tts_lines(tts: dict[str, Any], real: dict[str, Any] | None) -> list[str]:
     summary = tts["summary"]
     lines = [
         "## Voz sintetizada",
         "",
         f"- Respuestas evaluadas: {summary['cases']}",
         f"- Inteligibilidad (WER de Whisper sobre la síntesis): {_percent(summary['wer'])}",
+        *similarity_lines(summary, real),
+        *([f"- {SIMILARITY_NOTE}"] if real else []),
     ]
-    if summary["similarity_mean"] is not None:
-        lines.append(
-            "- Semejanza con la referencia (coseno ECAPA): "
-            f"media {summary['similarity_mean']:.3f}, mínima {summary['similarity_min']:.3f}"
-        )
     for case in tts["cases"]:
-        similarity = f", semejanza {case['similarity']:.3f}" if "similarity" in case else ""
+        similarity = "".join(f", semejanza {label} {case[key]:.3f}" for key, label in _SIMILARITY_LABELS if key in case)
         lines.append(f"- Turno {case['turn']}: WER {_percent(case['wer']['wer'])}{similarity}")
     return lines
 
 
 def to_markdown(metrics: dict[str, Any]) -> str:
-    lines = ["# Métricas de voz", "", *_asr_lines(metrics["asr"]), "", *_tts_lines(metrics["tts"])]
-    return "\n".join(lines) + "\n"
+    tts = _tts_lines(metrics["tts"], metrics.get("real_recordings"))
+    return "\n".join(["# Métricas de voz", "", *_asr_lines(metrics["asr"]), "", *tts]) + "\n"
+
+
+def audio_files(folder: Path | None) -> list[Path]:
+    """Todos los audios que hay bajo una carpeta, en orden."""
+    from shopping_agent.voice.chat import AUDIO_SUFFIXES
+
+    return sorted(path for path in folder.rglob("*") if path.suffix.lower() in AUDIO_SUFFIXES) if folder else []
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Métricas de voz sobre una corrida guardada.")
     parser.add_argument("run_dir", type=Path)
     parser.add_argument("--reference", type=Path, default=None, help="grabación de referencia (por defecto, la de la corrida)")
+    parser.add_argument("--real", type=Path, default=None, help="carpeta con grabaciones reales del hablante que no se usaron para clonar")
     parser.add_argument("--no-similarity", action="store_true")
     args = parser.parse_args()
 
@@ -467,11 +501,14 @@ def main() -> None:
 
     record = json.loads((args.run_dir / "turnos.json").read_text(encoding="utf-8"))
     reference = args.reference or (Path(record["voice"]["reference"]) if record.get("voice", {}).get("reference") else None)
-    asr = WhisperASR()
-    embedder = None if args.no_similarity or reference is None else EcapaEmbedder()
-    metrics = evaluate_run(args.run_dir, lambda path: asr.transcribe(path).text, embedder, reference, read_audio)
+    asr, real = WhisperASR(), audio_files(args.real)
+    embedder = None if args.no_similarity or not (reference or real) else EcapaEmbedder()
+    compare = speaker_comparison(embedder, reference, real, read_audio)
+    metrics = evaluate_run(args.run_dir, lambda path: asr.transcribe(path).text, compare)
     metrics["models"] = {"asr": asr.model_name, "speaker": EcapaEmbedder.SOURCE if embedder else None}
     metrics["reference"] = str(reference) if reference else None
+    if embedder and real:
+        metrics["real_recordings"] = {"count": len(real), "similarity_among": similarity_among(embedder, real, read_audio)}
     (args.run_dir / "metricas.json").write_text(json.dumps(metrics, indent=2, ensure_ascii=False), encoding="utf-8")
     (args.run_dir / "metricas.md").write_text(to_markdown(metrics), encoding="utf-8")
     print(to_markdown(metrics))
