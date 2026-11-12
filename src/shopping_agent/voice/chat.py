@@ -140,14 +140,10 @@ def converse(pipeline: VoicePipeline, inputs: Inputs, use_audio: bool) -> VoiceP
     return pipeline
 
 
-def run_record(args: argparse.Namespace, inputs: Inputs, loaded: Loaded, main_run: VoicePipeline) -> dict[str, Any]:
-    """Todo lo que se guarda de la corrida, salvo la memoria usada, la tienda y la repetición."""
+def load_record(loaded: Loaded) -> dict[str, Any]:
+    """Con qué modelos se conversa y lo que costó cargarlos."""
     models, asr, tts = loaded.models, loaded.asr, loaded.tts
-    final = main_run.session.state
     return {
-        "date": datetime.now().isoformat(timespec="seconds"),
-        "note": args.note,
-        "mode": inputs.mode,
         "models": {
             "llm": models.llm.model_path.name,
             "asr": asr.model_name if asr else None,
@@ -164,11 +160,24 @@ def run_record(args: argparse.Namespace, inputs: Inputs, loaded: Loaded, main_ru
             "total_seconds": round(loaded.seconds, 1),
             "vram_mib": loaded.vram_mib,
         },
-        "thread_id": main_run.session.thread_id,
-        "turns": [asdict(turn) for turn in main_run.turns],
-        "timings": summarize_timings(main_run.turns),
+    }
+
+
+def conversation_record(run: VoicePipeline) -> dict[str, Any]:
+    """Los turnos de una conversación, sus tiempos y el estado en que queda el agente."""
+    final = run.session.state
+    return {
+        "thread_id": run.session.thread_id,
+        "turns": [asdict(turn) for turn in run.turns],
+        "timings": summarize_timings(run.turns),
         "final_state": {key: final.get(key) for key in FINAL_STATE_FIELDS},
     }
+
+
+def run_record(args: argparse.Namespace, inputs: Inputs, loaded: Loaded, main_run: VoicePipeline) -> dict[str, Any]:
+    """Todo lo que se guarda de la corrida, salvo la memoria usada, la tienda y la repetición."""
+    start = {"date": datetime.now().isoformat(timespec="seconds"), "note": args.note, "mode": inputs.mode}
+    return {**start, **load_record(loaded), **conversation_record(main_run)}
 
 
 def text_rerun(repeat: VoicePipeline, main_run: VoicePipeline, store: dict[str, Any], repeat_store: dict[str, Any]) -> dict[str, Any]:

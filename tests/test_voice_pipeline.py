@@ -12,7 +12,7 @@ from shopping_agent.agent.session import LLM, RETRIEVAL, TOOLS
 from shopping_agent.voice.asr import Transcription
 from shopping_agent.voice.audio import read_audio, write_wav
 from shopping_agent.voice.chat import scenario_paths
-from shopping_agent.voice.pipeline import STAGES, VoicePipeline, comparable_store, compare_runs, summarize_timings
+from shopping_agent.voice.pipeline import NOT_HEARD, STAGES, VoicePipeline, comparable_store, compare_runs, summarize_timings
 from shopping_agent.voice.report import to_markdown
 from shopping_agent.voice.tts import (
     DEFAULT_REFERENCE,
@@ -120,6 +120,21 @@ def test_purchase_by_voice_registers_the_order_after_a_spoken_yes(shop, tmp_path
     assert shop.stock("P1") == 8
     assert "cuarenta euros" in turns[3].spoken_text
     assert (tmp_path / "corrida" / "entrada_04.wav").exists()  # los arrays también se guardan
+
+
+def test_audio_without_speech_is_answered_without_asking_the_agent(shop):
+    """El ASR no devuelve nada (silencio, ruido): eso no es un mensaje del usuario."""
+    tts = FakeTTS()
+    pipeline = VoicePipeline(shop.session(), FakeASR(["", "Hola"]), tts)
+    silence = np.zeros(16000, dtype=np.float32)
+
+    unheard = pipeline.run_turn(silence)
+    assert unheard.transcript == unheard.agent_input == "" and unheard.response == NOT_HEARD
+    assert unheard.operations == [] and unheard.llm_steps == 0 and shop.llm.calls == []
+    assert tts.texts == [unheard.spoken_text] and unheard.timings["asr"] == 0.25
+
+    shop.llm.extend([say("Hola, ¿qué buscas?")])
+    assert pipeline.run_turn(silence).response == "Hola, ¿qué buscas?"  # el turno siguiente sigue con normalidad
 
 
 def test_same_turn_can_be_repeated_with_the_correct_text(shop, tmp_path):

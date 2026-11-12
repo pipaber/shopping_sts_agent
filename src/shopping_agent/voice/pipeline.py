@@ -27,6 +27,7 @@ from shopping_agent.voice.tts import SpeechSynthesizer, Synthesis
 ASR, TTS, TOTAL = "asr", "tts", "total"
 STAGES = (ASR, RETRIEVAL, LLM, TOOLS, TTS)
 VOLATILE_KEYS = ("quote_id",)  # identificadores aleatorios: distintos en cada corrida
+NOT_HEARD = "No te he oído bien. ¿Puedes repetirlo?"
 
 
 @dataclass
@@ -94,7 +95,7 @@ class VoicePipeline:
             raise ValueError("Un turno necesita o bien audio o bien texto.")
         number = len(self.turns) + 1
         heard = self._listen(audio, sample_rate) if audio is not None else None
-        result = self.session.send(heard.text if heard else text or "")
+        result = self._ask(heard.text if heard else text or "", spoken=heard is not None)
         spoken = to_speech(result.response)
         synthesis = self.tts.synthesize(spoken) if self.tts is not None and spoken else None
 
@@ -125,6 +126,13 @@ class VoicePipeline:
         if self.asr is None:
             raise ValueError("No hay ASR para transcribir el audio.")
         return self.asr.transcribe(audio, sample_rate)
+
+    def _ask(self, said: str, spoken: bool) -> TurnResult:
+        """Lo que contesta el agente. Un audio sin voz no le llega como si fuera un
+        mensaje: se pide repetir y, si esperaba la confirmación, la sigue esperando."""
+        if spoken and not said.strip():
+            return TurnResult("", NOT_HEARD, self.session.awaiting_confirmation, 0.0)
+        return self.session.send(said)
 
     def _keep_input(self, audio: str | Path | np.ndarray, sample_rate: int, number: int) -> str | None:
         """Guarda el audio de entrada en la carpeta de la corrida y devuelve su nombre."""
