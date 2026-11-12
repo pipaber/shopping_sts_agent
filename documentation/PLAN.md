@@ -272,7 +272,7 @@ Riesgo que el plan anticipaba: que el GNN no superase al híbrido. Lo supera, pe
 | `texto` | texto | control (por defecto) | 14 de 20 (70 %) | 03, 04, 06, 09, 10, 20 |
 | `texto_sage` | texto | GraphSAGE | 16 de 20 (80 %) | 03, 04, 06, 09 |
 | `texto_sin_reranker` | texto | ninguno | 16 de 20 (80 %) | 03, 04, 09, 10 |
-| `voz` | audio sintético de prueba | control | 3 de 6 (50 %) | 03, 04, 06 |
+| `voz_sintetica` | audio sintético de prueba | control | 3 de 6 (50 %) | 03, 04, 06 |
 | `voz_texto_correcto` | transcripción correcta | control | 3 de 6 (50 %) | 03, 04, 06 |
 
 - **Violaciones de restricciones: ninguna** en las cinco corridas (323 turnos): ni cantidades inválidas, ni pedidos o carritos por encima del presupuesto, ni existencias negativas o pedidos sin stock, ni pedidos duplicados, ni cambios parciales. Las validaciones por código y la transacción de confirmación hicieron su trabajo en todos los casos, incluidos el stock que cambia entre la cotización y la confirmación y el sí repetido.
@@ -282,7 +282,7 @@ Riesgo que el plan anticipaba: que el GNN no superase al híbrido. Lo supera, pe
 |---|---|---|
 | 03 cambio de cantidad | las cinco corridas | El cambio de dos a cuatro unidades se hace bien. Ante «Ciérralo.» el LLM no cotiza: contesta repitiendo el carrito, y el «Sí» siguiente no tiene nada que confirmar. No se compra nada. Con «Cierra el pedido» o «Quiero cerrar el pedido» sí cotiza. |
 | 04 sin existencias | las cinco corridas | La tienda rechaza el producto agotado y el LLM, sin que nadie se lo pida, añade el segundo candidato. Cuando el usuario pide después «una de la segunda», el carrito pasa a dos y se compran dos. |
-| 06 cambio de stock | `texto`, `texto_sage`, `voz`, `voz_texto_correcto` | La confirmación se rechaza bien y el agente ofrece dejarlo en una unidad. Ante «Vale, déjalo en una», en lugar de cambiar la cantidad quita el producto: con el control añade una de las alternativas (se compra otro producto) y con GraphSAGE deja el carrito vacío. Sin reranker cambia la cantidad y acierta. Donde llegó a haber pedido, el sí repetido no lo duplicó. |
+| 06 cambio de stock | `texto`, `texto_sage`, `voz_sintetica`, `voz_texto_correcto` | La confirmación se rechaza bien y el agente ofrece dejarlo en una unidad. Ante «Vale, déjalo en una», en lugar de cambiar la cantidad quita el producto: con el control añade una de las alternativas (se compra otro producto) y con GraphSAGE deja el carrito vacío. Sin reranker cambia la cantidad y acierta. Donde llegó a haber pedido, el sí repetido no lo duplicó. |
 | 09 producto inexistente | las tres de texto | Ante «Añade dos del séptimo» (la lista tiene cinco) añade dos unidades de otro candidato en vez de preguntar. |
 | 10 atributo no verificable | `texto`, `texto_sin_reranker` | A la pregunta por la valoración de los clientes, con el control repite la búsqueda y la lista sin contestar. Sin reranker dice «los clientes no han valorado esta sartén», que la comprobación cuenta como fallo porque afirma algo que el catálogo no dice (caso dudoso). Con GraphSAGE contesta que el catálogo no lo indica. |
 | 20 agotado al confirmar | `texto` | El rechazo y las alternativas, que escribe el código, son correctos. Ante «la primera alternativa» el LLM añade la segunda. |
@@ -291,7 +291,7 @@ Riesgo que el plan anticipaba: que el GNN no superase al híbrido. Lo supera, pe
 - **Ablación de extremo a extremo.** Con el control aciertan 14 escenarios, con GraphSAGE 16 y sin reranker 16. No es una diferencia de calidad de la búsqueda: los tres aciertan y fallan casi en los mismos escenarios, y donde difieren (06, 10, 20) es porque salen otros candidatos y el LLM toma otro camino con el mismo mensaje. Con 20 escenarios y una corrida por configuración, dos escenarios de diferencia no permiten ordenar las configuraciones.
 - **Determinismo.** La corrida `texto` se hizo dos veces (la primera coincidió con procesos de otra sesión en la GPU): las operaciones y las respuestas fueron idénticas turno a turno. Una sola corrida por configuración no deja ver, por tanto, cuánto cambiarían los aciertos con otra redacción de los turnos.
 
-**Voz** (corrida `voz`, 31 turnos). Los audios de entrada son **sintéticos**: un hablante incluido en XTTS-v2 («Luis Moray») lee el guion, porque el usuario aún no ha grabado sus turnos. La respuesta sí se sintetiza con la voz clonada de su grabación de referencia.
+**Voz** (corrida `voz_sintetica`, que entonces se llamaba `voz`; 31 turnos). Los audios de entrada son **sintéticos**: un hablante incluido en XTTS-v2 («Luis Moray») lee el guion, porque el usuario aún no ha grabado sus turnos. La respuesta sí se sintetiza con la voz clonada de su grabación de referencia.
 
 | Medida | Resultado |
 |---|---|
@@ -306,7 +306,7 @@ Riesgo que el plan anticipaba: que el GNN no superase al híbrido. Lo supera, pe
 - Con audio y con la transcripción correcta el veredicto es el mismo en los seis escenarios, y la tienda final coincide en cinco. En 06 la sílaba de más cambió la consulta que escribe el LLM y, con ella, la alternativa que acabó comprando; el fallo es el mismo. Los errores de los escenarios de voz son, por tanto, del agente y no del ASR.
 - Los errores de inteligibilidad son del mismo tipo que en las corridas anteriores: marcas que no son palabras («Gastroback» → «GastroVac», «SLATOR» → «Les Lator», «Newdora» → «Neudora»). Falta el juicio de oído sobre la semejanza.
 
-**Latencia**, desde que el audio del usuario está disponible hasta que la respuesta puede reproducirse (corrida `voz`, segundos por turno, media y máximo):
+**Latencia**, desde que el audio del usuario está disponible hasta que la respuesta puede reproducirse (corrida `voz_sintetica`, segundos por turno, media y máximo):
 
 | Turnos | ASR | Recuperación | LLM | Herramientas | TTS | Total |
 |---|---|---|---|---|---|---|
@@ -326,7 +326,7 @@ Riesgo que el plan anticipaba: que el GNN no superase al híbrido. Lo supera, pe
 
 **Qué no se midió.**
 
-- **El ASR con la voz del usuario.** Faltan las grabaciones de los 31 turnos ([guion](../scenarios/evaluacion/GUION_GRABACION.md)). Con ellas en `audio/escenarios/`, el mismo comando las usa en lugar de los audios sintéticos.
+- **El ASR con la voz del usuario.** No estaba medido en la línea base. Se midió el 11 de noviembre con 30 de los 31 turnos grabados: ver «Voz con las grabaciones del usuario», más abajo.
 - **Nada en Colab.** Todo se corrió en la workstation; las latencias y la memoria en la T4 están por medir.
 - **El juicio de oído** sobre la voz clonada. La semejanza es un coseno entre embeddings de hablante.
 - **La variabilidad.** Hay una corrida por configuración y el agente es determinista: los porcentajes describen estos 20 guiones con esta redacción, no una tasa de aciertos general. Los escenarios se escribieron conociendo las reglas del agente, aunque sin mirar antes cómo respondía a ellos.
@@ -342,15 +342,50 @@ Los seis escenarios que fallaban se diagnosticaron uno a uno ([DIAGNOSTICO_FALLO
 | `texto` (control, por defecto) | 14 de 20 | 20 de 20 | 03, 04, 06, 09, 10, 20 |
 | `texto_sage` | 16 de 20 | 20 de 20 | 03, 04, 06, 09 |
 | `texto_sin_reranker` | 16 de 20 | 20 de 20 | 03, 04, 09, 10 |
-| `voz` (audio sintético) | 3 de 6 | 6 de 6 | 03, 04, 06 |
+| `voz_sintetica` (audio sintético) | 3 de 6 | 6 de 6 | 03, 04, 06 |
 | `voz_texto_correcto` | 3 de 6 | 6 de 6 | 03, 04, 06 |
 
 - **Sin regresiones al final y sin violaciones de restricciones.** Por el camino hubo dos regresiones, las dos por cambios en lo que ve el LLM y no por una guarda: el escenario 10 con GraphSAGE (presentó la descripción del vendedor como opinión de los clientes) y el 15 sin reranker (leyó «las tres que quedan» como tres productos). Cada una se corrigió con un cambio más y se repitió todo.
 - **Estos 20 escenarios son ahora el conjunto con el que se ajustó el agente.** El 100 % dice que las correcciones funcionan en los casos para los que se hicieron, no cuánto acierta el agente en general.
 - **Escenarios de reserva.** Cuatro escenarios escritos antes de tocar el agente, con otros productos y otra redacción ([scenarios/reserva/](../scenarios/reserva/)), corridos una sola vez al final: 3 de 4 con el control, 4 de 4 con GraphSAGE y 3 de 4 sin reranker. Cerrar el pedido con otras palabras, el producto agotado que no es el primero y el candidato que no está en la lista pasan en las tres configuraciones. El cuarto, el del dato que no consta, falla dos veces por una expectativa mal planteada: sus palabras clave casan con frases del catálogo que no hablan de lo preguntado («garantiza la comodidad», «dentro de las 24 horas»); el agente contestó que el catálogo no lo indica, que es lo correcto. La expectativa no se ha cambiado.
 - **Voz tras la corrección** (31 turnos, audios de entrada sintéticos): WER del ASR 2,1 %, sin errores en importes (0 de 3), cantidades (0 de 8) ni nombres de producto (0 de 13); inteligibilidad de la voz generada 3,9 % de WER; semejanza con la referencia 0,741 de media y 0,501 de mínima. Con audio y con la transcripción correcta el veredicto y la tienda final coinciden en los seis escenarios; la única operación distinta es la consulta de búsqueda que escribe el LLM en un turno del 02.
-- **Latencia tras la corrección** (corrida `voz`, media por turno y máximo): con LLM (24 turnos), ASR 0,35 s, recuperación 0,01 s, LLM 5,05 s, herramientas 0,04 s, TTS 6,30 s; total 11,75 s (20,62). Sin LLM (7 turnos), 4,82 s (11,01). Por texto, 5,08 s por turno con LLM. Las guardas no añaden tiempo apreciable: son comprobaciones de texto, y los rechazos que provocan cuestan una decisión más del LLM en el turno. Carga inicial: 28,8 s con el disco en caliente.
-- **Lo que sigue flojo** y lo que no se ha verificado está al final del diagnóstico: la calidad de las explicaciones, lo que las guardas no reconocen, las grabaciones reales, Colab y el juicio de oído.
+- **Latencia tras la corrección** (corrida `voz_sintetica`, media por turno y máximo): con LLM (24 turnos), ASR 0,35 s, recuperación 0,01 s, LLM 5,05 s, herramientas 0,04 s, TTS 6,30 s; total 11,75 s (20,62). Sin LLM (7 turnos), 4,82 s (11,01). Por texto, 5,08 s por turno con LLM. Las guardas no añaden tiempo apreciable: son comprobaciones de texto, y los rechazos que provocan cuestan una decisión más del LLM en el turno. Carga inicial: 28,8 s con el disco en caliente.
+- **Lo que sigue flojo** y lo que no se ha verificado está al final del diagnóstico: la calidad de las explicaciones, lo que las guardas no reconocen, Colab y el juicio de oído. La corrida con las grabaciones del usuario está en el apartado siguiente.
+
+### Voz con las grabaciones del usuario (11 de noviembre)
+
+El usuario grabó 30 de los 31 turnos del [guion](../scenarios/evaluacion/GUION_GRABACION.md) (WAV mono a 48 kHz). El agente, el prompt y los escenarios no se tocaron para esta corrida.
+
+**Comprobación previa de los archivos.** `python -m shopping_agent.eval.recordings` transcribe cada grabación con el ASR del agente, sin correr el agente, y la coteja con el texto de su turno ([results/escenarios/grabaciones.md](../results/escenarios/grabaciones.md)):
+
+- 29 archivos dicen el texto de su turno.
+- En el escenario 05 falta `04.wav`, y `05.wav` dice el texto del turno 04 («No, espera, he dicho doce, no dos.»). Lo que falta por grabar es, por tanto, el texto del turno 05 («Ahora sí, cierra el pedido.»). No se renombró ni se corrigió ningún archivo: el escenario 05 sigue con audio sintético.
+
+**Corrida `voz`** ([resumen](../results/escenarios/resumen.md)): los escenarios 01, 02, 03, 04 y 06 con las grabaciones del usuario y el 05 con audio sintético, anotado en cada ficha. La corrida anterior, toda con el hablante sintético, se conserva como `voz_sintetica`. Las dos columnas son los mismos cinco escenarios (25 turnos):
+
+| Medida | Voz del usuario | Hablante sintético |
+|---|---|---|
+| Escenarios correctos | 5 de 5 | 5 de 5 |
+| Violaciones de restricciones | 0 | 0 |
+| WER del ASR | 0,8 % (24 de 25 turnos idénticos) | 2,5 % (22 de 25) |
+| Errores del ASR en importes | 0 de 3 | 0 de 3 |
+| Errores del ASR en cantidades | 0 de 5 | 0 de 5 |
+| Errores del ASR en nombres de producto | **1 de 11** | 0 de 11 |
+| Escenarios en los que el ASR cambió la tienda final | **1 (el 01)** | 0 |
+| Inteligibilidad de la voz generada (WER de Whisper) | 3,9 % | 4,3 % |
+| Semejanza con la voz de referencia, media / mínima | 0,737 / 0,501 | 0,738 / 0,501 |
+| Latencia con LLM (19 turnos): ASR / LLM / TTS / total | 0,35 / 5,01 / 6,20 / 11,61 s (máx. 20,32) | 0,35 / 5,07 / 6,30 / 11,77 s (máx. 20,62) |
+| Latencia sin LLM (6 turnos), total | 4,93 s (máx. 11,00) | 4,93 s (máx. 11,01) |
+
+El escenario 05, con audio sintético, también sale correcto; contándolo, la corrida `voz` da 6 de 6.
+
+- **El único error del ASR con la voz real cambió lo que se compró.** En el turno 1 del escenario 01 se dijo «busco una cafetera italiana» y Whisper entendió «busco una cafetería italiana». El LLM buscó «cafetería italiana», el primer candidato pasó a ser un paquete de 120 cápsulas de café (con la transcripción correcta es una cafetera De'Longhi), el agente lo presentó como «una cafetera Nespresso» y el pedido final son dos paquetes de cápsulas. El importe (60 euros) y la cantidad (dos) se entendieron bien.
+- **El escenario 01 cuenta como correcto aunque se compró otra cosa.** Sus comprobaciones se refieren al «primer candidato», al que la tienda fija precio y existencias para que el resultado no dependa de qué producto salga; ninguna mira que sea una cafetera. La expectativa se deja como está. El «5 de 5» dice que el flujo y la tienda son coherentes en los cinco, no que en los cinco se comprara lo pedido: en uno no.
+- **Los demás turnos no cambian nada.** En 02 la consulta sale con otra mayúscula («auriculares Bluetooth») y devuelve los mismos candidatos, igual que con el audio sintético. En 06 «tres» se transcribe «3» y una respuesta cambia de redacción con las mismas operaciones. En 03, 04 y 06 las operaciones y la tienda final son las de la transcripción correcta.
+- **¿Es un fallo sistemático con esta voz?** No se puede afirmar. En las 29 grabaciones cotejadas hay dos errores, los dos una terminación cambiada en la primera frase de una búsqueda: «cafetera» → «cafetería» y «Busco un ratón» → «Busca un ratón» (este, en el escenario 05, no entró en la corrida). Ninguno en importes (0 de 3) ni en cantidades (0 de 6); en el archivo mal numerado, «doce» y «dos» se transcribieron bien, como «12» y «2». Dos casos no bastan para hablar de un patrón, pero el primero enseña el riesgo: una sola palabra del producto mal entendida basta para comprar otra cosa, y ni el agente ni las comprobaciones lo detectan. No se ha corregido nada.
+- **Frente al hablante sintético.** Sus tres diferencias eran una sílaba añadida al final del audio, sin efecto en las operaciones. La voz real no tiene ese artefacto y su WER es menor, pero su único error es una palabra de contenido.
+- **La voz generada y la latencia no cambian** con la procedencia del audio de entrada, como cabía esperar: el TTS depende de la respuesta. Los errores de inteligibilidad siguen siendo marcas que no son palabras («Newdora» → «Neudora», «TENQUAN» → «Tenkwan»).
+- **Sin verificar:** el escenario 05 con la voz real; nadie ha escuchado las grabaciones (la correspondencia con el guion se comprobó solo con el ASR); el juicio de oído sobre la voz clonada; Colab. Es una corrida, con un hablante, un micrófono y una toma por turno.
 
 ## 7. Cronograma
 
@@ -390,9 +425,9 @@ Dependencias a añadir: `langgraph-checkpoint-postgres`, `psycopg[binary,pool]`,
 
 - Modelo exacto de embeddings (por ahora `intfloat/multilingual-e5-small`). El LLM ya está elegido: Qwen2.5-7B-Instruct Q4_K_M.
 - Comprobar en Colab la instalación de Postgres, de `llama-cpp-python` con CUDA y de las dependencias de voz (`torchaudio`, `torchcodec`, FFmpeg).
-- Repetir la corrida por voz de los escenarios con los turnos del usuario grabados (`uv run python -m shopping_agent.eval.scenarios --mode voice`); la voz de referencia ya es real, pero los audios de entrada medidos hasta ahora son sintéticos.
+- Completar las grabaciones del escenario 05: `05.wav` dice el texto del turno 04 y falta el del turno 05 («Ahora sí, cierra el pedido.»). Con los seis archivos en su sitio, repetir `uv run python -m shopping_agent.eval.recordings` y la corrida por voz. Renombrar o volver a grabar lo decide el usuario.
+- Decidir si se hace algo con el error del ASR que cambia la compra («cafetera» → «cafetería», escenario 01 con la voz real): por ejemplo, dar vocabulario del dominio a Whisper o que el agente repita qué ha buscado. No se ha tocado nada.
 - Las respuestas con el carrito completo dan audios de 25 a 47 s; valorar una versión hablada más breve.
-- Grabar los 31 turnos de los seis escenarios de voz (`audio/escenarios/<escenario>/NN.wav`); el texto exacto está en `scenarios/evaluacion/GUION_GRABACION.md` y el README dice cómo. La voz de referencia (`audio/referencia/referencia.wav`) ya está grabada. La voz debe ser propia o autorizada, y los textos sintetizados distintos de los de la grabación.
 - Decidir, a la vista de test, si el reranker por defecto sigue siendo el control: allí GraphSAGE lo supera en +0,0071 de nDCG@10 (IC [+0,0028; +0,0117]). Es una decisión posterior a ver test y hay que decirlo si se toma.
 - La evaluación en test y las corridas de escenarios están hechas con `multilingual-e5-small`. Cambiar el modelo de embeddings obligaría a repetirlas, y la de test dejaría de ser una evaluación única.
 - Repetir en Colab las corridas de escenarios (latencia y memoria en la T4).

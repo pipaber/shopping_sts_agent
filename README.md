@@ -172,6 +172,14 @@ audio/
 
 **Qué hay que grabar para la evaluación.** Los seis escenarios de voz: 31 turnos en total. El guion, con el archivo y el texto exacto de cada turno, está en [scenarios/evaluacion/GUION_GRABACION.md](scenarios/evaluacion/GUION_GRABACION.md); se genera a partir de los escenarios y no se edita a mano. Cada escenario va en su carpeta (`audio/escenarios/01_compra_confirmada/01.wav`, `02.wav`…). Mientras falte algún archivo de un escenario, la evaluación usa para ese escenario los audios sintéticos de prueba y lo deja anotado en los resultados.
 
+Para comprobar las grabaciones antes de correr el agente:
+
+```bash
+uv run python -m shopping_agent.eval.recordings
+```
+
+Transcribe cada archivo con el ASR del agente y lo compara con el texto de su turno ([results/escenarios/grabaciones.md](results/escenarios/grabaciones.md)): dice qué archivos faltan, qué se entendió en cada uno y cuáles se parecen más al texto de otro turno (un archivo mal numerado). No modifica los audios.
+
 Los dos guiones de demostración siguen la misma convención, con el texto en un archivo de líneas: [scenarios/demo_compra.txt](scenarios/demo_compra.txt) (8 turnos) y [scenarios/demo_incidencias.txt](scenarios/demo_incidencias.txt) (10 turnos). Por ejemplo, para `demo_compra`:
 
 | Archivo | Texto que hay que decir |
@@ -250,8 +258,10 @@ Qué queda de cada corrida:
 | `results/escenarios/<corrida>/<escenario>.json` | Turnos (texto, transcripción del ASR, respuesta, texto enviado al TTS), operaciones, tiempos por etapa e instantáneas del agente y de la tienda antes y después de cada turno |
 | `results/escenarios/<corrida>/<escenario>.md` | Ficha del escenario: la conversación con sus operaciones, cada comprobación con su resultado, las violaciones y el estado final de la tienda |
 | `results/escenarios/<corrida>/corrida.json` | Fecha, commit, modelos, carga inicial y veredictos |
-| `results/escenarios/voz/metricas_voz.json` (y `voz_sintetica/`) | Errores del ASR (WER, importes, cantidades y nombres de producto), inteligibilidad y semejanza de la voz, turno a turno |
+| `results/escenarios/voz/metricas_voz.json` | Errores del ASR (WER, importes, cantidades y nombres de producto), inteligibilidad y semejanza de la voz, turno a turno |
 | `results/escenarios/resumen.md` y `.json` | Tablas de todas las corridas |
+| `results/escenarios/voz_sintetica/` | La corrida por voz anterior, con todos los audios de entrada sintéticos; se conserva para compararla con la voz real |
+| `results/escenarios/grabaciones.md` y `.json` | Cada grabación del usuario frente al texto de su turno |
 | `audio/corridas/voz/<escenario>/` | Audios de entrada y de respuesta (fuera de git) |
 
 Resultados ([results/escenarios/resumen.md](results/escenarios/resumen.md)). «Antes» es la línea base, guardada en [results/escenarios_base/](results/escenarios_base/resumen.md); «después», con las guardas añadidas al agente tras diagnosticar los fallos ([documentation/DIAGNOSTICO_FALLOS.md](documentation/DIAGNOSTICO_FALLOS.md)):
@@ -261,10 +271,13 @@ Resultados ([results/escenarios/resumen.md](results/escenarios/resumen.md)). «A
 | `texto` | texto | control (por defecto) | 14 de 20 | 20 de 20 |
 | `texto_sage` | texto | GraphSAGE | 16 de 20 | 20 de 20 |
 | `texto_sin_reranker` | texto | ninguno | 16 de 20 | 20 de 20 |
-| `voz` | audio sintético de prueba | control | 3 de 6 | 6 de 6 |
+| `voz` | grabaciones del usuario en 01, 02, 03, 04 y 06; audio sintético en 05 | control | — | 6 de 6 |
+| `voz_sintetica` | audio sintético de prueba | control | 3 de 6 | 6 de 6 |
 | `voz_texto_correcto` | transcripción correcta | control | 3 de 6 | 6 de 6 |
 
-No hubo ninguna violación de restricciones, ni antes ni después. Los fallos de la línea base eran decisiones del LLM en el diálogo (no cotizaba, añadía o cambiaba un producto que no se le pidió, no contestaba una pregunta). Los 20 escenarios son ahora el conjunto con el que se ajustó el agente: el 100 % no es una tasa de aciertos general. Los audios de entrada de la corrida por voz son **sintéticos**: sirven para comprobar el circuito, no para medir el ASR con una voz real. Falta repetirla con las grabaciones del usuario.
+No hubo ninguna violación de restricciones, ni antes ni después. Los fallos de la línea base eran decisiones del LLM en el diálogo (no cotizaba, añadía o cambiaba un producto que no se le pidió, no contestaba una pregunta). Los 20 escenarios son ahora el conjunto con el que se ajustó el agente: el 100 % no es una tasa de aciertos general.
+
+**Voz con las grabaciones del usuario** (11 de noviembre, 30 de los 31 turnos grabados). En los cinco escenarios con grabaciones completas (25 turnos) el ASR tiene un WER del 0,8 %, sin errores en importes (0 de 3) ni en cantidades (0 de 5) y con uno en nombres de producto (1 de 11): «cafetera italiana» se entendió como «cafetería italiana». Ese error cambió la búsqueda y el pedido final del escenario 01 (dos paquetes de cápsulas de café en lugar de una cafetera). El escenario cuenta como correcto porque sus comprobaciones se refieren al primer candidato y no miran qué producto es: «5 de 5» no significa que en los cinco se comprara lo pedido. Latencia media por turno con LLM: 11,61 s (ASR 0,35, LLM 5,01, TTS 6,20). El escenario 05 sigue con audio sintético: falta un archivo y `05.wav` dice el texto del turno 04. El detalle, la comparación con el hablante sintético y lo que no se ha verificado están en [documentation/PLAN.md](documentation/PLAN.md), apartado «Voz con las grabaciones del usuario».
 
 Para comprobar que las correcciones no dependen de la redacción de esos 20 hay cuatro escenarios de reserva en [scenarios/reserva/](scenarios/reserva/), escritos antes de tocar el agente y corridos una sola vez al final: 3 de 4 con el control, 4 de 4 con GraphSAGE y 3 de 4 sin reranker (el que falla, por una expectativa mal planteada; ver el diagnóstico).
 
@@ -318,6 +331,7 @@ src/shopping_agent/
     scenario_violations.py                   violaciones de restricciones, turno a turno
     scenario_runner.py, scenarios.py         un escenario de principio a fin; comando que los corre
     scenario_report.py                       ficha por escenario y resumen de las corridas
+    recordings.py                            grabaciones del usuario frente al guion, con el ASR
     retrieval_test.py                        evaluación final de la recuperación en test
 ```
 

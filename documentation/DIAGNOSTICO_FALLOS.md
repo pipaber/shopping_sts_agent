@@ -30,7 +30,7 @@ Corridas repetidas el 10 de noviembre de 2026 con el agente corregido ([results/
 | `texto` (control, por defecto) | 14 de 20 | 20 de 20 | 03, 04, 06, 09, 10, 20 | ninguna |
 | `texto_sage` (GraphSAGE) | 16 de 20 | 20 de 20 | 03, 04, 06, 09 | ninguna |
 | `texto_sin_reranker` | 16 de 20 | 20 de 20 | 03, 04, 09, 10 | ninguna |
-| `voz` (audio sintético) | 3 de 6 | 6 de 6 | 03, 04, 06 | ninguna |
+| `voz_sintetica` (audio sintético) | 3 de 6 | 6 de 6 | 03, 04, 06 | ninguna |
 | `voz_texto_correcto` | 3 de 6 | 6 de 6 | 03, 04, 06 | ninguna |
 
 Sigue sin haber ninguna violación de restricciones.
@@ -77,4 +77,5 @@ Dos matices sobre esta comprobación de generalidad. Los escenarios de reserva l
 - **Preguntas poco útiles.** Ante «ponme el sexto» de cinco, a veces pregunta «¿cuál es el sexto de la lista que te interesa?» sin decir que solo hay cinco. No añade nada, pero no aclara.
 - **Mirar el detalle antes de decir que no consta.** En el escenario 24 con el control contestó que el catálogo no indica la garantía sin consultar el detalle del producto. Acertó, pero sin comprobarlo.
 - **Lo que las guardas no reconocen.** Solo los ordinales con artículo («el segundo») y una lista corta de formas de cerrar la compra. Con «el número dos» o «ya lo tengo todo» decide el LLM, como antes.
-- **Sin verificar:** las grabaciones reales del usuario (aún no están en `audio/escenarios/`), Colab y el juicio de oído. La evaluación de recuperación en test no se ha vuelto a correr.
+- **Sin verificar:** Colab y el juicio de oído. La evaluación de recuperación en test no se ha vuelto a correr.
+- **Con las grabaciones del usuario** (11 de noviembre, después de este diagnóstico y sin tocar el agente): los cinco escenarios con grabaciones completas pasan, pero en 01 el ASR entendió «cafetería» por «cafetera» y se compró otro producto sin que las comprobaciones lo vean. Está en [PLAN.md](PLAN.md), «Voz con las grabaciones del usuario».
