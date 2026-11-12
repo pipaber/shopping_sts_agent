@@ -15,7 +15,7 @@
         "similarity_real": 0.2850744945957933,
         "audio_seconds": 791.8966666666668,
         "words_per_second": 1.8209446518695618,
-        "tts_seconds": 182.36974360304885,
+        "tts_seconds": 184.12568167899735,
         "retries": 0
       },
       "cases": [
@@ -31,7 +31,7 @@
             "insertions": 1
           },
           "audio_seconds": 10.122666666666667,
-          "tts_seconds": 2.3000394490081817,
+          "tts_seconds": 2.313927904004231,
           "retries": 0,
           "similarity": 0.7342318802576329,
           "similarity_real": 0.3036018071016372
@@ -48,7 +48,7 @@
             "insertions": 0
           },
           "audio_seconds": 12.021333333333333,
-          "tts_seconds": 2.6785922740236856,
+          "tts_seconds": 2.703372943040449,
           "retries": 0,
           "similarity": 0.6868410815200671,
           "similarity_real": 0.2692145780675779
@@ -65,7 +65,7 @@
             "insertions": 0
           },
           "audio_seconds": 7.424,
-          "tts_seconds": 1.6302330190083012,
+          "tts_seconds": 1.6478479280485772,
           "retries": 0,
           "similarity": 0.7219426235390124,
           "similarity_real": 0.3122244271625962
@@ -82,7 +82,7 @@
             "insertions": 0
           },
           "audio_seconds": 9.194666666666667,
-          "tts_seconds": 2.0348512890050188,
+          "tts_seconds": 2.0616254470078275,
           "retries": 0,
           "similarity": 0.782239767951016,
           "similarity_real": 0.31273785836533124
@@ -99,7 +99,7 @@
             "insertions": 0
           },
           "audio_seconds": 4.266666666666667,
-          "tts_seconds": 0.9100057340110652,
+          "tts_seconds": 0.9227968230261467,
           "retries": 0,
           "similarity": 0.7070622523512289,
           "similarity_real": 0.2957068033236386
@@ -116,7 +116,7 @@
             "insertions": 0
           },
           "audio_seconds": 6.912,
-          "tts_seconds": 1.5027048379997723,
+          "tts_seconds": 1.5273390139918774,
           "retries": 0,
           "similarity": 0.700225394832087,
           "similarity_real": 0.2792935301601725
@@ -133,7 +133,7 @@
             "insertions": 1
           },
           "audio_seconds": 35.843333333333334,
-          "tts_seconds": 7.751381545996992,
+          "tts_seconds": 7.88432302797446,
           "retries": 0,
           "similarity": 0.7381023245017007,
           "similarity_real": 0.2907522818662705
@@ -150,7 +150,7 @@
             "insertions": 0
           },
           "audio_seconds": 28.666,
-          "tts_seconds": 6.8033500960154925,
+          "tts_seconds": 6.918342746968847,
           "retries": 0,
           "similarity": 0.7329088769951504,
           "similarity_real": 0.28473781863330666
@@ -167,7 +167,7 @@
             "insertions": 0
           },
           "audio_seconds": 25.082,
-          "tts_seconds": 5.662056939996546,
+          "tts_seconds": 5.75879538198933,
           "retries": 0,
           "similarity": 0.7109993338283219,
           "similarity_real": 0.26828363501863706
@@ -184,7 +184,7 @@
             "insertions": 0
           },
           "audio_seconds": 12.490666666666666,
-          "tts_seconds": 2.875705262005795,
+          "tts_seconds": 2.926246463030111,
           "retries": 0,
           "similarity": 0.7477251740988947,
           "similarity_real": 0.2823528565505377
@@ -201,7 +201,7 @@
             "insertions": 0
           },
           "audio_seconds": 3.008,
-          "tts_seconds": 0.6496820210013539,
+          "tts_seconds": 0.6589398389915004,
           "retries": 0,
           "similarity": 0.5741503251642466,
           "similarity_real": 0.21447604548084703
@@ -218,7 +218,7 @@
             "insertions": 40
           },
           "audio_seconds": 34.94266666666667,
-          "tts_seconds": 7.985570628021378,
+          "tts_seconds": 8.11378982901806,
           "retries": 0,
           "similarity": 0.7306160519192441,
           "similarity_real": 0.2852728815910375
@@ -235,7 +235,7 @@
             "insertions": 0
           },
           "audio_seconds": 27.311333333333334,
-          "tts_seconds": 6.281650010001613,
+          "tts_seconds": 6.365836733020842,
           "retries": 0,
           "similarity": 0.7376518929374598,
           "similarity_real": 0.28410584762307645
@@ -252,7 +252,7 @@
             "insertions": 1
           },
           "audio_seconds": 25.374666666666666,
-          "tts_seconds": 5.562690202001249,
+          "tts_seconds": 5.642724463017657,
           "retries": 0,
           "similarity": 0.7719386849402421,
           "similarity_real": 0.3153237346477338
@@ -269,7 +269,7 @@
             "insertions": 0
           },
           "audio_seconds": 32.00933333333333,
-          "tts_seconds": 7.195170816994505,
+          "tts_seconds": 7.282825435977429,
           "retries": 0,
           "similarity": 0.7271376696346709,
           "similarity_real": 0.28493254209680796
@@ -286,7 +286,7 @@
             "insertions": 8
           },
           "audio_seconds": 30.804,
-          "tts_seconds": 6.92368272098247,
+          "tts_seconds": 6.983350800990593,
           "retries": 0,
           "similarity": 0.7108265835006268,
           "similarity_real": 0.282859710159503
@@ -303,7 +303,7 @@
             "insertions": 0
           },
           "audio_seconds": 32.986,
-          "tts_seconds": 7.783538371993927,
+          "tts_seconds": 7.889293587009888,
           "retries": 0,
           "similarity": 0.6985642411315268,
           "similarity_real": 0.270828404196743
@@ -320,7 +320,7 @@
             "insertions": 0
           },
           "audio_seconds": 20.580666666666666,
-          "tts_seconds": 4.75847607999458,
+          "tts_seconds": 4.809901231958065,
           "retries": 0,
           "similarity": 0.7251022989050521,
           "similarity_real": 0.28762397036968324
@@ -337,7 +337,7 @@
             "insertions": 1
           },
           "audio_seconds": 26.121333333333332,
-          "tts_seconds": 5.893858461000491,
+          "tts_seconds": 5.9546132769901305,
           "retries": 0,
           "similarity": 0.7464653594728473,
           "similarity_real": 0.29594525697969987
@@ -354,7 +354,7 @@
             "insertions": 0
           },
           "audio_seconds": 19.140666666666668,
-          "tts_seconds": 4.340176130994223,
+          "tts_seconds": 4.3796631479635835,
           "retries": 0,
           "similarity": 0.752221715993095,
           "similarity_real": 0.3047625849092668
@@ -371,7 +371,7 @@
             "insertions": 0
           },
           "audio_seconds": 14.528,
-          "tts_seconds": 3.4179473420081194,
+          "tts_seconds": 3.4466905479785055,
           "retries": 0,
           "similarity": 0.6678750273927098,
           "similarity_real": 0.25783051460505674
@@ -388,7 +388,7 @@
             "insertions": 0
           },
           "audio_seconds": 18.906,
-          "tts_seconds": 4.283618994988501,
+          "tts_seconds": 4.326237789995503,
           "retries": 0,
           "similarity": 0.6814986053924238,
           "similarity_real": 0.2547783440136898
@@ -405,7 +405,7 @@
             "insertions": 0
           },
           "audio_seconds": 16.949333333333332,
-          "tts_seconds": 4.029172044014558,
+          "tts_seconds": 4.068547993025277,
           "retries": 0,
           "similarity": 0.6857620334910027,
           "similarity_real": 0.2801964831727679
@@ -422,7 +422,7 @@
             "insertions": 0
           },
           "audio_seconds": 34.446,
-          "tts_seconds": 7.756505854020361,
+          "tts_seconds": 7.7940488389576785,
           "retries": 0,
           "similarity": 0.7195942598939109,
           "similarity_real": 0.27733179639115507
@@ -439,7 +439,7 @@
             "insertions": 0
           },
           "audio_seconds": 13.557333333333334,
-          "tts_seconds": 3.1884035500115715,
+          "tts_seconds": 3.2009010760230012,
           "retries": 0,
           "similarity": 0.6845394832091554,
           "similarity_real": 0.28309760166486103
@@ -456,7 +456,7 @@
             "insertions": 0
           },
           "audio_seconds": 24.431333333333335,
-          "tts_seconds": 5.734714755992172,
+          "tts_seconds": 5.78042646299582,
           "retries": 0,
           "similarity": 0.6978748728344478,
           "similarity_real": 0.28630795198479564
@@ -473,7 +473,7 @@
             "insertions": 2
           },
           "audio_seconds": 39.29,
-          "tts_seconds": 9.450421579007525,
+          "tts_seconds": 9.496253861987498,
           "retries": 0,
           "similarity": 0.7457227698019222,
           "similarity_real": 0.3098534412233242
@@ -490,7 +490,7 @@
             "insertions": 0
           },
           "audio_seconds": 21.37,
-          "tts_seconds": 4.975730272009969,
+          "tts_seconds": 5.012113959994167,
           "retries": 0,
           "similarity": 0.714931372801386,
           "similarity_real": 0.2810932711256159
@@ -507,7 +507,7 @@
             "insertions": 0
           },
           "audio_seconds": 14.016,
-          "tts_seconds": 3.3254181439988315,
+          "tts_seconds": 3.342681705020368,
           "retries": 0,
           "similarity": 0.7356227501631828,
           "similarity_real": 0.2986460028516986
@@ -524,7 +524,7 @@
             "insertions": 0
           },
           "audio_seconds": 25.513333333333332,
-          "tts_seconds": 5.848814876982942,
+          "tts_seconds": 5.882354439992923,
           "retries": 0,
           "similarity": 0.7493312382479449,
           "similarity_real": 0.29841216517384034
@@ -541,7 +541,7 @@
             "insertions": 0
           },
           "audio_seconds": 30.511333333333333,
-          "tts_seconds": 7.551164964970667,
+          "tts_seconds": 7.594493960030377,
           "retries": 0,
           "similarity": 0.7125659400048556,
           "similarity_real": 0.28808100113832685
@@ -558,7 +558,7 @@
             "insertions": 1
           },
           "audio_seconds": 20.122,
-          "tts_seconds": 4.635683264001273,
+          "tts_seconds": 4.653772224963177,
           "retries": 0,
           "similarity": 0.7079402008854893,
           "similarity_real": 0.27649436027237284
@@ -575,7 +575,7 @@
             "insertions": 2
           },
           "audio_seconds": 44.334,
-          "tts_seconds": 10.281144104956184,
+          "tts_seconds": 10.34318153600907,
           "retries": 0,
           "similarity": 0.7275533081097267,
           "similarity_real": 0.28006645256631957
@@ -592,7 +592,7 @@
             "insertions": 4
           },
           "audio_seconds": 21.69,
-          "tts_seconds": 5.148966345004737,
+          "tts_seconds": 5.169193341978826,
           "retries": 0,
           "similarity": 0.7101049649373943,
           "similarity_real": 0.28255495991419555
@@ -609,7 +609,7 @@
             "insertions": 0
           },
           "audio_seconds": 19.61,
-          "tts_seconds": 4.48304001102224,
+          "tts_seconds": 4.503266932035331,
           "retries": 0,
           "similarity": 0.6975132788703278,
           "similarity_real": 0.2754625036010445
@@ -626,7 +626,7 @@
             "insertions": 3
           },
           "audio_seconds": 20.010666666666665,
-          "tts_seconds": 4.8635908020078205,
+          "tts_seconds": 4.884161285008304,
           "retries": 0,
           "similarity": 0.7195574997455713,
           "similarity_real": 0.29673779708273845
@@ -643,10 +643,654 @@
             "insertions": 0
           },
           "audio_seconds": 8.309333333333333,
-          "tts_seconds": 1.8719908079947345,
+          "tts_seconds": 1.8817996989819221,
           "retries": 0,
           "similarity": 0.7511586002628937,
           "similarity_real": 0.29577507895844946
+        }
+      ]
+    },
+    "1.10": {
+      "summary": {
+        "texts": 37,
+        "wer": 0.060332871012482664,
+        "exact": 17,
+        "similarity": 0.7112969317847424,
+        "similarity_real": 0.27399206002341303,
+        "audio_seconds": 718.9686666666668,
+        "words_per_second": 2.005650686678047,
+        "tts_seconds": 184.09333492518635,
+        "retries": 0
+      },
+      "cases": [
+        {
+          "text": "Tengo la botella de agua de Newdora por seis euros con setenta y dos céntimos y la de KOSAD por doce con treinta y siete. ¿Te interesa alguna?",
+          "heard": "Tengo la botella de agua de New Dora por 6 euros con 72 céntimos y la de Cosad por 12 con 37. ¿Te interesa alguna?",
+          "wer": {
+            "wer": 0.10714285714285714,
+            "reference_words": 28,
+            "hits": 26,
+            "substitutions": 2,
+            "deletions": 0,
+            "insertions": 1
+          },
+          "audio_seconds": 9.194666666666667,
+          "tts_seconds": 2.3287342880503275,
+          "retries": 0,
+          "similarity": 0.7079141992264072,
+          "similarity_real": 0.28646634898341916
+        },
+        {
+          "text": "Hecho, añadidas dos unidades. El total es diecinueve euros y te quedan veintiséis de tu presupuesto.",
+          "heard": "Hecho añadidas dos unidades, el total es 19 euros y te quedan 26 de tu presupuesto.",
+          "wer": {
+            "wer": 0.0,
+            "reference_words": 16,
+            "hits": 16,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "audio_seconds": 10.912,
+          "tts_seconds": 2.7396980710327625,
+          "retries": 0,
+          "similarity": 0.6934447042119198,
+          "similarity_real": 0.26970438516922896
+        },
+        {
+          "text": "Ese producto está agotado. Puedo ofrecerte otro parecido que sí tiene existencias. ¿Quieres que te lo enseñe?",
+          "heard": "Ese producto está agotado. Puedo ofrecerte otro parecido que sí tiene existencias. ¿Quieres que te lo enseñe?",
+          "wer": {
+            "wer": 0.0,
+            "reference_words": 17,
+            "hits": 17,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "audio_seconds": 6.730666666666667,
+          "tts_seconds": 1.6604896379867569,
+          "retries": 0,
+          "similarity": 0.7098490591392823,
+          "similarity_real": 0.2868716961090403
+        },
+        {
+          "text": "Te repito el pedido antes de registrarlo: cuatro unidades a nueve euros con cincuenta céntimos cada una. ¿Lo confirmo?",
+          "heard": "Te repito el pedido antes de registrarlo. 4 unidades a 9 euros con 50 céntimos cada una. ¿Lo confirmó?",
+          "wer": {
+            "wer": 0.0,
+            "reference_words": 19,
+            "hits": 19,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "audio_seconds": 8.352,
+          "tts_seconds": 2.077182930021081,
+          "retries": 0,
+          "similarity": 0.7764940639177919,
+          "similarity_real": 0.29885649065774794
+        },
+        {
+          "text": "Pedido número uno registrado. ¡Gracias por tu compra!",
+          "heard": "Pedido número 1 registrado. ¡Gracias por tu compra!",
+          "wer": {
+            "wer": 0.0,
+            "reference_words": 8,
+            "hits": 8,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "audio_seconds": 3.8506666666666667,
+          "tts_seconds": 0.9295300380326807,
+          "retries": 0,
+          "similarity": 0.7177461097431537,
+          "similarity_real": 0.27078149751622305
+        },
+        {
+          "text": "No me ha quedado claro a cuál te refieres. ¿Me dices el nombre o la posición en la lista?",
+          "heard": "No me ha quedado claro a cuál te refieres. ¿Me dices el nombre o la posición en la lista?",
+          "wer": {
+            "wer": 0.0,
+            "reference_words": 19,
+            "hits": 19,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "audio_seconds": 6.261333333333333,
+          "tts_seconds": 1.5390979630174115,
+          "retries": 0,
+          "similarity": 0.693683471171575,
+          "similarity_real": 0.2622166039980318
+        },
+        {
+          "text": "Tengo una cafetera Nespresso de FRHOME por seis euros con trece céntimos, una cafetera Gastroback por cuarenta y seis euros con veinticuatro céntimos, una Breville Barista Max por dos euros con veinticinco céntimos, un libro El amor huele a café por veinticinco euros con dieciséis céntimos y una cafetera De'Longhi por cuarenta y cuatro euros con cincuenta céntimos. ¿Te interesa alguna? He anotado un presupuesto de sesenta euros.",
+          "heard": "Tengo una cafetera Nespresso de Fromme por 6 euros con 13 céntimos, una cafetera GastroVac por 46 euros con 24 céntimos, una Breville Barista Max por 2 euros con 25 céntimos, un libro El Amor Huele a Café por 25 euros con 16 céntimos y una cafetera de Longhi por 44 euros con 50 céntimos. ¿Te interesa alguna? He anotado un presupuesto de 60 euros.",
+          "wer": {
+            "wer": 0.058823529411764705,
+            "reference_words": 68,
+            "hits": 65,
+            "substitutions": 3,
+            "deletions": 0,
+            "insertions": 1
+          },
+          "audio_seconds": 32.53666666666667,
+          "tts_seconds": 7.940568835008889,
+          "retries": 0,
+          "similarity": 0.7237774148329361,
+          "similarity_real": 0.2793297506803631
+        },
+        {
+          "text": "Hecho, añadidas dos unidades. El total es veintinueve euros. En el carrito hay dos unidades de FRHOME a catorce euros con cincuenta céntimos cada una, veintinueve euros. Total: veintinueve euros. Tu presupuesto es de sesenta euros y te quedan treinta y un euros.",
+          "heard": "Hecho añadidas dos unidades. El total es 29 euros. En el carrito hay dos unidades de From, a 14 euros con 50 céntimos cada una. 29 euros. Total, tu presupuesto es de 60 euros y te quedan 31 euros.",
+          "wer": {
+            "wer": 0.06976744186046512,
+            "reference_words": 43,
+            "hits": 40,
+            "substitutions": 1,
+            "deletions": 2,
+            "insertions": 0
+          },
+          "audio_seconds": 26.063333333333333,
+          "tts_seconds": 6.9688949509873055,
+          "retries": 0,
+          "similarity": 0.7277067943463532,
+          "similarity_real": 0.2841082472139619
+        },
+        {
+          "text": "Te repito el pedido antes de registrarlo: dos unidades de FRHOME a catorce euros con cincuenta céntimos cada una, veintinueve euros. Total: veintinueve euros. Tu presupuesto es de sesenta euros y te quedan treinta y un euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+          "heard": "Te repito el pedido antes de registrarlo. Dos unidades de From a 14 euros con 50 céntimos cada una. 29 euros. Total, 29 euros. Tu presupuesto es de 60 euros y te quedan 31 euros. ¿Lo confirmo? Di sí para registrarlo o dime qué quieres cambiar.",
+          "wer": {
+            "wer": 0.020833333333333332,
+            "reference_words": 48,
+            "hits": 47,
+            "substitutions": 1,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "audio_seconds": 22.81,
+          "tts_seconds": 5.7839578299899586,
+          "retries": 0,
+          "similarity": 0.711482440459746,
+          "similarity_real": 0.26220717820382716
+        },
+        {
+          "text": "Pedido número uno registrado: dos unidades de FRHOME a catorce euros con cincuenta céntimos cada una, veintinueve euros. Total: veintinueve euros. Gracias por tu compra.",
+          "heard": "Pedido número 1 registrado. Dos unidades de Frome a 14 euros con 50 céntimos cada una a 29 euros. Total, 29 euros. Gracias por tu compra.",
+          "wer": {
+            "wer": 0.08,
+            "reference_words": 25,
+            "hits": 24,
+            "substitutions": 1,
+            "deletions": 0,
+            "insertions": 1
+          },
+          "audio_seconds": 11.328,
+          "tts_seconds": 2.9303632479859516,
+          "retries": 0,
+          "similarity": 0.7105161627059243,
+          "similarity_real": 0.25474137755346665
+        },
+        {
+          "text": "¿Qué tipo de regalo tienes en mente para tu hermana?",
+          "heard": "¿Qué tipo de regalo tienes en mente para tu hermana?",
+          "wer": {
+            "wer": 0.0,
+            "reference_words": 10,
+            "hits": 10,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "audio_seconds": 2.7306666666666666,
+          "tts_seconds": 0.6617398049565963,
+          "retries": 0,
+          "similarity": 0.6123416858070801,
+          "similarity_real": 0.23384039435716417
+        },
+        {
+          "text": "Tengo estos auriculares Bluetooth para ti: los de Mgrett por nueve euros con dieciocho céntimos, los de TAIN por nueve euros con ochenta y cuatro céntimos, los de WDGP por treinta y dos euros con seis céntimos, los de GSBLBL por veinticinco euros con quince céntimos y los de HoLiv por dieciséis euros con cuarenta y nueve céntimos. ¿Te interesa alguno? He anotado un presupuesto de cincuenta euros.",
+          "heard": "Tengo estos auriculares Bluetooth para ti, los de Megret por 9 euros con 18 céntimos, los de Time por 9 euros con 84 céntimos, los de VDGP por 32 euros con 6 céntimos, los de VSDB Belier por 25 euros con 15 céntimos y los de Workmark Marejo, o el Mejian también te vea, y los que se están teniendo consciente, por si le conecte un euro con 49 céntimos. ¿Te interesa alguno? He anotado un presupuesto de 50 euros",
+          "wer": {
+            "wer": 0.36764705882352944,
+            "reference_words": 68,
+            "hits": 61,
+            "substitutions": 7,
+            "deletions": 0,
+            "insertions": 18
+          },
+          "audio_seconds": 31.74266666666667,
+          "tts_seconds": 8.142538912012242,
+          "retries": 0,
+          "similarity": 0.7300082136283144,
+          "similarity_real": 0.2792972303904746
+        },
+        {
+          "text": "Hecho, añadido uno de esos auriculares al carrito. En el carrito hay una unidad de Auriculares Bluetooth a diecinueve euros con noventa céntimos cada una, diecinueve euros con noventa céntimos. Total: diecinueve euros con noventa céntimos. Tu presupuesto es de cincuenta euros y te quedan treinta euros con diez céntimos.",
+          "heard": "Hecho, añadido uno de esos auriculares al carrito. En el carrito hay una unidad de auriculares Bluetooth a 19 euros con 90 céntimos cada una. 19 euros con 90 céntimos. Total, 19 euros con 90 céntimos. Tu presupuesto es de 50 euros y te quedan 30 euros con 10 céntimos.",
+          "wer": {
+            "wer": 0.0,
+            "reference_words": 50,
+            "hits": 50,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "audio_seconds": 24.804666666666666,
+          "tts_seconds": 6.385624849994201,
+          "retries": 0,
+          "similarity": 0.7449570059839873,
+          "similarity_real": 0.27839222050490436
+        },
+        {
+          "text": "Tengo la botella de agua de Newdora por seis euros con setenta y dos céntimos, la de KOSAD por doce coma treinta y siete, la de KOUAJ por dieciocho coma veintinueve y las de ion8 por cuatro coma noventa y siete y diez euros con setenta y nueve céntimos. ¿Te interesa alguna? He anotado un presupuesto de cuarenta y cinco euros.",
+          "heard": "Tengo la botella de agua de New Dora por 6 euros con 72 céntimos, la de COSAT por 12,37, la de COAG por 18,29 y la sesión 8 por 4,97 y 10 euros con 79 céntimos. ¿Te interesa alguna? He anotado un presupuesto de 45 euros.",
+          "wer": {
+            "wer": 0.11475409836065574,
+            "reference_words": 61,
+            "hits": 55,
+            "substitutions": 6,
+            "deletions": 0,
+            "insertions": 1
+          },
+          "audio_seconds": 23.102666666666668,
+          "tts_seconds": 5.650512109044939,
+          "retries": 0,
+          "similarity": 0.7628816071973791,
+          "similarity_real": 0.2994097006827054
+        },
+        {
+          "text": "Hecho, añadidas dos unidades. El total es diecinueve euros. En el carrito hay dos unidades de Newdora Botella de Agua Acero Inoxidable quinientos mililitros a nueve euros con cincuenta céntimos cada una, diecinueve euros. Total: diecinueve euros. Tu presupuesto es de cuarenta y cinco euros y te quedan veintiséis euros.",
+          "heard": "Hecho, añadidas dos unidades. El total es 19 euros. En el carrito hay dos unidades de Nudora botella de agua acero inoxidable, 500 mililitros. A 9 euros, con 50 céntimos cada una, 19 euros. Total, 19 euros. Tu presupuesto es de 45 euros y te quedan 26 euros.",
+          "wer": {
+            "wer": 0.02,
+            "reference_words": 50,
+            "hits": 49,
+            "substitutions": 1,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "audio_seconds": 29.044,
+          "tts_seconds": 7.295042455021758,
+          "retries": 0,
+          "similarity": 0.7143984765480638,
+          "similarity_real": 0.2801224224452093
+        },
+        {
+          "text": "Hecho, el total es treinta y ocho euros. En el carrito hay cuatro unidades de Newdora Botella de Agua Acero Inoxidable quinientos mililitros a nueve euros con cincuenta céntimos cada una, treinta y ocho euros. Total: treinta y ocho euros. Tu presupuesto es de cuarenta y cinco euros y te quedan siete euros.",
+          "heard": "Hecho, el total es 38 euros. En el carrito hay 4 unidades de niudora botella de agua acero inoxidable. 500 mililitros a 9 euros, con 50 céntimos cada una. 38 euros. Total, 38 euros. Tu presupuesto es de 45 euros y te quedan 7 euros. ¡Ah, te siento que la estamos bien!",
+          "wer": {
+            "wer": 0.1509433962264151,
+            "reference_words": 53,
+            "hits": 52,
+            "substitutions": 1,
+            "deletions": 0,
+            "insertions": 7
+          },
+          "audio_seconds": 27.977333333333334,
+          "tts_seconds": 6.989088252012152,
+          "retries": 0,
+          "similarity": 0.695574341456239,
+          "similarity_real": 0.2694076931479062
+        },
+        {
+          "text": "Te repito el pedido antes de registrarlo: cuatro unidades de Newdora Botella de Agua Acero Inoxidable quinientos mililitros a nueve euros con cincuenta céntimos cada una, treinta y ocho euros. Total: treinta y ocho euros. Tu presupuesto es de cuarenta y cinco euros y te quedan siete euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+          "heard": "Te repito el pedido antes de registrarlo, 4 unidades de Newdora botella de agua acero inoxidable 500 ml a 9 euros con 50 céntimos cada una, 38 euros. Total, 38 euros. Tu presupuesto es de 45 euros y te quedan 7 euros. ¿Lo confirmo? Di sí para registrarlo o dime que quieres cambiar.",
+          "wer": {
+            "wer": 0.0,
+            "reference_words": 59,
+            "hits": 59,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "audio_seconds": 29.967333333333332,
+          "tts_seconds": 7.882273280993104,
+          "retries": 0,
+          "similarity": 0.7044867557405753,
+          "similarity_real": 0.26359839814762004
+        },
+        {
+          "text": "Pedido número uno registrado: cuatro unidades de Newdora Botella de Agua Acero Inoxidable quinientos mililitros a nueve euros con cincuenta céntimos cada una, treinta y ocho euros. Total: treinta y ocho euros. Gracias por tu compra.",
+          "heard": "Pedido número 1. Registrado. 4 unidades de Neudora botella de agua acero inoxidable 500 mililitros a 9 euros con 50 céntimos cada una. 38 euros. Total 38 euros. Gracias por tu compra.",
+          "wer": {
+            "wer": 0.027777777777777776,
+            "reference_words": 36,
+            "hits": 35,
+            "substitutions": 1,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "audio_seconds": 18.682,
+          "tts_seconds": 4.7769767079735175,
+          "retries": 0,
+          "similarity": 0.7201667798851454,
+          "similarity_real": 0.27691549692411616
+        },
+        {
+          "text": "Tengo la esterilla de yoga de TENQUAN por veintiséis euros con veintidós céntimos, la de LynnsGraceland por veinte euros, la de Rayline por dieciséis euros con setenta y cinco céntimos, la de Glymnis por diecinueve euros con setenta y cuatro céntimos y la de Hatonky por doce euros con cuarenta y dos céntimos. ¿Te interesa alguna?",
+          "heard": "Tengo la esterilla de yoga de Tenkwan por 26 euros con 22 céntimos, la de Lins Graceland por 20 euros, la de Railin por 16 euros con 75 céntimos, la de Glimnis por 19 euros con 74 céntimos y la de Hatonki por 12 euros con 42 céntimos. ¿Te interesa alguna?",
+          "wer": {
+            "wer": 0.10714285714285714,
+            "reference_words": 56,
+            "hits": 51,
+            "substitutions": 5,
+            "deletions": 0,
+            "insertions": 1
+          },
+          "audio_seconds": 23.71066666666667,
+          "tts_seconds": 5.943454877007753,
+          "retries": 0,
+          "similarity": 0.7468377547387569,
+          "similarity_real": 0.2881789422794748
+        },
+        {
+          "text": "Ese producto se ha agotado. ¿Te interesa alguna de las demás opciones? Como alternativa tengo: Esterilla Yoga a dieciocho euros, con diez en existencias, Rayline a dieciséis euros con setenta y cinco céntimos, con cuarenta en existencias.",
+          "heard": "ese producto se ha agotado. ¿Te interesa alguna de las demás opciones? Como alternativa tengo estería yoga a 18 euros con 10 en existencias, bright line a 16 euros con 75 céntimos con 40 existencias.",
+          "wer": {
+            "wer": 0.10810810810810811,
+            "reference_words": 37,
+            "hits": 34,
+            "substitutions": 2,
+            "deletions": 1,
+            "insertions": 1
+          },
+          "audio_seconds": 17.37,
+          "tts_seconds": 4.374043871008325,
+          "retries": 0,
+          "similarity": 0.7315473400594176,
+          "similarity_real": 0.27819565751809655
+        },
+        {
+          "text": "Hecho, añadida una unidad al carrito. En el carrito hay una unidad de Esterilla Yoga a dieciocho euros cada una, dieciocho euros. Total: dieciocho euros.",
+          "heard": "Hecho, añadida una unidad al carrito. En el carrito hay una unidad de esterilla yoga 18 euros cada una, 18 euros. Total, 18 euros.",
+          "wer": {
+            "wer": 0.04,
+            "reference_words": 25,
+            "hits": 24,
+            "substitutions": 0,
+            "deletions": 1,
+            "insertions": 0
+          },
+          "audio_seconds": 13.184,
+          "tts_seconds": 3.439953586028423,
+          "retries": 0,
+          "similarity": 0.6659806707618516,
+          "similarity_real": 0.26073390424889853
+        },
+        {
+          "text": "Te repito el pedido antes de registrarlo: una unidad de Esterilla Yoga a dieciocho euros cada una, dieciocho euros. Total: dieciocho euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+          "heard": "Te repito el pedido antes de registrarlo. Una unidad de esterilla yoga a 18 euros cada una. 18 euros. Total, 18 euros. ¿Lo confirmo? Di sí para registrarlo. O dime qué quieres cambiar.",
+          "wer": {
+            "wer": 0.0,
+            "reference_words": 33,
+            "hits": 33,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "audio_seconds": 17.13533333333333,
+          "tts_seconds": 4.3152397309895605,
+          "retries": 0,
+          "similarity": 0.6786117287588467,
+          "similarity_real": 0.2490004510716783
+        },
+        {
+          "text": "Pedido número uno registrado: una unidad de Esterilla Yoga a dieciocho euros cada una, dieciocho euros. Total: dieciocho euros. Gracias por tu compra.",
+          "heard": "Pedido número 1 registrado, una unidad de esterilla yoga a 18 euros cada una, 18 euros. Total, 18 euros. Gracias por tu compra.",
+          "wer": {
+            "wer": 0.0,
+            "reference_words": 23,
+            "hits": 23,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "audio_seconds": 15.370666666666667,
+          "tts_seconds": 4.0566039950354025,
+          "retries": 0,
+          "similarity": 0.6971827295910696,
+          "similarity_real": 0.27592688307769214
+        },
+        {
+          "text": "Tengo el ratón inalámbrico INPHIC en plata por treinta y tres euros con veintinueve céntimos, el de INPHIC en plata clara por cuarenta y dos euros con cuarenta y cinco céntimos, el de Anmck en negro por veintitrés euros con sesenta y un céntimos, el de WisFox en gris por diecinueve euros con sesenta y nueve céntimos y el OMEN VECTOR de HP por diez euros con ochenta y cuatro céntimos. ¿Te interesa alguno?",
+          "heard": "Tengo el ratón inalámbrico INFIC, en plata por 33 euros con 29 céntimos. El de INFIC en plata, clara por 42 euros con 45 céntimos. El de Ann McKay negro por 23 euros con 61 céntimos. El de Wiss Fox en gris por 19 euros con 69 céntimos. Y el Omen Vector de HP por 10 euros con 84 céntimos. ¿Te interesa alguno?",
+          "wer": {
+            "wer": 0.08108108108108109,
+            "reference_words": 74,
+            "hits": 69,
+            "substitutions": 5,
+            "deletions": 0,
+            "insertions": 1
+          },
+          "audio_seconds": 31.331333333333333,
+          "tts_seconds": 7.783736522018444,
+          "retries": 0,
+          "similarity": 0.7125616083637518,
+          "similarity_real": 0.2675168055834547
+        },
+        {
+          "text": "Hecho, añadidas dos unidades. En el carrito hay dos unidades de Raton inalámbrico a once euros cada una, veintidós euros. Total: veintidós euros.",
+          "heard": "Hecho, añadidas dos unidades. En el carrito hay dos unidades de ratón inalámbrico a 11 euros cada una. 22 euros. Total, 22 euros.",
+          "wer": {
+            "wer": 0.0,
+            "reference_words": 23,
+            "hits": 23,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "audio_seconds": 12.298666666666668,
+          "tts_seconds": 3.1922775529674254,
+          "retries": 0,
+          "similarity": 0.682392625192034,
+          "similarity_real": 0.268616959458075
+        },
+        {
+          "text": "Te repito el pedido antes de registrarlo: dos unidades de Raton inalámbrico a once euros cada una, veintidós euros. Total: veintidós euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+          "heard": "Te repito el pedido antes de registrarlo. Dos unidades de ratón inalámbrico a 11 euros cada una. 22 euros. Total, 22 euros. ¿Lo confirmo? Di sí para registrarlo. O dime qué quieres cambiar.",
+          "wer": {
+            "wer": 0.0,
+            "reference_words": 33,
+            "hits": 33,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "audio_seconds": 22.159333333333333,
+          "tts_seconds": 5.7572357209865,
+          "retries": 0,
+          "similarity": 0.716207688002579,
+          "similarity_real": 0.28690930416774624
+        },
+        {
+          "text": "Hecho, añadidas diez unidades más. En total, doce unidades de Raton inalámbrico a once euros cada una, ciento treinta y dos euros. Total: ciento treinta y dos euros. En el carrito hay doce unidades de Raton inalámbrico a once euros cada una, ciento treinta y dos euros. Total: ciento treinta y dos euros.",
+          "heard": "Hecho, añadidas 10 unidades más. En total, 12 unidades de ratón inalámbrico a 11 euros cada una. 132 euros. Total, 132 euros. En el carrito hay 12 unidades de ratón inalámbrico a 11 euros cada una. 132 euros. Total, 132 euros. Muy bien.",
+          "wer": {
+            "wer": 0.03773584905660377,
+            "reference_words": 53,
+            "hits": 53,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 2
+          },
+          "audio_seconds": 35.674,
+          "tts_seconds": 9.472935659985524,
+          "retries": 0,
+          "similarity": 0.7293040243064149,
+          "similarity_real": 0.2974487557180893
+        },
+        {
+          "text": "Te repito el pedido antes de registrarlo: doce unidades de Raton inalámbrico a once euros cada una, ciento treinta y dos euros. Total: ciento treinta y dos euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+          "heard": "Te repito el pedido antes de registrarlo. 12 unidades de ratón inalámbrico a 11 euros cada una. 132 euros. Total, 132 euros. Lo confirmo. Di sí para registrarlo. O dime qué quieres cambiar.",
+          "wer": {
+            "wer": 0.0,
+            "reference_words": 39,
+            "hits": 39,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "audio_seconds": 19.36466666666667,
+          "tts_seconds": 4.989167973981239,
+          "retries": 0,
+          "similarity": 0.7040557524049219,
+          "similarity_real": 0.2687923947262129
+        },
+        {
+          "text": "Pedido número uno registrado: doce unidades de Raton inalámbrico a once euros cada una, ciento treinta y dos euros. Total: ciento treinta y dos euros. Gracias por tu compra.",
+          "heard": "Pedido número 1 registrado, 12 unidades de ratón inalámbrico a 11 euros cada una, 132 euros. Total, 132 euros. Gracias por tu compra.",
+          "wer": {
+            "wer": 0.0,
+            "reference_words": 29,
+            "hits": 29,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "audio_seconds": 12.714666666666666,
+          "tts_seconds": 3.330496671027504,
+          "retries": 0,
+          "similarity": 0.7411310222175032,
+          "similarity_real": 0.2980284965352568
+        },
+        {
+          "text": "Tengo la lámpara de escritorio LED de SLATOR por cuarenta y cuatro euros con veinte céntimos, la de SENXINGYAN por treinta y seis euros con sesenta y un céntimos, la de SOFIL por treinta y ocho euros con setenta y cuatro céntimos, la de Prtukyt por veintitrés euros con ochenta y seis céntimos y la de HyAdierTech por once euros con ochenta y siete céntimos. ¿Te interesa alguna?",
+          "heard": "Tengo la lámpara de escritorio LED de Slator por 44 euros con 20 céntimos, la de Sensinkian por 36 euros con 61 céntimos, la de Sofil por 38 euros con 74 céntimos, la de Pertukit por 23 euros con 86 céntimos y la de GiaDiartek por 11 euros con 87 céntimos. ¿Te interesa alguna?",
+          "wer": {
+            "wer": 0.04411764705882353,
+            "reference_words": 68,
+            "hits": 65,
+            "substitutions": 3,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "audio_seconds": 23.156,
+          "tts_seconds": 5.857683568028733,
+          "retries": 0,
+          "similarity": 0.729168921081158,
+          "similarity_real": 0.2705119474312666
+        },
+        {
+          "text": "Hecho, añadidas tres unidades. El total es cuarenta y cinco euros. En el carrito hay tres unidades de Lámpara Escritorio LED a quince euros cada una, cuarenta y cinco euros. Total: cuarenta y cinco euros.",
+          "heard": "Hecho. Añadidas 3 unidades. El total es 45 euros. En el carrito hay 3 unidades de lámpara escritorio LED a 15 euros cada una. 45 euros. Total. 45 euros.",
+          "wer": {
+            "wer": 0.0,
+            "reference_words": 35,
+            "hits": 35,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "audio_seconds": 27.738,
+          "tts_seconds": 7.571592336986214,
+          "retries": 0,
+          "similarity": 0.7085650578161844,
+          "similarity_real": 0.2817034386162161
+        },
+        {
+          "text": "Te repito el pedido antes de registrarlo: tres unidades de Lámpara Escritorio LED a quince euros cada una, cuarenta y cinco euros. Total: cuarenta y cinco euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+          "heard": "Te repito el pedido antes de registrarlo. Tres unidades de lámpara escritorio. Leda 15 euros cada una. 45 euros. Total, 45 euros. ¿Lo confirmo? Di sí para registrarlo. O dime qué quieres cambiar.",
+          "wer": {
+            "wer": 0.05263157894736842,
+            "reference_words": 38,
+            "hits": 36,
+            "substitutions": 1,
+            "deletions": 1,
+            "insertions": 0
+          },
+          "audio_seconds": 18.255333333333333,
+          "tts_seconds": 4.652141574013513,
+          "retries": 0,
+          "similarity": 0.7131517613918804,
+          "similarity_real": 0.27643566067686676
+        },
+        {
+          "text": "No he registrado el pedido porque la tienda cambió después de la cotización. De Lámpara Escritorio LED solo queda una unidad y habías pedido tres. Puedo dejarlo en uno. Como alternativa tengo: Lámpara Escritorio LED a veintitrés euros con veintitrés céntimos, con dieciséis en existencias, Lámpara Escritorio LED a treinta y cuatro euros con ochenta y seis céntimos, con veinticinco en existencias, Lámpara de escritorio LED Lámpara de lectura a veintitrés euros con ochenta y seis céntimos, con treinta y cuatro en existencias. ¿Qué prefieres?",
+          "heard": "No he registrado el pedido porque la tienda cambió después de la cotización de lámpara de escritorio. LED solo queda una unidad y habías pedido tres. Puedo dejarlo en uno. Como alternativa tengo lámpara de escritorio LED a 23 euros con 23 céntimos con 16 en existencias. Lámpara de escritorio LED a 34 euros con 86 céntimos. Con 25 en existencias, lámpara de escritorio, LED lámpara, de lectura a 23 euros con 86 céntimos, con 34 en existencias. ¿Qué prefieres?",
+          "wer": {
+            "wer": 0.03529411764705882,
+            "reference_words": 85,
+            "hits": 85,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 3
+          },
+          "audio_seconds": 40.25933333333333,
+          "tts_seconds": 10.30553609400522,
+          "retries": 0,
+          "similarity": 0.708616561524965,
+          "similarity_real": 0.2647142544789199
+        },
+        {
+          "text": "Hecho, el carrito ahora tiene una unidad de Lámpara Escritorio LED a quince euros, total quince euros. En el carrito hay una unidad de Lámpara Escritorio LED a quince euros cada una, quince euros. Total: quince euros.",
+          "heard": "Hecho, el carrito ahora tiene una unidad de lámpara escritorio LED a 15 euros. Total 15 euros. En el carrito hay una unidad de lámpara escritorio LED a 15 euros cada una. 15 euros. Cada una. 15 euros. Total. 15 euros.",
+          "wer": {
+            "wer": 0.10810810810810811,
+            "reference_words": 37,
+            "hits": 37,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 4
+          },
+          "audio_seconds": 19.695333333333334,
+          "tts_seconds": 5.148758836032357,
+          "retries": 0,
+          "similarity": 0.682478613778635,
+          "similarity_real": 0.2530329745912678
+        },
+        {
+          "text": "Te repito el pedido antes de registrarlo: una unidad de Lámpara Escritorio LED a quince euros cada una, quince euros. Total: quince euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+          "heard": "Te repito el pedido antes de registrarlo. Una unidad de lámpara escritorio LED a 15 euros cada una. 15 euros. Total, 15 euros. Lo confirmo. Di sí para registrarlo. O dime qué quieres cambiar.",
+          "wer": {
+            "wer": 0.0,
+            "reference_words": 34,
+            "hits": 34,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "audio_seconds": 17.786,
+          "tts_seconds": 4.486121503985487,
+          "retries": 0,
+          "similarity": 0.7020959022559499,
+          "similarity_real": 0.2641579908627693
+        },
+        {
+          "text": "Pedido número uno registrado: una unidad de Lámpara Escritorio LED a quince euros cada una, quince euros. Total: quince euros. Gracias por tu compra.",
+          "heard": "Pedido número 1 registrado. Una unidad de lámpara escritorio LED a 15 euros cada una. 15 euros. Total. 15 euros. Gracias por tu compra. ¡Mua!",
+          "wer": {
+            "wer": 0.041666666666666664,
+            "reference_words": 24,
+            "hits": 24,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 1
+          },
+          "audio_seconds": 18.154666666666667,
+          "tts_seconds": 4.861013330984861,
+          "retries": 0,
+          "similarity": 0.718238199627245,
+          "similarity_real": 0.29162654257155324
+        },
+        {
+          "text": "Ese pedido ya estaba registrado con el número uno, así que no lo he duplicado. Total: quince euros.",
+          "heard": "Ese pedido ya estaba registrado con el número 1, así que no lo he duplicado. Total, 15 euros.",
+          "wer": {
+            "wer": 0.0,
+            "reference_words": 18,
+            "hits": 18,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "audio_seconds": 7.52,
+          "tts_seconds": 1.8730273559922352,
+          "retries": 0,
+          "similarity": 0.6924292281604234,
+          "similarity_real": 0.25990772456733774
         }
       ]
     },
@@ -659,7 +1303,7 @@
         "similarity_real": 0.27048540720620257,
         "audio_seconds": 687.9820000000001,
         "words_per_second": 2.0959850693768147,
-        "tts_seconds": 183.3328700310667,
+        "tts_seconds": 183.7050282753189,
         "retries": 0
       },
       "cases": [
@@ -675,7 +1319,7 @@
             "insertions": 1
           },
           "audio_seconds": 8.768,
-          "tts_seconds": 2.3141050699632615,
+          "tts_seconds": 2.3258725920459256,
           "retries": 0,
           "similarity": 0.7208270937150825,
           "similarity_real": 0.27321790511069627
@@ -692,7 +1336,7 @@
             "insertions": 0
           },
           "audio_seconds": 10.442666666666666,
-          "tts_seconds": 2.7276533269905485,
+          "tts_seconds": 2.7366260570124723,
           "retries": 0,
           "similarity": 0.6876232978577476,
           "similarity_real": 0.2636270482803756
@@ -709,7 +1353,7 @@
             "insertions": 0
           },
           "audio_seconds": 6.453333333333333,
-          "tts_seconds": 1.6486870920052752,
+          "tts_seconds": 1.6538518049637787,
           "retries": 0,
           "similarity": 0.7157006141185773,
           "similarity_real": 0.29013159139053285
@@ -726,7 +1370,7 @@
             "insertions": 0
           },
           "audio_seconds": 7.978666666666666,
-          "tts_seconds": 2.067213658010587,
+          "tts_seconds": 2.080647459020838,
           "retries": 0,
           "similarity": 0.7713041798430667,
           "similarity_real": 0.3029753465002779
@@ -743,7 +1387,7 @@
             "insertions": 0
           },
           "audio_seconds": 3.712,
-          "tts_seconds": 0.9260861999937333,
+          "tts_seconds": 0.927726102003362,
           "retries": 0,
           "similarity": 0.7130246629586522,
           "similarity_real": 0.28225966918955836
@@ -760,7 +1404,7 @@
             "insertions": 0
           },
           "audio_seconds": 5.984,
-          "tts_seconds": 1.5307664170395583,
+          "tts_seconds": 1.5336687410017475,
           "retries": 0,
           "similarity": 0.6647778563837096,
           "similarity_real": 0.23039810999832402
@@ -777,7 +1421,7 @@
             "insertions": 2
           },
           "audio_seconds": 31.139333333333333,
-          "tts_seconds": 7.891715848003514,
+          "tts_seconds": 7.930024356988724,
           "retries": 0,
           "similarity": 0.7235873223582319,
           "similarity_real": 0.2724449702018824
@@ -794,7 +1438,7 @@
             "insertions": 0
           },
           "audio_seconds": 24.900666666666666,
-          "tts_seconds": 6.915393921954092,
+          "tts_seconds": 6.940304123039823,
           "retries": 0,
           "similarity": 0.7270609979590197,
           "similarity_real": 0.28012309977858457
@@ -811,7 +1455,7 @@
             "insertions": 0
           },
           "audio_seconds": 21.786,
-          "tts_seconds": 5.75920315500116,
+          "tts_seconds": 5.772869565000292,
           "retries": 0,
           "similarity": 0.6917992739680611,
           "similarity_real": 0.24637037306813706
@@ -828,7 +1472,7 @@
             "insertions": 1
           },
           "audio_seconds": 10.816,
-          "tts_seconds": 2.9246620089979842,
+          "tts_seconds": 2.930074831005186,
           "retries": 0,
           "similarity": 0.7164516131978557,
           "similarity_real": 0.26011867346777034
@@ -845,7 +1489,7 @@
             "insertions": 0
           },
           "audio_seconds": 2.592,
-          "tts_seconds": 0.657192049024161,
+          "tts_seconds": 0.6600809130468406,
           "retries": 0,
           "similarity": 0.5953042324258886,
           "similarity_real": 0.1930330715816794
@@ -862,7 +1506,7 @@
             "insertions": 23
           },
           "audio_seconds": 30.388,
-          "tts_seconds": 8.088789708039258,
+          "tts_seconds": 8.107190154027194,
           "retries": 0,
           "similarity": 0.7139663438256164,
           "similarity_real": 0.26714344876378
@@ -879,7 +1523,7 @@
             "insertions": 0
           },
           "audio_seconds": 23.738,
-          "tts_seconds": 6.338797408971004,
+          "tts_seconds": 6.369701838004403,
           "retries": 0,
           "similarity": 0.7241084376357417,
           "similarity_real": 0.2659712127314196
@@ -896,7 +1540,7 @@
             "insertions": 1
           },
           "audio_seconds": 22.078666666666667,
-          "tts_seconds": 5.625581670028623,
+          "tts_seconds": 5.635089983989019,
           "retries": 0,
           "similarity": 0.7519477625864661,
           "similarity_real": 0.2844431466844169
@@ -913,7 +1557,7 @@
             "insertions": 1
           },
           "audio_seconds": 27.796,
-          "tts_seconds": 7.247383672976866,
+          "tts_seconds": 7.278721491980832,
           "retries": 0,
           "similarity": 0.7053167269127888,
           "similarity_real": 0.27190814701010596
@@ -930,7 +1574,7 @@
             "insertions": 6
           },
           "audio_seconds": 26.772,
-          "tts_seconds": 6.964555261016358,
+          "tts_seconds": 6.974873510014731,
           "retries": 0,
           "similarity": 0.6977902007027637,
           "similarity_real": 0.2706639609648895
@@ -947,7 +1591,7 @@
             "insertions": 0
           },
           "audio_seconds": 28.655333333333335,
-          "tts_seconds": 7.849002461007331,
+          "tts_seconds": 7.870743747975212,
           "retries": 0,
           "similarity": 0.7015208597296458,
           "similarity_real": 0.26267952909480585
@@ -964,7 +1608,7 @@
             "insertions": 0
           },
           "audio_seconds": 17.882,
-          "tts_seconds": 4.763147777004633,
+          "tts_seconds": 4.786342089006212,
           "retries": 0,
           "similarity": 0.7190754405952798,
           "similarity_real": 0.27535434123513564
@@ -981,7 +1625,7 @@
             "insertions": 1
           },
           "audio_seconds": 22.729333333333333,
-          "tts_seconds": 5.923512633016799,
+          "tts_seconds": 5.934231560037006,
           "retries": 0,
           "similarity": 0.7458830872085324,
           "similarity_real": 0.28298681074231286
@@ -998,7 +1642,7 @@
             "insertions": 0
           },
           "audio_seconds": 16.634,
-          "tts_seconds": 4.357185219996609,
+          "tts_seconds": 4.371609122026712,
           "retries": 0,
           "similarity": 0.7063533884899782,
           "similarity_real": 0.2701729818263756
@@ -1015,7 +1659,7 @@
             "insertions": 0
           },
           "audio_seconds": 12.629333333333333,
-          "tts_seconds": 3.431470781972166,
+          "tts_seconds": 3.433623421995435,
           "retries": 0,
           "similarity": 0.6498305160624799,
           "similarity_real": 0.25439091955934534
@@ -1032,7 +1676,7 @@
             "insertions": 0
           },
           "audio_seconds": 16.399333333333335,
-          "tts_seconds": 4.302149802038912,
+          "tts_seconds": 4.308953325031325,
           "retries": 0,
           "similarity": 0.6828580230519162,
           "similarity_real": 0.24848690192230152
@@ -1049,7 +1693,7 @@
             "insertions": 0
           },
           "audio_seconds": 14.72,
-          "tts_seconds": 4.042160429991782,
+          "tts_seconds": 4.035575838992372,
           "retries": 0,
           "similarity": 0.6890041312604601,
           "similarity_real": 0.26998583147887995
@@ -1066,7 +1710,7 @@
             "insertions": 0
           },
           "audio_seconds": 29.934,
-          "tts_seconds": 7.760258360998705,
+          "tts_seconds": 7.770111171004828,
           "retries": 0,
           "similarity": 0.7086480138643712,
           "similarity_real": 0.2643074461441427
@@ -1083,7 +1727,7 @@
             "insertions": 0
           },
           "audio_seconds": 11.744,
-          "tts_seconds": 3.1844919139984995,
+          "tts_seconds": 3.1734953480190597,
           "retries": 0,
           "similarity": 0.6851505479826343,
           "similarity_real": 0.27624339142353693
@@ -1100,7 +1744,7 @@
             "insertions": 0
           },
           "audio_seconds": 21.231333333333332,
-          "tts_seconds": 5.739199326955713,
+          "tts_seconds": 5.741664262022823,
           "retries": 0,
           "similarity": 0.7236726678452043,
           "similarity_real": 0.28378813412172665
@@ -1117,7 +1761,7 @@
             "insertions": 1
           },
           "audio_seconds": 34.19133333333333,
-          "tts_seconds": 9.451251480961218,
+          "tts_seconds": 9.460719617956784,
           "retries": 0,
           "similarity": 0.7452263038907411,
           "similarity_real": 0.3021394581166263
@@ -1134,7 +1778,7 @@
             "insertions": 0
           },
           "audio_seconds": 18.532666666666668,
-          "tts_seconds": 4.9790210539940745,
+          "tts_seconds": 4.991021010035183,
           "retries": 0,
           "similarity": 0.7186961504202152,
           "similarity_real": 0.2710922151399313
@@ -1151,7 +1795,7 @@
             "insertions": 0
           },
           "audio_seconds": 12.16,
-          "tts_seconds": 3.321908241021447,
+          "tts_seconds": 3.3270742230233736,
           "retries": 0,
           "similarity": 0.7372888021682542,
           "similarity_real": 0.2933377700662897
@@ -1168,7 +1812,7 @@
             "insertions": 0
           },
           "audio_seconds": 22.206666666666667,
-          "tts_seconds": 5.840681842004415,
+          "tts_seconds": 5.843019596009981,
           "retries": 0,
           "similarity": 0.7528003984099195,
           "similarity_real": 0.2756672963062192
@@ -1185,7 +1829,7 @@
             "insertions": 0
           },
           "audio_seconds": 26.522,
-          "tts_seconds": 7.551223883056082,
+          "tts_seconds": 7.554643821029458,
           "retries": 0,
           "similarity": 0.7168113668010091,
           "similarity_real": 0.2843182279153807
@@ -1202,7 +1846,7 @@
             "insertions": 0
           },
           "audio_seconds": 17.466,
-          "tts_seconds": 4.631399759964552,
+          "tts_seconds": 4.638150751998182,
           "retries": 0,
           "similarity": 0.7175578148549426,
           "similarity_real": 0.27002313502689845
@@ -1219,7 +1863,7 @@
             "insertions": 3
           },
           "audio_seconds": 38.574,
-          "tts_seconds": 10.2714649339905,
+          "tts_seconds": 10.285776691976935,
           "retries": 0,
           "similarity": 0.7183216130824894,
           "similarity_real": 0.26657225841020066
@@ -1236,7 +1880,7 @@
             "insertions": 4
           },
           "audio_seconds": 18.863333333333333,
-          "tts_seconds": 5.12768583704019,
+          "tts_seconds": 5.132236180012114,
           "retries": 0,
           "similarity": 0.6946746041311277,
           "similarity_real": 0.26585132734874256
@@ -1253,7 +1897,7 @@
             "insertions": 0
           },
           "audio_seconds": 17.00733333333333,
-          "tts_seconds": 4.467712807003409,
+          "tts_seconds": 4.466218076995574,
           "retries": 0,
           "similarity": 0.7130752584926853,
           "similarity_real": 0.2701970443580002
@@ -1270,7 +1914,7 @@
             "insertions": 1
           },
           "audio_seconds": 17.365333333333332,
-          "tts_seconds": 4.848901241028216,
+          "tts_seconds": 4.85566411097534,
           "retries": 0,
           "similarity": 0.7164861279791706,
           "similarity_real": 0.2945326988902926
@@ -1287,7 +1931,7 @@
             "insertions": 0
           },
           "audio_seconds": 7.189333333333333,
-          "tts_seconds": 1.8612537760054693,
+          "tts_seconds": 1.8668307860498317,
           "retries": 0,
           "similarity": 0.7136098673429495,
           "similarity_real": 0.2710025727799203
@@ -1303,7 +1947,7 @@
         "similarity_real": 0.2643661114087128,
         "audio_seconds": 609.3793333333334,
         "words_per_second": 2.3663421470370394,
-        "tts_seconds": 182.59856314695207,
+        "tts_seconds": 182.79148004599847,
         "retries": 0
       },
       "cases": [
@@ -1319,7 +1963,7 @@
             "insertions": 0
           },
           "audio_seconds": 7.754666666666667,
-          "tts_seconds": 2.3083598599769175,
+          "tts_seconds": 2.314372271008324,
           "retries": 0,
           "similarity": 0.7075386169750568,
           "similarity_real": 0.265986937428848
@@ -1336,7 +1980,7 @@
             "insertions": 0
           },
           "audio_seconds": 9.237333333333334,
-          "tts_seconds": 2.719460852968041,
+          "tts_seconds": 2.7257785169640556,
           "retries": 0,
           "similarity": 0.6768367223180715,
           "similarity_real": 0.26016561875133604
@@ -1353,7 +1997,7 @@
             "insertions": 0
           },
           "audio_seconds": 5.706666666666667,
-          "tts_seconds": 1.6474066469818354,
+          "tts_seconds": 1.6499169679591432,
           "retries": 0,
           "similarity": 0.7012969211951753,
           "similarity_real": 0.27901394012128894
@@ -1370,7 +2014,7 @@
             "insertions": 0
           },
           "audio_seconds": 7.050666666666666,
-          "tts_seconds": 2.0595948949921876,
+          "tts_seconds": 2.0673750289715827,
           "retries": 0,
           "similarity": 0.7568236335595181,
           "similarity_real": 0.2896944006950818
@@ -1387,7 +2031,7 @@
             "insertions": 0
           },
           "audio_seconds": 3.2426666666666666,
-          "tts_seconds": 0.9223995599895716,
+          "tts_seconds": 0.9221205179928802,
           "retries": 0,
           "similarity": 0.6925112248528218,
           "similarity_real": 0.2471236219853502
@@ -1404,7 +2048,7 @@
             "insertions": 0
           },
           "audio_seconds": 5.290666666666667,
-          "tts_seconds": 1.5240562729886733,
+          "tts_seconds": 1.5256013789912686,
           "retries": 0,
           "similarity": 0.6752412182912945,
           "similarity_real": 0.23127069228223368
@@ -1421,7 +2065,7 @@
             "insertions": 1
           },
           "audio_seconds": 27.651333333333334,
-          "tts_seconds": 7.865360731026158,
+          "tts_seconds": 7.8919142769882455,
           "retries": 0,
           "similarity": 0.7295995041761455,
           "similarity_real": 0.2699288394965422
@@ -1438,7 +2082,7 @@
             "insertions": 0
           },
           "audio_seconds": 22.074,
-          "tts_seconds": 6.896036838006694,
+          "tts_seconds": 6.900322823959868,
           "retries": 0,
           "similarity": 0.7153757351865835,
           "similarity_real": 0.2748190496630958
@@ -1455,7 +2099,7 @@
             "insertions": 0
           },
           "audio_seconds": 19.322,
-          "tts_seconds": 5.734304035024252,
+          "tts_seconds": 5.754713164991699,
           "retries": 0,
           "similarity": 0.6859984409940656,
           "similarity_real": 0.24426105336501622
@@ -1472,7 +2116,7 @@
             "insertions": 1
           },
           "audio_seconds": 9.557333333333334,
-          "tts_seconds": 2.912561149976682,
+          "tts_seconds": 2.9176953629939817,
           "retries": 0,
           "similarity": 0.7221133768715179,
           "similarity_real": 0.2708586622943609
@@ -1489,7 +2133,7 @@
             "insertions": 0
           },
           "audio_seconds": 2.272,
-          "tts_seconds": 0.6552749680122361,
+          "tts_seconds": 0.6583608479704708,
           "retries": 0,
           "similarity": 0.5965236731117255,
           "similarity_real": 0.20283026799986523
@@ -1506,7 +2150,7 @@
             "insertions": 19
           },
           "audio_seconds": 26.910666666666668,
-          "tts_seconds": 8.07725177303655,
+          "tts_seconds": 8.06562250101706,
           "retries": 0,
           "similarity": 0.7110000592037635,
           "similarity_real": 0.2557847346561927
@@ -1523,7 +2167,7 @@
             "insertions": 0
           },
           "audio_seconds": 21.03933333333333,
-          "tts_seconds": 6.331330106011592,
+          "tts_seconds": 6.3324124430073425,
           "retries": 0,
           "similarity": 0.7054591024390386,
           "similarity_real": 0.25851356947243925
@@ -1540,7 +2184,7 @@
             "insertions": 1
           },
           "audio_seconds": 19.561333333333334,
-          "tts_seconds": 5.601243607990909,
+          "tts_seconds": 5.604995290050283,
           "retries": 0,
           "similarity": 0.7307883336694709,
           "similarity_real": 0.2660898379081924
@@ -1557,7 +2201,7 @@
             "insertions": 1
           },
           "audio_seconds": 24.681333333333335,
-          "tts_seconds": 7.236062848998699,
+          "tts_seconds": 7.239653733966406,
           "retries": 0,
           "similarity": 0.7257139353885985,
           "similarity_real": 0.28048221159051456
@@ -1574,7 +2218,7 @@
             "insertions": 6
           },
           "audio_seconds": 23.753333333333334,
-          "tts_seconds": 6.931117478001397,
+          "tts_seconds": 6.9414329410064965,
           "retries": 0,
           "similarity": 0.7014381282366695,
           "similarity_real": 0.2635321054635482
@@ -1591,7 +2235,7 @@
             "insertions": 0
           },
           "audio_seconds": 25.37,
-          "tts_seconds": 7.823040440038312,
+          "tts_seconds": 7.824420218006708,
           "retries": 0,
           "similarity": 0.7087678617328469,
           "similarity_real": 0.26054783822927086
@@ -1608,7 +2252,7 @@
             "insertions": 0
           },
           "audio_seconds": 15.844666666666667,
-          "tts_seconds": 4.7341275829821825,
+          "tts_seconds": 4.745519417047035,
           "retries": 0,
           "similarity": 0.7206177455840997,
           "similarity_real": 0.2739031964993501
@@ -1625,7 +2269,7 @@
             "insertions": 1
           },
           "audio_seconds": 20.137333333333334,
-          "tts_seconds": 5.8931261880206876,
+          "tts_seconds": 5.902743279992137,
           "retries": 0,
           "similarity": 0.7415136397059275,
           "similarity_real": 0.2743718349342516
@@ -1642,7 +2286,7 @@
             "insertions": 0
           },
           "audio_seconds": 14.724666666666666,
-          "tts_seconds": 4.33929887303384,
+          "tts_seconds": 4.34086793003371,
           "retries": 0,
           "similarity": 0.7015632062428416,
           "similarity_real": 0.26432866195201254
@@ -1659,7 +2303,7 @@
             "insertions": 0
           },
           "audio_seconds": 11.136,
-          "tts_seconds": 3.4107236770214513,
+          "tts_seconds": 3.4134757419815287,
           "retries": 0,
           "similarity": 0.6589368752416869,
           "similarity_real": 0.25740852803109127
@@ -1676,7 +2320,7 @@
             "insertions": 0
           },
           "audio_seconds": 14.543333333333333,
-          "tts_seconds": 4.27314138301881,
+          "tts_seconds": 4.291417836036999,
           "retries": 0,
           "similarity": 0.6800191800086957,
           "similarity_real": 0.25059609657247317
@@ -1693,7 +2337,7 @@
             "insertions": 0
           },
           "audio_seconds": 13.002666666666666,
-          "tts_seconds": 4.024942547024693,
+          "tts_seconds": 4.026899508025963,
           "retries": 0,
           "similarity": 0.6923114531038028,
           "similarity_real": 0.27156998370336016
@@ -1710,7 +2354,7 @@
             "insertions": 1
           },
           "audio_seconds": 26.595333333333333,
-          "tts_seconds": 7.726053186983336,
+          "tts_seconds": 7.741828327998519,
           "retries": 0,
           "similarity": 0.7126184217814044,
           "similarity_real": 0.26010609508138693
@@ -1727,7 +2371,7 @@
             "insertions": 0
           },
           "audio_seconds": 10.4,
-          "tts_seconds": 3.1540959869744256,
+          "tts_seconds": 3.157419599010609,
           "retries": 0,
           "similarity": 0.667540194044313,
           "similarity_real": 0.254552982754891
@@ -1744,7 +2388,7 @@
             "insertions": 0
           },
           "audio_seconds": 18.767333333333333,
-          "tts_seconds": 5.717881436983589,
+          "tts_seconds": 5.71904362202622,
           "retries": 0,
           "similarity": 0.7084309404273657,
           "similarity_real": 0.2773981759305417
@@ -1761,7 +2405,7 @@
             "insertions": 1
           },
           "audio_seconds": 30.234,
-          "tts_seconds": 9.418686035030987,
+          "tts_seconds": 9.423968722985592,
           "retries": 0,
           "similarity": 0.7288662262637001,
           "similarity_real": 0.2929699353095839
@@ -1778,7 +2422,7 @@
             "insertions": 0
           },
           "audio_seconds": 16.442,
-          "tts_seconds": 4.943901239021216,
+          "tts_seconds": 4.9435780519852415,
           "retries": 0,
           "similarity": 0.7185959780245548,
           "similarity_real": 0.2735842928082141
@@ -1795,7 +2439,7 @@
             "insertions": 0
           },
           "audio_seconds": 10.773333333333333,
-          "tts_seconds": 3.3039736499777064,
+          "tts_seconds": 3.3112410620087758,
           "retries": 0,
           "similarity": 0.7286539517817775,
           "similarity_real": 0.2851432925092949
@@ -1812,7 +2456,7 @@
             "insertions": 0
           },
           "audio_seconds": 19.71066666666667,
-          "tts_seconds": 5.818559415987693,
+          "tts_seconds": 5.81282024999382,
           "retries": 0,
           "similarity": 0.7348448433400094,
           "similarity_real": 0.2671718218023273
@@ -1829,7 +2473,7 @@
             "insertions": 0
           },
           "audio_seconds": 23.46066666666667,
-          "tts_seconds": 7.5172721080016345,
+          "tts_seconds": 7.514798400981817,
           "retries": 0,
           "similarity": 0.7134753837752993,
           "similarity_real": 0.2840233855273009
@@ -1846,7 +2490,7 @@
             "insertions": 1
           },
           "audio_seconds": 15.471333333333334,
-          "tts_seconds": 4.6126414309837855,
+          "tts_seconds": 4.615029754990246,
           "retries": 0,
           "similarity": 0.7055987168317698,
           "similarity_real": 0.27082653926624417
@@ -1863,7 +2507,7 @@
             "insertions": 4
           },
           "audio_seconds": 34.16866666666667,
-          "tts_seconds": 10.226757639960852,
+          "tts_seconds": 10.235874415026046,
           "retries": 0,
           "similarity": 0.7017758510952928,
           "similarity_real": 0.2548675353972869
@@ -1880,7 +2524,7 @@
             "insertions": 4
           },
           "audio_seconds": 16.719333333333335,
-          "tts_seconds": 5.110611028969288,
+          "tts_seconds": 5.12110070802737,
           "retries": 0,
           "similarity": 0.6648709958390289,
           "similarity_real": 0.24863450680629026
@@ -1897,7 +2541,7 @@
             "insertions": 0
           },
           "audio_seconds": 15.044666666666666,
-          "tts_seconds": 4.450492120988201,
+          "tts_seconds": 4.452155852981377,
           "retries": 0,
           "similarity": 0.7013030151056427,
           "similarity_real": 0.27141951339670056
@@ -1914,7 +2558,7 @@
             "insertions": 0
           },
           "audio_seconds": 15.370666666666667,
-          "tts_seconds": 4.8293847650056705,
+          "tts_seconds": 4.830459311022423,
           "retries": 0,
           "similarity": 0.7105511732537597,
           "similarity_real": 0.2797767169509104
@@ -1931,7 +2575,7 @@
             "insertions": 0
           },
           "audio_seconds": 6.357333333333333,
-          "tts_seconds": 1.848030786961317,
+          "tts_seconds": 1.8545299679972231,
           "retries": 0,
           "similarity": 0.6834460174733648,
           "similarity_real": 0.24798964548568492
