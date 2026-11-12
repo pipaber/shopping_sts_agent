@@ -2,7 +2,7 @@
 
 Asistente que recibe consultas habladas en español, recupera productos de un catálogo (ESCI), opera sobre una tienda simulada y responde con voz clonada. Todo el procesamiento de modelos es local.
 
-El diseño y el cronograma están en [documentation/PLAN.md](documentation/PLAN.md).
+El diseño y el cronograma están en [documentation/PLAN.md](documentation/PLAN.md). Qué funciona, qué falla y por qué, caso a caso: [documentation/ANALISIS_ACIERTOS_FALLOS.md](documentation/ANALISIS_ACIERTOS_FALLOS.md).
 
 ## Cómo funciona
 
@@ -35,7 +35,7 @@ flowchart LR
 - **Función del agente.** El LLM propone una herramienta por paso y redacta la respuesta; el código valida cada llamada, comprueba existencias y presupuesto en la tienda, verifica las cifras de la respuesta y es el único que registra pedidos.
 - **Qué se toma de ESCI.** La versión reducida, solo en español: 43 674 productos (título, descripción, características, marca y color) forman el catálogo en el que busca el agente. Las consultas y sus etiquetas (1 500 de `train` y 300 de `test`) solo sirven para entrenar el reranker y para medir: el agente no las lee. Precios y existencias no vienen en ESCI: son ficticios, generados con semilla.
 - **Modelos, todos locales.** Whisper large-v3-turbo, Qwen2.5-7B-Instruct (GGUF Q4_K_M), XTTS-v2 y `multilingual-e5-small`, más un reranker entrenado aquí.
-- **Hardware.** Medido en una estación de trabajo con una NVIDIA RTX A2000 de 12 GB (9 532 MiB de memoria de GPU con todo cargado). El objetivo del enunciado es Google Colab con una T4: [notebooks/colab.ipynb](notebooks/colab.ipynb).
+- **Hardware.** Medido en una estación de trabajo con una NVIDIA RTX A2000 de 12 GB (9 532 MiB de memoria de GPU con todo cargado). El objetivo del enunciado es Google Colab con una T4: [notebooks/colab.ipynb](notebooks/colab.ipynb) (ver «Ejecución en Colab (T4)»).
 
 ## Entorno
 
@@ -74,6 +74,22 @@ Compara BM25, denso e híbrido con nDCG@10 sobre los candidatos anotados, con la
 ```bash
 uv run python -m shopping_agent.eval.retrieval --split train
 ```
+
+Con las 1 500 consultas de `train`: nDCG@10 de 0,6807 con BM25, 0,7372 con el denso y 0,7236 con el híbrido, que es el que recupera más productos exactos entre los 50 primeros (recall@50 de 0,723, frente a 0,664 del denso y 0,640 de BM25).
+
+**Modelo de embeddings.** Se usa `intfloat/multilingual-e5-small`. Se comparó con dos modelos mayores, con las consultas de `train` y sin entrenar nada ([results/embedding_comparison.md](results/embedding_comparison.md)):
+
+```bash
+uv run python -m shopping_agent.eval.embeddings
+```
+
+| Modelo | nDCG@10 denso (train) | Dif. con e5-small [IC 95 %] | nDCG@10 denso (validación) | VRAM pico |
+|---|---|---|---|---|
+| `intfloat/multilingual-e5-small` (el del agente) | 0,7372 | | 0,7535 | 463 MiB |
+| `intfloat/multilingual-e5-base` | 0,7210 | −0,0162 [−0,0226; −0,0102] | 0,7303 | 1 435 MiB |
+| `BAAI/bge-m3` | 0,7358 | −0,0014 [−0,0077; +0,0045] | 0,7384 | 2 662 MiB |
+
+Ninguno supera al pequeño: `e5-base` queda por debajo y `bge-m3` empata en `train`, queda por debajo en las 300 consultas de validación y ocupa casi seis veces más memoria de GPU. El modelo no se cambió.
 
 ## Reranker (control sin grafo y GraphSAGE)
 
@@ -144,7 +160,7 @@ El agente usa un Qwen instruct en GGUF servido con `llama-cpp-python`, que `uv s
 CMAKE_ARGS="-DGGML_CUDA=on" uv sync
 ```
 
-Si `nvcc` no está en el `PATH`, se añade `CUDACXX=/usr/local/cuda/bin/nvcc` delante. Si ya se instaló sin CUDA, se recompila con `CMAKE_ARGS="-DGGML_CUDA=on" uv sync --reinstall-package llama-cpp-python`. La compilación tarda unos 20 minutos.
+Si `nvcc` no está en el `PATH`, se añade `CUDACXX=/usr/local/cuda/bin/nvcc` delante. Si ya se instaló sin CUDA, se recompila con `CMAKE_ARGS="-DGGML_CUDA=on" uv sync --reinstall-package llama-cpp-python`. La compilación tarda unos 20 minutos en la workstation y 61 en Colab; el notebook de Colab usa una rueda ya compilada (ver «Ejecución en Colab (T4)»).
 
 El modelo (unos 4,7 GB) se descarga solo la primera vez en la caché de Hugging Face. Para usar otro, ver las variables `SHOPPING_AGENT_LLM_*` en [.env.example](.env.example).
 
@@ -337,7 +353,7 @@ Calcula, sobre una corrida guardada: la inteligibilidad (WER de Whisper sobre el
 
 ## Evaluación
 
-Qué se midió, con qué decisiones y qué quedó sin verificar está en [documentation/PLAN.md](documentation/PLAN.md) ("Diseño y resultados de la evaluación"). Aquí, cómo se reproduce cada tabla.
+Qué se midió, con qué decisiones y qué quedó sin verificar está en [documentation/PLAN.md](documentation/PLAN.md) ("Diseño y resultados de la evaluación"). El análisis de aciertos y fallos, con seis aciertos y nueve fallos, su evidencia y su causa, está en [documentation/ANALISIS_ACIERTOS_FALLOS.md](documentation/ANALISIS_ACIERTOS_FALLOS.md). Aquí, cómo se reproduce cada tabla.
 
 ### Escenarios
 
@@ -425,6 +441,28 @@ Evaluación única con las 300 consultas de test: entrena los rerankers como en 
 | Híbrido + GraphSAGE (la variante del GNN) | 0,7363 [0,7104; 0,7605] | 0,7194 | +0,0249 [+0,0152; +0,0351] |
 
 GraphSAGE supera al control sin grafo en +0,0071 (IC 95 % [+0,0028; +0,0117]). Los rerankers reordenan los 50 primeros del híbrido, así que comparten su recall@50.
+
+## Ejecución en Colab (T4)
+
+[notebooks/colab.ipynb](notebooks/colab.ipynb) reproduce el proyecto de principio a fin en una T4 de Colab: instalación, datos, recuperación, reranker, agente por texto, escenarios por texto y por voz, y una conversación en vivo con el micrófono del navegador. Todo el procesamiento es local a la sesión; no se llama a ninguna API de inferencia.
+
+- **Instalación.** `uv sync` crea el entorno del proyecto con las versiones de `uv.lock`. `llama-cpp-python` hay que compilarlo con CUDA, y con las 2 CPU de Colab eso tardó 61 minutos. El notebook descarga en su lugar una rueda ya compilada para el sistema de Colab (Ubuntu 24.04, CUDA 13.0), publicada como adjunto de la *release* `colab-llama-cpp-0.3.36` de este repositorio, y comprueba que carga y que usa la GPU; si no sirve en la sesión, compila como respaldo. Con la rueda la instalación baja a 2 min 13 s.
+- **Voz propia.** Las grabaciones se suben a la sesión en un `audio.zip` y se borran al cerrarla; no entran en el repositorio. Sin ellas, el agente habla con un hablante de prueba de XTTS-v2 y los escenarios usan audios sintéticos.
+- **Conversación en vivo.** Una celda arranca `shopping_agent.voice.live` en segundo plano y otra graba un turno con el micrófono, lo envía y reproduce la respuesta. No es tiempo real: es una conversación por turnos.
+
+Lo medido hasta ahora en la T4 se hizo con el hablante de prueba, no con la voz del autor, y **no son las cifras finales**: falta la corrida final con su voz. Las cifras de Colab se tomaron en la sesión del notebook; `results/` guarda las corridas de la workstation.
+
+| Medida | Workstation (RTX A2000, 12 GB) | Colab T4, hablante de prueba (provisional) | Colab T4, voz del autor (corrida final) |
+|---|---|---|---|
+| Escenarios por texto | 20 de 20; LLM 5,04 s por turno | 20 de 20; LLM 8,0 s por turno | pendiente |
+| Escenarios por voz | 6 de 6 | 6 de 6 | pendiente |
+| Latencia por turno con LLM, por voz (ASR / LLM / TTS) | 11,35 s (0,35 / 5,05 / 5,90) | 17,3 s (0,41 / 7,9 / 8,9) | pendiente |
+| Memoria de GPU con todo cargado | 9 532 MiB | 9,1 GB | pendiente |
+| Carga inicial de los modelos | 24 a 28 s | 99,9 s | pendiente |
+| Conversación en vivo: arranque | 26 s | 96 s | pendiente |
+| Conversación en vivo: turno de búsqueda | 17,8 s | 26 a 28 s | pendiente |
+
+La columna de la workstation es la de la voz del autor a velocidad 1,10 (corrida `voz`); sus dos cifras de la conversación en vivo son de la prueba del servidor con la voz anterior. La T4 es más lenta en el LLM y en el TTS, por lo que un turno por voz tarda del orden de la mitad más.
 
 ## Organización del código
 

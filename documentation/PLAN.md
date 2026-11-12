@@ -42,7 +42,7 @@ sudo -u postgres createdb -O shopping_agent shopping_agent
 
 pgvector no hace falta por ahora: el Store solo guarda las preferencias del usuario por clave, sin búsqueda semántica. En local se usa un contenedor `postgres:16-alpine` (ver README). Postgres es obligatorio: sin `SHOPPING_AGENT_PG_URL` los comandos se detienen con un error, para no perder la persistencia sin notarlo (por ejemplo en Colab). La memoria volátil solo se usa si se pide de forma explícita (`--volatile-memory` u `open_memory(volatile=True)`) y queda anotada en la transcripción.
 
-`llama-cpp-python` en Colab: hay que instalarlo con CUDA (`CMAKE_ARGS="-DGGML_CUDA=on" pip install llama-cpp-python`). En la workstation la compilación tardó unos 20 minutos; en Colab conviene medirlo el día 7 y, si es demasiado, usar una rueda precompilada para la versión de CUDA de la sesión.
+`llama-cpp-python` en Colab: hay que instalarlo con CUDA. En la workstation la compilación tardó unos 20 minutos; en Colab, con 2 CPU, 61. Por eso el notebook descarga una rueda ya compilada para el sistema de Colab (Ubuntu 24.04, CUDA 13.0), adjunta a la *release* `colab-llama-cpp-0.3.36` del repositorio, comprueba que carga y que usa la GPU, y compila solo como respaldo: la instalación baja a 2 min 13 s. Véase «Ejecución en Colab (T4)».
 
 VRAM con todo cargado en un solo proceso (medida en la workstation, sin el reranker, que añade 0,1 GB con el control y 0,23 GB con GraphSAGE): 9,6 GB con el LLM, los embeddings, Whisper y XTTS-v2 cargados, y 10,4 GB al terminar una conversación de ocho turnos; cabe en los 15 GB utilizables de la T4. Por separado: LLM 5,2 GB, embeddings 0,6 GB, Whisper 2,2 GB y XTTS-v2 2,0 GB (cada medida suelta incluye el contexto de CUDA, que en un proceso se comparte). Si en Colab no cupiera, los embeddings de consulta pasan a CPU.
 
@@ -150,6 +150,8 @@ Las dos corridas se repitieron el 10 de noviembre con el reranker por defecto (`
 3. **Fusión:** RRF de ambos, top 50.
 4. **Reranker GraphSAGE (PyTorch Geometric):** reordena los 50 primeros del híbrido sobre un grafo consulta–producto. El diseño y los resultados están más abajo.
 5. **Métrica:** nDCG@10 sobre candidatos anotados con ganancias 1 / 0,1 / 0,01 / 0.
+
+**Modelo de embeddings.** Queda `intfloat/multilingual-e5-small`. Se comparó con `multilingual-e5-base` y `BAAI/bge-m3` usando solo consultas de `train`, sin entrenar nada ([results/embedding_comparison.md](../results/embedding_comparison.md), `python -m shopping_agent.eval.embeddings`). Ninguno lo supera. `e5-base` queda por debajo en el denso (−0,0162 de nDCG@10, IC 95 % [−0,0226; −0,0102]) y en el híbrido (−0,0098). `bge-m3` empata en las 1 500 consultas (−0,0014 [−0,0077; +0,0045] en el denso) y queda por debajo en las 300 de validación (−0,0151 [−0,0298; −0,0016]); recupera algo más entre los 50 primeros (recall@50 del híbrido 0,735 frente a 0,723), pero ocupa 2 662 MiB de VRAM frente a 463 y tarda 344 s en codificar el catálogo. Además, cambiar de modelo obligaría a repetir las corridas de escenarios y la evaluación en test, que dejaría de ser única.
 
 Comparación con las mismas consultas de `test`: BM25 · denso · híbrido · híbrido + control sin grafo · híbrido + GraphSAGE. Se hizo una sola vez, al cerrar la evaluación; el diseño del reranker, más abajo, se decidió antes y solo con consultas de `train`.
 
@@ -328,7 +330,7 @@ Riesgo que el plan anticipaba: que el GNN no superase al híbrido. Lo supera, pe
 **Qué no se midió.**
 
 - **El ASR con la voz del usuario.** No estaba medido en la línea base. Se midió el 11 de noviembre con los 31 turnos grabados: ver «Voz con las grabaciones del usuario», más abajo.
-- **Nada en Colab.** Todo se corrió en la workstation; las latencias y la memoria en la T4 están por medir.
+- **Nada en Colab.** Todo se corrió en la workstation. Después se midió en la T4 con el hablante de prueba: ver «Ejecución en Colab (T4)».
 - **El juicio de oído** sobre la voz clonada. La semejanza es un coseno entre embeddings de hablante.
 - **La variabilidad.** Hay una corrida por configuración y el agente es determinista: los porcentajes describen estos 20 guiones con esta redacción, no una tasa de aciertos general. Los escenarios se escribieron conociendo las reglas del agente, aunque sin mirar antes cómo respondía a ellos.
 - **La calidad de las explicaciones.** Las comprobaciones miran lo que el agente hace con la tienda; salvo las cuatro que buscan algo concreto en el texto, no juzgan si la respuesta explica bien un rechazo (el acierto con matices de 08 es un ejemplo).
@@ -458,6 +460,32 @@ El «texto peor» es el mismo a las cuatro velocidades: la respuesta con las mar
 
 **Sin verificar.** Nadie ha escuchado las respuestas que Whisper marca, y Whisper no es un oyente: hay que oír al menos `audio/corridas/voz/02_pedido_ambiguo/respuesta_02.wav` para saber si el tramo se pierde de verdad. El autor comparó de oído seis frases a 1,0 y a 1,15, ninguna con marcas difíciles; la voz a 1,10 no consta que la haya escuchado: la eligió por la tabla. Es una corrida por voz con cada voz y una semilla de muestreo. Las corridas de demostración (`voz_demo_compra_voz_usuario`) y las transcripciones en vivo no se repitieron: son de la voz anterior y anotan `audio/referencia/referencia.wav`, que entonces era la otra grabación. Colab no se ha probado con la voz nueva.
 
+### Análisis de aciertos y fallos
+
+[ANALISIS_ACIERTOS_FALLOS.md](ANALISIS_ACIERTOS_FALLOS.md) recoge seis aciertos y nueve fallos, cada uno con lo que se pidió, lo que hizo el sistema, la ficha donde se ve y la causa. Los aciertos explican por qué funciona el diseño (la tienda valida, el código decide qué es una confirmación, la cotización tiene identificador). Los fallos son los reales, con su estado: cuatro corregidos (los de la línea base y el de los números con cifras), cuatro sin corregir (la palabra del ASR que cambia la compra, el «no consta» sin abrir el detalle, la respuesta hablada ininteligible y las explicaciones pobres) y el límite de la ablación. Dice de forma expresa qué escenarios pasan sin que esté bien lo que importa.
+
+### Ejecución en Colab (T4)
+
+`notebooks/colab.ipynb` corre el proyecto de principio a fin en una T4 de Colab con 2 CPU: instalación, Postgres, datos, recuperación, reranker, agente por texto, escenarios por texto y por voz, conversación en vivo y resumen. Lo comprobado:
+
+- **Instalación.** Postgres con `apt`, `uv sync` con las versiones de `uv.lock`, FFmpeg para `torchcodec` y `llama-cpp-python` desde la rueda precompilada (2 min 13 s en lugar de 61 minutos de compilación). Las dependencias de voz cargan.
+- **Conversación en vivo.** El notebook arranca `shopping_agent.voice.live` en segundo plano y habla con él por HTTP, porque el núcleo de Colab no puede importar el paquete: el proyecto vive en su propio entorno.
+- **Memoria.** Los cuatro modelos y el reranker caben: 9,1 GB de los 15 GB utilizables.
+
+Medido el 11 y el 12 de noviembre **con el hablante de prueba**, no con la voz del autor. No son las cifras finales: falta la corrida final con su voz, y las cifras de Colab se tomaron en la sesión del notebook, no están en `results/`.
+
+| Medida | Workstation (RTX A2000, 12 GB) | Colab T4, hablante de prueba (provisional) | Colab T4, voz del autor (corrida final) |
+|---|---|---|---|
+| Escenarios por texto | 20 de 20; LLM 5,04 s por turno | 20 de 20; LLM 8,0 s por turno | pendiente |
+| Escenarios por voz | 6 de 6 | 6 de 6 | pendiente |
+| Latencia por turno con LLM, por voz (ASR / LLM / TTS) | 11,35 s (0,35 / 5,05 / 5,90) | 17,3 s (0,41 / 7,9 / 8,9) | pendiente |
+| Memoria de GPU con todo cargado | 9 532 MiB | 9,1 GB | pendiente |
+| Carga inicial de los modelos | 24 a 28 s | 99,9 s | pendiente |
+| Conversación en vivo: arranque | 26 s | 96 s | pendiente |
+| Conversación en vivo: turno de búsqueda | 17,8 s | 26 a 28 s | pendiente |
+
+La columna de la workstation es la corrida `voz` (voz del autor a velocidad 1,10); sus dos cifras de la conversación en vivo son de la prueba del servidor con la voz anterior. En la T4 el LLM tarda un 56 % más por turno y el TTS un 51 % más, con otra voz; la carga inicial es cuatro veces más lenta.
+
 ## 7. Cronograma
 
 | Días | Trabajo | Entregable |
@@ -483,7 +511,7 @@ src/shopping_agent/
   agent/       estado, herramientas (registro), textos, nodos (nodes/), cableado del grafo, sesión, chat
   voice/       audio, asr, texto para voz, tts, turno completo, chat por voz
   eval/        recuperación, reranker (comparación y coste), métricas de voz; escenarios (formato, comprobaciones, violaciones, ejecutor e informe) y evaluación final en test
-notebooks/     lab4_colab.ipynb (ejecución principal, pendiente)
+notebooks/     colab.ipynb (ejecución de principio a fin en una T4 de Colab)
 scenarios/     guiones de demostración; evaluacion/ con los 20 escenarios y el guion de grabación (los audios van en audio/, sin versionar)
 tests/
 ```
@@ -492,16 +520,21 @@ El detalle de los módulos del agente y el criterio de idioma de los nombres est
 
 Dependencias a añadir: `langgraph-checkpoint-postgres`, `psycopg[binary,pool]`, `faiss-cpu`, `bm25s`, `faster-whisper`, `llama-cpp-python`, `coqui-tts`, `torch-geometric`, `jiwer`, `speechbrain`.
 
-## 9. Pendientes por decidir
+## 9. Pendientes
 
-- Modelo exacto de embeddings (por ahora `intfloat/multilingual-e5-small`). El LLM ya está elegido: Qwen2.5-7B-Instruct Q4_K_M.
-- Comprobar en Colab la instalación de Postgres, de `llama-cpp-python` con CUDA y de las dependencias de voz (`torchaudio`, `torchcodec`, FFmpeg).
-- Decidir si se hace algo con el error del ASR que cambia la compra («cafetera» → «cafetería», escenario 01 con la voz real). Opciones sin probar: dar vocabulario del dominio a Whisper, o que el agente repita qué ha buscado. No se ha tocado nada. El otro efecto, los números escritos con cifras en el escenario 05, se corrigió el 12 de noviembre.
-- Las respuestas con el carrito completo dan audios largos: hasta 49 s con la voz anterior y hasta 40 s con la nueva; valorar una versión hablada más breve.
-- Escuchar las respuestas de la voz nueva que Whisper entiende mal (la del escenario 02 con marcas impronunciables y las que terminan con palabras de más) y decidir si se hace algo: otra toma de referencia, otra velocidad, condicionar el ritmo con 30 s de la referencia en lugar de 6, o no leer en voz alta las marcas que no son palabras. Nada de eso se ha probado.
-- Escuchar la voz nueva a velocidad 1,10: se eligió por la medida («Di sí para registrarlo» se entiende en 7 de 7; a 1,15, en 3 de 7), no de oído.
-- Decidir, a la vista de test, si el reranker por defecto sigue siendo el control: allí GraphSAGE lo supera en +0,0071 de nDCG@10 (IC [+0,0028; +0,0117]). Es una decisión posterior a ver test y hay que decirlo si se toma.
-- La evaluación en test y las corridas de escenarios están hechas con `multilingual-e5-small`. Cambiar el modelo de embeddings obligaría a repetirlas, y la de test dejaría de ser una evaluación única.
-- Repetir en Colab las corridas de escenarios (latencia y memoria en la T4).
-- Análisis escrito de al menos cinco aciertos y cinco fallos; el material está en `documentation/DIAGNOSTICO_FALLOS.md`, en las fichas de la línea base (`results/escenarios_base/`) y en las de las corridas corregidas (`results/escenarios/`).
-- Fecha oficial de entrega.
+**Resuelto.**
+
+- **Modelo de embeddings:** queda `intfloat/multilingual-e5-small`; ni `e5-base` ni `bge-m3` lo superan (apartado 5). El LLM es Qwen2.5-7B-Instruct Q4_K_M.
+- **Instalación en Colab:** Postgres, `llama-cpp-python` con CUDA (rueda precompilada) y las dependencias de voz están comprobadas en la T4 (apartado «Ejecución en Colab (T4)»).
+- **Análisis de aciertos y fallos:** [ANALISIS_ACIERTOS_FALLOS.md](ANALISIS_ACIERTOS_FALLOS.md).
+- **Números escritos con cifras** (escenario 05 con la voz real): corregido el 12 de noviembre.
+- **Velocidad del habla:** 1,10, decidida por el autor con la medida de velocidades.
+
+**Queda.**
+
+- **Corrida final en Colab con la voz del autor.** Las cifras de la T4 que hay son con el hablante de prueba; la tabla de «Ejecución en Colab (T4)» tiene la columna por rellenar.
+- **Escuchar la voz nueva.** La velocidad 1,10 se eligió por la medida, no de oído. Y nadie ha escuchado las respuestas que Whisper entiende mal: la del escenario 02 con marcas impronunciables y las que terminan con palabras de más. Según lo que se oiga, las salidas son otra toma de referencia, condicionar el ritmo con 30 s de la referencia en lugar de 6, o no leer en voz alta las marcas que no son palabras. Nada de eso se ha probado.
+- **El error del ASR que cambia la compra** («cafetera» → «cafetería», escenario 01 con la voz real). Opciones sin probar: dar vocabulario del dominio a Whisper, o que el agente diga qué ha buscado. No se ha tocado nada.
+- **Respuestas habladas largas.** Las que recitan el carrito completo llegan a 40 s con la voz nueva; valorar una versión hablada más breve.
+- **Reranker por defecto.** En test GraphSAGE supera al control en +0,0071 de nDCG@10 (IC [+0,0028; +0,0117]). El agente sigue con el control, decidido antes de ver test. Si se cambia, es una decisión posterior a ver test y hay que decirlo.
+- **Video** (máximo 20 minutos) y fecha oficial de entrega.
