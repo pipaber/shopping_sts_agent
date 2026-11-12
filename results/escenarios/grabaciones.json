@@ -3,9 +3,12 @@
   "folder": "audio/escenarios",
   "expected": 31,
   "found": 30,
+  "misplaced": [
+    "audio/escenarios/05_correccion_transcripcion/05.wav"
+  ],
   "asr": {
-    "cases": 30,
-    "wer": 0.06569343065693431,
+    "cases": 29,
+    "wer": 0.015151515151515152,
     "exact": 27,
     "amounts": {
       "total": 3,
@@ -14,8 +17,8 @@
     },
     "quantities": {
       "total": 6,
-      "errors": 2,
-      "error_rate": 0.3333333333333333
+      "errors": 0,
+      "error_rate": 0.0
     },
     "products": {
       "total": 13,

@@ -1,7 +1,12 @@
 # Grabaciones del usuario frente al guion
 
-Audios en `audio/escenarios` (sin versionar): 30 de 31 archivos.
-Transcritos con el ASR del agente, sin correr el agente: 27 de 30 dicen el texto de su turno tras normalizar; WER 6.6 %.
+Audios en `audio/escenarios` (sin versionar): 30 de 31 archivos, transcritos con el ASR del agente sin correr el agente.
+
+- No corresponden a su turno: `audio/escenarios/05_correccion_transcripcion/05.wav`.
+- De los 29 que sí corresponden, 27 se entienden igual que el guion tras normalizar; WER 1.5 %.
+- Errores del ASR en importes: 0 de 3.
+- Errores del ASR en cantidades: 0 de 6.
+- Errores del ASR en nombres de producto: 1 de 13.
 
 ## 01_compra_confirmada
 

@@ -9,7 +9,8 @@ Transcribe, con el mismo ASR que usa el agente, cada audio que haya en
 agente ni toca los audios. Escribe ``results/escenarios/grabaciones.json`` y
 ``grabaciones.md``: qué archivos faltan, qué se entendió en cada uno y cuáles no
 dicen el texto de su turno. Si lo entendido se parece más al texto de otro turno
-del mismo escenario, se indica: es la señal de un archivo mal numerado.
+del mismo escenario, se indica: es la señal de un archivo mal numerado. Esos
+archivos no entran en el WER, que mide el ASR y no la numeración.
 """
 
 from __future__ import annotations
@@ -72,14 +73,16 @@ def check_scenario(scenario: Scenario, folder: Path, transcribe: Transcribe) -> 
 
 
 def check_recordings(scenarios: list[Scenario], folder: Path, transcribe: Transcribe) -> dict[str, Any]:
-    """Todas las grabaciones de los escenarios de voz, y el resumen del ASR sobre ellas."""
+    """Todas las grabaciones de los escenarios de voz, y el resumen del ASR sobre las
+    que corresponden a su turno."""
     checked = [check_scenario(scenario, folder / scenario.id, transcribe) for scenario in scenarios if scenario.voice]
     files = [file for scenario in checked for file in scenario["files"]]
     return {
         "folder": str(folder),
         "expected": sum(scenario["turns"] for scenario in checked),
         "found": len(files),
-        "asr": summarize_asr(files),
+        "misplaced": [file["file"] for file in files if file["closest_turn"] != file["turn"]],
+        "asr": summarize_asr([file for file in files if file["closest_turn"] == file["turn"]]),
         "scenarios": checked,
     }
 
@@ -106,15 +109,20 @@ def _scenario_lines(scenario: dict[str, Any]) -> list[str]:
 
 
 def to_markdown(report: dict[str, Any]) -> str:
-    asr = report["asr"]
+    asr, misplaced = report["asr"], report["misplaced"]
     lines = [
         "# Grabaciones del usuario frente al guion",
         "",
-        f"Audios en `{report['folder']}` (sin versionar): {report['found']} de {report['expected']} archivos.",
-        f"Transcritos con el ASR del agente, sin correr el agente: {asr['exact']} de {asr['cases']} dicen el texto de su turno "
-        f"tras normalizar; WER {100 * asr['wer']:.1f} %." if asr["cases"] else "No hay ninguna grabación.",
+        f"Audios en `{report['folder']}` (sin versionar): {report['found']} de {report['expected']} archivos, "
+        "transcritos con el ASR del agente sin correr el agente.",
         "",
+        f"- No corresponden a su turno: {', '.join(f'`{path}`' for path in misplaced) or 'ninguno'}.",
     ]
+    if asr["cases"]:
+        lines.append(f"- De los {asr['cases']} que sí corresponden, {asr['exact']} se entienden igual que el guion tras normalizar; WER {100 * asr['wer']:.1f} %.")
+        for key, label in (("amounts", "importes"), ("quantities", "cantidades"), ("products", "nombres de producto")):
+            lines.append(f"- Errores del ASR en {label}: {asr[key]['errors']} de {asr[key]['total']}.")
+    lines.append("")
     for scenario in report["scenarios"]:
         lines += _scenario_lines(scenario)
     return "\n".join(lines)

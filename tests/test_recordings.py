@@ -43,6 +43,8 @@ def test_a_misheard_product_and_a_shifted_file_are_reported(tmp_path):
     assert report["scenarios"][0]["missing"] == ["03", "05"] and report["asr"]["products"]["errors"] == 1
     assert not first["exact"] and first["closest_turn"] == 1 and first["products"]["missing"][0]["closest"] == "cafeteria italiana"
     assert not second["exact"] and second["closest_turn"] == 3 and fourth["exact"]
+    assert report["misplaced"] == [str(tmp_path / "compra" / "02.wav")] and report["asr"]["cases"] == 2  # el mal numerado no cuenta en el WER
     text = recordings.to_markdown(report)
     assert "2 de 5 archivos; faltan: 03, 05." not in text and "3 de 5 archivos; faltan: 03, 05." in text
     assert "**se parece más al turno 03**" in text and "distinto (WER 25 %)" in text
+    assert "De los 2 que sí corresponden, 1 se entienden igual" in text and "nombres de producto: 1 de 1" in text
