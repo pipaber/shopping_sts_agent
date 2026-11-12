@@ -6,9 +6,9 @@
   "voice": true,
   "input": "texto",
   "audio_source": null,
-  "user_id": "eval-9da5336e-texto-01_compra_confirmada",
+  "user_id": "eval-41cb1880-texto-01_compra_confirmada",
   "threads": [
-    "eval-9da5336e-texto-01_compra_confirmada-c1"
+    "eval-41cb1880-texto-01_compra_confirmada-c1"
   ],
   "names": {
     "elegida": "B06WGTZ874"
@@ -51,11 +51,11 @@
       ],
       "timings": {
         "asr": 0.0,
-        "retrieval": 0.027,
-        "llm": 8.928,
-        "tools": 0.031,
+        "retrieval": 0.028,
+        "llm": 8.917,
+        "tools": 0.03,
         "tts": 0.0,
-        "total": 8.987
+        "total": 8.975
       },
       "llm_steps": 3,
       "tts_first_chunk_seconds": null,
@@ -64,7 +64,7 @@
         "cafetera italiana"
       ],
       "before": {
-        "cart_id": "eval-9da5336e-texto-01_compra_confirmada-c1",
+        "cart_id": "eval-41cb1880-texto-01_compra_confirmada-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -83,7 +83,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-9da5336e-texto-01_compra_confirmada-c1",
+        "cart_id": "eval-41cb1880-texto-01_compra_confirmada-c1",
         "state": {
           "budget_cents": 6000,
           "preferences": [],
@@ -221,10 +221,10 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 5.115,
-        "tools": 0.053,
+        "llm": 5.126,
+        "tools": 0.051,
         "tts": 0.0,
-        "total": 5.168
+        "total": 5.177
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
@@ -233,7 +233,7 @@
         "primera"
       ],
       "before": {
-        "cart_id": "eval-9da5336e-texto-01_compra_confirmada-c1",
+        "cart_id": "eval-41cb1880-texto-01_compra_confirmada-c1",
         "state": {
           "budget_cents": 6000,
           "preferences": [],
@@ -315,7 +315,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-9da5336e-texto-01_compra_confirmada-c1",
+        "cart_id": "eval-41cb1880-texto-01_compra_confirmada-c1",
         "state": {
           "budget_cents": 6000,
           "preferences": [],
@@ -366,7 +366,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-9da5336e-texto-01_compra_confirmada-c1",
+              "cart_id": "eval-41cb1880-texto-01_compra_confirmada-c1",
               "product_id": "B06WGTZ874",
               "quantity": 2
             }
@@ -452,17 +452,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 2.188,
-        "tools": 0.04,
+        "llm": 2.187,
+        "tools": 0.037,
         "tts": 0.0,
-        "total": 2.229
+        "total": 2.224
       },
       "llm_steps": 1,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-9da5336e-texto-01_compra_confirmada-c1",
+        "cart_id": "eval-41cb1880-texto-01_compra_confirmada-c1",
         "state": {
           "budget_cents": 6000,
           "preferences": [],
@@ -513,7 +513,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-9da5336e-texto-01_compra_confirmada-c1",
+              "cart_id": "eval-41cb1880-texto-01_compra_confirmada-c1",
               "product_id": "B06WGTZ874",
               "quantity": 2
             }
@@ -550,13 +550,13 @@
         }
       },
       "after": {
-        "cart_id": "eval-9da5336e-texto-01_compra_confirmada-c1",
+        "cart_id": "eval-41cb1880-texto-01_compra_confirmada-c1",
         "state": {
           "budget_cents": 6000,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "d98bcf8b256949d883bcb3a61ad07eb9",
+            "quote_id": "01099587afba432bb4a6a70e5653981b",
             "items": [
               {
                 "product_id": "B06WGTZ874",
@@ -616,7 +616,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-9da5336e-texto-01_compra_confirmada-c1",
+              "cart_id": "eval-41cb1880-texto-01_compra_confirmada-c1",
               "product_id": "B06WGTZ874",
               "quantity": 2
             }
@@ -688,7 +688,7 @@
         {
           "tool": "confirmar_pedido",
           "args": {
-            "quote_id": "d98bcf8b256949d883bcb3a61ad07eb9"
+            "quote_id": "01099587afba432bb4a6a70e5653981b"
           },
           "reason": "el usuario confirmó la cotización",
           "ok": true,
@@ -700,22 +700,22 @@
         "asr": 0.0,
         "retrieval": 0.0,
         "llm": 0.0,
-        "tools": 0.03,
+        "tools": 0.033,
         "tts": 0.0,
-        "total": 0.03
+        "total": 0.033
       },
       "llm_steps": 0,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-9da5336e-texto-01_compra_confirmada-c1",
+        "cart_id": "eval-41cb1880-texto-01_compra_confirmada-c1",
         "state": {
           "budget_cents": 6000,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "d98bcf8b256949d883bcb3a61ad07eb9",
+            "quote_id": "01099587afba432bb4a6a70e5653981b",
             "items": [
               {
                 "product_id": "B06WGTZ874",
@@ -775,7 +775,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-9da5336e-texto-01_compra_confirmada-c1",
+              "cart_id": "eval-41cb1880-texto-01_compra_confirmada-c1",
               "product_id": "B06WGTZ874",
               "quantity": 2
             }
@@ -812,7 +812,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-9da5336e-texto-01_compra_confirmada-c1",
+        "cart_id": "eval-41cb1880-texto-01_compra_confirmada-c1",
         "state": {
           "budget_cents": 6000,
           "preferences": [],
@@ -820,7 +820,7 @@
           "quote": null,
           "order": {
             "order_id": 1,
-            "quote_id": "d98bcf8b256949d883bcb3a61ad07eb9",
+            "quote_id": "01099587afba432bb4a6a70e5653981b",
             "items": [
               {
                 "product_id": "B06WGTZ874",
@@ -876,7 +876,7 @@
           "orders": [
             {
               "order_id": 1,
-              "quote_id": "d98bcf8b256949d883bcb3a61ad07eb9",
+              "quote_id": "01099587afba432bb4a6a70e5653981b",
               "total_cents": 2900
             }
           ],
@@ -934,7 +934,7 @@
   ],
   "final": {
     "snapshot": {
-      "cart_id": "eval-9da5336e-texto-01_compra_confirmada-c1",
+      "cart_id": "eval-41cb1880-texto-01_compra_confirmada-c1",
       "state": {
         "budget_cents": 6000,
         "preferences": [],
@@ -942,7 +942,7 @@
         "quote": null,
         "order": {
           "order_id": 1,
-          "quote_id": "d98bcf8b256949d883bcb3a61ad07eb9",
+          "quote_id": "01099587afba432bb4a6a70e5653981b",
           "items": [
             {
               "product_id": "B06WGTZ874",
@@ -998,7 +998,7 @@
         "orders": [
           {
             "order_id": 1,
-            "quote_id": "d98bcf8b256949d883bcb3a61ad07eb9",
+            "quote_id": "01099587afba432bb4a6a70e5653981b",
             "total_cents": 2900
           }
         ],
@@ -1108,7 +1108,7 @@
       },
       "llm": {
         "mean": 4.06,
-        "max": 8.93
+        "max": 8.92
       },
       "tools": {
         "mean": 0.04,
@@ -1120,7 +1120,7 @@
       },
       "total": {
         "mean": 4.1,
-        "max": 8.99
+        "max": 8.97
       }
     },
     "with_llm": {
@@ -1135,7 +1135,7 @@
       },
       "llm": {
         "mean": 5.41,
-        "max": 8.93
+        "max": 8.92
       },
       "tools": {
         "mean": 0.04,
@@ -1147,7 +1147,7 @@
       },
       "total": {
         "mean": 5.46,
-        "max": 8.99
+        "max": 8.97
       }
     },
     "without_llm": {

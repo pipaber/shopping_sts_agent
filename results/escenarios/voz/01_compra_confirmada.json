@@ -1,0 +1,1181 @@
+{
+  "id": "01_compra_confirmada",
+  "title": "Compra confirmada",
+  "kind": "compra_confirmada",
+  "description": "El usuario busca con presupuesto, añade dos unidades, pide cerrar y confirma. Tras la búsqueda la tienda fija el primer candidato en 14,50 € y 20 unidades, para que el resultado no dependa de qué producto salga primero.",
+  "voice": true,
+  "input": "audio",
+  "audio_source": "grabaciones del usuario",
+  "user_id": "eval-41cb1880-01_compra_confirmada",
+  "threads": [
+    "eval-41cb1880-01_compra_confirmada-c1"
+  ],
+  "names": {
+    "elegida": "B088MC6DPT"
+  },
+  "steps": [
+    {
+      "kind": "turn",
+      "turn": 1,
+      "input_audio": "entrada_01.wav",
+      "input_seconds": 5.46,
+      "transcript": "Hola, busco una cafetería italiana. Tengo un presupuesto de 60 euros.",
+      "expected_text": "Hola, busco una cafetera italiana. Tengo un presupuesto de 60 euros.",
+      "agent_input": "Hola, busco una cafetería italiana. Tengo un presupuesto de 60 euros.",
+      "response": "Tengo una cafetera Nespresso de FRHOME por 6,13 euros, una cafetera Gastroback por 46,24 euros, una Breville Barista Max por 2,25 euros, un libro 'El amor huele a café' por 25,16 euros y una cafetera De'Longhi por 44,50 euros. ¿Te interesa alguna? He anotado un presupuesto de 60,00 €.",
+      "spoken_text": "Tengo una cafetera Nespresso de FRHOME por seis euros con trece céntimos, una cafetera Gastroback por cuarenta y seis euros con veinticuatro céntimos, una Breville Barista Max por dos euros con veinticinco céntimos, un libro El amor huele a café por veinticinco euros con dieciséis céntimos y una cafetera De'Longhi por cuarenta y cuatro euros con cincuenta céntimos. ¿Te interesa alguna? He anotado un presupuesto de sesenta euros.",
+      "output_audio": "respuesta_01.wav",
+      "output_seconds": 35.096666666666664,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "fijar_presupuesto",
+          "args": {
+            "importe_eur": 60
+          },
+          "reason": "el usuario da su gasto máximo",
+          "ok": true,
+          "summary": "presupuesto fijado en 60,00 €.",
+          "issues": []
+        },
+        {
+          "tool": "buscar_productos",
+          "args": {
+            "consulta": "cafetería italiana"
+          },
+          "reason": "buscar lo que pide",
+          "ok": true,
+          "summary": "estos son ahora los CANDIDATOS, del más al menos relevante:\n[1] id=B088MC6DPT | FRHOME - Nespresso 120 Cápsulas de Café compatibles - Il Caffè italiano - Tour d' Italia Kit de degustación con varias intensidades | marca: FRHOME | color: Kit degustazione | precio: 6,13 € | existencias: 35 | características (extracto): Paquete de 120 cápsulas compatibles con Nespresso Kit de Tour deItalia El paquete contiene 2 caja de 10 cápsulas de café cada Napoli, Torino, Roma, Trieste, Firenze y Venezia 6 mezclas diferentes con diferentes aromas y la intensidad… | descripción: Kit de degradación de café, compatible con Nespresso *: Para aquellos que les gusta cambiar su sabor todos los días, Caffè Italiano ofrece el Kit de degradación: una variedad de cápsulas compatibles…\n[2] id=B07V47R2Z2 | Gastroback 42619 Design Espresso Advanced Barista - Cafetera espresso (programable, con mecanismo cónico y bomba de espresso italiana, 15 bares, acero inoxidable) | marca: GASTROBACK | color: Acero Inoxidable. | precio: 46,24 € | existencias: 26 | características (extracto): Para granos de café recién molido, café en polvo o E. S E Pads Sistema de calefacción de bloque térmico: tiempo de calentamiento rápido (aprox. 1, 5 minutos) ULKA - Bomba de espresso profesional (15 bares) 11 niveles de molido y cantidad… | descripción: desconocido\n[3] id=B07VKT3YNK | Breville Barista Max VCF126X - Máquina de café expreso, totalmente automática con molinillo integrado y bomba italiana de 15 bares | marca: Breville | color: Multicolor | precio: 2,25 € | existencias: 18 | características (extracto): Café sublime de forma sencilla. Disfrute en casa del mejor café de cafetería en 3 sencillos pasos: moler, extraer y texturizar la leche Controles fáciles de usar con características comerciales para un café siempre excelente El exclusivo… | descripción: desconocido\n[4] id=B00A03W7K8 | El amor huele a café | marca: desconocido | color: desconocido | precio: 25,16 € | existencias: 26 | características (extracto): desconocido | descripción: 'El amor huele a café', EL EBOOK MÁS DESCARGADO en la historia de Amazon.es. Informe de Amazon.es. 'Listado de las 10 ciudades españolas que más leen'. La novela 'El amor huele a café' fue la más…\n[5] id=B00S4U4W4I | De'Longhi ECOV 311.BG Cafetera Automática, 1100 W, 1.4 L, 15 Bares, 2 Tazas, Acero Inoxidable, Beige | marca: De'Longhi | color: Beige | precio: 44,50 € | existencias: 44 | características (extracto): Cafetera ECOV311 BG Delonghi Siguiendo la tendencia más actual de los conceptos clásicos y retro la Vintage Icona es una máquina de café espresso de bomba tradicional con estilo y con una tecnología avanzada que garantiza un espresso… | descripción: desconocido",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.559,
+        "retrieval": 0.029,
+        "llm": 9.938,
+        "tools": 0.043,
+        "tts": 7.753,
+        "total": 18.322
+      },
+      "llm_steps": 3,
+      "tts_first_chunk_seconds": 2.394,
+      "tts_retries": 0,
+      "product_terms": [
+        "cafetera italiana"
+      ],
+      "before": {
+        "cart_id": "eval-41cb1880-01_compra_confirmada-c1",
+        "state": {
+          "budget_cents": null,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {}
+      },
+      "after": {
+        "cart_id": "eval-41cb1880-01_compra_confirmada-c1",
+        "state": {
+          "budget_cents": 6000,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B088MC6DPT",
+              "title": "FRHOME - Nespresso 120 Cápsulas de Café compatibles - Il Caffè italiano - Tour d' Italia Kit de degustación con varias intensidades",
+              "brand": "FRHOME",
+              "price_cents": 613,
+              "stock": 35
+            },
+            {
+              "product_id": "B07V47R2Z2",
+              "title": "Gastroback 42619 Design Espresso Advanced Barista - Cafetera espresso (programable, con mecanismo cónico y bomba de espresso italiana, 15 bares, acero inoxidable)",
+              "brand": "GASTROBACK",
+              "price_cents": 4624,
+              "stock": 26
+            },
+            {
+              "product_id": "B07VKT3YNK",
+              "title": "Breville Barista Max VCF126X - Máquina de café expreso, totalmente automática con molinillo integrado y bomba italiana de 15 bares",
+              "brand": "Breville",
+              "price_cents": 225,
+              "stock": 18
+            },
+            {
+              "product_id": "B00A03W7K8",
+              "title": "El amor huele a café",
+              "brand": null,
+              "price_cents": 2516,
+              "stock": 26
+            },
+            {
+              "product_id": "B00S4U4W4I",
+              "title": "De'Longhi ECOV 311.BG Cafetera Automática, 1100 W, 1.4 L, 15 Bares, 2 Tazas, Acero Inoxidable, Beige",
+              "brand": "De'Longhi",
+              "price_cents": 4450,
+              "stock": 44
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": []
+        },
+        "offers": {
+          "B00A03W7K8": {
+            "price_cents": 2516,
+            "stock": 26
+          },
+          "B00S4U4W4I": {
+            "price_cents": 4450,
+            "stock": 44
+          },
+          "B07V47R2Z2": {
+            "price_cents": 4624,
+            "stock": 26
+          },
+          "B07VKT3YNK": {
+            "price_cents": 225,
+            "stock": 18
+          },
+          "B088MC6DPT": {
+            "price_cents": 613,
+            "stock": 35
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "budget",
+          "params": {
+            "cents": 6000
+          },
+          "ok": true,
+          "detail": "presupuesto en el estado: 6000"
+        },
+        {
+          "check": "cart",
+          "params": {
+            "empty": true
+          },
+          "ok": true,
+          "detail": "carrito: vacío"
+        }
+      ]
+    },
+    {
+      "kind": "remember",
+      "name": "elegida",
+      "ref": "candidate:1",
+      "product_id": "B088MC6DPT",
+      "title": "FRHOME - Nespresso 120 Cápsulas de Café compatibles - Il Caffè italiano - Tour d' Italia Kit de degustación con varias intensidades"
+    },
+    {
+      "kind": "event",
+      "event": "set_offer",
+      "product": "@elegida",
+      "product_id": "B088MC6DPT",
+      "price_cents": 1450,
+      "stock": 20
+    },
+    {
+      "kind": "turn",
+      "turn": 2,
+      "input_audio": "entrada_02.wav",
+      "input_seconds": 3.66,
+      "transcript": "Añade dos de la primera al carrito.",
+      "expected_text": "Añade dos de la primera al carrito.",
+      "agent_input": "Añade dos de la primera al carrito.",
+      "response": "Hecho, añadidas dos unidades. El total es 29,00 €. En el carrito hay 2 unidades de «FRHOME - Nespresso 120 Cápsulas de Café compatibles - Il Caffè…» a 14,50 € cada una, 29,00 €. Total: 29,00 €. Tu presupuesto es de 60,00 € y te quedan 31,00 €.",
+      "spoken_text": "Hecho, añadidas dos unidades. El total es veintinueve euros. En el carrito hay dos unidades de FRHOME a catorce euros con cincuenta céntimos cada una, veintinueve euros. Total: veintinueve euros. Tu presupuesto es de sesenta euros y te quedan treinta y un euros.",
+      "output_audio": "respuesta_02.wav",
+      "output_seconds": 21.839333333333332,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "agregar_al_carrito",
+          "args": {
+            "product_id": "B088MC6DPT",
+            "cantidad": 2
+          },
+          "reason": "añadir dos unidades del candidato 1",
+          "ok": true,
+          "summary": "hecho. Así queda el carrito.\nCARRITO:\n- id=B088MC6DPT | FRHOME - Nespresso 120 Cápsulas de Café compatibles - Il Caffè… | 2 unidades × 14,50 € = 29,00 € | existencias: 20\nTotal del carrito: 29,00 €",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.328,
+        "retrieval": 0.0,
+        "llm": 4.759,
+        "tools": 0.058,
+        "tts": 5.04,
+        "total": 10.184
+      },
+      "llm_steps": 2,
+      "tts_first_chunk_seconds": 3.716,
+      "tts_retries": 0,
+      "product_terms": [
+        "primera"
+      ],
+      "before": {
+        "cart_id": "eval-41cb1880-01_compra_confirmada-c1",
+        "state": {
+          "budget_cents": 6000,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B088MC6DPT",
+              "title": "FRHOME - Nespresso 120 Cápsulas de Café compatibles - Il Caffè italiano - Tour d' Italia Kit de degustación con varias intensidades",
+              "brand": "FRHOME",
+              "price_cents": 613,
+              "stock": 35
+            },
+            {
+              "product_id": "B07V47R2Z2",
+              "title": "Gastroback 42619 Design Espresso Advanced Barista - Cafetera espresso (programable, con mecanismo cónico y bomba de espresso italiana, 15 bares, acero inoxidable)",
+              "brand": "GASTROBACK",
+              "price_cents": 4624,
+              "stock": 26
+            },
+            {
+              "product_id": "B07VKT3YNK",
+              "title": "Breville Barista Max VCF126X - Máquina de café expreso, totalmente automática con molinillo integrado y bomba italiana de 15 bares",
+              "brand": "Breville",
+              "price_cents": 225,
+              "stock": 18
+            },
+            {
+              "product_id": "B00A03W7K8",
+              "title": "El amor huele a café",
+              "brand": null,
+              "price_cents": 2516,
+              "stock": 26
+            },
+            {
+              "product_id": "B00S4U4W4I",
+              "title": "De'Longhi ECOV 311.BG Cafetera Automática, 1100 W, 1.4 L, 15 Bares, 2 Tazas, Acero Inoxidable, Beige",
+              "brand": "De'Longhi",
+              "price_cents": 4450,
+              "stock": 44
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B088MC6DPT",
+              "initial_stock": 35,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B00A03W7K8": {
+            "price_cents": 2516,
+            "stock": 26
+          },
+          "B00S4U4W4I": {
+            "price_cents": 4450,
+            "stock": 44
+          },
+          "B07V47R2Z2": {
+            "price_cents": 4624,
+            "stock": 26
+          },
+          "B07VKT3YNK": {
+            "price_cents": 225,
+            "stock": 18
+          },
+          "B088MC6DPT": {
+            "price_cents": 1450,
+            "stock": 20
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-41cb1880-01_compra_confirmada-c1",
+        "state": {
+          "budget_cents": 6000,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B088MC6DPT",
+              "title": "FRHOME - Nespresso 120 Cápsulas de Café compatibles - Il Caffè italiano - Tour d' Italia Kit de degustación con varias intensidades",
+              "brand": "FRHOME",
+              "price_cents": 1450,
+              "stock": 20
+            },
+            {
+              "product_id": "B07V47R2Z2",
+              "title": "Gastroback 42619 Design Espresso Advanced Barista - Cafetera espresso (programable, con mecanismo cónico y bomba de espresso italiana, 15 bares, acero inoxidable)",
+              "brand": "GASTROBACK",
+              "price_cents": 4624,
+              "stock": 26
+            },
+            {
+              "product_id": "B07VKT3YNK",
+              "title": "Breville Barista Max VCF126X - Máquina de café expreso, totalmente automática con molinillo integrado y bomba italiana de 15 bares",
+              "brand": "Breville",
+              "price_cents": 225,
+              "stock": 18
+            },
+            {
+              "product_id": "B00A03W7K8",
+              "title": "El amor huele a café",
+              "brand": null,
+              "price_cents": 2516,
+              "stock": 26
+            },
+            {
+              "product_id": "B00S4U4W4I",
+              "title": "De'Longhi ECOV 311.BG Cafetera Automática, 1100 W, 1.4 L, 15 Bares, 2 Tazas, Acero Inoxidable, Beige",
+              "brand": "De'Longhi",
+              "price_cents": 4450,
+              "stock": 44
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-41cb1880-01_compra_confirmada-c1",
+              "product_id": "B088MC6DPT",
+              "quantity": 2
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B088MC6DPT",
+              "initial_stock": 35,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B00A03W7K8": {
+            "price_cents": 2516,
+            "stock": 26
+          },
+          "B00S4U4W4I": {
+            "price_cents": 4450,
+            "stock": 44
+          },
+          "B07V47R2Z2": {
+            "price_cents": 4624,
+            "stock": 26
+          },
+          "B07VKT3YNK": {
+            "price_cents": 225,
+            "stock": 18
+          },
+          "B088MC6DPT": {
+            "price_cents": 1450,
+            "stock": 20
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "cart",
+          "params": {
+            "lines": [
+              {
+                "product": "@elegida",
+                "quantity": 2
+              }
+            ]
+          },
+          "ok": true,
+          "detail": "carrito: 2 × B088MC6DPT"
+        },
+        {
+          "check": "orders",
+          "params": {
+            "count": 0
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 0"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 3,
+      "input_audio": "entrada_03.wav",
+      "input_seconds": 2.55,
+      "transcript": "Quiero cerrar el pedido.",
+      "expected_text": "Quiero cerrar el pedido.",
+      "agent_input": "Quiero cerrar el pedido.",
+      "response": "Te repito el pedido antes de registrarlo: 2 unidades de «FRHOME - Nespresso 120 Cápsulas de Café compatibles - Il Caffè…» a 14,50 € cada una, 29,00 €. Total: 29,00 €. Tu presupuesto es de 60,00 € y te quedan 31,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "spoken_text": "Te repito el pedido antes de registrarlo: dos unidades de FRHOME a catorce euros con cincuenta céntimos cada una, veintinueve euros. Total: veintinueve euros. Tu presupuesto es de sesenta euros y te quedan treinta y un euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+      "output_audio": "respuesta_03.wav",
+      "output_seconds": 27.49266666666667,
+      "awaiting_confirmation": true,
+      "operations": [
+        {
+          "tool": "cotizar",
+          "args": {},
+          "reason": "cotizar el carrito",
+          "ok": true,
+          "summary": "cotización creada; falta la confirmación del usuario.",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.322,
+        "retrieval": 0.0,
+        "llm": 1.959,
+        "tools": 0.04,
+        "tts": 6.351,
+        "total": 8.671
+      },
+      "llm_steps": 1,
+      "tts_first_chunk_seconds": 3.012,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-41cb1880-01_compra_confirmada-c1",
+        "state": {
+          "budget_cents": 6000,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B088MC6DPT",
+              "title": "FRHOME - Nespresso 120 Cápsulas de Café compatibles - Il Caffè italiano - Tour d' Italia Kit de degustación con varias intensidades",
+              "brand": "FRHOME",
+              "price_cents": 1450,
+              "stock": 20
+            },
+            {
+              "product_id": "B07V47R2Z2",
+              "title": "Gastroback 42619 Design Espresso Advanced Barista - Cafetera espresso (programable, con mecanismo cónico y bomba de espresso italiana, 15 bares, acero inoxidable)",
+              "brand": "GASTROBACK",
+              "price_cents": 4624,
+              "stock": 26
+            },
+            {
+              "product_id": "B07VKT3YNK",
+              "title": "Breville Barista Max VCF126X - Máquina de café expreso, totalmente automática con molinillo integrado y bomba italiana de 15 bares",
+              "brand": "Breville",
+              "price_cents": 225,
+              "stock": 18
+            },
+            {
+              "product_id": "B00A03W7K8",
+              "title": "El amor huele a café",
+              "brand": null,
+              "price_cents": 2516,
+              "stock": 26
+            },
+            {
+              "product_id": "B00S4U4W4I",
+              "title": "De'Longhi ECOV 311.BG Cafetera Automática, 1100 W, 1.4 L, 15 Bares, 2 Tazas, Acero Inoxidable, Beige",
+              "brand": "De'Longhi",
+              "price_cents": 4450,
+              "stock": 44
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-41cb1880-01_compra_confirmada-c1",
+              "product_id": "B088MC6DPT",
+              "quantity": 2
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B088MC6DPT",
+              "initial_stock": 35,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B00A03W7K8": {
+            "price_cents": 2516,
+            "stock": 26
+          },
+          "B00S4U4W4I": {
+            "price_cents": 4450,
+            "stock": 44
+          },
+          "B07V47R2Z2": {
+            "price_cents": 4624,
+            "stock": 26
+          },
+          "B07VKT3YNK": {
+            "price_cents": 225,
+            "stock": 18
+          },
+          "B088MC6DPT": {
+            "price_cents": 1450,
+            "stock": 20
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-41cb1880-01_compra_confirmada-c1",
+        "state": {
+          "budget_cents": 6000,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": {
+            "quote_id": "73aeaacd435e49a7b31920f4c03aa69e",
+            "items": [
+              {
+                "product_id": "B088MC6DPT",
+                "title": "FRHOME - Nespresso 120 Cápsulas de Café compatibles - Il Caffè italiano - Tour d' Italia Kit de degustación con varias intensidades",
+                "quantity": 2,
+                "unit_price_cents": 1450,
+                "subtotal_cents": 2900,
+                "stock": 20
+              }
+            ],
+            "total_cents": 2900,
+            "budget_cents": 6000,
+            "message": "Te repito el pedido antes de registrarlo: 2 unidades de «FRHOME - Nespresso 120 Cápsulas de Café compatibles - Il Caffè…» a 14,50 € cada una, 29,00 €. Total: 29,00 €. Tu presupuesto es de 60,00 € y te quedan 31,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+          },
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B088MC6DPT",
+              "title": "FRHOME - Nespresso 120 Cápsulas de Café compatibles - Il Caffè italiano - Tour d' Italia Kit de degustación con varias intensidades",
+              "brand": "FRHOME",
+              "price_cents": 1450,
+              "stock": 20
+            },
+            {
+              "product_id": "B07V47R2Z2",
+              "title": "Gastroback 42619 Design Espresso Advanced Barista - Cafetera espresso (programable, con mecanismo cónico y bomba de espresso italiana, 15 bares, acero inoxidable)",
+              "brand": "GASTROBACK",
+              "price_cents": 4624,
+              "stock": 26
+            },
+            {
+              "product_id": "B07VKT3YNK",
+              "title": "Breville Barista Max VCF126X - Máquina de café expreso, totalmente automática con molinillo integrado y bomba italiana de 15 bares",
+              "brand": "Breville",
+              "price_cents": 225,
+              "stock": 18
+            },
+            {
+              "product_id": "B00A03W7K8",
+              "title": "El amor huele a café",
+              "brand": null,
+              "price_cents": 2516,
+              "stock": 26
+            },
+            {
+              "product_id": "B00S4U4W4I",
+              "title": "De'Longhi ECOV 311.BG Cafetera Automática, 1100 W, 1.4 L, 15 Bares, 2 Tazas, Acero Inoxidable, Beige",
+              "brand": "De'Longhi",
+              "price_cents": 4450,
+              "stock": 44
+            }
+          ],
+          "awaiting_confirmation": true
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-41cb1880-01_compra_confirmada-c1",
+              "product_id": "B088MC6DPT",
+              "quantity": 2
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B088MC6DPT",
+              "initial_stock": 35,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B00A03W7K8": {
+            "price_cents": 2516,
+            "stock": 26
+          },
+          "B00S4U4W4I": {
+            "price_cents": 4450,
+            "stock": 44
+          },
+          "B07V47R2Z2": {
+            "price_cents": 4624,
+            "stock": 26
+          },
+          "B07VKT3YNK": {
+            "price_cents": 225,
+            "stock": 18
+          },
+          "B088MC6DPT": {
+            "price_cents": 1450,
+            "stock": 20
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "awaiting_confirmation",
+          "params": {
+            "value": true
+          },
+          "ok": true,
+          "detail": "esperando confirmación: sí"
+        },
+        {
+          "check": "orders",
+          "params": {
+            "count": 0
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 0"
+        }
+      ]
+    },
+    {
+      "kind": "turn",
+      "turn": 4,
+      "input_audio": "entrada_04.wav",
+      "input_seconds": 2.38,
+      "transcript": "Sí, confirmo.",
+      "expected_text": "Sí, confirmo.",
+      "agent_input": "Sí, confirmo.",
+      "response": "Pedido número 1 registrado: 2 unidades de «FRHOME - Nespresso 120 Cápsulas de Café compatibles - Il Caffè…» a 14,50 € cada una, 29,00 €. Total: 29,00 €. Gracias por tu compra.",
+      "spoken_text": "Pedido número uno registrado: dos unidades de FRHOME a catorce euros con cincuenta céntimos cada una, veintinueve euros. Total: veintinueve euros. Gracias por tu compra.",
+      "output_audio": "respuesta_04.wav",
+      "output_seconds": 16.202666666666666,
+      "awaiting_confirmation": false,
+      "operations": [
+        {
+          "tool": "confirmar_pedido",
+          "args": {
+            "quote_id": "73aeaacd435e49a7b31920f4c03aa69e"
+          },
+          "reason": "el usuario confirmó la cotización",
+          "ok": true,
+          "summary": "pedido registrado",
+          "issues": []
+        }
+      ],
+      "timings": {
+        "asr": 0.315,
+        "retrieval": 0.0,
+        "llm": 0.0,
+        "tools": 0.039,
+        "tts": 3.85,
+        "total": 4.203
+      },
+      "llm_steps": 0,
+      "tts_first_chunk_seconds": 3.839,
+      "tts_retries": 0,
+      "product_terms": [],
+      "before": {
+        "cart_id": "eval-41cb1880-01_compra_confirmada-c1",
+        "state": {
+          "budget_cents": 6000,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": {
+            "quote_id": "73aeaacd435e49a7b31920f4c03aa69e",
+            "items": [
+              {
+                "product_id": "B088MC6DPT",
+                "title": "FRHOME - Nespresso 120 Cápsulas de Café compatibles - Il Caffè italiano - Tour d' Italia Kit de degustación con varias intensidades",
+                "quantity": 2,
+                "unit_price_cents": 1450,
+                "subtotal_cents": 2900,
+                "stock": 20
+              }
+            ],
+            "total_cents": 2900,
+            "budget_cents": 6000,
+            "message": "Te repito el pedido antes de registrarlo: 2 unidades de «FRHOME - Nespresso 120 Cápsulas de Café compatibles - Il Caffè…» a 14,50 € cada una, 29,00 €. Total: 29,00 €. Tu presupuesto es de 60,00 € y te quedan 31,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar."
+          },
+          "order": null,
+          "candidates": [
+            {
+              "product_id": "B088MC6DPT",
+              "title": "FRHOME - Nespresso 120 Cápsulas de Café compatibles - Il Caffè italiano - Tour d' Italia Kit de degustación con varias intensidades",
+              "brand": "FRHOME",
+              "price_cents": 1450,
+              "stock": 20
+            },
+            {
+              "product_id": "B07V47R2Z2",
+              "title": "Gastroback 42619 Design Espresso Advanced Barista - Cafetera espresso (programable, con mecanismo cónico y bomba de espresso italiana, 15 bares, acero inoxidable)",
+              "brand": "GASTROBACK",
+              "price_cents": 4624,
+              "stock": 26
+            },
+            {
+              "product_id": "B07VKT3YNK",
+              "title": "Breville Barista Max VCF126X - Máquina de café expreso, totalmente automática con molinillo integrado y bomba italiana de 15 bares",
+              "brand": "Breville",
+              "price_cents": 225,
+              "stock": 18
+            },
+            {
+              "product_id": "B00A03W7K8",
+              "title": "El amor huele a café",
+              "brand": null,
+              "price_cents": 2516,
+              "stock": 26
+            },
+            {
+              "product_id": "B00S4U4W4I",
+              "title": "De'Longhi ECOV 311.BG Cafetera Automática, 1100 W, 1.4 L, 15 Bares, 2 Tazas, Acero Inoxidable, Beige",
+              "brand": "De'Longhi",
+              "price_cents": 4450,
+              "stock": 44
+            }
+          ],
+          "awaiting_confirmation": true
+        },
+        "store": {
+          "orders": [],
+          "order_items": [],
+          "cart_items": [
+            {
+              "cart_id": "eval-41cb1880-01_compra_confirmada-c1",
+              "product_id": "B088MC6DPT",
+              "quantity": 2
+            }
+          ],
+          "inventory_changes": [
+            {
+              "product_id": "B088MC6DPT",
+              "initial_stock": 35,
+              "stock": 20
+            }
+          ]
+        },
+        "offers": {
+          "B00A03W7K8": {
+            "price_cents": 2516,
+            "stock": 26
+          },
+          "B00S4U4W4I": {
+            "price_cents": 4450,
+            "stock": 44
+          },
+          "B07V47R2Z2": {
+            "price_cents": 4624,
+            "stock": 26
+          },
+          "B07VKT3YNK": {
+            "price_cents": 225,
+            "stock": 18
+          },
+          "B088MC6DPT": {
+            "price_cents": 1450,
+            "stock": 20
+          }
+        }
+      },
+      "after": {
+        "cart_id": "eval-41cb1880-01_compra_confirmada-c1",
+        "state": {
+          "budget_cents": 6000,
+          "preferences": [],
+          "pending_clarification": null,
+          "quote": null,
+          "order": {
+            "order_id": 1,
+            "quote_id": "73aeaacd435e49a7b31920f4c03aa69e",
+            "items": [
+              {
+                "product_id": "B088MC6DPT",
+                "title": "FRHOME - Nespresso 120 Cápsulas de Café compatibles - Il Caffè italiano - Tour d' Italia Kit de degustación con varias intensidades",
+                "quantity": 2,
+                "unit_price_cents": 1450,
+                "subtotal_cents": 2900
+              }
+            ],
+            "total_cents": 2900,
+            "message": "Pedido número 1 registrado: 2 unidades de «FRHOME - Nespresso 120 Cápsulas de Café compatibles - Il Caffè…» a 14,50 € cada una, 29,00 €. Total: 29,00 €. Gracias por tu compra."
+          },
+          "candidates": [
+            {
+              "product_id": "B088MC6DPT",
+              "title": "FRHOME - Nespresso 120 Cápsulas de Café compatibles - Il Caffè italiano - Tour d' Italia Kit de degustación con varias intensidades",
+              "brand": "FRHOME",
+              "price_cents": 1450,
+              "stock": 20
+            },
+            {
+              "product_id": "B07V47R2Z2",
+              "title": "Gastroback 42619 Design Espresso Advanced Barista - Cafetera espresso (programable, con mecanismo cónico y bomba de espresso italiana, 15 bares, acero inoxidable)",
+              "brand": "GASTROBACK",
+              "price_cents": 4624,
+              "stock": 26
+            },
+            {
+              "product_id": "B07VKT3YNK",
+              "title": "Breville Barista Max VCF126X - Máquina de café expreso, totalmente automática con molinillo integrado y bomba italiana de 15 bares",
+              "brand": "Breville",
+              "price_cents": 225,
+              "stock": 18
+            },
+            {
+              "product_id": "B00A03W7K8",
+              "title": "El amor huele a café",
+              "brand": null,
+              "price_cents": 2516,
+              "stock": 26
+            },
+            {
+              "product_id": "B00S4U4W4I",
+              "title": "De'Longhi ECOV 311.BG Cafetera Automática, 1100 W, 1.4 L, 15 Bares, 2 Tazas, Acero Inoxidable, Beige",
+              "brand": "De'Longhi",
+              "price_cents": 4450,
+              "stock": 44
+            }
+          ],
+          "awaiting_confirmation": false
+        },
+        "store": {
+          "orders": [
+            {
+              "order_id": 1,
+              "quote_id": "73aeaacd435e49a7b31920f4c03aa69e",
+              "total_cents": 2900
+            }
+          ],
+          "order_items": [
+            {
+              "order_id": 1,
+              "product_id": "B088MC6DPT",
+              "quantity": 2,
+              "unit_price_cents": 1450
+            }
+          ],
+          "cart_items": [],
+          "inventory_changes": [
+            {
+              "product_id": "B088MC6DPT",
+              "initial_stock": 35,
+              "stock": 18
+            }
+          ]
+        },
+        "offers": {
+          "B00A03W7K8": {
+            "price_cents": 2516,
+            "stock": 26
+          },
+          "B00S4U4W4I": {
+            "price_cents": 4450,
+            "stock": 44
+          },
+          "B07V47R2Z2": {
+            "price_cents": 4624,
+            "stock": 26
+          },
+          "B07VKT3YNK": {
+            "price_cents": 225,
+            "stock": 18
+          },
+          "B088MC6DPT": {
+            "price_cents": 1450,
+            "stock": 18
+          }
+        }
+      },
+      "checks": [
+        {
+          "check": "orders",
+          "params": {
+            "count": 1
+          },
+          "ok": true,
+          "detail": "pedidos registrados: 1"
+        }
+      ]
+    }
+  ],
+  "final": {
+    "snapshot": {
+      "cart_id": "eval-41cb1880-01_compra_confirmada-c1",
+      "state": {
+        "budget_cents": 6000,
+        "preferences": [],
+        "pending_clarification": null,
+        "quote": null,
+        "order": {
+          "order_id": 1,
+          "quote_id": "73aeaacd435e49a7b31920f4c03aa69e",
+          "items": [
+            {
+              "product_id": "B088MC6DPT",
+              "title": "FRHOME - Nespresso 120 Cápsulas de Café compatibles - Il Caffè italiano - Tour d' Italia Kit de degustación con varias intensidades",
+              "quantity": 2,
+              "unit_price_cents": 1450,
+              "subtotal_cents": 2900
+            }
+          ],
+          "total_cents": 2900,
+          "message": "Pedido número 1 registrado: 2 unidades de «FRHOME - Nespresso 120 Cápsulas de Café compatibles - Il Caffè…» a 14,50 € cada una, 29,00 €. Total: 29,00 €. Gracias por tu compra."
+        },
+        "candidates": [
+          {
+            "product_id": "B088MC6DPT",
+            "title": "FRHOME - Nespresso 120 Cápsulas de Café compatibles - Il Caffè italiano - Tour d' Italia Kit de degustación con varias intensidades",
+            "brand": "FRHOME",
+            "price_cents": 1450,
+            "stock": 20
+          },
+          {
+            "product_id": "B07V47R2Z2",
+            "title": "Gastroback 42619 Design Espresso Advanced Barista - Cafetera espresso (programable, con mecanismo cónico y bomba de espresso italiana, 15 bares, acero inoxidable)",
+            "brand": "GASTROBACK",
+            "price_cents": 4624,
+            "stock": 26
+          },
+          {
+            "product_id": "B07VKT3YNK",
+            "title": "Breville Barista Max VCF126X - Máquina de café expreso, totalmente automática con molinillo integrado y bomba italiana de 15 bares",
+            "brand": "Breville",
+            "price_cents": 225,
+            "stock": 18
+          },
+          {
+            "product_id": "B00A03W7K8",
+            "title": "El amor huele a café",
+            "brand": null,
+            "price_cents": 2516,
+            "stock": 26
+          },
+          {
+            "product_id": "B00S4U4W4I",
+            "title": "De'Longhi ECOV 311.BG Cafetera Automática, 1100 W, 1.4 L, 15 Bares, 2 Tazas, Acero Inoxidable, Beige",
+            "brand": "De'Longhi",
+            "price_cents": 4450,
+            "stock": 44
+          }
+        ],
+        "awaiting_confirmation": false
+      },
+      "store": {
+        "orders": [
+          {
+            "order_id": 1,
+            "quote_id": "73aeaacd435e49a7b31920f4c03aa69e",
+            "total_cents": 2900
+          }
+        ],
+        "order_items": [
+          {
+            "order_id": 1,
+            "product_id": "B088MC6DPT",
+            "quantity": 2,
+            "unit_price_cents": 1450
+          }
+        ],
+        "cart_items": [],
+        "inventory_changes": [
+          {
+            "product_id": "B088MC6DPT",
+            "initial_stock": 35,
+            "stock": 18
+          }
+        ]
+      },
+      "offers": {
+        "B00A03W7K8": {
+          "price_cents": 2516,
+          "stock": 26
+        },
+        "B00S4U4W4I": {
+          "price_cents": 4450,
+          "stock": 44
+        },
+        "B07V47R2Z2": {
+          "price_cents": 4624,
+          "stock": 26
+        },
+        "B07VKT3YNK": {
+          "price_cents": 225,
+          "stock": 18
+        },
+        "B088MC6DPT": {
+          "price_cents": 1450,
+          "stock": 18
+        }
+      }
+    },
+    "checks": [
+      {
+        "check": "orders",
+        "params": {
+          "count": 1
+        },
+        "ok": true,
+        "detail": "pedidos registrados: 1"
+      },
+      {
+        "check": "order",
+        "params": {
+          "lines": [
+            {
+              "product": "@elegida",
+              "quantity": 2
+            }
+          ],
+          "total_cents": 2900
+        },
+        "ok": true,
+        "detail": "pedido 1: 2 × B088MC6DPT; total 2900 céntimos"
+      },
+      {
+        "check": "stock",
+        "params": {
+          "product": "@elegida",
+          "equals": 18
+        },
+        "ok": true,
+        "detail": "existencias de B088MC6DPT: 18"
+      },
+      {
+        "check": "cart",
+        "params": {
+          "empty": true
+        },
+        "ok": true,
+        "detail": "carrito: vacío"
+      },
+      {
+        "check": "budget",
+        "params": {
+          "cents": 6000
+        },
+        "ok": true,
+        "detail": "presupuesto en el estado: 6000"
+      }
+    ]
+  },
+  "violations": [],
+  "problems": [],
+  "passed": true,
+  "timings": {
+    "all": {
+      "turns": 4,
+      "asr": {
+        "mean": 0.38,
+        "max": 0.56
+      },
+      "retrieval": {
+        "mean": 0.01,
+        "max": 0.03
+      },
+      "llm": {
+        "mean": 4.16,
+        "max": 9.94
+      },
+      "tools": {
+        "mean": 0.05,
+        "max": 0.06
+      },
+      "tts": {
+        "mean": 5.75,
+        "max": 7.75
+      },
+      "total": {
+        "mean": 10.35,
+        "max": 18.32
+      }
+    },
+    "with_llm": {
+      "turns": 3,
+      "asr": {
+        "mean": 0.4,
+        "max": 0.56
+      },
+      "retrieval": {
+        "mean": 0.01,
+        "max": 0.03
+      },
+      "llm": {
+        "mean": 5.55,
+        "max": 9.94
+      },
+      "tools": {
+        "mean": 0.05,
+        "max": 0.06
+      },
+      "tts": {
+        "mean": 6.38,
+        "max": 7.75
+      },
+      "total": {
+        "mean": 12.39,
+        "max": 18.32
+      }
+    },
+    "without_llm": {
+      "turns": 1,
+      "asr": {
+        "mean": 0.32,
+        "max": 0.32
+      },
+      "retrieval": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "llm": {
+        "mean": 0.0,
+        "max": 0.0
+      },
+      "tools": {
+        "mean": 0.04,
+        "max": 0.04
+      },
+      "tts": {
+        "mean": 3.85,
+        "max": 3.85
+      },
+      "total": {
+        "mean": 4.2,
+        "max": 4.2
+      }
+    }
+  }
+}

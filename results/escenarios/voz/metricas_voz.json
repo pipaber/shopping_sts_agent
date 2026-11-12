@@ -1,0 +1,1727 @@
+{
+  "summary": {
+    "asr": {
+      "cases": 31,
+      "wer": 0.006944444444444444,
+      "exact": 30,
+      "amounts": {
+        "total": 3,
+        "errors": 0,
+        "error_rate": 0.0
+      },
+      "quantities": {
+        "total": 8,
+        "errors": 0,
+        "error_rate": 0.0
+      },
+      "products": {
+        "total": 13,
+        "errors": 1,
+        "error_rate": 0.07692307692307693
+      }
+    },
+    "tts": {
+      "cases": 31,
+      "wer": 0.03600900225056264,
+      "similarity_mean": 0.7409886387121086,
+      "similarity_min": 0.5005643381032236
+    }
+  },
+  "scenarios": {
+    "01_compra_confirmada": {
+      "asr": {
+        "summary": {
+          "cases": 4,
+          "wer": 0.041666666666666664,
+          "exact": 3,
+          "amounts": {
+            "total": 1,
+            "errors": 0,
+            "error_rate": 0.0
+          },
+          "quantities": {
+            "total": 1,
+            "errors": 0,
+            "error_rate": 0.0
+          },
+          "products": {
+            "total": 2,
+            "errors": 1,
+            "error_rate": 0.5
+          }
+        },
+        "cases": [
+          {
+            "turn": 1,
+            "reference": "Hola, busco una cafetera italiana. Tengo un presupuesto de 60 euros.",
+            "hypothesis": "Hola, busco una cafetería italiana. Tengo un presupuesto de 60 euros.",
+            "wer": {
+              "wer": 0.09090909090909091,
+              "reference_words": 11,
+              "hits": 10,
+              "substitutions": 1,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "amounts": {
+              "reference": [
+                6000
+              ],
+              "hypothesis": [
+                6000
+              ],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "quantities": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "products": {
+              "total": 1,
+              "missing": [
+                {
+                  "term": "cafetera italiana",
+                  "closest": "cafeteria italiana",
+                  "similarity": 0.97
+                }
+              ],
+              "errors": 1
+            }
+          },
+          {
+            "turn": 2,
+            "reference": "Añade dos de la primera al carrito.",
+            "hypothesis": "Añade dos de la primera al carrito.",
+            "wer": {
+              "wer": 0.0,
+              "reference_words": 7,
+              "hits": 7,
+              "substitutions": 0,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "amounts": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "quantities": {
+              "reference": [
+                2
+              ],
+              "hypothesis": [
+                2
+              ],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "products": {
+              "total": 1,
+              "missing": [],
+              "errors": 0
+            }
+          },
+          {
+            "turn": 3,
+            "reference": "Quiero cerrar el pedido.",
+            "hypothesis": "Quiero cerrar el pedido.",
+            "wer": {
+              "wer": 0.0,
+              "reference_words": 4,
+              "hits": 4,
+              "substitutions": 0,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "amounts": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "quantities": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "products": {
+              "total": 0,
+              "missing": [],
+              "errors": 0
+            }
+          },
+          {
+            "turn": 4,
+            "reference": "Sí, confirmo.",
+            "hypothesis": "Sí, confirmo.",
+            "wer": {
+              "wer": 0.0,
+              "reference_words": 2,
+              "hits": 2,
+              "substitutions": 0,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "amounts": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "quantities": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "products": {
+              "total": 0,
+              "missing": [],
+              "errors": 0
+            }
+          }
+        ]
+      },
+      "tts": {
+        "summary": {
+          "cases": 4,
+          "wer": 0.03804347826086957,
+          "similarity_mean": 0.752017905242828,
+          "similarity_min": 0.7441495364989984
+        },
+        "cases": [
+          {
+            "turn": 1,
+            "spoken_text": "Tengo una cafetera Nespresso de FRHOME por seis euros con trece céntimos, una cafetera Gastroback por cuarenta y seis euros con veinticuatro céntimos, una Breville Barista Max por dos euros con veinticinco céntimos, un libro El amor huele a café por veinticinco euros con dieciséis céntimos y una cafetera De'Longhi por cuarenta y cuatro euros con cincuenta céntimos. ¿Te interesa alguna? He anotado un presupuesto de sesenta euros.",
+            "heard": "Tengo una cafetera Nespresso de Fromm por 6 euros con 13 céntimos, una cafetera GastroVac por 46 euros con 24 céntimos, una Breville Barista Max por 2 euros con 25 céntimos. Un libro El amor huele a café por 25 euros con 16 céntimos y una cafetera de Longhi por 44 euros con 50 céntimos. ¿Te interesa alguna? He anotado un presupuesto de 60 euros.",
+            "wer": {
+              "wer": 0.058823529411764705,
+              "reference_words": 68,
+              "hits": 65,
+              "substitutions": 3,
+              "deletions": 0,
+              "insertions": 1
+            },
+            "similarity": 0.7473034685928598
+          },
+          {
+            "turn": 2,
+            "spoken_text": "Hecho, añadidas dos unidades. El total es veintinueve euros. En el carrito hay dos unidades de FRHOME a catorce euros con cincuenta céntimos cada una, veintinueve euros. Total: veintinueve euros. Tu presupuesto es de sesenta euros y te quedan treinta y un euros.",
+            "heard": "Hecho, añadidas dos unidades. El total es 29 euros. En el carrito hay dos unidades de Frome a 14 euros con 50 céntimos cada una. 29 euros. Total, 29 euros. Tu presupuesto es de 60 euros y te quedan 31 euros.",
+            "wer": {
+              "wer": 0.023255813953488372,
+              "reference_words": 43,
+              "hits": 42,
+              "substitutions": 1,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "similarity": 0.766758805171407
+          },
+          {
+            "turn": 3,
+            "spoken_text": "Te repito el pedido antes de registrarlo: dos unidades de FRHOME a catorce euros con cincuenta céntimos cada una, veintinueve euros. Total: veintinueve euros. Tu presupuesto es de sesenta euros y te quedan treinta y un euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+            "heard": "Te repito el pedido antes de registrarlo. Dos unidades de Frome a 14 euros con 50 céntimos cada una. 29 euros. Total, 29 euros. Tu presupuesto es de 60 euros y te quedan 31 euros. ¿Lo confirmo? Di sí para registrarlo o dime qué quieres cambiar.",
+            "wer": {
+              "wer": 0.020833333333333332,
+              "reference_words": 48,
+              "hits": 47,
+              "substitutions": 1,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "similarity": 0.7441495364989984
+          },
+          {
+            "turn": 4,
+            "spoken_text": "Pedido número uno registrado: dos unidades de FRHOME a catorce euros con cincuenta céntimos cada una, veintinueve euros. Total: veintinueve euros. Gracias por tu compra.",
+            "heard": "Pedido número 1. Registrado. 2 unidades de fromme a 14 euros con 50 céntimos cada una, 29 euros. Total, 29 euros. Gracias por tu compra.",
+            "wer": {
+              "wer": 0.04,
+              "reference_words": 25,
+              "hits": 24,
+              "substitutions": 1,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "similarity": 0.7498598107080467
+          }
+        ]
+      }
+    },
+    "02_pedido_ambiguo": {
+      "asr": {
+        "summary": {
+          "cases": 3,
+          "wer": 0.0,
+          "exact": 3,
+          "amounts": {
+            "total": 1,
+            "errors": 0,
+            "error_rate": 0.0
+          },
+          "quantities": {
+            "total": 1,
+            "errors": 0,
+            "error_rate": 0.0
+          },
+          "products": {
+            "total": 2,
+            "errors": 0,
+            "error_rate": 0.0
+          }
+        },
+        "cases": [
+          {
+            "turn": 1,
+            "reference": "Quiero comprar un regalo para mi hermana.",
+            "hypothesis": "Quiero comprar un regalo para mi hermana.",
+            "wer": {
+              "wer": 0.0,
+              "reference_words": 7,
+              "hits": 7,
+              "substitutions": 0,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "amounts": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "quantities": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "products": {
+              "total": 0,
+              "missing": [],
+              "errors": 0
+            }
+          },
+          {
+            "turn": 2,
+            "reference": "Unos auriculares bluetooth, y no quiero gastar más de 50 euros.",
+            "hypothesis": "Unos auriculares Bluetooth y no quiero gastar más de 50 euros.",
+            "wer": {
+              "wer": 0.0,
+              "reference_words": 11,
+              "hits": 11,
+              "substitutions": 0,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "amounts": {
+              "reference": [
+                5000
+              ],
+              "hypothesis": [
+                5000
+              ],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "quantities": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "products": {
+              "total": 1,
+              "missing": [],
+              "errors": 0
+            }
+          },
+          {
+            "turn": 3,
+            "reference": "Ponme uno del primero.",
+            "hypothesis": "Ponme uno del primero.",
+            "wer": {
+              "wer": 0.0,
+              "reference_words": 4,
+              "hits": 4,
+              "substitutions": 0,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "amounts": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "quantities": {
+              "reference": [
+                1
+              ],
+              "hypothesis": [
+                1
+              ],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "products": {
+              "total": 1,
+              "missing": [],
+              "errors": 0
+            }
+          }
+        ]
+      },
+      "tts": {
+        "summary": {
+          "cases": 3,
+          "wer": 0.0546875,
+          "similarity_mean": 0.6746860276207615,
+          "similarity_min": 0.5005643381032236
+        },
+        "cases": [
+          {
+            "turn": 1,
+            "spoken_text": "¿Qué tipo de regalo tienes en mente para tu hermana?",
+            "heard": "¿Qué tipo de regalo tienes en mente para tu hermana?",
+            "wer": {
+              "wer": 0.0,
+              "reference_words": 10,
+              "hits": 10,
+              "substitutions": 0,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "similarity": 0.5005643381032236
+          },
+          {
+            "turn": 2,
+            "spoken_text": "Tengo estos auriculares Bluetooth para ti: los de Mgrett por nueve euros con dieciocho céntimos, los de TAIN por nueve euros con ochenta y cuatro céntimos, los de WDGP por treinta y dos euros con seis céntimos, los de GSBLBL por veinticinco euros con quince céntimos y los de HoLiv por dieciséis euros con cuarenta y nueve céntimos. ¿Te interesa alguno? He anotado un presupuesto de cincuenta euros.",
+            "heard": "Tengo estos auriculares Bluetooth para ti. Los de Marev por 9 euros con 18 céntimos. Los de TAM por 9 euros con 84 céntimos. Los de ULEDGP por 32 euros con 6 céntimos. Los de YG S-Vivelo por 25 euros con 15 céntimos. y los de Olar, por 16 euros con 49 céntimos. ¿Te interesa alguno? He anotado un presupuesto de 50 euros.",
+            "wer": {
+              "wer": 0.10294117647058823,
+              "reference_words": 68,
+              "hits": 63,
+              "substitutions": 5,
+              "deletions": 0,
+              "insertions": 2
+            },
+            "similarity": 0.7688650786823236
+          },
+          {
+            "turn": 3,
+            "spoken_text": "Hecho, añadido uno de esos auriculares al carrito. En el carrito hay una unidad de Auriculares Bluetooth a diecinueve euros con noventa céntimos cada una, diecinueve euros con noventa céntimos. Total: diecinueve euros con noventa céntimos. Tu presupuesto es de cincuenta euros y te quedan treinta euros con diez céntimos.",
+            "heard": "Hecho, añadido uno de esos auriculares al carrito. En el carrito hay una unidad de auriculares Bluetooth a 19 euros con 90 céntimos cada una. 19 euros con 90 céntimos. Total, 19 euros con 90 céntimos. Tu presupuesto es de 50 euros y te quedan 30 euros con 10 céntimos.",
+            "wer": {
+              "wer": 0.0,
+              "reference_words": 50,
+              "hits": 50,
+              "substitutions": 0,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "similarity": 0.7546286660767374
+          }
+        ]
+      }
+    },
+    "03_cambio_cantidad": {
+      "asr": {
+        "summary": {
+          "cases": 5,
+          "wer": 0.0,
+          "exact": 5,
+          "amounts": {
+            "total": 1,
+            "errors": 0,
+            "error_rate": 0.0
+          },
+          "quantities": {
+            "total": 2,
+            "errors": 0,
+            "error_rate": 0.0
+          },
+          "products": {
+            "total": 2,
+            "errors": 0,
+            "error_rate": 0.0
+          }
+        },
+        "cases": [
+          {
+            "turn": 1,
+            "reference": "Busco una botella de agua de acero inoxidable. Mi presupuesto es de 45 euros.",
+            "hypothesis": "Busco una botella de agua de acero inoxidable. Mi presupuesto es de 45 euros.",
+            "wer": {
+              "wer": 0.0,
+              "reference_words": 16,
+              "hits": 16,
+              "substitutions": 0,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "amounts": {
+              "reference": [
+                4500
+              ],
+              "hypothesis": [
+                4500
+              ],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "quantities": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "products": {
+              "total": 1,
+              "missing": [],
+              "errors": 0
+            }
+          },
+          {
+            "turn": 2,
+            "reference": "Añade dos de la primera.",
+            "hypothesis": "Añade dos de la primera.",
+            "wer": {
+              "wer": 0.0,
+              "reference_words": 5,
+              "hits": 5,
+              "substitutions": 0,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "amounts": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "quantities": {
+              "reference": [
+                2
+              ],
+              "hypothesis": [
+                2
+              ],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "products": {
+              "total": 1,
+              "missing": [],
+              "errors": 0
+            }
+          },
+          {
+            "turn": 3,
+            "reference": "Mejor que sean cuatro.",
+            "hypothesis": "Mejor que sean cuatro.",
+            "wer": {
+              "wer": 0.0,
+              "reference_words": 4,
+              "hits": 4,
+              "substitutions": 0,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "amounts": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "quantities": {
+              "reference": [
+                4
+              ],
+              "hypothesis": [
+                4
+              ],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "products": {
+              "total": 0,
+              "missing": [],
+              "errors": 0
+            }
+          },
+          {
+            "turn": 4,
+            "reference": "Ciérralo.",
+            "hypothesis": "Cierralo.",
+            "wer": {
+              "wer": 0.0,
+              "reference_words": 1,
+              "hits": 1,
+              "substitutions": 0,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "amounts": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "quantities": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "products": {
+              "total": 0,
+              "missing": [],
+              "errors": 0
+            }
+          },
+          {
+            "turn": 5,
+            "reference": "Sí.",
+            "hypothesis": "Sí.",
+            "wer": {
+              "wer": 0.0,
+              "reference_words": 1,
+              "hits": 1,
+              "substitutions": 0,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "amounts": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "quantities": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "products": {
+              "total": 0,
+              "missing": [],
+              "errors": 0
+            }
+          }
+        ]
+      },
+      "tts": {
+        "summary": {
+          "cases": 5,
+          "wer": 0.04247104247104247,
+          "similarity_mean": 0.750263309397999,
+          "similarity_min": 0.7339049804785548
+        },
+        "cases": [
+          {
+            "turn": 1,
+            "spoken_text": "Tengo la botella de agua de Newdora por seis euros con setenta y dos céntimos, la de KOSAD por doce coma treinta y siete, la de KOUAJ por dieciocho coma veintinueve y las de ion8 por cuatro coma noventa y siete y diez euros con setenta y nueve céntimos. ¿Te interesa alguna? He anotado un presupuesto de cuarenta y cinco euros.",
+            "heard": "Tengo la botella de agua de Neudora por 6 euros con 72 céntimos, la de COSAT por 12,37, la de COAG por 18,29 y las de IONOCHO por 4,97 y 10 euros con 79 céntimos. ¿No es que te interesa alguna? He anotado un presupuesto de 45 euros.",
+            "wer": {
+              "wer": 0.11475409836065574,
+              "reference_words": 61,
+              "hits": 57,
+              "substitutions": 4,
+              "deletions": 0,
+              "insertions": 3
+            },
+            "similarity": 0.7339049804785548
+          },
+          {
+            "turn": 2,
+            "spoken_text": "Hecho, añadidas dos unidades. El total es diecinueve euros. En el carrito hay dos unidades de Newdora Botella de Agua Acero Inoxidable quinientos mililitros a nueve euros con cincuenta céntimos cada una, diecinueve euros. Total: diecinueve euros. Tu presupuesto es de cuarenta y cinco euros y te quedan veintiséis euros.",
+            "heard": "Hecho, añadidas dos unidades. El total es 19 euros. En el carrito hay dos unidades de Neudora botella de agua acero inoxidable 500 mililitros a 9 euros con 50 céntimos cada una. 19 euros. Total 19 euros. Tu presupuesto es de 45 euros. Y te quedan 26 euros.",
+            "wer": {
+              "wer": 0.02,
+              "reference_words": 50,
+              "hits": 49,
+              "substitutions": 1,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "similarity": 0.7743616477040253
+          },
+          {
+            "turn": 3,
+            "spoken_text": "Hecho, el total es treinta y ocho euros. En el carrito hay cuatro unidades de Newdora Botella de Agua Acero Inoxidable quinientos mililitros a nueve euros con cincuenta céntimos cada una, treinta y ocho euros. Total: treinta y ocho euros. Tu presupuesto es de cuarenta y cinco euros y te quedan siete euros.",
+            "heard": "Hecho, el total es 38 euros. En el carrito hay 4 unidades de miudora botella de agua acero inoxidable. 500 mililitros a 9 euros con 50 céntimos cada una. 38 euros. Total, 38 euros. Tu presupuesto es de 45 euros y te quedan 7 euros.",
+            "wer": {
+              "wer": 0.018867924528301886,
+              "reference_words": 53,
+              "hits": 52,
+              "substitutions": 1,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "similarity": 0.7383430391151954
+          },
+          {
+            "turn": 4,
+            "spoken_text": "Te repito el pedido antes de registrarlo: cuatro unidades de Newdora Botella de Agua Acero Inoxidable quinientos mililitros a nueve euros con cincuenta céntimos cada una, treinta y ocho euros. Total: treinta y ocho euros. Tu presupuesto es de cuarenta y cinco euros y te quedan siete euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+            "heard": "Te repito el pedido antes de registrarlo, 4 unidades de Neudora, botella de agua, acero inoxidable, 500 mililitros, a 9 euros, con 50 céntimos cada una, 38 euros. Total, 38 euros. ¿Tu presupuesto es de 45 euros y te quedan 7 euros? ¿Lo confirmo? ¿Di si para registrarlo o dime que quieres cambiar?",
+            "wer": {
+              "wer": 0.01694915254237288,
+              "reference_words": 59,
+              "hits": 58,
+              "substitutions": 1,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "similarity": 0.7496312398814152
+          },
+          {
+            "turn": 5,
+            "spoken_text": "Pedido número uno registrado: cuatro unidades de Newdora Botella de Agua Acero Inoxidable quinientos mililitros a nueve euros con cincuenta céntimos cada una, treinta y ocho euros. Total: treinta y ocho euros. Gracias por tu compra.",
+            "heard": "Pedido número 1 registrado, 4 unidades de Neudora botella de agua acero inoxidable, 500 mililitros a 9 euros con 50 céntimos cada una, 38 euros. Total, 38 euros. Gracias por tu compra.",
+            "wer": {
+              "wer": 0.027777777777777776,
+              "reference_words": 36,
+              "hits": 35,
+              "substitutions": 1,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "similarity": 0.7550756398108045
+          }
+        ]
+      }
+    },
+    "04_sin_existencias": {
+      "asr": {
+        "summary": {
+          "cases": 5,
+          "wer": 0.0,
+          "exact": 5,
+          "amounts": {
+            "total": 0,
+            "errors": 0,
+            "error_rate": null
+          },
+          "quantities": {
+            "total": 0,
+            "errors": 0,
+            "error_rate": null
+          },
+          "products": {
+            "total": 3,
+            "errors": 0,
+            "error_rate": 0.0
+          }
+        },
+        "cases": [
+          {
+            "turn": 1,
+            "reference": "Necesito una esterilla de yoga.",
+            "hypothesis": "Necesito una esterilla de yoga.",
+            "wer": {
+              "wer": 0.0,
+              "reference_words": 5,
+              "hits": 5,
+              "substitutions": 0,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "amounts": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "quantities": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "products": {
+              "total": 1,
+              "missing": [],
+              "errors": 0
+            }
+          },
+          {
+            "turn": 2,
+            "reference": "Ponme una de la primera.",
+            "hypothesis": "Ponme una de la primera.",
+            "wer": {
+              "wer": 0.0,
+              "reference_words": 5,
+              "hits": 5,
+              "substitutions": 0,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "amounts": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "quantities": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "products": {
+              "total": 1,
+              "missing": [],
+              "errors": 0
+            }
+          },
+          {
+            "turn": 3,
+            "reference": "Entonces ponme una de la segunda.",
+            "hypothesis": "Entonces ponme una de la segunda.",
+            "wer": {
+              "wer": 0.0,
+              "reference_words": 6,
+              "hits": 6,
+              "substitutions": 0,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "amounts": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "quantities": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "products": {
+              "total": 1,
+              "missing": [],
+              "errors": 0
+            }
+          },
+          {
+            "turn": 4,
+            "reference": "Cierra el pedido.",
+            "hypothesis": "Cierra el pedido.",
+            "wer": {
+              "wer": 0.0,
+              "reference_words": 3,
+              "hits": 3,
+              "substitutions": 0,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "amounts": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "quantities": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "products": {
+              "total": 0,
+              "missing": [],
+              "errors": 0
+            }
+          },
+          {
+            "turn": 5,
+            "reference": "Sí, confirmo.",
+            "hypothesis": "Sí, confirmo.",
+            "wer": {
+              "wer": 0.0,
+              "reference_words": 2,
+              "hits": 2,
+              "substitutions": 0,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "amounts": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "quantities": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "products": {
+              "total": 0,
+              "missing": [],
+              "errors": 0
+            }
+          }
+        ]
+      },
+      "tts": {
+        "summary": {
+          "cases": 5,
+          "wer": 0.05747126436781609,
+          "similarity_mean": 0.7304888191851248,
+          "similarity_min": 0.7070172626257241
+        },
+        "cases": [
+          {
+            "turn": 1,
+            "spoken_text": "Tengo la esterilla de yoga de TENQUAN por veintiséis euros con veintidós céntimos, la de LynnsGraceland por veinte euros, la de Rayline por dieciséis euros con setenta y cinco céntimos, la de Glymnis por diecinueve euros con setenta y cuatro céntimos y la de Hatonky por doce euros con cuarenta y dos céntimos. ¿Te interesa alguna?",
+            "heard": "Tengo la esterilla de yoga de Tenkwan por 26 euros con 22 céntimos, la de Lins Graceland por 20 euros, la de Railin por 16 euros con 75 céntimos, la de Glimmis por 19 euros con 74 céntimos y la de Atonki por 12 euros con 42 céntimos. ¿Te interesa alguna?",
+            "wer": {
+              "wer": 0.10714285714285714,
+              "reference_words": 56,
+              "hits": 51,
+              "substitutions": 5,
+              "deletions": 0,
+              "insertions": 1
+            },
+            "similarity": 0.7550693347821705
+          },
+          {
+            "turn": 2,
+            "spoken_text": "Ese producto se ha agotado. ¿Te interesa alguna de las demás opciones? Como alternativa tengo: Esterilla Yoga a dieciocho euros, con diez en existencias, Rayline a dieciséis euros con setenta y cinco céntimos, con cuarenta en existencias.",
+            "heard": "ese producto se ha agotado te interesa alguna de las demás opciones como alternativa tengo esterilla yoga a 18 euros con 10 en existencias rail line a 16 euros con 75 céntimos con 40 en existencias",
+            "wer": {
+              "wer": 0.05405405405405406,
+              "reference_words": 37,
+              "hits": 36,
+              "substitutions": 1,
+              "deletions": 0,
+              "insertions": 1
+            },
+            "similarity": 0.7523107834043387
+          },
+          {
+            "turn": 3,
+            "spoken_text": "Hecho, añadida una unidad al carrito. En el carrito hay una unidad de Esterilla Yoga a dieciocho euros cada una, dieciocho euros. Total: dieciocho euros.",
+            "heard": "Hecho, añadidla una unidad al carrito. En el carrito hay una unidad de esterilla yoga a 18 euros cada una. 18 euros. Total, 18 euros.",
+            "wer": {
+              "wer": 0.04,
+              "reference_words": 25,
+              "hits": 24,
+              "substitutions": 1,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "similarity": 0.7093866480921431
+          },
+          {
+            "turn": 4,
+            "spoken_text": "Te repito el pedido antes de registrarlo: una unidad de Esterilla Yoga a dieciocho euros cada una, dieciocho euros. Total: dieciocho euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+            "heard": "Te repito el pedido antes de registrarlo, una unidad esterilla yoga a 18 euros cada una, 18 euros, total 18 euros, lo confirmo, di si para registrarlo o dime que quieres cambiar.",
+            "wer": {
+              "wer": 0.030303030303030304,
+              "reference_words": 33,
+              "hits": 32,
+              "substitutions": 0,
+              "deletions": 1,
+              "insertions": 0
+            },
+            "similarity": 0.7286600670212473
+          },
+          {
+            "turn": 5,
+            "spoken_text": "Pedido número uno registrado: una unidad de Esterilla Yoga a dieciocho euros cada una, dieciocho euros. Total: dieciocho euros. Gracias por tu compra.",
+            "heard": "Pedido número 1 registrado. Una unidad de esterilla yoga a 18 euros cada una. 18 euros. Total, 18 euros. Gracias por tu compra.",
+            "wer": {
+              "wer": 0.0,
+              "reference_words": 23,
+              "hits": 23,
+              "substitutions": 0,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "similarity": 0.7070172626257241
+          }
+        ]
+      }
+    },
+    "05_correccion_transcripcion": {
+      "asr": {
+        "summary": {
+          "cases": 6,
+          "wer": 0.0,
+          "exact": 6,
+          "amounts": {
+            "total": 0,
+            "errors": 0,
+            "error_rate": null
+          },
+          "quantities": {
+            "total": 3,
+            "errors": 0,
+            "error_rate": 0.0
+          },
+          "products": {
+            "total": 2,
+            "errors": 0,
+            "error_rate": 0.0
+          }
+        },
+        "cases": [
+          {
+            "turn": 1,
+            "reference": "Busco un ratón inalámbrico.",
+            "hypothesis": "Busco un ratón inalámbrico.",
+            "wer": {
+              "wer": 0.0,
+              "reference_words": 4,
+              "hits": 4,
+              "substitutions": 0,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "amounts": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "quantities": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "products": {
+              "total": 1,
+              "missing": [],
+              "errors": 0
+            }
+          },
+          {
+            "turn": 2,
+            "reference": "Añade dos del primero.",
+            "hypothesis": "Añade dos del primero.",
+            "wer": {
+              "wer": 0.0,
+              "reference_words": 4,
+              "hits": 4,
+              "substitutions": 0,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "amounts": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "quantities": {
+              "reference": [
+                2
+              ],
+              "hypothesis": [
+                2
+              ],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "products": {
+              "total": 1,
+              "missing": [],
+              "errors": 0
+            }
+          },
+          {
+            "turn": 3,
+            "reference": "Cierra el pedido.",
+            "hypothesis": "Cierra el pedido.",
+            "wer": {
+              "wer": 0.0,
+              "reference_words": 3,
+              "hits": 3,
+              "substitutions": 0,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "amounts": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "quantities": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "products": {
+              "total": 0,
+              "missing": [],
+              "errors": 0
+            }
+          },
+          {
+            "turn": 4,
+            "reference": "No, espera, he dicho doce, no dos.",
+            "hypothesis": "No, espera, he dicho doce, no dos.",
+            "wer": {
+              "wer": 0.0,
+              "reference_words": 7,
+              "hits": 7,
+              "substitutions": 0,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "amounts": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "quantities": {
+              "reference": [
+                12,
+                2
+              ],
+              "hypothesis": [
+                12,
+                2
+              ],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "products": {
+              "total": 0,
+              "missing": [],
+              "errors": 0
+            }
+          },
+          {
+            "turn": 5,
+            "reference": "Ahora sí, cierra el pedido.",
+            "hypothesis": "Ahora sí, cierra el pedido.",
+            "wer": {
+              "wer": 0.0,
+              "reference_words": 5,
+              "hits": 5,
+              "substitutions": 0,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "amounts": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "quantities": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "products": {
+              "total": 0,
+              "missing": [],
+              "errors": 0
+            }
+          },
+          {
+            "turn": 6,
+            "reference": "Sí, confirmo.",
+            "hypothesis": "Sí, confirmo.",
+            "wer": {
+              "wer": 0.0,
+              "reference_words": 2,
+              "hits": 2,
+              "substitutions": 0,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "amounts": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "quantities": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "products": {
+              "total": 0,
+              "missing": [],
+              "errors": 0
+            }
+          }
+        ]
+      },
+      "tts": {
+        "summary": {
+          "cases": 6,
+          "wer": 0.024096385542168676,
+          "similarity_mean": 0.7558323908872039,
+          "similarity_min": 0.7379131974344041
+        },
+        "cases": [
+          {
+            "turn": 1,
+            "spoken_text": "Tengo el ratón inalámbrico INPHIC de plata por treinta y tres euros con veintinueve céntimos, el de INPHIC de plata clara por cuarenta y dos euros con cuarenta y cinco céntimos, el de Anmck negro por veintitrés euros con sesenta y un céntimos, el de WisFox gris por diecinueve euros con sesenta y nueve céntimos y el OMEN VECTOR de HP por diez euros con ochenta y cuatro céntimos. ¿Te interesa alguno?",
+            "heard": "Tengo el ratón inalámbrico Infig de plata por 33 euros con 29 céntimos. El de Infig de plata clara por 42 euros con 45 céntimos. El de Anmak en negro por 23 euros con 61 céntimos. El de Wisfox Gris por 19,69 euros y el Omen Vector DHP por 10,84 euros. ¿Te interesa alguno?",
+            "wer": {
+              "wer": 0.08333333333333333,
+              "reference_words": 72,
+              "hits": 67,
+              "substitutions": 4,
+              "deletions": 1,
+              "insertions": 1
+            },
+            "similarity": 0.751905945725194
+          },
+          {
+            "turn": 2,
+            "spoken_text": "Hecho, añadidas dos unidades. En el carrito hay dos unidades de Raton inalámbrico a once euros cada una, veintidós euros. Total: veintidós euros.",
+            "heard": "Hecho, añadidas dos unidades. En el carrito hay dos unidades de ratón inalámbrico a 11 euros cada una, 22 euros. Total, 22 euros.",
+            "wer": {
+              "wer": 0.0,
+              "reference_words": 23,
+              "hits": 23,
+              "substitutions": 0,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "similarity": 0.7520204825859185
+          },
+          {
+            "turn": 3,
+            "spoken_text": "Te repito el pedido antes de registrarlo: dos unidades de Raton inalámbrico a once euros cada una, veintidós euros. Total: veintidós euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+            "heard": "Te repito el pedido antes de registrarlo, dos unidades de ratón inalámbrico a 11 euros cada una, 22 euros. ¿Total? ¿22 euros? ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+            "wer": {
+              "wer": 0.0,
+              "reference_words": 33,
+              "hits": 33,
+              "substitutions": 0,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "similarity": 0.7470167374793384
+          },
+          {
+            "turn": 4,
+            "spoken_text": "Hecho, añadidas diez unidades más. En total, doce unidades de Raton inalámbrico a once euros cada una, ciento treinta y dos euros. Total: ciento treinta y dos euros. En el carrito hay doce unidades de Raton inalámbrico a once euros cada una, ciento treinta y dos euros. Total: ciento treinta y dos euros.",
+            "heard": "Hecho, añadidas 10 unidades más. En total, 12 unidades de ratón inalámbrico a 11 euros cada una, 132 euros. Total, 132 euros. En el carrito hay 12 unidades de ratón inalámbrico a 11 euros cada una, 132 euros. Total, 132 euros.",
+            "wer": {
+              "wer": 0.0,
+              "reference_words": 53,
+              "hits": 53,
+              "substitutions": 0,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "similarity": 0.7941483856449075
+          },
+          {
+            "turn": 5,
+            "spoken_text": "Te repito el pedido antes de registrarlo: doce unidades de Raton inalámbrico a once euros cada una, ciento treinta y dos euros. Total: ciento treinta y dos euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+            "heard": "Te repito el pedido antes de registrarlo, 12 unidades de ratón inalámbrico a 11 euros cada una, 132 euros. Total, 132 euros. ¿Lo confirmo? Di sí para registrarlo o dime qué quieres cambiar.",
+            "wer": {
+              "wer": 0.0,
+              "reference_words": 39,
+              "hits": 39,
+              "substitutions": 0,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "similarity": 0.7379131974344041
+          },
+          {
+            "turn": 6,
+            "spoken_text": "Pedido número uno registrado: doce unidades de Raton inalámbrico a once euros cada una, ciento treinta y dos euros. Total: ciento treinta y dos euros. Gracias por tu compra.",
+            "heard": "Pedido número 1 registrado. 12 unidades de ratón inalámbrico a 11 euros cada una, 132 euros. Total, 132 euros. Gracias por tu compra.",
+            "wer": {
+              "wer": 0.0,
+              "reference_words": 29,
+              "hits": 29,
+              "substitutions": 0,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "similarity": 0.7519895964534605
+          }
+        ]
+      }
+    },
+    "06_cambio_stock_confirmacion_repetida": {
+      "asr": {
+        "summary": {
+          "cases": 8,
+          "wer": 0.0,
+          "exact": 8,
+          "amounts": {
+            "total": 0,
+            "errors": 0,
+            "error_rate": null
+          },
+          "quantities": {
+            "total": 1,
+            "errors": 0,
+            "error_rate": 0.0
+          },
+          "products": {
+            "total": 2,
+            "errors": 0,
+            "error_rate": 0.0
+          }
+        },
+        "cases": [
+          {
+            "turn": 1,
+            "reference": "Busco una lámpara de escritorio LED.",
+            "hypothesis": "Busco una lámpara de escritorio LED.",
+            "wer": {
+              "wer": 0.0,
+              "reference_words": 6,
+              "hits": 6,
+              "substitutions": 0,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "amounts": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "quantities": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "products": {
+              "total": 1,
+              "missing": [],
+              "errors": 0
+            }
+          },
+          {
+            "turn": 2,
+            "reference": "Añade tres de la primera.",
+            "hypothesis": "Añade 3 de la primera.",
+            "wer": {
+              "wer": 0.0,
+              "reference_words": 5,
+              "hits": 5,
+              "substitutions": 0,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "amounts": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "quantities": {
+              "reference": [
+                3
+              ],
+              "hypothesis": [
+                3
+              ],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "products": {
+              "total": 1,
+              "missing": [],
+              "errors": 0
+            }
+          },
+          {
+            "turn": 3,
+            "reference": "Quiero cerrar el pedido.",
+            "hypothesis": "Quiero cerrar el pedido.",
+            "wer": {
+              "wer": 0.0,
+              "reference_words": 4,
+              "hits": 4,
+              "substitutions": 0,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "amounts": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "quantities": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "products": {
+              "total": 0,
+              "missing": [],
+              "errors": 0
+            }
+          },
+          {
+            "turn": 4,
+            "reference": "Sí.",
+            "hypothesis": "Sí.",
+            "wer": {
+              "wer": 0.0,
+              "reference_words": 1,
+              "hits": 1,
+              "substitutions": 0,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "amounts": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "quantities": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "products": {
+              "total": 0,
+              "missing": [],
+              "errors": 0
+            }
+          },
+          {
+            "turn": 5,
+            "reference": "Vale, déjalo en una.",
+            "hypothesis": "Vale, déjalo en una.",
+            "wer": {
+              "wer": 0.0,
+              "reference_words": 4,
+              "hits": 4,
+              "substitutions": 0,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "amounts": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "quantities": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "products": {
+              "total": 0,
+              "missing": [],
+              "errors": 0
+            }
+          },
+          {
+            "turn": 6,
+            "reference": "Cierra el pedido.",
+            "hypothesis": "Cierra el pedido.",
+            "wer": {
+              "wer": 0.0,
+              "reference_words": 3,
+              "hits": 3,
+              "substitutions": 0,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "amounts": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "quantities": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "products": {
+              "total": 0,
+              "missing": [],
+              "errors": 0
+            }
+          },
+          {
+            "turn": 7,
+            "reference": "Sí.",
+            "hypothesis": "Sí.",
+            "wer": {
+              "wer": 0.0,
+              "reference_words": 1,
+              "hits": 1,
+              "substitutions": 0,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "amounts": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "quantities": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "products": {
+              "total": 0,
+              "missing": [],
+              "errors": 0
+            }
+          },
+          {
+            "turn": 8,
+            "reference": "Sí.",
+            "hypothesis": "sí",
+            "wer": {
+              "wer": 0.0,
+              "reference_words": 1,
+              "hits": 1,
+              "substitutions": 0,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "amounts": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "quantities": {
+              "reference": [],
+              "hypothesis": [],
+              "missing": [],
+              "extra": [],
+              "errors": 0
+            },
+            "products": {
+              "total": 0,
+              "missing": [],
+              "errors": 0
+            }
+          }
+        ]
+      },
+      "tts": {
+        "summary": {
+          "cases": 8,
+          "wer": 0.02064896755162242,
+          "similarity_mean": 0.749970388500366,
+          "similarity_min": 0.7232122755283881
+        },
+        "cases": [
+          {
+            "turn": 1,
+            "spoken_text": "Tengo la lámpara de escritorio LED de SLATOR por cuarenta y cuatro euros con veinte céntimos, la de SENXINGYAN por treinta y seis euros con sesenta y un céntimos, la de SOFIL por treinta y ocho euros con setenta y cuatro céntimos, la de Prtukyt por veintitrés euros con ochenta y seis céntimos y la de HyAdierTech por once euros con ochenta y siete céntimos. ¿Te interesa alguna?",
+            "heard": "Tengo la lámpara de escritorio LED de Eslator por 44 euros con 20 céntimos, la de Sensignan por 36 euros con 61 céntimos, la de Sofil por 38 euros con 74 céntimos, la de Protukit por 23 euros con 86 céntimos Y la de Iadiertec por 11 euros con 87 céntimos ¿Te interesa alguna?",
+            "wer": {
+              "wer": 0.058823529411764705,
+              "reference_words": 68,
+              "hits": 64,
+              "substitutions": 4,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "similarity": 0.7408427065505305
+          },
+          {
+            "turn": 2,
+            "spoken_text": "Hecho, añadidas tres unidades. El total es cuarenta y cinco euros. En el carrito hay tres unidades de Lámpara Escritorio LED a quince euros cada una, cuarenta y cinco euros. Total: cuarenta y cinco euros.",
+            "heard": "Hecho, añadidas 3 unidades. El total es 45 euros. En el carrito hay 3 unidades de lámpara escritorio LED a 15 euros cada una. 45 euros. Total, 45 euros.",
+            "wer": {
+              "wer": 0.0,
+              "reference_words": 35,
+              "hits": 35,
+              "substitutions": 0,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "similarity": 0.7435401708703316
+          },
+          {
+            "turn": 3,
+            "spoken_text": "Te repito el pedido antes de registrarlo: tres unidades de Lámpara Escritorio LED a quince euros cada una, cuarenta y cinco euros. Total: cuarenta y cinco euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+            "heard": "Te repito el pedido antes de registrarlo, 3 unidades de lámpara escritorio, le da 15 euros cada una, 45 euros, total 45 euros, lo confirmo, di si para registrarlo, o dime que quieres cambiar.",
+            "wer": {
+              "wer": 0.05263157894736842,
+              "reference_words": 38,
+              "hits": 36,
+              "substitutions": 2,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "similarity": 0.7232122755283881
+          },
+          {
+            "turn": 4,
+            "spoken_text": "No he registrado el pedido porque la tienda cambió después de la cotización. De Lámpara Escritorio LED solo queda una unidad y habías pedido tres. Puedo dejarlo en uno. Como alternativa tengo: Lámpara Escritorio LED a veintitrés euros con veintitrés céntimos, con dieciséis en existencias, Lámpara Escritorio LED a treinta y cuatro euros con ochenta y seis céntimos, con veinticinco en existencias, Lámpara de escritorio LED Lámpara de lectura a veintitrés euros con ochenta y seis céntimos, con treinta y cuatro en existencias. ¿Qué prefieres?",
+            "heard": "No he registrado el pedido porque la tienda cambió después de la cotización. De lámpara escritorio LED solo queda una unidad y habías pedido tres. Puedo dejarlo en uno. Como alternativa tengo lámpara escritorio LED a 23 euros con 23 céntimos con 16 en existencias. Lámpara escritorio LED a 34 euros con 86 céntimos con 25 en existencias. Lámpara de escritorio, LED lámpara de lectura 23 euros, con 86 céntimos, con 34 en existencias ¿Qué prefieres?",
+            "wer": {
+              "wer": 0.011764705882352941,
+              "reference_words": 85,
+              "hits": 84,
+              "substitutions": 0,
+              "deletions": 1,
+              "insertions": 0
+            },
+            "similarity": 0.7592862414186846
+          },
+          {
+            "turn": 5,
+            "spoken_text": "Hecho, el carrito ahora tiene una unidad de Lámpara Escritorio LED a quince euros, total quince euros. En el carrito hay una unidad de Lámpara Escritorio LED a quince euros cada una, quince euros. Total: quince euros.",
+            "heard": "Hecho, el carrito ahora tiene una unidad de lámpara escritorio LED a 15 euros. Total 15 euros. En el carrito hay una unidad de lámpara escritorio LED a 15 euros cada una. 15 euros. Total, 15 euros.",
+            "wer": {
+              "wer": 0.0,
+              "reference_words": 37,
+              "hits": 37,
+              "substitutions": 0,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "similarity": 0.7518616127586162
+          },
+          {
+            "turn": 6,
+            "spoken_text": "Te repito el pedido antes de registrarlo: una unidad de Lámpara Escritorio LED a quince euros cada una, quince euros. Total: quince euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
+            "heard": "Te repito el pedido antes de registrarlo. Una unidad de lámpara escritorio LED a 15 euros cada una 15 euros. ¿Total? 15 euros. ¿Lo confirmo? Di sí para registrarlo o dime qué quieres cambiar.",
+            "wer": {
+              "wer": 0.0,
+              "reference_words": 34,
+              "hits": 34,
+              "substitutions": 0,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "similarity": 0.7525128273364546
+          },
+          {
+            "turn": 7,
+            "spoken_text": "Pedido número uno registrado: una unidad de Lámpara Escritorio LED a quince euros cada una, quince euros. Total: quince euros. Gracias por tu compra.",
+            "heard": "Pedido número 1 registrado. Una unidad de lámpara escritorio LED a 15 euros cada una. 15 euros. Total, 15 euros. Gracias por tu compra.",
+            "wer": {
+              "wer": 0.0,
+              "reference_words": 24,
+              "hits": 24,
+              "substitutions": 0,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "similarity": 0.7662833121553903
+          },
+          {
+            "turn": 8,
+            "spoken_text": "Ese pedido ya estaba registrado con el número uno, así que no lo he duplicado. Total: quince euros.",
+            "heard": "Ese pedido ya estaba registrado con el número 1, así que no lo he duplicado. Total, 15 euros.",
+            "wer": {
+              "wer": 0.0,
+              "reference_words": 18,
+              "hits": 18,
+              "substitutions": 0,
+              "deletions": 0,
+              "insertions": 0
+            },
+            "similarity": 0.762223961384532
+          }
+        ]
+      }
+    }
+  },
+  "models": {
+    "asr": "large-v3-turbo",
+    "speaker": "speechbrain/spkrec-ecapa-voxceleb"
+  },
+  "reference": "audio/referencia/referencia.wav"
+}
