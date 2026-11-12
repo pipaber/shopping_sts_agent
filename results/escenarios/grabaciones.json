@@ -2,21 +2,19 @@
   "asr_model": "large-v3-turbo",
   "folder": "audio/escenarios",
   "expected": 31,
-  "found": 30,
-  "misplaced": [
-    "audio/escenarios/05_correccion_transcripcion/05.wav"
-  ],
+  "found": 31,
+  "misplaced": [],
   "asr": {
-    "cases": 29,
-    "wer": 0.015151515151515152,
-    "exact": 27,
+    "cases": 31,
+    "wer": 0.013888888888888888,
+    "exact": 29,
     "amounts": {
       "total": 3,
       "errors": 0,
       "error_rate": 0.0
     },
     "quantities": {
-      "total": 6,
+      "total": 8,
       "errors": 0,
       "error_rate": 0.0
     },
@@ -818,18 +816,60 @@
           "closest_turn": 3
         },
         {
-          "file": "audio/escenarios/05_correccion_transcripcion/05.wav",
-          "turn": 5,
+          "file": "audio/escenarios/05_correccion_transcripcion/04.wav",
+          "turn": 4,
           "audio_seconds": 4.2,
-          "reference": "Ahora sí, cierra el pedido.",
+          "reference": "No, espera, he dicho doce, no dos.",
           "hypothesis": "No, espera, he dicho 12, no 2.",
           "wer": {
-            "wer": 1.4,
-            "reference_words": 5,
-            "hits": 0,
-            "substitutions": 5,
+            "wer": 0.0,
+            "reference_words": 7,
+            "hits": 7,
+            "substitutions": 0,
             "deletions": 0,
-            "insertions": 2
+            "insertions": 0
+          },
+          "amounts": {
+            "reference": [],
+            "hypothesis": [],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "quantities": {
+            "reference": [
+              12,
+              2
+            ],
+            "hypothesis": [
+              12,
+              2
+            ],
+            "missing": [],
+            "extra": [],
+            "errors": 0
+          },
+          "products": {
+            "total": 0,
+            "missing": [],
+            "errors": 0
+          },
+          "exact": true,
+          "closest_turn": 4
+        },
+        {
+          "file": "audio/escenarios/05_correccion_transcripcion/05.wav",
+          "turn": 5,
+          "audio_seconds": 3.0,
+          "reference": "Ahora sí, cierra el pedido.",
+          "hypothesis": "Ahora sí, cierra el pedido.",
+          "wer": {
+            "wer": 0.0,
+            "reference_words": 5,
+            "hits": 5,
+            "substitutions": 0,
+            "deletions": 0,
+            "insertions": 0
           },
           "amounts": {
             "reference": [],
@@ -840,24 +880,18 @@
           },
           "quantities": {
             "reference": [],
-            "hypothesis": [
-              12,
-              2
-            ],
+            "hypothesis": [],
             "missing": [],
-            "extra": [
-              2,
-              12
-            ],
-            "errors": 2
+            "extra": [],
+            "errors": 0
           },
           "products": {
             "total": 0,
             "missing": [],
             "errors": 0
           },
-          "exact": false,
-          "closest_turn": 4
+          "exact": true,
+          "closest_turn": 5
         },
         {
           "file": "audio/escenarios/05_correccion_transcripcion/06.wav",
@@ -896,9 +930,7 @@
           "closest_turn": 6
         }
       ],
-      "missing": [
-        "04"
-      ]
+      "missing": []
     },
     {
       "id": "06_cambio_stock_confirmacion_repetida",

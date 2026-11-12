@@ -1,11 +1,11 @@
 # Grabaciones del usuario frente al guion
 
-Audios en `audio/escenarios` (sin versionar): 30 de 31 archivos, transcritos con el ASR del agente sin correr el agente.
+Audios en `audio/escenarios` (sin versionar): 31 de 31 archivos, transcritos con el ASR del agente sin correr el agente.
 
-- No corresponden a su turno: `audio/escenarios/05_correccion_transcripcion/05.wav`.
-- De los 29 que sí corresponden, 27 se entienden igual que el guion tras normalizar; WER 1.5 %.
+- No corresponden a su turno: ninguno.
+- De los 31 que sí corresponden, 29 se entienden igual que el guion tras normalizar; WER 1.4 %.
 - Errores del ASR en importes: 0 de 3.
-- Errores del ASR en cantidades: 0 de 6.
+- Errores del ASR en cantidades: 0 de 8.
 - Errores del ASR en nombres de producto: 1 de 13.
 
 ## 01_compra_confirmada
@@ -55,14 +55,15 @@ Audios en `audio/escenarios` (sin versionar): 30 de 31 archivos, transcritos con
 
 ## 05_correccion_transcripcion
 
-5 de 6 archivos; faltan: 04.
+6 de 6 archivos.
 
 | Archivo | Duración | Texto del guion | Lo que entiende el ASR | Resultado |
 |---|---|---|---|---|
 | `01` | 2.7 s | Busco un ratón inalámbrico. | Busca un ratón inalámbrico. | distinto (WER 25 %) |
 | `02` | 2.6 s | Añade dos del primero. | Añade dos del primero. | igual |
 | `03` | 2.3 s | Cierra el pedido. | Cierra el pedido. | igual |
-| `05` | 4.2 s | Ahora sí, cierra el pedido. | No, espera, he dicho 12, no 2. | **se parece más al turno 04** |
+| `04` | 4.2 s | No, espera, he dicho doce, no dos. | No, espera, he dicho 12, no 2. | igual |
+| `05` | 3.0 s | Ahora sí, cierra el pedido. | Ahora sí, cierra el pedido. | igual |
 | `06` | 2.6 s | Sí, confirmo. | Sí, confirmo. | igual |
 
 ## 06_cambio_stock_confirmacion_repetida
