@@ -6,9 +6,9 @@
   "voice": true,
   "input": "audio",
   "audio_source": "grabaciones del usuario",
-  "user_id": "eval-136880e9-04_sin_existencias",
+  "user_id": "eval-7fe85b98-04_sin_existencias",
   "threads": [
-    "eval-136880e9-04_sin_existencias-c1"
+    "eval-7fe85b98-04_sin_existencias-c1"
   ],
   "names": {
     "agotada": "B08GPGJY8M",
@@ -27,7 +27,7 @@
       "response": "Tengo la esterilla de yoga de TENQUAN por 26,22 €, la de LynnsGraceland por 20 €, la de Rayline por 16,75 €, la de Glymnis por 19,74 € y la de Hatonky por 12,42 €. ¿Te interesa alguna?",
       "spoken_text": "Tengo la esterilla de yoga de TENQUAN por veintiséis euros con veintidós céntimos, la de LynnsGraceland por veinte euros, la de Rayline por dieciséis euros con setenta y cinco céntimos, la de Glymnis por diecinueve euros con setenta y cuatro céntimos y la de Hatonky por doce euros con cuarenta y dos céntimos. ¿Te interesa alguna?",
       "output_audio": "respuesta_01.wav",
-      "output_seconds": 23.71066666666667,
+      "output_seconds": 26.965333333333334,
       "awaiting_confirmation": false,
       "operations": [
         {
@@ -42,21 +42,21 @@
         }
       ],
       "timings": {
-        "asr": 0.339,
+        "asr": 0.365,
         "retrieval": 0.032,
-        "llm": 7.054,
-        "tools": 0.028,
-        "tts": 6.044,
-        "total": 13.497
+        "llm": 7.385,
+        "tools": 0.019,
+        "tts": 13.504,
+        "total": 21.305
       },
       "llm_steps": 2,
-      "tts_first_chunk_seconds": 2.877,
+      "tts_first_chunk_seconds": 3.998,
       "tts_retries": 0,
       "product_terms": [
         "esterilla de yoga"
       ],
       "before": {
-        "cart_id": "eval-136880e9-04_sin_existencias-c1",
+        "cart_id": "eval-7fe85b98-04_sin_existencias-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -75,7 +75,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-136880e9-04_sin_existencias-c1",
+        "cart_id": "eval-7fe85b98-04_sin_existencias-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -202,7 +202,7 @@
       "response": "Ese producto se ha agotado. ¿Te interesa alguna de las demás opciones? Como alternativa tengo: «Esterilla Yoga,Ya no es quien vive, sino a Cristo que vive en mí…» a 18,00 €, con 10 en existencias; «Rayline - Esterilla de yoga, esterilla de deporte, correa de…» a 16,75 €, con 40 en existencias.",
       "spoken_text": "Ese producto se ha agotado. ¿Te interesa alguna de las demás opciones? Como alternativa tengo: Esterilla Yoga a dieciocho euros, con diez en existencias, Rayline a dieciséis euros con setenta y cinco céntimos, con cuarenta en existencias.",
       "output_audio": "respuesta_02.wav",
-      "output_seconds": 17.37,
+      "output_seconds": 19.416,
       "awaiting_confirmation": false,
       "operations": [
         {
@@ -228,21 +228,21 @@
         }
       ],
       "timings": {
-        "asr": 0.333,
+        "asr": 0.337,
         "retrieval": 0.0,
-        "llm": 5.482,
-        "tools": 0.032,
-        "tts": 4.436,
-        "total": 10.282
+        "llm": 5.711,
+        "tools": 0.031,
+        "tts": 9.892,
+        "total": 15.971
       },
       "llm_steps": 2,
-      "tts_first_chunk_seconds": 1.16,
+      "tts_first_chunk_seconds": 3.238,
       "tts_retries": 0,
       "product_terms": [
         "primera"
       ],
       "before": {
-        "cart_id": "eval-136880e9-04_sin_existencias-c1",
+        "cart_id": "eval-7fe85b98-04_sin_existencias-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -329,7 +329,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-136880e9-04_sin_existencias-c1",
+        "cart_id": "eval-7fe85b98-04_sin_existencias-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -460,7 +460,7 @@
       "response": "Hecho, añadida una unidad al carrito. En el carrito hay 1 unidad de «Esterilla Yoga,Ya no es quien vive, sino a Cristo que vive en mí…» a 18,00 € cada una, 18,00 €. Total: 18,00 €.",
       "spoken_text": "Hecho, añadida una unidad al carrito. En el carrito hay una unidad de Esterilla Yoga a dieciocho euros cada una, dieciocho euros. Total: dieciocho euros.",
       "output_audio": "respuesta_03.wav",
-      "output_seconds": 13.184,
+      "output_seconds": 12.442,
       "awaiting_confirmation": false,
       "operations": [
         {
@@ -476,21 +476,21 @@
         }
       ],
       "timings": {
-        "asr": 0.343,
+        "asr": 0.342,
         "retrieval": 0.0,
-        "llm": 5.028,
-        "tools": 0.046,
-        "tts": 3.478,
-        "total": 8.895
+        "llm": 5.002,
+        "tools": 0.055,
+        "tts": 6.481,
+        "total": 11.879
       },
       "llm_steps": 2,
-      "tts_first_chunk_seconds": 3.47,
+      "tts_first_chunk_seconds": 4.09,
       "tts_retries": 0,
       "product_terms": [
         "segunda"
       ],
       "before": {
-        "cart_id": "eval-136880e9-04_sin_existencias-c1",
+        "cart_id": "eval-7fe85b98-04_sin_existencias-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -577,7 +577,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-136880e9-04_sin_existencias-c1",
+        "cart_id": "eval-7fe85b98-04_sin_existencias-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -628,7 +628,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-136880e9-04_sin_existencias-c1",
+              "cart_id": "eval-7fe85b98-04_sin_existencias-c1",
               "product_id": "B09738BXB2",
               "quantity": 1
             }
@@ -696,7 +696,7 @@
       "response": "Te repito el pedido antes de registrarlo: 1 unidad de «Esterilla Yoga,Ya no es quien vive, sino a Cristo que vive en mí…» a 18,00 € cada una, 18,00 €. Total: 18,00 €. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
       "spoken_text": "Te repito el pedido antes de registrarlo: una unidad de Esterilla Yoga a dieciocho euros cada una, dieciocho euros. Total: dieciocho euros. ¿Lo confirmo? Di sí para registrarlo, o dime qué quieres cambiar.",
       "output_audio": "respuesta_04.wav",
-      "output_seconds": 17.13533333333333,
+      "output_seconds": 16.234666666666666,
       "awaiting_confirmation": true,
       "operations": [
         {
@@ -709,19 +709,19 @@
         }
       ],
       "timings": {
-        "asr": 0.331,
+        "asr": 0.332,
         "retrieval": 0.0,
-        "llm": 2.322,
-        "tools": 0.042,
-        "tts": 4.391,
-        "total": 7.085
+        "llm": 2.33,
+        "tools": 0.037,
+        "tts": 7.669,
+        "total": 10.368
       },
       "llm_steps": 1,
-      "tts_first_chunk_seconds": 3.336,
+      "tts_first_chunk_seconds": 4.064,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-136880e9-04_sin_existencias-c1",
+        "cart_id": "eval-7fe85b98-04_sin_existencias-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -772,7 +772,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-136880e9-04_sin_existencias-c1",
+              "cart_id": "eval-7fe85b98-04_sin_existencias-c1",
               "product_id": "B09738BXB2",
               "quantity": 1
             }
@@ -814,13 +814,13 @@
         }
       },
       "after": {
-        "cart_id": "eval-136880e9-04_sin_existencias-c1",
+        "cart_id": "eval-7fe85b98-04_sin_existencias-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "614d5823069b40cc93e42c8cfd05ad92",
+            "quote_id": "e8da80c444f34c36a18310fc768e00bb",
             "items": [
               {
                 "product_id": "B09738BXB2",
@@ -880,7 +880,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-136880e9-04_sin_existencias-c1",
+              "cart_id": "eval-7fe85b98-04_sin_existencias-c1",
               "product_id": "B09738BXB2",
               "quantity": 1
             }
@@ -951,13 +951,13 @@
       "response": "Pedido número 1 registrado: 1 unidad de «Esterilla Yoga,Ya no es quien vive, sino a Cristo que vive en mí…» a 18,00 € cada una, 18,00 €. Total: 18,00 €. Gracias por tu compra.",
       "spoken_text": "Pedido número uno registrado: una unidad de Esterilla Yoga a dieciocho euros cada una, dieciocho euros. Total: dieciocho euros. Gracias por tu compra.",
       "output_audio": "respuesta_05.wav",
-      "output_seconds": 15.370666666666667,
+      "output_seconds": 12.173333333333334,
       "awaiting_confirmation": false,
       "operations": [
         {
           "tool": "confirmar_pedido",
           "args": {
-            "quote_id": "614d5823069b40cc93e42c8cfd05ad92"
+            "quote_id": "e8da80c444f34c36a18310fc768e00bb"
           },
           "reason": "el usuario confirmó la cotización",
           "ok": true,
@@ -969,22 +969,22 @@
         "asr": 0.329,
         "retrieval": 0.0,
         "llm": 0.0,
-        "tools": 0.04,
-        "tts": 4.082,
-        "total": 4.452
+        "tools": 0.038,
+        "tts": 6.41,
+        "total": 6.776
       },
       "llm_steps": 0,
-      "tts_first_chunk_seconds": 4.072,
+      "tts_first_chunk_seconds": 4.035,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-136880e9-04_sin_existencias-c1",
+        "cart_id": "eval-7fe85b98-04_sin_existencias-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "614d5823069b40cc93e42c8cfd05ad92",
+            "quote_id": "e8da80c444f34c36a18310fc768e00bb",
             "items": [
               {
                 "product_id": "B09738BXB2",
@@ -1044,7 +1044,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-136880e9-04_sin_existencias-c1",
+              "cart_id": "eval-7fe85b98-04_sin_existencias-c1",
               "product_id": "B09738BXB2",
               "quantity": 1
             }
@@ -1086,7 +1086,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-136880e9-04_sin_existencias-c1",
+        "cart_id": "eval-7fe85b98-04_sin_existencias-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -1094,7 +1094,7 @@
           "quote": null,
           "order": {
             "order_id": 1,
-            "quote_id": "614d5823069b40cc93e42c8cfd05ad92",
+            "quote_id": "e8da80c444f34c36a18310fc768e00bb",
             "items": [
               {
                 "product_id": "B09738BXB2",
@@ -1150,7 +1150,7 @@
           "orders": [
             {
               "order_id": 1,
-              "quote_id": "614d5823069b40cc93e42c8cfd05ad92",
+              "quote_id": "e8da80c444f34c36a18310fc768e00bb",
               "total_cents": 1800
             }
           ],
@@ -1213,7 +1213,7 @@
   ],
   "final": {
     "snapshot": {
-      "cart_id": "eval-136880e9-04_sin_existencias-c1",
+      "cart_id": "eval-7fe85b98-04_sin_existencias-c1",
       "state": {
         "budget_cents": null,
         "preferences": [],
@@ -1221,7 +1221,7 @@
         "quote": null,
         "order": {
           "order_id": 1,
-          "quote_id": "614d5823069b40cc93e42c8cfd05ad92",
+          "quote_id": "e8da80c444f34c36a18310fc768e00bb",
           "items": [
             {
               "product_id": "B09738BXB2",
@@ -1277,7 +1277,7 @@
         "orders": [
           {
             "order_id": 1,
-            "quote_id": "614d5823069b40cc93e42c8cfd05ad92",
+            "quote_id": "e8da80c444f34c36a18310fc768e00bb",
             "total_cents": 1800
           }
         ],
@@ -1375,54 +1375,54 @@
       "turns": 5,
       "asr": {
         "mean": 0.34,
-        "max": 0.34
+        "max": 0.36
       },
       "retrieval": {
         "mean": 0.01,
         "max": 0.03
       },
       "llm": {
-        "mean": 3.98,
-        "max": 7.05
+        "mean": 4.09,
+        "max": 7.38
       },
       "tools": {
         "mean": 0.04,
-        "max": 0.05
+        "max": 0.06
       },
       "tts": {
-        "mean": 4.49,
-        "max": 6.04
+        "mean": 8.79,
+        "max": 13.5
       },
       "total": {
-        "mean": 8.84,
-        "max": 13.5
+        "mean": 13.26,
+        "max": 21.3
       }
     },
     "with_llm": {
       "turns": 4,
       "asr": {
         "mean": 0.34,
-        "max": 0.34
+        "max": 0.36
       },
       "retrieval": {
         "mean": 0.01,
         "max": 0.03
       },
       "llm": {
-        "mean": 4.97,
-        "max": 7.05
+        "mean": 5.11,
+        "max": 7.38
       },
       "tools": {
         "mean": 0.04,
-        "max": 0.05
+        "max": 0.06
       },
       "tts": {
-        "mean": 4.59,
-        "max": 6.04
+        "mean": 9.39,
+        "max": 13.5
       },
       "total": {
-        "mean": 9.94,
-        "max": 13.5
+        "mean": 14.88,
+        "max": 21.3
       }
     },
     "without_llm": {
@@ -1444,12 +1444,12 @@
         "max": 0.04
       },
       "tts": {
-        "mean": 4.08,
-        "max": 4.08
+        "mean": 6.41,
+        "max": 6.41
       },
       "total": {
-        "mean": 4.45,
-        "max": 4.45
+        "mean": 6.78,
+        "max": 6.78
       }
     }
   }

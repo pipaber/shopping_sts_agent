@@ -5,7 +5,7 @@
 - Tipo: `compra_confirmada`
 - Qué se prueba: El usuario busca con presupuesto, añade dos unidades, pide cerrar y confirma. Tras la búsqueda la tienda fija el primer candidato en 14,50 € y 20 unidades, para que el resultado no dependa de qué producto salga primero.
 
-## Turno 1 (18.4 s)
+## Turno 1 (29.8 s)
 
 **Usuario (transcripción del ASR):** Hola, busco una cafetería italiana. Tengo un presupuesto de 60 euros.
 
@@ -25,7 +25,7 @@
 
 > **Suceso externo:** la tienda deja `B088MC6DPT` (@elegida) con precio 14,50 € y existencias 20.
 
-## Turno 2 (12.0 s)
+## Turno 2 (15.7 s)
 
 **Usuario (transcripción del ASR):** Añade dos de la primera al carrito.
 
@@ -38,7 +38,7 @@
 - ✔ `cart(lines=[{"product": "@elegida", "quantity": 2}])` — carrito: 2 × B088MC6DPT
 - ✔ `orders(count=0)` — pedidos registrados: 0
 
-## Turno 3 (8.1 s)
+## Turno 3 (13.4 s)
 
 **Usuario (transcripción del ASR):** Quiero cerrar el pedido.
 
@@ -51,11 +51,11 @@
 - ✔ `awaiting_confirmation(value=true)` — esperando confirmación: sí
 - ✔ `orders(count=0)` — pedidos registrados: 0
 
-## Turno 4 (3.3 s)
+## Turno 4 (7.2 s)
 
 **Usuario (transcripción del ASR):** Sí, confirmo.
 
-- `confirmar_pedido(quote_id="40e0118d94344249bcccb2681fb39503")` → OK: pedido registrado
+- `confirmar_pedido(quote_id="bcc1bb70a161424d857fe6f4cd5ed97a")` → OK: pedido registrado
 
 **Agente:** Pedido número 1 registrado: 2 unidades de «FRHOME - Nespresso 120 Cápsulas de Café compatibles - Il Caffè…» a 14,50 € cada una, 29,00 €. Total: 29,00 €. Gracias por tu compra.
 
@@ -86,10 +86,10 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.54 | 0.03 | 9.93 | 0.05 | 7.87 | 18.42 | 32.5 s |
-| 2 | 0.33 | 0.00 | 4.77 | 0.06 | 6.86 | 12.02 | 26.1 s |
-| 3 | 0.32 | 0.00 | 1.95 | 0.04 | 5.74 | 8.05 | 22.8 s |
-| 4 | 0.32 | 0.00 | 0.00 | 0.04 | 2.93 | 3.29 | 11.3 s |
-| **Media de los turnos con LLM (3)** | 0.40 | 0.01 | 5.55 | 0.05 | 6.82 | 12.83 | |
-| **Media de los turnos sin LLM (1)** | 0.32 | 0.00 | 0.00 | 0.04 | 2.93 | 3.29 | |
+| 1 | 0.42 | 0.03 | 10.57 | 0.04 | 18.74 | 29.81 | 35.9 s |
+| 2 | 0.34 | 0.00 | 5.09 | 0.06 | 10.19 | 15.68 | 20.9 s |
+| 3 | 0.35 | 0.00 | 2.08 | 0.04 | 10.90 | 13.37 | 23.1 s |
+| 4 | 0.35 | 0.00 | 0.00 | 0.04 | 6.82 | 7.21 | 13.6 s |
+| **Media de los turnos con LLM (3)** | 0.37 | 0.01 | 5.91 | 0.05 | 13.28 | 19.62 | |
+| **Media de los turnos sin LLM (1)** | 0.35 | 0.00 | 0.00 | 0.04 | 6.82 | 7.21 | |
 

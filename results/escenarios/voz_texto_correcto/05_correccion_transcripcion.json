@@ -6,9 +6,9 @@
   "voice": true,
   "input": "texto",
   "audio_source": null,
-  "user_id": "eval-136880e9-texto-05_correccion_transcripcion",
+  "user_id": "eval-7fe85b98-texto-05_correccion_transcripcion",
   "threads": [
-    "eval-136880e9-texto-05_correccion_transcripcion-c1"
+    "eval-7fe85b98-texto-05_correccion_transcripcion-c1"
   ],
   "names": {
     "elegido": "B08P34RJSX"
@@ -41,11 +41,11 @@
       ],
       "timings": {
         "asr": 0.0,
-        "retrieval": 0.033,
-        "llm": 7.94,
-        "tools": 0.027,
+        "retrieval": 0.032,
+        "llm": 8.124,
+        "tools": 0.025,
         "tts": 0.0,
-        "total": 8.0
+        "total": 8.181
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
@@ -54,7 +54,7 @@
         "ratón inalámbrico"
       ],
       "before": {
-        "cart_id": "eval-136880e9-texto-05_correccion_transcripcion-c1",
+        "cart_id": "eval-7fe85b98-texto-05_correccion_transcripcion-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -73,7 +73,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-136880e9-texto-05_correccion_transcripcion-c1",
+        "cart_id": "eval-7fe85b98-texto-05_correccion_transcripcion-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -203,10 +203,10 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 4.818,
-        "tools": 0.055,
+        "llm": 4.959,
+        "tools": 0.052,
         "tts": 0.0,
-        "total": 4.872
+        "total": 5.012
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
@@ -215,7 +215,7 @@
         "primero"
       ],
       "before": {
-        "cart_id": "eval-136880e9-texto-05_correccion_transcripcion-c1",
+        "cart_id": "eval-7fe85b98-texto-05_correccion_transcripcion-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -297,7 +297,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-136880e9-texto-05_correccion_transcripcion-c1",
+        "cart_id": "eval-7fe85b98-texto-05_correccion_transcripcion-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -348,7 +348,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-136880e9-texto-05_correccion_transcripcion-c1",
+              "cart_id": "eval-7fe85b98-texto-05_correccion_transcripcion-c1",
               "product_id": "B08P34RJSX",
               "quantity": 2
             }
@@ -426,17 +426,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 2.293,
+        "llm": 2.329,
         "tools": 0.039,
         "tts": 0.0,
-        "total": 2.332
+        "total": 2.367
       },
       "llm_steps": 1,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-136880e9-texto-05_correccion_transcripcion-c1",
+        "cart_id": "eval-7fe85b98-texto-05_correccion_transcripcion-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -487,7 +487,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-136880e9-texto-05_correccion_transcripcion-c1",
+              "cart_id": "eval-7fe85b98-texto-05_correccion_transcripcion-c1",
               "product_id": "B08P34RJSX",
               "quantity": 2
             }
@@ -524,13 +524,13 @@
         }
       },
       "after": {
-        "cart_id": "eval-136880e9-texto-05_correccion_transcripcion-c1",
+        "cart_id": "eval-7fe85b98-texto-05_correccion_transcripcion-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "d19e4966dcd249228864735836268a04",
+            "quote_id": "87dfb434bf204036b3a4b0a6aa6d528f",
             "items": [
               {
                 "product_id": "B08P34RJSX",
@@ -590,7 +590,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-136880e9-texto-05_correccion_transcripcion-c1",
+              "cart_id": "eval-7fe85b98-texto-05_correccion_transcripcion-c1",
               "product_id": "B08P34RJSX",
               "quantity": 2
             }
@@ -674,23 +674,23 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 8.067,
-        "tools": 0.054,
+        "llm": 8.112,
+        "tools": 0.052,
         "tts": 0.0,
-        "total": 8.12
+        "total": 8.164
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-136880e9-texto-05_correccion_transcripcion-c1",
+        "cart_id": "eval-7fe85b98-texto-05_correccion_transcripcion-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "d19e4966dcd249228864735836268a04",
+            "quote_id": "87dfb434bf204036b3a4b0a6aa6d528f",
             "items": [
               {
                 "product_id": "B08P34RJSX",
@@ -750,7 +750,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-136880e9-texto-05_correccion_transcripcion-c1",
+              "cart_id": "eval-7fe85b98-texto-05_correccion_transcripcion-c1",
               "product_id": "B08P34RJSX",
               "quantity": 2
             }
@@ -787,7 +787,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-136880e9-texto-05_correccion_transcripcion-c1",
+        "cart_id": "eval-7fe85b98-texto-05_correccion_transcripcion-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -838,7 +838,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-136880e9-texto-05_correccion_transcripcion-c1",
+              "cart_id": "eval-7fe85b98-texto-05_correccion_transcripcion-c1",
               "product_id": "B08P34RJSX",
               "quantity": 12
             }
@@ -924,17 +924,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 2.379,
-        "tools": 0.041,
+        "llm": 2.492,
+        "tools": 0.038,
         "tts": 0.0,
-        "total": 2.421
+        "total": 2.53
       },
       "llm_steps": 1,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-136880e9-texto-05_correccion_transcripcion-c1",
+        "cart_id": "eval-7fe85b98-texto-05_correccion_transcripcion-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -985,7 +985,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-136880e9-texto-05_correccion_transcripcion-c1",
+              "cart_id": "eval-7fe85b98-texto-05_correccion_transcripcion-c1",
               "product_id": "B08P34RJSX",
               "quantity": 12
             }
@@ -1022,13 +1022,13 @@
         }
       },
       "after": {
-        "cart_id": "eval-136880e9-texto-05_correccion_transcripcion-c1",
+        "cart_id": "eval-7fe85b98-texto-05_correccion_transcripcion-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "23703fe9dcf94bada4171e1e4b3905d2",
+            "quote_id": "842a82977dd34ae49ac8aad07d24449e",
             "items": [
               {
                 "product_id": "B08P34RJSX",
@@ -1088,7 +1088,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-136880e9-texto-05_correccion_transcripcion-c1",
+              "cart_id": "eval-7fe85b98-texto-05_correccion_transcripcion-c1",
               "product_id": "B08P34RJSX",
               "quantity": 12
             }
@@ -1160,7 +1160,7 @@
         {
           "tool": "confirmar_pedido",
           "args": {
-            "quote_id": "23703fe9dcf94bada4171e1e4b3905d2"
+            "quote_id": "842a82977dd34ae49ac8aad07d24449e"
           },
           "reason": "el usuario confirmó la cotización",
           "ok": true,
@@ -1172,22 +1172,22 @@
         "asr": 0.0,
         "retrieval": 0.0,
         "llm": 0.0,
-        "tools": 0.033,
+        "tools": 0.032,
         "tts": 0.0,
-        "total": 0.033
+        "total": 0.032
       },
       "llm_steps": 0,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-136880e9-texto-05_correccion_transcripcion-c1",
+        "cart_id": "eval-7fe85b98-texto-05_correccion_transcripcion-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "23703fe9dcf94bada4171e1e4b3905d2",
+            "quote_id": "842a82977dd34ae49ac8aad07d24449e",
             "items": [
               {
                 "product_id": "B08P34RJSX",
@@ -1247,7 +1247,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-136880e9-texto-05_correccion_transcripcion-c1",
+              "cart_id": "eval-7fe85b98-texto-05_correccion_transcripcion-c1",
               "product_id": "B08P34RJSX",
               "quantity": 12
             }
@@ -1284,7 +1284,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-136880e9-texto-05_correccion_transcripcion-c1",
+        "cart_id": "eval-7fe85b98-texto-05_correccion_transcripcion-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -1292,7 +1292,7 @@
           "quote": null,
           "order": {
             "order_id": 1,
-            "quote_id": "23703fe9dcf94bada4171e1e4b3905d2",
+            "quote_id": "842a82977dd34ae49ac8aad07d24449e",
             "items": [
               {
                 "product_id": "B08P34RJSX",
@@ -1348,7 +1348,7 @@
           "orders": [
             {
               "order_id": 1,
-              "quote_id": "23703fe9dcf94bada4171e1e4b3905d2",
+              "quote_id": "842a82977dd34ae49ac8aad07d24449e",
               "total_cents": 13200
             }
           ],
@@ -1406,7 +1406,7 @@
   ],
   "final": {
     "snapshot": {
-      "cart_id": "eval-136880e9-texto-05_correccion_transcripcion-c1",
+      "cart_id": "eval-7fe85b98-texto-05_correccion_transcripcion-c1",
       "state": {
         "budget_cents": null,
         "preferences": [],
@@ -1414,7 +1414,7 @@
         "quote": null,
         "order": {
           "order_id": 1,
-          "quote_id": "23703fe9dcf94bada4171e1e4b3905d2",
+          "quote_id": "842a82977dd34ae49ac8aad07d24449e",
           "items": [
             {
               "product_id": "B08P34RJSX",
@@ -1470,7 +1470,7 @@
         "orders": [
           {
             "order_id": 1,
-            "quote_id": "23703fe9dcf94bada4171e1e4b3905d2",
+            "quote_id": "842a82977dd34ae49ac8aad07d24449e",
             "total_cents": 13200
           }
         ],
@@ -1571,20 +1571,20 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 4.25,
-        "max": 8.07
+        "mean": 4.34,
+        "max": 8.12
       },
       "tools": {
         "mean": 0.04,
-        "max": 0.06
+        "max": 0.05
       },
       "tts": {
         "mean": 0.0,
         "max": 0.0
       },
       "total": {
-        "mean": 4.3,
-        "max": 8.12
+        "mean": 4.38,
+        "max": 8.18
       }
     },
     "with_llm": {
@@ -1598,20 +1598,20 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 5.1,
-        "max": 8.07
+        "mean": 5.2,
+        "max": 8.12
       },
       "tools": {
         "mean": 0.04,
-        "max": 0.06
+        "max": 0.05
       },
       "tts": {
         "mean": 0.0,
         "max": 0.0
       },
       "total": {
-        "mean": 5.15,
-        "max": 8.12
+        "mean": 5.25,
+        "max": 8.18
       }
     },
     "without_llm": {

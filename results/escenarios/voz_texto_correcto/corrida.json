@@ -1,30 +1,33 @@
 {
-  "date": "2026-11-12T13:11:57",
-  "commit": "fb5ef3a+cambios",
+  "date": "2026-11-17T15:03:20",
+  "commit": "1d1a79e+cambios",
   "memory_backend": "postgres",
   "models": {
     "llm": "qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
     "asr": "large-v3-turbo",
-    "tts": "XTTS-v2",
+    "tts": "F5-Spanish",
     "embeddings": "intfloat/multilingual-e5-small",
     "reranker": "control"
   },
   "voice": {
-    "reference": "audio/referencia/referencia.wav",
+    "references": [
+      "audio/escenarios/01_compra_confirmada/01.wav",
+      "audio/escenarios/03_cambio_cantidad/01.wav"
+    ],
     "speaker": null,
-    "speed": 1.1
+    "speed": 0.9
   },
   "load": {
-    "search_seconds": 15.1,
-    "llm_seconds": 0.7,
+    "search_seconds": 20.1,
+    "llm_seconds": 0.8,
     "asr_seconds": 0.8,
-    "tts_seconds": 7.5,
-    "total_seconds": 24.4,
+    "tts_seconds": 6.1,
+    "total_seconds": 28.2,
     "vram_mib": {
       "search": 706,
       "llm": 5820,
       "asr": 7772,
-      "loaded": 9532
+      "loaded": 8522
     }
   },
   "input": "texto",
@@ -89,23 +92,23 @@
         },
         "retrieval": {
           "mean": 0.01,
-          "max": 0.03
+          "max": 0.05
         },
         "llm": {
-          "mean": 3.98,
-          "max": 9.16
+          "mean": 4.07,
+          "max": 9.55
         },
         "tools": {
           "mean": 0.04,
-          "max": 0.1
+          "max": 0.05
         },
         "tts": {
           "mean": 0.0,
           "max": 0.0
         },
         "total": {
-          "mean": 4.02,
-          "max": 9.22
+          "mean": 4.12,
+          "max": 9.6
         }
       },
       "with_llm": {
@@ -116,23 +119,23 @@
         },
         "retrieval": {
           "mean": 0.01,
-          "max": 0.03
+          "max": 0.05
         },
         "llm": {
-          "mean": 5.14,
-          "max": 9.16
+          "mean": 5.26,
+          "max": 9.55
         },
         "tools": {
           "mean": 0.04,
-          "max": 0.1
+          "max": 0.05
         },
         "tts": {
           "mean": 0.0,
           "max": 0.0
         },
         "total": {
-          "mean": 5.19,
-          "max": 9.22
+          "mean": 5.31,
+          "max": 9.6
         }
       },
       "without_llm": {
@@ -151,7 +154,7 @@
         },
         "tools": {
           "mean": 0.03,
-          "max": 0.06
+          "max": 0.03
         },
         "tts": {
           "mean": 0.0,
@@ -159,7 +162,7 @@
         },
         "total": {
           "mean": 0.03,
-          "max": 0.08
+          "max": 0.04
         }
       }
     }

@@ -21,7 +21,7 @@ Plan para una persona, unas 2 semanas (inicio 9 de noviembre de 2026). Elaborado
 | GPU | Colab T4 gratis (16 GB) | Caso base; el tamaño del LLM queda configurable |
 | ASR | Whisper large-v3-turbo con `faster-whisper` 1.2 (float16 en GPU, int8 en CPU), español fijo y filtro de voz | Buen español y rápido; 2,2 GB de VRAM medidos. Sin el filtro de voz transcribe el silencio como frases inventadas |
 | LLM | Qwen2.5-7B-Instruct en GGUF Q4_K_M (`Qwen/Qwen2.5-7B-Instruct-GGUF`, 4,68 GB) con `llama-cpp-python` | 5,2 GB de VRAM medidos con contexto de 8 192 tokens; el esquema JSON de la decisión se convierte en gramática y fuerza llamadas a herramientas válidas. Configurable con `SHOPPING_AGENT_LLM_*` |
-| TTS | XTTS-v2 (`coqui-tts` 0.28) con grabación de referencia propia | Español nativo, clona con ~10 s; 2,0 GB de VRAM al cargar y 2,8 GB tras sintetizar (medidos). Se usa bajo la licencia CPML de Coqui, que solo permite uso no comercial (este trabajo es académico); cada persona que lo ejecuta la acepta de forma explícita en su `.env` |
+| TTS | Desde el 17 de noviembre, F5-TTS con el ajuste al español F5-Spanish (`f5-tts` 1.1), clonando de dos turnos grabados por el autor, que la eligió de oído; pesos de uso no comercial. XTTS-v2 queda como alternativa (`SHOPPING_AGENT_TTS=xtts`) | Véase «Voz del agente: F5-Spanish en lugar de XTTS-v2». Lo que sigue es el motivo original de XTTS-v2: Español nativo, clona con ~10 s; 2,0 GB de VRAM al cargar y 2,8 GB tras sintetizar (medidos). Se usa bajo la licencia CPML de Coqui, que solo permite uso no comercial (este trabajo es académico); cada persona que lo ejecuta la acepta de forma explícita en su `.env` |
 | Recuperación | BM25 + embeddings densos multilingües (fusión RRF) → reranker GraphSAGE | El GNN es el componente de la ablación |
 | Memoria del agente | Postgres: `PostgresSaver` (checkpoints) y `PostgresStore` (memoria entre conversaciones, con pgvector si hace falta búsqueda semántica) | Decisión del autor; un solo motor para la memoria de corto y largo plazo |
 | Tienda simulada | SQLite (precios, stock, carritos, pedidos) | Restaurar el estado inicial es copiar un archivo |
@@ -108,7 +108,7 @@ Limitaciones observadas con el modelo de 7B: es sensible a la redacción del pro
 - **Fragmentos.** XTTS-v2 recorta las frases de más de 239 caracteres en español: el texto se parte por frases (y por comas si hace falta) en trozos de hasta 200 caracteres, que se sintetizan uno a uno y se unen con una pausa corta. La semilla del muestreo se fija para que la misma entrada dé la misma salida.
 - **Audio que sobra.** Con textos muy cortos XTTS-v2 a veces sigue "hablando" (un "Sí." salió con cinco segundos de balbuceo). Si un fragmento dura más de 2 s + 0,15 s por carácter, se vuelve a sintetizar con otra semilla, hasta tres veces, y se usa el intento más corto. El umbral es holgado a propósito: una voz pausada llega a 0,10 s por carácter, y un primer umbral ajustado al hablante de prueba (0,09) hacía reintentar sin motivo con la voz real.
 - **Memoria de GPU compartida.** Tras cada síntesis se libera la memoria que PyTorch deja en reserva (cerca de 1 GB después de una respuesta larga). El LLM y Whisper reservan la suya fuera de PyTorch, y en la GPU de 12 GB de la workstation esa reserva bastó para que Whisper se quedara sin memoria en el turno siguiente.
-- **Voz.** Sale de `audio/referencia/referencia.wav` (o de `SHOPPING_AGENT_VOICE_REF`). Mientras no exista, el desarrollo usa un hablante incluido en XTTS-v2, elegido de forma explícita; nunca la voz de otra persona. La carpeta `audio/` y cualquier archivo de audio están fuera de git. Desde el 12 de noviembre la referencia es otra grabación y el agente habla a velocidad 1,10 (`SHOPPING_AGENT_TTS_SPEED`); véase «Voz del agente: referencia nueva y velocidad».
+- **Voz.** Con XTTS-v2, el motor de entonces y hoy la alternativa, sale de `audio/referencia/referencia.wav` (o de `SHOPPING_AGENT_VOICE_REF`); con F5-Spanish, el motor por defecto desde el 17 de noviembre, de dos turnos grabados de los escenarios. Mientras no exista, el desarrollo usa un hablante incluido en XTTS-v2, elegido de forma explícita; nunca la voz de otra persona. La carpeta `audio/` y cualquier archivo de audio están fuera de git. Desde el 12 de noviembre la referencia es otra grabación y el agente habla a velocidad 1,10 (`SHOPPING_AGENT_TTS_SPEED`); véase «Voz del agente: referencia nueva y velocidad».
 - **Repetición con el texto correcto.** Como cada turno cambia el carrito y la tienda, no se repite un turno suelto: se repite la conversación entera desde la misma tienda inicial, en otro hilo, dando al agente el texto correcto en lugar del audio. Se compara turno a turno si el ASR cambió el texto, si el agente hizo operaciones distintas y si el estado final de la tienda coincide.
 - **Métricas.** WER con `jiwer` tras normalizar los dos textos (cifras en palabras, minúsculas, sin tildes ni puntuación), para que "60 €" y "sesenta euros" cuenten como lo mismo. Importes y cantidades se extraen de ambos textos y se comparan como conjuntos con repetición; "un" y "una" sueltos son artículos y no cuentan. Los nombres de producto esperados en cada turno (incluidos "el primero", "el segundo"…) se dan en `scenarios/<escenario>.terminos.json`. La semejanza de hablante se mide con ECAPA-TDNN de SpeechBrain, un modelo distinto del codificador de XTTS-v2, en CPU. Desde el 12 de noviembre se mide de dos maneras: con la grabación de referencia, que sale optimista porque es la misma toma de la que se clonó, y con grabaciones reales del hablante que no se usaron para clonar.
 - **Dependencias.** `coqui-tts` 0.28 funciona con PyTorch 2.14 sin cambiarlo. `torchaudio` y `torchcodec` se toman del índice de PyTorch para CUDA 12.6 (las ruedas de PyPI están compiladas para CUDA 13 y no cargan) y `torchcodec` necesita FFmpeg en el sistema; en Colab habrá que usar el índice que corresponda a su versión de CUDA.
@@ -460,6 +460,50 @@ El «texto peor» es el mismo a las cuatro velocidades: la respuesta con las mar
 
 **Sin verificar.** Nadie ha escuchado las respuestas que Whisper marca, y Whisper no es un oyente: hay que oír al menos `audio/corridas/voz/02_pedido_ambiguo/respuesta_02.wav` para saber si el tramo se pierde de verdad. El autor comparó de oído seis frases a 1,0 y a 1,15, ninguna con marcas difíciles; la voz a 1,10 no consta que la haya escuchado: la eligió por la tabla. Es una corrida por voz con cada voz y una semilla de muestreo. Las corridas de demostración (`voz_demo_compra_voz_usuario`) y las transcripciones en vivo no se repitieron: son de la voz anterior y anotan `audio/referencia/referencia.wav`, que entonces era la otra grabación. En Colab la voz nueva se probó después, en la corrida final («Ejecución en Colab (T4)»).
 
+### Voz del agente: F5-Spanish en lugar de XTTS-v2 (17 de noviembre)
+
+**Por qué.** El autor escuchó la voz de XTTS-v2 y dijo que no se parecía a la suya. Se compararon doce formas de clonarla con las mismas diez frases ([experiments/comparacion_voz](../experiments/comparacion_voz/README.md)): la de entonces era la que menos se parecía a sus grabaciones reales, y lo que más movía el parecido era de qué grabaciones se clonaba. Escuchó los audios y eligió F5-Spanish clonando de dos turnos reales («es muy parecido»).
+
+**Qué cambia.**
+
+- **Motor a elegir** con `SHOPPING_AGENT_TTS`: `f5` (por defecto) o `xtts`. `load_tts` carga el elegido; los dos cumplen el mismo protocolo (`AgentVoice`) y comparten el troceado, la unión de fragmentos y la liberación de memoria. XTTS-v2 no cambia de comportamiento.
+- **F5-Spanish** ([voice/f5.py](../src/shopping_agent/voice/f5.py)): F5-TTS 1.1.22 con los pesos `jpgallegoar/F5-Spanish` (`model_1200000.safetensors`, 1,3 GB) y el vocoder `charactr/vocos-mel-24khz` (52 MB), 32 pasos de muestreo y semilla fija.
+- **Referencia de clonación:** los turnos `01_compra_confirmada/01` y `03_cambio_cantidad/01` seguidos (10,7 s), con el texto de esos turnos de `scenarios/evaluacion` como transcripción. Se cambian con `SHOPPING_AGENT_VOICE_TURNS`. Los audios siguen fuera de git; la ruta sale de las grabaciones de los escenarios, que es lo que se sube a Colab.
+- **Dependencia** `f5-tts`: resuelve con el mismo `torch` (2.14.1), `transformers`, `coqui-tts` y `llama-cpp-python`. Añade 65 paquetes y baja cuatro transitivos (`huggingface-hub` 2.4.0 → 1.33.0, `filelock`, `python-dateutil`, `rich`); con ellos pasan las pruebas y las corridas de este apartado.
+- **Licencia:** código de F5-TTS, MIT; pesos de F5-Spanish, CC-BY-NC-4.0 según los metadatos de su repositorio (el texto de la ficha dice CC0; se toma la más restrictiva). No pide aceptar condiciones.
+
+**Texto perdido: causa y defensa.** En la comparación, esta voz dijo solo «Gracias por tu compra» de «Pedido número uno registrado. ¡Gracias por tu compra!»; los primeros 2,5 s del audio eran silencio. F5-TTS no decide cuánto dura lo que dice: se le pide una duración total (referencia más texto nuevo) proporcional a la longitud de los textos, y el modelo reparte en ella la transcripción de la referencia y el texto nuevo. La transcripción llevaba «60 euros» y «45 euros» donde el audio dice «sesenta» y «cuarenta y cinco»: quedaba un 12 % más corta que lo que se oye y el comienzo del texto nuevo caía en la parte de la referencia.
+
+| Prueba (cinco semillas por frase) | Con la transcripción con cifras | Con la transcripción deletreada |
+|---|---|---|
+| «Pedido número uno/dos registrado. ¡Gracias por tu compra!»: pierden el comienzo | 8 de 10 | 0 de 10 |
+| «¿Lo confirmo?»: sale en silencio | 5 de 5 | 4 de 5 |
+
+La segunda fila es otro fallo: a un texto muy corto le tocan décimas de segundo y el modelo no llega a decirlo. La defensa tiene tres partes: la transcripción de la referencia se deletrea con `to_speech`; cada fragmento recibe 0,6 s de margen y después se recorta el silencio de los bordes (35 de 35 síntesis de siete frases cortas dichas, incluida la frase que se perdía); y tras cada fragmento se compara el tiempo con voz con las sílabas del texto (más de 10 sílabas por segundo no puede ser), repitiendo con otra semilla hasta tres veces. La comprobación no pasa el audio por Whisper: sobre las medidas guardadas de la prueba con cifras habría detectado 10 de las 13 pérdidas (las de una oración entera y los silencios; no las 3 de dos palabras) sin falsas alarmas. No se ha medido que haga falta más: en las 31 respuestas de la corrida no saltó ninguna vez y el WER no muestra texto omitido.
+
+**Velocidad 0,9.** F5-TTS copia el ritmo de la referencia, y en esos dos turnos el autor habla rápido: 6,9 sílabas por segundo sin pausas, frente a 5,0 en el conjunto de sus 31 turnos y 5,8 en los de diez sílabas o más. La velocidad de F5 solo cambia la duración que se le pide, y el modelo la gasta sobre todo en pausas: con diez frases la articulación baja de 6,1 (velocidad 1,0) a 5,9 (0,9), 5,6 (0,8) y 5,5 (0,7), mientras el ritmo contando pausas baja de 4,4 a 3,2. Con las 31 respuestas del agente ([results/voz_velocidad_f5.md](../results/voz_velocidad_f5.md)): WER 5,0 % a 1,0, 4,3 % a 0,9 y 5,9 % a 0,8, donde además «Di sí» se entiende en 3 de 7. Queda 0,9: la articulación del autor en sus turnos largos y el menor WER. El ritmo medio de todos sus turnos (5,0) no se alcanza bajando la velocidad sin perder inteligibilidad.
+
+**Evaluación** ([resumen](../results/escenarios/resumen.md)): los seis escenarios por voz con las grabaciones del autor. La corrida de XTTS-v2 se conserva como `voz_xtts` y la nueva es `voz`; el agente dio las mismas 31 respuestas.
+
+| Medida | XTTS-v2 a 1,10 (`voz_xtts`) | F5-Spanish a 0,9 (`voz`) |
+|---|---|---|
+| Escenarios correctos (con audio / con el texto correcto) | 6 de 6 / 6 de 6 | 6 de 6 / 6 de 6 |
+| WER de la voz generada (errores de 1 335 palabras) | 5,5 % (73) | 4,3 % (57) |
+| Respuestas sin ningún error | 12 de 31 | 8 de 31 |
+| Semejanza con los 29 turnos reales no usados para clonar, media / mínima | 0,256 / 0,220 | 0,425 / 0,376 |
+| Latencia por turno, todos: ASR / LLM / TTS / total | 0,34 / 3,91 / 5,62 / 9,92 s | 0,35 / 4,00 / 10,72 / 15,11 s |
+| Latencia por turno, con LLM: ASR / LLM / TTS / total | 0,35 / 5,05 / 5,90 / 11,35 s | 0,35 / 5,16 / 11,19 / 16,75 s |
+| Turno más lento | 18,84 s | 29,81 s |
+| Primer fragmento listo, media / máximo | 3,4 / 6,9 s | 3,7 / 4,6 s |
+| Carga: búsqueda / LLM / ASR / TTS / total | 15,1 / 0,7 / 0,8 / 7,5 / 24,4 s | 20,1 / 0,8 / 0,8 / 6,1 / 28,2 s |
+| Memoria de GPU del proceso: búsqueda → + LLM → + ASR → + TTS | 706 → 5 820 → 7 772 → 9 532 MiB | 706 → 5 820 → 7 772 → 8 522 MiB |
+
+- **Mejora** el parecido con la voz real (medido con los mismos 29 turnos en las dos corridas) y, algo, el WER; la respuesta con marcas impronunciables pasa del 29 % al 9 %.
+- **Empeora** la latencia: la síntesis tarda 1,9 veces más y un turno con LLM pasa de 11,4 a 16,8 s. F5 procesa la referencia de 10,7 s en cada fragmento y los fragmentos son más cortos (135 caracteres). Hay menos respuestas sin ningún error (8 frente a 12): deforma más marcas. Y el audio sale a la mitad de amplitud que el de XTTS-v2, al volumen de las grabaciones del autor; no se ha igualado.
+- **Cautelas.** La semejanza de F5 (0,425) supera el techo de los turnos reales entre sí (0,371): las respuestas son mucho más largas que los turnos y se comparan mejor, y los turnos de clonar y de medir son de la misma sesión y micrófono. Una sola semilla. La diferencia de carga de la búsqueda (15 frente a 20 s) es del disco, no de la voz.
+- **Servidor en vivo:** tres turnos del escenario 03 con F5, 8 522 MiB con todo cargado y 8 798 al terminar ([transcripción](../results/en_vivo/vivo-63ab1fd4/transcripcion.md)).
+- **Sin verificar:** nada de esto se ha corrido en la T4 de Colab, donde XTTS-v2 ya tardaba 2,2 veces más que en la workstation; el notebook hay que regenerarlo.
+
 ### Análisis de aciertos y fallos
 
 [ANALISIS_ACIERTOS_FALLOS.md](ANALISIS_ACIERTOS_FALLOS.md) recoge seis aciertos y nueve fallos, cada uno con lo que se pidió, lo que hizo el sistema, la ficha donde se ve y la causa. Los aciertos explican por qué funciona el diseño (la tienda valida, el código decide qué es una confirmación, la cotización tiene identificador). Los fallos son los reales, con su estado: cuatro corregidos (los de la línea base y el de los números con cifras), cuatro sin corregir (la palabra del ASR que cambia la compra, el «no consta» sin abrir el detalle, la respuesta hablada ininteligible y las explicaciones pobres) y el límite de la ablación. Dice de forma expresa qué escenarios pasan sin que esté bien lo que importa.
@@ -545,12 +589,15 @@ Dependencias a añadir: `langgraph-checkpoint-postgres`, `psycopg[binary,pool]`,
 - **Corrida final en Colab con la voz del autor:** hecha el 12 de noviembre sobre el commit `d81bc00`; 20 de 20 por texto y 6 de 6 por voz, con 9 152 MiB y 21,4 s por turno por voz con LLM.
 - **Análisis de aciertos y fallos:** [ANALISIS_ACIERTOS_FALLOS.md](ANALISIS_ACIERTOS_FALLOS.md).
 - **Números escritos con cifras** (escenario 05 con la voz real): corregido el 12 de noviembre.
-- **Velocidad del habla:** 1,10, decidida por el autor con la medida de velocidades.
+- **Velocidad del habla:** 1,10 con XTTS-v2, decidida por el autor con la medida de velocidades; 0,9 con F5-Spanish, por la medida del 17 de noviembre.
+- **Voz que se parezca a la del autor:** F5-Spanish clonando de dos turnos reales, elegida por el autor de oído el 17 de noviembre.
 
 **Queda.**
 
 - **En Colab, lo que necesita a una persona:** grabar un turno con el micrófono del navegador y la celda que sube `audio.zip`. Lo demás del notebook está corrido.
-- **Latencia por voz en la T4.** Un turno con LLM tarda 21 s y el más lento 36 s; más de la mitad es la síntesis. Reproducir el primer fragmento mientras se sintetiza el resto, o respuestas habladas más cortas, lo bajarían. No se ha hecho.
+- **Colab con la voz nueva.** El notebook y la corrida de la T4 son de XTTS-v2. Con F5-Spanish no se ha medido allí; en la workstation la síntesis tarda 1,9 veces más que con XTTS-v2.
+- **Volumen de la voz nueva.** Sale a la mitad de amplitud que la de XTTS-v2; no se ha igualado.
+- **Latencia por voz en la T4.** Con XTTS-v2, un turno con LLM tarda 21 s y el más lento 36 s; más de la mitad es la síntesis. Reproducir el primer fragmento mientras se sintetiza el resto, o respuestas habladas más cortas, lo bajarían. No se ha hecho.
 - **Escuchar la voz nueva.** La velocidad 1,10 se eligió por la medida, no de oído. Y nadie ha escuchado las respuestas que Whisper entiende mal: la del escenario 02 con marcas impronunciables y las que terminan con palabras de más. Según lo que se oiga, las salidas son otra toma de referencia, condicionar el ritmo con 30 s de la referencia en lugar de 6, o no leer en voz alta las marcas que no son palabras. Nada de eso se ha probado.
 - **El error del ASR que cambia la compra** («cafetera» → «cafetería», escenario 01 con la voz real). Opciones sin probar: dar vocabulario del dominio a Whisper, o que el agente diga qué ha buscado. No se ha tocado nada.
 - **Respuestas habladas largas.** Las que recitan el carrito completo llegan a 40 s con la voz nueva; valorar una versión hablada más breve.

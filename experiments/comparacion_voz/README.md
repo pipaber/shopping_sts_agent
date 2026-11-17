@@ -2,6 +2,8 @@
 
 Experimento aparte del proyecto: no cambia el agente, la voz por defecto, las dependencias ni los resultados guardados. Compara, con las mismas frases y la misma medida, la voz actual del agente con otras formas de clonar la voz del autor. **La decisión se toma de oído**: los audios quedan en `audio/comparacion_voz/` (sin versionar, porque son la voz clonada de una persona) y aquí solo están los scripts y las cifras.
 
+**Resultado.** El autor escuchó los audios y eligió `C2_f5_turnos`. Desde el 17 de noviembre es la voz por defecto del agente (`shopping_agent.voice.f5`), con la transcripción de la referencia deletreada, que es lo que evitaba el texto perdido en la frase 5; el detalle está en el README del proyecto, «Voz del agente: F5-Spanish».
+
 Las tablas con todas las cifras están en [RESULTADOS.md](RESULTADOS.md) (las genera `medir.py`; el detalle por frase, en `resultados.json`).
 
 ## Qué se compara

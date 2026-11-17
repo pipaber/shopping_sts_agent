@@ -6,9 +6,9 @@
   "voice": true,
   "input": "texto",
   "audio_source": null,
-  "user_id": "eval-136880e9-texto-04_sin_existencias",
+  "user_id": "eval-7fe85b98-texto-04_sin_existencias",
   "threads": [
-    "eval-136880e9-texto-04_sin_existencias-c1"
+    "eval-7fe85b98-texto-04_sin_existencias-c1"
   ],
   "names": {
     "agotada": "B08GPGJY8M",
@@ -44,10 +44,10 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.03,
-        "llm": 7.239,
+        "llm": 7.346,
         "tools": 0.026,
         "tts": 0.0,
-        "total": 7.295
+        "total": 7.402
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
@@ -56,7 +56,7 @@
         "esterilla de yoga"
       ],
       "before": {
-        "cart_id": "eval-136880e9-texto-04_sin_existencias-c1",
+        "cart_id": "eval-7fe85b98-texto-04_sin_existencias-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -75,7 +75,7 @@
         "offers": {}
       },
       "after": {
-        "cart_id": "eval-136880e9-texto-04_sin_existencias-c1",
+        "cart_id": "eval-7fe85b98-texto-04_sin_existencias-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -230,10 +230,10 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 5.528,
-        "tools": 0.03,
+        "llm": 5.781,
+        "tools": 0.031,
         "tts": 0.0,
-        "total": 5.558
+        "total": 5.812
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
@@ -242,7 +242,7 @@
         "primera"
       ],
       "before": {
-        "cart_id": "eval-136880e9-texto-04_sin_existencias-c1",
+        "cart_id": "eval-7fe85b98-texto-04_sin_existencias-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -329,7 +329,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-136880e9-texto-04_sin_existencias-c1",
+        "cart_id": "eval-7fe85b98-texto-04_sin_existencias-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -478,10 +478,10 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 5.046,
-        "tools": 0.052,
+        "llm": 5.195,
+        "tools": 0.05,
         "tts": 0.0,
-        "total": 5.098
+        "total": 5.245
       },
       "llm_steps": 2,
       "tts_first_chunk_seconds": null,
@@ -490,7 +490,7 @@
         "segunda"
       ],
       "before": {
-        "cart_id": "eval-136880e9-texto-04_sin_existencias-c1",
+        "cart_id": "eval-7fe85b98-texto-04_sin_existencias-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -577,7 +577,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-136880e9-texto-04_sin_existencias-c1",
+        "cart_id": "eval-7fe85b98-texto-04_sin_existencias-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -628,7 +628,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-136880e9-texto-04_sin_existencias-c1",
+              "cart_id": "eval-7fe85b98-texto-04_sin_existencias-c1",
               "product_id": "B09738BXB2",
               "quantity": 1
             }
@@ -711,17 +711,17 @@
       "timings": {
         "asr": 0.0,
         "retrieval": 0.0,
-        "llm": 2.32,
-        "tools": 0.04,
+        "llm": 2.332,
+        "tools": 0.038,
         "tts": 0.0,
-        "total": 2.36
+        "total": 2.37
       },
       "llm_steps": 1,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-136880e9-texto-04_sin_existencias-c1",
+        "cart_id": "eval-7fe85b98-texto-04_sin_existencias-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -772,7 +772,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-136880e9-texto-04_sin_existencias-c1",
+              "cart_id": "eval-7fe85b98-texto-04_sin_existencias-c1",
               "product_id": "B09738BXB2",
               "quantity": 1
             }
@@ -814,13 +814,13 @@
         }
       },
       "after": {
-        "cart_id": "eval-136880e9-texto-04_sin_existencias-c1",
+        "cart_id": "eval-7fe85b98-texto-04_sin_existencias-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "e22d878477224fa9846d1038dabbe3f2",
+            "quote_id": "05d65456f354452088a12666115d1548",
             "items": [
               {
                 "product_id": "B09738BXB2",
@@ -880,7 +880,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-136880e9-texto-04_sin_existencias-c1",
+              "cart_id": "eval-7fe85b98-texto-04_sin_existencias-c1",
               "product_id": "B09738BXB2",
               "quantity": 1
             }
@@ -957,7 +957,7 @@
         {
           "tool": "confirmar_pedido",
           "args": {
-            "quote_id": "e22d878477224fa9846d1038dabbe3f2"
+            "quote_id": "05d65456f354452088a12666115d1548"
           },
           "reason": "el usuario confirmó la cotización",
           "ok": true,
@@ -969,22 +969,22 @@
         "asr": 0.0,
         "retrieval": 0.0,
         "llm": 0.0,
-        "tools": 0.028,
+        "tools": 0.031,
         "tts": 0.0,
-        "total": 0.028
+        "total": 0.031
       },
       "llm_steps": 0,
       "tts_first_chunk_seconds": null,
       "tts_retries": 0,
       "product_terms": [],
       "before": {
-        "cart_id": "eval-136880e9-texto-04_sin_existencias-c1",
+        "cart_id": "eval-7fe85b98-texto-04_sin_existencias-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
           "pending_clarification": null,
           "quote": {
-            "quote_id": "e22d878477224fa9846d1038dabbe3f2",
+            "quote_id": "05d65456f354452088a12666115d1548",
             "items": [
               {
                 "product_id": "B09738BXB2",
@@ -1044,7 +1044,7 @@
           "order_items": [],
           "cart_items": [
             {
-              "cart_id": "eval-136880e9-texto-04_sin_existencias-c1",
+              "cart_id": "eval-7fe85b98-texto-04_sin_existencias-c1",
               "product_id": "B09738BXB2",
               "quantity": 1
             }
@@ -1086,7 +1086,7 @@
         }
       },
       "after": {
-        "cart_id": "eval-136880e9-texto-04_sin_existencias-c1",
+        "cart_id": "eval-7fe85b98-texto-04_sin_existencias-c1",
         "state": {
           "budget_cents": null,
           "preferences": [],
@@ -1094,7 +1094,7 @@
           "quote": null,
           "order": {
             "order_id": 1,
-            "quote_id": "e22d878477224fa9846d1038dabbe3f2",
+            "quote_id": "05d65456f354452088a12666115d1548",
             "items": [
               {
                 "product_id": "B09738BXB2",
@@ -1150,7 +1150,7 @@
           "orders": [
             {
               "order_id": 1,
-              "quote_id": "e22d878477224fa9846d1038dabbe3f2",
+              "quote_id": "05d65456f354452088a12666115d1548",
               "total_cents": 1800
             }
           ],
@@ -1213,7 +1213,7 @@
   ],
   "final": {
     "snapshot": {
-      "cart_id": "eval-136880e9-texto-04_sin_existencias-c1",
+      "cart_id": "eval-7fe85b98-texto-04_sin_existencias-c1",
       "state": {
         "budget_cents": null,
         "preferences": [],
@@ -1221,7 +1221,7 @@
         "quote": null,
         "order": {
           "order_id": 1,
-          "quote_id": "e22d878477224fa9846d1038dabbe3f2",
+          "quote_id": "05d65456f354452088a12666115d1548",
           "items": [
             {
               "product_id": "B09738BXB2",
@@ -1277,7 +1277,7 @@
         "orders": [
           {
             "order_id": 1,
-            "quote_id": "e22d878477224fa9846d1038dabbe3f2",
+            "quote_id": "05d65456f354452088a12666115d1548",
             "total_cents": 1800
           }
         ],
@@ -1382,8 +1382,8 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 4.03,
-        "max": 7.24
+        "mean": 4.13,
+        "max": 7.35
       },
       "tools": {
         "mean": 0.04,
@@ -1394,8 +1394,8 @@
         "max": 0.0
       },
       "total": {
-        "mean": 4.07,
-        "max": 7.29
+        "mean": 4.17,
+        "max": 7.4
       }
     },
     "with_llm": {
@@ -1409,8 +1409,8 @@
         "max": 0.03
       },
       "llm": {
-        "mean": 5.03,
-        "max": 7.24
+        "mean": 5.16,
+        "max": 7.35
       },
       "tools": {
         "mean": 0.04,
@@ -1421,8 +1421,8 @@
         "max": 0.0
       },
       "total": {
-        "mean": 5.08,
-        "max": 7.29
+        "mean": 5.21,
+        "max": 7.4
       }
     },
     "without_llm": {

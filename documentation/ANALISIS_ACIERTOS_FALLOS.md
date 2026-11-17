@@ -21,7 +21,7 @@ Dos avisos para leerlo bien:
 | F4 | «He dicho 12, no 2» fijó un presupuesto de 12 € | corregido |
 | F5 | «Cafetera» se entendió «cafetería» y se compró otra cosa | **sin corregir**, y el escenario pasa |
 | F6 | Dice que un dato no consta sin abrir el detalle | **sin corregir** |
-| F7 | Una respuesta hablada sale ininteligible | **sin corregir** |
+| F7 | Una respuesta hablada sale ininteligible | **sin corregir** con XTTS-v2; con la voz actual (F5-Spanish) sale entera |
 | F8 | Explicaciones pobres tras un rechazo | **sin corregir** |
 | F9 | El grafo aporta poco | límite del resultado, no un error |
 
@@ -136,9 +136,10 @@ Dos avisos para leerlo bien:
 
 - **Qué se pidió.** «Unos auriculares Bluetooth y no quiero gastar más de 50 euros». La respuesta enumera cinco candidatos de marcas «Mgrett», «TAIN», «WDGP», «GSBLBL» y «HoLiv».
 - **Qué hizo.** El texto de la respuesta es correcto. El audio, con la voz nueva del agente, no: dura 32 s donde con la voz anterior duraba 49, y Whisper entiende en el último tramo palabras sin relación con el texto. Son 20 de los 73 errores de inteligibilidad de toda la corrida.
-- **Evidencia.** [voz/02](../results/escenarios/voz/02_pedido_ambiguo.md), turno 2; el detalle por respuesta, en `results/escenarios/voz/metricas_voz.json`. El audio está en `audio/corridas/voz/02_pedido_ambiguo/respuesta_02.wav`, fuera de git.
+- **Evidencia.** [voz_xtts/02](../results/escenarios/voz_xtts/02_pedido_ambiguo.md), turno 2; el detalle por respuesta, en `results/escenarios/voz_xtts/metricas_voz.json`. El audio está en `audio/corridas/voz_xtts/02_pedido_ambiguo/respuesta_02.wav`, fuera de git.
 - **Causa.** XTTS-v2 con marcas que no son palabras pronunciables. Sale mal a todas las velocidades medidas, así que no es la velocidad; y con la referencia anterior salía entero, así que depende de la grabación de referencia.
 - **Por qué no se ha arreglado.** Falta lo primero: que alguien lo escuche. La medida es de Whisper, que no es un oyente. Las salidas posibles (otra toma de referencia, no leer en voz alta las marcas que no son palabras, respuestas habladas más cortas) no se han probado, y la segunda toca el texto que redacta el agente.
+- **Después (17 de noviembre).** El agente habla ahora con F5-Spanish, elegida por el autor de oído por otro motivo: se parece más a su voz. Con ella esta respuesta sale entera: Whisper se equivoca en el 9 % de sus palabras (las marcas, deformadas) donde con XTTS-v2 era el 29 %. El caso descrito aquí es de la corrida con XTTS-v2, que se conserva como `voz_xtts`.
 - **Relacionado.** La voz nueva se entiende peor que la anterior según Whisper (5,5 % de WER frente a 3,4 %), y además de este caso añade a veces palabras sueltas al final de un fragmento. El detalle está en el PLAN, «Voz del agente: referencia nueva y velocidad».
 
 ### F8. Explicaciones pobres tras un rechazo (sin corregir)
@@ -167,7 +168,7 @@ Dos avisos para leerlo bien:
 | El escenario 01 por voz pasa aunque se compró otra cosa (F5) | No se cambia una expectativa después de ver el resultado; se dice aquí |
 | El agente dice «no consta» sin abrir el detalle (F6) | Obligarle añade latencia a preguntas que ya contesta bien y mueve otras respuestas |
 | La comprobación del escenario 24 marca como error una respuesta correcta (F6) | Mismo criterio: la expectativa mal planteada se deja y se reporta 3 de 4 |
-| Una respuesta con marcas impronunciables sale ininteligible con la voz nueva (F7) | Nadie la ha escuchado todavía; las salidas no se han probado |
+| Una respuesta con marcas impronunciables sale ininteligible con la voz de XTTS-v2 (F7) | Con F5-Spanish, la voz actual, sale entera con las marcas deformadas; nadie ha escuchado esa respuesta en concreto |
 | Explicaciones pobres cuando el LLM elige una herramienta que no venía a cuento (F8) | Las comprobaciones no las juzgan; arreglarlo es escribir más respuestas por código |
 | Las guardas reconocen pocas formas de decir las cosas (F1, F2) | Fuera de «el segundo» o «cierra el pedido» decide el LLM, como antes |
 | El grafo aporta un 1 % (F9) | Es el resultado de la ablación, no un error |

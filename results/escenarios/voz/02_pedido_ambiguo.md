@@ -5,7 +5,7 @@
 - Tipo: `pedido_ambiguo`
 - Qué se prueba: El primer mensaje no dice qué producto se busca: el agente debe preguntar en lugar de suponer. Después el usuario concreta el producto y el presupuesto, y añade una unidad.
 
-## Turno 1 (2.9 s)
+## Turno 1 (5.4 s)
 
 **Usuario (transcripción del ASR):** Quiero comprar un regalo para mi hermana.
 
@@ -19,7 +19,7 @@
 - ✔ `cart(empty=true)` — carrito: vacío
 - ✔ `orders(count=0)` — pedidos registrados: 0
 
-## Turno 2 (17.0 s)
+## Turno 2 (23.8 s)
 
 **Usuario (transcripción del ASR):** Unos auriculares Bluetooth y no quiero gastar más de 50 euros.
 
@@ -39,7 +39,7 @@
 
 > **Suceso externo:** la tienda deja `B081C31KV4` (@elegido) con precio 19,90 € y existencias 20.
 
-## Turno 3 (11.7 s)
+## Turno 3 (19.0 s)
 
 **Usuario (transcripción del ASR):** Ponme uno del primero.
 
@@ -71,8 +71,8 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.34 | 0.00 | 1.82 | 0.02 | 0.68 | 2.85 | 2.7 s |
-| 2 | 0.35 | 0.03 | 8.42 | 0.03 | 8.13 | 16.96 | 31.7 s |
-| 3 | 0.32 | 0.00 | 4.91 | 0.04 | 6.38 | 11.65 | 24.8 s |
-| **Media de los turnos con LLM (3)** | 0.34 | 0.01 | 5.05 | 0.03 | 5.06 | 10.49 | |
+| 1 | 0.37 | 0.00 | 1.99 | 0.03 | 3.05 | 5.43 | 4.2 s |
+| 2 | 0.40 | 0.03 | 8.58 | 0.03 | 14.78 | 23.82 | 32.0 s |
+| 3 | 0.33 | 0.00 | 4.95 | 0.04 | 13.65 | 18.98 | 26.3 s |
+| **Media de los turnos con LLM (3)** | 0.37 | 0.01 | 5.17 | 0.03 | 10.49 | 16.07 | |
 

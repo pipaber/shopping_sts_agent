@@ -5,7 +5,7 @@
 - Tipo: `sin_existencias`
 - Qué se prueba: Tras la búsqueda, el primer candidato se agota (la tienda lo deja en 0) y el segundo queda con 10 unidades. El usuario pide el primero: el agente no puede añadirlo y debe ofrecer otro con existencias. El usuario compra entonces el segundo de la lista que tenga delante.
 
-## Turno 1 (13.5 s)
+## Turno 1 (21.3 s)
 
 **Usuario (transcripción del ASR):** Necesito una esterilla de yoga.
 
@@ -25,7 +25,7 @@
 
 > **Suceso externo:** la tienda deja `B09738BXB2` (@alternativa) con precio 18,00 € y existencias 10.
 
-## Turno 2 (10.3 s)
+## Turno 2 (16.0 s)
 
 **Usuario (transcripción del ASR):** Ponme una de la primera.
 
@@ -41,7 +41,7 @@
 
 > `@segunda` = `B09738BXB2` (candidate:2): Esterilla Yoga,Ya no es quien vive, sino a Cristo que vive en mí. ,Esterilla Deporte Antideslizante Ecológica y 100% Natural de,No tóxico,para Pilates,Fitness
 
-## Turno 3 (8.9 s)
+## Turno 3 (11.9 s)
 
 **Usuario (transcripción del ASR):** Entonces ponme una de la segunda.
 
@@ -53,7 +53,7 @@
 
 - ✔ `cart(lines=[{"product": "@segunda", "quantity": 1}])` — carrito: 1 × B09738BXB2
 
-## Turno 4 (7.1 s)
+## Turno 4 (10.4 s)
 
 **Usuario (transcripción del ASR):** Cierra el pedido.
 
@@ -66,11 +66,11 @@
 - ✔ `awaiting_confirmation(value=true)` — esperando confirmación: sí
 - ✔ `orders(count=0)` — pedidos registrados: 0
 
-## Turno 5 (4.5 s)
+## Turno 5 (6.8 s)
 
 **Usuario (transcripción del ASR):** Sí, confirmo.
 
-- `confirmar_pedido(quote_id="614d5823069b40cc93e42c8cfd05ad92")` → OK: pedido registrado
+- `confirmar_pedido(quote_id="e8da80c444f34c36a18310fc768e00bb")` → OK: pedido registrado
 
 **Agente:** Pedido número 1 registrado: 1 unidad de «Esterilla Yoga,Ya no es quien vive, sino a Cristo que vive en mí…» a 18,00 € cada una, 18,00 €. Total: 18,00 €. Gracias por tu compra.
 
@@ -101,11 +101,11 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.34 | 0.03 | 7.05 | 0.03 | 6.04 | 13.50 | 23.7 s |
-| 2 | 0.33 | 0.00 | 5.48 | 0.03 | 4.44 | 10.28 | 17.4 s |
-| 3 | 0.34 | 0.00 | 5.03 | 0.05 | 3.48 | 8.89 | 13.2 s |
-| 4 | 0.33 | 0.00 | 2.32 | 0.04 | 4.39 | 7.08 | 17.1 s |
-| 5 | 0.33 | 0.00 | 0.00 | 0.04 | 4.08 | 4.45 | 15.4 s |
-| **Media de los turnos con LLM (4)** | 0.34 | 0.01 | 4.97 | 0.04 | 4.59 | 9.94 | |
-| **Media de los turnos sin LLM (1)** | 0.33 | 0.00 | 0.00 | 0.04 | 4.08 | 4.45 | |
+| 1 | 0.36 | 0.03 | 7.38 | 0.02 | 13.50 | 21.30 | 27.0 s |
+| 2 | 0.34 | 0.00 | 5.71 | 0.03 | 9.89 | 15.97 | 19.4 s |
+| 3 | 0.34 | 0.00 | 5.00 | 0.06 | 6.48 | 11.88 | 12.4 s |
+| 4 | 0.33 | 0.00 | 2.33 | 0.04 | 7.67 | 10.37 | 16.2 s |
+| 5 | 0.33 | 0.00 | 0.00 | 0.04 | 6.41 | 6.78 | 12.2 s |
+| **Media de los turnos con LLM (4)** | 0.34 | 0.01 | 5.11 | 0.04 | 9.39 | 14.88 | |
+| **Media de los turnos sin LLM (1)** | 0.33 | 0.00 | 0.00 | 0.04 | 6.41 | 6.78 | |
 

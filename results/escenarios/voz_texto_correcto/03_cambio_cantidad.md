@@ -5,7 +5,7 @@
 - Tipo: `cambio_cantidad`
 - Qué se prueba: El usuario añade dos unidades y después corrige a cuatro. El producto y el presupuesto deben seguir siendo los mismos y el pedido final debe llevar cuatro unidades (38,00 € de un presupuesto de 45 €).
 
-## Turno 1 (8.3 s)
+## Turno 1 (8.8 s)
 
 **Usuario (texto):** Busco una botella de agua de acero inoxidable. Mi presupuesto es de 45 euros.
 
@@ -34,7 +34,7 @@
 
 - ✔ `cart(lines=[{"product": "@elegida", "quantity": 2}])` — carrito: 2 × B07VQNY8PK
 
-## Turno 3 (5.0 s)
+## Turno 3 (5.2 s)
 
 **Usuario (texto):** Mejor que sean cuatro.
 
@@ -64,7 +64,7 @@
 
 **Usuario (texto):** Sí.
 
-- `confirmar_pedido(quote_id="4fb0ea8542394bdf82658001e83158c7")` → OK: pedido registrado
+- `confirmar_pedido(quote_id="8e2835493cf34c6981e9c0b35e1418f4")` → OK: pedido registrado
 
 **Agente:** Pedido número 1 registrado: 4 unidades de «Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío…» a 9,50 € cada una, 38,00 €. Total: 38,00 €. Gracias por tu compra.
 
@@ -95,11 +95,11 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.00 | 0.03 | 8.25 | 0.03 | 0.00 | 8.31 | 0.0 s |
-| 2 | 0.00 | 0.00 | 5.14 | 0.05 | 0.00 | 5.19 | 0.0 s |
-| 3 | 0.00 | 0.00 | 5.00 | 0.05 | 0.00 | 5.05 | 0.0 s |
-| 4 | 0.00 | 0.00 | 2.14 | 0.04 | 0.00 | 2.18 | 0.0 s |
+| 1 | 0.00 | 0.03 | 8.71 | 0.02 | 0.00 | 8.76 | 0.0 s |
+| 2 | 0.00 | 0.00 | 5.12 | 0.04 | 0.00 | 5.16 | 0.0 s |
+| 3 | 0.00 | 0.00 | 5.15 | 0.05 | 0.00 | 5.20 | 0.0 s |
+| 4 | 0.00 | 0.00 | 2.17 | 0.04 | 0.00 | 2.20 | 0.0 s |
 | 5 | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | 0.0 s |
-| **Media de los turnos con LLM (4)** | 0.00 | 0.01 | 5.13 | 0.04 | 0.00 | 5.18 | |
+| **Media de los turnos con LLM (4)** | 0.00 | 0.01 | 5.29 | 0.04 | 0.00 | 5.33 | |
 | **Media de los turnos sin LLM (1)** | 0.00 | 0.00 | 0.00 | 0.03 | 0.00 | 0.03 | |
 

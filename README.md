@@ -25,7 +25,7 @@ flowchart LR
     COD <--> B[("Búsqueda<br/>BM25 + denso, RRF, reranker<br/>catálogo ESCI")]
     COD <--> T[("Tienda simulada<br/>SQLite")]
     COD -.-> M[("Memoria<br/>Postgres")]
-    R -- "texto" --> TTS["TTS<br/>XTTS-v2, voz clonada"]
+    R -- "texto" --> TTS["TTS<br/>F5-Spanish, voz clonada"]
     TTS -- "audio" --> S(["Respuesta"])
     R -. "por texto" .-> S
 ```
@@ -34,8 +34,8 @@ flowchart LR
 - **Voz o texto.** Las dos. El agente es el mismo; por voz lleva un reconocedor delante (ASR) y un sintetizador detrás (TTS), y por texto se saltan esas dos etapas.
 - **Función del agente.** El LLM propone una herramienta por paso y redacta la respuesta; el código valida cada llamada, comprueba existencias y presupuesto en la tienda, verifica las cifras de la respuesta y es el único que registra pedidos.
 - **Qué se toma de ESCI.** La versión reducida, solo en español: 43 674 productos (título, descripción, características, marca y color) forman el catálogo en el que busca el agente. Las consultas y sus etiquetas (1 500 de `train` y 300 de `test`) solo sirven para entrenar el reranker y para medir: el agente no las lee. Precios y existencias no vienen en ESCI: son ficticios, generados con semilla.
-- **Modelos, todos locales.** Whisper large-v3-turbo, Qwen2.5-7B-Instruct (GGUF Q4_K_M), XTTS-v2 y `multilingual-e5-small`, más un reranker entrenado aquí.
-- **Hardware.** Medido en una estación de trabajo con una NVIDIA RTX A2000 de 12 GB (9 532 MiB de memoria de GPU con todo cargado). El objetivo del enunciado es Google Colab con una T4, donde también se corrió entero con [notebooks/colab.ipynb](notebooks/colab.ipynb): 9 152 MiB y los mismos resultados, con turnos por voz de 21 s en lugar de 11 (ver «Ejecución en Colab (T4)»).
+- **Modelos, todos locales.** Whisper large-v3-turbo, Qwen2.5-7B-Instruct (GGUF Q4_K_M), F5-TTS con el ajuste al español F5-Spanish (o XTTS-v2, a elegir) y `multilingual-e5-small`, más un reranker entrenado aquí.
+- **Hardware.** Medido en una estación de trabajo con una NVIDIA RTX A2000 de 12 GB (8 522 MiB de memoria de GPU con todo cargado y la voz de F5-Spanish; 9 532 con XTTS-v2). El objetivo del enunciado es Google Colab con una T4, donde se corrió entero con [notebooks/colab.ipynb](notebooks/colab.ipynb) cuando la voz era la de XTTS-v2: 9 152 MiB y los mismos resultados, con turnos por voz de 21 s en lugar de 11 (ver «Ejecución en Colab (T4)»). Con F5-Spanish no se ha medido en la T4.
 
 ## Entorno
 
@@ -53,7 +53,7 @@ Lo que depende de la máquina (rutas, credenciales) va en un archivo `.env` en l
 cp .env.example .env
 ```
 
-Los modelos (embeddings, LLM, Whisper y XTTS-v2) se descargan en la caché de Hugging Face. Si el disco del sistema tiene poco espacio, `HF_HOME` en el `.env` la lleva a otro disco; ocupa unos 9 GB.
+Los modelos (embeddings, LLM, Whisper y el de voz) se descargan en la caché de Hugging Face. Si el disco del sistema tiene poco espacio, `HF_HOME` en el `.env` la lleva a otro disco; ocupa unos 9 GB (de ellos, 1,4 GB son de F5-Spanish y su vocoder; XTTS-v2, 1,9 GB más, solo se descarga si se elige ese motor).
 
 ## Datos
 
@@ -187,14 +187,17 @@ Alrededor del agente por texto hay un reconocedor de voz antes y un sintetizador
 | Etapa | Modelo | Paquete | Licencia |
 |---|---|---|---|
 | ASR | Whisper large-v3-turbo, español fijo | `faster-whisper` | MIT |
-| TTS con clonación | XTTS-v2 | `coqui-tts` | **CPML de Coqui: solo uso no comercial** |
+| TTS con clonación (por defecto) | F5-TTS con el ajuste al español `jpgallegoar/F5-Spanish` | `f5-tts` | Código MIT; **pesos CC-BY-NC-4.0: solo uso no comercial** |
+| TTS con clonación (alternativa, `SHOPPING_AGENT_TTS=xtts`) | XTTS-v2 | `coqui-tts` | **CPML de Coqui: solo uso no comercial** |
 | Semejanza de hablante (solo evaluación) | ECAPA-TDNN (`speechbrain/spkrec-ecapa-voxceleb`) | `speechbrain` | Apache 2.0 |
 
 `torchaudio` y `torchcodec` se instalan desde el mismo índice de PyTorch que `torch` (CUDA 12.6); `torchcodec` necesita además las bibliotecas de FFmpeg del sistema (`apt install ffmpeg`).
 
-### Licencia de XTTS-v2
+### Licencias de los modelos de voz
 
-XTTS-v2 se usa bajo la [CPML de Coqui](https://tts-hub.github.io/cpml), que solo permite uso no comercial; este proyecto es académico. El modelo no se descarga hasta que quien lo ejecuta acepta esa licencia: o bien añade `COQUI_TOS_AGREED=1` a su `.env`, o bien lanza el comando en una terminal y responde a la pregunta de Coqui. El repositorio no la acepta por nadie: la variable está en [.env.example](.env.example) comentada.
+**F5-Spanish.** El código de F5-TTS es MIT. Los pesos de `jpgallegoar/F5-Spanish` figuran como CC-BY-NC-4.0 (uso no comercial) en los metadatos de su repositorio de Hugging Face, aunque el texto de su ficha dice CC0; aquí se toma la más restrictiva, y este proyecto es académico. El modelo base del que parte el ajuste (F5-TTS) también es CC-BY-NC. No pide aceptar condiciones para descargarlo.
+
+**XTTS-v2** se usa bajo la [CPML de Coqui](https://tts-hub.github.io/cpml), que solo permite uso no comercial; este proyecto es académico. El modelo no se descarga hasta que quien lo ejecuta acepta esa licencia: o bien añade `COQUI_TOS_AGREED=1` a su `.env`, o bien lanza el comando en una terminal y responde a la pregunta de Coqui. El repositorio no la acepta por nadie: la variable está en [.env.example](.env.example) comentada.
 
 ### Grabaciones
 
@@ -202,12 +205,14 @@ La voz es un dato personal: la carpeta `audio/` y cualquier archivo de audio est
 
 ```
 audio/
-  referencia/referencia.wav        voz que clona el agente
   escenarios/<escenario>/01.wav    lo que dice el usuario en el turno 1 de ese escenario
   escenarios/<escenario>/02.wav    turno 2, etc.
+  referencia/referencia.wav        voz que clona el agente si habla con XTTS-v2
 ```
 
-**Voz de referencia** (`audio/referencia/referencia.wav`; otra ruta con `SHOPPING_AGENT_VOICE_REF`). Debe ser propia o de alguien que la haya autorizado.
+**De dónde clona el agente.** Con F5, el motor por defecto, de dos turnos de los escenarios: `audio/escenarios/01_compra_confirmada/01.wav` y `audio/escenarios/03_cambio_cantidad/01.wav` (10,7 s entre los dos, con el texto de esos turnos como transcripción). Se cambian con `SHOPPING_AGENT_VOICE_TURNS` (`escenario/turno` separados por comas; 12 s como mucho en total). Con XTTS-v2, de la voz de referencia. Las grabaciones deben ser propias o de alguien que las haya autorizado.
+
+**Voz de referencia para XTTS-v2** (`audio/referencia/referencia.wav`; otra ruta con `SHOPPING_AGENT_VOICE_REF`).
 
 - Entre 15 y 40 segundos de habla continua en español, viva y a tu ritmo normal de conversación, no leída despacio: XTTS-v2 copia el ritmo y la entonación de la grabación, y una referencia pausada y plana da una voz lenta y apagada.
 - Lo que más pesa es el principio. Tal como este proyecto llama a XTTS-v2 (comprobado en el código de `coqui-tts` instalado), el timbre sale de los primeros 30 segundos y el ritmo y la entonación, de los 6 primeros.
@@ -243,7 +248,68 @@ Los dos guiones de demostración siguen la misma convención, con el texto en un
 | `…/07.wav` | Sí, confirmo. |
 | `…/08.wav` | Sí. |
 
-### Voz del agente: referencia y velocidad
+### Voz del agente: F5-Spanish (17 de noviembre)
+
+El autor escuchó la voz clonada con XTTS-v2 y dijo que no se parecía a la suya. Se compararon doce formas de clonarla con las mismas frases ([experiments/comparacion_voz](experiments/comparacion_voz/README.md)) y eligió de oído F5-Spanish clonando de dos de sus turnos grabados («es muy parecido»). Desde el 17 de noviembre es la voz por defecto:
+
+- **Motor a elegir.** `SHOPPING_AGENT_TTS=f5` (por defecto) o `xtts`. Los dos tienen la misma interfaz y todo lo demás (escenarios, servidor en vivo, métricas) funciona igual con cualquiera. `--reference`, `--speaker` y `SHOPPING_AGENT_VOICE_REF` son de XTTS-v2.
+- **De qué clona.** De `audio/escenarios/01_compra_confirmada/01.wav` y `audio/escenarios/03_cambio_cantidad/01.wav` seguidos (10,7 s), con el texto de esos dos turnos como transcripción. Otros turnos, con `SHOPPING_AGENT_VOICE_TURNS`.
+- **Velocidad 0,9** (`SHOPPING_AGENT_TTS_SPEED`; con F5 el valor por defecto es 0,9 y con XTTS-v2 sigue en 1,10).
+- **Dependencia nueva:** `f5-tts`, que trae 65 paquetes más (entre ellos `gradio` y `wandb`, que el agente no usa) y baja la versión de cuatro que ya estaban (`huggingface-hub`, `filelock`, `python-dateutil`, `rich`). `torch`, `transformers`, `coqui-tts` y `llama-cpp-python` quedan en la misma versión.
+
+**El texto que se perdía.** En la comparación, esta voz se saltó la primera oración de «Pedido número uno registrado. ¡Gracias por tu compra!»: el audio empezaba con 2,5 s de silencio. F5-TTS fija de antemano cuánto dura el audio según la longitud del texto y reparte en esa duración la transcripción de la referencia seguida del texto nuevo. La transcripción decía «60 euros» y «45 euros» donde se oye «sesenta» y «cuarenta y cinco»: era más corta que el audio, y el comienzo del texto nuevo caía dentro de la referencia. Medido con cinco semillas y esa frase en dos versiones: con la transcripción con cifras, 8 de 10 pierden el comienzo; deletreada, 0 de 10. Tres medidas en el código ([voice/f5.py](src/shopping_agent/voice/f5.py)):
+
+- La transcripción de la referencia se deletrea igual que las respuestas del agente.
+- Cada fragmento recibe 0,6 s más de lo que le toca por su longitud, y el silencio de los bordes se recorta. Sin ese margen, frases muy cortas como «¿Lo confirmo?» o «¿Algo más?» salían en silencio en la mayoría de las semillas; con él, 35 de 35 síntesis de siete frases cortas se dicen.
+- Tras sintetizar cada fragmento se comprueba que el tiempo con voz alcanza para sus sílabas (como mucho 10 por segundo); si no, se repite con otra semilla, hasta tres veces, y se usa el intento con más habla. Es una comprobación barata, sin pasar el audio por Whisper: de las 13 pérdidas vistas antes del arreglo habría detectado las 10 en las que faltaba una oración entera o el fragmento salía en silencio, y no las 3 en las que faltaban dos palabras, sin ninguna falsa alarma en las 17 que salieron bien (estimado con las medidas guardadas de esa prueba). En las 31 respuestas de la corrida por voz no hizo falta repetir ningún fragmento.
+
+**Velocidad.** F5-TTS copia el ritmo de las grabaciones de las que clona, y en esos dos turnos el autor habla rápido (6,9 sílabas por segundo sin contar pausas; en el conjunto de sus 31 turnos, 5,0, y en los de diez sílabas o más, 5,8). Las mismas 31 respuestas del agente a tres velocidades ([results/voz_velocidad_f5.md](results/voz_velocidad_f5.md)):
+
+| Velocidad | WER de Whisper | «Di sí» entendido | Semejanza con los 29 turnos reales que no se usan para clonar | Audio de los 31 textos | Síntesis |
+|---|---|---|---|---|---|
+| 1,0 | 5,0 % | 6 de 7 | 0,419 | 597 s | 306 s |
+| 0,9 (por defecto) | 4,3 % | 6 de 7 | 0,425 | 653 s | 325 s |
+| 0,8 | 5,9 % | 3 de 7 | 0,428 | 724 s | 351 s |
+
+Bajar la velocidad alarga sobre todo las pausas: con diez frases, la articulación pasa de 6,1 sílabas por segundo a velocidad 1,0 a 5,9 a 0,9 y 5,6 a 0,8. A 0,9 queda en la del autor en sus turnos largos (5,8) y es el valor con menos errores; a 0,8 la frase de confirmación se entiende peor. No llega al ritmo medio de sus turnos (5,0, que incluye turnos de una palabra) sin estropear la inteligibilidad.
+
+**F5-Spanish frente a XTTS-v2**, sobre los seis escenarios de voz con las grabaciones del autor (31 turnos; el agente dio las mismas 31 respuestas en las dos corridas):
+
+| Medida | XTTS-v2 a 1,10 (`voz_xtts`) | F5-Spanish a 0,9 (`voz`, la actual) |
+|---|---|---|
+| Escenarios correctos | 6 de 6 | 6 de 6 |
+| Inteligibilidad (WER de Whisper sobre la síntesis) | 5,5 % | **4,3 %** |
+| Respuestas entendidas sin ningún error | 12 de 31 | 8 de 31 |
+| La respuesta con marcas impronunciables (`02_pedido_ambiguo`, turno 2) | 29 % | 9 % |
+| Semejanza con los 29 turnos reales que no se usan para clonar, media / mínima | 0,256 / 0,220 | **0,425 / 0,376** |
+| Duración media del audio de respuesta | 21,6 s | 21,1 s |
+| Espera hasta que podría sonar el primer fragmento, media / máxima | 3,4 / 6,9 s | 3,7 / 4,6 s |
+| TTS por turno, media (todos / con LLM) | 5,62 / 5,90 s | **10,72 / 11,19 s** |
+| Latencia total por turno, media (todos / con LLM) | 9,92 / 11,35 s | **15,11 / 16,75 s** |
+| Turno más lento | 18,84 s | 29,81 s |
+| Carga del motor de voz (la carga total, aparte, es de 28 s) | 7,5 s | 6,1 s |
+| Memoria de GPU con todo cargado | 9 532 MiB | 8 522 MiB |
+
+Qué dice y qué no:
+
+- **Se parece más a la voz real.** La semejanza con turnos que ningún motor usó para clonar sube de 0,256 a 0,425. (En el [resumen](results/escenarios/resumen.md), `voz_xtts` figura con 0,273 porque allí se mide con sus 31 turnos; aquí las dos voces se comparan con los mismos 29.) El techo que dan esos 29 turnos entre sí es 0,371; que la voz de F5 lo supere no significa que se parezca más que la voz real a sí misma: las respuestas duran 21 s y los turnos reales de 1 a 6 s, y un audio largo se compara mejor. Además los turnos de clonar y los de medir se grabaron en la misma sesión y con el mismo micrófono, así que parte de la subida puede ser de la grabación y no de la voz. El juicio que cuenta es el del autor, que la eligió de oído.
+- **Se entiende algo mejor según Whisper** (4,3 % frente a 5,5 %), sobre todo porque la respuesta con marcas impronunciables sale entera. Aun así hay menos respuestas sin ningún error (8 frente a 12): F5 deforma más nombres de marca. «Di sí para registrarlo» se oye en las 7 respuestas que lo llevan (en 3 Whisper lo escribe «Di si» o «Disí»).
+- **Lo que empeora es la latencia.** La síntesis tarda 1,9 veces más: un turno por voz con LLM pasa de 11,4 a 16,8 s, y el más lento de 18,8 a 29,8 s. F5 vuelve a procesar los 10,7 s de referencia en cada fragmento, y hay más fragmentos (de 135 caracteres en vez de 200). La espera hasta el primer fragmento apenas cambia (3,7 s), así que reproducirlo mientras se sintetiza el resto, que sigue sin hacerse, quitaría casi toda la diferencia.
+- **Suena más bajo.** El audio de F5 sale al volumen de las grabaciones de las que clona: la mitad de amplitud que el de XTTS-v2 (0,047 frente a 0,103 de valor eficaz). No se ha igualado.
+- **Ocupa 1 GB menos de memoria de GPU** con todo cargado.
+- **No se ha medido en Colab.** Las cifras de la T4 de más abajo son de la voz de XTTS-v2.
+
+```bash
+uv run python -m shopping_agent.eval.tts_speed --speeds 1.0 0.9 0.8 --run results/escenarios/voz --out results/voz_velocidad_f5 --audio-out audio/corridas/velocidad_f5
+uv run python -m shopping_agent.eval.scenarios --mode voice
+SHOPPING_AGENT_TTS=xtts uv run python -m shopping_agent.eval.scenarios --mode voice
+```
+
+El último repite la corrida con XTTS-v2 (escribe en `results/escenarios/voz`, como cualquier corrida por voz: la que se conserva se guardó como `voz_xtts`).
+
+### Voz anterior del agente (XTTS-v2): referencia y velocidad
+
+Lo que sigue es la historia de la voz con XTTS-v2, que queda como alternativa (`SHOPPING_AGENT_TTS=xtts`). Donde dice `voz`, la corrida es la que ahora se llama `voz_xtts`.
 
 La voz clonada con la primera grabación de referencia sonaba, a juicio de su autor, «un poco robótica, medio apagada» y lenta. El 12 de noviembre cambiaron dos cosas:
 
@@ -265,7 +331,7 @@ Acelerar no empeora de forma clara el WER, que lo domina ese texto. Lo que cambi
 
 **Antes y después**, sobre los seis escenarios de voz con sus grabaciones (31 turnos; el agente dio las mismas 31 respuestas en las tres corridas):
 
-| Medida | Voz anterior (`voz_referencia_anterior`) | Voz nueva a 1,15 (`voz_velocidad_1_15`) | Voz nueva a 1,10 (`voz`, la actual) |
+| Medida | Voz anterior (`voz_referencia_anterior`) | Voz nueva a 1,15 (`voz_velocidad_1_15`) | Voz nueva a 1,10 (`voz_xtts`) |
 |---|---|---|---|
 | Escenarios correctos | 6 de 6 | 6 de 6 | 6 de 6 |
 | Inteligibilidad (WER de Whisper sobre la síntesis) | 3,4 % | 7,0 % | **5,5 %** |
@@ -303,10 +369,10 @@ Cada turno hace audio → ASR → agente → TTS → audio. En `results/voz_demo
 
 Antes de sintetizar, la respuesta se pasa a una forma apta para voz (importes y cantidades en palabras, sin identificadores ni símbolos, títulos de catálogo acortados). La transcripción conserva el texto original.
 
-Mientras no haya grabación de referencia se puede probar con un hablante incluido en XTTS-v2 (`--speaker`, lista con `uv run python -m shopping_agent.voice.tts --list-speakers`), y generar audios de entrada sintéticos a partir de un guion:
+Mientras no haya grabaciones propias se puede probar con un hablante incluido en XTTS-v2 (`SHOPPING_AGENT_TTS=xtts` y `--speaker`; lista con `uv run python -m shopping_agent.voice.tts --list-speakers`), y generar audios de entrada sintéticos a partir de un guion:
 
 ```bash
-uv run python -m shopping_agent.voice.tts --speaker "NOMBRE" --script scenarios/demo_compra.txt --out-dir audio/sinteticos/demo_compra
+SHOPPING_AGENT_TTS=xtts uv run python -m shopping_agent.voice.tts --speaker "NOMBRE" --script scenarios/demo_compra.txt --out-dir audio/sinteticos/demo_compra
 ```
 
 Los audios sintéticos sirven para comprobar que el flujo funciona, no para evaluar el ASR. En `results/` hay dos corridas hechas con esos audios de entrada: [voz_demo_compra](results/voz_demo_compra/transcripcion.md), en la que el agente clona un hablante de prueba ([métricas](results/voz_demo_compra/metricas.md)), y [voz_demo_compra_voz_usuario](results/voz_demo_compra_voz_usuario/transcripcion.md), en la que clona la grabación de referencia del autor ([métricas](results/voz_demo_compra_voz_usuario/metricas.md)). Los audios de entrada y de respuesta no se suben.
@@ -317,7 +383,7 @@ Los audios sintéticos sirven para comprobar que el flujo funciona, no para eval
 uv run python -m shopping_agent.voice.live --restore
 ```
 
-Carga una sola vez la búsqueda con el reranker, el LLM, el ASR y el TTS, abre una conversación y atiende turnos por HTTP en `127.0.0.1:8765`, solo desde la propia máquina. Sirve para hablar con el agente turno a turno desde otro proceso que no puede importar el paquete, como las celdas del notebook de Colab, sin recargar los modelos en cada turno. Opciones: `--port`, `--reference` o `--speaker` (la voz, como en `voice.chat`), `--restore`, `--user`, `--n-ctx`, `--data`, `--db` y `--volatile-memory`. Se detiene con Ctrl+C o `kill`.
+Carga una sola vez la búsqueda con el reranker, el LLM, el ASR y el TTS, abre una conversación y atiende turnos por HTTP en `127.0.0.1:8765`, solo desde la propia máquina. Sirve para hablar con el agente turno a turno desde otro proceso que no puede importar el paquete, como las celdas del notebook de Colab, sin recargar los modelos en cada turno. Opciones: `--port`, `--reference` o `--speaker` (la voz con XTTS-v2, como en `voice.chat`), `--restore`, `--user`, `--n-ctx`, `--data`, `--db` y `--volatile-memory`. Se detiene con Ctrl+C o `kill`.
 
 Todo va en JSON (UTF-8):
 
@@ -338,7 +404,9 @@ curl -s -X POST http://127.0.0.1:8765/turn -d '{"text": "Busco una botella de ag
 - **Audio sin voz:** si el ASR no entiende nada (silencio, ruido), `heard` va vacío, el agente no recibe ningún mensaje y la respuesta pide repetir. Si se esperaba la confirmación de un pedido, se sigue esperando.
 - **Lo que queda de cada conversación:** los audios de entrada y de respuesta en `audio/corridas/en_vivo/<hilo>/` (fuera de git) y, reescritos tras cada turno, `turnos.json` y `transcripcion.md` en `results/en_vivo/<hilo>/`, con el mismo formato que una corrida de `voice.chat`.
 
-Prueba real del servidor (12 de noviembre, en la workstation): el escenario 03 con las cinco grabaciones del usuario, enviado turno a turno por HTTP con la tienda restaurada y el suceso externo del escenario aplicado tras el primer turno (la tienda deja el primer candidato a 9,50 € con 20 unidades). El pedido queda igual que en la corrida por voz: 4 unidades de la misma botella, 38,00 €, existencias 16. Los cuatro turnos con LLM tardaron 13,4 s de media (ASR 0,39, LLM 5,29, TTS 7,65) y la confirmación, que no pasa por el LLM, 5,1 s. El proceso ocupa 9 532 MiB de memoria de GPU con todo cargado y 9 824 al terminar la conversación. En una segunda conversación, un audio en silencio y otro de ruido volvieron con `heard` vacío en 1,1 s sin consultar al agente, un archivo que no era audio dio un 500 y el turno siguiente se atendió, y de dos turnos enviados a la vez el segundo esperó al primero. Las transcripciones están en [results/en_vivo/vivo-c6e6740e](results/en_vivo/vivo-c6e6740e/transcripcion.md) y [results/en_vivo/vivo-b2a21e1c](results/en_vivo/vivo-b2a21e1c/transcripcion.md).
+**Con F5-Spanish** (17 de noviembre): tres turnos del escenario 03, dos con las grabaciones del autor y uno por texto. El servidor cargó en 27,7 s (búsqueda 20,0, LLM 0,7, ASR 0,8, TTS 5,8), `/health` anuncia la voz clonada de los dos turnos a velocidad 0,90 y los tres turnos devolvieron su audio: 20,6 s el primero (LLM 9,5, TTS 10,5), 23,2 s el segundo (TTS 17,9, con el carrito recitado entero) y 6,0 s el tercero, una respuesta de una línea (TTS 3,0). El proceso ocupa 8 522 MiB con todo cargado y 8 798 tras los tres turnos. Transcripción: [results/en_vivo/vivo-63ab1fd4](results/en_vivo/vivo-63ab1fd4/transcripcion.md).
+
+Prueba real del servidor con XTTS-v2 (12 de noviembre, en la workstation): el escenario 03 con las cinco grabaciones del usuario, enviado turno a turno por HTTP con la tienda restaurada y el suceso externo del escenario aplicado tras el primer turno (la tienda deja el primer candidato a 9,50 € con 20 unidades). El pedido queda igual que en la corrida por voz: 4 unidades de la misma botella, 38,00 €, existencias 16. Los cuatro turnos con LLM tardaron 13,4 s de media (ASR 0,39, LLM 5,29, TTS 7,65) y la confirmación, que no pasa por el LLM, 5,1 s. El proceso ocupa 9 532 MiB de memoria de GPU con todo cargado y 9 824 al terminar la conversación. En una segunda conversación, un audio en silencio y otro de ruido volvieron con `heard` vacío en 1,1 s sin consultar al agente, un archivo que no era audio dio un 500 y el turno siguiente se atendió, y de dos turnos enviados a la vez el segundo esperó al primero. Las transcripciones están en [results/en_vivo/vivo-c6e6740e](results/en_vivo/vivo-c6e6740e/transcripcion.md) y [results/en_vivo/vivo-b2a21e1c](results/en_vivo/vivo-b2a21e1c/transcripcion.md).
 
 La carga tarda 26 s (búsqueda 15,4, LLM 0,7, ASR 0,9, TTS 9,2) si no depende de la red. En la corrida de la prueba tardó 160 s: al cargar el modelo de embeddings, `sentence-transformers` consulta huggingface.co aunque el modelo ya esté descargado, y ese día una de las direcciones del servidor no respondía desde la workstation. Con los modelos ya descargados, `HF_HUB_OFFLINE=1` evita esa consulta; los 26 s se midieron así. Durante la carga `/health` contestó `ready: false` en todo momento.
 
@@ -349,7 +417,7 @@ uv run python -m shopping_agent.eval.voice results/voz_demo_compra
 uv run python -m shopping_agent.eval.voice results/voz_demo_compra --real audio/escenarios
 ```
 
-Calcula, sobre una corrida guardada: la inteligibilidad (WER de Whisper sobre el audio sintetizado frente al texto enviado al TTS), la semejanza de la voz (coseno entre embeddings de hablante) y los errores del ASR en importes, cantidades y nombres de producto frente al texto correcto. La semejanza se mide con la grabación de referencia, de la que se clonó la voz, y, con `--real`, también con grabaciones reales del mismo hablante que no se usaron para clonar; la primera sale optimista y la segunda dice mejor cuánto se parece a su voz de otro momento. En las corridas de escenarios por voz, las grabaciones reales son las del usuario que entran en la corrida. Los nombres de producto esperados en cada turno se indican en `scenarios/<escenario>.terminos.json`.
+Calcula, sobre una corrida guardada: la inteligibilidad (WER de Whisper sobre el audio sintetizado frente al texto enviado al TTS), la semejanza de la voz (coseno entre embeddings de hablante) y los errores del ASR en importes, cantidades y nombres de producto frente al texto correcto. La semejanza se mide con las grabaciones de las que se clonó la voz (la de referencia con XTTS-v2, los turnos elegidos con F5) y, con `--real`, también con grabaciones reales del mismo hablante que no se usaron para clonar; la primera sale optimista y la segunda dice mejor cuánto se parece a su voz de otro momento. En las corridas de escenarios por voz, las grabaciones reales son las del usuario que entran en la corrida, sin los turnos de los que se clonó. Los nombres de producto esperados en cada turno se indican en `scenarios/<escenario>.terminos.json`.
 
 ## Evaluación
 
@@ -394,8 +462,9 @@ Qué queda de cada corrida:
 | `results/escenarios/resumen.md` y `.json` | Tablas de todas las corridas |
 | `results/escenarios/voz_sintetica/` | La corrida por voz anterior, con todos los audios de entrada sintéticos; se conserva para compararla con la voz real |
 | `results/escenarios/voz_referencia_anterior/` | La corrida por voz con la voz anterior del agente (primera grabación de referencia, velocidad 1,0); se conserva para compararla con la voz nueva |
-| `results/escenarios/voz_velocidad_1_15/` | La corrida por voz con la referencia nueva a velocidad 1,15, el valor por defecto antes de bajarlo a 1,10 |
-| `results/voz_velocidad.md` y `.json` | Los mismos textos sintetizados a varias velocidades del habla: inteligibilidad, semejanza y duración |
+| `results/escenarios/voz_xtts/` | La corrida por voz con XTTS-v2 a velocidad 1,10, la última antes de pasar a F5-Spanish; se conserva para comparar |
+| `results/escenarios/voz_velocidad_1_15/` | La corrida por voz con XTTS-v2 y la referencia nueva a velocidad 1,15, el valor por defecto antes de bajarlo a 1,10 |
+| `results/voz_velocidad.md` y `.json`, `results/voz_velocidad_f5.md` y `.json` | Los mismos textos sintetizados a varias velocidades del habla, con XTTS-v2 y con F5-Spanish: inteligibilidad, semejanza y duración |
 | `results/escenarios/grabaciones.md` y `.json` | Cada grabación del usuario frente al texto de su turno |
 | `results/diagnostico_voz_05/` | Comprobación aparte de por qué falla el escenario 05 con la voz del usuario |
 | `audio/corridas/voz/<escenario>/` | Audios de entrada y de respuesta (fuera de git) |
@@ -407,7 +476,8 @@ Resultados ([results/escenarios/resumen.md](results/escenarios/resumen.md)). «A
 | `texto` | texto | control (por defecto) | 14 de 20 | 20 de 20 |
 | `texto_sage` | texto | GraphSAGE | 16 de 20 | 20 de 20 |
 | `texto_sin_reranker` | texto | ninguno | 16 de 20 | 20 de 20 |
-| `voz` | grabaciones del usuario (los 31 turnos) | control | — | 6 de 6 (5 de 6 antes de la guarda de los números sueltos) |
+| `voz` | grabaciones del usuario (los 31 turnos), con la voz de F5-Spanish | control | — | 6 de 6 |
+| `voz_xtts` | las mismas grabaciones, con la voz de XTTS-v2 a velocidad 1,10 | control | — | 6 de 6 (5 de 6 antes de la guarda de los números sueltos) |
 | `voz_velocidad_1_15` | las mismas grabaciones, con la voz nueva a velocidad 1,15 | control | — | 6 de 6 |
 | `voz_referencia_anterior` | las mismas grabaciones, con la voz anterior del agente | control | — | 6 de 6 |
 | `voz_sintetica` | audio sintético de prueba | control | 3 de 6 | 6 de 6 |
@@ -449,6 +519,8 @@ GraphSAGE supera al control sin grafo en +0,0071 (IC 95 % [+0,0028; +0,0117]). L
 - **Instalación.** `uv sync` crea el entorno del proyecto con las versiones de `uv.lock`. `llama-cpp-python` hay que compilarlo con CUDA, y con las 2 CPU de Colab eso tardó 61 minutos. El notebook descarga en su lugar una rueda ya compilada para el sistema de Colab (Ubuntu 24.04, CUDA 13.0), publicada como adjunto de la *release* `colab-llama-cpp-0.3.36` de este repositorio, y comprueba que carga y que usa la GPU; si no sirve en la sesión, compila como respaldo. Con la rueda, la instalación completa tardó 1 min 44 s en la corrida final.
 - **Voz propia.** Las grabaciones se suben a la sesión y se borran al cerrarla; no entran en el repositorio. Sin ellas, el agente habla con un hablante de prueba de XTTS-v2 y los escenarios usan audios sintéticos.
 - **Conversación en vivo.** Una celda arranca `shopping_agent.voice.live` en segundo plano y otra graba un turno con el micrófono, lo envía y reproduce la respuesta. No es tiempo real: es una conversación por turnos.
+
+**La corrida en Colab es anterior al cambio de voz.** Se hizo con XTTS-v2, y sus cifras de voz (y las de la columna de la workstation) son de ese motor. Con F5-Spanish por defecto no se ha vuelto a correr en la T4: el notebook tiene que subir las grabaciones antes de cargar la voz (F5 clona de dos turnos de los escenarios) y, sin ellas, pedir el hablante de prueba con `SHOPPING_AGENT_TTS=xtts`.
 
 **Corrida final** (12 de noviembre de 2026, commit `d81bc00`; T4 con 2 CPU, Ubuntu 24.04, CUDA 13.0), con la voz del autor clonada de la referencia nueva a velocidad 1,10 y sus 31 grabaciones. Los archivos de esa corrida están en [results/colab_t4/](results/colab_t4/LEEME.md), descargados de la sesión de Colab; el resto de `results/` guarda las corridas de la workstation, que son las de la otra columna.
 
@@ -498,7 +570,8 @@ src/shopping_agent/
     session.py   un mensaje entra, una respuesta sale
     chat.py, report.py   comando de chat por texto y transcripción
     memory.py, llm.py, search.py   Postgres, LLM local y búsqueda híbrida con reranker opcional
-  voice/       audio, asr, speech_text, tts, pipeline (un turno por voz), chat (comando), report
+  voice/       audio, asr, speech_text, pipeline (un turno por voz), chat (comando), report
+    tts.py, f5.py   el motor de voz que se elige y XTTS-v2; F5-Spanish, con la guarda de texto perdido
     live.py      servidor local para conversar en vivo, turno a turno
   eval/        evaluación de la recuperación, del reranker (comparación y coste), métricas de voz y velocidad del habla
     scenario_format.py, scenario_checks.py   formato de los escenarios; comprobaciones por código

@@ -5,7 +5,7 @@
 - Tipo: `cambio_cantidad`
 - Qué se prueba: El usuario añade dos unidades y después corrige a cuatro. El producto y el presupuesto deben seguir siendo los mismos y el pedido final debe llevar cuatro unidades (38,00 € de un presupuesto de 45 €).
 
-## Turno 1 (14.0 s)
+## Turno 1 (19.8 s)
 
 **Usuario (transcripción del ASR):** Busco una botella de agua de acero inoxidable. Mi presupuesto es de 45 euros.
 
@@ -22,7 +22,7 @@
 
 > **Suceso externo:** la tienda deja `B07VQNY8PK` (@elegida) con precio 9,50 € y existencias 20.
 
-## Turno 2 (12.7 s)
+## Turno 2 (21.3 s)
 
 **Usuario (transcripción del ASR):** Añade dos de la primera.
 
@@ -34,7 +34,7 @@
 
 - ✔ `cart(lines=[{"product": "@elegida", "quantity": 2}])` — carrito: 2 × B07VQNY8PK
 
-## Turno 3 (11.4 s)
+## Turno 3 (20.8 s)
 
 **Usuario (transcripción del ASR):** Mejor que sean cuatro.
 
@@ -47,7 +47,7 @@
 - ✔ `cart(lines=[{"product": "@elegida", "quantity": 4}])` — carrito: 4 × B07VQNY8PK
 - ✔ `budget(cents=4500)` — presupuesto en el estado: 4500
 
-## Turno 4 (10.4 s)
+## Turno 4 (19.5 s)
 
 **Usuario (transcripción del ASR):** Cierralo.
 
@@ -62,11 +62,11 @@
 - ✔ `awaiting_confirmation(value=true)` — esperando confirmación: sí
 - ✔ `orders(count=0)` — pedidos registrados: 0
 
-## Turno 5 (5.2 s)
+## Turno 5 (12.5 s)
 
 **Usuario (transcripción del ASR):** Sí.
 
-- `confirmar_pedido(quote_id="c39ae7aec01042bf84709a1bf63da99b")` → OK: pedido registrado
+- `confirmar_pedido(quote_id="f815c10cd85a435aa5958219bc5f5ebf")` → OK: pedido registrado
 
 **Agente:** Pedido número 1 registrado: 4 unidades de «Newdora Botella de Agua Acero Inoxidable 500ml, Aislamiento de Vacío…» a 9,50 € cada una, 38,00 €. Total: 38,00 €. Gracias por tu compra.
 
@@ -97,11 +97,11 @@
 
 | Turno | ASR | Recuperación | LLM | Herramientas | TTS | Total | Audio de respuesta |
 |---|---|---|---|---|---|---|---|
-| 1 | 0.37 | 0.03 | 7.87 | 0.03 | 5.70 | 14.00 | 23.1 s |
-| 2 | 0.33 | 0.00 | 4.90 | 0.05 | 7.40 | 12.68 | 29.4 s |
-| 3 | 0.33 | 0.00 | 4.87 | 0.05 | 6.11 | 11.36 | 24.3 s |
-| 4 | 0.33 | 0.00 | 2.09 | 0.04 | 7.91 | 10.36 | 30.0 s |
-| 5 | 0.32 | 0.00 | 0.00 | 0.04 | 4.83 | 5.19 | 18.7 s |
-| **Media de los turnos con LLM (4)** | 0.34 | 0.01 | 4.93 | 0.04 | 6.78 | 12.10 | |
-| **Media de los turnos sin LLM (1)** | 0.32 | 0.00 | 0.00 | 0.04 | 4.83 | 5.19 | |
+| 1 | 0.38 | 0.03 | 8.08 | 0.03 | 11.30 | 19.83 | 25.7 s |
+| 2 | 0.34 | 0.00 | 5.13 | 0.05 | 15.75 | 21.26 | 26.8 s |
+| 3 | 0.35 | 0.00 | 4.98 | 0.05 | 15.39 | 20.77 | 25.8 s |
+| 4 | 0.33 | 0.00 | 2.31 | 0.04 | 16.88 | 19.55 | 29.4 s |
+| 5 | 0.32 | 0.00 | 0.00 | 0.04 | 12.15 | 12.51 | 19.7 s |
+| **Media de los turnos con LLM (4)** | 0.35 | 0.01 | 5.12 | 0.04 | 14.83 | 20.35 | |
+| **Media de los turnos sin LLM (1)** | 0.32 | 0.00 | 0.00 | 0.04 | 12.15 | 12.51 | |
 
