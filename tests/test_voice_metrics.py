@@ -134,17 +134,20 @@ def _read_tone(path):
 
 def test_synthesis_is_compared_with_the_reference_and_with_real_recordings(tmp_path):
     real = [tmp_path / "real_1.wav", tmp_path / "real_2.wav"]
-    compare = speaker_comparison(FakeEmbedder(), tmp_path / "ref.wav", real, _read_tone)
+    compare = speaker_comparison(FakeEmbedder(), [tmp_path / "ref.wav"], real, _read_tone)
     same, other = compare(tmp_path / "respuesta_01.wav"), compare(tmp_path / "respuesta_02.wav")
     assert same["similarity"] == pytest.approx(1.0, abs=1e-3) and other["similarity"] < 0.1
     # con las grabaciones reales es la media: cada respuesta se parece a una de las dos
     assert same["similarity_real"] == pytest.approx(0.5, abs=1e-2) == pytest.approx(other["similarity_real"], abs=1e-2)
-    only_real = speaker_comparison(FakeEmbedder(), None, real, _read_tone)
+    only_real = speaker_comparison(FakeEmbedder(), [], real, _read_tone)
     assert set(only_real(tmp_path / "respuesta_01.wav")) == {"similarity_real"}
-    only_reference = speaker_comparison(FakeEmbedder(), tmp_path / "ref.wav", [], _read_tone)
+    only_reference = speaker_comparison(FakeEmbedder(), [tmp_path / "ref.wav"], [], _read_tone)
     assert set(only_reference(tmp_path / "respuesta_01.wav")) == {"similarity"}
-    assert speaker_comparison(None, tmp_path / "ref.wav", real, _read_tone) is None
-    assert speaker_comparison(FakeEmbedder(), None, [], _read_tone) is None
+    # clonada de varias grabaciones (los turnos de F5): la media con todas ellas
+    several = speaker_comparison(FakeEmbedder(), real, [], _read_tone)
+    assert several(tmp_path / "respuesta_01.wav")["similarity"] == pytest.approx(0.5, abs=1e-2)
+    assert speaker_comparison(None, [tmp_path / "ref.wav"], real, _read_tone) is None
+    assert speaker_comparison(FakeEmbedder(), [], [], _read_tone) is None
 
 
 def test_similarity_among_recordings_leaves_each_one_out(tmp_path):
@@ -171,7 +174,7 @@ def test_evaluate_run_without_models(tmp_path):
     (tmp_path / "turnos.json").write_text(json.dumps(record), encoding="utf-8")
     heard = {"respuesta_01.wav": "Hecho, añadidas dos unidades", "respuesta_02.wav": "Pedido número uno registrados"}
     real = [tmp_path / "real_1.wav", tmp_path / "real_2.wav"]
-    compare = speaker_comparison(FakeEmbedder(), tmp_path / "ref.wav", real, _read_tone)
+    compare = speaker_comparison(FakeEmbedder(), [tmp_path / "ref.wav"], real, _read_tone)
 
     metrics = evaluate_run(tmp_path, lambda path: heard[path.name], compare)
     asr = metrics["asr"]

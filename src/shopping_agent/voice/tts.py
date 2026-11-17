@@ -1,4 +1,9 @@
-"""Síntesis de voz con XTTS-v2 y clonación desde una grabación de referencia.
+"""Síntesis de voz del agente: el motor que se elige y XTTS-v2.
+
+El agente habla con uno de dos motores, según ``SHOPPING_AGENT_TTS``: ``f5`` (por
+defecto; F5-TTS con el ajuste al español, en ``shopping_agent.voice.f5``, que clona de
+turnos grabados por el usuario) o ``xtts`` (XTTS-v2, en este módulo, que clona de una
+grabación de referencia). ``load_tts`` carga el elegido.
 
 Uso::
 
@@ -6,15 +11,15 @@ Uso::
     python -m shopping_agent.voice.tts --text "Hola, ¿qué buscas hoy?" --out saludo.wav
     python -m shopping_agent.voice.tts --script scenarios/demo_compra.txt --out-dir audio/sinteticos/demo_compra
 
-La voz sale de la grabación de referencia: ``--reference``, ``SHOPPING_AGENT_VOICE_REF``
-o, por defecto, ``audio/referencia/referencia.wav`` (mono o estéreo, a cualquier
-frecuencia de muestreo). Mientras no exista esa grabación se puede desarrollar con
-uno de los hablantes que trae XTTS-v2 (``--speaker`` o ``SHOPPING_AGENT_TTS_SPEAKER``);
-no se clona la voz de nadie que no la haya cedido.
+Con XTTS-v2 la voz sale de la grabación de referencia: ``--reference``,
+``SHOPPING_AGENT_VOICE_REF`` o, por defecto, ``audio/referencia/referencia.wav`` (mono
+o estéreo, a cualquier frecuencia de muestreo). Mientras no exista esa grabación se
+puede desarrollar con uno de los hablantes que trae XTTS-v2 (``--speaker`` o
+``SHOPPING_AGENT_TTS_SPEAKER``); no se clona la voz de nadie que no la haya cedido.
 
-XTTS-v2 copia el ritmo de la grabación de referencia. La velocidad del habla se ajusta
-sobre ese ritmo con ``--speed`` o ``SHOPPING_AGENT_TTS_SPEED``: 1,0 lo deja igual y, por
-defecto, 1,10 habla un 10 % más rápido.
+Los dos motores copian el ritmo de las grabaciones de las que clonan. La velocidad del
+habla se ajusta sobre ese ritmo con ``--speed`` o ``SHOPPING_AGENT_TTS_SPEED``: 1,0 lo
+deja igual; cada motor tiene su valor por defecto (XTTS-v2, 1,10: un 10 % más rápido).
 
 XTTS-v2 se publica con la licencia CPML de Coqui (uso no comercial). Este módulo
 no la acepta por nadie: si no consta aceptada, se detiene y explica cómo hacerlo.
@@ -26,6 +31,7 @@ import argparse
 import os
 import sys
 import time
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Protocol
@@ -36,6 +42,9 @@ from shopping_agent.gpu import process_vram_mib
 from shopping_agent.voice.audio import write_wav
 from shopping_agent.voice.speech_text import split_for_tts, to_speech
 
+ENGINE_ENV = "SHOPPING_AGENT_TTS"
+F5, XTTS = "f5", "xtts"
+DEFAULT_ENGINE = F5  # la voz que el usuario eligió de oído (experiments/comparacion_voz)
 MODEL_NAME = "tts_models/multilingual/multi-dataset/xtts_v2"
 REFERENCE_ENV = "SHOPPING_AGENT_VOICE_REF"
 SPEAKER_ENV = "SHOPPING_AGENT_TTS_SPEAKER"
@@ -75,6 +84,24 @@ class SpeechSynthesizer(Protocol):
     sample_rate: int
 
     def synthesize(self, text: str) -> Synthesis: ...
+
+
+class AgentVoice(SpeechSynthesizer, Protocol):
+    """Un motor de voz ya cargado: además de hablar, dice qué modelo es, de qué
+    grabaciones clona y lo que costó cargarlo."""
+
+    name: str
+    speed: float
+    seed: int
+    device: str
+    load_seconds: float
+    vram_mib: int | None
+
+    @property
+    def references(self) -> list[Path]: ...
+
+    @property
+    def voice(self) -> dict[str, Any]: ...
 
 
 def too_long(audio_seconds: float, characters: int) -> bool:
@@ -125,10 +152,10 @@ def resolve_voice(reference: str | Path | None = None, speaker: str | None = Non
     )
 
 
-def resolve_speed(speed: float | None = None) -> float:
+def resolve_speed(speed: float | None = None, default: float = DEFAULT_SPEED) -> float:
     """Velocidad del habla respecto al ritmo de la referencia: el argumento manda;
-    sin él, ``SHOPPING_AGENT_TTS_SPEED`` y, si tampoco está, 1,10."""
-    written = str(speed) if speed is not None else os.environ.get(SPEED_ENV) or str(DEFAULT_SPEED)
+    sin él, ``SHOPPING_AGENT_TTS_SPEED`` y, si tampoco está, la del motor (XTTS-v2: 1,10)."""
+    written = str(speed) if speed is not None else os.environ.get(SPEED_ENV) or str(default)
     try:
         value = float(written.replace(",", "."))
     except ValueError:
@@ -164,12 +191,48 @@ def ensure_model() -> tuple[Path, Path]:
     return model_dir, Path(config_path) if config_path else model_dir / "config.json"
 
 
-def _pick_device(device: str) -> str:
+def pick_device(device: str) -> str:
     if device != "auto":
         return device
     import torch
 
     return "cuda" if torch.cuda.is_available() else "cpu"
+
+
+def release_gpu_cache(device: str) -> None:
+    """Devuelve a la GPU la memoria que PyTorch se queda en reserva tras sintetizar.
+
+    El LLM (llama.cpp) y Whisper (CTranslate2) reservan memoria fuera de PyTorch:
+    si este acapara la que ya no usa (cerca de 1 GB tras una respuesta larga), a
+    los otros puede faltarles.
+    """
+    if device != "cpu":
+        import torch
+
+        torch.cuda.empty_cache()
+
+
+def synthesize_chunks(chunks: list[str], generate: Callable[[str], tuple[np.ndarray, int]], sample_rate: int) -> Synthesis:
+    """Sintetiza los fragmentos uno tras otro con ``generate`` (que devuelve el audio y
+    los reintentos que necesitó), los une y anota los tiempos."""
+    start = time.perf_counter()
+    pieces, first, retries = [], 0.0, 0
+    for index, chunk in enumerate(chunks):
+        audio, attempts = generate(chunk)
+        pieces.append(audio)
+        retries += attempts
+        if index == 0:
+            first = time.perf_counter() - start
+    audio = join_chunks(pieces, sample_rate)
+    return Synthesis(
+        audio=audio,
+        sample_rate=sample_rate,
+        seconds=time.perf_counter() - start,
+        first_chunk_seconds=first,
+        audio_seconds=len(audio) / sample_rate,
+        chunks=chunks,
+        retries=retries,
+    )
 
 
 def _load_xtts(model_dir: Path, config_path: Path, device: str) -> Any:
@@ -186,6 +249,7 @@ def _load_xtts(model_dir: Path, config_path: Path, device: str) -> Any:
 class XttsTTS:
     """XTTS-v2 con una voz fija: clonada de una grabación o un hablante incluido."""
 
+    name = "XTTS-v2"
     sample_rate = SAMPLE_RATE
 
     def __init__(
@@ -206,7 +270,7 @@ class XttsTTS:
         self.temperature = temperature
         self.seed = seed
         self.max_chars = max_chars
-        self.device = _pick_device(device)
+        self.device = pick_device(device)
 
         vram_before = process_vram_mib() or 0
         start = time.perf_counter()
@@ -214,7 +278,7 @@ class XttsTTS:
         self.model = _load_xtts(self.model_dir, config_path, self.device)
         self.gpt_cond_latent, self.speaker_embedding = self._voice_latents()
         self._generate("Hola.")  # deja fuera del primer turno la inicialización perezosa
-        self._release_gpu_cache()
+        release_gpu_cache(self.device)
         self.load_seconds = time.perf_counter() - start
         vram_after = process_vram_mib()
         self.vram_mib = None if vram_after is None else vram_after - vram_before
@@ -234,6 +298,11 @@ class XttsTTS:
     def speaker_names(self) -> list[str]:
         manager = getattr(self.model, "speaker_manager", None)
         return list(manager.speakers) if manager is not None else []
+
+    @property
+    def references(self) -> list[Path]:
+        """Las grabaciones de las que se clona la voz (ninguna con un hablante incluido)."""
+        return [self.reference] if self.reference else []
 
     @property
     def voice(self) -> dict[str, Any]:
@@ -274,45 +343,38 @@ class XttsTTS:
         assert best is not None
         return best, MAX_ATTEMPTS - 1
 
-    def _release_gpu_cache(self) -> None:
-        """Devuelve a la GPU la memoria que PyTorch se queda en reserva tras sintetizar.
-
-        El LLM (llama.cpp) y Whisper (CTranslate2) reservan memoria fuera de PyTorch:
-        si este acapara la que ya no usa (cerca de 1 GB tras una respuesta larga), a
-        los otros puede faltarles.
-        """
-        if self.device != "cpu":
-            import torch
-
-            torch.cuda.empty_cache()
-
     def synthesize(self, text: str) -> Synthesis:
         """Sintetiza un texto ya preparado para voz (véase ``speech_text.to_speech``)."""
-        chunks = split_for_tts(text, self.max_chars)
-        start = time.perf_counter()
-        pieces, first, retries = [], 0.0, 0
-        for index, chunk in enumerate(chunks):
-            audio, attempts = self._generate_checked(chunk)
-            pieces.append(audio)
-            retries += attempts
-            if index == 0:
-                first = time.perf_counter() - start
-        audio = join_chunks(pieces, self.sample_rate)
-        self._release_gpu_cache()
-        return Synthesis(
-            audio=audio,
-            sample_rate=self.sample_rate,
-            seconds=time.perf_counter() - start,
-            first_chunk_seconds=first,
-            audio_seconds=len(audio) / self.sample_rate,
-            chunks=chunks,
-            retries=retries,
+        result = synthesize_chunks(split_for_tts(text, self.max_chars), self._generate_checked, self.sample_rate)
+        release_gpu_cache(self.device)
+        return result
+
+
+def resolve_engine(engine: str | None = None) -> str:
+    """Con qué motor habla el agente: el argumento, ``SHOPPING_AGENT_TTS`` o, por defecto, F5."""
+    chosen = (engine or os.environ.get(ENGINE_ENV) or DEFAULT_ENGINE).strip().lower()
+    if chosen not in (F5, XTTS):
+        raise VoiceNotConfigured(f"{ENGINE_ENV} debe ser «{F5}» o «{XTTS}»: {chosen!r}")
+    return chosen
+
+
+def load_tts(reference: str | Path | None = None, speaker: str | None = None, speed: float | None = None) -> AgentVoice:
+    """Carga el motor de voz elegido. La grabación de referencia y el hablante incluido
+    son de XTTS-v2: F5 clona de turnos grabados (véase ``shopping_agent.voice.f5``)."""
+    if resolve_engine() == XTTS:
+        return XttsTTS(reference, speaker, speed=speed)
+    if reference or speaker:
+        raise VoiceNotConfigured(
+            f"La grabación de referencia y el hablante incluido son de XTTS-v2: añade {ENGINE_ENV}={XTTS} para usarlos."
         )
+    from shopping_agent.voice.f5 import F5SpanishTTS
+
+    return F5SpanishTTS(speed=speed)
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Síntesis de voz con XTTS-v2.")
-    parser.add_argument("--reference", type=Path, default=None, help="grabación de referencia para clonar la voz")
+    parser = argparse.ArgumentParser(description="Síntesis de voz con el motor elegido en SHOPPING_AGENT_TTS (F5 o XTTS-v2).")
+    parser.add_argument("--reference", type=Path, default=None, help="grabación de referencia para clonar la voz (XTTS-v2)")
     parser.add_argument("--speaker", default=None, help="hablante incluido en XTTS-v2 (solo para pruebas)")
     parser.add_argument("--list-speakers", action="store_true")
     parser.add_argument("--text", default=None)
@@ -320,7 +382,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--script", type=Path, default=None, help="archivo con una frase por línea")
     parser.add_argument("--out-dir", type=Path, default=None, help="carpeta de salida para --script (01.wav, 02.wav…)")
     parser.add_argument("--seed", type=int, default=0)
-    parser.add_argument("--speed", type=float, default=None, help=f"velocidad del habla (por defecto, {SPEED_ENV} o {DEFAULT_SPEED})")
+    parser.add_argument("--speed", type=float, default=None, help=f"velocidad del habla (por defecto, {SPEED_ENV} o la del motor)")
     return parser.parse_args()
 
 
@@ -343,10 +405,11 @@ def main() -> None:
             model_dir, _ = ensure_model()
             print("\n".join(sorted(torch.load(model_dir / "speakers_xtts.pth", weights_only=True))))
             return
-        tts = XttsTTS(args.reference, args.speaker, seed=args.seed, speed=args.speed)
+        tts = load_tts(args.reference, args.speaker, args.speed)
     except (LicenseNotAccepted, VoiceNotConfigured) as error:
         sys.exit(str(error))
-    print(f"[XTTS-v2 en {tts.device}; voz: {tts.voice}; carga {tts.load_seconds:.1f} s; VRAM {tts.vram_mib} MiB]", file=sys.stderr)
+    tts.seed = args.seed
+    print(f"[{tts.name} en {tts.device}; voz: {tts.voice}; carga {tts.load_seconds:.1f} s; VRAM {tts.vram_mib} MiB]", file=sys.stderr)
 
     for text, path in _jobs(args):
         result = tts.synthesize(to_speech(text))

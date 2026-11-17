@@ -70,6 +70,7 @@ from shopping_agent.voice import chat as voice_chat
 from shopping_agent.voice.asr import WhisperASR
 from shopping_agent.voice.audio import read_audio, write_wav
 from shopping_agent.voice.speech_text import to_speech
+from shopping_agent.voice.report import cloned_from
 from shopping_agent.voice.tts import XttsTTS
 
 MODE_TEXT, MODE_VOICE = "text", "voice"
@@ -138,7 +139,7 @@ def run_info(loaded: voice_chat.Loaded, memory_backend: str) -> dict[str, Any]:
         "models": {
             "llm": models.llm.model_path.name,
             "asr": asr.model_name if asr else None,
-            "tts": "XTTS-v2" if tts else None,
+            "tts": tts.name if tts else None,
             "embeddings": DEFAULT_DENSE_MODEL,
             "reranker": models.search.reranker_name,
         },
@@ -182,23 +183,26 @@ def save_run(out_dir: Path, info: dict[str, Any], records: list[Record]) -> None
     print(f"[corrida guardada en {out_dir}: {summary['passed']} de {len(records)} correctos]", file=sys.stderr)
 
 
-def user_recordings(records: list[Record], audio_root: Path) -> list[Path]:
-    """Las grabaciones del usuario que entraron en la corrida: su voz real, que no se
-    usa para clonar y sirve para medir cuánto se le parece la del agente."""
+def user_recordings(records: list[Record], audio_root: Path, cloned: list[Path]) -> list[Path]:
+    """Las grabaciones del usuario que entraron en la corrida y no se usaron para clonar
+    (``cloned``: ``…/<escenario>/<turno>.wav``): su voz real, que sirve para medir cuánto
+    se le parece la del agente."""
+    used = {(path.parent.name, path.stem) for path in cloned}
     return [
         audio_root / record["id"] / turn["input_audio"]
         for record in records
         if record["audio_source"] == USER_RECORDING
         for turn in turns_of(record)
-        if turn.get("input_audio")
+        if turn.get("input_audio") and (record["id"], f"{turn['turn']:02d}") not in used
     ]
 
 
-def voice_metrics(records: list[Record], audio_root: Path, asr: WhisperASR, reference: Path | None) -> dict[str, Any]:
-    """Errores del ASR, inteligibilidad y semejanza de la voz, por escenario y en conjunto."""
-    real = user_recordings(records, audio_root)
-    embedder = EcapaEmbedder() if reference or real else None
-    compare = speaker_comparison(embedder, reference, real, read_audio)
+def voice_metrics(records: list[Record], audio_root: Path, asr: WhisperASR, cloned: list[Path]) -> dict[str, Any]:
+    """Errores del ASR, inteligibilidad y semejanza de la voz, por escenario y en conjunto.
+    ``cloned`` son las grabaciones de las que se clonó la voz del agente."""
+    real = user_recordings(records, audio_root, cloned)
+    embedder = EcapaEmbedder() if cloned or real else None
+    compare = speaker_comparison(embedder, cloned, real, read_audio)
 
     def transcribe(path: Path) -> str:
         return asr.transcribe(path).text
@@ -213,7 +217,7 @@ def voice_metrics(records: list[Record], audio_root: Path, asr: WhisperASR, refe
         "summary": summary,
         "scenarios": scenarios,
         "models": {"asr": asr.model_name, "speaker": EcapaEmbedder.SOURCE if embedder else None},
-        "reference": str(reference) if reference else None,
+        "reference": ", ".join(str(path) for path in cloned) or None,
         "real_recordings": {"count": len(real), "similarity_among": among},
     }
 
@@ -227,9 +231,9 @@ def remeasure_voice(args: argparse.Namespace) -> None:
     correr el agente. ``--reference`` indica la grabación de la que se clonó si ya no
     está en la ruta que anotó la corrida."""
     run = load_run(args.out / args.voice_metrics)
-    reference = args.reference or run["info"]["voice"].get("reference")
+    cloned = [args.reference] if args.reference else cloned_from(run["info"]["voice"])
     audio_root = Path(run["info"]["audio_dir"])
-    metrics = voice_metrics(run["records"], audio_root, WhisperASR(), Path(reference) if reference else None)
+    metrics = voice_metrics(run["records"], audio_root, WhisperASR(), cloned)
     save_voice_metrics(args.out / args.voice_metrics, metrics)
     print(json.dumps({key: metrics[key] for key in ("summary", "reference", "real_recordings")}, indent=2, ensure_ascii=False))
 
@@ -255,7 +259,7 @@ def run_voice(args: argparse.Namespace, scenarios: list[Scenario], bench: Bench,
     sources = {scenario_id: audio.source for scenario_id, audio in inputs.items()}
     save_run(args.out / AUDIO_RUN, {**info, "input": AUDIO, "audio_sources": sources, "audio_dir": str(audio_root)}, records)
     assert loaded.asr is not None and loaded.tts is not None  # la corrida por voz carga los dos
-    save_voice_metrics(args.out / AUDIO_RUN, voice_metrics(records, audio_root, loaded.asr, loaded.tts.reference))
+    save_voice_metrics(args.out / AUDIO_RUN, voice_metrics(records, audio_root, loaded.asr, loaded.tts.references))
     repeat = run_all(scenarios, bench, f"{run_id}-texto", None, None)
     save_run(args.out / TEXT_REPEAT_RUN, {**info, "input": TEXT, "audio_sources": {}}, repeat)
 
@@ -277,7 +281,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--speaker", default=None, help="hablante incluido en XTTS-v2 para --synthesize")
     parser.add_argument("--recording-script", action="store_true", help="escribe el guion de grabación y termina")
     parser.add_argument("--voice-metrics", default=None, metavar="CORRIDA", help="vuelve a medir la voz de una corrida guardada y termina")
-    parser.add_argument("--reference", type=Path, default=None, help="grabación de referencia para la voz del agente")
+    parser.add_argument("--reference", type=Path, default=None, help="grabación de referencia para la voz del agente (XTTS-v2)")
     parser.add_argument("--data", type=Path, default=DEFAULT_DATA_DIR)
     parser.add_argument("--n-ctx", type=int, default=8192)
     parser.add_argument("--volatile-memory", action="store_true", help="no usa Postgres para la memoria del agente")

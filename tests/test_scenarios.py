@@ -7,6 +7,7 @@ y un TTS simulados.
 import copy
 import json
 import shutil
+from pathlib import Path
 
 import numpy as np
 import pytest
@@ -438,9 +439,13 @@ def test_user_recordings_of_a_run_are_the_real_voice_to_compare_with(shop, tmp_p
     bench = bench_for(shop, tmp_path, FakeASR([say.text for say in scenario.says]), FakeTTS())
     shop.llm.extend(purchase_script())
     record = ScenarioRun(scenario, bench, "voz", AudioInputs(command.USER_RECORDING, files), tmp_path / "audio" / "compra").run()
-    found = command.user_recordings([record, {**record, "audio_source": "sintéticos"}], tmp_path / "audio")
+    found = command.user_recordings([record, {**record, "audio_source": "sintéticos"}], tmp_path / "audio", [Path("audio/referencia/referencia.wav")])
     assert [path.name for path in found] == [f"entrada_{number:02d}.wav" for number in range(1, 6)]
     assert all(path.is_file() for path in found)
+    # los turnos de los que se clonó la voz (F5) no cuentan como voz real con la que comparar
+    cloned = [Path("audio/escenarios/compra/02.wav"), Path("audio/escenarios/otro/03.wav")]
+    rest = command.user_recordings([record], tmp_path / "audio", cloned)
+    assert [path.name for path in rest] == ["entrada_01.wav", "entrada_03.wav", "entrada_04.wav", "entrada_05.wav"]
 
 
 def test_recordings_are_preferred_over_synthetic_audio(tmp_path):

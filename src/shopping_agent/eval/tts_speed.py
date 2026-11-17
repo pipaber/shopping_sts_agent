@@ -10,12 +10,13 @@ respuestas de una corrida de escenarios por voz ya guardada (``--run``: lo que s
 envió al TTS en cada turno), una vez por cada velocidad, y mide de cada una:
 
 - la inteligibilidad: WER de Whisper sobre el audio frente al texto sintetizado;
-- la semejanza con la grabación de referencia y con las grabaciones reales del
-  hablante (``--real``), como en ``shopping_agent.eval.voice``;
+- la semejanza con las grabaciones de las que se clona y con las demás grabaciones
+  reales del hablante (``--real``), como en ``shopping_agent.eval.voice``;
 - cuánto dura el audio, cuánto tarda la síntesis y cuántos fragmentos hubo que
   repetir por salir demasiado largos.
 
-Escribe ``results/voz_velocidad.json`` y ``.md``. Los audios van a
+La voz es la del motor elegido en ``SHOPPING_AGENT_TTS``. Escribe
+``results/voz_velocidad.json`` y ``.md`` (``--out`` para otro nombre). Los audios van a
 ``audio/corridas/velocidad/<velocidad>/``, fuera de git.
 """
 
@@ -41,8 +42,9 @@ from shopping_agent.eval.voice import (
     wer,
 )
 from shopping_agent.voice.audio import read_audio, write_wav
+from shopping_agent.voice.report import voice_label
 from shopping_agent.voice.speech_text import to_speech
-from shopping_agent.voice.tts import DEFAULT_SPEED, SpeechSynthesizer, XttsTTS
+from shopping_agent.voice.tts import SpeechSynthesizer, load_tts
 
 RESULTS = Path("results/voz_velocidad")
 AUDIO_DIR = Path("audio/corridas/velocidad")  # carpeta sin versionar
@@ -112,8 +114,8 @@ def to_markdown(report: dict[str, Any]) -> str:
     lines = [
         "# Velocidad del habla e inteligibilidad",
         "",
-        f"Los mismos {report['texts']} textos sintetizados con la voz del agente (`{report['voice']['reference'] or report['voice']['speaker']}`) "
-        f"a cada velocidad, y transcritos con Whisper `{report['asr_model']}`. La velocidad 1,0 es el ritmo de la grabación de referencia.",
+        f"Los mismos {report['texts']} textos sintetizados con la voz del agente ({voice_label(report['voice'])}) "
+        f"a cada velocidad, y transcritos con Whisper `{report['asr_model']}`. La velocidad 1,0 es el ritmo de la grabación de la que se clona.",
         "",
         "| Velocidad | Inteligibilidad (WER) | Textos entendidos igual | Semejanza con la referencia | Semejanza con las grabaciones reales "
         "| Audio (s) | Palabras por segundo | Síntesis (s) | Fragmentos repetidos |",
@@ -134,11 +136,11 @@ def to_markdown(report: dict[str, Any]) -> str:
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Mide la voz del agente a varias velocidades del habla.")
-    parser.add_argument("--speeds", type=float, nargs="+", default=[1.0, DEFAULT_SPEED])
+    parser.add_argument("--speeds", type=float, nargs="+", required=True)
     parser.add_argument("--script", type=Path, default=None, help="archivo con una frase por línea")
     parser.add_argument("--run", type=Path, default=None, help="corrida de escenarios por voz de la que tomar las respuestas")
-    parser.add_argument("--reference", type=Path, default=None, help="grabación de referencia para la voz del agente")
-    parser.add_argument("--real", type=Path, default=REAL_DIR, help="grabaciones reales del hablante que no se usan para clonar")
+    parser.add_argument("--reference", type=Path, default=None, help="grabación de referencia para la voz del agente (XTTS-v2)")
+    parser.add_argument("--real", type=Path, default=REAL_DIR, help="grabaciones reales del hablante (las usadas para clonar se apartan)")
     parser.add_argument("--audio-out", type=Path, default=AUDIO_DIR)
     parser.add_argument("--out", type=Path, default=RESULTS, help="ruta del informe, sin extensión")
     return parser.parse_args()
@@ -149,9 +151,9 @@ def main() -> None:
 
     args = parse_args()
     texts = texts_to_speak(args.script, args.run)
-    tts, asr, embedder = XttsTTS(args.reference), WhisperASR(), EcapaEmbedder()
-    real = audio_files(args.real if args.real.is_dir() else None)
-    compare = speaker_comparison(embedder, tts.reference, real, read_audio)
+    tts, asr, embedder = load_tts(args.reference), WhisperASR(), EcapaEmbedder()
+    real = [path for path in audio_files(args.real if args.real.is_dir() else None) if path not in tts.references]
+    compare = speaker_comparison(embedder, tts.references, real, read_audio)
     speeds = {}
     for speed in args.speeds:
         tts.speed = speed
@@ -159,8 +161,7 @@ def main() -> None:
         speeds[f"{speed:.2f}"] = {"summary": summarize(cases), "cases": cases}
         print(f"[velocidad {speed:.2f}: {speeds[f'{speed:.2f}']['summary']}]", flush=True)
     among = similarity_among(embedder, real, read_audio)
-    voice = {"reference": str(tts.reference) if tts.reference else None, "speaker": tts.speaker}
-    report = {"voice": voice, "asr_model": asr.model_name, "texts": len(texts), "speeds": speeds}
+    report = {"voice": {**tts.voice, "speed": None}, "asr_model": asr.model_name, "texts": len(texts), "speeds": speeds}
     report["real_recordings"] = {"count": len(real), "similarity_among": among}
     args.out.with_suffix(".json").write_text(json.dumps(report, indent=2, ensure_ascii=False), encoding="utf-8")
     args.out.with_suffix(".md").write_text(to_markdown(report), encoding="utf-8")

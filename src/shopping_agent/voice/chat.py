@@ -42,7 +42,7 @@ from shopping_agent.store.db import restore
 from shopping_agent.voice.asr import WhisperASR
 from shopping_agent.voice.pipeline import STAGES, TOTAL, VoicePipeline, comparable_store, compare_runs, summarize_timings
 from shopping_agent.voice.report import STAGE_LABELS, to_markdown
-from shopping_agent.voice.tts import LicenseNotAccepted, VoiceNotConfigured, XttsTTS
+from shopping_agent.voice.tts import AgentVoice, LicenseNotAccepted, VoiceNotConfigured, load_tts
 
 AUDIO, TEXT, BOTH = "audio", "text", "both"
 AUDIO_SUFFIXES = (".wav", ".flac", ".ogg", ".mp3", ".m4a", ".aac", ".opus", ".webm")
@@ -72,7 +72,7 @@ class Loaded:
 
     models: Models
     asr: WhisperASR | None
-    tts: XttsTTS | None
+    tts: AgentVoice | None
     seconds: float
     vram_mib: dict[str, int | None]
 
@@ -118,7 +118,7 @@ def load_everything(args: argparse.Namespace, mode: str) -> Loaded:
     asr = WhisperASR() if mode in (AUDIO, BOTH) else None
     vram["asr"] = process_vram_mib()
     try:
-        tts = None if args.no_tts else XttsTTS(args.reference, args.speaker)
+        tts = None if args.no_tts else load_tts(args.reference, args.speaker)
     except (LicenseNotAccepted, VoiceNotConfigured) as error:
         sys.exit(str(error))
     vram["loaded"] = process_vram_mib()
@@ -147,7 +147,7 @@ def load_record(loaded: Loaded) -> dict[str, Any]:
         "models": {
             "llm": models.llm.model_path.name,
             "asr": asr.model_name if asr else None,
-            "tts": "XTTS-v2" if tts else None,
+            "tts": tts.name if tts else None,
             "embeddings": DEFAULT_DENSE_MODEL,
             "reranker": models.search.reranker_name,
         },
@@ -200,7 +200,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--terms", type=Path, default=None, help="JSON con los nombres de producto esperados por turno")
     parser.add_argument("--mode", choices=(AUDIO, TEXT, BOTH), default=None, help="con audio, con el texto correcto o las dos")
     parser.add_argument("--out", type=Path, default=None, help="carpeta de la corrida")
-    parser.add_argument("--reference", type=Path, default=None, help="grabación de referencia para la voz del agente")
+    parser.add_argument("--reference", type=Path, default=None, help="grabación de referencia para la voz del agente (XTTS-v2)")
     parser.add_argument("--speaker", default=None, help="hablante incluido en XTTS-v2 (solo para pruebas)")
     parser.add_argument("--no-tts", action="store_true", help="no sintetiza la respuesta")
     parser.add_argument("--note", default=None, help="aclaración que se guarda con los resultados")

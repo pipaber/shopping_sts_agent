@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from pathlib import Path
 from typing import Any
 
 from shopping_agent.agent.report import operation_lines, store_lines
@@ -16,11 +17,21 @@ def voice_label(voice: dict[str, Any]) -> str:
     """De dónde sale la voz y a qué velocidad habla. Las corridas guardadas antes de
     que la velocidad fuera un ajuste no la anotan: iban a 1,0."""
     speed = f", velocidad del habla {voice['speed']:.2f}".replace(".", ",") if voice.get("speed") else ""
+    if voice.get("references"):
+        turns = ", ".join(f"`{path}`" for path in voice["references"])
+        return f"clonada de los turnos grabados {turns}{speed}"
     if voice.get("reference"):
         return f"clonada de la grabación de referencia `{voice['reference']}`{speed}"
     if voice.get("speaker"):
         return f"hablante incluido en XTTS-v2 «{voice['speaker']}»{speed}"
     return "sin síntesis"
+
+
+def cloned_from(voice: dict[str, Any]) -> list[Path]:
+    """Las grabaciones de las que se clonó la voz de una corrida guardada: los turnos
+    grabados (F5) o la grabación de referencia (XTTS-v2)."""
+    written = voice.get("references") or ([voice["reference"]] if voice.get("reference") else [])
+    return [Path(path) for path in written]
 
 
 def header_lines(record: dict[str, Any]) -> list[str]:

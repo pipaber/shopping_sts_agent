@@ -320,19 +320,19 @@ def mean_similarity(embedding: np.ndarray, others: Sequence[np.ndarray]) -> floa
 
 
 def speaker_comparison(
-    embedder: SpeakerEmbedder | None, reference_audio: Path | None, real_audios: Sequence[Path], read: ReadAudio
+    embedder: SpeakerEmbedder | None, cloned_audios: Sequence[Path], real_audios: Sequence[Path], read: ReadAudio
 ) -> Compare | None:
-    """Función que mide cuánto se parece un audio a la voz que imita: ``similarity``, con
-    la grabación de referencia, y ``similarity_real``, la media con las grabaciones reales
-    que no se usaron para clonar. ``None`` si no hay con qué comparar."""
-    if embedder is None or not (reference_audio or real_audios):
+    """Función que mide cuánto se parece un audio a la voz que imita: ``similarity``, la
+    media con las grabaciones de las que se clonó, y ``similarity_real``, la media con las
+    grabaciones reales que no se usaron para clonar. ``None`` si no hay con qué comparar."""
+    if embedder is None or not (cloned_audios or real_audios):
         return None
-    reference = embedder.embed(*read(reference_audio)) if reference_audio else None
+    cloned = [embedder.embed(*read(path)) for path in cloned_audios]
     real = [embedder.embed(*read(path)) for path in real_audios]
 
     def compare(path: Path) -> dict[str, float]:
         embedding = embedder.embed(*read(path))
-        found = {} if reference is None else {SIMILARITY: cosine(reference, embedding)}
+        found = {SIMILARITY: mean_similarity(embedding, cloned)} if cloned else {}
         return {**found, SIMILARITY_REAL: mean_similarity(embedding, real)} if real else found
 
     return compare
@@ -498,15 +498,16 @@ def main() -> None:
 
     from shopping_agent.voice.asr import WhisperASR
     from shopping_agent.voice.audio import read_audio
+    from shopping_agent.voice.report import cloned_from
 
     record = json.loads((args.run_dir / "turnos.json").read_text(encoding="utf-8"))
-    reference = args.reference or (Path(record["voice"]["reference"]) if record.get("voice", {}).get("reference") else None)
+    cloned = [args.reference] if args.reference else cloned_from(record.get("voice", {}))
     asr, real = WhisperASR(), audio_files(args.real)
-    embedder = None if args.no_similarity or not (reference or real) else EcapaEmbedder()
-    compare = speaker_comparison(embedder, reference, real, read_audio)
+    embedder = None if args.no_similarity or not (cloned or real) else EcapaEmbedder()
+    compare = speaker_comparison(embedder, cloned, real, read_audio)
     metrics = evaluate_run(args.run_dir, lambda path: asr.transcribe(path).text, compare)
     metrics["models"] = {"asr": asr.model_name, "speaker": EcapaEmbedder.SOURCE if embedder else None}
-    metrics["reference"] = str(reference) if reference else None
+    metrics["reference"] = ", ".join(str(path) for path in cloned) or None
     if embedder and real:
         metrics["real_recordings"] = {"count": len(real), "similarity_among": similarity_among(embedder, real, read_audio)}
     (args.run_dir / "metricas.json").write_text(json.dumps(metrics, indent=2, ensure_ascii=False), encoding="utf-8")

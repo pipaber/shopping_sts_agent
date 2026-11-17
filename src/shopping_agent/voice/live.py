@@ -239,7 +239,7 @@ def serve(service: Service, port: int) -> ThreadingHTTPServer:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Servidor local para conversar por voz con el agente, turno a turno.")
     parser.add_argument("--port", type=int, default=DEFAULT_PORT)
-    parser.add_argument("--reference", type=Path, default=None, help="grabación de referencia para la voz del agente")
+    parser.add_argument("--reference", type=Path, default=None, help="grabación de referencia para la voz del agente (XTTS-v2)")
     parser.add_argument("--speaker", default=None, help="hablante incluido en XTTS-v2 (solo para pruebas)")
     parser.add_argument("--restore", action="store_true", help="devuelve la tienda a su estado inicial antes de empezar")
     parser.add_argument("--user", default="anonimo")
