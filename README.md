@@ -297,7 +297,7 @@ Qué dice y qué no:
 - **Lo que empeora es la latencia.** La síntesis tarda 1,9 veces más: un turno por voz con LLM pasa de 11,4 a 16,8 s, y el más lento de 18,8 a 29,8 s. F5 vuelve a procesar los 10,7 s de referencia en cada fragmento, y hay más fragmentos (de 135 caracteres en vez de 200). La espera hasta el primer fragmento apenas cambia (3,7 s), así que reproducirlo mientras se sintetiza el resto, que sigue sin hacerse, quitaría casi toda la diferencia.
 - **Suena más bajo.** El audio de F5 sale al volumen de las grabaciones de las que clona: la mitad de amplitud que el de XTTS-v2 (0,047 frente a 0,103 de valor eficaz). No se ha igualado.
 - **Ocupa 1 GB menos de memoria de GPU** con todo cargado.
-- **En la T4 de Colab la diferencia de latencia casi desaparece:** 13,8 s de síntesis por turno frente a 13,1 s de XTTS-v2 (apartado «Ejecución en Colab (T4)»).
+- **En la T4 de Colab la diferencia de latencia es menor:** entre 13,8 y 16,1 s de síntesis por turno, según la corrida, frente a 13,1 s de XTTS-v2 (apartado «Ejecución en Colab (T4)»).
 
 ```bash
 uv run python -m shopping_agent.eval.tts_speed --speeds 1.0 0.9 0.8 --run results/escenarios/voz --out results/voz_velocidad_f5 --audio-out audio/corridas/velocidad_f5
@@ -520,29 +520,30 @@ GraphSAGE supera al control sin grafo en +0,0071 (IC 95 % [+0,0028; +0,0117]). L
 - **Voz propia.** Las grabaciones se suben a la sesión y se borran al cerrarla; no entran en el repositorio. Sin ellas, el agente habla con un hablante de prueba de XTTS-v2 y los escenarios usan audios sintéticos.
 - **Conversación en vivo.** Una celda arranca `shopping_agent.voice.live` en segundo plano y otra graba un turno con el micrófono, lo envía y reproduce la respuesta. No es tiempo real: es una conversación por turnos.
 
-**Hay dos corridas en Colab.** La del 12 de noviembre, con XTTS-v2, es la completa y la que tiene sus archivos guardados. La del 17 de noviembre repite todo con F5-Spanish, el motor por defecto desde entonces. El notebook elige el motor solo: F5-Spanish si están las grabaciones de los dos turnos de los que clona y, si no, el hablante de prueba de XTTS-v2.
+**Hay dos corridas en Colab con archivos guardados.** La del 12 de noviembre, con XTTS-v2, incluye además la conversación en vivo. La del 17 de noviembre repite todo con F5-Spanish, el motor por defecto desde entonces. El notebook elige el motor solo: F5-Spanish si están las grabaciones de los dos turnos de los que clona y, si no, el hablante de prueba de XTTS-v2.
 
-**Corrida con F5-Spanish** (17 de noviembre de 2026, commit `60765e8`; la misma T4 con 2 CPU), con la voz del autor clonada de dos de sus turnos a velocidad 0,9 y sus 31 grabaciones como entrada. Las cifras se leyeron en la sesión de Colab; sus archivos no se descargaron.
+**Corrida con F5-Spanish** (17 de noviembre de 2026, commit `a8f7c00`; la misma T4 con 2 CPU), con la voz del autor clonada de dos de sus turnos a velocidad 0,9 y sus 31 grabaciones como entrada. Los archivos de esa corrida están en [results/colab_t4_f5/](results/colab_t4_f5/LEEME.md). Es la segunda del día: la primera, sobre el commit `60765e8`, dio los mismos veredictos y la misma calidad de voz, pero la sesión caducó antes de descargar sus archivos y solo quedan las cifras leídas en pantalla.
 
 | Medida | XTTS-v2 a 1,10 (12 de noviembre) | F5-Spanish a 0,9 (17 de noviembre) |
 |---|---|---|
+| Escenarios por texto | 20 de 20, sin violaciones | 20 de 20, sin violaciones |
+| LLM por turno, por texto (73 turnos) | 8,00 s (máx. 15,53) | 8,49 s (máx. 16,73) |
 | Escenarios por voz, con audio / con el texto correcto | 6 de 6 / 6 de 6 | 6 de 6 / 6 de 6 |
-| ASR: WER; errores en nombres de producto | 1,4 %; 1 de 13 | 1,4 %; 1 de 13 |
+| ASR: WER; errores en importes, cantidades y nombres de producto | 1,4 %; 0 de 3, 0 de 8 y 1 de 13 | 1,4 %; 0 de 3, 0 de 8 y 1 de 13 |
 | Inteligibilidad de la voz generada (WER de Whisper) | 5,6 % | 5,1 % |
 | Semejanza con las grabaciones reales, media | 0,272 (techo 0,377) | 0,402 (techo 0,371; mínima 0,342) |
-| Turno por voz con LLM (24 turnos): ASR / LLM / TTS | 0,41 / 7,85 / 13,07 s | 0,39 / 8,31 / 13,78 s |
-| Turno por voz con LLM: total | 21,38 s (máx. 36,26) | 22,54 s (máx. 41,82) |
-| Turno por voz sin LLM (7 turnos): total | 10,66 s (máx. 23,69) | 11,91 s (máx. 27,26) |
+| Turno por voz con LLM (24 turnos): ASR / LLM / TTS | 0,41 / 7,85 / 13,07 s | 0,41 / 8,50 / 16,12 s |
+| Turno por voz con LLM: total | 21,38 s (máx. 36,26) | 25,10 s (máx. 48,95) |
+| Turno por voz sin LLM (7 turnos): total | 10,66 s (máx. 23,69) | 13,95 s (máx. 31,68) |
 | Memoria de GPU con todo cargado | 9 152 MiB de 15 360 | 8 140 MiB de 15 360 |
-| Carga inicial de los modelos, por voz | 109 s | 108 s (45 s de la voz, con su descarga) |
-| Conversación en vivo: listo para el primer turno | 102 s | 96 s |
+| Carga inicial de los modelos, por voz | 109 s | 89 s (30 s de la voz) |
 
-- **En la T4, F5-Spanish cuesta casi lo mismo que XTTS-v2.** La síntesis tarda 13,8 s por turno frente a 13,1 s (1,05 veces), no las 1,9 veces de la workstation: un turno por voz con LLM pasa de 21,4 a 22,5 s. El turno más lento sube de 36 a 42 s.
-- **Se parece más y se entiende igual o algo mejor:** semejanza con las grabaciones reales de 0,272 a 0,402 y WER de la voz de 5,6 % a 5,1 %. Valen las mismas cautelas que en la workstation: la semejanza supera el techo de los turnos entre sí, y los turnos de clonar y de medir son de la misma sesión y micrófono.
+- **En la T4, F5-Spanish tarda entre 1,05 y 1,23 veces lo que XTTS-v2 en sintetizar**, menos que las 1,9 veces de la workstation. Las dos corridas del día dieron 13,8 y 16,1 s de síntesis por turno con LLM (22,5 y 25,1 s el turno entero), frente a los 13,1 s (21,4 s) de la única corrida con XTTS-v2. La diferencia entre dos sesiones de Colab con el mismo código (2,3 s) es tan grande como la diferencia entre motores, así que con una corrida por motor no se puede afinar más. El turno más lento sube de 36 a 49 s.
+- **Se parece más y se entiende igual o algo mejor:** semejanza con las grabaciones reales de 0,272 a 0,402 y WER de la voz de 5,6 % a 5,1 %, idénticos en las dos corridas. Valen las mismas cautelas que en la workstation: la semejanza supera el techo de los turnos entre sí, y los turnos de clonar y de medir son de la misma sesión y micrófono.
 - **Lo demás no cambia con el lock nuevo.** La instalación con `uv sync --locked` y la rueda precompilada funciona; pasan las 390 pruebas; la recuperación en `train` da los mismos nDCG@10 (0,6807, 0,7372 y 0,7236) y los escenarios por texto, 20 de 20.
 - **Sin la casilla de la licencia CPML.** Con las grabaciones completas el notebook no carga XTTS-v2 en ningún momento.
-- **Conversación en vivo.** Listo en 96 s con 8 140 MiB. Un turno del escenario 02 con una grabación del autor, enviado por HTTP, tardó 9,9 s (ASR 0,6, LLM 5,6, TTS 3,6), con la transcripción correcta.
-- **Sin probar:** la grabación con el micrófono del navegador y la celda que sube `audio.zip` (el archivo se subió otra vez por el panel de archivos y se descomprimió en la terminal). Una sola corrida y una sola semilla.
+- **Conversación en vivo** (primera corrida del día). Listo en 96 s con 8 140 MiB. Un turno del escenario 02 con una grabación del autor, enviado por HTTP, tardó 9,9 s (ASR 0,6, LLM 5,6, TTS 3,6), con la transcripción correcta.
+- **Sin probar:** la grabación con el micrófono del navegador y la celda que sube `audio.zip` (el archivo se subió por el panel de archivos y se descomprimió en la terminal). Una sola semilla.
 
 **Corrida con XTTS-v2** (12 de noviembre de 2026, commit `d81bc00`; T4 con 2 CPU, Ubuntu 24.04, CUDA 13.0), con la voz del autor clonada de la referencia nueva a velocidad 1,10 y sus 31 grabaciones. Los archivos de esa corrida están en [results/colab_t4/](results/colab_t4/LEEME.md), descargados de la sesión de Colab; el resto de `results/` guarda las corridas de la workstation, que son las de la otra columna.
 

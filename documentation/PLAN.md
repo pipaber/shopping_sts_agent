@@ -502,7 +502,7 @@ La segunda fila es otro fallo: a un texto muy corto le tocan décimas de segundo
 - **Empeora** la latencia: la síntesis tarda 1,9 veces más y un turno con LLM pasa de 11,4 a 16,8 s. F5 procesa la referencia de 10,7 s en cada fragmento y los fragmentos son más cortos (135 caracteres). Hay menos respuestas sin ningún error (8 frente a 12): deforma más marcas. Y el audio sale a la mitad de amplitud que el de XTTS-v2, al volumen de las grabaciones del autor; no se ha igualado.
 - **Cautelas.** La semejanza de F5 (0,425) supera el techo de los turnos reales entre sí (0,371): las respuestas son mucho más largas que los turnos y se comparan mejor, y los turnos de clonar y de medir son de la misma sesión y micrófono. Una sola semilla. La diferencia de carga de la búsqueda (15 frente a 20 s) es del disco, no de la voz.
 - **Servidor en vivo:** tres turnos del escenario 03 con F5, 8 522 MiB con todo cargado y 8 798 al terminar ([transcripción](../results/en_vivo/vivo-63ab1fd4/transcripcion.md)).
-- **En la T4 de Colab** (17 de noviembre, commit `60765e8`, con el notebook regenerado): 6 de 6 por voz, WER de la voz 5,1 %, semejanza con las grabaciones reales 0,402 y 22,5 s por turno con LLM (ASR 0,39, LLM 8,31, TTS 13,78), con 8 140 MiB cargados. Allí la síntesis de F5 tarda casi lo mismo que la de XTTS-v2 (13,8 frente a 13,1 s), no 1,9 veces más. La tabla está en el README, apartado «Ejecución en Colab (T4)».
+- **En la T4 de Colab** (17 de noviembre, dos corridas con el notebook regenerado; la que tiene archivos es la del commit `a8f7c00`, en `results/colab_t4_f5/`): 6 de 6 por voz, WER de la voz 5,1 %, semejanza con las grabaciones reales 0,402 y 25,1 s por turno con LLM (ASR 0,41, LLM 8,50, TTS 16,12), con 8 140 MiB cargados. La primera corrida del día dio 22,5 s (TTS 13,78). Allí la síntesis de F5 tarda entre 1,05 y 1,23 veces la de XTTS-v2 (13,1 s), no 1,9 veces; dos sesiones de Colab con el mismo código difieren tanto como los dos motores. La tabla está en el README, apartado «Ejecución en Colab (T4)».
 - **Sin verificar:** el micrófono del navegador y la celda que sube `audio.zip`; una sola corrida en la T4.
 
 ### Análisis de aciertos y fallos
@@ -588,7 +588,7 @@ Dependencias a añadir: `langgraph-checkpoint-postgres`, `psycopg[binary,pool]`,
 - **Modelo de embeddings:** queda `intfloat/multilingual-e5-small`; ni `e5-base` ni `bge-m3` lo superan (apartado 5). El LLM es Qwen2.5-7B-Instruct Q4_K_M.
 - **Instalación en Colab:** Postgres, `llama-cpp-python` con CUDA (rueda precompilada) y las dependencias de voz están comprobadas en la T4 (apartado «Ejecución en Colab (T4)»).
 - **Corrida final en Colab con la voz del autor:** hecha el 12 de noviembre sobre el commit `d81bc00`; 20 de 20 por texto y 6 de 6 por voz, con 9 152 MiB y 21,4 s por turno por voz con LLM.
-- **Corrida en Colab con F5-Spanish:** hecha el 17 de noviembre sobre el commit `60765e8`; 20 de 20 por texto y 6 de 6 por voz, con 8 140 MiB y 22,5 s por turno por voz con LLM.
+- **Corrida en Colab con F5-Spanish:** hecha el 17 de noviembre sobre el commit `a8f7c00`; 20 de 20 por texto y 6 de 6 por voz, con 8 140 MiB y 25,1 s por turno por voz con LLM (22,5 s en una corrida anterior del mismo día).
 - **Análisis de aciertos y fallos:** [ANALISIS_ACIERTOS_FALLOS.md](ANALISIS_ACIERTOS_FALLOS.md).
 - **Números escritos con cifras** (escenario 05 con la voz real): corregido el 12 de noviembre.
 - **Velocidad del habla:** 1,10 con XTTS-v2, decidida por el autor con la medida de velocidades; 0,9 con F5-Spanish, por la medida del 17 de noviembre.
