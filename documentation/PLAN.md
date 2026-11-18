@@ -590,6 +590,7 @@ Dependencias a añadir: `langgraph-checkpoint-postgres`, `psycopg[binary,pool]`,
 - **Instalación en Colab:** Postgres, `llama-cpp-python` con CUDA (rueda precompilada) y las dependencias de voz están comprobadas en la T4 (apartado «Ejecución en Colab (T4)»).
 - **Corrida final en Colab con la voz del autor:** hecha el 12 de noviembre sobre el commit `d81bc00`; 20 de 20 por texto y 6 de 6 por voz, con 9 152 MiB y 21,4 s por turno por voz con LLM.
 - **Corrida en Colab con F5-Spanish:** hecha el 17 de noviembre sobre el commit `a8f7c00`; 20 de 20 por texto y 6 de 6 por voz, con 8 140 MiB y 25,1 s por turno por voz con LLM (22,5 s en una corrida anterior del mismo día).
+- **Evaluación en test y ablación dentro de Colab:** el notebook las ejecuta desde el 18 de noviembre (commit `d8b795d`). En la T4, los modelos base dan lo mismo que en la workstation (0,6797 / 0,7278 / 0,7113) y los rerankers, entrenados de nuevo, 0,7289 el control y 0,7340 GraphSAGE; los 20 escenarios dan 20 de 20 con el control, con GraphSAGE y sin reranker. La tabla del 10 de noviembre sigue siendo la evaluación única; esta es una reproducción con la configuración ya fijada.
 - **Análisis de aciertos y fallos:** [ANALISIS_ACIERTOS_FALLOS.md](ANALISIS_ACIERTOS_FALLOS.md).
 - **Números escritos con cifras** (escenario 05 con la voz real): corregido el 12 de noviembre.
 - **Velocidad del habla:** 1,10 con XTTS-v2, decidida por el autor con la medida de velocidades; 0,9 con F5-Spanish, por la medida del 17 de noviembre.
