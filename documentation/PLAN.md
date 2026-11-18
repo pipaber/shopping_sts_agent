@@ -503,7 +503,8 @@ La segunda fila es otro fallo: a un texto muy corto le tocan décimas de segundo
 - **Cautelas.** La semejanza de F5 (0,425) supera el techo de los turnos reales entre sí (0,371): las respuestas son mucho más largas que los turnos y se comparan mejor, y los turnos de clonar y de medir son de la misma sesión y micrófono. Una sola semilla. La diferencia de carga de la búsqueda (15 frente a 20 s) es del disco, no de la voz.
 - **Servidor en vivo:** tres turnos del escenario 03 con F5, 8 522 MiB con todo cargado y 8 798 al terminar ([transcripción](../results/en_vivo/vivo-63ab1fd4/transcripcion.md)).
 - **En la T4 de Colab** (17 de noviembre, dos corridas con el notebook regenerado; la que tiene archivos es la del commit `a8f7c00`, en `results/colab_t4_f5/`): 6 de 6 por voz, WER de la voz 5,1 %, semejanza con las grabaciones reales 0,402 y 25,1 s por turno con LLM (ASR 0,41, LLM 8,50, TTS 16,12), con 8 140 MiB cargados. La primera corrida del día dio 22,5 s (TTS 13,78). Allí la síntesis de F5 tarda entre 1,05 y 1,23 veces la de XTTS-v2 (13,1 s), no 1,9 veces; dos sesiones de Colab con el mismo código difieren tanto como los dos motores. La tabla está en el README, apartado «Ejecución en Colab (T4)».
-- **Sin verificar:** el micrófono del navegador y la celda que sube `audio.zip`; una sola corrida en la T4.
+- **Juicio de oído sobre la voz final.** El 17 de noviembre el autor escuchó cinco respuestas reales del agente con la voz final (F5-Spanish a velocidad 0,9: una pregunta corta, una lista con precios, la repetición del pedido, el pedido registrado y la respuesta con marcas impronunciables) junto a una grabación suya, y la dio por buena: «Me gusta la voz. Se parece mucho más a la que tengo». No comentó el volumen.
+- **Sin verificar:** el micrófono del navegador y la celda que sube `audio.zip`.
 
 ### Análisis de aciertos y fallos
 
@@ -592,15 +593,13 @@ Dependencias a añadir: `langgraph-checkpoint-postgres`, `psycopg[binary,pool]`,
 - **Análisis de aciertos y fallos:** [ANALISIS_ACIERTOS_FALLOS.md](ANALISIS_ACIERTOS_FALLOS.md).
 - **Números escritos con cifras** (escenario 05 con la voz real): corregido el 12 de noviembre.
 - **Velocidad del habla:** 1,10 con XTTS-v2, decidida por el autor con la medida de velocidades; 0,9 con F5-Spanish, por la medida del 17 de noviembre.
-- **Voz que se parezca a la del autor:** F5-Spanish clonando de dos turnos reales, elegida por el autor de oído el 17 de noviembre.
+- **Voz que se parezca a la del autor:** F5-Spanish clonando de dos turnos reales, elegida por el autor de oído el 17 de noviembre y confirmada ese día al escuchar respuestas reales del agente a velocidad 0,9, incluida la de las marcas impronunciables («Se parece mucho más a la que tengo»).
 
 **Queda.**
 
 - **En Colab, lo que necesita a una persona:** grabar un turno con el micrófono del navegador y la celda que sube `audio.zip`. Lo demás del notebook está corrido.
-- **Colab con la voz nueva.** El notebook y la corrida de la T4 son de XTTS-v2. Con F5-Spanish no se ha medido allí; en la workstation la síntesis tarda 1,9 veces más que con XTTS-v2.
 - **Volumen de la voz nueva.** Sale a la mitad de amplitud que la de XTTS-v2; no se ha igualado.
-- **Latencia por voz en la T4.** Con XTTS-v2, un turno con LLM tarda 21 s y el más lento 36 s; más de la mitad es la síntesis. Reproducir el primer fragmento mientras se sintetiza el resto, o respuestas habladas más cortas, lo bajarían. No se ha hecho.
-- **Escuchar la voz nueva.** La velocidad 1,10 se eligió por la medida, no de oído. Y nadie ha escuchado las respuestas que Whisper entiende mal: la del escenario 02 con marcas impronunciables y las que terminan con palabras de más. Según lo que se oiga, las salidas son otra toma de referencia, condicionar el ritmo con 30 s de la referencia en lugar de 6, o no leer en voz alta las marcas que no son palabras. Nada de eso se ha probado.
+- **Latencia por voz en la T4.** Con F5-Spanish, un turno con LLM tarda entre 23 y 25 s y el más lento 49 s; más de la mitad es la síntesis. Reproducir el primer fragmento mientras se sintetiza el resto, o respuestas habladas más cortas, lo bajarían. No se ha hecho.
 - **El error del ASR que cambia la compra** («cafetera» → «cafetería», escenario 01 con la voz real). Opciones sin probar: dar vocabulario del dominio a Whisper, o que el agente diga qué ha buscado. No se ha tocado nada.
 - **Respuestas habladas largas.** Las que recitan el carrito completo llegan a 40 s con la voz nueva; valorar una versión hablada más breve.
 - **Reranker por defecto.** En test GraphSAGE supera al control en +0,0071 de nDCG@10 (IC [+0,0028; +0,0117]). El agente sigue con el control, decidido antes de ver test. Si se cambia, es una decisión posterior a ver test y hay que decirlo.

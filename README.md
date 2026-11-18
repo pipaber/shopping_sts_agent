@@ -35,7 +35,7 @@ flowchart LR
 - **Función del agente.** El LLM propone una herramienta por paso y redacta la respuesta; el código valida cada llamada, comprueba existencias y presupuesto en la tienda, verifica las cifras de la respuesta y es el único que registra pedidos.
 - **Qué se toma de ESCI.** La versión reducida, solo en español: 43 674 productos (título, descripción, características, marca y color) forman el catálogo en el que busca el agente. Las consultas y sus etiquetas (1 500 de `train` y 300 de `test`) solo sirven para entrenar el reranker y para medir: el agente no las lee. Precios y existencias no vienen en ESCI: son ficticios, generados con semilla.
 - **Modelos, todos locales.** Whisper large-v3-turbo, Qwen2.5-7B-Instruct (GGUF Q4_K_M), F5-TTS con el ajuste al español F5-Spanish (o XTTS-v2, a elegir) y `multilingual-e5-small`, más un reranker entrenado aquí.
-- **Hardware.** Medido en una estación de trabajo con una NVIDIA RTX A2000 de 12 GB (8 522 MiB de memoria de GPU con todo cargado y la voz de F5-Spanish; 9 532 con XTTS-v2). El objetivo del enunciado es Google Colab con una T4, donde se corrió entero con [notebooks/colab.ipynb](notebooks/colab.ipynb) cuando la voz era la de XTTS-v2: 9 152 MiB y los mismos resultados, con turnos por voz de 21 s en lugar de 11 (ver «Ejecución en Colab (T4)»). Con F5-Spanish no se ha medido en la T4.
+- **Hardware.** Medido en una estación de trabajo con una NVIDIA RTX A2000 de 12 GB (8 522 MiB de memoria de GPU con todo cargado y la voz de F5-Spanish; 9 532 con XTTS-v2). El objetivo del enunciado es Google Colab con una T4, donde se corrió entero con [notebooks/colab.ipynb](notebooks/colab.ipynb) con las dos voces: 9 152 MiB y turnos por voz de 21 s con XTTS-v2, y 8 140 MiB y turnos de 23 a 25 s con F5-Spanish, con los mismos resultados que en la workstation (ver «Ejecución en Colab (T4)»).
 
 ## Entorno
 
@@ -250,7 +250,9 @@ Los dos guiones de demostración siguen la misma convención, con el texto en un
 
 ### Voz del agente: F5-Spanish (17 de noviembre)
 
-El autor escuchó la voz clonada con XTTS-v2 y dijo que no se parecía a la suya. Se compararon doce formas de clonarla con las mismas frases ([experiments/comparacion_voz](experiments/comparacion_voz/README.md)) y eligió de oído F5-Spanish clonando de dos de sus turnos grabados («es muy parecido»). Desde el 17 de noviembre es la voz por defecto:
+El autor escuchó la voz clonada con XTTS-v2 y dijo que no se parecía a la suya. Se compararon doce formas de clonarla con las mismas frases ([experiments/comparacion_voz](experiments/comparacion_voz/README.md)) y eligió de oído F5-Spanish clonando de dos de sus turnos grabados («es muy parecido»). Desde el 17 de noviembre es la voz por defecto. El 17 de noviembre el autor escuchó cinco respuestas reales del agente con la voz final (F5-Spanish a velocidad 0,9: una pregunta corta, una lista con precios, la repetición del pedido, el pedido registrado y la respuesta con marcas impronunciables) junto a una grabación suya, y la dio por buena: «Me gusta la voz. Se parece mucho más a la que tengo».
+
+Cómo está montada:
 
 - **Motor a elegir.** `SHOPPING_AGENT_TTS=f5` (por defecto) o `xtts`. Los dos tienen la misma interfaz y todo lo demás (escenarios, servidor en vivo, métricas) funciona igual con cualquiera. `--reference`, `--speaker` y `SHOPPING_AGENT_VOICE_REF` son de XTTS-v2.
 - **De qué clona.** De `audio/escenarios/01_compra_confirmada/01.wav` y `audio/escenarios/03_cambio_cantidad/01.wav` seguidos (10,7 s), con el texto de esos dos turnos como transcripción. Otros turnos, con `SHOPPING_AGENT_VOICE_TURNS`.
