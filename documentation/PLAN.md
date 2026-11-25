@@ -504,7 +504,8 @@ La segunda fila es otro fallo: a un texto muy corto le tocan décimas de segundo
 - **Servidor en vivo:** tres turnos del escenario 03 con F5, 8 522 MiB con todo cargado y 8 798 al terminar ([transcripción](../results/en_vivo/vivo-63ab1fd4/transcripcion.md)).
 - **En la T4 de Colab** (17 de noviembre, dos corridas con el notebook regenerado; la que tiene archivos es la del commit `a8f7c00`, en `results/colab_t4_f5/`): 6 de 6 por voz, WER de la voz 5,1 %, semejanza con las grabaciones reales 0,402 y 25,1 s por turno con LLM (ASR 0,41, LLM 8,50, TTS 16,12), con 8 140 MiB cargados. La primera corrida del día dio 22,5 s (TTS 13,78). Allí la síntesis de F5 tarda entre 1,05 y 1,23 veces la de XTTS-v2 (13,1 s), no 1,9 veces; dos sesiones de Colab con el mismo código difieren tanto como los dos motores. La tabla está en el README, apartado «Ejecución en Colab (T4)».
 - **Juicio de oído sobre la voz final.** El 17 de noviembre el autor escuchó cinco respuestas reales del agente con la voz final (F5-Spanish a velocidad 0,9: una pregunta corta, una lista con precios, la repetición del pedido, el pedido registrado y la respuesta con marcas impronunciables) junto a una grabación suya, y la dio por buena: «Me gusta la voz. Se parece mucho más a la que tengo». No comentó el volumen.
-- **Sin verificar:** el micrófono del navegador y la celda que sube `audio.zip`.
+- **Micrófono del navegador:** el autor lo probó el 24 de noviembre en la conversación en vivo de la sección 13 del notebook, y el agente respondió con su voz clonada. De esa prueba no hay medidas ni archivos guardados.
+- **Sin verificar:** la celda que sube `audio.zip`.
 
 ### Análisis de aciertos y fallos
 
@@ -546,7 +547,7 @@ Lectura:
 
 - **El comportamiento no cambia con la máquina; la latencia, sí.** En la T4 el LLM tarda 1,6 veces más que en la A2000 (8,0 frente a 5,0 s) y la síntesis con la voz clonada 2,2 veces más (13,1 frente a 5,9 s). Un turno por voz con LLM pasa de 11,4 a 21,4 s, y más de la mitad es el TTS.
 - **La voz clonada cuesta más que el hablante de prueba.** La medida anterior en la T4, con un hablante incluido en XTTS-v2, dio 17,3 s por turno con LLM (ASR 0,41, LLM 7,9, TTS 8,9) con 9,1 GB cargados: el LLM tarda lo mismo y el TTS pasa de 8,9 a 13,1 s con la voz del autor.
-- **Sin probar en Colab:** la grabación con el micrófono del navegador, que necesita a una persona delante, y la celda que sube `audio.zip` (los audios se subieron por el panel de archivos). Los audios del autor estuvieron solo en la sesión, que es temporal.
+- **Sin probar en esta corrida:** la grabación con el micrófono del navegador, que necesita a una persona delante (se probó después, el 24 de noviembre), y la celda que sube `audio.zip` (los audios se subieron por el panel de archivos). Los audios del autor estuvieron solo en la sesión, que es temporal.
 
 ## 7. Cronograma
 
@@ -595,13 +596,14 @@ Dependencias a añadir: `langgraph-checkpoint-postgres`, `psycopg[binary,pool]`,
 - **Números escritos con cifras** (escenario 05 con la voz real): corregido el 12 de noviembre.
 - **Velocidad del habla:** 1,10 con XTTS-v2, decidida por el autor con la medida de velocidades; 0,9 con F5-Spanish, por la medida del 17 de noviembre.
 - **Voz que se parezca a la del autor:** F5-Spanish clonando de dos turnos reales, elegida por el autor de oído el 17 de noviembre y confirmada ese día al escuchar respuestas reales del agente a velocidad 0,9, incluida la de las marcas impronunciables («Se parece mucho más a la que tengo»).
+- **Micrófono del navegador en Colab:** el autor lo probó el 24 de noviembre en la conversación en vivo de la sección 13 del notebook, y el agente respondió con su voz clonada. De esa prueba no hay medidas ni archivos guardados.
 
 **Queda.**
 
-- **En Colab, lo que necesita a una persona:** grabar un turno con el micrófono del navegador y la celda que sube `audio.zip`. Lo demás del notebook está corrido.
+- **En Colab:** la celda que sube `audio.zip` sigue sin probar. Lo demás del notebook está corrido.
 - **Volumen de la voz nueva.** Sale a la mitad de amplitud que la de XTTS-v2; no se ha igualado.
 - **Latencia por voz en la T4.** Con F5-Spanish, un turno con LLM tarda entre 23 y 25 s y el más lento 49 s; más de la mitad es la síntesis. Reproducir el primer fragmento mientras se sintetiza el resto, o respuestas habladas más cortas, lo bajarían. No se ha hecho.
 - **El error del ASR que cambia la compra** («cafetera» → «cafetería», escenario 01 con la voz real). Opciones sin probar: dar vocabulario del dominio a Whisper, o que el agente diga qué ha buscado. No se ha tocado nada.
 - **Respuestas habladas largas.** Las que recitan el carrito completo llegan a 40 s con la voz nueva; valorar una versión hablada más breve.
 - **Reranker por defecto.** En test GraphSAGE supera al control en +0,0071 de nDCG@10 (IC [+0,0028; +0,0117]). El agente sigue con el control, decidido antes de ver test. Si se cambia, es una decisión posterior a ver test y hay que decirlo.
-- **Video** (máximo 20 minutos) y fecha oficial de entrega.
+- **Video** (máximo 20 minutos); la entrega es el 25 de noviembre. El guion está en [GUION_VIDEO.md](GUION_VIDEO.md).

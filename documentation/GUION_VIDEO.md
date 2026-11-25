@@ -21,7 +21,7 @@ Los tiempos y los temas de cada bloque son los del enunciado. El reparto de nomb
 
 ## Antes de grabar
 
-La demostración necesita unos 20 minutos de preparación en Colab antes de pulsar grabar. El micrófono del navegador y la celda que sube `audio.zip` no se han probado todavía: hay que probarlos antes del día de la entrega.
+La demostración necesita unos 20 minutos de preparación en Colab antes de pulsar grabar. El micrófono del navegador ya está probado (24 de noviembre): la conversación en vivo funciona y responde con la voz de Piero. La celda que sube `audio.zip` no consta como probada; si falla, más abajo está la alternativa.
 
 - [ ] Abrir el [notebook en Colab](https://colab.research.google.com/github/pipaber/shopping_sts_agent/blob/main/notebooks/colab.ipynb) y poner el entorno en GPU T4.
 - [ ] Ejecutar las secciones 1 a 8 (unos 15 minutos: instalación, datos, recuperación y rerankers).

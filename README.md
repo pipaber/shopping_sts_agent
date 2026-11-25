@@ -546,7 +546,8 @@ GraphSAGE supera al control sin grafo en +0,0071 (IC 95 % [+0,0028; +0,0117]). L
 - **Evaluación en test y ablación, también en Colab** (18 de noviembre, commit `d8b795d`; cifras leídas en la sesión, sin archivos guardados). El notebook repite la tabla en test con la configuración ya fijada y la escribe aparte, en `results/colab/`, sin tocar la original del 10 de noviembre: BM25 0,6797, denso 0,7278 e híbrido 0,7113, idénticos a los de la workstation; control 0,7289 (0,7292 allí) y GraphSAGE 0,7340 (0,7363), que se entrenan de nuevo en otra GPU. GraphSAGE sigue por encima del control por poco: +0,0051 [+0,0022; +0,0080], frente a +0,0071 [+0,0028; +0,0117]. Tarda un minuto. Los 20 escenarios por texto dan 20 de 20 con el control, con GraphSAGE y sin reranker (10 minutos cada corrida).
 - **Sin la casilla de la licencia CPML.** Con las grabaciones completas el notebook no carga XTTS-v2 en ningún momento.
 - **Conversación en vivo** (primera corrida del día). Listo en 96 s con 8 140 MiB. Un turno del escenario 02 con una grabación del autor, enviado por HTTP, tardó 9,9 s (ASR 0,6, LLM 5,6, TTS 3,6), con la transcripción correcta.
-- **Sin probar:** la grabación con el micrófono del navegador y la celda que sube `audio.zip` (el archivo se subió por el panel de archivos y se descomprimió en la terminal). Una sola semilla.
+- **Micrófono del navegador:** el autor lo probó el 24 de noviembre en la conversación en vivo de la sección 13 del notebook, y el agente respondió con su voz clonada. De esa prueba no hay medidas ni archivos guardados.
+- **Sin probar:** la celda que sube `audio.zip` (en las corridas el archivo se subió por el panel de archivos y se descomprimió en la terminal). Una sola semilla.
 
 **Corrida con XTTS-v2** (12 de noviembre de 2026, commit `d81bc00`; T4 con 2 CPU, Ubuntu 24.04, CUDA 13.0), con la voz del autor clonada de la referencia nueva a velocidad 1,10 y sus 31 grabaciones. Los archivos de esa corrida están en [results/colab_t4/](results/colab_t4/LEEME.md), descargados de la sesión de Colab; el resto de `results/` guarda las corridas de la workstation, que son las de la otra columna.
 
@@ -570,7 +571,7 @@ GraphSAGE supera al control sin grafo en +0,0071 (IC 95 % [+0,0028; +0,0117]). L
 - **La T4 es más lenta.** El LLM tarda 1,6 veces más que en la A2000 (8,0 frente a 5,0 s por turno) y la síntesis con la voz clonada 2,2 veces más (13,1 frente a 5,9 s): un turno por voz con LLM pasa de 11,4 a 21,4 s, y el más lento llega a 36 s. Más de la mitad de ese tiempo es el TTS.
 - **Cabe con margen.** 9 152 MiB de los 15 360 de la T4 con los cuatro modelos y el reranker cargados: 712 con la búsqueda, 5 826 al añadir el LLM y 7 394 al añadir el ASR.
 - **Conversación en vivo.** El servidor quedó listo en 102 s con 9 152 MiB. Dos turnos del escenario 03 con grabaciones del autor, enviados por HTTP, tardaron 29,9 s (ASR 1,1, LLM 15,5, TTS 13,1) y 28,2 s (ASR 0,4, LLM 8,6, TTS 19,1), con las dos transcripciones correctas.
-- **Sin probar en Colab:** la grabación con el micrófono del navegador, que necesita a una persona delante, y la celda que sube `audio.zip` (los audios se subieron por el panel de archivos).
+- **Sin probar en esta corrida:** la grabación con el micrófono del navegador, que necesita a una persona delante (se probó después, el 24 de noviembre), y la celda que sube `audio.zip` (los audios se subieron por el panel de archivos).
 
 Antes de esta corrida se había medido con el hablante de prueba de XTTS-v2 en lugar de la voz clonada: 6 de 6 por voz y 17,3 s por turno con LLM (TTS 8,9 s). La voz clonada del autor tarda más en sintetizarse.
 

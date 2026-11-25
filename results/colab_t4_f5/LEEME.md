@@ -26,6 +26,6 @@ Archivos de la corrida del notebook [notebooks/colab.ipynb](../../notebooks/cola
 
 - La salida de las celdas de instalación, pruebas y entrenamiento de los rerankers: lo que se comprobó está en el README, apartado «Ejecución en Colab (T4)».
 - La conversación en vivo: se probó en la primera corrida del día, no en esta.
-- La grabación con el micrófono del navegador, que no se probó.
+- La grabación con el micrófono del navegador, que no se probó en esta corrida; el autor la probó después, el 24 de noviembre.
 
 Elaborado con asistencia de IA generativa (Claude Code).
