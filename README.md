@@ -2,7 +2,7 @@
 
 Asistente que recibe consultas habladas en español, recupera productos de un catálogo (ESCI), opera sobre una tienda simulada y responde con voz clonada. Todo el procesamiento de modelos es local.
 
-El diseño y el cronograma están en [documentation/PLAN.md](documentation/PLAN.md). Qué funciona, qué falla y por qué, caso a caso: [documentation/ANALISIS_ACIERTOS_FALLOS.md](documentation/ANALISIS_ACIERTOS_FALLOS.md).
+El diseño y el cronograma están en [documentation/PLAN.md](documentation/PLAN.md). Qué funciona, qué falla y por qué, caso a caso: [documentation/ANALISIS_ACIERTOS_FALLOS.md](documentation/ANALISIS_ACIERTOS_FALLOS.md). El guion del video de entrega: [documentation/GUION_VIDEO.md](documentation/GUION_VIDEO.md).
 
 ## Cómo funciona
 
