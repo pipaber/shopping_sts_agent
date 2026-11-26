@@ -1,218 +1,52 @@
 # Guion del video — Laboratorio 4
 
-Elaborado el 24 de noviembre de 2026.
-
-Video de 20 minutos como máximo, en cuatro bloques, uno por integrante; se entrega el 25 de noviembre de 2026 junto con el código. Piero hace la demostración porque el agente responde con su voz clonada.
-
-## Reparto
-
-Los tiempos y los temas de cada bloque son los del enunciado. El reparto de nombres es una propuesta: solo la demostración tiene que ser de Piero; los otros tres bloques se pueden intercambiar.
-
-| Bloque | Quién | Minutos | Qué pide el enunciado |
-| --- | --- | --- | --- |
-| 1. Metodología | Yesenia | 0:00 – 4:00 | Diseño del sistema y decisiones principales |
-| 2. Implementación | Diego | 4:00 – 8:00 | Recuperación, agente, estado y gestión de recursos |
-| 3. Demostración | Piero | 8:00 – 16:00 | Una compra y un caso con aclaración, con entrada y respuesta por voz; al menos una interacción completa con su espera real |
-| 4. Resultados | Edgar | 16:00 – 20:00 | Comparación con el modelo base, ablación, errores y limitaciones |
-
-**Por qué Piero en la demostración.** El agente responde con la voz clonada de Piero. Si él habla y el agente contesta, el video muestra a la vez la voz real y la clonada, que es justo la semejanza que pide evaluar el enunciado. Con otra persona hablando, el agente respondería con una voz que no es la de quien pregunta y habría que explicarlo.
-
-**Formato sugerido.** Cada uno graba su bloque por separado, con pantalla compartida y su voz, y se unen al final. Así nadie depende de los demás y la demostración se puede repetir sin regrabar el resto. Dejad unos segundos de margen: el máximo es 20 minutos.
-
-## Antes de grabar
-
-La demostración necesita unos 20 minutos de preparación en Colab antes de pulsar grabar. El micrófono del navegador ya está probado (24 de noviembre): la conversación en vivo funciona y responde con la voz de Piero. La celda que sube `audio.zip` no consta como probada; si falla, más abajo está la alternativa.
-
-- [ ] Abrir el [notebook en Colab](https://colab.research.google.com/github/pipaber/shopping_sts_agent/blob/main/notebooks/colab.ipynb) y poner el entorno en GPU T4.
-- [ ] Ejecutar las secciones 1 a 8 (unos 15 minutos: instalación, datos, recuperación y rerankers).
-- [ ] Sección 11: marcar `SUBIR_AUDIOS` y subir `audio/audio.zip` del portátil de Piero. Sin esas grabaciones el agente no habla con su voz.
-- [ ] Sección 13, primera celda: arrancar el agente en vivo (minuto y medio). Debe decir que la voz está clonada de los turnos grabados.
-- [ ] Sección 13, segunda celda: aceptar el permiso del micrófono y hacer un turno de prueba completo con **Hablar** y **Enviar**.
-- [ ] Grabar la pantalla con el audio del sistema además del micrófono, para que se oiga la respuesta del agente.
-- [ ] No dejar la sesión parada mucho rato: Colab la cierra por inactividad y hay que repetir todo.
-
-**Si la celda de subida falla.** Subir `audio.zip` con el panel de archivos de Colab (queda en `/content`) y descomprimirlo en la terminal de Colab con `cd /content/shopping_sts_agent && mkdir -p audio && unzip -o -q /content/audio.zip -d audio`. Así se hizo en las corridas de prueba.
-
-**Si el micrófono falla.** Plan B, diciendo en el video que la entrada es una grabación: ejecutar la sección 12 (los seis escenarios por voz con las grabaciones de Piero, unos 20 minutos) y reproducir entradas y respuestas con la sección 15. El enunciado pide entrada y respuesta por voz, no que sea en directo.
-
-**Al hablar.** Frases completas, cerca del micrófono y sin prisa. En las pruebas, «cafetera» se transcribió una vez como «cafetería» y el agente buscó otra cosa: por eso la demostración propuesta usa botellas de agua y auriculares.
-
 ## Bloque 1 — Metodología (Yesenia, 4 min)
 
-Idea central: un asistente por turnos con tres etapas locales (oír, decidir y hablar), donde el modelo de lenguaje propone y el código decide.
-
-| Tiempo | Qué decir | Qué mostrar |
-| --- | --- | --- |
-| 0:00 – 0:30 | El problema: comprar hablando en español. El asistente busca, compara, cotiza y registra el pedido solo después de un sí. | Diagrama «Cómo funciona» del README |
-| 0:30 – 1:30 | Las tres etapas y sus modelos, con el motivo de cada uno (lista de abajo). | El mismo diagrama; tabla de decisiones del PLAN, apartado 2 |
-| 1:30 – 2:30 | Los datos: ESCI reducido en español y la tienda simulada. | README, apartado de datos |
-| 2:30 – 3:30 | Las decisiones de diseño (lista de abajo). | PLAN, apartado 1 |
-| 3:30 – 4:00 | Cómo se evalúa: 20 escenarios con estado inicial reproducible y veredicto por código, 6 de ellos por voz y repetidos con la transcripción correcta. Paso a Diego. | Carpeta `scenarios/evaluacion/` |
-
-**Modelos y por qué**
-
-- **ASR:** Whisper large-v3-turbo con `faster-whisper`. Buen español, rápido y unos 2 GB de memoria de GPU.
-- **LLM:** Qwen2.5-7B-Instruct cuantizado (GGUF Q4_K_M) con `llama-cpp-python`. Ocupa unos 5 GB y una gramática JSON le obliga a devolver siempre una llamada a herramienta válida.
-- **Búsqueda:** BM25 más embeddings `multilingual-e5-small`, fusionados, y un reranker entrenado por el grupo.
-- **TTS:** F5-Spanish clonando la voz de Piero a partir de dos grabaciones suyas. Se empezó con XTTS-v2, se compararon doce formas de clonar con las mismas frases y se eligió de oído la que más se parecía.
-
-**Datos**
-
-- Catálogo: 43 674 productos de ESCI en español (el enunciado pide 5 000).
-- Consultas: 1 500 de `train` (1 200 para ajustar y 300 para validar) y 300 de `test`, que se midieron una sola vez.
-- Tienda simulada con precios, existencias, carritos y pedidos, generada con semilla fija y restaurable.
-- Las etiquetas ESCI solo se usan para medir y para entrenar el reranker con `train`. El agente nunca las lee.
-
-**Decisiones principales**
-
-1. Todo se ejecuta en Colab con una T4, sin ninguna API externa de inferencia.
-2. El LLM propone el paso y el código lo valida: cantidades, presupuesto y existencias se comprueban por código.
-3. Al confirmar se vuelven a comprobar las condiciones y el pedido se registra entero o no se registra; repetir el sí no lo duplica.
-4. Lo que el catálogo no dice de un producto se responde como desconocido.
-5. El control es un grafo explícito de LangGraph, no un agente preconstruido.
-6. Nada se ajusta con las consultas de `test`.
+| Mostrar | Decir |
+| --- | --- |
+| [README](../README.md): el título y el diagrama «Cómo funciona» | «Hola, somos Yesenia, Piero, Diego y Edgar. Este es nuestro asistente de compras por voz. El usuario habla en español; el asistente busca productos en un catálogo, arma el carrito, prepara una cotización y registra el pedido solo cuando el usuario confirma. Y responde hablando, con una voz clonada.» |
+| El mismo diagrama, señalando las tres etapas | «El sistema tiene tres etapas y las tres corren dentro de Colab, sin ninguna API externa. Primero, Whisper large-v3-turbo convierte el audio en texto. Segundo, un agente decide qué hacer: usa el modelo Qwen 2.5 de 7 mil millones de parámetros, cuantizado a 4 bits para que quepa en la GPU. Tercero, F5-Spanish convierte la respuesta en audio con la voz de Piero, clonada a partir de dos grabaciones suyas.» |
+| [PLAN.md](PLAN.md), apartado 2: la tabla de decisiones | «Elegimos cada modelo con tres criterios: que funcione bien en español, que quepa en la memoria de una T4 junto a los demás y que sea rápido. Para la voz empezamos con XTTS-v2, pero no se parecía a la voz real. Comparamos doce formas de clonar con las mismas frases y nos quedamos con F5-Spanish, que fue la que más se parecía.» |
+| [README](../README.md), apartado de datos | «Los datos vienen de ESCI, el conjunto de consultas de compra de Amazon, en su versión reducida y en español. El catálogo tiene 43 674 productos. Separamos las consultas por identificador: 1 500 de train para desarrollar y 300 de test, que medimos una sola vez al final. Las etiquetas de relevancia solo se usan para medir y para entrenar el reordenador con train; el agente nunca las ve. La tienda, con precios, existencias, carritos y pedidos, es simulada: se genera con una semilla fija y se puede restaurar.» |
+| [PLAN.md](PLAN.md), apartado 1: las restricciones | «Tomamos cuatro decisiones de diseño. Uno: el modelo de lenguaje propone y el código decide; las cantidades, el presupuesto y las existencias se validan por código. Dos: al confirmar se vuelve a comprobar todo y el pedido se registra completo o no se registra; repetir el sí no lo duplica. Tres: si el catálogo no dice algo de un producto, el asistente responde que no lo sabe. Cuatro: el control es un grafo explícito de LangGraph, hecho por nosotros.» |
+| La carpeta [scenarios/evaluacion](../scenarios/evaluacion) | «Para evaluarlo escribimos 20 escenarios, cada uno con un estado inicial que se puede reproducir y un veredicto automático por código. Seis se prueban por voz y cubren las seis situaciones que pide el enunciado. Ahora Diego explica cómo está implementado.» |
 
 ## Bloque 2 — Implementación (Diego, 4 min)
 
-Idea central: la búsqueda combina dos recuperadores y un reranker, el agente es un grafo con doce pasos y doce herramientas, y todos los modelos caben juntos en 8,1 GB de los 15 de la T4.
-
-| Tiempo | Qué decir | Qué mostrar |
-| --- | --- | --- |
-| 4:00 – 5:00 | Recuperación en tres pasos (lista de abajo). | `src/shopping_agent/retrieval/` |
-| 5:00 – 6:15 | El agente: grafo, herramientas y validaciones por código. | `agent/graph.py`, `agent/tools.py`, `agent/guards.py` |
-| 6:15 – 7:00 | Estado y memoria. | `agent/state.py`, `agent/memory.py` |
-| 7:00 – 8:00 | Gestión de recursos en la T4. Paso a Piero. | Salida de la celda de escenarios por voz, que imprime la memoria al cargar cada modelo |
-
-**Recuperación**
-
-1. BM25 sobre el texto del producto (la base léxica) y búsqueda densa con `multilingual-e5-small`.
-2. Fusión de las dos listas por posiciones (RRF) y corte en los 50 primeros.
-3. Un reranker reordena esos 50. El que usa el agente es una red de dos torres sin grafo (el «control»). La variante con GraphSAGE usa un grafo heterogéneo de consultas y productos (43 674 productos, 1 500 consultas; aristas de candidato, similitud y marca) y sirve para la ablación.
-
-**Agente**
-
-- Grafo explícito de LangGraph con doce nodos: interpretar el turno, validar, ejecutar la herramienta, pedir aclaración, cotizar, confirmar, registrar el pedido y proponer una alternativa, entre otros.
-- Doce herramientas: buscar, ver el detalle, comparar de 2 a 4 productos, consultar precio y existencias, añadir al carrito, fijar una cantidad, quitar, guardar el presupuesto, guardar una preferencia, preparar la cotización, preguntar al usuario y responder.
-- En cada paso el LLM elige una herramienta y sus argumentos; el código comprueba que sean válidos antes de ejecutarla y le devuelve el resultado.
-- Validaciones que no dependen del LLM: no se cierra un pedido sin cotizarlo antes, «el segundo» tiene que existir en la última lista mostrada, no se repite una búsqueda idéntica y un número suelto no se toma como presupuesto si ya hay carrito.
-- La confirmación es una transacción: vuelve a comprobar precio, existencias y presupuesto, y descuenta inventario y registra el pedido a la vez. Un segundo sí devuelve el mismo pedido.
-
-**Estado y memoria**
-
-- El estado de la conversación guarda mensajes, candidatos mostrados, carrito, presupuesto, cotización pendiente y operaciones ejecutadas.
-- Postgres guarda ese estado entre turnos y las preferencias del usuario entre conversaciones. La tienda es una base SQLite.
-
-**Recursos en la T4 (medidos en Colab)**
-
-- Memoria de GPU acumulada al cargar: 712 MiB la búsqueda, 5 826 con el LLM, 7 394 con el ASR y 8 140 con la voz, de 15 360.
-- Los modelos se cargan una sola vez (entre 89 y 108 s) y esa carga se mide aparte de los turnos.
-- Los embeddings del catálogo se calculan una vez (3 minutos) y se reutilizan.
-- `llama-cpp-python` tarda 61 minutos en compilarse con CUDA en Colab; el notebook descarga una versión ya compilada y la instalación completa baja a menos de 2 minutos.
+| Mostrar | Decir |
+| --- | --- |
+| La carpeta [src/shopping_agent/retrieval](../src/shopping_agent/retrieval) | «La búsqueda tiene tres pasos. Primero buscamos de dos formas: con BM25, que compara palabras y es nuestra base léxica, y con una búsqueda densa con embeddings multilingual-e5-small, que compara significado. Segundo, fusionamos las dos listas y nos quedamos con los 50 mejores candidatos. Tercero, un reordenador entrenado por nosotros con las consultas de train vuelve a ordenar esos 50.» |
+| [retrieval/gnn.py](../src/shopping_agent/retrieval/gnn.py) | «Entrenamos dos versiones del reordenador. Una es una red sin grafo, que es la que usa el agente. La otra usa GraphSAGE sobre un grafo de consultas y productos, unidos por candidatos, similitud y marca. Las comparamos en la parte de resultados.» |
+| [agent/graph.py](../src/shopping_agent/agent/graph.py): la lista de nodos | «El agente es un grafo de LangGraph con doce nodos. En cada turno interpreta lo que dijo el usuario, valida y ejecuta una herramienta. Según el caso, pide una aclaración, cotiza, confirma, registra el pedido o propone una alternativa.» |
+| [agent/tools.py](../src/shopping_agent/agent/tools.py): la lista de herramientas | «El modelo de lenguaje no toca la tienda directamente: elige una de doce herramientas. Buscar, ver el detalle de un producto, comparar, consultar precio y existencias, añadir al carrito, cambiar una cantidad, quitar, guardar el presupuesto, guardar una preferencia, preparar la cotización, preguntar al usuario y responder. Una gramática lo obliga a devolver siempre una llamada válida, y el código comprueba los argumentos antes de ejecutarla.» |
+| [agent/guards.py](../src/shopping_agent/agent/guards.py) | «Además hay validaciones que no dependen del modelo. No se puede cerrar un pedido sin cotizarlo antes. Si el usuario dice "el segundo", ese segundo tiene que existir en la última lista mostrada. Y la confirmación es una transacción: vuelve a comprobar precio, existencias y presupuesto, descuenta el inventario y registra el pedido en un solo paso.» |
+| [agent/state.py](../src/shopping_agent/agent/state.py) | «El estado de la conversación guarda los mensajes, los productos mostrados, el carrito, el presupuesto y la cotización pendiente. Se guarda en Postgres entre turnos, junto con las preferencias del usuario entre conversaciones. La tienda es una base SQLite.» |
+| [README](../README.md), apartado «Ejecución en Colab (T4)»: la fila de memoria de GPU | «Sobre los recursos: los modelos se cargan una sola vez y caben juntos en 8,1 gigas de los 15 de la T4. Ahí están la búsqueda, el modelo de lenguaje con 5 gigas, Whisper y la voz. La carga inicial tarda entre minuto y medio y dos minutos, y la medimos aparte de los turnos. Y como compilar llama-cpp en Colab tarda una hora, el notebook descarga una versión ya compilada y la instalación baja a dos minutos. Ahora Piero hace la demostración.» |
 
 ## Bloque 3 — Demostración (Piero, 8 min)
 
-Dos conversaciones por voz en la sección 13 del notebook: una compra con cambio de cantidad (5 turnos) y un pedido ambiguo que obliga a aclarar (3 turnos). Son los escenarios 03 y 02 de la evaluación, que pasan por voz en todas las corridas.
-
-| Tiempo | Qué pasa |
+| Mostrar | Decir |
 | --- | --- |
-| 8:00 – 8:40 | Presentación: el notebook ya está preparado y el agente arrancado. Leer la línea «Agente listo…», que dice la voz y la memoria ocupada. Avisar de que es por turnos y de que la voz que responde es la de Piero clonada. |
-| 8:40 – 12:30 | Caso 1: compra con cambio de cantidad. El primer turno se muestra entero, con su espera real. |
-| 12:30 – 14:45 | Caso 2: pedido ambiguo. Pulsar **Salir** y volver a ejecutar la celda: empieza una conversación nueva con la tienda restaurada. |
-| 14:45 – 16:00 | Cierre: abrir la transcripción que guarda el notebook y señalar las operaciones ejecutadas y el pedido registrado. Paso a Edgar. |
-
-**Caso 1 — compra con cambio de cantidad**
-
-| Turno | Piero dice | Qué debe hacer el agente |
-| --- | --- | --- |
-| 1 | «Busco una botella de agua de acero inoxidable. Mi presupuesto es de 45 euros.» | Busca, anota el presupuesto y lee varias opciones con su precio |
-| 2 | «Añade dos de la primera.» | Añade dos unidades y dice el total |
-| 3 | «Mejor que sean cuatro.» | Deja cuatro unidades, sin perder el presupuesto |
-| 4 | «Ciérralo.» | Repite el pedido completo y pide confirmación; todavía no registra nada |
-| 5 | «Sí.» | Registra el pedido y dice su número |
-
-Si sobra tiempo, un sexto turno repitiendo «Sí, confirmo» muestra que el pedido no se duplica.
-
-**Caso 2 — pedido ambiguo**
-
-| Turno | Piero dice | Qué debe hacer el agente |
-| --- | --- | --- |
-| 1 | «Quiero comprar un regalo para mi hermana.» | No busca: pregunta qué tipo de regalo |
-| 2 | «Unos auriculares bluetooth, y no quiero gastar más de 50 euros.» | Busca, anota el presupuesto y lee las opciones |
-| 3 | «Ponme uno del primero.» | Añade una unidad al carrito |
-
-**Qué señalar en pantalla en cada turno**
-
-- «Tú:» es lo que entendió el ASR; comparar con lo dicho.
-- Las líneas con punto son las operaciones que ejecutó el código, con «hecho» o «rechazado».
-- La última línea da el tiempo del turno por etapa: ASR, LLM y voz.
-
-**Tiempos a esperar.** En la T4 un turno con LLM tarda entre 23 y 25 s de media, y los de búsqueda son los más lentos (hasta 49 s en las pruebas). Las respuestas que leen una lista o el carrito duran entre 20 y 30 s. Ocho turnos caben en los ocho minutos con poco margen: solo una interacción tiene que verse con su espera real, así que las demás esperas se pueden recortar en la edición, avisándolo en pantalla.
-
-**Qué puede salir distinto.** Los productos y precios que lea el agente son los de la tienda restaurada, no hace falta que coincidan con ningún ejemplo. Las marcas raras del catálogo se pronuncian deformadas. Si el ASR entiende mal una palabra, corregir de viva voz («he dicho…») también es parte de lo que el sistema sabe hacer; conviene dejarlo en el video y comentarlo.
+| El notebook en Colab, sección 13: la línea «Agente listo…» | «Este es el notebook en Colab, con el agente ya arrancado. Como ven, la voz está clonada de dos grabaciones mías y todos los modelos ocupan 8 gigas. La conversación es por turnos: hablo, espero y el asistente responde con mi voz clonada. Empiezo con una compra.» |
+| La celda de conversación: pulsar **Hablar**, decir la frase y pulsar **Enviar** | Al asistente: «Busco una botella de agua de acero inoxidable. Mi presupuesto es de 45 euros.» |
+| La espera completa y la respuesta, sin cortes | Cuando termine de hablar: «Aquí se ve lo que entendió, las operaciones que hizo, que fueron buscar y guardar el presupuesto, y el tiempo de cada etapa.» |
+| La celda de conversación | Al asistente: «Añade dos de la primera.» Después: «Añadió dos unidades y me dice el total.» |
+| La celda de conversación | Al asistente: «Mejor que sean cuatro.» Después: «Cambió la cantidad y mantuvo el presupuesto.» |
+| La celda de conversación | Al asistente: «Ciérralo.» Después: «Todavía no registra nada: me repite el pedido y me pide confirmación.» |
+| La celda de conversación | Al asistente: «Sí.» Después: «Ahora sí registra el pedido y me da su número.» |
+| Pulsar **Salir** y volver a ejecutar la celda | «Ahora un caso ambiguo, en una conversación nueva.» |
+| La celda de conversación | Al asistente: «Quiero comprar un regalo para mi hermana.» Después: «No buscó nada: como falta información, me pregunta qué tipo de regalo.» |
+| La celda de conversación | Al asistente: «Unos auriculares bluetooth, y no quiero gastar más de 50 euros.» Después: «Con ese dato ya busca y me lee las opciones.» |
+| La celda de conversación | Al asistente: «Ponme uno del primero.» Después: «Y lo añade al carrito. Ahora Edgar presenta los resultados.» |
 
 ## Bloque 4 — Resultados (Edgar, 4 min)
 
-Idea central: la búsqueda supera a la base léxica, el grafo aporta poco, el agente completa los 20 escenarios y los 6 de voz, y el coste está en la latencia.
-
-| Tiempo | Qué decir | Qué mostrar |
-| --- | --- | --- |
-| 16:00 – 17:00 | Recuperación frente a la base léxica, en `test`. | `results/retrieval_test.md` |
-| 17:00 – 17:45 | Ablación del reranker. | La misma tabla y `results/escenarios/resumen.md` |
-| 17:45 – 18:30 | Escenarios, voz y latencia. | `results/escenarios/resumen.md`; tabla de Colab del README |
-| 18:30 – 19:40 | Errores y limitaciones. | `documentation/ANALISIS_ACIERTOS_FALLOS.md` |
-| 19:40 – 20:00 | Cierre. | Repositorio |
-
-**Recuperación en test** (300 consultas, medidas una sola vez; nDCG@10 con los pesos del enunciado)
-
-| Sistema | nDCG@10 | recall@50 |
-| --- | --- | --- |
-| BM25 (base léxica) | 0,6797 | 0,6455 |
-| Denso | 0,7278 | 0,6501 |
-| Híbrido | 0,7113 | 0,7194 |
-| Híbrido + reranker sin grafo (el del agente) | 0,7292 | 0,7194 |
-| Híbrido + reranker con GraphSAGE | 0,7363 | 0,7194 |
-
-- El sistema del agente mejora a BM25 en 0,05 de nDCG@10.
-- El denso solo ordena mejor que el híbrido, pero el híbrido encuentra más productos exactos entre los 50 primeros (0,72 frente a 0,65). Por eso el híbrido genera los candidatos y el reranker los ordena.
-- La tabla se reprodujo en Colab con la misma configuración: los tres primeros valores salen idénticos y los rerankers, 0,7289 y 0,7340.
-
-**Ablación: el reranker**
-
-- Con grafo frente a sin grafo: GraphSAGE gana 0,0071 de nDCG@10 (intervalo del 95 %: de 0,0028 a 0,0117). Es una mejora real pero pequeña; casi todo lo aporta reordenar, no el grafo.
-- En los 20 escenarios, las tres variantes (sin grafo, con GraphSAGE y sin reranker) dan 20 de 20.
-- En cuatro escenarios de reserva, escritos antes de corregir el agente y no usados para ajustarlo: 3 de 4 sin grafo, 4 de 4 con GraphSAGE y 3 de 4 sin reranker.
-- El agente se quedó con el reranker sin grafo, decidido antes de mirar `test`.
-
-**Escenarios, voz y latencia**
-
-- Escenarios por texto: 20 de 20, sin incumplir cantidades, presupuesto ni existencias, y sin pedidos duplicados. Antes de añadir las validaciones por código eran 14 de 20.
-- Escenarios por voz con las 31 grabaciones de Piero: 6 de 6, también con la transcripción correcta.
-- ASR: 1,4 % de palabras mal transcritas; errores en 0 de 3 importes, 0 de 8 cantidades y 1 de 13 nombres de producto.
-- Voz generada: Whisper entiende mal el 5,1 % de las palabras. La semejanza con grabaciones reales de Piero es 0,40, frente a 0,27 de la voz anterior (XTTS-v2), y él mismo la validó de oído.
-- Latencia en la T4, desde que termina la grabación hasta que la respuesta puede sonar: entre 23 y 25 s por turno con LLM (ASR 0,4 s, LLM 8,5 s, voz de 14 a 16 s). La carga inicial, de 89 a 108 s, se mide aparte.
-
-**Errores y limitaciones** (el análisis recoge 6 aciertos y 9 fallos, con su causa)
-
-- Corregidos con validaciones por código: «Ciérralo» no cerraba el pedido; añadía un producto que nadie había pedido; afirmaba algo que el catálogo no dice; «He dicho 12, no 2» fijó un presupuesto de 12 euros.
-- Sin corregir: «cafetera» se transcribió «cafetería» y se compró otra cosa, y el escenario pasa igual; a veces dice que un dato no consta sin abrir el detalle del producto; las explicaciones tras un rechazo son pobres.
-- Límites: no es tiempo real y más de la mitad del turno es la síntesis de voz; las respuestas que leen el carrito llegan a 40 s; las marcas que no son palabras se pronuncian deformadas; todo se midió con un hablante, un micrófono, una toma por turno y una semilla; la semejanza de la voz se midió con grabaciones de la misma sesión.
-
-## Dónde está cada cosa
-
-Todo lo que se muestra en pantalla está en este repositorio. Las cifras de este guion salen de esos archivos; si alguna no coincide, vale la del archivo.
-
-| Para | Archivo |
+| Mostrar | Decir |
 | --- | --- |
-| Diagrama del sistema y resumen | [README](../README.md), apartado «Cómo funciona» |
-| Decisiones de diseño y modelos | [PLAN.md](PLAN.md), apartados 1 y 2 |
-| Notebook de Colab | [notebooks/colab.ipynb](https://colab.research.google.com/github/pipaber/shopping_sts_agent/blob/main/notebooks/colab.ipynb) |
-| Código de la búsqueda y del agente | [src/shopping_agent/](../src/shopping_agent) (`retrieval/`, `agent/`, `voice/`) |
-| Los 20 escenarios | [scenarios/evaluacion/](../scenarios/evaluacion) |
-| Tabla de recuperación en test | [results/retrieval_test.md](../results/retrieval_test.md) |
-| Resumen de escenarios por corrida | [results/escenarios/resumen.md](../results/escenarios/resumen.md) |
-| Corrida en Colab con la voz final | [results/colab_t4_f5/](../results/colab_t4_f5/LEEME.md) y README, apartado «Ejecución en Colab (T4)» |
-| Aciertos, fallos y limitaciones | [ANALISIS_ACIERTOS_FALLOS.md](ANALISIS_ACIERTOS_FALLOS.md) |
-
-**Pendiente de la entrega, además del video:** adjuntar en el formulario el zip con los audios (las grabaciones de Piero y las respuestas del agente), que no están en el repositorio porque es público.
-
-Guion elaborado con asistencia de IA generativa (Claude Code). Cada integrante debe revisar su bloque contra los archivos enlazados antes de grabar, y conviene declarar el uso de IA en la entrega.
+| [results/retrieval_test.md](../results/retrieval_test.md): la tabla, columna nDCG@10 | «Empezamos por la búsqueda, medida con las 300 consultas de test y la métrica nDCG a 10. La base léxica, BM25, obtiene 0,680. La búsqueda densa, 0,728. El híbrido, 0,711. Y el híbrido con nuestro reordenador, que es lo que usa el agente, 0,729. Es decir, mejoramos a la base léxica en 0,05.» |
+| La misma tabla, columna recall@50 | «El denso solo ordena un poco mejor que el híbrido, pero el híbrido encuentra más productos correctos entre los 50 primeros: 0,72 frente a 0,65. Por eso el híbrido genera los candidatos y el reordenador los ordena.» |
+| La misma tabla, las dos últimas filas | «La ablación es sobre el reordenador. Con GraphSAGE el resultado sube a 0,736, que son 0,007 más que sin grafo. La diferencia es real pero pequeña: casi toda la mejora viene de reordenar, no del grafo. Por eso el agente usa la versión sin grafo, que decidimos antes de mirar test.» |
+| [results/escenarios/resumen.md](../results/escenarios/resumen.md): la tabla de corridas | «En los 20 escenarios, el agente completa 20 de 20 con el reordenador sin grafo, con GraphSAGE y sin reordenador, y sin incumplir cantidades, presupuesto ni existencias. Antes de añadir las validaciones por código eran 14 de 20. Por voz, con 31 grabaciones reales, completa 6 de 6, igual que con la transcripción correcta.» |
+| [README](../README.md), apartado «Ejecución en Colab (T4)»: la tabla de la corrida con F5-Spanish | «Sobre la voz: Whisper transcribe mal el 1,4 % de las palabras. No falló en ningún importe ni en ninguna cantidad, y falló en 1 de 13 nombres de producto. La voz generada se entiende bien, con un error del 5,1 %, y su semejanza con grabaciones reales de Piero es 0,40, frente a 0,27 del modelo anterior. En tiempos, en la T4 un turno por voz tarda entre 23 y 25 segundos: menos de medio segundo de reconocimiento, 8 del modelo de lenguaje y unos 15 de síntesis de voz.» |
+| [ANALISIS_ACIERTOS_FALLOS.md](ANALISIS_ACIERTOS_FALLOS.md): la tabla de fallos | «Analizamos seis aciertos y nueve fallos. Cuatro fallos los corregimos con validaciones por código; por ejemplo, el agente añadía productos que nadie había pedido. De los que siguen abiertos, los tres principales son: una vez Whisper entendió "cafetería" en lugar de "cafetera" y se compró otro producto; a veces dice que un dato no consta sin revisar el detalle del producto; y explica poco cuando rechaza algo.» |
+| El mismo documento, apartado «Lo que sigue sin arreglar» | «Las limitaciones principales: no es tiempo real, y más de la mitad de la espera es la síntesis de voz; las marcas que no son palabras se pronuncian mal; y todo se midió con una sola persona y un solo micrófono. Eso es todo. Gracias.» |
